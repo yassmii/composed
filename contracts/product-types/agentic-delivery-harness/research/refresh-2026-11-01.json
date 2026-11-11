@@ -1,0 +1,455 @@
+{
+  "format_version": 1,
+  "kind": "research-refresh-record",
+  "date": "2026-11-01",
+  "family": "agentic-delivery-harness",
+  "scope": "Existing recorded sources and their dependent observations; no upstream-latest survey or product execution",
+  "status": "recorded_corpus_rechecked",
+  "author_review": "repository agent; not independent approval",
+  "baseline": {
+    "contract_sha256": "369bc8e5ab8fc68c9da1bcb44cb3c3277c15dff09f8deca35f79487f3b065ff1",
+    "traceability_sha256": "5f7e84f5b41e3bbb8f8ba48a14313cf89e10a77ef28b11fd83e4c6b6ab47fc0c",
+    "normative_bytes_changed": false
+  },
+  "source_archive": "history/sources-before-refresh-2026-11-01.yaml",
+  "observations_before_sha256": "a62c6d7068532ce9094c2c1054f39a61e1ff1e306a6ef3abadaa0529ee99a940",
+  "observations_after_sha256": "b4850596bcfc7b9130d0a8d0b846a386fc015e78795d703e966d0c0e9fc6002a",
+  "new_observations": [
+    "OBS-ADH-017",
+    "OBS-ADH-018"
+  ],
+  "review": "The changed Claude hooks reference still distinguishes before/after-tool events and task/subagent decision powers (OBS-ADH-013). New notes record that FileChanged is after-effect and that internal agents can produce SubagentStop. These limit what a hook log can prove. REQ-ADH-009/022 and POL-ADH-003 already require actual runtime capability evidence; no new mandatory clause is introduced.",
+  "followup": "Exercise native prevention bypasses, errors, timeouts and internal-agent controls on identified runtimes; compare newer upstream pins and evaluate costs independently. The pinned Build Kit 0.5.1 retrofit is historical and is not refreshed or certified by this pass.",
+  "behavioural_diff_from_historical_bodies": "unknown; old bodies unavailable, original metadata preserved",
+  "product_acceptance": "not_run",
+  "proof_transfer": "not_performed",
+  "sources": [
+    {
+      "id": "SRC-ADH-CLAUDE-HOOKS",
+      "before": {
+        "url": "https://code.claude.com/docs/en/hooks.md",
+        "retrieved_on": "2026-10-24",
+        "sha256": "47ffc799070326108bbd3811db73d26f9a4cd68168078095d923a2ba710fdd8a",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://code.claude.com/docs/en/hooks.md",
+        "retrieved_on": "2026-11-01",
+        "sha256": "8e4d5d8c03b5a4cd0e6fe15cc8d71d782a5acc29cf738c584337d024ff1e4ca1",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "8e4d5d8c03b5a4cd0e6fe15cc8d71d782a5acc29cf738c584337d024ff1e4ca1",
+      "initial_result": "changed",
+      "review": "dependent_observation_passages_rechecked",
+      "repeated_retrieval_matches": true,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-ADH-013",
+        "OBS-ADH-017",
+        "OBS-ADH-018"
+      ],
+      "affected_clauses": [
+        "CAP-ADH-004",
+        "CAP-ADH-009",
+        "POL-ADH-003",
+        "REQ-ADH-009",
+        "REQ-ADH-022"
+      ]
+    },
+    {
+      "id": "SRC-ADH-ECC-CONTRACT",
+      "before": {
+        "url": "https://raw.githubusercontent.com/affaan-m/ECC/90606c8315ee09cafc303515c5f33024db6b9882/skills/contract-first/SKILL.md",
+        "retrieved_on": "2026-10-24",
+        "sha256": "3eaacf16a9bbd92888659e9c1e15b0fa4eb96a41c257dd9e08f2e63b824f0cea",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/affaan-m/ECC/90606c8315ee09cafc303515c5f33024db6b9882/skills/contract-first/SKILL.md",
+        "retrieved_on": "2026-11-01",
+        "sha256": "3eaacf16a9bbd92888659e9c1e15b0fa4eb96a41c257dd9e08f2e63b824f0cea",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "3eaacf16a9bbd92888659e9c1e15b0fa4eb96a41c257dd9e08f2e63b824f0cea",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-ADH-012"
+      ],
+      "affected_clauses": [
+        "INV-ADH-007",
+        "REQ-ADH-026"
+      ]
+    },
+    {
+      "id": "SRC-ADH-ECC-EVAL",
+      "before": {
+        "url": "https://raw.githubusercontent.com/affaan-m/ECC/90606c8315ee09cafc303515c5f33024db6b9882/docker/gateguard-effectiveness/README.md",
+        "retrieved_on": "2026-10-24",
+        "sha256": "612613fea47bd44d4f2c9384a8224994ba463896857ff3e73738aba4464f7307",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/affaan-m/ECC/90606c8315ee09cafc303515c5f33024db6b9882/docker/gateguard-effectiveness/README.md",
+        "retrieved_on": "2026-11-01",
+        "sha256": "612613fea47bd44d4f2c9384a8224994ba463896857ff3e73738aba4464f7307",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "612613fea47bd44d4f2c9384a8224994ba463896857ff3e73738aba4464f7307",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-ADH-009",
+        "OBS-ADH-015"
+      ],
+      "affected_clauses": [
+        "CAP-ADH-007",
+        "CAP-ADH-010",
+        "CAP-ADH-012",
+        "INV-ADH-002",
+        "INV-ADH-003",
+        "QA-ADH-002",
+        "QA-ADH-004",
+        "REQ-ADH-016",
+        "REQ-ADH-017",
+        "REQ-ADH-018",
+        "REQ-ADH-024",
+        "REQ-ADH-025",
+        "REQ-ADH-031"
+      ]
+    },
+    {
+      "id": "SRC-ADH-ECC-GRADER",
+      "before": {
+        "url": "https://raw.githubusercontent.com/affaan-m/ECC/90606c8315ee09cafc303515c5f33024db6b9882/docker/gateguard-effectiveness/scenarios-intent/retry-idempotency/grader.cjs",
+        "retrieved_on": "2026-10-24",
+        "sha256": "0fe2a17654cdcf606a664e57d48831b1c74aeaa6d19f4c0e654cbcacf6c9b5b7",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/affaan-m/ECC/90606c8315ee09cafc303515c5f33024db6b9882/docker/gateguard-effectiveness/scenarios-intent/retry-idempotency/grader.cjs",
+        "retrieved_on": "2026-11-01",
+        "sha256": "0fe2a17654cdcf606a664e57d48831b1c74aeaa6d19f4c0e654cbcacf6c9b5b7",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "0fe2a17654cdcf606a664e57d48831b1c74aeaa6d19f4c0e654cbcacf6c9b5b7",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-ADH-010"
+      ],
+      "affected_clauses": [
+        "CAP-ADH-007",
+        "CAP-ADH-010",
+        "CAP-ADH-014",
+        "INV-ADH-003",
+        "REQ-ADH-017",
+        "REQ-ADH-025",
+        "REQ-ADH-035"
+      ]
+    },
+    {
+      "id": "SRC-ADH-ECC-HOOK",
+      "before": {
+        "url": "https://raw.githubusercontent.com/affaan-m/ECC/90606c8315ee09cafc303515c5f33024db6b9882/scripts/hooks/pre-bash-dispatcher.js",
+        "retrieved_on": "2026-10-24",
+        "sha256": "5ddf5ec18c25272b5874f5fa5a19243ceb6fdf978b3c81fa04e337c59ed25716",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/affaan-m/ECC/90606c8315ee09cafc303515c5f33024db6b9882/scripts/hooks/pre-bash-dispatcher.js",
+        "retrieved_on": "2026-11-01",
+        "sha256": "5ddf5ec18c25272b5874f5fa5a19243ceb6fdf978b3c81fa04e337c59ed25716",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "5ddf5ec18c25272b5874f5fa5a19243ceb6fdf978b3c81fa04e337c59ed25716",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-ADH-007"
+      ],
+      "affected_clauses": [
+        "CAP-ADH-004",
+        "CAP-ADH-009",
+        "INV-ADH-002",
+        "POL-ADH-003",
+        "REQ-ADH-009",
+        "REQ-ADH-021",
+        "REQ-ADH-022"
+      ]
+    },
+    {
+      "id": "SRC-ADH-ECC-LEARNING",
+      "before": {
+        "url": "https://raw.githubusercontent.com/affaan-m/ECC/90606c8315ee09cafc303515c5f33024db6b9882/skills/continuous-learning-v2/SKILL.md",
+        "retrieved_on": "2026-10-24",
+        "sha256": "ddad12451a0d582c6ef1b197b7be193bef613cbc74eba4117fcb74fc7a4ecd00",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/affaan-m/ECC/90606c8315ee09cafc303515c5f33024db6b9882/skills/continuous-learning-v2/SKILL.md",
+        "retrieved_on": "2026-11-01",
+        "sha256": "ddad12451a0d582c6ef1b197b7be193bef613cbc74eba4117fcb74fc7a4ecd00",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "ddad12451a0d582c6ef1b197b7be193bef613cbc74eba4117fcb74fc7a4ecd00",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-ADH-011"
+      ],
+      "affected_clauses": [
+        "CAP-ADH-010",
+        "INV-ADH-007",
+        "REQ-ADH-024",
+        "REQ-ADH-026"
+      ]
+    },
+    {
+      "id": "SRC-ADH-ECC-QUALITY",
+      "before": {
+        "url": "https://raw.githubusercontent.com/affaan-m/ECC/90606c8315ee09cafc303515c5f33024db6b9882/scripts/hooks/quality-gate.js",
+        "retrieved_on": "2026-10-24",
+        "sha256": "939bb07cf4f0ad3b04ed2bf14473328de4445022426404ecae421e4c3662bb42",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/affaan-m/ECC/90606c8315ee09cafc303515c5f33024db6b9882/scripts/hooks/quality-gate.js",
+        "retrieved_on": "2026-11-01",
+        "sha256": "939bb07cf4f0ad3b04ed2bf14473328de4445022426404ecae421e4c3662bb42",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "939bb07cf4f0ad3b04ed2bf14473328de4445022426404ecae421e4c3662bb42",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-ADH-008"
+      ],
+      "affected_clauses": [
+        "CAP-ADH-004",
+        "CAP-ADH-009",
+        "INV-ADH-002",
+        "POL-ADH-003",
+        "REQ-ADH-009",
+        "REQ-ADH-021",
+        "REQ-ADH-022"
+      ]
+    },
+    {
+      "id": "SRC-ADH-POCOCK",
+      "before": {
+        "url": "https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/README.md",
+        "retrieved_on": "2026-10-24",
+        "sha256": "345041d56cf1411b6b3ca1cc54014d26c563890f817f4cb9e2cb193dcd771a3e",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/README.md",
+        "retrieved_on": "2026-11-01",
+        "sha256": "345041d56cf1411b6b3ca1cc54014d26c563890f817f4cb9e2cb193dcd771a3e",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "345041d56cf1411b6b3ca1cc54014d26c563890f817f4cb9e2cb193dcd771a3e",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-ADH-002",
+        "OBS-ADH-003"
+      ],
+      "affected_clauses": [
+        "CAP-ADH-001",
+        "CAP-ADH-002",
+        "CAP-ADH-003",
+        "POL-ADH-001",
+        "POL-ADH-004",
+        "REQ-ADH-002",
+        "REQ-ADH-003",
+        "REQ-ADH-004",
+        "REQ-ADH-008"
+      ]
+    },
+    {
+      "id": "SRC-ADH-PROV",
+      "before": {
+        "url": "https://www.w3.org/TR/2013/REC-prov-o-20130430/",
+        "retrieved_on": "2026-10-24",
+        "sha256": "6b96671ab84faf12ce3f041aca12c3f93a6df2ed242348810743179a68e69555",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://www.w3.org/TR/2013/REC-prov-o-20130430/",
+        "retrieved_on": "2026-11-01",
+        "sha256": "6b96671ab84faf12ce3f041aca12c3f93a6df2ed242348810743179a68e69555",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "6b96671ab84faf12ce3f041aca12c3f93a6df2ed242348810743179a68e69555",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-ADH-014"
+      ],
+      "affected_clauses": [
+        "CAP-ADH-006",
+        "CAP-ADH-007",
+        "CAP-ADH-008",
+        "CAP-ADH-011",
+        "CAP-ADH-012",
+        "CAP-ADH-013",
+        "INV-ADH-004",
+        "INV-ADH-005",
+        "QA-ADH-002",
+        "REQ-ADH-015",
+        "REQ-ADH-016",
+        "REQ-ADH-020",
+        "REQ-ADH-028",
+        "REQ-ADH-031",
+        "REQ-ADH-032",
+        "REQ-ADH-033"
+      ]
+    },
+    {
+      "id": "SRC-ADH-SKILLS",
+      "before": {
+        "url": "https://raw.githubusercontent.com/agentskills/agentskills/69ef37e9424c0a7ea9dd2293b559e43ec8176379/docs/specification.mdx",
+        "retrieved_on": "2026-10-24",
+        "sha256": "b9079c0c10b7930e8c6a20ff2bc10cda2a3343c55185120e3f1116a1a529b220",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/agentskills/agentskills/69ef37e9424c0a7ea9dd2293b559e43ec8176379/docs/specification.mdx",
+        "retrieved_on": "2026-11-01",
+        "sha256": "b9079c0c10b7930e8c6a20ff2bc10cda2a3343c55185120e3f1116a1a529b220",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "b9079c0c10b7930e8c6a20ff2bc10cda2a3343c55185120e3f1116a1a529b220",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-ADH-001",
+        "OBS-ADH-016"
+      ],
+      "affected_clauses": [
+        "CAP-ADH-001",
+        "CAP-ADH-006",
+        "REQ-ADH-001",
+        "REQ-ADH-007",
+        "REQ-ADH-015"
+      ]
+    },
+    {
+      "id": "SRC-ADH-SPECKIT",
+      "before": {
+        "url": "https://raw.githubusercontent.com/github/spec-kit/67e0f7294e6e728ab60bf7b4590deb470448bc2d/README.md",
+        "retrieved_on": "2026-10-24",
+        "sha256": "3baa99368443f26244b3a021b40eaf6f167ee591f5759c91315ad50d0a204592",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/github/spec-kit/67e0f7294e6e728ab60bf7b4590deb470448bc2d/README.md",
+        "retrieved_on": "2026-11-01",
+        "sha256": "3baa99368443f26244b3a021b40eaf6f167ee591f5759c91315ad50d0a204592",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "3baa99368443f26244b3a021b40eaf6f167ee591f5759c91315ad50d0a204592",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-ADH-006"
+      ],
+      "affected_clauses": [
+        "CAP-ADH-001",
+        "CAP-ADH-003",
+        "CAP-ADH-009",
+        "POL-ADH-001",
+        "POL-ADH-004",
+        "REQ-ADH-003",
+        "REQ-ADH-008",
+        "REQ-ADH-021"
+      ]
+    },
+    {
+      "id": "SRC-ADH-SUPERPOWERS",
+      "before": {
+        "url": "https://raw.githubusercontent.com/obra/superpowers/2ce8aa15d05bd57213e6f746f953aafb7ded7a8b/README.md",
+        "retrieved_on": "2026-10-24",
+        "sha256": "79f29f50c735862d2e304ea547b4c9aa67d9db6909ff6fb7b5ea922d7bcbc3e7",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/obra/superpowers/2ce8aa15d05bd57213e6f746f953aafb7ded7a8b/README.md",
+        "retrieved_on": "2026-11-01",
+        "sha256": "79f29f50c735862d2e304ea547b4c9aa67d9db6909ff6fb7b5ea922d7bcbc3e7",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "79f29f50c735862d2e304ea547b4c9aa67d9db6909ff6fb7b5ea922d7bcbc3e7",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-ADH-004",
+        "OBS-ADH-005"
+      ],
+      "affected_clauses": [
+        "CAP-ADH-002",
+        "CAP-ADH-005",
+        "CAP-ADH-008",
+        "CAP-ADH-014",
+        "POL-ADH-002",
+        "REQ-ADH-004",
+        "REQ-ADH-011",
+        "REQ-ADH-019",
+        "REQ-ADH-035"
+      ]
+    }
+  ],
+  "validation": {
+    "structural": "passed",
+    "tooling_tests": {
+      "passed": 68,
+      "failed": 0,
+      "skipped": 0
+    },
+    "final_family_source_check": "passed",
+    "catalogue_source_check": {
+      "matched": 170,
+      "unavailable": 2,
+      "hash_mismatches": 0
+    },
+    "baseline_preservation": "passed",
+    "validation_detail": "../../../docs/research-refresh-2026-11-01.md#observed-validation",
+    "product_acceptance": "not_run"
+  }
+}

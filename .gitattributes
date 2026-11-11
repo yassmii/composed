@@ -1,0 +1,2 @@
+# Keep formatter input identical on Linux, macOS and Windows checkouts.
+* text=auto eol=lf

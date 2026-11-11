@@ -1,0 +1,329 @@
+schema_version: "0.1"
+id: e-commerce
+name: E-commerce Storefront
+version: 1.0.0
+kind: product-contract
+status: candidate
+license: CC-BY-4.0
+intent:
+  promise: Let a customer buy a physical-product catalogue with reliable pricing and order tracking.
+  primary_outcome: A paid order has lines, totals, and an address that do not change implicitly.
+  success_metrics:
+    - id: MET-COM-001
+      measure: Every paid order stores a snapshot of price, taxes, shipping, and address.
+    - id: MET-COM-002
+      measure: No confirmed sale makes available stock negative.
+scope:
+  includes:
+    - Public catalogue
+    - Persistent cart
+    - Payment
+    - Order creation and tracking
+    - Merchant inventory management
+  excludes:
+    - Multi-seller marketplace
+    - Digital-product sales
+    - Loyalty programme
+    - Backorders and overselling
+    - Disputes and chargebacks
+    - Automated physical return inspection
+actors:
+  - id: ACT-SHOPPER
+    name: Shopper
+    goals:
+      - Compare products
+      - Pay with confidence
+      - Track an order
+    permissions:
+      - Manage a cart
+      - Create and view own orders
+  - id: ACT-MERCHANT
+    name: Merchant
+    goals:
+      - Publish a catalogue
+      - Fulfil orders
+    permissions:
+      - Manage products and inventory
+      - Update fulfilment status
+      - Manage refunds and recorded returns
+domain:
+  entities:
+    - id: ENT-PRODUCT
+      name: Product
+      description: A sellable item with variants, pricing, and availability.
+      lifecycle:
+        - draft
+        - active
+        - retired
+    - id: ENT-CART
+      name: Cart
+      description: A mutable set of selected product lines before checkout.
+      lifecycle:
+        - active
+        - converted
+        - expired
+    - id: ENT-ORDER
+      name: Order
+      description: A historical commercial commitment created at checkout.
+      lifecycle:
+        - pending_payment
+        - paid
+        - preparing
+        - shipped
+        - cancelled
+        - refunded
+    - id: ENT-STOCK-HOLD
+      name: Stock hold
+      description: Finite allocation for all requested checkout lines, with its expiry instant disclosed
+        before payment.
+      lifecycle:
+        - active
+        - committed
+        - expired
+        - released
+  glossary:
+    - term: order snapshot
+      definition: An immutable copy of purchased values, independent from later catalogue changes.
+    - term: stock allocation
+      definition: For each variant, held and committed unshipped units are disjoint allocations against
+        sellable on-hand units. Available units equal sellable on-hand minus both allocations;
+        shipment removes the committed allocation and its on-hand units together.
+    - term: payment operation
+      definition: A stable business-operation identity bound to one checkout, amount and currency; it
+        survives delivery retries and process restarts. Payment and refund settlement records are
+        separate from fulfilment labels.
+capabilities:
+  - id: CAP-COM-001
+    name: Browse and build a cart
+    priority: must
+    actor: ACT-SHOPPER
+    outcome: The shopper can select an available variant and understand its price.
+    requirements:
+      - id: REQ-COM-001
+        statement: The cart displays quantity, estimated price, tax and delivery cost. Before initiating
+          payment the shopper accepts a final amount and currency with itemised lines, taxes,
+          shipping and delivery address; any subsequent change requires renewed acceptance before
+          another payment attempt.
+  - id: CAP-COM-002
+    name: Pay and create an order
+    priority: must
+    actor: ACT-SHOPPER
+    outcome: A verified successful payment is linked to exactly one viewable order, with a visible
+      reconciliation exception if its stock hold has already expired or been cancelled.
+    requirements:
+      - id: REQ-COM-002
+        statement: Checkout allocates all requested line quantities together only if every variant is
+          available, and records the accepted snapshot before requesting payment. A failed
+          allocation leaves no partial hold. Verified timely payment converts that checkout's
+          existing hold to committed stock once, without requiring a second allocation or decrement.
+      - id: REQ-COM-003
+        statement: Repeated attempts for the same payment operation, including concurrent delivery, distinct
+          events about the same result and retries after restart, produce no additional order,
+          capture operation or stock effect. Safe provider retries retain the same operation identity.
+          Reuse of its identity with changed checkout, amount or
+          currency is rejected. An uncertain provider outcome remains unresolved until reconciled;
+          retry must not blindly create a new charge.
+      - id: REQ-COM-005
+        statement: Only an authenticated provider result matched to the checkout, payment operation,
+          accepted amount and currency can confirm payment. Authorisation alone, a browser return,
+          an unverified event, failure or an unknown result cannot mark an order paid. Delayed or
+          reordered results must not regress established payment or fulfilment facts; conflicting
+          results remain visible for reconciliation.
+  - id: CAP-COM-003
+    name: Fulfil an order
+    priority: must
+    actor: ACT-MERCHANT
+    outcome: The merchant advances an order and the shopper can see its status.
+    requirements:
+      - id: REQ-COM-004
+        statement: Every order status transition records the responsible shopper, merchant or system actor,
+          timestamp, previous and next states, reason and correlation reference. Only authorised
+          merchants, or system actors acting under their authority, can progress fulfilment; paid
+          orders alone can enter preparing or shipped, and
+          shipped orders cannot return to preparing because an older result arrives. Refund
+          settlement is recorded separately and never rewrites the purchase snapshot.
+      - id: REQ-COM-006
+        statement: Merchant stock reductions below held plus committed unshipped units are rejected without
+          changing allocations or order history. Cancellation before shipment releases the affected
+          allocation once; cancellation of a paid order records any outstanding refund separately. A
+          financial refund alone does not restock shipped goods; a separate authorised, recorded
+          return-to-stock decision is required and repeated processing of that return cannot restock
+          the same returned units twice.
+invariants:
+  - id: INV-COM-001
+    statement: For every variant, available sellable stock equals sellable on-hand units minus active
+      holds and committed unshipped quantities and is never negative. Each unit is allocated to at
+      most one checkout; allocation conversion, release and shipment cannot count the same quantity
+      twice.
+    rationale: Customers must not buy unavailable items.
+  - id: INV-COM-002
+    statement: The purchased variants, quantities, unit prices, taxes, shipping, currency, total and
+      accepted delivery address of a paid order are immutable. Later catalogue/profile changes,
+      refunds and fulfilment actions are separate records and do not rewrite that snapshot.
+    rationale: Catalogue changes must not rewrite a past purchase.
+  - id: INV-COM-003
+    statement: A shopper can view only their own orders.
+    rationale: Personal and commercial data are confidential.
+policies:
+  - id: POL-COM-001
+    decision: The merchant configures a finite unpaid stock-hold duration; checkout exposes its expiry
+      instant E before payment. Confirmation is timely only if verified and committed to the active
+      hold at a decision instant strictly before E.
+    consequence: At or after E, unpaid holds cannot be converted and their units become allocatable
+      once, independently of delayed cleanup. A timely paid commitment does not expire.
+      Confirmation, expiry and competing allocation must have one observable ordering that preserves
+      stock bounds.
+  - id: POL-COM-002
+    decision: The aggregate of completed refunds and unresolved refund requests must not exceed the
+      captured amount. Each refund operation has a stable identity; uncertain requests keep their
+      amount reserved until their outcome is known.
+    consequence: An excess or unauthorised refund is rejected and recorded, including under concurrent
+      requests. Retries cannot reimburse twice. Requested, pending, successful and failed refunds
+      remain distinguishable; only verified completion is shown as refunded, and confirmed failure
+      releases the reserved refund amount once.
+  - id: POL-COM-003
+    decision: A successful payment received after hold expiry or cancellation does not resurrect the
+      checkout or consume stock allocated elsewhere.
+    consequence: Record the actual received funds against the original order and payment operation, show
+      the unfulfillable payment exception to shopper and merchant, and retain an actionable
+      refund/reconciliation record until resolved. Never claim funds returned merely because a
+      refund was requested. Automatic refund execution is not required.
+quality_attributes:
+  - id: QA-COM-001
+    attribute: traceability
+    target: Every status change, stock adjustment and refund attempt has an actor, timestamp and
+      correlation reference; provider references are recorded when available and explicitly
+      unavailable otherwise.
+  - id: QA-COM-002
+    attribute: resilience
+    target: Duplicate, delayed and reordered payment or refund results, including retries after restart,
+      preserve one business effect per operation; unresolved outcomes and failed reconciliation
+      remain visible.
+integrations:
+  - id: INT-COM-001
+    system: Payment provider
+    purpose: Authorise, capture, and refund payments.
+    degradation: Checkout communicates an outage or uncertain payment result. No order becomes paid
+      without verified matching capture/success; reconciliation reuses the original operation
+      identity instead of charging blindly again.
+  - id: INT-COM-002
+    system: Carrier
+    purpose: Create a shipping label and tracking reference.
+    degradation: The order remains preparing when no shipment has been confirmed. An authorised merchant
+      can resume label creation using the same shipment operation; a timeout with unknown provider
+      outcome is reconciled before another label is created.
+acceptance:
+  - id: ACC-COM-001
+    given: One available unit of variant A, two distinct shoppers and otherwise valid payable checkouts.
+    when: Both allocate and pay concurrently; repeat with a second required variant having zero stock.
+    then: Exactly one checkout acquires A and completes payment in the valid single-variant fixture;
+      final available stock is zero and never goes negative. The winner pays using its own hold when
+      displayed availability is zero. In the multi-line failure no variant is partially held.
+    evidence: "Concurrent integration evidence: all outcomes, stock before/after each decision,
+      payment/order identities and allocation histories."
+  - id: ACC-COM-002
+    given: A paid order with itemised prices, tax, shipping, currency and an accepted address.
+    when: Catalogue prices, variant names and shopper profile address change, then a refund is recorded
+      and the order is viewed.
+    then: All purchased snapshot values remain unchanged and the refund appears separately.
+    evidence: End-to-end before/after order snapshots and catalogue/profile/refund records.
+  - id: ACC-COM-003
+    given: One payment operation with a valid success result and its allocated checkout.
+    when: Submit concurrent duplicate and distinct events for that success, replay an earlier pending
+      result after success and shipment, restart processing and retry; also reuse the identity with
+      a different amount.
+    then: Exactly one order, capture operation and stock commitment result; no paid/shipped state
+      regresses, and changed-parameter reuse is rejected.
+    evidence: Integration timeline spanning restart, event/operation identities, provider request
+      ledger, order and stock effects; include two distinct legitimate checkouts as a
+      non-deduplication control.
+  - id: ACC-COM-004
+    given: An unpaid hold expiring at E and a controlled decision clock.
+    when: Confirm matching success immediately before E, exactly at E and immediately after E in
+      separate fixtures; retry expiry/release.
+    then: Only the before-E fixture commits its own hold. At/after E the hold is not converted and its
+      stock is available once even if cleanup is delayed. A paid commitment never expires.
+    evidence: Boundary integration cases with E, confirmation decision times, allocation and
+      payment/reconciliation records.
+  - id: ACC-COM-005
+    given: Checkout A expires or is cancelled; checkout B then allocates its last unit.
+    when: A verified payment success for A arrives, including a concurrent schedule whose recorded
+      decision order expires A before it can commit and reallocates its unit to B, followed by
+      duplicates and a pending or failed refund.
+    then: B keeps its stock, A is not revived, received funds are recorded once and the exception is
+      visible to both relevant actors. A remains actionable until verified refund/reconciliation
+      completion; pending or failed refund is not shown as returned funds.
+    evidence: Race timeline, allocation conservation, funds/refund ledger and shopper/merchant exception
+      views; exercise both cancellation and expiry.
+  - id: ACC-COM-006
+    given: A pending checkout and a provider simulator.
+    when: In separate fixtures, return browser success, authorisation only, forged or mismatched
+      checkout/amount/currency results, explicit failure or an outage with unknown capture outcome.
+      In the unknown-outcome fixture subsequently provide verified matching success before E.
+    then: Negative/unknown results cannot mark paid or trigger blind new capture. The uncertainty is
+      visible; verified timely success reconciles the original operation once.
+    evidence: Provider-integration positive/negative controls, result verification decisions, request
+      ledger and visible states.
+  - id: ACC-COM-007
+    given: An authorised merchant and captured amount 100 with a completed refund of 40.
+    when: Request refunds of 40 and 30 concurrently, retry requests and completion events, simulate
+      pending then verified failure, then retry within the remaining balance.
+    then: Completed plus unresolved reserved refunds never exceed 100; excess and unauthorised requests
+      are rejected. Pending differs from complete; failure releases its reservation once; retries do
+      not refund twice or mutate the order snapshot.
+    evidence: Concurrent refund ledger and provider-request evidence including authorised, unauthorised,
+      pending, failure, duplicate and successful controls.
+  - id: ACC-COM-008
+    given: A shopper owns an order; another shopper and an actor without merchant authority exist.
+    when: Each tries to read the order, change fulfilment and adjust stock, with an authorised merchant
+      control.
+    then: Only the owning shopper can read their shopper order view; merchant operations require
+      merchant authority. Rejected actions expose no other shopper order data and do not mutate
+      order or stock.
+    evidence: Access-control observations through supported user-facing and integration boundaries,
+      including guessed order references.
+  - id: ACC-COM-009
+    given: A cart with estimated totals and an address-dependent delivery cost.
+    when: Final price, tax, currency or shipping changes before payment; shopper declines then accepts
+      revised terms in separate fixtures.
+    then: The revised itemised final total/address is shown; no payment is initiated against unaccepted
+      changes and the accepted fixture records that exact snapshot.
+    evidence: Checkout journey evidence, accepted versions and provider request amount/currency.
+  - id: ACC-COM-010
+    given: An unpaid order and a paid order with a merchant and shopper.
+    when: Attempt unpaid fulfilment and shopper status changes, then authorised
+      paid-to-preparing-to-shipped transitions and replay a stale preparing event.
+    then: Unauthorised/invalid changes fail; legitimate progression is visible to the owner, shipped
+      never regresses, and every transition records actor, timestamp, states, reason and reference.
+    evidence: End-to-end status and audit records with negative controls.
+  - id: ACC-COM-011
+    given: One active hold and one committed unshipped allocation for a variant.
+    when: Reduce sellable on-hand below their sum and to their sum; cancel an unshipped order twice,
+      then refund a separate shipped order with and without an authorised physical return-to-stock
+      action.
+    then: Below-sum reduction is rejected unchanged; equal-sum change succeeds. Cancellation releases
+      once and retains any refund obligation; refund alone does not restock shipped units and an
+      authorised return restocks once.
+    evidence: Inventory ledger and stock/order history before and after each operation, with
+      available/held/committed/on-hand quantities.
+  - id: ACC-COM-012
+    given: A paid order preparing for shipment and an unavailable or timing-out carrier.
+    when: Try label creation, restore the carrier and resume the same operation, including a timeout
+      where a label was actually created.
+    then: The outage is visible, the order is not falsely shipped, and reconciliation/resume obtains one
+      label and tracking reference without duplicating a shipment.
+    evidence: Carrier failure/recovery simulation, request and label ledger, order audit and shopper
+      tracking view.
+delivery:
+  required_artifacts:
+    - Return policy
+    - Order-fulfilment guide
+    - Conformance matrix
+    - Payment, stock-expiry and reconciliation operating guide
+  verification:
+    - Execute ACC-COM-001 through ACC-COM-012 against an identified implementation revision; retain
+      fixture, configuration, provider simulation and observed records for every case.
+    - Record every case outcome including not_run; structural contract checks alone do not establish
+      storefront conformance.
+extensions:
+  commerce.promotions: Adds versioned promotions to cart calculation and order snapshots.

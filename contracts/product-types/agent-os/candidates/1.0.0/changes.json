@@ -1,0 +1,83 @@
+{
+  "format_version": 1,
+  "kind": "contract-update-proposal",
+  "date": "2026-11-01",
+  "family": "agent-os",
+  "title": "Execution-time authority and approval binding",
+  "status": "proposed",
+  "baseline": {
+    "version": "0.2.0",
+    "contract_sha256": "e9e90d870d4899e089e8e0a6a4925d166592e4d87cc26afff1fc455aad98b12f",
+    "traceability_sha256": "067182369a3340e85ba1bad86cc2027129622f9e403367b4c65345b50cc8e5d1"
+  },
+  "candidate": {
+    "version": "1.0.0",
+    "status": "candidate",
+    "schema_version": "0.1",
+    "contract_sha256": "098c6241428f09812ea59215b46e753e59f0ef3c9ace4b26b9ba6df20bb10f40"
+  },
+  "classification": "Breaking strengthened obligations/evidence; author assessment, not automatic tool compatibility",
+  "reason": "The baseline checks requests and binds approval to inputs, but does not explicitly locate the last grant check after queue/confirmation waits or bind approval to a changed tool revision and resource scope. These are bounded authority gaps, not observed implementation defects.",
+  "changed_clauses": [
+    {
+      "id": "REQ-AOS-012",
+      "before": "Permission checks are made by the runtime for every request at the mediation boundary, whatever the agent, its model output, or tool metadata claims.",
+      "after": "Permission checks are made by the runtime for every request at the mediation boundary, whatever the agent, its model output, or tool metadata claims. The final grant and policy check occurs at the durably recorded transition to executing, after any queue or confirmation wait and before the target is invoked. A grant revoked or expired at that decision instant cannot authorise execution; earlier validation or approval does not replace this check. The decision and its grant/policy revision are recorded. Revocation after execution starts does not imply that an external effect has been undone. A time-bounded grant is valid only if that decision instant is strictly before its expiry.",
+      "planned_cases": [
+        "ACC-AOS-019",
+        "ACC-AOS-020"
+      ]
+    },
+    {
+      "id": "REQ-AOS-018",
+      "before": "An approval applies only to the exact action and inputs presented; any change to them requires a new confirmation.",
+      "after": "An approval applies only to the exact action and inputs presented; any change to them requires a new confirmation. Approval is also bound to the principal, tool identity and definition version, target resource scope and risk class shown. Changing any of these requires a new confirmation. Approval never supplies a missing, expired or revoked capability grant.",
+      "planned_cases": [
+        "ACC-AOS-020"
+      ]
+    }
+  ],
+  "retained_cases": [
+    "ACC-AOS-001",
+    "ACC-AOS-002",
+    "ACC-AOS-003",
+    "ACC-AOS-004",
+    "ACC-AOS-005",
+    "ACC-AOS-006",
+    "ACC-AOS-007",
+    "ACC-AOS-008",
+    "ACC-AOS-009",
+    "ACC-AOS-010",
+    "ACC-AOS-011",
+    "ACC-AOS-012",
+    "ACC-AOS-013",
+    "ACC-AOS-014",
+    "ACC-AOS-015",
+    "ACC-AOS-016",
+    "ACC-AOS-017",
+    "ACC-AOS-018"
+  ],
+  "added_cases": [
+    "ACC-AOS-019",
+    "ACC-AOS-020"
+  ],
+  "product_acceptance": "not_run",
+  "proof_transfer": "not_performed",
+  "deferred": "New upstream runtime versions, measured fairness and overhead, erasure/retention extensions and independent runtime execution remain deferred. No new timing budget, isolation technology or delegated approval is introduced.",
+  "applicability": "Retain declared optional modules; justified conditional not_applicable is separate from not_run or failure, without weakening unconditional obligations.",
+  "validation": {
+    "schema_and_traceability": "passed",
+    "tooling_tests": {
+      "passed": 68,
+      "failed": 0,
+      "skipped": 0
+    },
+    "synthetic_example": "passed",
+    "native_impact": "impact.json",
+    "candidate_integrity": "passed",
+    "baseline_preservation": "passed",
+    "product_acceptance": "not_run",
+    "independent_review": "pending",
+    "stable_promotion": "not_performed"
+  }
+}

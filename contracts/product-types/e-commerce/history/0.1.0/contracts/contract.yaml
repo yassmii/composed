@@ -1,0 +1,132 @@
+schema_version: "0.1"
+id: "e-commerce"
+name: "E-commerce Storefront"
+version: "0.1.0"
+kind: "product-contract"
+status: "draft"
+license: "CC-BY-4.0"
+
+intent:
+  promise: "Let a customer buy a physical-product catalogue with reliable pricing and order tracking."
+  primary_outcome: "A paid order has lines, totals, and an address that do not change implicitly."
+  success_metrics:
+    - id: "MET-COM-001"
+      measure: "Every paid order stores a snapshot of price, taxes, shipping, and address."
+    - id: "MET-COM-002"
+      measure: "No confirmed sale makes available stock negative."
+
+scope:
+  includes: ["Public catalogue", "Persistent cart", "Payment", "Order creation and tracking", "Merchant inventory management"]
+  excludes: ["Multi-seller marketplace", "Digital-product sales", "Loyalty programme"]
+
+actors:
+  - id: "ACT-SHOPPER"
+    name: "Shopper"
+    goals: ["Compare products", "Pay with confidence", "Track an order"]
+    permissions: ["Manage a cart", "Create and view own orders"]
+  - id: "ACT-MERCHANT"
+    name: "Merchant"
+    goals: ["Publish a catalogue", "Fulfil orders"]
+    permissions: ["Manage products and inventory", "Update fulfilment status"]
+
+domain:
+  entities:
+    - id: "ENT-PRODUCT"
+      name: "Product"
+      description: "A sellable item with variants, pricing, and availability."
+      lifecycle: ["draft", "active", "retired"]
+    - id: "ENT-CART"
+      name: "Cart"
+      description: "A mutable set of selected product lines before checkout."
+      lifecycle: ["active", "converted", "expired"]
+    - id: "ENT-ORDER"
+      name: "Order"
+      description: "A historical commercial commitment created at checkout."
+      lifecycle: ["pending_payment", "paid", "preparing", "shipped", "cancelled", "refunded"]
+  glossary:
+    - term: "order snapshot"
+      definition: "An immutable copy of purchased values, independent from later catalogue changes."
+
+capabilities:
+  - id: "CAP-COM-001"
+    name: "Browse and build a cart"
+    priority: "must"
+    actor: "ACT-SHOPPER"
+    outcome: "The shopper can select an available variant and understand its price."
+    requirements:
+      - id: "REQ-COM-001"
+        statement: "The cart displays its current quantity, estimated price, tax, and delivery cost; the final payable amount is made explicit before payment confirmation."
+  - id: "CAP-COM-002"
+    name: "Pay and create an order"
+    priority: "must"
+    actor: "ACT-SHOPPER"
+    outcome: "An accepted payment creates exactly one viewable order."
+    requirements:
+      - id: "REQ-COM-002"
+        statement: "The system reserves stock and records an order snapshot before marking an order paid."
+      - id: "REQ-COM-003"
+        statement: "Repeated attempts for the same payment are idempotent."
+  - id: "CAP-COM-003"
+    name: "Fulfil an order"
+    priority: "must"
+    actor: "ACT-MERCHANT"
+    outcome: "The merchant advances an order and the shopper can see its status."
+    requirements:
+      - id: "REQ-COM-004"
+        statement: "Every status transition records its actor and timestamp."
+
+invariants:
+  - id: "INV-COM-001"
+    statement: "Available stock never becomes negative after paid ordering or stock reservation."
+    rationale: "Customers must not buy unavailable items."
+  - id: "INV-COM-002"
+    statement: "The lines and total of a paid order are immutable."
+    rationale: "Catalogue changes must not rewrite a past purchase."
+  - id: "INV-COM-003"
+    statement: "A shopper can view only their own orders."
+    rationale: "Personal and commercial data are confidential."
+
+policies:
+  - id: "POL-COM-001"
+    decision: "The merchant configures a finite stock-hold duration for active unpaid checkout."
+    consequence: "The reservation is released if payment is not accepted before the configured expiry."
+  - id: "POL-COM-002"
+    decision: "A refund cannot exceed the amount captured."
+    consequence: "A larger attempt is rejected and recorded."
+
+quality_attributes:
+  - id: "QA-COM-001"
+    attribute: "traceability"
+    target: "Every status change and refund has an actor, timestamp, and external reference."
+  - id: "QA-COM-002"
+    attribute: "resilience"
+    target: "Repeated payment webhooks do not create an additional order or charge."
+
+integrations:
+  - id: "INT-COM-001"
+    system: "Payment provider"
+    purpose: "Authorise, capture, and refund payments."
+    degradation: "Checkout communicates the outage; no order becomes paid without verified confirmation."
+  - id: "INT-COM-002"
+    system: "Carrier"
+    purpose: "Create a shipping label and tracking reference."
+    degradation: "The order remains preparing and an operator can resume the action."
+
+acceptance:
+  - id: "ACC-COM-001"
+    given: "A variant has available stock of one and a valid payment."
+    when: "Two shoppers check out concurrently."
+    then: "Only one order becomes paid and final stock is zero."
+    evidence: "Concurrent integration test."
+  - id: "ACC-COM-002"
+    given: "An order is paid and the product price later changes."
+    when: "The shopper views the order."
+    then: "Its lines and total remain those accepted at payment time."
+    evidence: "End-to-end snapshot test."
+
+delivery:
+  required_artifacts: ["Return policy", "Order-fulfilment guide", "Conformance matrix"]
+  verification: ["ACC-COM-001 and ACC-COM-002 tests", "Payment-webhook idempotency test"]
+
+extensions:
+  commerce.promotions: "Adds versioned promotions to cart calculation and order snapshots."

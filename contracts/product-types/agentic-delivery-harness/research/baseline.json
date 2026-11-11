@@ -1,0 +1,75 @@
+{
+  "component": "Composed Build Kit",
+  "version": "0.5.1",
+  "revision": "35e65065a3097c3a98513f3fa9e4e8f0ce499e62",
+  "captured_on": "2026-10-24",
+  "scope": "Read-only source inspection; not executed product conformance",
+  "files": [
+    {
+      "path": "build-kit/package.json",
+      "git_blob": "84aef2cea03453b4fdb3de97b7709a6427054e97",
+      "content_sha256": "d803968ac3510158da09ec15f125932a83b4bf9cde1748c832865420e9b52eb2",
+      "bytes": 1042
+    },
+    {
+      "path": "build-kit/README.md",
+      "git_blob": "67aebe0bfa7853c002bf5b64d7e22adbd88e1930",
+      "content_sha256": "8bd35796c6cb58e5130322b151aff7edef09c09e3d8b1ad076f7e19813b06e59",
+      "bytes": 3690
+    },
+    {
+      "path": "build-kit/skills/catalog.json",
+      "git_blob": "f953ea63cef9eda58de3e02328af51c9d862bc27",
+      "content_sha256": "99c138e0efa2fdadaf2cd639b39e89c7ef13dc06b7314eda6f5dbde5f89a9fb4",
+      "bytes": 9588
+    },
+    {
+      "path": "build-kit/skills/core/delivery-orchestrator/SKILL.fr.md",
+      "git_blob": "7cd00e92d6fd15021aa656d799aebc9f2c75c02b",
+      "content_sha256": "657788c9e5024d002b9b9d5235fc5089b807f37ee37151884366c915ab19334d",
+      "bytes": 10022
+    },
+    {
+      "path": "build-kit/docs/runtime-capabilities.md",
+      "git_blob": "e5653fd7f9c4de08b1aa39ad70ebadfcc1f8f6ba",
+      "content_sha256": "09de1b77801c1590443f55c8cadb591fa9c20d2b0b946a23c0d07381965ba84b",
+      "bytes": 4151
+    },
+    {
+      "path": "build-kit/docs/agentic-operating-model.md",
+      "git_blob": "9d9ce4de5f7a80fb7f6c146b9a3501b3808608eb",
+      "content_sha256": "971d90126538d7f2d7bfe831b2d4c99ae8267cbae8f264b148d6e878d37d66e9",
+      "bytes": 7188
+    },
+    {
+      "path": "build-kit/evals/run.mjs",
+      "git_blob": "0ea89ef2ab8b5f823b7e8855afecd11c4aef03cd",
+      "content_sha256": "d6fa39ba7e5559cc5c59e2746bdf6f53c91c2fa14bb0dfc4156919c37b1b4e15",
+      "bytes": 5253
+    },
+    {
+      "path": "build-kit/evals/adapters/fixture.mjs",
+      "git_blob": "16ddf33beec52ffad9b5a8334f2848f58c241297",
+      "content_sha256": "105098c40a72567073ba0591ebbc941a55b789f3ae99cdf71943be620fea87f5",
+      "bytes": 312
+    },
+    {
+      "path": "build-kit/src/cli/doctor.ts",
+      "git_blob": "621868256d865f832a95cd3d0cfb452f5752b59c",
+      "content_sha256": "73da48a6ace78a9ddf4e41af0636f54c6e75e0f0992669592d5bed375080d25f",
+      "bytes": 3170
+    },
+    {
+      "path": "build-kit/src/cli/update.ts",
+      "git_blob": "90f94dd2337c93992337975710fc8b15a0ec9e5c",
+      "content_sha256": "a4928ec7b7935dcca33ca13d324e605fb8109b145a5ea7079ed5399c03c8a76c",
+      "bytes": 10013
+    },
+    {
+      "path": "build-kit/src/cli/init.ts",
+      "git_blob": "d59538c1723f0e4f0f3c41b3b48d32cac2eee86d",
+      "content_sha256": "29417654991255adcb08aa67888970c9659c3ca8dc89bd826e3ef3ff315a9168",
+      "bytes": 6857
+    }
+  ]
+}

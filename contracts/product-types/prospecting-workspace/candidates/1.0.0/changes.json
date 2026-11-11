@@ -1,0 +1,96 @@
+{
+  "format_version": 1,
+  "kind": "contract-update-proposal",
+  "date": "2026-11-01",
+  "family": "prospecting-workspace",
+  "title": "Source-schema drift and provider uncertainty beyond retention",
+  "status": "proposed",
+  "baseline": {
+    "version": "0.1.0",
+    "contract_sha256": "075469d1705456c0c79c54f2f88b7b5d3e7af5f0ee854178dd1c1339c427e9f0",
+    "traceability_sha256": "c96b3fb871cac9d424fa6a137bb09a31a26e9adea98dc87f8b17769b77e39e07"
+  },
+  "candidate": {
+    "version": "1.0.0",
+    "status": "candidate",
+    "schema_version": "0.1",
+    "contract_sha256": "a2754f8c6f50a8a75dc585018bcb37bc81dfc9e55aee20b7d9e1bb345d09fe6e"
+  },
+  "classification": "Breaking strengthened obligations/evidence; author assessment, not automatic tool compatibility",
+  "reason": "The refreshed RNIC metadata warns about column-name variation, while provider idempotency keys have limited retention. A successful fetch or an old key cannot by itself justify interpreting data or repeating a message.",
+  "changed_clauses": [
+    {
+      "id": "REQ-PR-008",
+      "before": "Accepter saisie, import et au moins une source externe configurable; chaque source déclare son accès réel, licence ou conditions de réutilisation, attributs disponibles, limites et date de collecte; un accès absent est signalé.",
+      "after": "Accepter saisie, import et au moins une source externe configurable; chaque source déclare son accès réel, licence ou conditions de réutilisation, attributs disponibles, limites et date de collecte; un accès absent est signalé. Chaque collecte conserve la version ou empreinte du schéma et de la correspondance des attributs effectivement utilisés. Une rupture de schéma ou de correspondance incompatible est signalée avant promotion des données dépendantes; elle ne devient ni une valeur inventée, ni une preuve d’absence du fait recherché. Les données déjà validées et leurs provenances sont préservées.",
+      "planned_cases": [
+        "ACC-PR-033"
+      ]
+    },
+    {
+      "id": "REQ-PR-030",
+      "before": "Distinguer acceptation par prestataire, livraison confirmée, échec et résultat inconnu; conserver une identité stable d'opération et rapprocher les confirmations avant toute reprise ambiguë; si le prestataire ne permet pas de dédupliquer ou vérifier l'envoi, suspendre la répétition et demander une résolution documentée.",
+      "after": "Distinguer acceptation par prestataire, livraison confirmée, échec et résultat inconnu; conserver une identité stable d'opération et rapprocher les confirmations avant toute reprise ambiguë; si le prestataire ne permet pas de dédupliquer ou vérifier l'envoi, suspendre la répétition et demander une résolution documentée. L’identité métier et le résultat incertain survivent aux redémarrages et à la durée de conservation d’une clé chez le prestataire. L’expiration de cette clé, un changement de session ou un nouvel identifiant d’événement ne créent pas une autorisation de réémettre. Une reprise réexamine droits, oppositions et approbation courants avant tout nouvel effet autorisé.",
+      "planned_cases": [
+        "ACC-PR-034"
+      ]
+    }
+  ],
+  "retained_cases": [
+    "ACC-PR-001",
+    "ACC-PR-002",
+    "ACC-PR-003",
+    "ACC-PR-004",
+    "ACC-PR-005",
+    "ACC-PR-006",
+    "ACC-PR-007",
+    "ACC-PR-008",
+    "ACC-PR-009",
+    "ACC-PR-010",
+    "ACC-PR-011",
+    "ACC-PR-012",
+    "ACC-PR-013",
+    "ACC-PR-014",
+    "ACC-PR-015",
+    "ACC-PR-016",
+    "ACC-PR-017",
+    "ACC-PR-018",
+    "ACC-PR-019",
+    "ACC-PR-020",
+    "ACC-PR-021",
+    "ACC-PR-022",
+    "ACC-PR-023",
+    "ACC-PR-024",
+    "ACC-PR-025",
+    "ACC-PR-026",
+    "ACC-PR-027",
+    "ACC-PR-028",
+    "ACC-PR-029",
+    "ACC-PR-030",
+    "ACC-PR-031",
+    "ACC-PR-032"
+  ],
+  "added_cases": [
+    "ACC-PR-033",
+    "ACC-PR-034"
+  ],
+  "product_acceptance": "not_run",
+  "proof_transfer": "not_performed",
+  "deferred": "No new source is compulsory, no national RNIC file is audited and no legal deployment policy is approved. Provider-specific retry windows, real connectors and field qualification studies remain deferred.",
+  "applicability": "Retain declared optional modules; justified conditional not_applicable is separate from not_run or failure, without weakening unconditional obligations.",
+  "validation": {
+    "schema_and_traceability": "passed",
+    "tooling_tests": {
+      "passed": 68,
+      "failed": 0,
+      "skipped": 0
+    },
+    "synthetic_example": "passed",
+    "native_impact": "impact.json",
+    "candidate_integrity": "passed",
+    "baseline_preservation": "passed",
+    "product_acceptance": "not_run",
+    "independent_review": "pending",
+    "stable_promotion": "not_performed"
+  }
+}

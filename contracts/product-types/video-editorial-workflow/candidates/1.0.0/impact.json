@@ -1,0 +1,344 @@
+{
+  "format_version": 1,
+  "kind": "contract-impact-report",
+  "status": "assessed",
+  "before": {
+    "id": "video-editorial-workflow",
+    "version": "0.3.1",
+    "sha256": "a4f7a84b5f4f5040a2e7bdb82126328a7fbe18e2fab97783caeb68a16e673849"
+  },
+  "after": {
+    "id": "video-editorial-workflow",
+    "version": "1.0.0",
+    "sha256": "e922dca59c17f2a4ee9e8e955ef2ddd7304fce5ae701be570f3374113a42adea"
+  },
+  "changes": {
+    "unchanged": [],
+    "modified": [
+      {
+        "id": "INV-VEW-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-VEW-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-VEW-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-VEW-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-VEW-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-VEW-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-VEW-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-VEW-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-VEW-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-VEW-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-VEW-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-VEW-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-VEW-005",
+        "reasons": [
+          "clause-content",
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-VEW-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-VEW-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-VEW-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-VEW-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-VEW-005",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-VEW-006",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-VEW-007",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-VEW-008",
+        "reasons": [
+          "clause-content",
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-VEW-009",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-VEW-010",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-VEW-011",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-VEW-012",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-VEW-013",
+        "reasons": [
+          "clause-content",
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-VEW-014",
+        "reasons": [
+          "clause-content",
+          "contract-context"
+        ]
+      }
+    ],
+    "added": [],
+    "removed": []
+  },
+  "context_changes": [
+    "delivery"
+  ],
+  "metadata_changes": [
+    "status",
+    "version"
+  ],
+  "acceptance_changes": {
+    "unchanged": [
+      "ACC-VEW-001",
+      "ACC-VEW-002",
+      "ACC-VEW-003",
+      "ACC-VEW-004",
+      "ACC-VEW-005",
+      "ACC-VEW-006",
+      "ACC-VEW-007"
+    ],
+    "modified": [],
+    "added": [
+      "ACC-VEW-008",
+      "ACC-VEW-009"
+    ],
+    "removed": []
+  },
+  "correspondences": [],
+  "impact": {
+    "clause_ids": [
+      "INV-VEW-001",
+      "INV-VEW-002",
+      "INV-VEW-003",
+      "INV-VEW-004",
+      "POL-VEW-001",
+      "POL-VEW-002",
+      "POL-VEW-003",
+      "POL-VEW-004",
+      "QA-VEW-001",
+      "QA-VEW-002",
+      "QA-VEW-003",
+      "QA-VEW-004",
+      "QA-VEW-005",
+      "REQ-VEW-001",
+      "REQ-VEW-002",
+      "REQ-VEW-003",
+      "REQ-VEW-004",
+      "REQ-VEW-005",
+      "REQ-VEW-006",
+      "REQ-VEW-007",
+      "REQ-VEW-008",
+      "REQ-VEW-009",
+      "REQ-VEW-010",
+      "REQ-VEW-011",
+      "REQ-VEW-012",
+      "REQ-VEW-013",
+      "REQ-VEW-014"
+    ],
+    "before_clause_ids": [
+      "INV-VEW-001",
+      "INV-VEW-002",
+      "INV-VEW-003",
+      "INV-VEW-004",
+      "POL-VEW-001",
+      "POL-VEW-002",
+      "POL-VEW-003",
+      "POL-VEW-004",
+      "QA-VEW-001",
+      "QA-VEW-002",
+      "QA-VEW-003",
+      "QA-VEW-004",
+      "QA-VEW-005",
+      "REQ-VEW-001",
+      "REQ-VEW-002",
+      "REQ-VEW-003",
+      "REQ-VEW-004",
+      "REQ-VEW-005",
+      "REQ-VEW-006",
+      "REQ-VEW-007",
+      "REQ-VEW-008",
+      "REQ-VEW-009",
+      "REQ-VEW-010",
+      "REQ-VEW-011",
+      "REQ-VEW-012",
+      "REQ-VEW-013",
+      "REQ-VEW-014"
+    ],
+    "after_clause_ids": [
+      "INV-VEW-001",
+      "INV-VEW-002",
+      "INV-VEW-003",
+      "INV-VEW-004",
+      "POL-VEW-001",
+      "POL-VEW-002",
+      "POL-VEW-003",
+      "POL-VEW-004",
+      "QA-VEW-001",
+      "QA-VEW-002",
+      "QA-VEW-003",
+      "QA-VEW-004",
+      "QA-VEW-005",
+      "REQ-VEW-001",
+      "REQ-VEW-002",
+      "REQ-VEW-003",
+      "REQ-VEW-004",
+      "REQ-VEW-005",
+      "REQ-VEW-006",
+      "REQ-VEW-007",
+      "REQ-VEW-008",
+      "REQ-VEW-009",
+      "REQ-VEW-010",
+      "REQ-VEW-011",
+      "REQ-VEW-012",
+      "REQ-VEW-013",
+      "REQ-VEW-014"
+    ],
+    "acceptance_ids": [
+      "ACC-VEW-001",
+      "ACC-VEW-002",
+      "ACC-VEW-003",
+      "ACC-VEW-004",
+      "ACC-VEW-005",
+      "ACC-VEW-006",
+      "ACC-VEW-007",
+      "ACC-VEW-008",
+      "ACC-VEW-009"
+    ],
+    "before_acceptance_ids": [
+      "ACC-VEW-001",
+      "ACC-VEW-002",
+      "ACC-VEW-003",
+      "ACC-VEW-004",
+      "ACC-VEW-005",
+      "ACC-VEW-006",
+      "ACC-VEW-007"
+    ],
+    "after_acceptance_ids": [
+      "ACC-VEW-001",
+      "ACC-VEW-002",
+      "ACC-VEW-003",
+      "ACC-VEW-004",
+      "ACC-VEW-005",
+      "ACC-VEW-006",
+      "ACC-VEW-007",
+      "ACC-VEW-008",
+      "ACC-VEW-009"
+    ],
+    "coverage": "unknown"
+  },
+  "compatibility": "not_assessed",
+  "proof_transfer": "not_performed",
+  "findings": [],
+  "limitations": [
+    "This is a structural and conservative context comparison, not natural-language semantic equivalence or a breaking-change determination.",
+    "Correspondence statuses are caller declarations; identities and approval authority are not authenticated.",
+    "No proof is transferred or rebound. Existing evidence remains pinned to its original contract and implementation bytes.",
+    "Object member order is ignored; array order is preserved. Context changes can conservatively affect more clauses than strictly necessary.",
+    "One or both contracts lack structured verifies/dependencies (format 0.1). Any detected change conservatively selects every normative clause and acceptance case; targeted coverage remains unknown."
+  ]
+}

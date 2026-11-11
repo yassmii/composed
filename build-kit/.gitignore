@@ -1,0 +1,31 @@
+# deps
+node_modules/
+
+# build artifacts
+dist/
+*.tsbuildinfo
+
+# vitest coverage
+coverage/
+
+# logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# editor
+.vscode/
+.idea/
+*.swp
+
+# local env (none expected yet, future-proof)
+.env
+.env.local
+
+# Local agent-evaluation outputs can contain prompts, responses, and project context.
+evals/runs/
+benchmarks/runs/

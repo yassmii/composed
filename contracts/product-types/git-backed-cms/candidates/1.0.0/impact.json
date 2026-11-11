@@ -1,0 +1,481 @@
+{
+  "format_version": 1,
+  "kind": "contract-impact-report",
+  "status": "assessed",
+  "before": {
+    "id": "git-backed-cms",
+    "version": "0.1.0",
+    "sha256": "2a587a23d8c9999c138a194bd8adc4a9569f4c94acf4332ecaa98f3011a23412"
+  },
+  "after": {
+    "id": "git-backed-cms",
+    "version": "1.0.0",
+    "sha256": "3c1b588800a402bf2a976a8e5d8aad2444f6f1d7a945182217f90fd835b4c125"
+  },
+  "changes": {
+    "unchanged": [],
+    "modified": [
+      {
+        "id": "INV-GCMS-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-GCMS-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-GCMS-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-GCMS-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-GCMS-005",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-GCMS-006",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-GCMS-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-GCMS-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-GCMS-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-GCMS-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-GCMS-005",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-GCMS-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-GCMS-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-GCMS-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-GCMS-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-GCMS-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-GCMS-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-GCMS-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-GCMS-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-GCMS-005",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-GCMS-006",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-GCMS-007",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-GCMS-008",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-GCMS-009",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-GCMS-010",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-GCMS-011",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-GCMS-012",
+        "reasons": [
+          "clause-content",
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-GCMS-013",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-GCMS-014",
+        "reasons": [
+          "clause-content",
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-GCMS-015",
+        "reasons": [
+          "clause-content",
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-GCMS-016",
+        "reasons": [
+          "clause-content",
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-GCMS-017",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-GCMS-018",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-GCMS-019",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-GCMS-020",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-GCMS-021",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-GCMS-022",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-GCMS-023",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-GCMS-024",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-GCMS-025",
+        "reasons": [
+          "contract-context"
+        ]
+      }
+    ],
+    "added": [],
+    "removed": []
+  },
+  "context_changes": [
+    "delivery"
+  ],
+  "metadata_changes": [
+    "status",
+    "version"
+  ],
+  "acceptance_changes": {
+    "unchanged": [
+      "ACC-GCMS-001",
+      "ACC-GCMS-002",
+      "ACC-GCMS-003",
+      "ACC-GCMS-004",
+      "ACC-GCMS-005",
+      "ACC-GCMS-006",
+      "ACC-GCMS-007",
+      "ACC-GCMS-008",
+      "ACC-GCMS-009",
+      "ACC-GCMS-010",
+      "ACC-GCMS-011",
+      "ACC-GCMS-012"
+    ],
+    "modified": [],
+    "added": [
+      "ACC-GCMS-013",
+      "ACC-GCMS-014"
+    ],
+    "removed": []
+  },
+  "correspondences": [],
+  "impact": {
+    "clause_ids": [
+      "INV-GCMS-001",
+      "INV-GCMS-002",
+      "INV-GCMS-003",
+      "INV-GCMS-004",
+      "INV-GCMS-005",
+      "INV-GCMS-006",
+      "POL-GCMS-001",
+      "POL-GCMS-002",
+      "POL-GCMS-003",
+      "POL-GCMS-004",
+      "POL-GCMS-005",
+      "QA-GCMS-001",
+      "QA-GCMS-002",
+      "QA-GCMS-003",
+      "QA-GCMS-004",
+      "REQ-GCMS-001",
+      "REQ-GCMS-002",
+      "REQ-GCMS-003",
+      "REQ-GCMS-004",
+      "REQ-GCMS-005",
+      "REQ-GCMS-006",
+      "REQ-GCMS-007",
+      "REQ-GCMS-008",
+      "REQ-GCMS-009",
+      "REQ-GCMS-010",
+      "REQ-GCMS-011",
+      "REQ-GCMS-012",
+      "REQ-GCMS-013",
+      "REQ-GCMS-014",
+      "REQ-GCMS-015",
+      "REQ-GCMS-016",
+      "REQ-GCMS-017",
+      "REQ-GCMS-018",
+      "REQ-GCMS-019",
+      "REQ-GCMS-020",
+      "REQ-GCMS-021",
+      "REQ-GCMS-022",
+      "REQ-GCMS-023",
+      "REQ-GCMS-024",
+      "REQ-GCMS-025"
+    ],
+    "before_clause_ids": [
+      "INV-GCMS-001",
+      "INV-GCMS-002",
+      "INV-GCMS-003",
+      "INV-GCMS-004",
+      "INV-GCMS-005",
+      "INV-GCMS-006",
+      "POL-GCMS-001",
+      "POL-GCMS-002",
+      "POL-GCMS-003",
+      "POL-GCMS-004",
+      "POL-GCMS-005",
+      "QA-GCMS-001",
+      "QA-GCMS-002",
+      "QA-GCMS-003",
+      "QA-GCMS-004",
+      "REQ-GCMS-001",
+      "REQ-GCMS-002",
+      "REQ-GCMS-003",
+      "REQ-GCMS-004",
+      "REQ-GCMS-005",
+      "REQ-GCMS-006",
+      "REQ-GCMS-007",
+      "REQ-GCMS-008",
+      "REQ-GCMS-009",
+      "REQ-GCMS-010",
+      "REQ-GCMS-011",
+      "REQ-GCMS-012",
+      "REQ-GCMS-013",
+      "REQ-GCMS-014",
+      "REQ-GCMS-015",
+      "REQ-GCMS-016",
+      "REQ-GCMS-017",
+      "REQ-GCMS-018",
+      "REQ-GCMS-019",
+      "REQ-GCMS-020",
+      "REQ-GCMS-021",
+      "REQ-GCMS-022",
+      "REQ-GCMS-023",
+      "REQ-GCMS-024",
+      "REQ-GCMS-025"
+    ],
+    "after_clause_ids": [
+      "INV-GCMS-001",
+      "INV-GCMS-002",
+      "INV-GCMS-003",
+      "INV-GCMS-004",
+      "INV-GCMS-005",
+      "INV-GCMS-006",
+      "POL-GCMS-001",
+      "POL-GCMS-002",
+      "POL-GCMS-003",
+      "POL-GCMS-004",
+      "POL-GCMS-005",
+      "QA-GCMS-001",
+      "QA-GCMS-002",
+      "QA-GCMS-003",
+      "QA-GCMS-004",
+      "REQ-GCMS-001",
+      "REQ-GCMS-002",
+      "REQ-GCMS-003",
+      "REQ-GCMS-004",
+      "REQ-GCMS-005",
+      "REQ-GCMS-006",
+      "REQ-GCMS-007",
+      "REQ-GCMS-008",
+      "REQ-GCMS-009",
+      "REQ-GCMS-010",
+      "REQ-GCMS-011",
+      "REQ-GCMS-012",
+      "REQ-GCMS-013",
+      "REQ-GCMS-014",
+      "REQ-GCMS-015",
+      "REQ-GCMS-016",
+      "REQ-GCMS-017",
+      "REQ-GCMS-018",
+      "REQ-GCMS-019",
+      "REQ-GCMS-020",
+      "REQ-GCMS-021",
+      "REQ-GCMS-022",
+      "REQ-GCMS-023",
+      "REQ-GCMS-024",
+      "REQ-GCMS-025"
+    ],
+    "acceptance_ids": [
+      "ACC-GCMS-001",
+      "ACC-GCMS-002",
+      "ACC-GCMS-003",
+      "ACC-GCMS-004",
+      "ACC-GCMS-005",
+      "ACC-GCMS-006",
+      "ACC-GCMS-007",
+      "ACC-GCMS-008",
+      "ACC-GCMS-009",
+      "ACC-GCMS-010",
+      "ACC-GCMS-011",
+      "ACC-GCMS-012",
+      "ACC-GCMS-013",
+      "ACC-GCMS-014"
+    ],
+    "before_acceptance_ids": [
+      "ACC-GCMS-001",
+      "ACC-GCMS-002",
+      "ACC-GCMS-003",
+      "ACC-GCMS-004",
+      "ACC-GCMS-005",
+      "ACC-GCMS-006",
+      "ACC-GCMS-007",
+      "ACC-GCMS-008",
+      "ACC-GCMS-009",
+      "ACC-GCMS-010",
+      "ACC-GCMS-011",
+      "ACC-GCMS-012"
+    ],
+    "after_acceptance_ids": [
+      "ACC-GCMS-001",
+      "ACC-GCMS-002",
+      "ACC-GCMS-003",
+      "ACC-GCMS-004",
+      "ACC-GCMS-005",
+      "ACC-GCMS-006",
+      "ACC-GCMS-007",
+      "ACC-GCMS-008",
+      "ACC-GCMS-009",
+      "ACC-GCMS-010",
+      "ACC-GCMS-011",
+      "ACC-GCMS-012",
+      "ACC-GCMS-013",
+      "ACC-GCMS-014"
+    ],
+    "coverage": "unknown"
+  },
+  "compatibility": "not_assessed",
+  "proof_transfer": "not_performed",
+  "findings": [],
+  "limitations": [
+    "This is a structural and conservative context comparison, not natural-language semantic equivalence or a breaking-change determination.",
+    "Correspondence statuses are caller declarations; identities and approval authority are not authenticated.",
+    "No proof is transferred or rebound. Existing evidence remains pinned to its original contract and implementation bytes.",
+    "Object member order is ignored; array order is preserved. Context changes can conservatively affect more clauses than strictly necessary.",
+    "One or both contracts lack structured verifies/dependencies (format 0.1). Any detected change conservatively selects every normative clause and acceptance case; targeted coverage remains unknown."
+  ]
+}

@@ -1,0 +1,20 @@
+schema_version: "0.1"
+observations:
+  - id: "OBS-VEW-009"
+    sources: ["SRC-VEW-FRAME-COMMENTS"]
+    statement: "Frame.io V4 permet de rattacher un commentaire à une image précise par son timecode, de naviguer depuis ce commentaire vers l'image concernée, et d'ajouter une annotation visuelle au commentaire."
+  - id: "OBS-VEW-010"
+    sources: ["SRC-VEW-FRAME-COMPARE"]
+    statement: "Frame.io V4 permet de comparer deux assets, y compris deux versions empilées, côte à côte ; ses contrôles de lecture et de zoom peuvent être liés et un commentaire peut être laissé sur l'asset choisi pendant la comparaison."
+  - id: "OBS-VEW-011"
+    sources: ["SRC-VEW-PREMIERE-EDL"]
+    statement: "Adobe Premiere décrit l'EDL comme un format de partage avec d'autres systèmes qui convient surtout aux projets simples ; pistes imbriquées, certains effets et changements de vitesse ne se traduisent pas intégralement, tandis que les noms de clip et timecodes restent importants."
+  - id: "OBS-VEW-012"
+    sources: ["SRC-VEW-PREMIERE-FORMATS"]
+    statement: "La documentation Adobe Premiere liste EDL et XML Final Cut Pro parmi les formats que Premiere peut exporter directement."
+  - id: "OBS-VEW-013"
+    sources: ["SRC-VEW-NEXTCLOUD-CONFLICTS"]
+    statement: "Le client Nextcloud ne résout pas automatiquement une modification concurrente locale et distante : il conserve une copie locale en conflit, récupère la version distante et notifie l'utilisateur afin qu'il résolve la situation."
+  - id: "OBS-VEW-014"
+    sources: ["SRC-VEW-NEXTCLOUD-SYNC"]
+    statement: "Le client Nextcloud présente des états visibles de synchronisation, pause, perte de connexion et erreur ; lorsqu'il est hors ligne, les changements ne sont pas synchronisés vers le serveur."

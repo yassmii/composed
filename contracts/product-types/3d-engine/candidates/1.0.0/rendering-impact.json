@@ -1,0 +1,502 @@
+{
+  "format_version": 1,
+  "kind": "contract-impact-report",
+  "status": "assessed",
+  "before": {
+    "id": "3d-engine",
+    "version": "1.0.0",
+    "sha256": "2fb66e2aed161b3b43544c7a7b10ab1d7e749674f5b3d3b9acf2bcac76576d68"
+  },
+  "after": {
+    "id": "3d-engine",
+    "version": "1.0.0",
+    "sha256": "52ec015f39a88c0ab86603c362cab6b91b29f167cc3b996734bf8c2bd2e1bdc9"
+  },
+  "changes": {
+    "unchanged": [],
+    "modified": [
+      {
+        "id": "INV-3D-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-3D-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-3D-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-3D-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-3D-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-3D-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-3D-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-3D-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-3D-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-3D-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-3D-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-3D-005",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-3D-006",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-3D-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-3D-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-3D-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-3D-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-3D-005",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-3D-006",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-3D-007",
+        "reasons": [
+          "clause-content",
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-3D-008",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-3D-009",
+        "reasons": [
+          "clause-content",
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-3D-010",
+        "reasons": [
+          "clause-content",
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-3D-011",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-3D-012",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-3D-013",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-3D-014",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-3D-015",
+        "reasons": [
+          "clause-content",
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-3D-016",
+        "reasons": [
+          "clause-content",
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-3D-017",
+        "reasons": [
+          "clause-content",
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-3D-018",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-3D-019",
+        "reasons": [
+          "contract-context"
+        ]
+      }
+    ],
+    "added": [
+      "POL-3D-005",
+      "QA-3D-007",
+      "REQ-3D-020",
+      "REQ-3D-021",
+      "REQ-3D-022",
+      "REQ-3D-023",
+      "REQ-3D-024",
+      "REQ-3D-025"
+    ],
+    "removed": []
+  },
+  "context_changes": [
+    "delivery",
+    "domain",
+    "scope"
+  ],
+  "metadata_changes": [],
+  "acceptance_changes": {
+    "unchanged": [
+      "ACC-3D-001",
+      "ACC-3D-002",
+      "ACC-3D-003",
+      "ACC-3D-004",
+      "ACC-3D-005",
+      "ACC-3D-006",
+      "ACC-3D-007",
+      "ACC-3D-008",
+      "ACC-3D-009",
+      "ACC-3D-010",
+      "ACC-3D-011",
+      "ACC-3D-012",
+      "ACC-3D-013",
+      "ACC-3D-014",
+      "ACC-3D-015",
+      "ACC-3D-016",
+      "ACC-3D-017",
+      "ACC-3D-018",
+      "ACC-3D-019",
+      "ACC-3D-020",
+      "ACC-3D-021",
+      "ACC-3D-022",
+      "ACC-3D-023",
+      "ACC-3D-024",
+      "ACC-3D-025"
+    ],
+    "modified": [],
+    "added": [
+      "ACC-3D-026",
+      "ACC-3D-027",
+      "ACC-3D-028",
+      "ACC-3D-029",
+      "ACC-3D-030",
+      "ACC-3D-031",
+      "ACC-3D-032"
+    ],
+    "removed": []
+  },
+  "correspondences": [],
+  "impact": {
+    "clause_ids": [
+      "INV-3D-001",
+      "INV-3D-002",
+      "INV-3D-003",
+      "POL-3D-001",
+      "POL-3D-002",
+      "POL-3D-003",
+      "POL-3D-004",
+      "POL-3D-005",
+      "QA-3D-001",
+      "QA-3D-002",
+      "QA-3D-003",
+      "QA-3D-004",
+      "QA-3D-005",
+      "QA-3D-006",
+      "QA-3D-007",
+      "REQ-3D-001",
+      "REQ-3D-002",
+      "REQ-3D-003",
+      "REQ-3D-004",
+      "REQ-3D-005",
+      "REQ-3D-006",
+      "REQ-3D-007",
+      "REQ-3D-008",
+      "REQ-3D-009",
+      "REQ-3D-010",
+      "REQ-3D-011",
+      "REQ-3D-012",
+      "REQ-3D-013",
+      "REQ-3D-014",
+      "REQ-3D-015",
+      "REQ-3D-016",
+      "REQ-3D-017",
+      "REQ-3D-018",
+      "REQ-3D-019",
+      "REQ-3D-020",
+      "REQ-3D-021",
+      "REQ-3D-022",
+      "REQ-3D-023",
+      "REQ-3D-024",
+      "REQ-3D-025"
+    ],
+    "before_clause_ids": [
+      "INV-3D-001",
+      "INV-3D-002",
+      "INV-3D-003",
+      "POL-3D-001",
+      "POL-3D-002",
+      "POL-3D-003",
+      "POL-3D-004",
+      "QA-3D-001",
+      "QA-3D-002",
+      "QA-3D-003",
+      "QA-3D-004",
+      "QA-3D-005",
+      "QA-3D-006",
+      "REQ-3D-001",
+      "REQ-3D-002",
+      "REQ-3D-003",
+      "REQ-3D-004",
+      "REQ-3D-005",
+      "REQ-3D-006",
+      "REQ-3D-007",
+      "REQ-3D-008",
+      "REQ-3D-009",
+      "REQ-3D-010",
+      "REQ-3D-011",
+      "REQ-3D-012",
+      "REQ-3D-013",
+      "REQ-3D-014",
+      "REQ-3D-015",
+      "REQ-3D-016",
+      "REQ-3D-017",
+      "REQ-3D-018",
+      "REQ-3D-019"
+    ],
+    "after_clause_ids": [
+      "INV-3D-001",
+      "INV-3D-002",
+      "INV-3D-003",
+      "POL-3D-001",
+      "POL-3D-002",
+      "POL-3D-003",
+      "POL-3D-004",
+      "POL-3D-005",
+      "QA-3D-001",
+      "QA-3D-002",
+      "QA-3D-003",
+      "QA-3D-004",
+      "QA-3D-005",
+      "QA-3D-006",
+      "QA-3D-007",
+      "REQ-3D-001",
+      "REQ-3D-002",
+      "REQ-3D-003",
+      "REQ-3D-004",
+      "REQ-3D-005",
+      "REQ-3D-006",
+      "REQ-3D-007",
+      "REQ-3D-008",
+      "REQ-3D-009",
+      "REQ-3D-010",
+      "REQ-3D-011",
+      "REQ-3D-012",
+      "REQ-3D-013",
+      "REQ-3D-014",
+      "REQ-3D-015",
+      "REQ-3D-016",
+      "REQ-3D-017",
+      "REQ-3D-018",
+      "REQ-3D-019",
+      "REQ-3D-020",
+      "REQ-3D-021",
+      "REQ-3D-022",
+      "REQ-3D-023",
+      "REQ-3D-024",
+      "REQ-3D-025"
+    ],
+    "acceptance_ids": [
+      "ACC-3D-001",
+      "ACC-3D-002",
+      "ACC-3D-003",
+      "ACC-3D-004",
+      "ACC-3D-005",
+      "ACC-3D-006",
+      "ACC-3D-007",
+      "ACC-3D-008",
+      "ACC-3D-009",
+      "ACC-3D-010",
+      "ACC-3D-011",
+      "ACC-3D-012",
+      "ACC-3D-013",
+      "ACC-3D-014",
+      "ACC-3D-015",
+      "ACC-3D-016",
+      "ACC-3D-017",
+      "ACC-3D-018",
+      "ACC-3D-019",
+      "ACC-3D-020",
+      "ACC-3D-021",
+      "ACC-3D-022",
+      "ACC-3D-023",
+      "ACC-3D-024",
+      "ACC-3D-025",
+      "ACC-3D-026",
+      "ACC-3D-027",
+      "ACC-3D-028",
+      "ACC-3D-029",
+      "ACC-3D-030",
+      "ACC-3D-031",
+      "ACC-3D-032"
+    ],
+    "before_acceptance_ids": [
+      "ACC-3D-001",
+      "ACC-3D-002",
+      "ACC-3D-003",
+      "ACC-3D-004",
+      "ACC-3D-005",
+      "ACC-3D-006",
+      "ACC-3D-007",
+      "ACC-3D-008",
+      "ACC-3D-009",
+      "ACC-3D-010",
+      "ACC-3D-011",
+      "ACC-3D-012",
+      "ACC-3D-013",
+      "ACC-3D-014",
+      "ACC-3D-015",
+      "ACC-3D-016",
+      "ACC-3D-017",
+      "ACC-3D-018",
+      "ACC-3D-019",
+      "ACC-3D-020",
+      "ACC-3D-021",
+      "ACC-3D-022",
+      "ACC-3D-023",
+      "ACC-3D-024",
+      "ACC-3D-025"
+    ],
+    "after_acceptance_ids": [
+      "ACC-3D-001",
+      "ACC-3D-002",
+      "ACC-3D-003",
+      "ACC-3D-004",
+      "ACC-3D-005",
+      "ACC-3D-006",
+      "ACC-3D-007",
+      "ACC-3D-008",
+      "ACC-3D-009",
+      "ACC-3D-010",
+      "ACC-3D-011",
+      "ACC-3D-012",
+      "ACC-3D-013",
+      "ACC-3D-014",
+      "ACC-3D-015",
+      "ACC-3D-016",
+      "ACC-3D-017",
+      "ACC-3D-018",
+      "ACC-3D-019",
+      "ACC-3D-020",
+      "ACC-3D-021",
+      "ACC-3D-022",
+      "ACC-3D-023",
+      "ACC-3D-024",
+      "ACC-3D-025",
+      "ACC-3D-026",
+      "ACC-3D-027",
+      "ACC-3D-028",
+      "ACC-3D-029",
+      "ACC-3D-030",
+      "ACC-3D-031",
+      "ACC-3D-032"
+    ],
+    "coverage": "unknown"
+  },
+  "compatibility": "not_assessed",
+  "proof_transfer": "not_performed",
+  "findings": [],
+  "limitations": [
+    "This is a structural and conservative context comparison, not natural-language semantic equivalence or a breaking-change determination.",
+    "Correspondence statuses are caller declarations; identities and approval authority are not authenticated.",
+    "No proof is transferred or rebound. Existing evidence remains pinned to its original contract and implementation bytes.",
+    "Object member order is ignored; array order is preserved. Context changes can conservatively affect more clauses than strictly necessary.",
+    "One or both contracts lack structured verifies/dependencies (format 0.1). Any detected change conservatively selects every normative clause and acceptance case; targeted coverage remains unknown."
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "format_version": 1,
+  "kind": "canonical-contract-integration",
+  "date": "2026-11-01",
+  "family": "career-evidence-platform",
+  "action": "Integrate existing candidate into canonical contracts at maintainer request",
+  "previous": {
+    "version": "0.1.0",
+    "status": "draft",
+    "archive": "history/0.1.0",
+    "files": [
+      {
+        "path": "contracts/contract.yaml",
+        "sha256": "f9d07efefb088260bd2a125330bac892e52ee7e82abf4a62b719d860ae9c53fc"
+      },
+      {
+        "path": "contracts/traceability.yaml",
+        "sha256": "fa2e738ae67940b36c30f6034ef70996aea2d032ac5ea33b5db4ecc55bb0f9e1"
+      },
+      {
+        "path": "research/sources.yaml",
+        "sha256": "911514fc7a97377970672ae89bb5b375afe8901fec0df370233a814d619a05be"
+      },
+      {
+        "path": "research/observations.yaml",
+        "sha256": "543c1105d7a805902dd79f3f4d9a519f88132d1ff55a66fcd077a96e09171822"
+      },
+      {
+        "path": "family-README.md",
+        "sha256": "8bd4fef61b8d6a3acf69ffaef8f65799d6090ed1d1165b3a46eaa2e38259bd89"
+      }
+    ],
+    "research_snapshot": "At integration time; not asserted to be the original-release research snapshot"
+  },
+  "current": {
+    "version": "1.0.0",
+    "status": "candidate",
+    "schema_version": "0.1",
+    "contract": "contracts/contract.yaml",
+    "traceability": "contracts/traceability.yaml",
+    "candidate": "candidates/1.0.0/contracts",
+    "contract_sha256": "ba53eeb54ea578dde026c92700a2214b839b1a7531e81973f7018550936fd4bb",
+    "traceability_sha256": "e70bcd7b28c2172efee0b2dd869f661e397ea65519c093ef869b394381c54d14",
+    "acceptance_count": 24
+  },
+  "stable_promotion": "not_performed",
+  "independent_review": "pending",
+  "consumer_pin_migration": "not_performed",
+  "proof_transfer": "not_performed",
+  "product_acceptance": "not_run",
+  "validation": {
+    "schema_and_current_traceability": "passed",
+    "tooling_tests": {
+      "passed": 70,
+      "failed": 0,
+      "skipped": 0
+    },
+    "canonical_identity": "passed",
+    "archived_files": "passed",
+    "archived_provenance": "passed",
+    "synthetic_example": "passed",
+    "source_network_verification": "not_repeated",
+    "product_acceptance": "not_run",
+    "details": "../../../docs/candidate-integration-2026-11-01.md#observed-validation"
+  }
+}

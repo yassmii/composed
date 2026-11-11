@@ -1,0 +1,410 @@
+{
+  "version": "3.5.0",
+  "purpose": "Routing contract for the supplied Composed bootstrap, not an exclusive skill allowlist. Select one available primary skill, supplied or external; a user/project skill may replace a supplied role. Add a secondary skill only when its output is needed. Keep one deliverable owner, canonical product/business decisions and expected evidence; resolve overlaps without duplicate workflows. External skills do not waive applicable authority, invariants, validation or independent review. Execution policy remains separate.",
+  "risk_levels": {
+    "low": "Read-only analysis, a direct answer, or a reversible documentation change. Proceed and state the evidence used.",
+    "medium": "A bounded implementation or user-visible behaviour change. Select delivery shape separately: an eligible direct correction reports scope and validation inline; other implementations keep compact durable evidence.",
+    "high": "Destructive, security-sensitive, production-facing, irreversible, or broad changes. Present the plan, impact, rollback, and validation before the action."
+  },
+  "artifact_protocol": {
+    "root": ".agents/work",
+    "when_required": "High-risk, non-trivial implementation, cross-agent/cross-session work, or explicitly requested durable planning/review. Eligible direct corrections may report scope and validation inline.",
+    "files": [
+      "brief.md",
+      "design.md",
+      "plan.md",
+      "agents.md",
+      "validation.md",
+      "handoff.md",
+      "reviews/<review-id>.md"
+    ],
+    "rule": "Skill artifacts are possible outputs, not a mandatory checklist. Create only the files needed by the selected delivery mode; one compact file may hold scope and validation. For a cross-agent or cross-session transition, handoff.md names state, scope, evidence, next owner and exit condition. Persist each requested review as a new named file under reviews/; never overwrite an earlier review. Product decisions remain in canonical docs; work artifacts link there. Memory may retain a compact active-handoff pointer, not duplicate evidence."
+  },
+  "runtime_capability_protocol": {
+    "rule": "Inspect capabilities required by the selected work mode in the actual session and sandbox. Do not probe delegation for a question or routine direct correction. Before required writes, verify intended path access when unknown or after a denial. Before applicable complex implementation, actually launch a useful native delegate; absence blocks unless explicitly overridden by the user. Required independent review remains separate.",
+    "modes": {
+      "native-subagent": "An actually available subagent receives bounded work. Record its access and write scope; the parent owns canonical writes and final validation.",
+      "fresh-session": "A human starts a separate, fresh-context session to review the same canonical sources and evidence.",
+      "self-review": "The author reviews their own work. It can improve quality but is not an independent gate."
+    },
+    "record": "For a review, record the mode, reviewer relationship to the author, evidence examined, and any tool/context limitation in a new named file under reviews/. The parent/orchestrator links it from handoff.md. Record real delegation identifiers, missions, verified access, workspaces, launch times, status and results in agents.md, linked from handoff.md.",
+    "local_probe": "composed-kit preflight --write-path <project-relative directory> performs actual temporary write/read/cleanup in selected intended paths. Invoke through the agent tool and sandbox that will perform the work. A probe in an outer terminal or another directory does not attest agent access. Passes apply only to those paths/context/time; repeat after context/permission changes, not every edit. If the reviewed checkout CLI is unavailable, an equivalent bounded native probe with exclusive creation and owned cleanup in the intended directory may establish the same scoped observation; do not add host-project dependencies.",
+    "unknowns": "Doctor checks installation only. CLI path probes cannot establish session delegation, reviewer independence, browsing/MCP access or account quota; preserve unknowns until actual native observations exist. A binary, login, configured bridge or self-declared capability is not proof. Never bypass a sandbox or silently move required evidence elsewhere after denial; report the affected blocker and supported remedy."
+  },
+  "stack_selection_policy": {
+    "default": "ask-user-before-selection",
+    "applies_to": [
+      "new-project",
+      "poc",
+      "stack-change"
+    ],
+    "decision_states": [
+      "pending",
+      "user-selected",
+      "user-delegated",
+      "existing-project"
+    ],
+    "ready_states": [
+      "user-selected",
+      "user-delegated",
+      "existing-project"
+    ],
+    "pending_blocks": [
+      "stack-selection",
+      "scaffolding",
+      "dependency-installation",
+      "dependent-implementation"
+    ],
+    "delegation": "explicit-stack-delegation-only",
+    "recommendation": "study-options-and-recommend-then-wait-for-user-choice",
+    "partial_choice": "preserve-selected-components-and-ask-for-required-open-decisions",
+    "existing_project": "reuse-established-stack-unless-changing-it",
+    "record": "canonical-project-docs-linked-from-plans-and-handoffs",
+    "enforcement": "Agent instructions, not a runtime interceptor. Silence, urgency, a starter template, agent-generated manifests, and CLI --yes do not select or delegate the product stack."
+  },
+  "execution_policy": {
+    "default_mode": "multi-agent-required",
+    "required_for": [
+      "complex implementation",
+      "cross-disciplinary implementation",
+      "multiple implementation workstreams"
+    ],
+    "direct_for": [
+      "question",
+      "read-only analysis",
+      "bounded documentation correction",
+      "bounded small fix"
+    ],
+    "minimum_native_delegations": 1,
+    "delegation_before": "product implementation",
+    "unavailable": "block-before-implementation",
+    "single_agent_override": "explicit-user-request-only",
+    "delegation_record": ".agents/work/<work-item>/agents.md",
+    "isolation": "Separate worktrees or verified isolation for concurrent writes; a branch alone is insufficient.",
+    "review": "A required independent review needs a distinct non-author in a fresh context. An eligible direct correction has no automatic independent gate; an explicit review request or material risk overrides that exception. Self-review and a single-agent override never satisfy a required independent gate.",
+    "enforcement": "Agent instructions, not a runtime launcher. Inspect actual tools, permissions and quotas; never fabricate delegation evidence."
+  },
+  "risk_assignment": "Each skill risk is a routing default, not a fixed action classification. Read-only analysis is low; bounded local implementation is medium; production-facing, destructive, irreversible or security-sensitive mutations are high. Classify the actual requested action using risk_levels, and apply existing scoped authorisation without asking again.",
+  "delivery_policy": {
+    "selection": "Choose execution shape and actual action risk independently. File count, multiple steps, or running tests do not alone make a task complex. User instructions and material risk take precedence.",
+    "direct": {
+      "when": [
+        "question or bounded read-only lookup",
+        "fully specified reversible local correction within one session"
+      ],
+      "correction_conditions": [
+        "known scope and acceptance",
+        "no material security, authorisation, public interface, persisted-data or stack change",
+        "no cross-agent or cross-session handoff",
+        "no explicitly requested durable plan or independent review"
+      ],
+      "evidence": "State scope and relevant native checks/results inline. No work directory, orchestrator, task list, secondary skill, delegation or independent review is required merely because code is changed or tests are run.",
+      "escalation": "If inspection exposes material uncertainty, risk or a broader dependency, switch modes before the affected action; preserve already established facts."
+    },
+    "planned": {
+      "when": "A material feature or non-trivial implementation with one coherent workstream.",
+      "evidence": "Keep included/deferred scope and validation in the smallest durable artifact set. Independent review is required for non-trivial medium/high-risk implementation, material handoff, or explicit review requests; direct-correction eligibility is the only small-fix exception."
+    },
+    "complex": {
+      "when": "Complex or cross-disciplinary implementation, or multiple implementation workstreams.",
+      "evidence": "Apply execution_policy: native delegation before implementation, actual access/IDs and isolation, durable handoffs and fresh independent non-author review."
+    },
+    "loading": "Use the installed index and available user/project skills to select one primary skill, supplied or external, including a replacement for a supplied role. Read its actual instructions; keep canonical decisions, acceptance links, one deliverable owner and expected evidence without duplicating rituals. For direct corrections read that skill plus relevant project instructions/code/tests; do not automatically load the full catalog or a testing skill for ordinary existing checks. For planned/complex work read applicable policy sections and selected entries, then only required secondary skills."
+  },
+  "skills": [
+    {
+      "name": "product-manager",
+      "level": "core",
+      "phase": "strategy",
+      "risk": "low",
+      "when": "Product strategy, discovery, prioritisation, roadmap, metrics, product decisions or post-delivery outcome/learning decisions.",
+      "not_when": "A single implementation-ready feature; use cadrage.",
+      "artifacts": [
+        "brief.md",
+        "docs/cadrage.md",
+        "docs/decisions.md",
+        "docs/backlog.md"
+      ]
+    },
+    {
+      "name": "cadrage",
+      "level": "core",
+      "phase": "framing",
+      "risk": "medium",
+      "when": "A specific feature needs its user, outcome, non-goals, rules, and acceptance criteria clarified.",
+      "not_when": "A typo, a fully specified small fix, or product strategy.",
+      "artifacts": [
+        "brief.md"
+      ]
+    },
+    {
+      "name": "delivery-orchestrator",
+      "level": "core",
+      "phase": "orchestration",
+      "risk": "medium",
+      "when": "A work item spans product, UX, delivery, validation, or multiple sessions and needs explicit handoffs.",
+      "not_when": "A direct single-step question, isolated fix, or work contained in one skill.",
+      "artifacts": [
+        "brief.md",
+        "design.md",
+        "plan.md",
+        "agents.md",
+        "validation.md",
+        "handoff.md",
+        "reviews/<review-id>.md"
+      ]
+    },
+    {
+      "name": "product-designer",
+      "level": "core",
+      "phase": "design-review",
+      "risk": "low",
+      "when": "Critiquing an existing interface, hierarchy, visual direction, or interaction quality.",
+      "not_when": "Producing a new flow or handoff; use ux-shaping.",
+      "artifacts": [
+        "design.md"
+      ]
+    },
+    {
+      "name": "software-engineering",
+      "level": "core",
+      "phase": "engineering",
+      "risk": "medium",
+      "when": "Implementing application code, assessing architecture or recommending technology options within the user stack decision.",
+      "not_when": "An unexplained failure (systematic-debugging), behaviour-preserving restructuring (refactoring), or product/UX decisions.",
+      "artifacts": [
+        "plan.md",
+        "validation.md"
+      ]
+    },
+    {
+      "name": "qa",
+      "level": "core",
+      "phase": "validation",
+      "risk": "low",
+      "when": "A replayable manual acceptance/regression plan or observed user-journey evidence is needed; product outcome decisions belong to product-manager.",
+      "not_when": "Writing automated tests; use automated-testing.",
+      "artifacts": [
+        "validation.md"
+      ]
+    },
+    {
+      "name": "automated-testing",
+      "level": "core",
+      "phase": "validation",
+      "risk": "medium",
+      "when": "Adding or improving behavioural unit, integration, contract or E2E tests, test tooling or flaky tests; scoped mutation testing when assertion sensitivity needs assessment.",
+      "not_when": "A manual acceptance plan (qa), unknown failure diagnosis (systematic-debugging), or release pipeline beyond tests (release-engineering).",
+      "artifacts": [
+        "validation.md"
+      ]
+    },
+    {
+      "name": "refactoring",
+      "level": "core",
+      "phase": "engineering",
+      "risk": "medium",
+      "when": "Improving internal code structure while preserving observable behaviour, optionally informed by scoped complexity/coverage and duplication reports.",
+      "not_when": "Intended behaviour change (software-engineering), unknown failure diagnosis (systematic-debugging), or persisted data evolution (data-migrations).",
+      "artifacts": [
+        "brief.md",
+        "plan.md",
+        "validation.md"
+      ]
+    },
+    {
+      "name": "codebase-onboarding",
+      "level": "support",
+      "phase": "discovery",
+      "risk": "medium",
+      "when": "Mapping an unfamiliar codebase, current behaviour and affected dependencies before a non-trivial change.",
+      "not_when": "A known local change, a specific unexplained failure (systematic-debugging), or durable guide authoring (technical-documentation).",
+      "artifacts": [
+        "brief.md",
+        "plan.md"
+      ]
+    },
+    {
+      "name": "ux-shaping",
+      "level": "support",
+      "phase": "design",
+      "risk": "medium",
+      "when": "Designing or redesigning a flow, screen structure, states, and implementation handoff.",
+      "not_when": "Critiquing a supplied design only.",
+      "artifacts": [
+        "design.md"
+      ]
+    },
+    {
+      "name": "technical-documentation",
+      "level": "support",
+      "phase": "handover",
+      "risk": "low",
+      "when": "Writing verified durable maintenance, runbook, onboarding or handover documentation.",
+      "not_when": "Ephemeral work notes or session handoffs (delivery-orchestrator), discovery (codebase-onboarding), or product requirements (product-manager).",
+      "artifacts": [
+        "validation.md"
+      ]
+    },
+    {
+      "name": "delivery-review",
+      "level": "support",
+      "phase": "evaluation",
+      "risk": "low",
+      "when": "Independently reviewing a framing, design, implementation, or validation before an important handoff or closure, including the applicability and interpretation of any quality metrics used.",
+      "not_when": "Producing or rewriting the deliverable being reviewed; use the owning skill.",
+      "artifacts": [
+        "reviews/<review-id>.md"
+      ]
+    },
+    {
+      "name": "security-review",
+      "level": "support",
+      "phase": "security",
+      "risk": "low",
+      "when": "A scoped security assessment or verification of material authentication, authorisation, sensitive-data or trust-boundary changes.",
+      "not_when": "Ordinary implementation without a material security question, or an independent delivery verdict (delivery-review).",
+      "artifacts": [
+        "validation.md"
+      ]
+    },
+    {
+      "name": "systematic-debugging",
+      "level": "support",
+      "phase": "diagnosis",
+      "risk": "low",
+      "when": "Diagnosing an unexplained application, build, test, environment or agent-loop failure before choosing a remedy.",
+      "not_when": "A specified implementation (software-engineering), known test coverage gap (automated-testing), or deployment execution (release-engineering).",
+      "artifacts": [
+        "validation.md"
+      ]
+    },
+    {
+      "name": "api-contracts",
+      "level": "support",
+      "phase": "interfaces",
+      "risk": "medium",
+      "when": "Designing or evolving API/event/RPC schemas, observable semantics and compatibility across independently evolving consumers/providers.",
+      "not_when": "Product requirement authoring (cadrage), an atomic internal shared type, or persisted schema/data migration (data-migrations).",
+      "artifacts": [
+        "plan.md",
+        "validation.md"
+      ]
+    },
+    {
+      "name": "data-migrations",
+      "level": "support",
+      "phase": "data-transition",
+      "risk": "medium",
+      "when": "Planning, rehearsing or implementing persisted schema changes, data imports, backfills, recovery or destructive cleanup.",
+      "not_when": "Code-only restructuring (refactoring), API-only schemas (api-contracts), or the surrounding deployment pipeline (release-engineering).",
+      "artifacts": [
+        "plan.md",
+        "validation.md"
+      ]
+    },
+    {
+      "name": "release-engineering",
+      "level": "support",
+      "phase": "release",
+      "risk": "medium",
+      "when": "Preparing packaging, CI/CD, deployment configuration, readiness, rollout/rollback or actual post-deploy verification, including explicitly configured quality-measurement jobs.",
+      "not_when": "Test implementation alone (automated-testing), data-transition design (data-migrations), or unknown failure diagnosis (systematic-debugging).",
+      "artifacts": [
+        "plan.md",
+        "validation.md"
+      ]
+    },
+    {
+      "name": "market-research",
+      "level": "support",
+      "phase": "research",
+      "risk": "low",
+      "when": "Researching markets, competitors, alternatives, observed pricing or positioning to support a particular product decision.",
+      "not_when": "Strategic prioritisation (product-manager), user evidence collection, or product-type contract research (contracts/product-research when available).",
+      "artifacts": [
+        "brief.md"
+      ]
+    },
+    {
+      "name": "presentation",
+      "level": "extras",
+      "phase": "communication",
+      "risk": "low",
+      "when": "Creating a slide deck that must export to PPTX through the supported HTML workflow.",
+      "not_when": "A document, product spec, or an existing native slide deck.",
+      "artifacts": []
+    }
+  ],
+  "knowledge_policy": {
+    "canonical": "Product requirements, decisions and product learnings remain in canonical project docs; memory retains scoped operating guidance and source/handoff pointers, not copies.",
+    "provenance": "Record observation/source, applicability, last verification and review trigger when useful; optional human-readable conventions do not force a legacy migration.",
+    "lifecycle": "Review mutable or contradicted context against current canonical sources. Distinguish active, needs-review, superseded and archived context; preserve evidence and link replacement. Close/remove active memory handoff pointer at work-item closure.",
+    "resume": "Read index, relevant note, current canonical source and actual active handoff state/evidence before dependent action. Do not treat last session status as current validation.",
+    "verification": "knowledge check is opt-in, read-only bounded local Markdown link integrity. Unsupported links, anchors and semantic freshness stay unverified; no remote fetch, YAML inference or source execution."
+  },
+  "model_assignment_policy": {
+    "scope": "Agent instructions for optional model assignment; not an executable router or a new delegation capability.",
+    "qualification": [
+      "deliverable",
+      "acceptance",
+      "risk",
+      "unknowns",
+      "required_tools",
+      "dependencies",
+      "write_scope",
+      "evidence"
+    ],
+    "eligibility": [
+      "tools",
+      "data_transmission",
+      "permissions",
+      "user_constraints",
+      "availability"
+    ],
+    "capability_states": [
+      "available",
+      "unavailable",
+      "unknown"
+    ],
+    "optional_profiles": [
+      "fast",
+      "standard",
+      "deep"
+    ],
+    "profiles": "Local intentions, not competence guarantees; one model may serve several profiles. Use effort only when exposed. A risky task gets suitable capability from the outset.",
+    "selection": "Filter incompatible candidates first, then use observed task-family capability and local preferences. Without history declare a prudent choice; no universal ranking or per-task tournament. If selection is unavailable, use the available model within authority and improve decomposition/context/scheduling; never simulate a requested selection.",
+    "authority": [
+      "applicable_user_and_project_constraints",
+      "session_choices_within_scope",
+      "local_defaults"
+    ],
+    "configuration": ".agents/project-instructions.md may hold optional preferences and pointers to approved runtime configuration. No credentials or private endpoints in traces; runtime launch configuration remains outside the kit.",
+    "brief": [
+      "outcome",
+      "useful_sources",
+      "constraints",
+      "write_ownership",
+      "exit_criteria",
+      "result_format",
+      "attempt_limit"
+    ],
+    "scheduling": "Parallelise independent deliverables only; the integrator advances the critical path. Reuse a suitable context except where a fresh independent review is required. Run relevant checks and rerun after relevant changes; stale evidence is not validation.",
+    "escalation": "Diagnose access, tooling, tests, ambiguity and task scope before changing model. Change the brief, tools, decomposition or model according to evidence; no identical retry loop or spending beyond the authorised envelope.",
+    "no_remote_fallback": true,
+    "validation": "Acceptance, required controls and fresh non-author review do not change with model price, profile or process exit status. Execution completion and agent claims remain distinct from deliverable validation.",
+    "record": [
+      "assignment_reason",
+      "execution_mode",
+      "runtime_id",
+      "requested_model",
+      "observed_model",
+      "workspace",
+      "status",
+      "duration_if_available",
+      "result",
+      "evidence"
+    ],
+    "trace": "Use existing agents.md when delegation evidence is required. Observed identity comes only from runtime evidence; missing model identity, metrics and effort remain unknown. No mandatory new artifact for eligible direct work."
+  }
+}

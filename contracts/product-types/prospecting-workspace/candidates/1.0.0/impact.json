@@ -1,0 +1,973 @@
+{
+  "format_version": 1,
+  "kind": "contract-impact-report",
+  "status": "assessed",
+  "before": {
+    "id": "prospecting-workspace",
+    "version": "0.1.0",
+    "sha256": "075469d1705456c0c79c54f2f88b7b5d3e7af5f0ee854178dd1c1339c427e9f0"
+  },
+  "after": {
+    "id": "prospecting-workspace",
+    "version": "1.0.0",
+    "sha256": "a2754f8c6f50a8a75dc585018bcb37bc81dfc9e55aee20b7d9e1bb345d09fe6e"
+  },
+  "changes": {
+    "unchanged": [],
+    "modified": [
+      {
+        "id": "INV-PR-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-PR-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-PR-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-PR-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-PR-005",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-PR-006",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-PR-007",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-PR-008",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-PR-009",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-PR-010",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-PR-011",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-PR-012",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-PR-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-PR-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-PR-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-PR-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-PR-005",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-PR-006",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-PR-007",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-PR-008",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-PR-009",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-PR-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-PR-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-PR-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-PR-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-PR-005",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-PR-006",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-PR-007",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-PR-008",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-005",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-006",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-007",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-008",
+        "reasons": [
+          "clause-content",
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-009",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-010",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-011",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-012",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-013",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-014",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-015",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-016",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-017",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-018",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-019",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-020",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-021",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-022",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-023",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-024",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-025",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-026",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-027",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-028",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-029",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-030",
+        "reasons": [
+          "clause-content",
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-031",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-032",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-033",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-034",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-035",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-036",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-037",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-038",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-039",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-040",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-041",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-042",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-043",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-044",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-045",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-046",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-047",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-048",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-049",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-050",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-051",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-052",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-053",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-054",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-055",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-056",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-PR-057",
+        "reasons": [
+          "contract-context"
+        ]
+      }
+    ],
+    "added": [],
+    "removed": []
+  },
+  "context_changes": [
+    "delivery"
+  ],
+  "metadata_changes": [
+    "status",
+    "version"
+  ],
+  "acceptance_changes": {
+    "unchanged": [
+      "ACC-PR-001",
+      "ACC-PR-002",
+      "ACC-PR-003",
+      "ACC-PR-004",
+      "ACC-PR-005",
+      "ACC-PR-006",
+      "ACC-PR-007",
+      "ACC-PR-008",
+      "ACC-PR-009",
+      "ACC-PR-010",
+      "ACC-PR-011",
+      "ACC-PR-012",
+      "ACC-PR-013",
+      "ACC-PR-014",
+      "ACC-PR-015",
+      "ACC-PR-016",
+      "ACC-PR-017",
+      "ACC-PR-018",
+      "ACC-PR-019",
+      "ACC-PR-020",
+      "ACC-PR-021",
+      "ACC-PR-022",
+      "ACC-PR-023",
+      "ACC-PR-024",
+      "ACC-PR-025",
+      "ACC-PR-026",
+      "ACC-PR-027",
+      "ACC-PR-028",
+      "ACC-PR-029",
+      "ACC-PR-030",
+      "ACC-PR-031",
+      "ACC-PR-032"
+    ],
+    "modified": [],
+    "added": [
+      "ACC-PR-033",
+      "ACC-PR-034"
+    ],
+    "removed": []
+  },
+  "correspondences": [],
+  "impact": {
+    "clause_ids": [
+      "INV-PR-001",
+      "INV-PR-002",
+      "INV-PR-003",
+      "INV-PR-004",
+      "INV-PR-005",
+      "INV-PR-006",
+      "INV-PR-007",
+      "INV-PR-008",
+      "INV-PR-009",
+      "INV-PR-010",
+      "INV-PR-011",
+      "INV-PR-012",
+      "POL-PR-001",
+      "POL-PR-002",
+      "POL-PR-003",
+      "POL-PR-004",
+      "POL-PR-005",
+      "POL-PR-006",
+      "POL-PR-007",
+      "POL-PR-008",
+      "POL-PR-009",
+      "QA-PR-001",
+      "QA-PR-002",
+      "QA-PR-003",
+      "QA-PR-004",
+      "QA-PR-005",
+      "QA-PR-006",
+      "QA-PR-007",
+      "QA-PR-008",
+      "REQ-PR-001",
+      "REQ-PR-002",
+      "REQ-PR-003",
+      "REQ-PR-004",
+      "REQ-PR-005",
+      "REQ-PR-006",
+      "REQ-PR-007",
+      "REQ-PR-008",
+      "REQ-PR-009",
+      "REQ-PR-010",
+      "REQ-PR-011",
+      "REQ-PR-012",
+      "REQ-PR-013",
+      "REQ-PR-014",
+      "REQ-PR-015",
+      "REQ-PR-016",
+      "REQ-PR-017",
+      "REQ-PR-018",
+      "REQ-PR-019",
+      "REQ-PR-020",
+      "REQ-PR-021",
+      "REQ-PR-022",
+      "REQ-PR-023",
+      "REQ-PR-024",
+      "REQ-PR-025",
+      "REQ-PR-026",
+      "REQ-PR-027",
+      "REQ-PR-028",
+      "REQ-PR-029",
+      "REQ-PR-030",
+      "REQ-PR-031",
+      "REQ-PR-032",
+      "REQ-PR-033",
+      "REQ-PR-034",
+      "REQ-PR-035",
+      "REQ-PR-036",
+      "REQ-PR-037",
+      "REQ-PR-038",
+      "REQ-PR-039",
+      "REQ-PR-040",
+      "REQ-PR-041",
+      "REQ-PR-042",
+      "REQ-PR-043",
+      "REQ-PR-044",
+      "REQ-PR-045",
+      "REQ-PR-046",
+      "REQ-PR-047",
+      "REQ-PR-048",
+      "REQ-PR-049",
+      "REQ-PR-050",
+      "REQ-PR-051",
+      "REQ-PR-052",
+      "REQ-PR-053",
+      "REQ-PR-054",
+      "REQ-PR-055",
+      "REQ-PR-056",
+      "REQ-PR-057"
+    ],
+    "before_clause_ids": [
+      "INV-PR-001",
+      "INV-PR-002",
+      "INV-PR-003",
+      "INV-PR-004",
+      "INV-PR-005",
+      "INV-PR-006",
+      "INV-PR-007",
+      "INV-PR-008",
+      "INV-PR-009",
+      "INV-PR-010",
+      "INV-PR-011",
+      "INV-PR-012",
+      "POL-PR-001",
+      "POL-PR-002",
+      "POL-PR-003",
+      "POL-PR-004",
+      "POL-PR-005",
+      "POL-PR-006",
+      "POL-PR-007",
+      "POL-PR-008",
+      "POL-PR-009",
+      "QA-PR-001",
+      "QA-PR-002",
+      "QA-PR-003",
+      "QA-PR-004",
+      "QA-PR-005",
+      "QA-PR-006",
+      "QA-PR-007",
+      "QA-PR-008",
+      "REQ-PR-001",
+      "REQ-PR-002",
+      "REQ-PR-003",
+      "REQ-PR-004",
+      "REQ-PR-005",
+      "REQ-PR-006",
+      "REQ-PR-007",
+      "REQ-PR-008",
+      "REQ-PR-009",
+      "REQ-PR-010",
+      "REQ-PR-011",
+      "REQ-PR-012",
+      "REQ-PR-013",
+      "REQ-PR-014",
+      "REQ-PR-015",
+      "REQ-PR-016",
+      "REQ-PR-017",
+      "REQ-PR-018",
+      "REQ-PR-019",
+      "REQ-PR-020",
+      "REQ-PR-021",
+      "REQ-PR-022",
+      "REQ-PR-023",
+      "REQ-PR-024",
+      "REQ-PR-025",
+      "REQ-PR-026",
+      "REQ-PR-027",
+      "REQ-PR-028",
+      "REQ-PR-029",
+      "REQ-PR-030",
+      "REQ-PR-031",
+      "REQ-PR-032",
+      "REQ-PR-033",
+      "REQ-PR-034",
+      "REQ-PR-035",
+      "REQ-PR-036",
+      "REQ-PR-037",
+      "REQ-PR-038",
+      "REQ-PR-039",
+      "REQ-PR-040",
+      "REQ-PR-041",
+      "REQ-PR-042",
+      "REQ-PR-043",
+      "REQ-PR-044",
+      "REQ-PR-045",
+      "REQ-PR-046",
+      "REQ-PR-047",
+      "REQ-PR-048",
+      "REQ-PR-049",
+      "REQ-PR-050",
+      "REQ-PR-051",
+      "REQ-PR-052",
+      "REQ-PR-053",
+      "REQ-PR-054",
+      "REQ-PR-055",
+      "REQ-PR-056",
+      "REQ-PR-057"
+    ],
+    "after_clause_ids": [
+      "INV-PR-001",
+      "INV-PR-002",
+      "INV-PR-003",
+      "INV-PR-004",
+      "INV-PR-005",
+      "INV-PR-006",
+      "INV-PR-007",
+      "INV-PR-008",
+      "INV-PR-009",
+      "INV-PR-010",
+      "INV-PR-011",
+      "INV-PR-012",
+      "POL-PR-001",
+      "POL-PR-002",
+      "POL-PR-003",
+      "POL-PR-004",
+      "POL-PR-005",
+      "POL-PR-006",
+      "POL-PR-007",
+      "POL-PR-008",
+      "POL-PR-009",
+      "QA-PR-001",
+      "QA-PR-002",
+      "QA-PR-003",
+      "QA-PR-004",
+      "QA-PR-005",
+      "QA-PR-006",
+      "QA-PR-007",
+      "QA-PR-008",
+      "REQ-PR-001",
+      "REQ-PR-002",
+      "REQ-PR-003",
+      "REQ-PR-004",
+      "REQ-PR-005",
+      "REQ-PR-006",
+      "REQ-PR-007",
+      "REQ-PR-008",
+      "REQ-PR-009",
+      "REQ-PR-010",
+      "REQ-PR-011",
+      "REQ-PR-012",
+      "REQ-PR-013",
+      "REQ-PR-014",
+      "REQ-PR-015",
+      "REQ-PR-016",
+      "REQ-PR-017",
+      "REQ-PR-018",
+      "REQ-PR-019",
+      "REQ-PR-020",
+      "REQ-PR-021",
+      "REQ-PR-022",
+      "REQ-PR-023",
+      "REQ-PR-024",
+      "REQ-PR-025",
+      "REQ-PR-026",
+      "REQ-PR-027",
+      "REQ-PR-028",
+      "REQ-PR-029",
+      "REQ-PR-030",
+      "REQ-PR-031",
+      "REQ-PR-032",
+      "REQ-PR-033",
+      "REQ-PR-034",
+      "REQ-PR-035",
+      "REQ-PR-036",
+      "REQ-PR-037",
+      "REQ-PR-038",
+      "REQ-PR-039",
+      "REQ-PR-040",
+      "REQ-PR-041",
+      "REQ-PR-042",
+      "REQ-PR-043",
+      "REQ-PR-044",
+      "REQ-PR-045",
+      "REQ-PR-046",
+      "REQ-PR-047",
+      "REQ-PR-048",
+      "REQ-PR-049",
+      "REQ-PR-050",
+      "REQ-PR-051",
+      "REQ-PR-052",
+      "REQ-PR-053",
+      "REQ-PR-054",
+      "REQ-PR-055",
+      "REQ-PR-056",
+      "REQ-PR-057"
+    ],
+    "acceptance_ids": [
+      "ACC-PR-001",
+      "ACC-PR-002",
+      "ACC-PR-003",
+      "ACC-PR-004",
+      "ACC-PR-005",
+      "ACC-PR-006",
+      "ACC-PR-007",
+      "ACC-PR-008",
+      "ACC-PR-009",
+      "ACC-PR-010",
+      "ACC-PR-011",
+      "ACC-PR-012",
+      "ACC-PR-013",
+      "ACC-PR-014",
+      "ACC-PR-015",
+      "ACC-PR-016",
+      "ACC-PR-017",
+      "ACC-PR-018",
+      "ACC-PR-019",
+      "ACC-PR-020",
+      "ACC-PR-021",
+      "ACC-PR-022",
+      "ACC-PR-023",
+      "ACC-PR-024",
+      "ACC-PR-025",
+      "ACC-PR-026",
+      "ACC-PR-027",
+      "ACC-PR-028",
+      "ACC-PR-029",
+      "ACC-PR-030",
+      "ACC-PR-031",
+      "ACC-PR-032",
+      "ACC-PR-033",
+      "ACC-PR-034"
+    ],
+    "before_acceptance_ids": [
+      "ACC-PR-001",
+      "ACC-PR-002",
+      "ACC-PR-003",
+      "ACC-PR-004",
+      "ACC-PR-005",
+      "ACC-PR-006",
+      "ACC-PR-007",
+      "ACC-PR-008",
+      "ACC-PR-009",
+      "ACC-PR-010",
+      "ACC-PR-011",
+      "ACC-PR-012",
+      "ACC-PR-013",
+      "ACC-PR-014",
+      "ACC-PR-015",
+      "ACC-PR-016",
+      "ACC-PR-017",
+      "ACC-PR-018",
+      "ACC-PR-019",
+      "ACC-PR-020",
+      "ACC-PR-021",
+      "ACC-PR-022",
+      "ACC-PR-023",
+      "ACC-PR-024",
+      "ACC-PR-025",
+      "ACC-PR-026",
+      "ACC-PR-027",
+      "ACC-PR-028",
+      "ACC-PR-029",
+      "ACC-PR-030",
+      "ACC-PR-031",
+      "ACC-PR-032"
+    ],
+    "after_acceptance_ids": [
+      "ACC-PR-001",
+      "ACC-PR-002",
+      "ACC-PR-003",
+      "ACC-PR-004",
+      "ACC-PR-005",
+      "ACC-PR-006",
+      "ACC-PR-007",
+      "ACC-PR-008",
+      "ACC-PR-009",
+      "ACC-PR-010",
+      "ACC-PR-011",
+      "ACC-PR-012",
+      "ACC-PR-013",
+      "ACC-PR-014",
+      "ACC-PR-015",
+      "ACC-PR-016",
+      "ACC-PR-017",
+      "ACC-PR-018",
+      "ACC-PR-019",
+      "ACC-PR-020",
+      "ACC-PR-021",
+      "ACC-PR-022",
+      "ACC-PR-023",
+      "ACC-PR-024",
+      "ACC-PR-025",
+      "ACC-PR-026",
+      "ACC-PR-027",
+      "ACC-PR-028",
+      "ACC-PR-029",
+      "ACC-PR-030",
+      "ACC-PR-031",
+      "ACC-PR-032",
+      "ACC-PR-033",
+      "ACC-PR-034"
+    ],
+    "coverage": "unknown"
+  },
+  "compatibility": "not_assessed",
+  "proof_transfer": "not_performed",
+  "findings": [],
+  "limitations": [
+    "This is a structural and conservative context comparison, not natural-language semantic equivalence or a breaking-change determination.",
+    "Correspondence statuses are caller declarations; identities and approval authority are not authenticated.",
+    "No proof is transferred or rebound. Existing evidence remains pinned to its original contract and implementation bytes.",
+    "Object member order is ignored; array order is preserved. Context changes can conservatively affect more clauses than strictly necessary.",
+    "One or both contracts lack structured verifies/dependencies (format 0.1). Any detected change conservatively selects every normative clause and acceptance case; targeted coverage remains unknown."
+  ]
+}

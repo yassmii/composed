@@ -1,0 +1,70 @@
+{
+  "format_version": 1,
+  "kind": "canonical-contract-integration",
+  "date": "2026-11-01",
+  "family": "git-backed-cms",
+  "action": "Integrate existing candidate into canonical contracts at maintainer request",
+  "previous": {
+    "version": "0.1.0",
+    "status": "draft",
+    "archive": "history/0.1.0",
+    "files": [
+      {
+        "path": "contracts/contract.yaml",
+        "sha256": "2a587a23d8c9999c138a194bd8adc4a9569f4c94acf4332ecaa98f3011a23412"
+      },
+      {
+        "path": "contracts/review.md",
+        "sha256": "0f9f251b4e4f346d5527eaecb5f825fc9bd80199781c78e9a6a32195fcffac4f"
+      },
+      {
+        "path": "contracts/traceability.yaml",
+        "sha256": "68ed635aea06c9f1d196abcfa1a4d8feed61b73e5d03a3636ef0b4a2b750caec"
+      },
+      {
+        "path": "research/sources.yaml",
+        "sha256": "3030ee480244c387d49a17f5fb829a6d84cafca48e69f0d8b6ad1941177bbad1"
+      },
+      {
+        "path": "research/observations.yaml",
+        "sha256": "6671d711106749b4d2a171f48d8cc9e9320f86024ccd51d2a16cdca5d94e2d4a"
+      },
+      {
+        "path": "family-README.md",
+        "sha256": "0c7b049d053bfd0c8089a599b2d30d016d43fb2ed613141dba1a4f4b7ee47679"
+      }
+    ],
+    "research_snapshot": "At integration time; not asserted to be the original-release research snapshot"
+  },
+  "current": {
+    "version": "1.0.0",
+    "status": "candidate",
+    "schema_version": "0.1",
+    "contract": "contracts/contract.yaml",
+    "traceability": "contracts/traceability.yaml",
+    "candidate": "candidates/1.0.0/contracts",
+    "contract_sha256": "3c1b588800a402bf2a976a8e5d8aad2444f6f1d7a945182217f90fd835b4c125",
+    "traceability_sha256": "110d6ad34f804b793d984dcf1c59c3dea90388c4daf02833a219786063e9a308",
+    "acceptance_count": 14
+  },
+  "stable_promotion": "not_performed",
+  "independent_review": "pending",
+  "consumer_pin_migration": "not_performed",
+  "proof_transfer": "not_performed",
+  "product_acceptance": "not_run",
+  "validation": {
+    "schema_and_current_traceability": "passed",
+    "tooling_tests": {
+      "passed": 70,
+      "failed": 0,
+      "skipped": 0
+    },
+    "canonical_identity": "passed",
+    "archived_files": "passed",
+    "archived_provenance": "passed",
+    "synthetic_example": "passed",
+    "source_network_verification": "not_repeated",
+    "product_acceptance": "not_run",
+    "details": "../../../docs/candidate-integration-2026-11-01.md#observed-validation"
+  }
+}

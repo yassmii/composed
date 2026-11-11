@@ -1,0 +1,54 @@
+schema_version: "0.1"
+observations:
+  - id: OBS-BOOK-001
+    sources:
+      - SRC-BOOK-CAL-EVENT-TYPES
+    statement: Cal.com event types define name, duration, availability, and location; available slots
+      can account for conflicts in an integrated calendar.
+  - id: OBS-BOOK-002
+    sources:
+      - SRC-BOOK-CAL-CREATE
+    statement: Cal.com booking creation uses a UTC start time and accepts attendee time-zone information.
+  - id: OBS-BOOK-003
+    sources:
+      - SRC-BOOK-CAL-LIMITS
+    statement: Cal.com can enforce booking limits across a user or event type; when a limit is reached,
+      affected slots become unavailable and new bookings are rejected.
+  - id: OBS-BOOK-004
+    sources:
+      - SRC-BOOK-CAL-WEBHOOKS
+    statement: Cal.com exposes distinct events for creation, rescheduling, cancellation, rejection,
+      payment initiation, and payment completion.
+  - id: OBS-BOOK-005
+    sources:
+      - SRC-BOOK-CAL-RESERVE
+    statement: Cal.com documents a temporary slot reservation that blocks other bookings, with a
+      configurable duration for authenticated requests and a returned reservationUntil value.
+  - id: OBS-BOOK-006
+    sources:
+      - SRC-BOOK-CAL-SEATS
+    statement: Cal.com seated events accept multiple attendees up to a configured seat count; an
+      operator cannot accept more attendees than remaining seats.
+  - id: OBS-BOOK-007
+    sources:
+      - SRC-BOOK-ACUITY-TIMES
+    statement: Acuity returns client-visible available times for an appointment type and date,
+      optionally restricted by calendar.
+  - id: OBS-BOOK-008
+    sources:
+      - SRC-BOOK-ACUITY-TIMES
+    statement: Acuity accepts a named time zone when converting available times for display.
+  - id: OBS-BOOK-009
+    sources:
+      - SRC-BOOK-ACUITY-CREATE
+    statement: Acuity validates availability on client appointment creation by default.
+  - id: OBS-BOOK-010
+    sources:
+      - SRC-BOOK-ACUITY-CREATE
+    statement: Acuity allows administrator appointment creation to disable availability and attribute
+      validation.
+  - id: OBS-BOOK-011
+    sources:
+      - SRC-BOOK-CAL-LIMITS
+    statement: Cal.com documents an administrator skipBookingLimits override that can allow a booking
+      when reported remaining booking-limit allowance is zero.

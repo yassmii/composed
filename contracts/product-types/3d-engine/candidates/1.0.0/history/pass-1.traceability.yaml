@@ -1,0 +1,188 @@
+schema_version: "0.1"
+contract_id: 3d-engine
+contract_version: 1.0.0
+research_status: initial
+links:
+  - clause: CAP-3D-004
+    basis: explicit_project_choice
+    observations: []
+    note: Agent operation is an explicit project requirement, not a research-derived convergence.
+  - clause: REQ-3D-007
+    basis: explicit_project_choice
+    observations: []
+    note: Defines declarative scenes and reference-state round-trip semantics.
+  - clause: REQ-3D-008
+    basis: explicit_project_choice
+    observations: []
+  - clause: REQ-3D-009
+    basis: explicit_project_choice
+    observations: []
+  - clause: REQ-3D-010
+    basis: explicit_project_choice
+    observations: []
+  - clause: REQ-3D-011
+    basis: explicit_project_choice
+    observations: []
+    note: Extends agent time control without replacing POL-3D-001 or QA-3D-003.
+  - clause: REQ-3D-012
+    basis: explicit_project_choice
+    observations: []
+    note: Actual no-display image production is required. OBS-3D-013 documents a no-render headless mode
+      as counterevidence, not support for this guarantee.
+  - clause: REQ-3D-013
+    basis: explicit_project_choice
+    observations: []
+  - clause: ACC-3D-004
+    basis: explicit_project_choice
+    observations: []
+  - clause: ACC-3D-005
+    basis: explicit_project_choice
+    observations: []
+  - clause: ACC-3D-006
+    basis: explicit_project_choice
+    observations: []
+  - clause: ACC-3D-007
+    basis: explicit_project_choice
+    observations: []
+  - clause: ACC-3D-008
+    basis: explicit_project_choice
+    observations: []
+  - clause: ACC-3D-009
+    basis: explicit_project_choice
+    observations: []
+  - clause: ACC-3D-010
+    basis: explicit_project_choice
+    observations: []
+  - clause: CAP-3D-001
+    basis: supported_convergence
+    observations:
+      - OBS-3D-001
+      - OBS-3D-002
+      - OBS-3D-003
+  - clause: REQ-3D-001
+    basis: supported_convergence
+    observations:
+      - OBS-3D-002
+      - OBS-3D-003
+  - clause: REQ-3D-002
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-3D-003
+    note: Only Unreal explicitly evidences cycle rejection in these sources; rejection without mutation
+      and coherent concurrent reparenting are chosen guarantees, not multi-product convergence.
+  - clause: CAP-3D-002
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-3D-004
+      - OBS-3D-008
+    note: Background loading is observed; Unity scene unloading does not automatically unload assets.
+      Nonblocking queries and explicit closure guarantees are choices.
+  - clause: REQ-3D-003
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-3D-004
+    note: Godot exposes request/status/retrieval, but early retrieval can block. The state vocabulary
+      and guaranteed nonblocking status/retrieval contract are explicit stronger choices.
+  - clause: REQ-3D-004
+    basis: explicit_project_choice
+    observations: []
+    note: Choose terminal diagnostics and controlled rejection of failed-asset use instead of the
+      baseline fallback-or-error alternative.
+  - clause: CAP-3D-003
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-3D-010
+      - OBS-3D-011
+      - OBS-3D-012
+    note: Fixed-rate processing, bounded catch-up and ordered frame phases are documented in different
+      products; exact coherent snapshots and this default cap remain choices.
+  - clause: REQ-3D-005
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-3D-010
+      - OBS-3D-012
+    note: Observed frame phases do not prove one universal scheduling model; complete revision
+      consumption and no simulation during explicit image renders are chosen.
+  - clause: REQ-3D-006
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-3D-011
+    note: Unity documents bounded catch-up; exact dropped-lag semantics and observable counters are
+      chosen here.
+  - clause: INV-3D-001
+    basis: supported_convergence
+    observations:
+      - OBS-3D-001
+      - OBS-3D-002
+      - OBS-3D-003
+  - clause: INV-3D-002
+    basis: explicit_project_choice
+    observations: []
+    note: Distinguish admission of new rendering from safe retirement of previously submitted work; no
+      vendor-wide invariant is inferred.
+  - clause: INV-3D-003
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-3D-005
+      - OBS-3D-007
+      - OBS-3D-008
+      - OBS-3D-009
+    note: Several engines defer destruction and scene unloading need not unload assets. Immediate
+      logical invalidation with safe eventual retirement is the explicit product decision.
+  - clause: POL-3D-001
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-3D-010
+      - OBS-3D-011
+    note: Godot documents a default 60Hz physics tick and Unity a configurable catch-up bound. The
+      five-step cap and dropped whole-step lag are choices, not validated performance thresholds.
+  - clause: POL-3D-002
+    basis: explicit_project_choice
+    observations: []
+  - clause: QA-3D-001
+    basis: explicit_project_choice
+    observations: []
+  - clause: QA-3D-002
+    basis: explicit_project_choice
+    observations: []
+  - clause: QA-3D-003
+    basis: explicit_project_choice
+    observations: []
+    note: Reproducibility is scoped to declared profile, numeric equality and ordered inputs; fixed-rate
+      callbacks alone never prove determinism.
+  - clause: REQ-3D-014
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-3D-005
+      - OBS-3D-006
+      - OBS-3D-007
+      - OBS-3D-008
+      - OBS-3D-009
+    note: Deferred destruction and distinct detach/unload semantics motivate separating logical closure
+      from reclamation. Late-result rejection, repeated closure, shared allocation accounting and
+      cleanup observability remain explicit choices.
+  - clause: INT-3D-001
+    basis: explicit_project_choice
+    observations: []
+    note: A startup failure for missing required rendering capability remains required; no dummy
+      successful image fallback is introduced.
+  - clause: ACC-3D-011
+    basis: explicit_project_choice
+    observations: []
+    note: Verification fixture for the chosen guarantees, not an observed product outcome.
+  - clause: ACC-3D-012
+    basis: explicit_project_choice
+    observations: []
+    note: Verification fixture for the chosen guarantees, not an observed product outcome.
+  - clause: ACC-3D-013
+    basis: explicit_project_choice
+    observations: []
+    note: Verification fixture for the chosen guarantees, not an observed product outcome.
+  - clause: ACC-3D-014
+    basis: explicit_project_choice
+    observations: []
+    note: Verification fixture for the chosen guarantees, not an observed product outcome.
+  - clause: ACC-3D-015
+    basis: explicit_project_choice
+    observations: []
+    note: Verification fixture for the chosen guarantees, not an observed product outcome.

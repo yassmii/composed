@@ -1,0 +1,602 @@
+{
+  "format_version": 1,
+  "kind": "contract-impact-report",
+  "status": "assessed",
+  "before": {
+    "id": "agent-os",
+    "version": "0.2.0",
+    "sha256": "e9e90d870d4899e089e8e0a6a4925d166592e4d87cc26afff1fc455aad98b12f"
+  },
+  "after": {
+    "id": "agent-os",
+    "version": "1.0.0",
+    "sha256": "098c6241428f09812ea59215b46e753e59f0ef3c9ace4b26b9ba6df20bb10f40"
+  },
+  "changes": {
+    "unchanged": [],
+    "modified": [
+      {
+        "id": "INV-AOS-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-AOS-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-AOS-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-AOS-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-AOS-005",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-AOS-006",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-AOS-007",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-AOS-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-AOS-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-AOS-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-AOS-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-AOS-005",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-AOS-006",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-AOS-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-AOS-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-AOS-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-AOS-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-AOS-005",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-AOS-006",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-005",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-006",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-007",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-008",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-009",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-010",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-011",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-012",
+        "reasons": [
+          "clause-content",
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-013",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-014",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-015",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-016",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-017",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-018",
+        "reasons": [
+          "clause-content",
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-019",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-020",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-021",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-022",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-023",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-024",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-025",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-026",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-027",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-028",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-029",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-030",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-031",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-AOS-032",
+        "reasons": [
+          "contract-context"
+        ]
+      }
+    ],
+    "added": [],
+    "removed": []
+  },
+  "context_changes": [
+    "delivery"
+  ],
+  "metadata_changes": [
+    "status",
+    "version"
+  ],
+  "acceptance_changes": {
+    "unchanged": [
+      "ACC-AOS-001",
+      "ACC-AOS-002",
+      "ACC-AOS-003",
+      "ACC-AOS-004",
+      "ACC-AOS-005",
+      "ACC-AOS-006",
+      "ACC-AOS-007",
+      "ACC-AOS-008",
+      "ACC-AOS-009",
+      "ACC-AOS-010",
+      "ACC-AOS-011",
+      "ACC-AOS-012",
+      "ACC-AOS-013",
+      "ACC-AOS-014",
+      "ACC-AOS-015",
+      "ACC-AOS-016",
+      "ACC-AOS-017",
+      "ACC-AOS-018"
+    ],
+    "modified": [],
+    "added": [
+      "ACC-AOS-019",
+      "ACC-AOS-020"
+    ],
+    "removed": []
+  },
+  "correspondences": [],
+  "impact": {
+    "clause_ids": [
+      "INV-AOS-001",
+      "INV-AOS-002",
+      "INV-AOS-003",
+      "INV-AOS-004",
+      "INV-AOS-005",
+      "INV-AOS-006",
+      "INV-AOS-007",
+      "POL-AOS-001",
+      "POL-AOS-002",
+      "POL-AOS-003",
+      "POL-AOS-004",
+      "POL-AOS-005",
+      "POL-AOS-006",
+      "QA-AOS-001",
+      "QA-AOS-002",
+      "QA-AOS-003",
+      "QA-AOS-004",
+      "QA-AOS-005",
+      "QA-AOS-006",
+      "REQ-AOS-001",
+      "REQ-AOS-002",
+      "REQ-AOS-003",
+      "REQ-AOS-004",
+      "REQ-AOS-005",
+      "REQ-AOS-006",
+      "REQ-AOS-007",
+      "REQ-AOS-008",
+      "REQ-AOS-009",
+      "REQ-AOS-010",
+      "REQ-AOS-011",
+      "REQ-AOS-012",
+      "REQ-AOS-013",
+      "REQ-AOS-014",
+      "REQ-AOS-015",
+      "REQ-AOS-016",
+      "REQ-AOS-017",
+      "REQ-AOS-018",
+      "REQ-AOS-019",
+      "REQ-AOS-020",
+      "REQ-AOS-021",
+      "REQ-AOS-022",
+      "REQ-AOS-023",
+      "REQ-AOS-024",
+      "REQ-AOS-025",
+      "REQ-AOS-026",
+      "REQ-AOS-027",
+      "REQ-AOS-028",
+      "REQ-AOS-029",
+      "REQ-AOS-030",
+      "REQ-AOS-031",
+      "REQ-AOS-032"
+    ],
+    "before_clause_ids": [
+      "INV-AOS-001",
+      "INV-AOS-002",
+      "INV-AOS-003",
+      "INV-AOS-004",
+      "INV-AOS-005",
+      "INV-AOS-006",
+      "INV-AOS-007",
+      "POL-AOS-001",
+      "POL-AOS-002",
+      "POL-AOS-003",
+      "POL-AOS-004",
+      "POL-AOS-005",
+      "POL-AOS-006",
+      "QA-AOS-001",
+      "QA-AOS-002",
+      "QA-AOS-003",
+      "QA-AOS-004",
+      "QA-AOS-005",
+      "QA-AOS-006",
+      "REQ-AOS-001",
+      "REQ-AOS-002",
+      "REQ-AOS-003",
+      "REQ-AOS-004",
+      "REQ-AOS-005",
+      "REQ-AOS-006",
+      "REQ-AOS-007",
+      "REQ-AOS-008",
+      "REQ-AOS-009",
+      "REQ-AOS-010",
+      "REQ-AOS-011",
+      "REQ-AOS-012",
+      "REQ-AOS-013",
+      "REQ-AOS-014",
+      "REQ-AOS-015",
+      "REQ-AOS-016",
+      "REQ-AOS-017",
+      "REQ-AOS-018",
+      "REQ-AOS-019",
+      "REQ-AOS-020",
+      "REQ-AOS-021",
+      "REQ-AOS-022",
+      "REQ-AOS-023",
+      "REQ-AOS-024",
+      "REQ-AOS-025",
+      "REQ-AOS-026",
+      "REQ-AOS-027",
+      "REQ-AOS-028",
+      "REQ-AOS-029",
+      "REQ-AOS-030",
+      "REQ-AOS-031",
+      "REQ-AOS-032"
+    ],
+    "after_clause_ids": [
+      "INV-AOS-001",
+      "INV-AOS-002",
+      "INV-AOS-003",
+      "INV-AOS-004",
+      "INV-AOS-005",
+      "INV-AOS-006",
+      "INV-AOS-007",
+      "POL-AOS-001",
+      "POL-AOS-002",
+      "POL-AOS-003",
+      "POL-AOS-004",
+      "POL-AOS-005",
+      "POL-AOS-006",
+      "QA-AOS-001",
+      "QA-AOS-002",
+      "QA-AOS-003",
+      "QA-AOS-004",
+      "QA-AOS-005",
+      "QA-AOS-006",
+      "REQ-AOS-001",
+      "REQ-AOS-002",
+      "REQ-AOS-003",
+      "REQ-AOS-004",
+      "REQ-AOS-005",
+      "REQ-AOS-006",
+      "REQ-AOS-007",
+      "REQ-AOS-008",
+      "REQ-AOS-009",
+      "REQ-AOS-010",
+      "REQ-AOS-011",
+      "REQ-AOS-012",
+      "REQ-AOS-013",
+      "REQ-AOS-014",
+      "REQ-AOS-015",
+      "REQ-AOS-016",
+      "REQ-AOS-017",
+      "REQ-AOS-018",
+      "REQ-AOS-019",
+      "REQ-AOS-020",
+      "REQ-AOS-021",
+      "REQ-AOS-022",
+      "REQ-AOS-023",
+      "REQ-AOS-024",
+      "REQ-AOS-025",
+      "REQ-AOS-026",
+      "REQ-AOS-027",
+      "REQ-AOS-028",
+      "REQ-AOS-029",
+      "REQ-AOS-030",
+      "REQ-AOS-031",
+      "REQ-AOS-032"
+    ],
+    "acceptance_ids": [
+      "ACC-AOS-001",
+      "ACC-AOS-002",
+      "ACC-AOS-003",
+      "ACC-AOS-004",
+      "ACC-AOS-005",
+      "ACC-AOS-006",
+      "ACC-AOS-007",
+      "ACC-AOS-008",
+      "ACC-AOS-009",
+      "ACC-AOS-010",
+      "ACC-AOS-011",
+      "ACC-AOS-012",
+      "ACC-AOS-013",
+      "ACC-AOS-014",
+      "ACC-AOS-015",
+      "ACC-AOS-016",
+      "ACC-AOS-017",
+      "ACC-AOS-018",
+      "ACC-AOS-019",
+      "ACC-AOS-020"
+    ],
+    "before_acceptance_ids": [
+      "ACC-AOS-001",
+      "ACC-AOS-002",
+      "ACC-AOS-003",
+      "ACC-AOS-004",
+      "ACC-AOS-005",
+      "ACC-AOS-006",
+      "ACC-AOS-007",
+      "ACC-AOS-008",
+      "ACC-AOS-009",
+      "ACC-AOS-010",
+      "ACC-AOS-011",
+      "ACC-AOS-012",
+      "ACC-AOS-013",
+      "ACC-AOS-014",
+      "ACC-AOS-015",
+      "ACC-AOS-016",
+      "ACC-AOS-017",
+      "ACC-AOS-018"
+    ],
+    "after_acceptance_ids": [
+      "ACC-AOS-001",
+      "ACC-AOS-002",
+      "ACC-AOS-003",
+      "ACC-AOS-004",
+      "ACC-AOS-005",
+      "ACC-AOS-006",
+      "ACC-AOS-007",
+      "ACC-AOS-008",
+      "ACC-AOS-009",
+      "ACC-AOS-010",
+      "ACC-AOS-011",
+      "ACC-AOS-012",
+      "ACC-AOS-013",
+      "ACC-AOS-014",
+      "ACC-AOS-015",
+      "ACC-AOS-016",
+      "ACC-AOS-017",
+      "ACC-AOS-018",
+      "ACC-AOS-019",
+      "ACC-AOS-020"
+    ],
+    "coverage": "unknown"
+  },
+  "compatibility": "not_assessed",
+  "proof_transfer": "not_performed",
+  "findings": [],
+  "limitations": [
+    "This is a structural and conservative context comparison, not natural-language semantic equivalence or a breaking-change determination.",
+    "Correspondence statuses are caller declarations; identities and approval authority are not authenticated.",
+    "No proof is transferred or rebound. Existing evidence remains pinned to its original contract and implementation bytes.",
+    "Object member order is ignored; array order is preserved. Context changes can conservatively affect more clauses than strictly necessary.",
+    "One or both contracts lack structured verifies/dependencies (format 0.1). Any detected change conservatively selects every normative clause and acceptance case; targeted coverage remains unknown."
+  ]
+}

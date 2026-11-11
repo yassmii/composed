@@ -1,0 +1,221 @@
+schema_version: "0.1"
+observations:
+  - id: OBS-3D-001
+    sources:
+      - SRC-3D-GODOT-NODES
+      - SRC-3D-GODOT-NODE-LIFETIME
+    statement: Godot describes a scene as a tree of nodes with one root node; nodes can be added as
+      children and receive per-frame callbacks.
+  - id: OBS-3D-002
+    sources:
+      - SRC-3D-UNITY-TRANSFORM
+    statement: Unity Transform values are relative to a parent, or world space when no parent exists; a
+      parent-child hierarchy has one parent per child.
+  - id: OBS-3D-003
+    sources:
+      - SRC-3D-UNREAL-COMPONENTS
+    statement: Unreal Scene Components form attachment trees, support one parent and many children, and
+      do not support attachment cycles.
+  - id: OBS-3D-004
+    sources:
+      - SRC-3D-GODOT-LOADING
+    statement: Godot supports background resource loading with a request, status check, progress, and
+      retrieval step; retrieval can block unless readiness is checked.
+  - id: OBS-3D-005
+    sources:
+      - SRC-3D-GODOT-NODE-LIFETIME
+    statement: Godot queue_free defers node and child deletion to the end of the frame after deferred
+      calls; node references become invalid when deletion occurs.
+  - id: OBS-3D-006
+    sources:
+      - SRC-3D-GODOT-NODE-LIFETIME
+    statement: Godot remove_child detaches a node without deleting the node or its children.
+  - id: OBS-3D-007
+    sources:
+      - SRC-3D-UNITY-DESTROY
+    statement: Unity Object.Destroy schedules actual destruction after the current Update loop and
+      before rendering; destroying a GameObject also destroys its components and transform children.
+  - id: OBS-3D-008
+    sources:
+      - SRC-3D-UNITY-UNLOAD
+    statement: Unity UnloadSceneAsync destroys scene GameObjects and removes the scene, but explicitly
+      does not unload asset memory; its completion time is not guaranteed.
+  - id: OBS-3D-009
+    sources:
+      - SRC-3D-UNREAL-LIFETIME
+    statement: Unreal separates EndPlay from garbage-collected destruction; BeginDestroy can release
+      multithreaded resources and IsReadyForFinishDestroy can defer deallocation.
+  - id: OBS-3D-010
+    sources:
+      - SRC-3D-GODOT-PROCESSING
+    statement: Godot distinguishes frame-dependent processing from fixed-rate physics processing, which
+      defaults to 60 steps per second.
+  - id: OBS-3D-011
+    sources:
+      - SRC-3D-UNITY-TIME
+    statement: Unity maximumDeltaTime bounds fixed updates per frame by maximumDeltaTime divided by
+      fixedDeltaTime to limit repeated long-frame catch-up.
+  - id: OBS-3D-012
+    sources:
+      - SRC-3D-UNREAL-TICK
+    statement: Unreal tick groups and dependencies order updates; the during-physics group may observe
+      physics completion at different times, while post-physics runs after simulation completes.
+  - id: OBS-3D-013
+    sources:
+      - SRC-3D-GODOT-RENDERING
+    statement: Godot documents that its --headless mode disables rendering and window management; most
+      RenderingServer functions return dummy values in that mode.
+  - id: OBS-3D-014
+    sources:
+      - SRC-3D-BLENDER-OPERATORS
+    statement: Blender operators require a suitable execution context and expose poll checks; a
+      cancelled operator without an error report need not raise an exception.
+  - id: OBS-3D-015
+    sources:
+      - SRC-3D-BLENDER-MCP
+    statement: MCP for Blender documents a get_scene_info tool that returns selected per-object fields
+      and supports root or query drill-down.
+  - id: OBS-3D-016
+    sources:
+      - SRC-3D-BLENDER-MCP
+    statement: MCP for Blender documents a look tool with viewport, camera, multi-angle sheet and
+      animation-strip views.
+  - id: OBS-3D-017
+    sources:
+      - SRC-3D-BLENDER-MCP
+    statement: MCP for Blender exposes arbitrary Python execution and explicitly advises saving work
+      before using it.
+  - id: OBS-3D-018
+    sources:
+      - SRC-3D-UNITY-MCP
+    statement: MCP for Unity documents editor-based scene and asset control, script editing, testing and
+      profiling through a project-owned bridge.
+  - id: OBS-3D-019
+    sources:
+      - SRC-3D-UNITY-MCP-BATCH
+    statement: MCP for Unity batch_execute documents configurable batch limits and fail_fast behaviour
+      that either stops remaining operations after a failure or collects per-step results while
+      continuing.
+  - id: OBS-3D-020
+    sources:
+      - SRC-3D-UNITY-MCP-SCENE
+    statement: MCP for Unity manage_scene documents paged hierarchy retrieval and refers screenshot and
+      multi-view screenshot operations to manage_camera.
+  - id: OBS-3D-021
+    sources:
+      - SRC-3D-USD-INTRO
+    statement: OpenUSD documents non-destructive overrides and layered authoring that can preserve
+      source layers while composing changes.
+  - id: OBS-3D-022
+    sources:
+      - SRC-3D-REPLICATOR-ANNOTATORS
+    statement: Omni Replicator documents camera-distance depth annotators associated with render products.
+  - id: OBS-3D-023
+    sources:
+      - SRC-3D-REPLICATOR-ANNOTATORS
+    statement: Omni Replicator documents segmentation outputs with metadata mappings to scene paths or
+      semantic labels; some instance annotators cover only labelled entities and renderer-ID
+      variants are marked development/debugging.
+  - id: OBS-3D-024
+    sources:
+      - SRC-3D-CODEBENCH
+    statement: The pinned 3DCodeBench README separates executability, rendered-image similarity,
+      three-dimensional shape distance and judge-based scoring for procedural Blender tasks, and
+      distinguishes single-shot, multi-turn and coding-agent settings.
+  - id: OBS-3D-025
+    sources:
+      - SRC-3D-BLENDERGYM
+    statement: The BlenderGym v1 abstract describes code-based 3D reconstruction/editing evaluation and
+      reports that allocation of generation and verification compute affects results.
+  - id: OBS-3D-026
+    sources:
+      - SRC-3D-BLENDERWORLD
+    statement: The BlenderWorld v1 abstract describes multi-view rendered submissions evaluated with
+      task-specific binary rubrics and a separate holistic visual-quality score.
+  - id: OBS-3D-027
+    sources:
+      - SRC-3D-GODOT-PERF
+    statement: Godot documents independently executing CPU and GPU work and explains that optimizing the
+      CPU need not improve total frame time when the GPU remains the bottleneck.
+  - id: OBS-3D-028
+    sources:
+      - SRC-3D-UNITY-FRAME-TIMING
+    statement: Unity frame timing results are delayed; CPU timings are not immediately available and GPU
+      timings arrive after later frames, with availability and accuracy limitations.
+  - id: OBS-3D-029
+    sources:
+      - SRC-3D-UNITY-READBACK
+    statement: Unity AsyncGPUReadback avoids CPU/GPU stalls for GPU-to-CPU copies but explicitly adds
+      several frames of latency.
+  - id: OBS-3D-030
+    sources:
+      - SRC-3D-UNREAL-PROFILING
+    statement: Unreal documents that an attached profiler itself reduces performance and distinguishes
+      resource bottlenecks when profiling on target hardware.
+  - id: OBS-3D-031
+    sources:
+      - SRC-3D-UNITY-SHADER-WARMUP
+    statement: Unity documents that prewarmed shader variants may still require driver work for
+      different vertex layouts or render-target states, causing stalls and additional memory use.
+  - id: OBS-3D-032
+    sources:
+      - SRC-3D-KHRONOS-TIMESTAMPS
+    statement: The Khronos timestamp-query sample checks timestamp support/valid bits and converts
+      timestamp deltas using the device timestamp period; GPU timestamp values are not directly
+      milliseconds.
+  - id: OBS-3D-033
+    sources:
+      - SRC-3D-KHRONOS-TIMESTAMPS
+    statement: The Khronos timestamp-query sample discusses waiting for query results or using
+      availability information because GPU execution and query-result retrieval are asynchronous.
+  - id: OBS-3D-034
+    sources:
+      - SRC-3D-GODOT-SPATIAL
+    statement: Godot spatial shaders expose vertex, fragment and light processing functions with
+      material outputs; its built-in TIME is affected by time scale but not by pausing.
+  - id: OBS-3D-035
+    sources:
+      - SRC-3D-GODOT-MATERIAL
+    statement: Godot standard materials expose metallic/roughness, emission, normal maps and distinct
+      transparency modes; normal-map convention and material binding scope affect interpretation.
+  - id: OBS-3D-036
+    sources:
+      - SRC-3D-KHRONOS-PBR
+    statement: The glTF 2.0 material model specifies metallic/roughness with base-colour, normal,
+      occlusion and emissive inputs and distinguishes colour-texture transfer functions from linear
+      data channels.
+  - id: OBS-3D-037
+    sources:
+      - SRC-3D-GODOT-RENDERERS
+    statement: Godot renderer choices differ in GI, reflections, antialiasing, shader/compute support
+      and colour precision; fallback can change appearance.
+  - id: OBS-3D-038
+    sources:
+      - SRC-3D-UNITY-VARIANTS
+    statement: Unity shader variants specialise shader conditions, while large variant populations
+      increase build, memory and loading costs and complicate prewarming.
+  - id: OBS-3D-039
+    sources:
+      - SRC-3D-UNITY-FORWARD-PLUS
+    statement: Unity URP Forward+ assigns lights using screen tiles and retains a per-camera light limit
+      despite removing the per-object limit of its Forward path.
+  - id: OBS-3D-040
+    sources:
+      - SRC-3D-UNREAL-LUMEN
+    statement: Lumen combines screen traces with software or hardware ray tracing for GI/reflections;
+      surface-cache coverage and view-dependent materials can limit its result.
+  - id: OBS-3D-041
+    sources:
+      - SRC-3D-UNREAL-NANITE
+    statement: Nanite uses hierarchical triangle clusters, streamed visible detail and automatic LOD;
+      content, material, instance and hardware limits still require measurement.
+  - id: OBS-3D-042
+    sources:
+      - SRC-3D-UNREAL-TSR
+    statement: Unreal temporal super resolution reconstructs from lower-resolution frames over time;
+      convergence, disocclusion and motion-vector quality affect image quality and cost.
+  - id: OBS-3D-043
+    sources:
+      - SRC-3D-GODOT-COMPUTE
+    statement: Godot compute shaders require a RenderingDevice-based renderer and have documented
+      mobile/driver limits; GPU dispatch completion and CPU readback are separate work.

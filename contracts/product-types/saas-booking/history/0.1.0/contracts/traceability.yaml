@@ -1,0 +1,49 @@
+schema_version: "0.1"
+contract_id: "saas-booking"
+contract_version: "0.1.0"
+research_status: "initial"
+links:
+  - clause: "CAP-BOOK-001"
+    basis: "supported_pattern"
+    observations: ["OBS-BOOK-001", "OBS-BOOK-003"]
+  - clause: "REQ-BOOK-001"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-BOOK-001", "OBS-BOOK-003"]
+    note: "Schedule, conflict, and limit-aware availability is evidenced; remaining capacity is a contract choice for finite-capacity products."
+  - clause: "REQ-BOOK-003"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-BOOK-002"]
+    note: "Canonical booking time and attendee time zone are evidenced; confirmation fields and payment status are contract choices."
+  - clause: "CAP-BOOK-002"
+    basis: "supported_pattern"
+    observations: ["OBS-BOOK-004"]
+  - clause: "REQ-BOOK-002"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "CAP-BOOK-003"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "REQ-BOOK-004"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "INV-BOOK-001"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "INV-BOOK-002"
+    basis: "supported_pattern"
+    observations: ["OBS-BOOK-002"]
+  - clause: "INV-BOOK-003"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "POL-BOOK-001"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "POL-BOOK-002"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "QA-BOOK-001"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "QA-BOOK-002"
+    basis: "explicit_project_choice"
+    observations: []

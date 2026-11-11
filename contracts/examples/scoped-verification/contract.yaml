@@ -1,0 +1,88 @@
+schema_version: '0.2'
+id: protected-record-demo
+name: Protected record demonstration
+version: 0.1.0
+kind: product-contract
+status: draft
+license: CC-BY-4.0
+intent:
+  promise: Allow a record owner to revoke a reader grant and inspect the resulting history.
+  primary_outcome: The next protected read is refused after revocation, while repeat revocation is stable.
+  success_metrics: []
+scope:
+  includes: [A synthetic record, a fixture reader grant, revocation and history.]
+  excludes: [Real authentication, storage, deployment, actual consumer product behavior and production security certification.]
+actors:
+  - id: ACT-OWNER
+    name: Record owner
+    goals: [Control the fixture grant.]
+    permissions: [Revoke the fixture grant and inspect history.]
+  - id: ACT-READER
+    name: Granted reader
+    goals: [Read the fixture record while the grant is active.]
+    permissions: [Read only under the current fixture grant.]
+domain:
+  entities:
+    - id: ENT-GRANT
+      name: Reader grant
+      description: A synthetic grant evaluated for each protected read.
+      lifecycle: [active, revoked]
+  glossary: []
+capabilities:
+  - id: CAP-ACCESS
+    name: Control fixture access
+    priority: must
+    actor: ACT-OWNER
+    outcome: Revoking the grant prevents the next reader access.
+    requirements:
+      - id: REQ-ACCESS-001
+        statement: A revoked fixture reader is refused on the next protected read, without record content.
+        depends_on: [INV-ACCESS-001]
+      - id: REQ-ACCESS-002
+        statement: Repeating the same revocation leaves the grant revoked and records only one state transition.
+        depends_on: [REQ-ACCESS-001]
+invariants:
+  - id: INV-ACCESS-001
+    statement: Each protected read evaluates the current fixture grant.
+    rationale: An earlier successful read must not authorize a later read after revocation.
+policies:
+  - id: POL-ACCESS-001
+    decision: Retain the one revocation event in the fixture history.
+    consequence: The owner can inspect the recorded transition after revocation.
+quality_attributes: []
+integrations: []
+acceptance:
+  - id: ACC-ACCESS-001
+    given: The reader has an active grant and can read the fixture record.
+    when: The owner revokes that grant and the reader attempts another protected read.
+    then: The first read succeeds and the next read is denied without fixture content.
+    evidence: Actual responses from the candidate public interface before and after revocation.
+    verifies: [REQ-ACCESS-001, INV-ACCESS-001]
+    verification:
+      methods: [automated]
+      boundary: public-interface
+      case_kinds: [positive, negative]
+  - id: ACC-ACCESS-002
+    given: The fixture grant is initially active.
+    when: The owner revokes it twice.
+    then: It is revoked with exactly one recorded state transition after both calls.
+    evidence: Candidate responses and history after the first and repeated revocation.
+    verifies: [REQ-ACCESS-002]
+    verification:
+      methods: [automated]
+      boundary: public-interface
+      case_kinds: [positive, boundary]
+  - id: ACC-ACCESS-003
+    given: The owner revoked the fixture grant.
+    when: The owner requests its history.
+    then: The single revocation event is inspectable.
+    evidence: Candidate history response with the retained event.
+    verifies: [POL-ACCESS-001]
+    verification:
+      methods: [automated]
+      boundary: public-interface
+      case_kinds: [positive]
+delivery:
+  required_artifacts: [Declared case observations and exact candidate and checker bytes.]
+  verification: [Execute the selected positive and negative cases through the public interface.]
+extensions: {}

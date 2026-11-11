@@ -1,0 +1,86 @@
+{
+  "format_version": 1,
+  "kind": "contract-update-proposal",
+  "date": "2026-11-01",
+  "family": "career-evidence-platform",
+  "title": "Scoped evaluation and honest denominators",
+  "status": "proposed",
+  "baseline": {
+    "version": "0.1.0",
+    "contract_sha256": "f9d07efefb088260bd2a125330bac892e52ee7e82abf4a62b719d860ae9c53fc",
+    "traceability_sha256": "fa2e738ae67940b36c30f6034ef70996aea2d032ac5ea33b5db4ecc55bb0f9e1"
+  },
+  "candidate": {
+    "version": "1.0.0",
+    "status": "candidate",
+    "schema_version": "0.1",
+    "contract_sha256": "ba53eeb54ea578dde026c92700a2214b839b1a7531e81973f7018550936fd4bb"
+  },
+  "classification": "Breaking strengthened obligations/evidence; author assessment, not automatic tool compatibility",
+  "reason": "The refreshed papers cover different tasks and narrow populations, with both gains and regressions. A positive aggregate or an empty score must not stand in for the declared evaluation scope.",
+  "changed_clauses": [
+    {
+      "id": "REQ-CEP-063",
+      "before": "Evaluate extraction, concept resolution, grounding, temporal reconciliation and career relevance separately on declared held-out cases; report false claims, abstentions, supported languages and population limitations.",
+      "after": "Evaluate extraction, concept resolution, grounding, temporal reconciliation and career relevance separately on declared held-out cases; report false claims, abstentions, supported languages and population limitations. Every reported measure names its task, evaluated population, sample count, numerator and denominator or scoring definition, and missing observations. An undefined denominator or an unexecuted slice is unknown, never a zero-error or successful result; abstentions are reported separately from supported answers.",
+      "planned_cases": [
+        "ACC-CEP-024"
+      ]
+    },
+    {
+      "id": "REQ-CEP-064",
+      "before": "Compare proposed retrieval and reasoning methods with a baseline on the same corpus and measured quality, latency and cost; deploying a newer model or graph store is not evidence of improvement.",
+      "after": "Compare proposed retrieval and reasoning methods with a baseline on the same corpus and measured quality, latency and cost; deploying a newer model or graph store is not evidence of improvement. Freeze the corpus/split, applicable language and occupational slices, scoring rules and confirmation thresholds before comparing the candidate. Publish slice-level regressions and all declared slices alongside aggregates; an aggregate gain cannot override a failed mandatory quality threshold or a grounding/privacy violation. Cases used to tune the method are not the untouched confirmation split.",
+      "planned_cases": [
+        "ACC-CEP-023"
+      ]
+    }
+  ],
+  "retained_cases": [
+    "ACC-CEP-001",
+    "ACC-CEP-002",
+    "ACC-CEP-003",
+    "ACC-CEP-004",
+    "ACC-CEP-005",
+    "ACC-CEP-006",
+    "ACC-CEP-007",
+    "ACC-CEP-008",
+    "ACC-CEP-009",
+    "ACC-CEP-010",
+    "ACC-CEP-011",
+    "ACC-CEP-012",
+    "ACC-CEP-013",
+    "ACC-CEP-014",
+    "ACC-CEP-015",
+    "ACC-CEP-016",
+    "ACC-CEP-017",
+    "ACC-CEP-018",
+    "ACC-CEP-019",
+    "ACC-CEP-020",
+    "ACC-CEP-021",
+    "ACC-CEP-022"
+  ],
+  "added_cases": [
+    "ACC-CEP-023",
+    "ACC-CEP-024"
+  ],
+  "product_acceptance": "not_run",
+  "proof_transfer": "not_performed",
+  "deferred": "Representative authorised multilingual corpora, independent annotation, full-paper review and real quality/cost/latency measurements remain deferred. The scorer fixture is planned, not executed; no model or graph architecture is selected.",
+  "applicability": "Retain declared optional modules; justified conditional not_applicable is separate from not_run or failure, without weakening unconditional obligations.",
+  "validation": {
+    "schema_and_traceability": "passed",
+    "tooling_tests": {
+      "passed": 68,
+      "failed": 0,
+      "skipped": 0
+    },
+    "synthetic_example": "passed",
+    "native_impact": "impact.json",
+    "candidate_integrity": "passed",
+    "baseline_preservation": "passed",
+    "product_acceptance": "not_run",
+    "independent_review": "pending",
+    "stable_promotion": "not_performed"
+  }
+}

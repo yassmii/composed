@@ -1,0 +1,77 @@
+schema_version: "0.1"
+observations:
+  - id: "OBS-CWS-001"
+    sources: ["SRC-CWS-NOTION-DATABASES"]
+    statement: "Notion models a database as a collection of pages; each item can expose structured properties while retaining a full page of nested content."
+  - id: "OBS-CWS-002"
+    sources: ["SRC-CWS-NOTION-DATABASES", "SRC-CWS-NOTION-PROPERTIES"]
+    statement: "Notion supports multiple presentations of the same database content and property types including people, files, IDs, relations, formulas, and rollups."
+  - id: "OBS-CWS-003"
+    sources: ["SRC-CWS-NOTION-RELATIONS", "SRC-CWS-NOTION-PROPERTIES"]
+    statement: "Notion relations connect items in different databases, can be two-way, and support rollups that aggregate values reached through a relation."
+  - id: "OBS-CWS-004"
+    sources: ["SRC-CWS-NOTION-DATABASE-SETTINGS"]
+    statement: "Notion lets editors configure database locks, properties, automations, sub-items, dependencies, connections, and page layout."
+  - id: "OBS-CWS-005"
+    sources: ["SRC-CWS-NOTION-PERMISSIONS"]
+    statement: "Notion shares pages with people, groups, or teamspaces at distinct permission levels and supports timed public links and access requests."
+  - id: "OBS-CWS-006"
+    sources: ["SRC-CWS-NOTION-PERMISSIONS"]
+    statement: "Notion distinguishes editing database content from changing database structure and supports rules that grant access to individual database pages."
+  - id: "OBS-CWS-007"
+    sources: ["SRC-CWS-NOTION-COMMENTS", "SRC-CWS-NOTION-NOTIFICATIONS"]
+    statement: "Notion supports comments on pages and database properties, mentions, resolved threads, and notifications for mentions, replies, assignments, and reminders."
+  - id: "OBS-CWS-008"
+    sources: ["SRC-CWS-NOTION-HISTORY", "SRC-CWS-AIRTABLE-HISTORY"]
+    statement: "Notion and Airtable both expose attributed, timestamped history of changes to collaborative content, with retention behaviour controlled by product policy."
+  - id: "OBS-CWS-009"
+    sources: ["SRC-CWS-NOTION-HISTORY"]
+    statement: "Notion allows an editor to preview an earlier page version and restore it, while retaining the ability to return to the formerly current state."
+  - id: "OBS-CWS-010"
+    sources: ["SRC-CWS-NOTION-AUTOMATIONS", "SRC-CWS-AIRTABLE-AUTOMATIONS"]
+    statement: "Notion and Airtable offer configurable multi-step automations, preserve evidence of failures or runs, and provide a history of automation configuration."
+  - id: "OBS-CWS-011"
+    sources: ["SRC-CWS-NOTION-AUTOMATIONS", "SRC-CWS-NOTION-WEBHOOKS"]
+    statement: "Notion automations support event and time triggers, conditional actions, variable values, outbound webhooks, and a paused state following operational errors."
+  - id: "OBS-CWS-012"
+    sources: ["SRC-CWS-NOTION-INTEGRATIONS", "SRC-CWS-NOTION-WEBHOOKS"]
+    statement: "Notion integrations receive change notifications only for explicitly shared content, and workspace policy can disable outbound webhook actions."
+  - id: "OBS-CWS-013"
+    sources: ["SRC-CWS-NOTION-AUDIT"]
+    statement: "Notion exposes filterable and exportable audit events for security-sensitive workspace activity, with event metadata separated from page content."
+  - id: "OBS-CWS-014"
+    sources: ["SRC-CWS-NOTION-EXPORT"]
+    statement: "Notion supports workspace export in portable document and database formats with uploaded files included."
+  - id: "OBS-CWS-015"
+    sources: ["SRC-CWS-AIRTABLE-HISTORY", "SRC-CWS-AIRTABLE-AUTOMATIONS"]
+    statement: "Airtable attributes record changes to people, automations, synchronizations, or API calls and lets operators inspect automation failures and configuration revisions."
+  - id: "OBS-CWS-016"
+    sources: ["SRC-CWS-APPFLOWY-README", "SRC-CWS-APPFLOWY-LICENSE"]
+    statement: "AppFlowy presents itself as a self-hostable collaborative Notion alternative with user-controlled data and publishes its application under AGPL-3.0."
+  - id: "OBS-CWS-017"
+    sources: ["SRC-CWS-AFFINE-README", "SRC-CWS-AFFINE-LICENSE", "SRC-CWS-AFFINE-EE-LICENSE"]
+    statement: "AFFiNE combines documents, an edgeless canvas, tables, local-first storage, real-time collaboration, and self-hosting, but its repository separates some backend and native components and identifies an Enterprise Edition with production subscription conditions."
+  - id: "OBS-CWS-018"
+    sources: ["SRC-CWS-DOCMOST-README", "SRC-CWS-DOCMOST-LICENSE"]
+    statement: "Docmost's AGPL-3.0 core includes real-time collaboration, spaces, permissions, groups, comments, page history, search, attachments, embeds, and translations, while separate enterprise features exist."
+  - id: "OBS-CWS-019"
+    sources: ["SRC-CWS-ANYTYPE-README", "SRC-CWS-ANYTYPE-LICENSE"]
+    statement: "Anytype demonstrates offline-first peer-to-peer encrypted knowledge management with composable blocks, but its client license is source-available and limits use to non-commercial use or allowed networks."
+  - id: "OBS-CWS-020"
+    sources: ["SRC-CWS-ANY-README", "SRC-CWS-ANY-LICENSE"]
+    statement: "Any is MIT-licensed local-first collaborative infrastructure in which offline changes merge automatically through CRDTs and devices can synchronise encrypted data peer to peer; it labels its interfaces and data formats a developer preview."
+  - id: "OBS-CWS-021"
+    sources: ["SRC-CWS-DECAP-ARCHITECTURE"]
+    statement: "Decap CMS treats a repository backend as the content authority: entries are edited through an abstraction but are persisted as repository files with metadata alongside them."
+  - id: "OBS-CWS-022"
+    sources: ["SRC-CWS-TINA-DATALAYER"]
+    statement: "TinaCMS treats repository content files as the source of truth and its database as a rebuildable index for queries, search, and references that updates from repository pushes."
+  - id: "OBS-CWS-023"
+    sources: ["SRC-CWS-OWASP-ASVS-AUTHENTICATION"]
+    statement: "OWASP ASVS v5 specifies verification requirements for credential-stuffing and brute-force resistance, consistent authentication paths, multi-factor factors and recovery artefacts that are time-bounded and revocable, and federated authentication handling."
+  - id: "OBS-CWS-024"
+    sources: ["SRC-CWS-OWASP-ASVS-SESSION"]
+    statement: "OWASP ASVS v5 requires a documented session model with unique server-controlled session tokens, token renewal after authentication or reauthentication, inactivity and absolute lifetimes, a concurrent-session policy, session termination, and reauthentication before sensitive account changes."
+  - id: "OBS-CWS-025"
+    sources: ["SRC-CWS-OWASP-ASVS-AUTHENTICATION", "SRC-CWS-OWASP-ASVS-SESSION"]
+    statement: "OWASP ASVS v5 treats authentication and session lifecycle as security controls: disabled or deleted accounts must terminate sessions, users or administrators need session-termination capability, and security-sensitive changes must be reverified."

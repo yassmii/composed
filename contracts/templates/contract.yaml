@@ -1,0 +1,79 @@
+# yaml-language-server: $schema=../specs/product-contract.schema.json
+schema_version: "0.1"
+id: "todo-domain-product"
+name: "TODO Product name"
+version: "0.1.0"
+kind: "product-contract"
+status: "draft"
+license: "CC-BY-4.0"
+
+intent:
+  promise: "TODO State the user promise in one sentence."
+  primary_outcome: "TODO State the measurable outcome delivered to the user."
+  success_metrics:
+    - id: "MET-001"
+      measure: "TODO State a metric and its target."
+
+scope:
+  includes: ["TODO Included capability."]
+  excludes: ["TODO Explicitly excluded capability."]
+
+actors:
+  - id: "ACT-001"
+    name: "TODO"
+    goals: ["TODO"]
+    permissions: ["TODO"]
+
+domain:
+  entities:
+    - id: "ENT-001"
+      name: "TODO"
+      description: "TODO"
+      lifecycle: ["TODO initial state", "TODO final state"]
+  glossary:
+    - term: "TODO"
+      definition: "TODO"
+
+capabilities:
+  - id: "CAP-001"
+    name: "TODO"
+    priority: "must"
+    actor: "ACT-001"
+    outcome: "TODO State an observable outcome."
+    requirements:
+      - id: "REQ-001"
+        statement: "TODO State unambiguous behaviour."
+
+invariants:
+  - id: "INV-001"
+    statement: "TODO State a rule that must always be true."
+    rationale: "TODO Explain why the rule exists."
+
+policies:
+  - id: "POL-001"
+    decision: "TODO State an explicit product decision."
+    consequence: "TODO State its behavioural effect."
+
+quality_attributes:
+  - id: "QA-001"
+    attribute: "accessibility"
+    target: "TODO State a measurable criterion."
+
+integrations: []
+
+acceptance:
+  - id: "ACC-001"
+    given: "TODO Initial context."
+    when: "TODO Action."
+    then: "TODO Verifiable result."
+    evidence: "TODO Expected test, metric, or artifact."
+
+delivery:
+  required_artifacts: ["Operations README"]
+  verification: ["Automated tests covering the acceptance criteria"]
+  # Optional external evidence profile. It names a validation contract; it does not prescribe an API.
+  # validation_profile:
+  #   id: "example-product/conformance"
+  #   version: "0.1.0"
+
+extensions: {}

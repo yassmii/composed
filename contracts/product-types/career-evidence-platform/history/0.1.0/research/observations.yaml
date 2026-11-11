@@ -1,0 +1,106 @@
+schema_version: '0.1'
+observations:
+- id: OBS-CEP-001
+  sources:
+  - SRC-CEP-EUROPASS
+  statement: Europass documents a personal profile containing work, education, projects and skills, with a library
+    for supporting documents.
+- id: OBS-CEP-002
+  sources:
+  - SRC-CEP-EUROPASS
+  statement: Europass lets a person share selected profile sections for a limited period and delete the sharing
+    link.
+- id: OBS-CEP-003
+  sources:
+  - SRC-CEP-EUROPASS
+  statement: Europass describes profile completion as an ongoing process rather than requiring every section in
+    one visit.
+- id: OBS-CEP-004
+  sources:
+  - SRC-CEP-FUTUREFIT
+  statement: FutureFit AI advertises a Career Passport organizing experience, skills and credentials for presentation
+    to employers.
+- id: OBS-CEP-005
+  sources:
+  - SRC-CEP-FUTUREFIT
+  statement: FutureFit AI advertises personalized roadmaps connecting a starting point to careers, learning opportunities
+    and support services.
+- id: OBS-CEP-006
+  sources:
+  - SRC-CEP-COPILOT
+  statement: Career Copilot advertises conversational career guidance grounded in labor-market and organizational
+    data; its page labels the offering a private beta.
+- id: OBS-CEP-007
+  sources:
+  - SRC-CEP-FUEL50
+  statement: Fuel50 describes a human-curated skills ontology with proficiency descriptors, development actions
+    and ongoing governance.
+- id: OBS-CEP-008
+  sources:
+  - SRC-CEP-XREF
+  statement: Xref documents questionnaires sent to candidate-nominated referees, followed by feedback reports and
+    progress updates.
+- id: OBS-CEP-009
+  sources:
+  - SRC-CEP-XREF-LIMITS
+  statement: Xref explicitly distinguishes unusual-activity detection from guarantees about referee identity or
+    the validity of a reference.
+- id: OBS-CEP-010
+  sources:
+  - SRC-CEP-VC
+  statement: W3C VC 2.0 distinguishes authentic, current issuer statements from evaluation of whether their underlying
+    claims are true.
+- id: OBS-CEP-011
+  sources:
+  - SRC-CEP-CLR
+  statement: 1EdTech describes learner-controlled records bundling achievements, issuer metadata, supporting evidence
+    and third-party endorsements.
+- id: OBS-CEP-012
+  sources:
+  - SRC-CEP-ESCO
+  statement: The ESCO local API is downloadable by selected version and can operate independently of the Commission-hosted
+    API.
+- id: OBS-CEP-013
+  sources:
+  - SRC-CEP-SKOS
+  statement: SKOS distinguishes exact, close, hierarchical and associative mappings between concepts, with different
+    logical properties.
+- id: OBS-CEP-014
+  sources:
+  - SRC-CEP-PROV
+  statement: PROV-O provides separate relations for derivation, attribution, revision and invalidation of information.
+- id: OBS-CEP-015
+  sources:
+  - SRC-CEP-LINKEDIN-LOGIN
+  statement: LinkedIn states that its OpenID Connect login authenticates members and returns limited profile information
+    without verifying their real-world identities.
+- id: OBS-CEP-016
+  sources:
+  - SRC-CEP-LINKEDIN-NETWORK
+  statement: LinkedIn restricts Connections API use to approved developers and the authorized member’s first-degree
+    connections, subject to privacy settings.
+- id: OBS-CEP-017
+  sources:
+  - SRC-CEP-CAREERBERT
+  statement: CareerBERT studies resume-to-ESCO occupation recommendations through a shared embedding space; this
+    does not evaluate documentary truth or testimonial reliability.
+- id: OBS-CEP-018
+  sources:
+  - SRC-CEP-SKILLSPAN
+  statement: SkillSpan evaluates skill extraction on expert-annotated English job postings and reports differences
+    between general and domain-adapted models.
+- id: OBS-CEP-019
+  sources:
+  - SRC-CEP-WCAG
+  statement: WCAG 2.2 specifies testable accessibility criteria including keyboard access, labels, reflow and status
+    messages.
+- id: OBS-CEP-020
+  sources:
+  - SRC-CEP-CAREER-RAG-2026
+  statement: A May 2026 preprint reports a multi-source career-history RAG pilot involving one candidate and nine
+    job descriptions, with gains on some relevant roles and losses on roles requiring absent domain expertise.
+- id: OBS-CEP-021
+  sources:
+  - SRC-CEP-ESCO-EQF
+  statement: A December 2025 preprint compares sentence linking, entity linking and generative models for ESCO/EQF
+    classification of job-vacancy text using annotated datasets; it does not evaluate personal career evidence.

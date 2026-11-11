@@ -1,0 +1,89 @@
+schema_version: '0.1'
+observations:
+- id: OBS-ADH-001
+  sources:
+  - SRC-ADH-SKILLS
+  statement: Agent Skills décrit un répertoire de skill avec métadonnées et instructions, complété éventuellement
+    par des scripts, références et assets.
+- id: OBS-ADH-002
+  sources:
+  - SRC-ADH-POCOCK
+  statement: Matt Pocock présente ses skills comme petits, adaptables et composables plutôt qu’un processus unique
+    imposé.
+- id: OBS-ADH-003
+  sources:
+  - SRC-ADH-POCOCK
+  statement: La configuration proposée par Matt Pocock recueille le choix du gestionnaire de tickets, des labels
+    et du lieu des documents; son questionnement peut produire glossaire et décisions.
+- id: OBS-ADH-004
+  sources:
+  - SRC-ADH-SUPERPOWERS
+  statement: Superpowers décrit une progression du questionnement à la conception approuvée, au plan puis au développement
+    délégué après accord.
+- id: OBS-ADH-005
+  sources:
+  - SRC-ADH-SUPERPOWERS
+  statement: Superpowers inclut des inspections et revues du travail des agents dans son processus de développement.
+- id: OBS-ADH-006
+  sources:
+  - SRC-ADH-SPECKIT
+  statement: Spec Kit distingue plusieurs points d’entrée de processus et propose des extensions pour les gates,
+    services et événements du runtime.
+- id: OBS-ADH-007
+  sources:
+  - SRC-ADH-ECC-HOOK
+  statement: Le dispatcher précommande ECC propage le résultat de son contrôle et retourne un code de blocage
+    sur entrée tronquée ou erreur.
+- id: OBS-ADH-008
+  sources:
+  - SRC-ADH-ECC-QUALITY
+  statement: Le script quality-gate ECC exécute des vérifications ciblées et signale certains échecs sans les
+    convertir lui-même en sortie bloquante.
+- id: OBS-ADH-009
+  sources:
+  - SRC-ADH-ECC-EVAL
+  statement: Le harness ECC sépare mesure de coût et essais avec intention cachée, et exige des évaluateurs distinguant
+    références correctes, départ et contre-exemples.
+- id: OBS-ADH-010
+  sources:
+  - SRC-ADH-ECC-GRADER
+  statement: Un évaluateur ECC appelle le code livré et vérifie séparément le traitement du timeout, le nouvel
+    essai sur connexion refusée et le plafond de tentatives.
+- id: OBS-ADH-011
+  sources:
+  - SRC-ADH-ECC-LEARNING
+  statement: ECC décrit des règles apprises avec provenance, confiance et portée projet, et une promotion possible
+    vers une portée globale.
+- id: OBS-ADH-012
+  sources:
+  - SRC-ADH-ECC-CONTRACT
+  statement: Le skill contract-first ECC coordonne consommateurs et fournisseurs autour d’un artefact d’interface
+    canonique et de validations avant intégration.
+- id: OBS-ADH-013
+  sources:
+  - SRC-ADH-CLAUDE-HOOKS
+  statement: La documentation Claude Code distingue des points avant et après outils et des événements de tâches
+    et sous-agents; leurs pouvoirs de décision diffèrent.
+- id: OBS-ADH-014
+  sources:
+  - SRC-ADH-PROV
+  statement: PROV-O fournit des concepts d’entité, activité, agent, attribution, dérivation, révision et invalidation
+    pour exprimer la provenance.
+- id: OBS-ADH-015
+  sources:
+  - SRC-ADH-ECC-EVAL
+  statement: Le manifeste d’évaluation ECC empreinte les entrées et sorties; sa documentation distingue cette
+    intégrité d’une signature ou preuve d’identité de l’exécutant.
+- id: OBS-ADH-016
+  sources:
+  - SRC-ADH-SKILLS
+  statement: Agent Skills décrit un chargement progressif des métadonnées, instructions puis ressources selon
+    leur nécessité.
+- id: OBS-ADH-017
+  sources:
+    - SRC-ADH-CLAUDE-HOOKS
+  statement: Claude Code documents FileChanged as an after-change event without decision control; PreToolUse applies only when Claude calls a tool.
+- id: OBS-ADH-018
+  sources:
+    - SRC-ADH-CLAUDE-HOOKS
+  statement: Claude Code documents that some SubagentStop events originate from internal agents, so that event name alone does not establish an explicitly delegated task.

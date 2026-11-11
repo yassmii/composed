@@ -1,0 +1,55 @@
+name: Validate Composed
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-kit:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node: [20, 24]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm run validate:lockfile
+      - run: npm ci
+      - run: npm run typecheck:build-kit
+      - run: npm run lint:build-kit
+      - run: npm run test --workspace=composed-build-kit -- --silent
+      - run: npm run eval:build-kit
+      - run: npm run eval:evidence --workspace=composed-build-kit
+      - run: npm run benchmark:calibrate --workspace=composed-build-kit
+      - run: npm pack --workspace=composed-build-kit --dry-run
+      - run: npm run release:check --workspace=composed-build-kit
+      - run: npm run example:product --workspace=composed-build-kit
+
+  contracts:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm run validate:lockfile
+      - run: npm ci
+      - run: npm run validate:contracts
+      - run: npm run test:contracts
+      - run: npm run example:contracts

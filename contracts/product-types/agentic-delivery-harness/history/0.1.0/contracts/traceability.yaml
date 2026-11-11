@@ -1,0 +1,452 @@
+schema_version: '0.1'
+contract_id: agentic-delivery-harness
+contract_version: 0.1.0
+research_status: initial
+links:
+- clause: CAP-ADH-001
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-001
+  - OBS-ADH-002
+  - OBS-ADH-006
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-001
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-001
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-002
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-002
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-003
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-002
+  - OBS-ADH-006
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: CAP-ADH-002
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-003
+  - OBS-ADH-004
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-004
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-003
+  - OBS-ADH-004
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-005
+  basis: explicit_project_choice
+  observations: []
+  note: Choix explicite de cette famille produit; aucune convergence universelle ni disponibilité actuelle dans
+    Composed n’est revendiquée.
+- clause: REQ-ADH-006
+  basis: explicit_project_choice
+  observations: []
+  note: Choix explicite de cette famille produit; aucune convergence universelle ni disponibilité actuelle dans
+    Composed n’est revendiquée.
+- clause: CAP-ADH-003
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-002
+  - OBS-ADH-006
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-007
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-001
+  - OBS-ADH-016
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-008
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-002
+  - OBS-ADH-006
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: CAP-ADH-004
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-007
+  - OBS-ADH-008
+  - OBS-ADH-013
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-009
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-007
+  - OBS-ADH-008
+  - OBS-ADH-013
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-010
+  basis: explicit_project_choice
+  observations: []
+  note: Choix explicite de cette famille produit; aucune convergence universelle ni disponibilité actuelle dans
+    Composed n’est revendiquée.
+- clause: CAP-ADH-005
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-004
+  - OBS-ADH-005
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-011
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-004
+  - OBS-ADH-005
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-012
+  basis: explicit_project_choice
+  observations: []
+  note: Choix explicite de cette famille produit; aucune convergence universelle ni disponibilité actuelle dans
+    Composed n’est revendiquée.
+- clause: REQ-ADH-013
+  basis: explicit_project_choice
+  observations: []
+  note: Choix explicite de cette famille produit; aucune convergence universelle ni disponibilité actuelle dans
+    Composed n’est revendiquée.
+- clause: CAP-ADH-006
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-014
+  - OBS-ADH-016
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-014
+  basis: explicit_project_choice
+  observations: []
+  note: Choix explicite de cette famille produit; aucune convergence universelle ni disponibilité actuelle dans
+    Composed n’est revendiquée.
+- clause: REQ-ADH-015
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-014
+  - OBS-ADH-016
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: CAP-ADH-007
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-009
+  - OBS-ADH-010
+  - OBS-ADH-014
+  - OBS-ADH-015
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-016
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-014
+  - OBS-ADH-015
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-017
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-009
+  - OBS-ADH-010
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-018
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-015
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: CAP-ADH-008
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-005
+  - OBS-ADH-014
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-019
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-005
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-020
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-014
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: CAP-ADH-009
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-006
+  - OBS-ADH-007
+  - OBS-ADH-008
+  - OBS-ADH-013
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-021
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-006
+  - OBS-ADH-007
+  - OBS-ADH-008
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-022
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-007
+  - OBS-ADH-008
+  - OBS-ADH-013
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-023
+  basis: explicit_project_choice
+  observations: []
+  note: Choix explicite de cette famille produit; aucune convergence universelle ni disponibilité actuelle dans
+    Composed n’est revendiquée.
+- clause: CAP-ADH-010
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-009
+  - OBS-ADH-010
+  - OBS-ADH-011
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-024
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-009
+  - OBS-ADH-011
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-025
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-009
+  - OBS-ADH-010
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-026
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-011
+  - OBS-ADH-012
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: CAP-ADH-011
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-014
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-027
+  basis: explicit_project_choice
+  observations: []
+  note: Choix explicite de cette famille produit; aucune convergence universelle ni disponibilité actuelle dans
+    Composed n’est revendiquée.
+- clause: REQ-ADH-028
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-014
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-029
+  basis: explicit_project_choice
+  observations: []
+  note: Choix explicite de cette famille produit; aucune convergence universelle ni disponibilité actuelle dans
+    Composed n’est revendiquée.
+- clause: CAP-ADH-012
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-009
+  - OBS-ADH-014
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-030
+  basis: explicit_project_choice
+  observations: []
+  note: Choix explicite de cette famille produit; aucune convergence universelle ni disponibilité actuelle dans
+    Composed n’est revendiquée.
+- clause: REQ-ADH-031
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-009
+  - OBS-ADH-014
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: CAP-ADH-013
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-014
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-032
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-014
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-033
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-014
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-034
+  basis: explicit_project_choice
+  observations: []
+  note: Choix explicite de cette famille produit; aucune convergence universelle ni disponibilité actuelle dans
+    Composed n’est revendiquée.
+- clause: CAP-ADH-014
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-005
+  - OBS-ADH-010
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-035
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-005
+  - OBS-ADH-010
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: REQ-ADH-036
+  basis: explicit_project_choice
+  observations: []
+  note: Choix explicite de cette famille produit; aucune convergence universelle ni disponibilité actuelle dans
+    Composed n’est revendiquée.
+- clause: REQ-ADH-037
+  basis: explicit_project_choice
+  observations: []
+  note: Choix explicite de cette famille produit; aucune convergence universelle ni disponibilité actuelle dans
+    Composed n’est revendiquée.
+- clause: INV-ADH-001
+  basis: explicit_project_choice
+  observations: []
+  note: Choix explicite de cette famille produit; aucune convergence universelle ni disponibilité actuelle dans
+    Composed n’est revendiquée.
+- clause: INV-ADH-002
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-007
+  - OBS-ADH-008
+  - OBS-ADH-015
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: INV-ADH-003
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-009
+  - OBS-ADH-010
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: INV-ADH-004
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-014
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: INV-ADH-005
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-014
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: INV-ADH-006
+  basis: explicit_project_choice
+  observations: []
+  note: Choix explicite de cette famille produit; aucune convergence universelle ni disponibilité actuelle dans
+    Composed n’est revendiquée.
+- clause: INV-ADH-007
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-011
+  - OBS-ADH-012
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: INV-ADH-008
+  basis: explicit_project_choice
+  observations: []
+  note: Choix explicite de cette famille produit; aucune convergence universelle ni disponibilité actuelle dans
+    Composed n’est revendiquée.
+- clause: POL-ADH-001
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-002
+  - OBS-ADH-006
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: POL-ADH-002
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-004
+  - OBS-ADH-005
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: POL-ADH-003
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-007
+  - OBS-ADH-008
+  - OBS-ADH-013
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: POL-ADH-004
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-002
+  - OBS-ADH-006
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: POL-ADH-005
+  basis: explicit_project_choice
+  observations: []
+  note: Choix explicite de cette famille produit; aucune convergence universelle ni disponibilité actuelle dans
+    Composed n’est revendiquée.
+- clause: POL-ADH-006
+  basis: explicit_project_choice
+  observations: []
+  note: Choix explicite de cette famille produit; aucune convergence universelle ni disponibilité actuelle dans
+    Composed n’est revendiquée.
+- clause: QA-ADH-001
+  basis: explicit_project_choice
+  observations: []
+  note: Choix explicite de cette famille produit; aucune convergence universelle ni disponibilité actuelle dans
+    Composed n’est revendiquée.
+- clause: QA-ADH-002
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-014
+  - OBS-ADH-015
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: QA-ADH-003
+  basis: explicit_project_choice
+  observations: []
+  note: Choix explicite de cette famille produit; aucune convergence universelle ni disponibilité actuelle dans
+    Composed n’est revendiquée.
+- clause: QA-ADH-004
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-ADH-009
+  note: Le mécanisme observé informe la clause; sa portée obligatoire et ses conditions exactes sont des choix
+    de ce contrat.
+- clause: QA-ADH-005
+  basis: explicit_project_choice
+  observations: []
+  note: Choix explicite de cette famille produit; aucune convergence universelle ni disponibilité actuelle dans
+    Composed n’est revendiquée.

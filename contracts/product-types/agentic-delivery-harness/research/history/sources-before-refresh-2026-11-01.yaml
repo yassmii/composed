@@ -1,0 +1,117 @@
+schema_version: '0.1'
+research_status: initial
+candidate_products:
+- Composed Build Kit (local baseline)
+- Matt Pocock skills
+- Superpowers
+- GitHub Spec Kit
+- ECC
+source_selection:
+- Primary documentation and source code inspected on 2026-10-24; no competitor benchmark or effectiveness
+  claim is made.
+- GitHub sources are pinned to exact revisions and hashed as served bytes. Claude Code documentation is
+  mutable; its hash identifies only the retrieved body. W3C PROV-O is a dated recommendation used as a
+  conceptual reference, not a mandatory technology.
+- Local Composed 0.5.1 at 35e65065a3097c3a98513f3fa9e4e8f0ce499e62 is implementation context, recorded
+  separately in baseline.json and baseline.md; the normative contract is not a copy of its mechanics.
+- ECC source inspection distinguishes a blocking pre-command path from diagnostic post-edit checks. Documentation
+  of a harness or learning system does not demonstrate its benefit.
+- Continuous research, scoped telemetry, evidence-graph access rules and delivery authority include explicit
+  design choices. No inspected product establishes the complete proposed system or universal SOTA status.
+sources:
+- id: SRC-ADH-SKILLS
+  product: Agent Skills
+  version: 69ef37e9424c0a7ea9dd2293b559e43ec8176379
+  title: Skill format
+  url: https://raw.githubusercontent.com/agentskills/agentskills/69ef37e9424c0a7ea9dd2293b559e43ec8176379/docs/specification.mdx
+  locator: Directory structure, metadata, progressive disclosure
+  retrieved_on: '2026-10-24'
+  content_sha256: b9079c0c10b7930e8c6a20ff2bc10cda2a3343c55185120e3f1116a1a529b220
+- id: SRC-ADH-POCOCK
+  product: Matt Pocock skills
+  version: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
+  title: Composable engineering skills
+  url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/README.md
+  locator: Setup questions, grilling, shared language and ADRs
+  retrieved_on: '2026-10-24'
+  content_sha256: 345041d56cf1411b6b3ca1cc54014d26c563890f817f4cb9e2cb193dcd771a3e
+- id: SRC-ADH-SUPERPOWERS
+  product: Superpowers
+  version: 2ce8aa15d05bd57213e6f746f953aafb7ded7a8b
+  title: Development workflow
+  url: https://raw.githubusercontent.com/obra/superpowers/2ce8aa15d05bd57213e6f746f953aafb7ded7a8b/README.md
+  locator: How it works; basic workflow; review and feedback
+  retrieved_on: '2026-10-24'
+  content_sha256: 79f29f50c735862d2e304ea547b4c9aa67d9db6909ff6fb7b5ea922d7bcbc3e7
+- id: SRC-ADH-SPECKIT
+  product: GitHub Spec Kit
+  version: 67e0f7294e6e728ab60bf7b4590deb470448bc2d
+  title: Processes and extensions
+  url: https://raw.githubusercontent.com/github/spec-kit/67e0f7294e6e728ab60bf7b4590deb470448bc2d/README.md
+  locator: Choose your process; capabilities; extension events and distribution
+  retrieved_on: '2026-10-24'
+  content_sha256: 3baa99368443f26244b3a021b40eaf6f167ee591f5759c91315ad50d0a204592
+- id: SRC-ADH-ECC-HOOK
+  product: ECC
+  version: 90606c8315ee09cafc303515c5f33024db6b9882
+  title: Pre-command dispatcher
+  url: https://raw.githubusercontent.com/affaan-m/ECC/90606c8315ee09cafc303515c5f33024db6b9882/scripts/hooks/pre-bash-dispatcher.js
+  locator: Disabled profiles, truncated input and exit status propagation
+  retrieved_on: '2026-10-24'
+  content_sha256: 5ddf5ec18c25272b5874f5fa5a19243ceb6fdf978b3c81fa04e337c59ed25716
+- id: SRC-ADH-ECC-QUALITY
+  product: ECC
+  version: 90606c8315ee09cafc303515c5f33024db6b9882
+  title: Post-edit quality checks
+  url: https://raw.githubusercontent.com/affaan-m/ECC/90606c8315ee09cafc303515c5f33024db6b9882/scripts/hooks/quality-gate.js
+  locator: maybeRunQualityGate; diagnostic logging and pass-through output
+  retrieved_on: '2026-10-24'
+  content_sha256: 939bb07cf4f0ad3b04ed2bf14473328de4445022426404ecae421e4c3662bb42
+- id: SRC-ADH-ECC-EVAL
+  product: ECC
+  version: 90606c8315ee09cafc303515c5f33024db6b9882
+  title: Behavioural evaluation harness
+  url: https://raw.githubusercontent.com/affaan-m/ECC/90606c8315ee09cafc303515c5f33024db6b9882/docker/gateguard-effectiveness/README.md
+  locator: Cost baseline vs hidden-intent evaluation; grader controls; evidence fingerprints; limits
+  retrieved_on: '2026-10-24'
+  content_sha256: 612613fea47bd44d4f2c9384a8224994ba463896857ff3e73738aba4464f7307
+- id: SRC-ADH-ECC-GRADER
+  product: ECC
+  version: 90606c8315ee09cafc303515c5f33024db6b9882
+  title: Executable behavioural grader
+  url: https://raw.githubusercontent.com/affaan-m/ECC/90606c8315ee09cafc303515c5f33024db6b9882/docker/gateguard-effectiveness/scenarios-intent/retry-idempotency/grader.cjs
+  locator: 'submitCharge: timeout, refused connection and attempt ceiling'
+  retrieved_on: '2026-10-24'
+  content_sha256: 0fe2a17654cdcf606a664e57d48831b1c74aeaa6d19f4c0e654cbcacf6c9b5b7
+- id: SRC-ADH-ECC-CONTRACT
+  product: ECC
+  version: 90606c8315ee09cafc303515c5f33024db6b9882
+  title: Contract-first boundary collaboration
+  url: https://raw.githubusercontent.com/affaan-m/ECC/90606c8315ee09cafc303515c5f33024db6b9882/skills/contract-first/SKILL.md
+  locator: Canonical boundary artifact; provider verification; change protocol
+  retrieved_on: '2026-10-24'
+  content_sha256: 3eaacf16a9bbd92888659e9c1e15b0fa4eb96a41c257dd9e08f2e63b824f0cea
+- id: SRC-ADH-ECC-LEARNING
+  product: ECC
+  version: 90606c8315ee09cafc303515c5f33024db6b9882
+  title: Project-scoped learning
+  url: https://raw.githubusercontent.com/affaan-m/ECC/90606c8315ee09cafc303515c5f33024db6b9882/skills/continuous-learning-v2/SKILL.md
+  locator: Instinct provenance, scope and promotion; observer limitations
+  retrieved_on: '2026-10-24'
+  content_sha256: ddad12451a0d582c6ef1b197b7be193bef613cbc74eba4117fcb74fc7a4ecd00
+- id: SRC-ADH-CLAUDE-HOOKS
+  product: Claude Code
+  version: Official reference retrieved 2026-10-24; not an immutable product release
+  title: Hook lifecycle and decisions
+  url: https://code.claude.com/docs/en/hooks.md
+  locator: PreToolUse, PostToolUse, task/subagent events; blocking, errors and timeouts
+  retrieved_on: '2026-10-24'
+  content_sha256: 47ffc799070326108bbd3811db73d26f9a4cd68168078095d923a2ba710fdd8a
+- id: SRC-ADH-PROV
+  product: W3C PROV-O
+  version: W3C Recommendation 2013-04-30
+  title: Provenance vocabulary
+  url: https://www.w3.org/TR/2013/REC-prov-o-20130430/
+  locator: Entities, activities, agents, attribution, derivation, revision and invalidation
+  retrieved_on: '2026-10-24'
+  content_sha256: 6b96671ab84faf12ce3f041aca12c3f93a6df2ed242348810743179a68e69555

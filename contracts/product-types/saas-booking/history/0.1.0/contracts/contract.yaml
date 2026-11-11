@@ -1,0 +1,130 @@
+schema_version: "0.1"
+id: "saas-booking"
+name: "Booking SaaS"
+version: "0.1.0"
+kind: "product-contract"
+status: "draft"
+license: "CC-BY-4.0"
+
+intent:
+  promise: "Let a customer reserve an available time slot or resource without manual intervention."
+  primary_outcome: "A confirmed reservation is unambiguous to the customer and immediately actionable by the operator."
+  success_metrics:
+    - id: "MET-BOOK-001"
+      measure: "At least 95 percent of started reservations reach an explicit confirmed, rejected, or expired decision."
+    - id: "MET-BOOK-002"
+      measure: "No overbooking is detected for finite-capacity slots."
+
+scope:
+  includes: ["Operator-managed resources, capacity, and availability", "Customer search, booking, confirmation, and cancellation", "Optional payment before confirmation"]
+  excludes: ["Yield management", "Multi-operator marketplace and commission settlement"]
+
+actors:
+  - id: "ACT-CUSTOMER"
+    name: "Customer"
+    goals: ["Find reliable availability", "Reserve and retrieve a confirmation"]
+    permissions: ["View public availability", "Create and cancel permitted reservations"]
+  - id: "ACT-OPERATOR"
+    name: "Operator"
+    goals: ["Sell capacity without conflict", "Manage a calendar"]
+    permissions: ["Manage resources", "Define booking rules", "View owned reservations"]
+
+domain:
+  entities:
+    - id: "ENT-RESOURCE"
+      name: "Resource"
+      description: "A bookable asset, service, or person defined by an operator."
+      lifecycle: ["draft", "published", "archived"]
+    - id: "ENT-SLOT"
+      name: "Slot"
+      description: "A time interval for a resource with finite capacity and explicit time zone."
+      lifecycle: ["open", "held", "full", "closed"]
+    - id: "ENT-RESERVATION"
+      name: "Reservation"
+      description: "A customer commitment for a quantity of capacity during a slot."
+      lifecycle: ["draft", "pending_payment", "confirmed", "cancelled", "expired"]
+  glossary:
+    - term: "hold"
+      definition: "A temporary reduction of capacity before a reservation is confirmed."
+    - term: "available capacity"
+      definition: "Total capacity less confirmed reservations and unexpired holds."
+
+capabilities:
+  - id: "CAP-BOOK-001"
+    name: "View availability"
+    priority: "must"
+    actor: "ACT-CUSTOMER"
+    outcome: "The customer sees slots that are actually reservable for their need."
+    requirements:
+      - id: "REQ-BOOK-001"
+        statement: "The system determines availability from the resource schedule, relevant conflicts, and configured booking limits, then shows slots in the resource time zone with remaining capacity where applicable."
+  - id: "CAP-BOOK-002"
+    name: "Reserve capacity"
+    priority: "must"
+    actor: "ACT-CUSTOMER"
+    outcome: "The customer receives an unambiguous confirmation or rejection."
+    requirements:
+      - id: "REQ-BOOK-002"
+        statement: "Reservation creation verifies and decrements capacity atomically."
+      - id: "REQ-BOOK-003"
+        statement: "A confirmation includes an identifier, resource, time with time zone, quantity, and payment status."
+  - id: "CAP-BOOK-003"
+    name: "Manage inventory"
+    priority: "must"
+    actor: "ACT-OPERATOR"
+    outcome: "The operator opens or closes capacity without rewriting reservation history."
+    requirements:
+      - id: "REQ-BOOK-004"
+        statement: "A change that reduces capacity below already confirmed quantity is rejected."
+
+invariants:
+  - id: "INV-BOOK-001"
+    statement: "Confirmed and held quantity never exceeds slot capacity."
+    rationale: "Displayed availability must be trustworthy."
+  - id: "INV-BOOK-002"
+    statement: "A confirmed reservation retains the accepted time and time zone."
+    rationale: "Presentation changes must not change the commitment."
+  - id: "INV-BOOK-003"
+    statement: "Only the relevant customer or an authorised operator can cancel a reservation."
+    rationale: "Reservation integrity and privacy must be protected."
+
+policies:
+  - id: "POL-BOOK-001"
+    decision: "The operator configures a finite payment-hold duration when payment is required."
+    consequence: "Held capacity becomes available and the reservation becomes expired after the configured duration without confirmed payment."
+  - id: "POL-BOOK-002"
+    decision: "The cancellation policy is shown before confirmation."
+    consequence: "Cancellation applies the rule published at booking time."
+
+quality_attributes:
+  - id: "QA-BOOK-001"
+    attribute: "concurrency"
+    target: "One hundred concurrent requests for the last seat result in at most one confirmed reservation."
+  - id: "QA-BOOK-002"
+    attribute: "accessibility"
+    target: "The booking journey is keyboard-operable and all fields have accessible labels."
+
+integrations:
+  - id: "INT-BOOK-001"
+    system: "Payment provider"
+    purpose: "Collect a required payment and receive a signed result."
+    degradation: "No paid reservation is confirmed while the payment result is unavailable."
+
+acceptance:
+  - id: "ACC-BOOK-001"
+    given: "A slot has one available unit of capacity."
+    when: "Two customers attempt to confirm a one-unit reservation concurrently."
+    then: "Exactly one reservation is confirmed and the other receives an availability rejection."
+    evidence: "Reproducible concurrent integration test."
+  - id: "ACC-BOOK-002"
+    given: "A customer has paid for and confirmed a reservation."
+    when: "They view the confirmation."
+    then: "They see its identifier, resource, time with time zone, quantity, and confirmed status."
+    evidence: "Customer journey end-to-end test."
+
+delivery:
+  required_artifacts: ["Operator guide", "Published cancellation policy", "Conformance matrix"]
+  verification: ["ACC-BOOK-001 and ACC-BOOK-002 tests", "Cancellation-authorisation audit"]
+
+extensions:
+  booking.waitlist: "Adds a waitlist without changing capacity invariants."

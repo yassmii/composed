@@ -1,0 +1,73 @@
+schema_version: "0.1"
+research_status: initial
+candidate_products:
+  - Cal.com
+  - Acuity Scheduling
+source_selection:
+  - Use official product documentation and public first-party material.
+  - Record the product version and retrieval date for every source.
+sources:
+  - id: SRC-BOOK-CAL-EVENT-TYPES
+    product: Cal.com
+    version: Unversioned live help documentation; retrieved 2026-10-31
+    title: What are Links (formerly Event Types)
+    url: https://cal.com/help/event-types/event-types.md
+    locator: What are Links; calendar conflict paragraph
+    retrieved_on: 2026-10-31
+    content_sha256: ecde4c88bb66a08512ea395cf4b69fa1eb134b1998d1d084af97cdcc3916647f
+  - id: SRC-BOOK-CAL-CREATE
+    product: Cal.com
+    version: API v2; retrieved 2026-10-31
+    title: Create a booking
+    url: https://cal.com/docs/api-reference/v2/bookings/create-a-booking.md
+    locator: Description; CreateBookingInput.start; attendee.timeZone
+    retrieved_on: 2026-10-31
+    content_sha256: 3258026077c8879e2a37ba54a92b158b079590a3087d4d2622c0053224e558ea
+  - id: SRC-BOOK-CAL-LIMITS
+    product: Cal.com
+    version: API v2; retrieved 2026-10-31
+    title: User booking limits
+    url: https://cal.com/docs/api-reference/v2/user-booking-limits.md
+    locator: How it works; Effect on availability; Check how much of each limit is used
+    retrieved_on: 2026-10-31
+    content_sha256: aba32fbb6942ddc9a5676c744f98af68c1670210077dd0b4cdad4737e17e8bca
+  - id: SRC-BOOK-CAL-WEBHOOKS
+    product: Cal.com
+    version: Unversioned live help documentation; retrieved 2026-10-31
+    title: Webhooks
+    url: https://cal.com/help/webhooks.md
+    locator: Creating a webhook subscription; Expectations with the triggers
+    retrieved_on: 2026-10-31
+    content_sha256: c637b2ff8ebced2876fffa793baba62f6cb564d1e2d9c4559f09ab1046fb5546
+  - id: SRC-BOOK-CAL-RESERVE
+    product: Cal.com
+    version: API v2; cal-api-version 2024-09-04; live documentation; retrieved 2026-10-31
+    title: Reserve a slot
+    url: https://cal.com/docs/api-reference/v2/slots/reserve-a-slot.md
+    locator: Description; reservationDuration; reservationUntil
+    retrieved_on: 2026-10-31
+    content_sha256: 5fb7510e78b5840bdce0b4e3678ea5d7c71ab9a372f9dfcc6f96fb3945120d7b
+  - id: SRC-BOOK-CAL-SEATS
+    product: Cal.com
+    version: Live help documentation; no release version published; retrieved 2026-10-31
+    title: Offer seats
+    url: https://cal.com/help/event-types/offer-seats.md
+    locator: Turn on seats; Review seat requests
+    retrieved_on: 2026-10-31
+    content_sha256: b58bee15e3a8bb6ed2417422e58647b9c73f07cc21f35532acd12b7d293cac62
+  - id: SRC-BOOK-ACUITY-CREATE
+    product: Acuity Scheduling
+    version: API v1; page updated 2025-06-09; retrieved 2026-10-31
+    title: Create an appointment
+    url: https://developers.acuityscheduling.com/reference/post-appointments.md
+    locator: Availability; Booking as an Admin; Errors
+    retrieved_on: 2026-10-31
+    content_sha256: f403616c12ae24b1ac8207119eefe4764bcd06ca4181259e80a8ade962afa3e6
+  - id: SRC-BOOK-ACUITY-TIMES
+    product: Acuity Scheduling
+    version: API v1; page updated 2025-06-09; retrieved 2026-10-31
+    title: Available appointment times
+    url: https://developers.acuityscheduling.com/reference/get-availability-times.md
+    locator: Description; calendarID; timezone
+    retrieved_on: 2026-10-31
+    content_sha256: 2afe64b0e2135b2c804e58bba58cdb9296ead0c5d3c5353e113ff221c3e5ec44

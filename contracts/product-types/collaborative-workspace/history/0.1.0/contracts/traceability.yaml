@@ -1,0 +1,155 @@
+schema_version: "0.1"
+contract_id: "collaborative-workspace"
+contract_version: "0.1.0"
+research_status: "initial"
+links:
+  - {clause: "CAP-CWS-001", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-005"], note: "Scoped sharing is evidenced; the workspace and space model is a contract choice."}
+  - {clause: "REQ-CWS-001", basis: "explicit_project_choice", observations: [], note: "Stable workspace identity, accountable ownership, and policy set define this product boundary."}
+  - {clause: "REQ-CWS-002", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-005"], note: "Notion supports distinct sharing contexts; the specified space types and move semantics are choices."}
+  - {clause: "REQ-CWS-003", basis: "explicit_project_choice", observations: [], note: "Owner-transfer safeguards are a governance choice."}
+  - {clause: "CAP-CWS-002", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-001"], note: "Page-based rich records are evidenced; the complete block vocabulary is a choice."}
+  - {clause: "REQ-CWS-004", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-001"], note: "Pages as database items are evidenced; identity independence is a choice."}
+  - {clause: "REQ-CWS-005", basis: "explicit_project_choice", observations: [], note: "The technology-neutral typed block set is an intentional broad surface."}
+  - {clause: "REQ-CWS-006", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-005"], note: "Granular sharing is evidenced; non-disclosure of inaccessible reference metadata is a choice."}
+  - {clause: "REQ-CWS-007", basis: "explicit_project_choice", observations: [], note: "Backlink behaviour is chosen for navigation and is bounded by access control."}
+  - {clause: "CAP-CWS-003", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-005", "OBS-CWS-007"], note: "Collaborators and discussions are evidenced; convergence and offline guarantees are choices."}
+  - {clause: "REQ-CWS-008", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-005"], note: "Active collaborators are evidenced; visibility choice and editing-location semantics are choices."}
+  - {clause: "REQ-CWS-009", basis: "explicit_project_choice", observations: [], note: "Conflict preservation is required to avoid silent loss."}
+  - {clause: "REQ-CWS-010", basis: "explicit_project_choice", observations: [], note: "Offline draft reconciliation is an optional-product design choice."}
+  - {clause: "REQ-CWS-011", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-007"], note: "Comments and resolution are evidenced; anchor breadth and attribution detail are choices."}
+  - {clause: "CAP-CWS-004", basis: "supported_convergence", observations: ["OBS-CWS-001", "OBS-CWS-002", "OBS-CWS-003"]}
+  - {clause: "REQ-CWS-012", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-001", "OBS-CWS-008"], note: "Rich database items and attributed history are evidenced; full page-per-record semantics are chosen."}
+  - {clause: "REQ-CWS-013", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-002", "OBS-CWS-004"], note: "Property kinds and database configuration are evidenced; required, unique, sensitive, and full type matrix are choices."}
+  - {clause: "REQ-CWS-014", basis: "explicit_project_choice", observations: [], note: "Atomic multi-error validation is chosen for reliable data maintenance."}
+  - {clause: "REQ-CWS-015", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-003"], note: "Relations and rollups are evidenced; authorisation, formula, and cycle semantics are choices."}
+  - {clause: "REQ-CWS-016", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-004"], note: "Sub-items and dependencies are evidenced; neutral task vocabulary is a choice."}
+  - {clause: "CAP-CWS-005", basis: "supported_convergence", observations: ["OBS-CWS-001", "OBS-CWS-002"]}
+  - {clause: "REQ-CWS-017", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-001", "OBS-CWS-002"], note: "Multiple views and property presentation are evidenced; stable identity and write separation are choices."}
+  - {clause: "REQ-CWS-018", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-001", "OBS-CWS-005"], note: "Contextual presentations and permissions are evidenced; linked-view isolation is a choice."}
+  - {clause: "REQ-CWS-019", basis: "explicit_project_choice", observations: [], note: "Personal-versus-shared view lifecycle is a collaboration choice."}
+  - {clause: "REQ-CWS-020", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-001", "OBS-CWS-006"], note: "Multiple layouts and row-level access are evidenced; unified surface enforcement is a choice."}
+  - {clause: "CAP-CWS-006", basis: "explicit_project_choice", observations: [], note: "Search and navigation are core contract choices; research did not target search behaviour."}
+  - {clause: "REQ-CWS-021", basis: "explicit_project_choice", observations: [], note: "Pre-filtered search disclosure is chosen to prevent metadata leakage."}
+  - {clause: "REQ-CWS-022", basis: "explicit_project_choice", observations: [], note: "Organisation aids are a broad product choice."}
+  - {clause: "REQ-CWS-023", basis: "explicit_project_choice", observations: [], note: "Authorised-source limitation for discovery and AI is a safety choice."}
+  - {clause: "CAP-CWS-007", basis: "supported_convergence", observations: ["OBS-CWS-005", "OBS-CWS-006"]}
+  - {clause: "REQ-CWS-024", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-005", "OBS-CWS-006"], note: "Permission levels and sharing are evidenced; complete grant representation is a choice."}
+  - {clause: "REQ-CWS-025", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-005", "OBS-CWS-012"], note: "Sharing-bound integration access is evidenced; enforcement on every listed surface is a choice."}
+  - {clause: "REQ-CWS-026", basis: "supported_convergence", observations: ["OBS-CWS-004", "OBS-CWS-006"]}
+  - {clause: "REQ-CWS-027", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-005"], note: "Timed links are evidenced; indexability and immediate invalidation are choices."}
+  - {clause: "REQ-CWS-028", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-005"], note: "Access requests are evidenced; non-disclosure and complete attribution are choices."}
+  - {clause: "CAP-CWS-008", basis: "supported_convergence", observations: ["OBS-CWS-008", "OBS-CWS-009", "OBS-CWS-015"]}
+  - {clause: "REQ-CWS-029", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-013", "OBS-CWS-015"], note: "Audited and attributed actions are evidenced; complete action coverage and correlation identifiers are choices."}
+  - {clause: "REQ-CWS-030", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-008", "OBS-CWS-009"], note: "Attributed history and version preview are evidenced; meaningful-difference and policy conditions are choices."}
+  - {clause: "REQ-CWS-031", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-009"], note: "Restore is evidenced; append-only restore representation is a choice."}
+  - {clause: "REQ-CWS-032", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-009"], note: "Content recovery is evidenced; universal trash and elevated purge controls are choices."}
+  - {clause: "CAP-CWS-009", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-014"], note: "Portable export is evidenced; templates, forms, and governed import are choices."}
+  - {clause: "REQ-CWS-033", basis: "explicit_project_choice", observations: [], note: "Template isolation is a product choice."}
+  - {clause: "REQ-CWS-034", basis: "explicit_project_choice", observations: [], note: "Form confinement and submitter isolation are choices."}
+  - {clause: "REQ-CWS-035", basis: "explicit_project_choice", observations: [], note: "Previewed import is a portability and integrity choice."}
+  - {clause: "REQ-CWS-036", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-014"], note: "Export formats are evidenced; scope, redaction, and omission reporting are choices."}
+  - {clause: "CAP-CWS-010", basis: "supported_pattern", observations: ["OBS-CWS-007"]}
+  - {clause: "REQ-CWS-037", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-007"], note: "Mentions, replies, assignments, and reminders are evidenced; broader event set is a choice."}
+  - {clause: "REQ-CWS-038", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-005", "OBS-CWS-007"], note: "Notifications and sharing are evidenced; metadata non-disclosure is a choice."}
+  - {clause: "REQ-CWS-039", basis: "explicit_project_choice", observations: [], note: "Delivery preferences and mandatory notice precedence are choices."}
+  - {clause: "CAP-CWS-011", basis: "supported_convergence", observations: ["OBS-CWS-010", "OBS-CWS-011"]}
+  - {clause: "REQ-CWS-040", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-010"], note: "Automation configuration and versioning are evidenced; complete definition fields are choices."}
+  - {clause: "REQ-CWS-041", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-011"], note: "Events and scheduled triggers are evidenced; loop control is a choice."}
+  - {clause: "REQ-CWS-042", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-011", "OBS-CWS-012"], note: "Automated actions and scoped connections are evidenced; no self-escalation is a choice."}
+  - {clause: "REQ-CWS-043", basis: "supported_convergence", observations: ["OBS-CWS-010", "OBS-CWS-011", "OBS-CWS-015"]}
+  - {clause: "REQ-CWS-044", basis: "explicit_project_choice", observations: [], note: "No automatic replay after an indeterminate side effect is a safety choice."}
+  - {clause: "CAP-CWS-012", basis: "supported_convergence", observations: ["OBS-CWS-011", "OBS-CWS-012", "OBS-CWS-015"]}
+  - {clause: "REQ-CWS-045", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-012"], note: "Explicitly shared connections are evidenced; full lifecycle metadata is a choice."}
+  - {clause: "REQ-CWS-046", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-012"], note: "Scoped integration access is evidenced; delivery revocation is a choice."}
+  - {clause: "REQ-CWS-047", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-011", "OBS-CWS-012"], note: "Webhook action and failure pause are evidenced; origin and replay validation are choices."}
+  - {clause: "REQ-CWS-048", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-015"], note: "Integration attribution is evidenced; equal write semantics are a choice."}
+  - {clause: "CAP-CWS-013", basis: "explicit_project_choice", observations: [], note: "AI assistance is an optional product choice and not asserted by the researched sources."}
+  - {clause: "REQ-CWS-049", basis: "explicit_project_choice", observations: [], note: "Declared AI request boundaries are a choice."}
+  - {clause: "REQ-CWS-050", basis: "explicit_project_choice", observations: [], note: "Scoped retrieval and source provenance are chosen safeguards."}
+  - {clause: "REQ-CWS-051", basis: "explicit_project_choice", observations: [], note: "Assistant attribution and editability are choices."}
+  - {clause: "REQ-CWS-052", basis: "explicit_project_choice", observations: [], note: "Consequential assistant limits are chosen safeguards."}
+  - {clause: "CAP-CWS-014", basis: "supported_convergence", observations: ["OBS-CWS-013", "OBS-CWS-014"]}
+  - {clause: "REQ-CWS-053", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-011", "OBS-CWS-013"], note: "Owner controls and audit governance are evidenced; complete policy matrix is a choice."}
+  - {clause: "REQ-CWS-054", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-013"], note: "Filterable and exportable audit metadata are evidenced; authorisation and content separation are choices."}
+  - {clause: "REQ-CWS-055", basis: "explicit_project_choice", observations: [], note: "Retention and legal-hold precedence are deferred governance choices."}
+  - {clause: "REQ-CWS-056", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-014"], note: "Export and backup are evidenced; restore and migration declaration requirements are choices."}
+  - {clause: "CAP-CWS-015", basis: "explicit_project_choice", observations: [], note: "Accessibility, locale, and client fallback are quality choices not covered by this initial research."}
+  - {clause: "REQ-CWS-057", basis: "explicit_project_choice", observations: [], note: "Accessible core-flow requirement is a choice."}
+  - {clause: "REQ-CWS-058", basis: "explicit_project_choice", observations: [], note: "Locale and time-zone preservation is a choice."}
+  - {clause: "REQ-CWS-059", basis: "explicit_project_choice", observations: [], note: "Safe client fallback is a choice."}
+  - {clause: "INV-CWS-001", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-005", "OBS-CWS-012"], note: "Scoped sharing is evidenced; universal derived-surface coverage is a choice."}
+  - {clause: "INV-CWS-002", basis: "explicit_project_choice", observations: [], note: "Stable identity and reference preservation are choices."}
+  - {clause: "INV-CWS-003", basis: "explicit_project_choice", observations: [], note: "Atomic conflict behaviour is a collaboration-integrity choice."}
+  - {clause: "INV-CWS-004", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-009", "OBS-CWS-013"], note: "Restore and audit history are evidenced; no accountability rewrite is a choice."}
+  - {clause: "INV-CWS-005", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-005", "OBS-CWS-006"], note: "Permissions on base and item surfaces are evidenced; complete derived-surface closure is a choice."}
+  - {clause: "INV-CWS-006", basis: "explicit_project_choice", observations: [], note: "Pure evaluation of computed and discovery surfaces is a safety choice."}
+  - {clause: "INV-CWS-007", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-012"], note: "Explicit scope sharing is evidenced; no self-authorisation is a choice."}
+  - {clause: "INV-CWS-008", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-005", "OBS-CWS-012"], note: "Timed sharing and scoped connections are evidenced; immediate broad invalidation is a choice."}
+  - {clause: "INV-CWS-009", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-013"], note: "Audit metadata exclusion of page content is evidenced; universal masking is a choice."}
+  - {clause: "INV-CWS-010", basis: "explicit_project_choice", observations: [], note: "Legal-hold precedence is a deferred compliance choice."}
+  - {clause: "POL-CWS-001", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-006"], note: "Content-versus-structure permissions are evidenced; full authority split is a choice."}
+  - {clause: "POL-CWS-002", basis: "explicit_project_choice", observations: [], note: "Fail-closed authorisation is a security choice."}
+  - {clause: "POL-CWS-003", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-011", "OBS-CWS-012"], note: "Webhook policy controls are evidenced; complete opt-in egress matrix is a choice."}
+  - {clause: "POL-CWS-004", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-001"], note: "Contextual presentations are evidenced; private personal views are a choice."}
+  - {clause: "POL-CWS-005", basis: "explicit_project_choice", observations: [], note: "Automation risk classification and approval are safety choices."}
+  - {clause: "POL-CWS-006", basis: "explicit_project_choice", observations: [], note: "Assistant proposal default is a safety choice."}
+  - {clause: "POL-CWS-007", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-008", "OBS-CWS-013", "OBS-CWS-014"], note: "The sources separate history, audit, and export; independent purposes are a choice."}
+  - {clause: "POL-CWS-008", basis: "explicit_project_choice", observations: [], note: "Schema-preview migration is an integrity choice."}
+  - {clause: "QA-CWS-001", basis: "explicit_project_choice", observations: [], note: "Zero unauthorised disclosure is a measurable contract target."}
+  - {clause: "QA-CWS-002", basis: "explicit_project_choice", observations: [], note: "Concurrent-edit integrity target is a choice."}
+  - {clause: "QA-CWS-003", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-013", "OBS-CWS-015"], note: "Attributed events are evidenced; 100% coverage and correlation target are choices."}
+  - {clause: "QA-CWS-004", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-009"], note: "Restore is evidenced; retained dual revisions target is a choice."}
+  - {clause: "QA-CWS-005", basis: "explicit_project_choice", observations: [], note: "Revocation target is a choice."}
+  - {clause: "QA-CWS-006", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-010", "OBS-CWS-011"], note: "Run failures and pauses are evidenced; complete masked run evidence is a choice."}
+  - {clause: "QA-CWS-007", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-014"], note: "Portable export is evidenced; round-trip fidelity target is a choice."}
+  - {clause: "QA-CWS-008", basis: "explicit_project_choice", observations: [], note: "Accessibility target is a choice."}
+  - {clause: "CAP-CWS-016", basis: "supported_convergence", observations: ["OBS-CWS-016", "OBS-CWS-018", "OBS-CWS-020"]}
+  - {clause: "REQ-CWS-060", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-016", "OBS-CWS-018", "OBS-CWS-019", "OBS-CWS-020"], note: "AGPL and MIT references demonstrate free licensing while Anytype demonstrates the source-available counterexample; requiring every must component to use an OSI-approved licence is a contract choice."}
+  - {clause: "REQ-CWS-061", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-016", "OBS-CWS-017"], note: "Self-hosting is evidenced; clean-room operation without vendor identity, telemetry, or proprietary runtime is a choice."}
+  - {clause: "REQ-CWS-062", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-017", "OBS-CWS-019", "OBS-CWS-020"], note: "Local-first operation and automatic CRDT merge are evidenced; durable identity and explicit conflict behaviour are choices."}
+  - {clause: "REQ-CWS-063", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-019", "OBS-CWS-020"], note: "Encrypted peer synchronisation is evidenced; topology and explicit end-to-end-encryption limitations are choices."}
+  - {clause: "REQ-CWS-064", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-014", "OBS-CWS-016"], note: "Portability and self-hosting are evidenced; rehearsed migration semantics and machine-readable result are choices."}
+  - {clause: "CAP-CWS-017", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-016", "OBS-CWS-020"], note: "The alternatives make performance and collaboration claims; measurable workload conformance is a choice."}
+  - {clause: "REQ-CWS-065", basis: "explicit_project_choice", observations: [], note: "The benchmark scale and disclosure requirements are a performance choice."}
+  - {clause: "REQ-CWS-066", basis: "explicit_project_choice", observations: [], note: "The latency limits are deliberate product targets, not claims drawn from the sources."}
+  - {clause: "REQ-CWS-067", basis: "explicit_project_choice", observations: [], note: "Complete benchmark reporting is a transparency choice."}
+  - {clause: "REQ-CWS-068", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-020"], note: "Local durability and offline operation are evidenced; degraded-operation safeguards are choices."}
+  - {clause: "INV-CWS-011", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-016", "OBS-CWS-018", "OBS-CWS-019", "OBS-CWS-020"], note: "Free and source-available licensing differences are evidenced; the no-mandatory-vendor invariant is a choice."}
+  - {clause: "INV-CWS-012", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-020"], note: "Offline CRDT merging is evidenced; the complete durable-change lifecycle is a choice."}
+  - {clause: "INV-CWS-013", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-016", "OBS-CWS-020"], note: "Self-hosting and local data control are evidenced; closed-default egress is a choice."}
+  - {clause: "POL-CWS-009", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-016", "OBS-CWS-018", "OBS-CWS-019"], note: "AGPL cores and a source-available counterexample are evidenced; free-core coverage is a choice."}
+  - {clause: "POL-CWS-010", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-017", "OBS-CWS-019", "OBS-CWS-020"], note: "Local-first and optional synchronisation patterns are evidenced; opt-in external services are a choice."}
+  - {clause: "QA-CWS-009", basis: "explicit_project_choice", observations: [], note: "Clean-room software-freedom measurement is a contract target."}
+  - {clause: "QA-CWS-010", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-020"], note: "Automatic offline merge is evidenced; 100% target and explicit conflict condition are choices."}
+  - {clause: "QA-CWS-011", basis: "explicit_project_choice", observations: [], note: "Responsive-operation targets are deliberate performance requirements."}
+  - {clause: "QA-CWS-012", basis: "explicit_project_choice", observations: [], note: "Self-hosted privacy-egress target is a data-control requirement."}
+  - {clause: "CAP-CWS-018", basis: "supported_convergence", observations: ["OBS-CWS-021", "OBS-CWS-022"]}
+  - {clause: "REQ-CWS-069", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-021", "OBS-CWS-022"], note: "Repository-backed content and a rebuildable index are evidenced; the complete workspace representation, attachment manifests, and secret exclusion are choices."}
+  - {clause: "REQ-CWS-070", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-021"], note: "Repository persistence is evidenced; deterministic semantic commits and complete actor provenance are choices."}
+  - {clause: "REQ-CWS-071", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-020", "OBS-CWS-021"], note: "Collaborative operation merging and repository persistence are evidenced separately; checkpoint semantics and no-per-keystroke commits are choices."}
+  - {clause: "REQ-CWS-072", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-022"], note: "A rebuildable index is evidenced; the complete derived-service recovery rule is a choice."}
+  - {clause: "REQ-CWS-073", basis: "explicit_project_choice", observations: [], note: "Hash-addressed attachment manifests are a portability and integrity choice."}
+  - {clause: "REQ-CWS-074", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-021", "OBS-CWS-022"], note: "Direct repository authority and derived updates are evidenced; mandatory validation before exposure is a choice."}
+  - {clause: "INV-CWS-014", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-021", "OBS-CWS-022"], note: "Repository source-of-truth and rebuildable indexes are evidenced; reachability of every recoverable state is a choice."}
+  - {clause: "INV-CWS-015", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-009", "OBS-CWS-021"], note: "Restoration and repository history are evidenced; append-only Git recovery is a choice."}
+  - {clause: "POL-CWS-011", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-021", "OBS-CWS-022"], note: "Git content authority and derived indexes are evidenced; treating all other services as replaceable is a choice."}
+  - {clause: "POL-CWS-012", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-020", "OBS-CWS-021"], note: "CRDT collaboration and repository edits are evidenced; semantic rather than keystroke commits are a choice."}
+  - {clause: "QA-CWS-013", basis: "explicit_project_choice", observations: [], note: "Complete Git provenance target is a contract measurement."}
+  - {clause: "QA-CWS-014", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-022"], note: "Rebuildable indexing is evidenced; the full derived-store recovery target is a choice."}
+  - {clause: "CAP-CWS-019", basis: "supported_convergence", observations: ["OBS-CWS-023", "OBS-CWS-024", "OBS-CWS-025"]}
+  - {clause: "REQ-CWS-075", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-023"], note: "Authentication lifecycle controls are evidenced; the explicit account entity and no-default-privilege rule are contract choices."}
+  - {clause: "REQ-CWS-076", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-023"], note: "ASVS covers MFA and federated authentication; a non-vendor-controlled public-key path for privileged self-hosted operation is a contract choice."}
+  - {clause: "REQ-CWS-077", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-023"], note: "ASVS addresses automation and recovery protection; the complete abuse-control and non-enumeration behaviour is a contract choice."}
+  - {clause: "REQ-CWS-078", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-023", "OBS-CWS-024"], note: "ASVS covers credential and session protection; Git, audit, diagnostic, and export exclusion plus rotation are contract choices."}
+  - {clause: "REQ-CWS-079", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-024"], note: "ASVS requires session-token and lifecycle controls; the explicit session representation and metadata are contract choices."}
+  - {clause: "REQ-CWS-080", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-024", "OBS-CWS-025"], note: "ASVS requires renewal after authentication or reauthentication and account-lifecycle termination; complete invalidation conditions are contract choices."}
+  - {clause: "REQ-CWS-081", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-024", "OBS-CWS-025"], note: "ASVS requires session termination capability and disabled-account termination; device-context inspection and next-operation containment are contract choices."}
+  - {clause: "REQ-CWS-082", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-024", "OBS-CWS-025"], note: "ASVS requires reauthentication before sensitive account changes; the precise list of workspace-sensitive actions is a contract choice."}
+  - {clause: "REQ-CWS-083", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-023"], note: "ASVS covers recovery and revocable time-bounded recovery evidence; cooling-off and review policy are contract choices."}
+  - {clause: "REQ-CWS-084", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-023", "OBS-CWS-024"], note: "ASVS treats authentication and session handling as verifiable controls; the exhaustive redacted event ledger is a contract choice."}
+  - {clause: "INV-CWS-016", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-023", "OBS-CWS-024"], note: "Authentication and session validation are evidenced; their interaction with Git and content grants is a contract choice."}
+  - {clause: "INV-CWS-017", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-023", "OBS-CWS-024", "OBS-CWS-025"], note: "Termination and revocation conditions are evidenced; fail-closed observation on every protected operation is a contract choice."}
+  - {clause: "POL-CWS-013", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-023", "OBS-CWS-024"], note: "MFA, reauthentication, and federated controls are evidenced; public-key preference and policy configurability are contract choices."}
+  - {clause: "POL-CWS-014", basis: "supported_pattern_and_choice", observations: ["OBS-CWS-023", "OBS-CWS-024"], note: "ASVS covers sensitive credential and session handling; Git separation and redacted audit policy are contract choices."}
+  - {clause: "QA-CWS-015", basis: "explicit_project_choice", observations: [], note: "Zero post-invalidation protected operations is the contract's measurable containment target."}
+  - {clause: "QA-CWS-016", basis: "explicit_project_choice", observations: [], note: "Complete redacted security-event accountability is the contract's measurement target."}

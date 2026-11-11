@@ -1,0 +1,87 @@
+{
+  "format_version": 1,
+  "kind": "contract-update-proposal",
+  "date": "2026-11-01",
+  "family": "video-editorial-workflow",
+  "title": "Revision-bound notes and exact handoff evidence",
+  "status": "proposed",
+  "baseline": {
+    "version": "0.3.1",
+    "contract_sha256": "a4f7a84b5f4f5040a2e7bdb82126328a7fbe18e2fab97783caeb68a16e673849",
+    "traceability_sha256": "59f39afa9bbfcb8ffa2ffec9604883f83329b4840e65666b14e3d7d1eedade70"
+  },
+  "candidate": {
+    "version": "1.0.0",
+    "status": "candidate",
+    "schema_version": "0.1",
+    "contract_sha256": "e922dca59c17f2a4ee9e8e955ef2ddd7304fce5ae701be570f3374113a42adea"
+  },
+  "classification": "Breaking strengthened obligations/evidence; author assessment, not automatic tool compatibility",
+  "reason": "Frame.io supports media-specific annotations and comparison, but equal labels or linked playback do not identify immutable media coordinates. Native Adobe snapshots remain unavailable, so compatibility guarantees must stay explicit product choices rather than rely on the qualified historical EDL claim.",
+  "changed_clauses": [
+    {
+      "id": "REQ-VEW-008",
+      "before": "Le produit conserve avec chaque export le résultat de sa vérification et ne déclare pas la compatibilité avec un environnement de montage tant qu'une preuve de recette n'est pas enregistrée.",
+      "after": "Le produit conserve avec chaque export le résultat de sa vérification et ne déclare pas la compatibilité avec un environnement de montage tant qu'une preuve de recette n'est pas enregistrée. La recette identifie les octets exacts de l’export, la version de sélection et des entrées, ainsi que l’application, sa version et les réglages pertinents de l’environnement destinataire. Elle distingue vérification interne, recette réussie, échec et recette non exécutée; une recette d’autres octets ou d’un autre environnement ne se transfère pas silencieusement.",
+      "planned_cases": [
+        "ACC-VEW-009"
+      ]
+    },
+    {
+      "id": "REQ-VEW-013",
+      "before": "Une note éditoriale publiée indique son auteur et se rattache à une sélection, une matière ou une position temporelle identifiée.",
+      "after": "Une note éditoriale publiée indique son auteur et se rattache à une sélection, une matière ou une position temporelle identifiée. La référence inclut la version de matière ou de sélection concernée et le repère temporel propre au média. Si une plage est proposée, ses deux bornes et leur unité sont conservées. Une position hors limites ou une référence manquante est rejetée ou explicitement non résolue, jamais déplacée silencieusement vers une autre image ou version.",
+      "planned_cases": [
+        "ACC-VEW-008"
+      ]
+    },
+    {
+      "id": "REQ-VEW-014",
+      "before": "Lorsqu'un éditeur compare des matières, le produit conserve l'identité de chaque matière et rattache sans ambiguïté toute note à celle qu'elle concerne.",
+      "after": "Lorsqu'un éditeur compare des matières, le produit conserve l'identité de chaque matière et rattache sans ambiguïté toute note à celle qu'elle concerne. Le changement de côté, d’ordre, de nom ou de version affichée ne réattribue pas les notes existantes. Les repères sont ceux du média visé, même si les durées, cadences ou commandes de lecture diffèrent; une lecture liée ne prouve pas des coordonnées identiques.",
+      "planned_cases": [
+        "ACC-VEW-008"
+      ]
+    },
+    {
+      "id": "QA-VEW-005",
+      "before": "100 % des exports remis déclarent leur format, leurs limites connues et le résultat de recette enregistré pour l'environnement de montage concerné.",
+      "after": "100 % des exports remis déclarent leur format, leurs limites connues et leur état de recette pour l’environnement de montage identifié. Une compatibilité vérifiée exige une recette réussie portant sur les octets et l’environnement exacts; échec, absence de recette et vérification interne seule ne deviennent pas une compatibilité confirmée.",
+      "planned_cases": [
+        "ACC-VEW-009"
+      ]
+    }
+  ],
+  "retained_cases": [
+    "ACC-VEW-001",
+    "ACC-VEW-002",
+    "ACC-VEW-003",
+    "ACC-VEW-004",
+    "ACC-VEW-005",
+    "ACC-VEW-006",
+    "ACC-VEW-007"
+  ],
+  "added_cases": [
+    "ACC-VEW-008",
+    "ACC-VEW-009"
+  ],
+  "product_acceptance": "not_run",
+  "proof_transfer": "not_performed",
+  "deferred": "Both native Adobe URLs still return HTTP 403 and VEW-REFRESH-001 remains open for the historical observation. No EDL fidelity, native import or editor performance is claimed. Range comments remain conditional; extra editorial workflows and actual environment fixtures await deepening.",
+  "applicability": "Retain declared optional modules; justified conditional not_applicable is separate from not_run or failure, without weakening unconditional obligations.",
+  "validation": {
+    "schema_and_traceability": "passed",
+    "tooling_tests": {
+      "passed": 68,
+      "failed": 0,
+      "skipped": 0
+    },
+    "synthetic_example": "passed",
+    "native_impact": "impact.json",
+    "candidate_integrity": "passed",
+    "baseline_preservation": "passed",
+    "product_acceptance": "not_run",
+    "independent_review": "pending",
+    "stable_promotion": "not_performed"
+  }
+}

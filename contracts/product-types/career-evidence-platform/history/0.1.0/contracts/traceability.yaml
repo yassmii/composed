@@ -1,0 +1,633 @@
+schema_version: '0.1'
+contract_id: career-evidence-platform
+contract_version: 0.1.0
+research_status: initial
+links:
+- clause: CAP-CEP-001
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-003
+  - OBS-CEP-005
+  note: The cited pattern informs this clause; its mandatory safeguards, exact scope and observable guarantees are
+    deliberate choices of this product family.
+- clause: REQ-CEP-001
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-003
+  - OBS-CEP-005
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-002
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-003
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-003
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-003
+  - OBS-CEP-005
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-004
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-003
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: CAP-CEP-002
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-001
+  - OBS-CEP-014
+  note: The cited pattern informs this clause; its mandatory safeguards, exact scope and observable guarantees are
+    deliberate choices of this product family.
+- clause: REQ-CEP-005
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-001
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-006
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice. Public sources do not establish this requirement as a universal competitor
+    behavior.
+- clause: REQ-CEP-007
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-014
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-008
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice. Public sources do not establish this requirement as a universal competitor
+    behavior.
+- clause: REQ-CEP-009
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice. Public sources do not establish this requirement as a universal competitor
+    behavior.
+- clause: CAP-CEP-003
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-001
+  - OBS-CEP-014
+  note: The cited pattern informs this clause; its mandatory safeguards, exact scope and observable guarantees are
+    deliberate choices of this product family.
+- clause: REQ-CEP-010
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice. Public sources do not establish this requirement as a universal competitor
+    behavior.
+- clause: REQ-CEP-011
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-014
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-012
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-014
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-013
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice. Public sources do not establish this requirement as a universal competitor
+    behavior.
+- clause: CAP-CEP-004
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-009
+  - OBS-CEP-010
+  - OBS-CEP-014
+  note: The cited pattern informs this clause; its mandatory safeguards, exact scope and observable guarantees are
+    deliberate choices of this product family.
+- clause: REQ-CEP-014
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-009
+  - OBS-CEP-010
+  - OBS-CEP-014
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-015
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-014
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-016
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-014
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-017
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-014
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-018
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice. Public sources do not establish this requirement as a universal competitor
+    behavior.
+- clause: CAP-CEP-005
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-007
+  - OBS-CEP-012
+  - OBS-CEP-013
+  note: The cited pattern informs this clause; its mandatory safeguards, exact scope and observable guarantees are
+    deliberate choices of this product family.
+- clause: REQ-CEP-019
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-007
+  - OBS-CEP-014
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-020
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-013
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-021
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-013
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-022
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-013
+  - OBS-CEP-014
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-023
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice. Public sources do not establish this requirement as a universal competitor
+    behavior.
+- clause: CAP-CEP-006
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-005
+  - OBS-CEP-006
+  note: The cited pattern informs this clause; its mandatory safeguards, exact scope and observable guarantees are
+    deliberate choices of this product family.
+- clause: REQ-CEP-024
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-006
+  - OBS-CEP-014
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-025
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice. Public sources do not establish this requirement as a universal competitor
+    behavior.
+- clause: REQ-CEP-026
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice. Public sources do not establish this requirement as a universal competitor
+    behavior.
+- clause: REQ-CEP-027
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice. Public sources do not establish this requirement as a universal competitor
+    behavior.
+- clause: REQ-CEP-028
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice. Public sources do not establish this requirement as a universal competitor
+    behavior.
+- clause: CAP-CEP-007
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-005
+  - OBS-CEP-007
+  - OBS-CEP-017
+  note: The cited pattern informs this clause; its mandatory safeguards, exact scope and observable guarantees are
+    deliberate choices of this product family.
+- clause: REQ-CEP-029
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-005
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-030
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-005
+  - OBS-CEP-017
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-031
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-005
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-032
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice. Public sources do not establish this requirement as a universal competitor
+    behavior.
+- clause: CAP-CEP-008
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-002
+  - OBS-CEP-004
+  - OBS-CEP-010
+  - OBS-CEP-011
+  note: The cited pattern informs this clause; its mandatory safeguards, exact scope and observable guarantees are
+    deliberate choices of this product family.
+- clause: REQ-CEP-033
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-014
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-034
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-002
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-035
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-011
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-036
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-002
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-037
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-010
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: CAP-CEP-009
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice, not established as a universal competitor behavior.
+- clause: REQ-CEP-038
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice. Public sources do not establish this requirement as a universal competitor
+    behavior.
+- clause: REQ-CEP-039
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice. Public sources do not establish this requirement as a universal competitor
+    behavior.
+- clause: REQ-CEP-040
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice. Public sources do not establish this requirement as a universal competitor
+    behavior.
+- clause: REQ-CEP-041
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice. Public sources do not establish this requirement as a universal competitor
+    behavior.
+- clause: REQ-CEP-042
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice. Public sources do not establish this requirement as a universal competitor
+    behavior.
+- clause: REQ-CEP-043
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice. Public sources do not establish this requirement as a universal competitor
+    behavior.
+- clause: CAP-CEP-010
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice, not established as a universal competitor behavior.
+- clause: REQ-CEP-044
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice. Public sources do not establish this requirement as a universal competitor
+    behavior.
+- clause: REQ-CEP-045
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice. Public sources do not establish this requirement as a universal competitor
+    behavior.
+- clause: REQ-CEP-046
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice. Public sources do not establish this requirement as a universal competitor
+    behavior.
+- clause: REQ-CEP-047
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice. Public sources do not establish this requirement as a universal competitor
+    behavior.
+- clause: CAP-CEP-011
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-008
+  - OBS-CEP-009
+  - OBS-CEP-015
+  note: The cited pattern informs this clause; its mandatory safeguards, exact scope and observable guarantees are
+    deliberate choices of this product family.
+- clause: REQ-CEP-048
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-008
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-049
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-008
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-050
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice. Public sources do not establish this requirement as a universal competitor
+    behavior.
+- clause: REQ-CEP-051
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-009
+  - OBS-CEP-015
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-052
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-008
+  - OBS-CEP-009
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: CAP-CEP-012
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-016
+  - OBS-CEP-008
+  note: The cited pattern informs this clause; its mandatory safeguards, exact scope and observable guarantees are
+    deliberate choices of this product family.
+- clause: REQ-CEP-053
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-016
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-054
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-016
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-055
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice. Public sources do not establish this requirement as a universal competitor
+    behavior.
+- clause: CAP-CEP-013
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-010
+  - OBS-CEP-011
+  note: The cited pattern informs this clause; its mandatory safeguards, exact scope and observable guarantees are
+    deliberate choices of this product family.
+- clause: REQ-CEP-056
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-010
+  - OBS-CEP-011
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-057
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-010
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-058
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-002
+  - OBS-CEP-011
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: CAP-CEP-014
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice, not established as a universal competitor behavior.
+- clause: REQ-CEP-059
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice. Public sources do not establish this requirement as a universal competitor
+    behavior.
+- clause: REQ-CEP-060
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice. Public sources do not establish this requirement as a universal competitor
+    behavior.
+- clause: REQ-CEP-061
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice. Public sources do not establish this requirement as a universal competitor
+    behavior.
+- clause: CAP-CEP-015
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-014
+  - OBS-CEP-017
+  - OBS-CEP-018
+  - OBS-CEP-020
+  - OBS-CEP-021
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-062
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-014
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-063
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-017
+  - OBS-CEP-018
+  - OBS-CEP-020
+  - OBS-CEP-021
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-064
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-017
+  - OBS-CEP-018
+  - OBS-CEP-020
+  - OBS-CEP-021
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: REQ-CEP-065
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice. Public sources do not establish this requirement as a universal competitor
+    behavior.
+- clause: INV-CEP-001
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice, not established as a universal competitor behavior.
+- clause: INV-CEP-002
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-009
+  - OBS-CEP-010
+  - OBS-CEP-015
+  note: The cited pattern informs this clause; its mandatory safeguards, exact scope and observable guarantees are
+    deliberate choices of this product family.
+- clause: INV-CEP-003
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-014
+  note: The cited pattern informs this clause; its mandatory safeguards, exact scope and observable guarantees are
+    deliberate choices of this product family.
+- clause: INV-CEP-004
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice, not established as a universal competitor behavior.
+- clause: INV-CEP-005
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice, not established as a universal competitor behavior.
+- clause: INV-CEP-006
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice, not established as a universal competitor behavior.
+- clause: INV-CEP-007
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice, not established as a universal competitor behavior.
+- clause: INV-CEP-008
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice, not established as a universal competitor behavior.
+- clause: INV-CEP-009
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-013
+  - OBS-CEP-014
+  note: The cited pattern informs this clause; its mandatory safeguards, exact scope and observable guarantees are
+    deliberate choices of this product family.
+- clause: INV-CEP-010
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice, not established as a universal competitor behavior.
+- clause: POL-CEP-001
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-001
+  - OBS-CEP-002
+  - OBS-CEP-011
+  note: The cited pattern informs this clause; its mandatory safeguards, exact scope and observable guarantees are
+    deliberate choices of this product family.
+- clause: POL-CEP-002
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice. Public sources do not establish this requirement as a universal competitor
+    behavior.
+- clause: POL-CEP-003
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-007
+  - OBS-CEP-013
+  note: The cited pattern informs this clause; its mandatory safeguards, exact scope and observable guarantees are
+    deliberate choices of this product family.
+- clause: POL-CEP-004
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-003
+  note: The cited pattern informs this clause; its mandatory safeguards, exact scope and observable guarantees are
+    deliberate choices of this product family.
+- clause: POL-CEP-005
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-009
+  - OBS-CEP-010
+  note: The cited pattern informs this clause; its mandatory safeguards, exact scope and observable guarantees are
+    deliberate choices of this product family.
+- clause: POL-CEP-006
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice, not established as a universal competitor behavior.
+- clause: POL-CEP-007
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice, not established as a universal competitor behavior.
+- clause: POL-CEP-008
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice. Public sources do not establish this requirement as a universal competitor
+    behavior.
+- clause: POL-CEP-009
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice, not established as a universal competitor behavior.
+- clause: QA-CEP-001
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice, not established as a universal competitor behavior.
+- clause: QA-CEP-002
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-019
+  note: The cited pattern informs this clause; its mandatory safeguards, exact scope and observable guarantees are
+    deliberate choices of this product family.
+- clause: QA-CEP-003
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-010
+  - OBS-CEP-014
+  note: The cited pattern informs this clause; its mandatory safeguards, exact scope and observable guarantees are
+    deliberate choices of this product family.
+- clause: QA-CEP-004
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice, not established as a universal competitor behavior.
+- clause: QA-CEP-005
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice, not established as a universal competitor behavior.
+- clause: QA-CEP-006
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-011
+  note: The cited pattern informs this clause; its mandatory safeguards, exact scope and observable guarantees are
+    deliberate choices of this product family.
+- clause: QA-CEP-007
+  basis: supported_pattern_and_choice
+  observations:
+  - OBS-CEP-017
+  - OBS-CEP-018
+  - OBS-CEP-020
+  - OBS-CEP-021
+  note: The cited observation supports part of the pattern only; the exact requirement, safeguards and acceptance
+    threshold are explicit product-family choices.
+- clause: QA-CEP-008
+  basis: explicit_project_choice
+  observations: []
+  note: Explicit product-family choice, not established as a universal competitor behavior.

@@ -1,0 +1,93 @@
+{
+  "format_version": 1,
+  "kind": "contract-update-proposal",
+  "date": "2026-11-01",
+  "family": "git-backed-cms",
+  "title": "Approval of integrated revisions and authenticated transitions",
+  "status": "proposed",
+  "baseline": {
+    "version": "0.1.0",
+    "contract_sha256": "2a587a23d8c9999c138a194bd8adc4a9569f4c94acf4332ecaa98f3011a23412",
+    "traceability_sha256": "68ed635aea06c9f1d196abcfa1a4d8feed61b73e5d03a3636ef0b4a2b750caec"
+  },
+  "candidate": {
+    "version": "1.0.0",
+    "status": "candidate",
+    "schema_version": "0.1",
+    "contract_sha256": "3c1b588800a402bf2a976a8e5d8aad2444f6f1d7a945182217f90fd835b4c125"
+  },
+  "classification": "Breaking strengthened obligations/evidence; author assessment, not automatic tool compatibility",
+  "reason": "The existing comparison leaves authenticated actor binding and concurrent approved changes open. Revalidation of a clean merge does not prove that anyone approved the actual integrated revision.",
+  "changed_clauses": [
+    {
+      "id": "REQ-GCMS-012",
+      "before": "A change is in exactly one review state (draft, in_review, approved, published, or abandoned); every transition records the actor, the time, and the change revision it applies to.",
+      "after": "A change is in exactly one review state (draft, in_review, approved, published, or abandoned); every transition records the actor, the time, and the change revision it applies to. Approval and publication transitions bind that actor to authenticated authorisation evidence in the declared deployment trust boundary. A commit author name, email, role label or agent-written approval record alone cannot establish an authorised approval; the binding is inspectable by an authorised auditor without exposing credentials.",
+      "planned_cases": [
+        "ACC-GCMS-014"
+      ]
+    },
+    {
+      "id": "REQ-GCMS-014",
+      "before": "Approval applies to one revision of a change; recording a newer revision on the change returns it to in_review.",
+      "after": "Approval applies to one revision of a change; recording a newer revision on the change returns it to in_review. The approval record also identifies the model state and publication base against which the revision was reviewed; a changed integrated content/model revision cannot inherit the old approval merely because the merge is conflict-free.",
+      "planned_cases": [
+        "ACC-GCMS-013"
+      ]
+    },
+    {
+      "id": "REQ-GCMS-015",
+      "before": "Publishing makes an approved revision's content the published revision in one atomic step; consumers observe either the previous or the new published revision, never a mixture.",
+      "after": "Publishing makes an approved revision's content the published revision in one atomic step; consumers observe either the previous or the new published revision, never a mixture. Immediately before that atomic publication decision, the publisher must still be authorised, the reviewed integrated revision must have valid approval, and the publication base must still match the current published revision. A concurrent advance leaves the candidate unpublished for combination, validation and renewed review.",
+      "planned_cases": [
+        "ACC-GCMS-013",
+        "ACC-GCMS-014"
+      ]
+    },
+    {
+      "id": "REQ-GCMS-016",
+      "before": "If the published revision advanced after approval, the change is combined with the current published revision and validated again; a conflicting or invalid result is refused and the published revision is left unchanged.",
+      "after": "If the published revision advanced after approval, the change is combined with the current published revision and validated again; a conflicting or invalid result is refused and the published revision is left unchanged. A successful combination creates an inspectable integrated candidate revision and returns it to review; publication requires fresh approval of that exact revision even when the merge was clean. A further publication-base advance repeats these checks rather than silently publishing against a stale base.",
+      "planned_cases": [
+        "ACC-GCMS-013"
+      ]
+    }
+  ],
+  "retained_cases": [
+    "ACC-GCMS-001",
+    "ACC-GCMS-002",
+    "ACC-GCMS-003",
+    "ACC-GCMS-004",
+    "ACC-GCMS-005",
+    "ACC-GCMS-006",
+    "ACC-GCMS-007",
+    "ACC-GCMS-008",
+    "ACC-GCMS-009",
+    "ACC-GCMS-010",
+    "ACC-GCMS-011",
+    "ACC-GCMS-012"
+  ],
+  "added_cases": [
+    "ACC-GCMS-013",
+    "ACC-GCMS-014"
+  ],
+  "product_acceptance": "not_run",
+  "proof_transfer": "not_performed",
+  "deferred": "New upstream revisions, independent identity architecture assessment, legal-erasure extensions and real host execution remain deferred. Git remains the existing defining product constraint; no host, authentication vendor or signature mechanism is added.",
+  "applicability": "Retain declared optional modules; justified conditional not_applicable is separate from not_run or failure, without weakening unconditional obligations.",
+  "validation": {
+    "schema_and_traceability": "passed",
+    "tooling_tests": {
+      "passed": 68,
+      "failed": 0,
+      "skipped": 0
+    },
+    "synthetic_example": "passed",
+    "native_impact": "impact.json",
+    "candidate_integrity": "passed",
+    "baseline_preservation": "passed",
+    "product_acceptance": "not_run",
+    "independent_review": "pending",
+    "stable_promotion": "not_performed"
+  }
+}

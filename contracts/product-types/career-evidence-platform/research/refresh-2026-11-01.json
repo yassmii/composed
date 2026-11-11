@@ -1,0 +1,622 @@
+{
+  "format_version": 1,
+  "kind": "research-refresh-record",
+  "date": "2026-11-01",
+  "family": "career-evidence-platform",
+  "scope": "Existing recorded sources and their dependent observations; no upstream-latest survey or product execution",
+  "status": "recorded_corpus_rechecked",
+  "author_review": "repository agent; not independent approval",
+  "baseline": {
+    "contract_sha256": "f9d07efefb088260bd2a125330bac892e52ee7e82abf4a62b719d860ae9c53fc",
+    "traceability_sha256": "fa2e738ae67940b36c30f6034ef70996aea2d032ac5ea33b5db4ecc55bb0f9e1",
+    "normative_bytes_changed": false
+  },
+  "source_archive": "history/sources-before-refresh-2026-11-01.yaml",
+  "observations_before_sha256": "543c1105d7a805902dd79f3f4d9a519f88132d1ff55a66fcd077a96e09171822",
+  "observations_after_sha256": "543c1105d7a805902dd79f3f4d9a519f88132d1ff55a66fcd077a96e09171822",
+  "new_observations": [],
+  "review": "The current SkillSpan publisher abstract still supports English expert-labelled extraction and domain adaptation (OBS-CEP-018). The two arXiv abstracts retain their stated submission dates and narrow evaluation populations (OBS-CEP-020/021). They support evaluation questions, not reproduced results or general career advice. CAP-CEP-015, REQ-CEP-063/064 and QA-CEP-007 remain appropriate local obligations; no model, database or performance threshold is adopted.",
+  "followup": "Use version-pinned full papers, representative authorised French/multilingual corpora, separate extraction/linking/grounding measures and held-out baselines. Abstract re-reading is not a systematic literature update or independent reproduction.",
+  "behavioural_diff_from_historical_bodies": "unknown; old bodies unavailable, original metadata preserved",
+  "product_acceptance": "not_run",
+  "proof_transfer": "not_performed",
+  "sources": [
+    {
+      "id": "SRC-CEP-CAREER-RAG-2026",
+      "before": {
+        "url": "https://arxiv.org/abs/2605.05257",
+        "retrieved_on": "2026-10-21",
+        "sha256": "33fe1733aab9f9c41633899a3687f2a1ff99c8db424694834dc2e44d080e1592",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://arxiv.org/abs/2605.05257",
+        "retrieved_on": "2026-11-01",
+        "sha256": "9b3e2f6b1e30ed1422b69f2c7e8c12348cfd1db72e7a6e66d046e2974d5a2097",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "9b3e2f6b1e30ed1422b69f2c7e8c12348cfd1db72e7a6e66d046e2974d5a2097",
+      "initial_result": "changed",
+      "review": "dependent_observation_passages_rechecked",
+      "repeated_retrieval_matches": true,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CEP-020"
+      ],
+      "affected_clauses": [
+        "CAP-CEP-015",
+        "QA-CEP-007",
+        "REQ-CEP-063",
+        "REQ-CEP-064"
+      ]
+    },
+    {
+      "id": "SRC-CEP-CAREERBERT",
+      "before": {
+        "url": "https://arxiv.org/abs/2503.02056",
+        "retrieved_on": "2026-10-21",
+        "sha256": "c3a5cc731f932426b08226fc9fe2545ac7569404c9675cdaf84be6f225edd434",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://arxiv.org/abs/2503.02056",
+        "retrieved_on": "2026-11-01",
+        "sha256": "c3a5cc731f932426b08226fc9fe2545ac7569404c9675cdaf84be6f225edd434",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "c3a5cc731f932426b08226fc9fe2545ac7569404c9675cdaf84be6f225edd434",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CEP-017"
+      ],
+      "affected_clauses": [
+        "CAP-CEP-007",
+        "CAP-CEP-015",
+        "QA-CEP-007",
+        "REQ-CEP-030",
+        "REQ-CEP-063",
+        "REQ-CEP-064"
+      ]
+    },
+    {
+      "id": "SRC-CEP-CLR",
+      "before": {
+        "url": "https://www.1edtech.org/standards/clr",
+        "retrieved_on": "2026-10-21",
+        "sha256": "0c8df0b1a8e55b0b7e1a200b6ae41483e502cfbfe725cfe4e5d8667977e024e7",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://www.1edtech.org/standards/clr",
+        "retrieved_on": "2026-11-01",
+        "sha256": "0c8df0b1a8e55b0b7e1a200b6ae41483e502cfbfe725cfe4e5d8667977e024e7",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "0c8df0b1a8e55b0b7e1a200b6ae41483e502cfbfe725cfe4e5d8667977e024e7",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CEP-011"
+      ],
+      "affected_clauses": [
+        "CAP-CEP-008",
+        "CAP-CEP-013",
+        "POL-CEP-001",
+        "QA-CEP-006",
+        "REQ-CEP-035",
+        "REQ-CEP-056",
+        "REQ-CEP-058"
+      ]
+    },
+    {
+      "id": "SRC-CEP-COPILOT",
+      "before": {
+        "url": "https://careercopilot.ai/",
+        "retrieved_on": "2026-10-21",
+        "sha256": "45ad949de551dec8b4929321f1dd0f0fe94af1e9eb216717f38495f55391424b",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://careercopilot.ai/",
+        "retrieved_on": "2026-11-01",
+        "sha256": "45ad949de551dec8b4929321f1dd0f0fe94af1e9eb216717f38495f55391424b",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "45ad949de551dec8b4929321f1dd0f0fe94af1e9eb216717f38495f55391424b",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CEP-006"
+      ],
+      "affected_clauses": [
+        "CAP-CEP-006",
+        "REQ-CEP-024"
+      ]
+    },
+    {
+      "id": "SRC-CEP-ESCO",
+      "before": {
+        "url": "https://esco.ec.europa.eu/en/use-esco/use-esco-services-api/esco-local-api",
+        "retrieved_on": "2026-10-21",
+        "sha256": "bb122f25f84a4987d12563a20b5eaf10a03d2619763a5d40a1e4eff26b65ccb7",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://esco.ec.europa.eu/en/use-esco/use-esco-services-api/esco-local-api",
+        "retrieved_on": "2026-11-01",
+        "sha256": "bb122f25f84a4987d12563a20b5eaf10a03d2619763a5d40a1e4eff26b65ccb7",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "bb122f25f84a4987d12563a20b5eaf10a03d2619763a5d40a1e4eff26b65ccb7",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CEP-012"
+      ],
+      "affected_clauses": [
+        "CAP-CEP-005"
+      ]
+    },
+    {
+      "id": "SRC-CEP-ESCO-EQF",
+      "before": {
+        "url": "https://arxiv.org/abs/2512.03195",
+        "retrieved_on": "2026-10-21",
+        "sha256": "001c182e35eb8094bb5ca85cffbfb7742fd311fd0153bc3c381b90bff5979054",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://arxiv.org/abs/2512.03195",
+        "retrieved_on": "2026-11-01",
+        "sha256": "2a7da0f8b57bec090192e64e8eb22d3f8d246cb950ff7243b65d51314c57ce2c",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "2a7da0f8b57bec090192e64e8eb22d3f8d246cb950ff7243b65d51314c57ce2c",
+      "initial_result": "changed",
+      "review": "dependent_observation_passages_rechecked",
+      "repeated_retrieval_matches": true,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CEP-021"
+      ],
+      "affected_clauses": [
+        "CAP-CEP-015",
+        "QA-CEP-007",
+        "REQ-CEP-063",
+        "REQ-CEP-064"
+      ]
+    },
+    {
+      "id": "SRC-CEP-EUROPASS",
+      "before": {
+        "url": "https://europass.europa.eu/en/faq?page=2",
+        "retrieved_on": "2026-10-21",
+        "sha256": "781061af1463868391f085483192247df0dcf14b74a69b9f11adef53b936199d",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://europass.europa.eu/en/faq?page=2",
+        "retrieved_on": "2026-11-01",
+        "sha256": "781061af1463868391f085483192247df0dcf14b74a69b9f11adef53b936199d",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "781061af1463868391f085483192247df0dcf14b74a69b9f11adef53b936199d",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CEP-001",
+        "OBS-CEP-002",
+        "OBS-CEP-003"
+      ],
+      "affected_clauses": [
+        "CAP-CEP-001",
+        "CAP-CEP-002",
+        "CAP-CEP-003",
+        "CAP-CEP-008",
+        "POL-CEP-001",
+        "POL-CEP-004",
+        "REQ-CEP-001",
+        "REQ-CEP-002",
+        "REQ-CEP-003",
+        "REQ-CEP-004",
+        "REQ-CEP-005",
+        "REQ-CEP-034",
+        "REQ-CEP-036",
+        "REQ-CEP-058"
+      ]
+    },
+    {
+      "id": "SRC-CEP-FUEL50",
+      "before": {
+        "url": "https://fuel50.com/products/skills-ontology",
+        "retrieved_on": "2026-10-21",
+        "sha256": "bd529203dbf3706395d6ee26528967a758974e1e10d66706ae0c91d9595e8715",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://fuel50.com/products/skills-ontology",
+        "retrieved_on": "2026-11-01",
+        "sha256": "bd529203dbf3706395d6ee26528967a758974e1e10d66706ae0c91d9595e8715",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "bd529203dbf3706395d6ee26528967a758974e1e10d66706ae0c91d9595e8715",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CEP-007"
+      ],
+      "affected_clauses": [
+        "CAP-CEP-005",
+        "CAP-CEP-007",
+        "POL-CEP-003",
+        "REQ-CEP-019"
+      ]
+    },
+    {
+      "id": "SRC-CEP-FUTUREFIT",
+      "before": {
+        "url": "https://www.futurefit.ai/solutions-use-case/career-navigation",
+        "retrieved_on": "2026-10-21",
+        "sha256": "976aa79b4ceab3e9c9002b365272673ec996971c0274b89060da9c1b7c2aab62",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://www.futurefit.ai/solutions-use-case/career-navigation",
+        "retrieved_on": "2026-11-01",
+        "sha256": "976aa79b4ceab3e9c9002b365272673ec996971c0274b89060da9c1b7c2aab62",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "976aa79b4ceab3e9c9002b365272673ec996971c0274b89060da9c1b7c2aab62",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CEP-004",
+        "OBS-CEP-005"
+      ],
+      "affected_clauses": [
+        "CAP-CEP-001",
+        "CAP-CEP-006",
+        "CAP-CEP-007",
+        "CAP-CEP-008",
+        "REQ-CEP-001",
+        "REQ-CEP-003",
+        "REQ-CEP-029",
+        "REQ-CEP-030",
+        "REQ-CEP-031"
+      ]
+    },
+    {
+      "id": "SRC-CEP-LINKEDIN-LOGIN",
+      "before": {
+        "url": "https://learn.microsoft.com/en-us/linkedin/consumer/integrations/self-serve/sign-in-with-linkedin-v2",
+        "retrieved_on": "2026-10-21",
+        "sha256": "daa5fb93d5fa106555433f76e30777bc641a8ba8e948695002988e27209bd32d",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://learn.microsoft.com/en-us/linkedin/consumer/integrations/self-serve/sign-in-with-linkedin-v2",
+        "retrieved_on": "2026-11-01",
+        "sha256": "daa5fb93d5fa106555433f76e30777bc641a8ba8e948695002988e27209bd32d",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "daa5fb93d5fa106555433f76e30777bc641a8ba8e948695002988e27209bd32d",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CEP-015"
+      ],
+      "affected_clauses": [
+        "CAP-CEP-011",
+        "INV-CEP-002",
+        "REQ-CEP-051"
+      ]
+    },
+    {
+      "id": "SRC-CEP-LINKEDIN-NETWORK",
+      "before": {
+        "url": "https://learn.microsoft.com/en-us/linkedin/shared/integrations/people/connections-api",
+        "retrieved_on": "2026-10-21",
+        "sha256": "073f0f3efa2c513f6487d90a2f837f1f2f6140842e5fbcd9cb85273c87a83a76",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://learn.microsoft.com/en-us/linkedin/shared/integrations/people/connections-api",
+        "retrieved_on": "2026-11-01",
+        "sha256": "073f0f3efa2c513f6487d90a2f837f1f2f6140842e5fbcd9cb85273c87a83a76",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "073f0f3efa2c513f6487d90a2f837f1f2f6140842e5fbcd9cb85273c87a83a76",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CEP-016"
+      ],
+      "affected_clauses": [
+        "CAP-CEP-012",
+        "REQ-CEP-053",
+        "REQ-CEP-054"
+      ]
+    },
+    {
+      "id": "SRC-CEP-PROV",
+      "before": {
+        "url": "https://www.w3.org/TR/2013/REC-prov-o-20130430/",
+        "retrieved_on": "2026-10-21",
+        "sha256": "870ec6446be276cb230f04895d3ef925b5485f45e2b94c01ca198221fc314407",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://www.w3.org/TR/2013/REC-prov-o-20130430/",
+        "retrieved_on": "2026-11-01",
+        "sha256": "870ec6446be276cb230f04895d3ef925b5485f45e2b94c01ca198221fc314407",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "870ec6446be276cb230f04895d3ef925b5485f45e2b94c01ca198221fc314407",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CEP-014"
+      ],
+      "affected_clauses": [
+        "CAP-CEP-002",
+        "CAP-CEP-003",
+        "CAP-CEP-004",
+        "CAP-CEP-015",
+        "INV-CEP-003",
+        "INV-CEP-009",
+        "QA-CEP-003",
+        "REQ-CEP-007",
+        "REQ-CEP-011",
+        "REQ-CEP-012",
+        "REQ-CEP-014",
+        "REQ-CEP-015",
+        "REQ-CEP-016",
+        "REQ-CEP-017",
+        "REQ-CEP-019",
+        "REQ-CEP-022",
+        "REQ-CEP-024",
+        "REQ-CEP-033",
+        "REQ-CEP-062"
+      ]
+    },
+    {
+      "id": "SRC-CEP-SKILLSPAN",
+      "before": {
+        "url": "https://aclanthology.org/2022.naacl-main.366/",
+        "retrieved_on": "2026-10-21",
+        "sha256": "303a50b485f3a271d89565bb840c4881e675c28c200ccf8e9a20a816bcb18aa9",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://aclanthology.org/2022.naacl-main.366/",
+        "retrieved_on": "2026-11-01",
+        "sha256": "5a653d9387dbb286d35d3cf2176aa7415af5f1f4ed3850121894dd038b1303dc",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "5a653d9387dbb286d35d3cf2176aa7415af5f1f4ed3850121894dd038b1303dc",
+      "initial_result": "changed",
+      "review": "dependent_observation_passages_rechecked",
+      "repeated_retrieval_matches": true,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CEP-018"
+      ],
+      "affected_clauses": [
+        "CAP-CEP-015",
+        "QA-CEP-007",
+        "REQ-CEP-063",
+        "REQ-CEP-064"
+      ]
+    },
+    {
+      "id": "SRC-CEP-SKOS",
+      "before": {
+        "url": "https://www.w3.org/TR/2009/REC-skos-reference-20090818/",
+        "retrieved_on": "2026-10-21",
+        "sha256": "974ee7e9b3547e874e3613127365c7e01a65457e203a954dae128d227eb46fcb",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://www.w3.org/TR/2009/REC-skos-reference-20090818/",
+        "retrieved_on": "2026-11-01",
+        "sha256": "974ee7e9b3547e874e3613127365c7e01a65457e203a954dae128d227eb46fcb",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "974ee7e9b3547e874e3613127365c7e01a65457e203a954dae128d227eb46fcb",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CEP-013"
+      ],
+      "affected_clauses": [
+        "CAP-CEP-005",
+        "INV-CEP-009",
+        "POL-CEP-003",
+        "REQ-CEP-020",
+        "REQ-CEP-021",
+        "REQ-CEP-022"
+      ]
+    },
+    {
+      "id": "SRC-CEP-VC",
+      "before": {
+        "url": "https://www.w3.org/TR/2025/REC-vc-data-model-2.0-20250515/",
+        "retrieved_on": "2026-10-21",
+        "sha256": "5d9083fdd1627bf7939c06579a1137af20d872313505b17a92d55219b300ecf1",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://www.w3.org/TR/2025/REC-vc-data-model-2.0-20250515/",
+        "retrieved_on": "2026-11-01",
+        "sha256": "5d9083fdd1627bf7939c06579a1137af20d872313505b17a92d55219b300ecf1",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "5d9083fdd1627bf7939c06579a1137af20d872313505b17a92d55219b300ecf1",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CEP-010"
+      ],
+      "affected_clauses": [
+        "CAP-CEP-004",
+        "CAP-CEP-008",
+        "CAP-CEP-013",
+        "INV-CEP-002",
+        "POL-CEP-005",
+        "QA-CEP-003",
+        "REQ-CEP-014",
+        "REQ-CEP-037",
+        "REQ-CEP-056",
+        "REQ-CEP-057"
+      ]
+    },
+    {
+      "id": "SRC-CEP-WCAG",
+      "before": {
+        "url": "https://www.w3.org/TR/WCAG22/",
+        "retrieved_on": "2026-10-21",
+        "sha256": "64fd73cdb7725d9511488f5de6386081329d365872547b2d5000ef771ac37bd0",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://www.w3.org/TR/WCAG22/",
+        "retrieved_on": "2026-11-01",
+        "sha256": "64fd73cdb7725d9511488f5de6386081329d365872547b2d5000ef771ac37bd0",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "64fd73cdb7725d9511488f5de6386081329d365872547b2d5000ef771ac37bd0",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CEP-019"
+      ],
+      "affected_clauses": [
+        "QA-CEP-002"
+      ]
+    },
+    {
+      "id": "SRC-CEP-XREF",
+      "before": {
+        "url": "https://www.xref.com/solutions/reference-checking",
+        "retrieved_on": "2026-10-21",
+        "sha256": "e4708dd9e6724bf9291658a89fe84a33e1db9f2e64beb860b13caf3643989d01",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://www.xref.com/solutions/reference-checking",
+        "retrieved_on": "2026-11-01",
+        "sha256": "e4708dd9e6724bf9291658a89fe84a33e1db9f2e64beb860b13caf3643989d01",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "e4708dd9e6724bf9291658a89fe84a33e1db9f2e64beb860b13caf3643989d01",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CEP-008"
+      ],
+      "affected_clauses": [
+        "CAP-CEP-011",
+        "CAP-CEP-012",
+        "REQ-CEP-048",
+        "REQ-CEP-049",
+        "REQ-CEP-052"
+      ]
+    },
+    {
+      "id": "SRC-CEP-XREF-LIMITS",
+      "before": {
+        "url": "https://www.xref.com/blog/general-faqs-about-reference-checking",
+        "retrieved_on": "2026-10-21",
+        "sha256": "c97d24c8fea2dc32707fa3f8a4245550f2f610c683dde930e39804fa3cc6d811",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://www.xref.com/blog/general-faqs-about-reference-checking",
+        "retrieved_on": "2026-11-01",
+        "sha256": "c97d24c8fea2dc32707fa3f8a4245550f2f610c683dde930e39804fa3cc6d811",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "c97d24c8fea2dc32707fa3f8a4245550f2f610c683dde930e39804fa3cc6d811",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CEP-009"
+      ],
+      "affected_clauses": [
+        "CAP-CEP-004",
+        "CAP-CEP-011",
+        "INV-CEP-002",
+        "POL-CEP-005",
+        "REQ-CEP-014",
+        "REQ-CEP-051",
+        "REQ-CEP-052"
+      ]
+    }
+  ],
+  "validation": {
+    "structural": "passed",
+    "tooling_tests": {
+      "passed": 68,
+      "failed": 0,
+      "skipped": 0
+    },
+    "final_family_source_check": "passed",
+    "catalogue_source_check": {
+      "matched": 170,
+      "unavailable": 2,
+      "hash_mismatches": 0
+    },
+    "baseline_preservation": "passed",
+    "validation_detail": "../../../docs/research-refresh-2026-11-01.md#observed-validation",
+    "product_acceptance": "not_run"
+  }
+}

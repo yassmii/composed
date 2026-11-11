@@ -1,0 +1,220 @@
+{
+  "format_version": 1,
+  "kind": "research-refresh-record",
+  "date": "2026-11-01",
+  "family": "video-editorial-workflow",
+  "scope": "Existing recorded sources and their dependent observations; no upstream-latest survey or product execution",
+  "status": "partial",
+  "author_review": "repository agent; not independent approval",
+  "baseline": {
+    "contract_sha256": "a4f7a84b5f4f5040a2e7bdb82126328a7fbe18e2fab97783caeb68a16e673849",
+    "traceability_sha256": "59f39afa9bbfcb8ffa2ffec9604883f83329b4840e65666b14e3d7d1eedade70",
+    "normative_bytes_changed": false
+  },
+  "source_archive": "history/sources-before-refresh-2026-11-01.yaml",
+  "observations_before_sha256": "0438ff1ec18407cf5ad8791a7e445cb2161c111b655b8f74d995aa6ca1174e19",
+  "observations_after_sha256": "1152a4fd031ba7db1d88ac1f7d16afc5cd7390d081a9ba2ec3dffd1deb7d1540",
+  "new_observations": [
+    "OBS-VEW-015"
+  ],
+  "review": "Frame.io single-frame annotation and two-asset comparison passages still support OBS-VEW-009/010. Nextcloud hashes match. Both Premiere sources return HTTP 403 to the native verifier; their previous URL/date/hash records are retained. A separate browser read reaches the official pages and supports direct EDL/XML export, but its response is not an exact-byte native hash verification. It also exposes a qualification needed for OBS-VEW-011: the page says common transitions, frame holds and speed changes translate well, while recommending simple projects without nested sequences and noting merged clips separate in the target application. The historical broad limitation must not be presented as freshly confirmed.",
+  "followup": "Resolve native Premiere retrieval and then correct/review OBS-VEW-011 with a new attributable snapshot. QA-VEW-005 still requires target-environment evidence; do not claim verified EDL fidelity or promote the contract. Expand comparable editorial workflows and run actual handoff fixtures in the later deepening pass.",
+  "behavioural_diff_from_historical_bodies": "unknown; old bodies unavailable, original metadata preserved",
+  "product_acceptance": "not_run",
+  "proof_transfer": "not_performed",
+  "sources": [
+    {
+      "id": "SRC-VEW-FRAME-COMMENTS",
+      "before": {
+        "url": "https://help.frame.io/en/articles/9105251-commenting-on-your-media",
+        "retrieved_on": "2026-10-20",
+        "sha256": "3463da49f908c3e15c80acb97484d1c46f3118fec6b8fd6362573fa8a13e495c",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://help.frame.io/en/articles/9105251-commenting-on-your-media",
+        "retrieved_on": "2026-11-01",
+        "sha256": "048dc30d23bb4c6c0beba704a4f7c0bc4ee6476b0ee58402dd0e8e606c064bfa",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "bc2bc6fdd12abb13b8a80d8bcc8c6e7ec6d668fe4ef12faade83172b2a0f547a",
+      "initial_result": "changed",
+      "review": "dependent_observation_passages_rechecked",
+      "repeated_retrieval_matches": true,
+      "representation_changed": true,
+      "dependent_observations": [
+        "OBS-VEW-009",
+        "OBS-VEW-015"
+      ],
+      "affected_clauses": [
+        "CAP-VEW-007",
+        "REQ-VEW-013"
+      ]
+    },
+    {
+      "id": "SRC-VEW-FRAME-COMPARE",
+      "before": {
+        "url": "https://help.frame.io/en/articles/9952618-comparison-viewer",
+        "retrieved_on": "2026-10-20",
+        "sha256": "327759cfe4c925624b3f10f52574e7ed792f5945d2ad9cfaf815133d064007e8",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://help.frame.io/en/articles/9952618-comparison-viewer",
+        "retrieved_on": "2026-11-01",
+        "sha256": "999fd0564d84de22ab45406c22901948c2a75c9959531fe0ee39d7c71bc8aa66",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "67845a3713cb93bf2833d3fae711ac40c69966246728e621414699458db4eac5",
+      "initial_result": "changed",
+      "review": "dependent_observation_passages_rechecked",
+      "repeated_retrieval_matches": true,
+      "representation_changed": true,
+      "dependent_observations": [
+        "OBS-VEW-010"
+      ],
+      "affected_clauses": [
+        "CAP-VEW-007",
+        "REQ-VEW-014"
+      ]
+    },
+    {
+      "id": "SRC-VEW-NEXTCLOUD-CONFLICTS",
+      "before": {
+        "url": "https://docs.nextcloud.com/server/stable/user_manual/en/desktop/conflicts.html",
+        "retrieved_on": "2026-10-20",
+        "sha256": "712fc0837a719e249db686a3b173427bcc27dc9c9686d61a4ab0eea125f0762f",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://docs.nextcloud.com/server/stable/user_manual/en/desktop/conflicts.html",
+        "retrieved_on": "2026-11-01",
+        "sha256": "712fc0837a719e249db686a3b173427bcc27dc9c9686d61a4ab0eea125f0762f",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "712fc0837a719e249db686a3b173427bcc27dc9c9686d61a4ab0eea125f0762f",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-VEW-013"
+      ],
+      "affected_clauses": []
+    },
+    {
+      "id": "SRC-VEW-NEXTCLOUD-SYNC",
+      "before": {
+        "url": "https://docs.nextcloud.com/server/stable/user_manual/en/desktop/usage.html",
+        "retrieved_on": "2026-10-20",
+        "sha256": "8e28810714986415f437a70d07010ea0a0081264dab5cf377e410016d2a8e70a",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://docs.nextcloud.com/server/stable/user_manual/en/desktop/usage.html",
+        "retrieved_on": "2026-11-01",
+        "sha256": "8e28810714986415f437a70d07010ea0a0081264dab5cf377e410016d2a8e70a",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "8e28810714986415f437a70d07010ea0a0081264dab5cf377e410016d2a8e70a",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-VEW-014"
+      ],
+      "affected_clauses": []
+    },
+    {
+      "id": "SRC-VEW-PREMIERE-EDL",
+      "before": {
+        "url": "https://helpx.adobe.com/premiere/desktop/render-and-export/export-files/export-a-project-as-an-edl-file.html",
+        "retrieved_on": "2026-10-20",
+        "sha256": "f7881ce2cadf336b3843170f90281e7cbeb98315290c49eb0154ba99efa5d48c",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://helpx.adobe.com/premiere/desktop/render-and-export/export-files/export-a-project-as-an-edl-file.html",
+        "retrieved_on": "2026-10-20",
+        "sha256": "f7881ce2cadf336b3843170f90281e7cbeb98315290c49eb0154ba99efa5d48c",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "unavailable",
+      "initial_hash": null,
+      "initial_result": "unavailable",
+      "review": "not_hash_verified",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-VEW-011"
+      ],
+      "affected_clauses": [
+        "QA-VEW-005"
+      ],
+      "error": "HTTP 403"
+    },
+    {
+      "id": "SRC-VEW-PREMIERE-FORMATS",
+      "before": {
+        "url": "https://helpx.adobe.com/uk/premiere/desktop/render-and-export/export-files/supported-export-file-formats.html",
+        "retrieved_on": "2026-10-20",
+        "sha256": "cf89afdb9686d951eb6881a7076969b3e544f94fde4adffc9f380e7079d80622",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://helpx.adobe.com/uk/premiere/desktop/render-and-export/export-files/supported-export-file-formats.html",
+        "retrieved_on": "2026-10-20",
+        "sha256": "cf89afdb9686d951eb6881a7076969b3e544f94fde4adffc9f380e7079d80622",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "unavailable",
+      "initial_hash": null,
+      "initial_result": "unavailable",
+      "review": "not_hash_verified",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-VEW-012"
+      ],
+      "affected_clauses": [
+        "QA-VEW-005"
+      ],
+      "error": "HTTP 403"
+    }
+  ],
+  "unresolved_findings": [
+    {
+      "id": "VEW-REFRESH-001",
+      "observation": "OBS-VEW-011",
+      "affected_clauses": [
+        "QA-VEW-005"
+      ],
+      "status": "needs_qualification_and_native_snapshot",
+      "current_hash_verification": "unavailable",
+      "browser_url": "https://helpx.adobe.com/premiere/desktop/render-and-export/export-files/export-a-project-as-an-edl-file.html",
+      "finding": "The browser-accessible current page says most common effects translate well; do not treat the broader historical limitation as currently confirmed."
+    }
+  ],
+  "validation": {
+    "structural": "passed",
+    "tooling_tests": {
+      "passed": 68,
+      "failed": 0,
+      "skipped": 0
+    },
+    "final_family_source_check": "partial_two_native_http_403",
+    "catalogue_source_check": {
+      "matched": 170,
+      "unavailable": 2,
+      "hash_mismatches": 0
+    },
+    "baseline_preservation": "passed",
+    "validation_detail": "../../../docs/research-refresh-2026-11-01.md#observed-validation",
+    "product_acceptance": "not_run"
+  }
+}

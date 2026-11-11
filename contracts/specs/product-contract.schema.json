@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://composed-contract.org/schemas/product-contract/0.1.json",
+  "title": "Composed Product Contract",
+  "description": "Canonical schema for a Composed Contract product definition.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "name", "version", "kind", "status", "intent", "scope", "actors", "domain", "capabilities", "invariants", "policies", "quality_attributes", "acceptance", "delivery"],
+  "properties": {
+    "schema_version": { "type": "string", "pattern": "^0\\.1$" },
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "name": { "type": "string", "minLength": 3 },
+    "version": { "type": "string", "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$" },
+    "kind": { "const": "product-contract" },
+    "status": { "enum": ["draft", "candidate", "stable", "deprecated"] },
+    "license": { "type": "string" },
+    "intent": {
+      "type": "object", "additionalProperties": false,
+      "required": ["promise", "primary_outcome", "success_metrics"],
+      "properties": {
+        "promise": { "type": "string", "minLength": 10 },
+        "primary_outcome": { "type": "string", "minLength": 10 },
+        "success_metrics": { "$ref": "#/$defs/metrics" }
+      }
+    },
+    "scope": {
+      "type": "object", "additionalProperties": false,
+      "required": ["includes", "excludes"],
+      "properties": { "includes": { "$ref": "#/$defs/nonEmptyStrings" }, "excludes": { "$ref": "#/$defs/nonEmptyStrings" } }
+    },
+    "actors": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/actor" } },
+    "domain": {
+      "type": "object", "additionalProperties": false,
+      "required": ["entities", "glossary"],
+      "properties": { "entities": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/entity" } }, "glossary": { "type": "array", "items": { "$ref": "#/$defs/glossaryTerm" } } }
+    },
+    "capabilities": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/capability" } },
+    "invariants": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/invariant" } },
+    "policies": { "type": "array", "items": { "$ref": "#/$defs/policy" } },
+    "quality_attributes": { "type": "array", "items": { "$ref": "#/$defs/qualityAttribute" } },
+    "integrations": { "type": "array", "items": { "$ref": "#/$defs/integration" } },
+    "acceptance": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/acceptance" } },
+    "delivery": {
+      "type": "object", "additionalProperties": false,
+      "required": ["required_artifacts", "verification"],
+      "properties": {
+        "required_artifacts": { "$ref": "#/$defs/nonEmptyStrings" },
+        "verification": { "$ref": "#/$defs/nonEmptyStrings" },
+        "validation_profile": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "version"],
+          "properties": {
+            "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*(?:/[a-z0-9]+(?:-[a-z0-9]+)*)*$" },
+            "version": { "type": "string", "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$" }
+          }
+        }
+      }
+    },
+    "extensions": { "type": "object" }
+  },
+  "$defs": {
+    "identifier": { "type": "string", "pattern": "^[A-Z][A-Z0-9-]*[A-Z0-9]$" },
+    "nonEmptyStrings": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+    "metrics": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["id", "measure"], "properties": { "id": { "$ref": "#/$defs/identifier" }, "measure": { "type": "string", "minLength": 3 } } } },
+    "actor": { "type": "object", "additionalProperties": false, "required": ["id", "name", "goals", "permissions"], "properties": { "id": { "$ref": "#/$defs/identifier" }, "name": { "type": "string", "minLength": 2 }, "goals": { "$ref": "#/$defs/nonEmptyStrings" }, "permissions": { "$ref": "#/$defs/nonEmptyStrings" } } },
+    "entity": { "type": "object", "additionalProperties": false, "required": ["id", "name", "description", "lifecycle"], "properties": { "id": { "$ref": "#/$defs/identifier" }, "name": { "type": "string", "minLength": 2 }, "description": { "type": "string", "minLength": 3 }, "lifecycle": { "$ref": "#/$defs/nonEmptyStrings" } } },
+    "glossaryTerm": { "type": "object", "additionalProperties": false, "required": ["term", "definition"], "properties": { "term": { "type": "string", "minLength": 2 }, "definition": { "type": "string", "minLength": 3 } } },
+    "capability": { "type": "object", "additionalProperties": false, "required": ["id", "name", "priority", "actor", "outcome", "requirements"], "properties": { "id": { "$ref": "#/$defs/identifier" }, "name": { "type": "string", "minLength": 2 }, "priority": { "enum": ["must", "should", "could"] }, "actor": { "$ref": "#/$defs/identifier" }, "outcome": { "type": "string", "minLength": 3 }, "requirements": { "type": "array", "minItems": 1, "items": { "type": "object", "additionalProperties": false, "required": ["id", "statement"], "properties": { "id": { "$ref": "#/$defs/identifier" }, "statement": { "type": "string", "minLength": 3 } } } } } },
+    "invariant": { "type": "object", "additionalProperties": false, "required": ["id", "statement", "rationale"], "properties": { "id": { "$ref": "#/$defs/identifier" }, "statement": { "type": "string", "minLength": 3 }, "rationale": { "type": "string", "minLength": 3 } } },
+    "policy": { "type": "object", "additionalProperties": false, "required": ["id", "decision", "consequence"], "properties": { "id": { "$ref": "#/$defs/identifier" }, "decision": { "type": "string", "minLength": 3 }, "consequence": { "type": "string", "minLength": 3 } } },
+    "qualityAttribute": { "type": "object", "additionalProperties": false, "required": ["id", "attribute", "target"], "properties": { "id": { "$ref": "#/$defs/identifier" }, "attribute": { "type": "string", "minLength": 2 }, "target": { "type": "string", "minLength": 3 } } },
+    "integration": { "type": "object", "additionalProperties": false, "required": ["id", "system", "purpose", "degradation"], "properties": { "id": { "$ref": "#/$defs/identifier" }, "system": { "type": "string", "minLength": 2 }, "purpose": { "type": "string", "minLength": 3 }, "degradation": { "type": "string", "minLength": 3 } } },
+    "acceptance": { "type": "object", "additionalProperties": false, "required": ["id", "given", "when", "then", "evidence"], "properties": { "id": { "$ref": "#/$defs/identifier" }, "given": { "type": "string", "minLength": 3 }, "when": { "type": "string", "minLength": 3 }, "then": { "type": "string", "minLength": 3 }, "evidence": { "type": "string", "minLength": 3 } } }
+  }
+}

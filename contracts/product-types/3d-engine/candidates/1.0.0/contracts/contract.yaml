@@ -1,0 +1,983 @@
+schema_version: "0.1"
+id: 3d-engine
+name: Real-time 3D Engine
+version: 1.0.0
+kind: product-contract
+status: candidate
+license: CC-BY-4.0
+intent:
+  promise: Give application developers a predictable 3D loop for loading a scene, simulating it, and
+    rendering it in real time.
+  primary_outcome: An agent can create, inspect and correct a bounded 3D scene through discoverable
+    operations, preserve unaffected work and recover from an unsuccessful edit; simulation and
+    rendering remain reproducible within their declared profiles. Comparative quality is measured
+    separately from functional conformance.
+  success_metrics:
+    - id: MET-3D-001
+      measure: The reference scene completes at least 60 rendered frames per second at the
+        profile-declared completion or presentation boundary on documented target hardware;
+        submission rate or reciprocal median frame time is not a substitute.
+    - id: MET-3D-002
+      measure: All GPU resources owned by a closed scene are released or eligible for release.
+    - id: MET-3D-003
+      measure: For the declared agent task set, report completed-task counts and denominators, structural
+        and multi-view visual rubric results, corrections, tool calls, wall time, available
+        model/renderer usage and human interventions separately under fixed budgets. No superiority
+        is inferred from unexecuted tasks or one aggregate score.
+    - id: MET-3D-004
+      measure: For each declared load envelope, report command acknowledgement, committed-result and
+        image-ready latency distributions, actual completed-frame throughput, frame-time excursions
+        and host/device memory high-water marks with sample counts and failed/timed-out work
+        visible.
+scope:
+  includes:
+    - Scene graph
+    - Hierarchical transforms
+    - Real-time rendering
+    - Asynchronous asset loading
+    - Fixed-step simulation loop
+    - Structured agent control
+    - Declarative scenes
+    - Read-only introspection
+    - Headless image rendering
+    - Bounded resource and file access
+    - Revision-aware bounded scene edit sets and in-session checkpoints
+    - Aligned visual diagnostic channels for agent correction
+    - Inspectable PBR materials and programmable vertex/surface shaders
+    - Scene-linear HDR lighting, colour-managed images and direct shadows
+    - Discoverable rendering-technique profiles with explicit optional-feature limits
+  excludes:
+    - Full visual editor
+    - General-purpose physics engine
+    - Proprietary authoring format
+    - Cross-platform bit-identical simulation or images
+    - General-purpose untrusted-code sandbox
+    - General-purpose mesh sculpting, rigging or reconstruction from arbitrary media
+    - Universal rendering or agent leaderboard superiority
+    - Treating arbitrary untrusted GPU programs as safely sandboxed code
+    - Requiring every advanced rendering technique on every hardware tier
+actors:
+  - id: ACT-AI-AGENT
+    name: AI agent
+    goals:
+      - Discover engine operations
+      - Compose and inspect scenes
+      - Control simulation
+      - Render without a display
+      - Diagnose failures
+      - Correct scene defects without overwriting unrelated edits
+      - Compare observed geometry and visual output against declared task constraints
+    permissions:
+      - Issue validated commands within declared resource and asset-access limits
+  - id: ACT-GAME-DEV
+    name: 3D application developer
+    goals:
+      - Compose a scene
+      - Render efficiently
+      - Diagnose asset failures
+    permissions:
+      - Create scenes
+      - Load assets
+      - Control the render loop
+  - id: ACT-RUNTIME
+    name: Runtime
+    goals:
+      - Order simulation and rendering predictably
+    permissions:
+      - Allocate graphics resources
+      - Release graphics resources
+      - Emit diagnostics
+domain:
+  entities:
+    - id: ENT-SCENE
+      name: Scene
+      description: A root container that owns a graph of nodes and associated resources.
+      lifecycle:
+        - created
+        - loaded
+        - active
+        - closed
+    - id: ENT-NODE
+      name: Node
+      description: A scene-graph element with a local transform and an optional parent.
+      lifecycle:
+        - attached
+        - detached
+        - destroyed
+    - id: ENT-ASSET
+      name: Asset
+      description: A mesh, texture, material, or graphics program with an explicit loading state.
+      lifecycle:
+        - requested
+        - loading
+        - ready
+        - failed
+        - released
+  glossary:
+    - term: reference state
+      definition: "The versioned, structured logical state used for equality checks: stable scene and node
+        identifiers, hierarchy, local transforms, camera and light parameters, asset references and
+        bindings, simulation parameters and inputs, fixed-step index, pause state, seed and current
+        pseudo-random generator state. Runtime handles, wall-clock timings, loading progress and
+        diagnostic history are excluded. Derived world transforms must be equivalent. Equality rules
+        and numeric precision are published with the scene schema. Material parameter values,
+        texture/program content identities, bindings and selected render-profile settings are
+        logical state; compiled handles, caches and accumulated temporal history are not. Shader
+        animation time used for reproducible renders is an explicit input, not hidden wall time."
+    - term: declared limits
+      definition: Finite, effective limits exposed by the engine for node count, engine-owned host and
+        graphics memory, and fixed steps per command. Memory accounting includes in-flight asset
+        work and rendering allocations. Retained checkpoints, edit preparation and diagnostic render
+        products are included in the same finite memory accounting; batching cannot bypass existing
+        limits.
+    - term: fixed step
+      definition: A constant simulation interval independent from render-frame duration.
+    - term: frame
+      definition: One rendering iteration that consumes a stable scene state.
+    - term: logical closure
+      definition: The transition that prevents new use or publication of work for a scene. It is distinct
+        from physical resource reclamation after previously submitted work is safe to retire.
+    - term: resource ownership
+      definition: A scene owns its bindings and any exclusively held allocations. Shared backing
+        allocations may remain usable by other active scenes through their own valid bindings.
+        Reclamation accounting distinguishes live, in-flight, pending-retirement and reusable cached
+        allocations; pending retirement remains charged to effective memory limits.
+    - term: execution profile
+      definition: A versioned declaration of runtime/build, simulation rules, numeric equality/precision,
+        asset contents, input order, fixed-step settings and random generator behaviour. Image and
+        performance profiles additionally identify graphics capabilities, driver, hardware, image
+        tolerance, workload and sampling procedure. No equality across different profiles is
+        promised.
+    - term: scene revision
+      definition: An immutable identity for one published scene state. Successful state-changing commands
+        publish a new revision; stale expected-revision checks reject without mutation. Restoring
+        old logical content publishes a fresh revision and never makes an earlier revision identity
+        current again. Revision metadata is excluded from reference-state equality.
+    - term: checkpoint
+      definition: A bounded in-session snapshot of a paused, quiescent scene reference state and its
+        execution profile and asset-content identities. It is not a process-crash backup,
+        external-file rollback or permission bypass.
+    - term: performance envelope
+      definition: "A versioned finite workload declaration: hardware/driver/build, assets and geometry,
+        resolution/views/channels/quality, scene sizes, command mix and arrival rate, concurrency
+        and in-flight limits, cache/warmup state, pacing/VSync, sampling boundaries and
+        instrumentation. It contains positive finite tail-frame, acknowledgement,
+        result/image-ready, control-response and recovery budgets plus memory/capacity ceilings
+        fixed before confirmation. Missing values make performance readiness unknown; budgets cannot
+        relax existing 60-FPS or 16.7ms median targets for the reference case. Each supported load
+        point also fixes a positive minimum completed throughput and finite rejection/failure
+        ceilings by operation class; rejecting or expiring all offered work cannot establish
+        performance."
+    - term: image ready
+      definition: All requested image channels are rendered and their returned data or engine-managed
+        artifact is retrievable with the promised metadata. Queue admission, GPU submission or a
+        completed GPU timestamp alone does not establish image readiness.
+    - term: render profile
+      definition: "A versioned requested/effective rendering configuration: material/shader contract,
+        lighting/shadow rules, colour space, exposure and tone mapping, internal/output resolution,
+        antialiasing/reconstruction, geometry detail, supported optional techniques and required
+        hardware. It is part of the execution/image/performance profile, not an engine or
+        graphics-API selection."
+capabilities:
+  - id: CAP-3D-001
+    name: Compose a hierarchical scene
+    priority: must
+    actor: ACT-GAME-DEV
+    outcome: The developer can attach nodes and obtain correct world transforms.
+    requirements:
+      - id: REQ-3D-001
+        statement: A node world transform is derived from its local transform and its ancestor transforms.
+      - id: REQ-3D-002
+        statement: The runtime rejects self-parenting or any attachment that would create an ancestor cycle
+          before changing the hierarchy. Accepted attachment or reparenting leaves each node with at
+          most one parent and inspection exposes a coherent hierarchy revision.
+  - id: CAP-3D-002
+    name: Load and render assets
+    priority: must
+    actor: ACT-GAME-DEV
+    outcome: A ready asset can be attached to an active scene without blocking the caller.
+    requirements:
+      - id: REQ-3D-003
+        statement: Asset loading is asynchronous and exposes requested, loading, ready or failed state
+          through a correlated operation. A status query or retrieval attempt while loading returns
+          the current state without waiting for the load to complete. Ready is published only after
+          required loading stages have succeeded and valid scene ownership is still present.
+      - id: REQ-3D-004
+        statement: A failed asset load exposes a terminal structured error with asset identity, failing
+          stage, cause and corrective action. Binding or rendering that requires the failed asset is
+          rejected with a controlled structured error; failure is never reported as ready or as a
+          successful image. Other independent ready assets remain usable.
+      - id: REQ-3D-014
+        statement: "Closing a scene establishes a logical closure point: later scene mutation, simulation,
+          binding or rendering requests are rejected. A pending asset load cannot publish readiness
+          or attach resources after closure; its operation reaches a queryable terminal failure
+          identifying scene closure. An accepted render that has not been submitted by closure
+          terminates with a scene-closed failure instead of making a later submission. Rendering
+          submitted before closure may finish using its already valid resources, but cannot publish
+          new scene state. Repeated closure is safe and does not retire the same allocation twice.
+          Closure status and resource accounting remain inspectable; physical reclamation waits for
+          safe retirement of in-flight work, with pending-retirement memory still counted. Shared
+          allocations remain usable only through valid bindings of other active scenes. Cleanup
+          failures remain visible as failures or pending retirement, never reported as completed
+          reclamation."
+  - id: CAP-3D-003
+    name: Simulate then render
+    priority: must
+    actor: ACT-RUNTIME
+    outcome: Simulation advances at a fixed step and rendering consumes coherent state.
+    requirements:
+      - id: REQ-3D-005
+        statement: For each real-time frame, scheduled simulation updates complete before rendering
+          submission. Rendering uses one identified coherent scene revision and fixed-step index;
+          concurrent mutations become visible only through a complete revision, never a mix. An
+          explicit image-render command consumes a coherent revision without advancing simulation,
+          as required by REQ-3D-012.
+      - id: REQ-3D-006
+        statement: The real-time loop executes no more than the configured catch-up cap per frame. After
+          that cap, excess whole fixed steps of elapsed wall-clock time are discarded rather than
+          carried as unbounded debt, while a sub-step remainder may be retained. Discarded time is
+          reported and never counted as executed simulation steps. Explicit advance-by-N commands
+          obey their separate declared limit.
+  - id: CAP-3D-004
+    name: Piloter le moteur par un agent
+    priority: must
+    actor: ACT-AI-AGENT
+    outcome: An agent can discover operations, create, simulate, render and inspect a scene, and
+      diagnose failures through structured exchanges without a graphical interface or human
+      intervention during execution.
+    requirements:
+      - id: REQ-3D-007
+        statement: A complete scene can be described, loaded and exported as structured text validated
+          against a published, versioned schema discoverable through the engine. The description
+          covers hierarchy, transforms, asset references and bindings, cameras, lights and
+          simulation state. Assets may remain external references within the declared asset root.
+          Import validates the complete description before changing a scene. Export followed by
+          import preserves the reference state when asset contents, simulation inputs and execution
+          profile are unchanged. Structured scene round-trip also preserves material instances,
+          typed parameters, texture/sampler semantics, shader content references and selected
+          render-profile settings; compiled device handles are not portable scene content.
+      - id: REQ-3D-008
+        statement: Every agent operation is available as a structured command, including scene and node
+          creation, attachment, detachment, transformation, asset loading and binding, camera and
+          light configuration, simulation control, rendering, discovery, inspection, import, export
+          and closure. Each command validates its structure, parameters, references, lifecycle
+          preconditions and declared limits before execution. A rejected command leaves the scene
+          reference state unchanged. Each command returns a correlated structured result or error.
+          Errors contain a stable code, affected entity or explicit absence, cause and suggested
+          corrective action. An asynchronous result exposes an operation identifier and queryable
+          status; terminal failures use the same error structure and include the failing stage.
+      - id: REQ-3D-009
+        statement: The engine exposes a machine-readable, versioned description of all commands, their
+          purposes, required and optional parameters, types, constraints, defaults, lifecycle
+          preconditions, result structures and possible error codes. Discovery is available before a
+          scene exists and exposes the scene schema and effective execution limits. An agent can
+          construct valid commands from this description without external command documentation.
+          Discovery also exposes material/shader schemas, parameter reflection, build/replacement
+          operations, the rendering capability matrix and requested/effective profile settings,
+          including unsupported-feature reasons.
+      - id: REQ-3D-010
+        statement: An agent can obtain a coherent read-only snapshot containing the node tree, local and
+          world transforms, each asset's lifecycle state, asynchronous operation status, fixed-step
+          index, pause state, reference state and structured diagnostics. Inspection does not
+          advance simulation, mutate the scene, initiate asset loading or consume diagnostics. Each
+          snapshot identifies the scene revision and fixed-step index it represents. The same
+          snapshot includes material/program identities and readiness, parameter/binding values,
+          shader diagnostics and the effective render profile; merely inspecting never compiles a
+          shader or advances temporal accumulation.
+      - id: REQ-3D-011
+        statement: The engine accepts an explicit seed before simulation and exposes pause and
+          advance-by-N-fixed-steps commands. While paused, elapsed wall-clock time does not advance
+          simulation. A successful advance command completes exactly N fixed steps and leaves the
+          scene paused; invalid N or N above the declared command limit is rejected. Explicit
+          stepping uses the same update rules as the real-time loop. The five-step per-frame
+          catch-up cap of POL-3D-001 remains applicable to real-time scheduling and is distinct from
+          the per-command limit. Identical scene state, ordered simulation inputs and seed under the
+          same documented execution profile produce the same reference state after 600 fixed steps,
+          as required by QA-3D-003.
+      - id: REQ-3D-012
+        statement: An agent can request an image from an identified scene camera at specified dimensions
+          without a window or display server. Rendering consumes a coherent scene state without
+          advancing simulation and returns image data or a retrievable image artifact with its
+          dimensions, encoding, camera identifier and rendered scene revision. Invalid cameras,
+          unavailable assets, exceeded limits and missing graphics capabilities produce structured
+          errors. Headless operation preserves INV-3D-002 and the startup failure behaviour of
+          INT-3D-001. Here headless image rendering means actual offscreen image production without
+          a window or display server, not a no-render mode returning dummy data. Required rendering
+          capabilities and image comparison rules are declared in the execution profile.
+      - id: REQ-3D-013
+        statement: File reads requested by commands or scene assets, including transitive asset
+          dependencies, are confined to a declared asset root after resolving traversal and
+          filesystem indirections. Alternative resource locators must not bypass that boundary.
+          Scene and image exports return data or engine-managed artifacts rather than accepting
+          arbitrary filesystem write destinations. Finite node, memory and steps-per-command limits
+          are explicit and discoverable. Work that would exceed a limit is rejected or stopped with
+          a structured error identifying the limit and requested usage, without crashing the engine.
+          Failed work releases temporary resources, preserves scene invariants and leaves inspection
+          and closure available.
+      - id: REQ-3D-015
+        statement: An agent can preview and apply a bounded set of scene mutations against an explicit
+          expected scene revision using discovered structured operations. Preview returns affected
+          stable entity identifiers and property-level before/after changes without mutating
+          reference state, advancing simulation or initiating asset loading. Apply validates the
+          complete set, references, lifecycle and effective limits before publishing all changes as
+          one new revision. Malformed, stale, over-budget or otherwise invalid sets publish no
+          partial scene change and identify failing items. Concurrent edits cannot silently
+          overwrite a revision newer than the supplied expectation; unaffected identifiers and
+          properties are preserved. Scope is scene state, not arbitrary code execution or external
+          side effects. The discovered edit-set vocabulary covers node creation/removal/reparenting,
+          transforms, camera/light properties and ready-asset bindings. Simulation advance, scene
+          closure and asset loading remain separate operations and are rejected inside edit sets.
+          Ready-material/program bindings and validated material parameter changes are included in
+          this vocabulary. Shader compilation and asset preparation remain separate asynchronous
+          operations, never hidden side effects of preview or edit-set validation.
+      - id: REQ-3D-016
+        statement: An agent can capture a bounded checkpoint of a paused, quiescent active scene and restore
+          it through discovered commands. Capture of an ineligible scene fails explicitly without
+          changing reference state. Restore checks the current expected revision, scene lifecycle,
+          asset-root rules, current limits, unchanged referenced asset contents and matching
+          execution profile before publishing the checkpoint reference state as a fresh scene
+          revision. A rejected or failed restore leaves the prior reference state unchanged and
+          releases temporary allocations safely. Restored state includes hierarchy, bindings,
+          simulation index, pause state and random generator state; restored logical identifiers
+          remain stable. Checkpoint storage and restore preparation count against declared limits.
+          Checkpoints can be explicitly released; unknown or released checkpoint references fail
+          safely. Recovery is in-session and does not undo external artifacts or effects already
+          delivered. Capture identifies the exact coherent scene revision represented; checkpoint
+          restoration does not reuse revision identities. Material parameters, ready program/texture
+          identities and render-profile settings are restored as reference state; temporal render
+          history is reset or explicitly re-primed under the profile rather than silently reused
+          from the replaced scene.
+      - id: REQ-3D-017
+        statement: An agent can request a finite set of camera views containing RGB, camera-distance depth
+          and per-pixel visible-entity identifiers for the same paused scene revision, step index
+          and camera parameters. Entity-channel values map to stable scene node identifiers, not
+          unexplained renderer handles; background and unsupported surface semantics are explicit.
+          The profile defines depth units, pixel alignment, camera projection, numeric/image
+          tolerance and transparency or effect handling. Supported opaque geometry must yield actual
+          aligned diagnostic data. All views in a successful request refer to the same requested
+          revision; stale, closed-scene or over-budget requests fail explicitly without simulation
+          advancement or partial-success claims. Diagnostic products obey the same memory and
+          retirement limits as other render products. These observations support correction but are
+          not themselves proof of aesthetic quality or task success. Diagnostic camera histories and
+          colour-processing stages are identified and isolated per view. Opaque supported geometry,
+          including supported vertex deformation, retains valid depth/entity alignment; temporal
+          reconstruction or material styling cannot silently replace required channels with
+          fabricated data.
+      - id: REQ-3D-018
+        statement: The runtime declares discoverable finite admission and in-flight work limits and
+          operation deadline semantics for asset loading, rendering/diagnostics, edit preparation
+          and checkpoint restore. Work beyond capacity receives a correlated structured busy or
+          limit response rather than entering an unbounded hidden queue. While admitted work is slow
+          or saturated, status, inspection and scene closure remain available within the performance
+          envelope's finite control-response bound. An accepted operation has a queryable outcome;
+          expiry before state publication prevents a later commit or successful image publication,
+          without violating atomic scene edits or resource-retirement safety. Work committed before
+          a deadline remains truthfully committed even if its reply is late; a caller-side timeout
+          is not proof of rollback. In-flight physical work may retire after logical expiry, stays
+          counted, and cannot be reported as reclaimed or as an on-time success.
+      - id: REQ-3D-019
+        statement: The runtime exposes correlated operation/frame/revision identities, available lifecycle
+          timing and resource accounting for performance evaluation, with declared units, clock
+          domains, measurement boundaries, instrumentation mode and finite observation retention.
+          Distinguish admission/queueing, scene publication, graphics submission/completion, image
+          readback/encoding/artifact readiness and safe retirement where observable. A host
+          monotonic end-to-end measurement remains required for acknowledgement, result and
+          image-ready latency; overlapping CPU/GPU phases are not blindly summed and uncalibrated
+          clock domains are not subtracted. Delayed samples stay attributed to their originating
+          frame/operation. Unsupported, unavailable, invalid or expired GPU timing samples are
+          explicitly unknown, never zero or invented completed frames. Instrumentation and
+          diagnostic allocations count against declared limits.
+  - id: CAP-3D-005
+    name: Author materials and programmable shaders
+    priority: must
+    actor: ACT-GAME-DEV
+    outcome: A developer or agent can inspect, change and validate lit materials and custom shading
+      without corrupting a working scene.
+    requirements:
+      - id: REQ-3D-020
+        statement: The baseline rendering profile provides inspectable metallic-roughness PBR materials with
+          base colour, metallic, roughness, normal, ambient-occlusion and emissive inputs; opaque,
+          alpha-cutout and alpha-blended modes; and explicit sidedness, depth/blend,
+          texture-coordinate, sampler, channel-packing and normal-map conventions. Types, ranges,
+          defaults and colour/data interpretation are discoverable and validated. Material instances
+          can override values without mutating other users of shared material/program assets.
+          Unsupported advanced material models are declared rather than approximated silently.
+          Emissive intensity supports scene-linear values above display white.
+      - id: REQ-3D-021
+        statement: A developer or agent can create and prepare custom vertex and surface/fragment shaders in
+          a documented discoverable representation, with typed parameter/texture reflection and
+          explicit required stages/profile capabilities. Compilation, variant preparation and
+          replacement are correlated bounded asset operations with queryable readiness and
+          structured source/stage/parameter diagnostics. Only a successfully prepared compatible
+          program can be bound. Failed or stale replacement leaves the prior valid binding/reference
+          state intact; it cannot report the new program ready or publish a successful image for a
+          render explicitly requiring that failed program. Activation is an expected-revision atomic
+          edit using a ready program. Transitive includes and resource references obey the
+          asset-root boundary; compile options cannot grant host/file/network authority. Variants,
+          compile caches and in-flight allocations obey finite limits and cold/warm performance
+          accounting. Scene closure/deadline rules still prevent late activation. This is not a
+          guarantee of safe arbitrary untrusted GPU code execution.
+  - id: CAP-3D-006
+    name: Render with explicit quality and modern technique profiles
+    priority: must
+    actor: ACT-GAME-DEV
+    outcome: Rendering produces colour-managed lit images with discoverable advanced capabilities and
+      truthful quality/hardware limits.
+    requirements:
+      - id: REQ-3D-022
+        statement: The baseline profile performs lighting and material colour operations in a declared
+          scene-linear HDR space, distinguishes colour textures from numeric data textures and
+          applies a declared output transform. Exposure, tone mapping, output transfer
+          function/primaries and alpha convention are discoverable, inspectable and included in
+          image/profile metadata. Values above display white are not clipped before the documented
+          output stage. A declared linear image or diagnostic sample boundary permits checking HDR
+          and conversion independently of tone-mapped output. An output image is never labelled
+          linear, sRGB or HDR contrary to its actual encoding; a requested unavailable encoding
+          fails explicitly.
+      - id: REQ-3D-023
+        statement: The baseline profile supports directional and point direct lights, an
+          environment-lighting input for diffuse/specular material response, and shadow
+          casting/receiving for supported opaque geometry. Intensity/colour units, attenuation,
+          environment interpretation, shadow coverage/filtering/bias and finite light/shadow limits
+          are declared and inspectable. Unsupported light/shadow combinations fail or require an
+          explicitly selected compatible profile. Emissive appearance alone is not represented as
+          indirect illumination of other surfaces; GI and reflection techniques have separate
+          capability declarations.
+      - id: REQ-3D-024
+        statement: Before scene creation, discovery exposes a versioned technique matrix and effective
+          graphics capabilities for each render profile. It distinguishes baseline PBR/custom
+          shading/HDR/direct shadows from optional many-light paths (tiled/clustered forward or
+          deferred), ambient occlusion, GI, screen-space or ray-traced reflections,
+          software/hardware ray tracing, temporal AA/upscaling, instancing/culling/LOD/streamed or
+          virtualised geometry, volumetric effects and compute-driven rendering. Every family has an
+          explicit supported/unsupported status, prerequisites, configurable limits and relevant
+          exclusions; synonymous or alternative implementations may be described without claiming a
+          proprietary product feature. Requested and effective settings are returned. An explicitly
+          requested unavailable technique is rejected unless the caller opted into a named fallback
+          with disclosed quality differences; failure never masquerades as support. The baseline
+          obligations cannot all be disabled by declaring techniques optional.
+      - id: REQ-3D-025
+        statement: "Each enabled technique declares the state and quality assumptions needed for
+          reproducible rendering: shader animation time, random/jitter inputs, view-specific
+          history, internal/output resolution, sample/denoising settings, geometry/texture detail
+          and residency where relevant. A paused reference render has an explicit
+          sample-time/history reset or priming procedure and does not depend on hidden elapsed wall
+          time or another camera history. Checkpoint restore, material/program replacement and
+          camera cuts invalidate or re-prime affected temporal history according to that procedure;
+          prior state cannot ghost silently into a claimed clean reference image. Native spatial
+          resolution, temporally reconstructed resolution and any synthetic/interpolated
+          presentation frames are distinguished; only genuinely completed requested renders count
+          for the existing reference throughput. Optional GI/ray tracing, compute and
+          streamed-geometry work still obeys admission, readiness, memory and retirement rules;
+          incomplete residency or convergence is disclosed, not hidden as full-quality completion."
+invariants:
+  - id: INV-3D-001
+    statement: The scene graph is acyclic and every node has at most one parent.
+    rationale: World transforms and destruction must be finite and unambiguous.
+  - id: INV-3D-002
+    statement: At submission, rendering references only ready assets validly bound to an active scene.
+      Work already submitted before logical closure retains safe access until retirement, but
+      closed-scene bindings cannot be used for new submissions.
+    rationale: The runtime must not use invalid graphics memory.
+  - id: INV-3D-003
+    statement: After logical closure, scene-owned bindings and exclusively owned resources cannot be
+      used for new runtime work. Already submitted work may complete safely before physical release,
+      and late load results never reactivate the closed scene.
+    rationale: Leaks and use-after-release behaviour must be prevented.
+policies:
+  - id: POL-3D-001
+    decision: The default simulation step is 1/60 second and catch-up is capped at five steps per frame.
+    consequence: At most five fixed updates run in one real-time frame. Excess whole-step lag is
+      discarded and observable; it does not increase the step index. Paused wall-clock time creates
+      no simulation debt. Explicit stepping remains governed by REQ-3D-011, not this per-frame cap.
+  - id: POL-3D-002
+    decision: The engine accepts an open interchange format selected through an extension.
+    consequence: Asset format is replaceable without changing lifecycle semantics.
+  - id: POL-3D-003
+    decision: Comparative excellence claims identify their task population, date, exact
+      engine/bridge/model profiles, baseline revisions, budgets and scoring rules; documentary
+      feature availability alone does not establish superiority.
+    consequence: Delivery reports distinguish chosen ambition, source-supported capability and executed
+      comparative result. All planned tasks, repetitions, failures, missing results, interventions
+      and unsupported capabilities remain visible. An overall SOTA or best-of-breed label cannot be
+      inferred from a schema pass, a small custom corpus, vendor marketing numbers or a single
+      favourable metric; claims are limited to the executed eligible comparison and its uncertainty.
+  - id: POL-3D-004
+    decision: Performance claims bind to an unchanged, preregistered performance envelope,
+      output-quality contract and measurement procedure; cold and warmed results and instrumentation
+      overhead are disclosed separately.
+    consequence: No result may meet a budget by silently dropping scene work, channels, resolution or
+      output quality, excluding slow/failed operations, counting queued work as complete or
+      concealing backpressure. Declared adaptive modes are separately identified and assessed
+      against their own frozen quality floors; real-time lag discarded under POL-3D-001 remains
+      reported. Missing budgets, unavailable required measurements or incomplete retirement cannot
+      produce a performance pass.
+  - id: POL-3D-005
+    decision: The core requires a programmable, PBR, colour-managed baseline; advanced rendering
+      families are capability-scoped rather than a universal mandatory algorithm or hardware tier.
+    consequence: No language, graphics API, vendor engine, shader editor or proprietary
+      GI/upscaler/geometry implementation is selected. Profile changes and fallback are explicit;
+      any quality/performance claim identifies the actually executed technique/settings and keeps
+      POL-3D-004 quality floors. Declaring an optional feature unsupported does not waive baseline
+      rendering or required opaque diagnostics.
+quality_attributes:
+  - id: QA-3D-001
+    attribute: performance
+    target: On the declared reference performance envelope, median completed-frame interval is at most
+      16.7 ms and actual completed-frame throughput meets MET-3D-001. Report p95, p99, maximum,
+      sample count and excursions against the declared frame budget; the positive finite p95/p99/max
+      limits fixed in the profile must also hold. Do not silently omit hitches, unsuccessful work,
+      startup or cold phases; report distinct cold/first-use and warmed populations.
+  - id: QA-3D-002
+    attribute: diagnostics
+    target: Every load failure identifies the asset, stage, and actionable cause.
+  - id: QA-3D-003
+    attribute: determinism
+    target: Identical reference state, ordered inputs, asset contents and seed under the same published
+      execution profile produce equal reference states after 600 fixed steps using the published
+      numeric equality rules. Different profiles and real-time schedules that discard different
+      steps are outside this equality claim.
+  - id: QA-3D-004
+    attribute: agent_operability
+    target: The published create-inspect-correct evaluation records structural predicates, multi-view
+      instruction/visual rubrics, preservation and recovery outcomes, completed-task denominators,
+      correction/tool-call counts, wall time, available cost/usage and human interventions
+      separately. Budgets, repetitions, success rules and visual tolerances are fixed before
+      confirmation, and hard state-integrity or access-boundary failures cannot be hidden by an
+      average quality score.
+  - id: QA-3D-005
+    attribute: responsiveness
+    target: Within each declared supported envelope, acknowledgement, committed-result, image-ready and
+      saturated-control response meet their predeclared finite p95/p99 and maximum/completion
+      budgets. Report all offered/admitted/rejected/completed/expired work and sample counts;
+      unsuccessful or censored work cannot be removed to make latency look better. Separate engine,
+      bridge, external I/O and model-generation timing where observable; unknown phases remain
+      unknown. Supported points also meet their minimum completed-throughput and maximum
+      rejection/failure rates; an empty successful-latency population cannot pass.
+  - id: QA-3D-006
+    attribute: memory_and_scalability
+    target: For the declared scene-size and command-load sweep, host/device live, preparing, in-flight,
+      diagnostic/checkpoint, reusable-cache and pending-retirement allocations remain within
+      predeclared ceilings. Publish peak usage, completion throughput, latency tails, rejection and
+      retirement/recovery results at every load point. After each completed quiescent cycle, no
+      scene-exclusive allocation remains live; cache retention has a declared finite ceiling and is
+      not used to hide monotonic scene-owned growth. Process or driver memory estimates are labelled
+      separately from engine allocation accounting.
+  - id: QA-3D-007
+    attribute: rendering fidelity and technique evidence
+    target: For the frozen rendering profile, publish actual images plus numeric/material/colour and
+      multi-frame quality checks with fixed tolerances, corpus and scoring. Required PBR,
+      programmable shading, HDR, lighting and shadow controls must pass. Every advertised optional
+      technique is evaluated on applicable quality and failure controls before it is called
+      verified; unsupported or unexecuted features stay explicit. Report temporal
+      trails/disocclusion, shadow/light leaks, transparency and LOD/residency limits separately from
+      frame time, compile latency and memory. A pleasant screenshot or advertised algorithm name
+      alone is not conformance or comparative superiority.
+integrations:
+  - id: INT-3D-001
+    system: Graphics API
+    purpose: Create pipelines and submit rendering commands to a GPU.
+    degradation: The engine fails at startup with an explicit diagnostic when required capabilities are
+      unavailable.
+acceptance:
+  - id: ACC-3D-001
+    given: A translated parent node and a child node with a known local transform.
+    when: The scene is evaluated.
+    then: The child world matrix matches the expected composition and remains stable across frames.
+    evidence: Hierarchical-transform unit test.
+  - id: ACC-3D-002
+    given: A scene with a missing texture.
+    when: Loading and rendering are requested.
+    then: Loading exposes progress or state without waiting for completion, fails with an
+      asset-and-stage structured diagnostic, and any binding or rendering depending on the failed
+      texture is rejected with a controlled error. An independent ready-asset scene remains usable.
+    evidence: Asynchronous-loading integration test with a deliberately delayed load, observable status
+      before completion, missing-texture terminal result, rejected use and independent-scene
+      control.
+  - id: ACC-3D-003
+    given: The reference performance scene and target hardware.
+    when: It runs for 60 seconds after the profile-declared warm-up; the reference
+      create/load/render/close workload is then repeated for the profile-declared cycle count and
+      allowed to reach resource quiescence.
+    then: Actual completed-frame throughput meets MET-3D-001 and the median, p95, p99 and maximum
+      frame-interval budgets meet QA-3D-001 for the fixed reference envelope. All samples,
+      excursions, failures and declared pacing are reported. Cold/first-use results remain separate.
+      After completed quiescent cycles, resource accounting identifies no retained scene-owned
+      allocation; shared backing/caches are separately accounted and pending cleanup cannot yield a
+      leak-free pass.
+    evidence: Versioned benchmark and resource ledger, runtime/driver/hardware and memory-accounting
+      profile, warm-up, samples, cycle count and quiescence observation; unmeasured targets remain
+      unknown. Include monotonic window boundaries, completed-frame counts, raw interval references
+      and quantile/excursion definitions; acknowledgement or submission rates do not prove frame
+      completion.
+  - id: ACC-3D-004
+    given: A schema-valid scene containing a parent and child, asset bindings, a camera, a light and
+      seeded simulation state, with unchanged assets available under the declared asset root. Asset
+      fixtures are supplied through the open-interchange format selected by the declared extension,
+      with its version and loader results recorded.
+    when: The agent loads the scene, exports it and imports the export into a fresh scene under the same
+      execution profile; it also submits an invalid scene.
+    then: The export validates against the published schema, both valid scenes have identical reference
+      states and equivalent world transforms, and the invalid import returns a structured error
+      without modifying its target.
+    evidence: REQ-3D-007 schema validation, round-trip comparison and rejected-import test.
+  - id: ACC-3D-005
+    given: The structured command interface and the hierarchy fixture from ACC-3D-001.
+    when: A script constructs and inspects that fixture using only commands, exercises each declared
+      operation, and submits malformed parameters, an unknown entity, an invalid lifecycle operation
+      and a hierarchy cycle.
+    then: Valid operations return correlated results, the child world transform satisfies ACC-3D-001,
+      and every rejected command returns the required error fields without changing the reference
+      state. An asynchronous asset failure is queryable by operation identifier with the same
+      structured error fields and its failing stage.
+    evidence: REQ-3D-008 command coverage, agent-script transcript and negative tests.
+  - id: ACC-3D-006
+    given: A fresh engine session and an agent that knows only how to connect and invoke discovery, with
+      no command-specific documentation.
+    when: The agent discovers the interface and receives the instruction to create a floor, a cube
+      parented to a rotating pivot, and a light, then render an image; it configures a camera and
+      supplies pivot transform updates between explicit simulation steps through discovered
+      commands.
+    then: The agent completes the scene, rotation updates and headless render without human
+      intervention. Every command used, parameter and returned error structure is covered by the
+      discovered description.
+    evidence: REQ-3D-009 discovery conformance check, agent transcript, inspected scene and rendered image.
+  - id: ACC-3D-007
+    given: A paused scene with a hierarchy, assets in known states and a recorded diagnostic.
+    when: The agent requests repeated snapshots without issuing modifying commands.
+    then: Snapshots expose the tree, correct world transforms, asset and operation states, step index,
+      pause state, reference state and diagnostics with consistent revision metadata. Inspection
+      changes neither reference state nor diagnostic history and starts no asset work.
+    evidence: REQ-3D-010 snapshot consistency and read-only inspection tests.
+  - id: ACC-3D-008
+    given: Two identical paused scenes with the same explicit seed, execution profile and ordered
+      inputs, including a seed-dependent simulation fixture.
+    when: Wall-clock time elapses, then both scenes advance by a total of 600 fixed steps using
+      different valid command batch sizes; an excessive step request is also submitted, and a
+      real-time frame is subjected to catch-up overload.
+    then: Waiting advances neither scene; each successful command advances exactly its requested count
+      and leaves the scene paused; the states after 600 steps are identical. The excessive request
+      changes no reference state, and the overloaded real-time frame executes at most five catch-up
+      steps. Excess whole-step lag is discarded and reported, does not advance the fixed-step index,
+      and does not reappear as catch-up debt when no new elapsed time is supplied.
+    evidence: REQ-3D-011 and QA-3D-003 determinism test, pause test, step-limit test and POL-3D-001
+      catch-up test.
+  - id: ACC-3D-009
+    given: A reference scene with ready assets, a known camera, fixed image dimensions and a versioned
+      reference image with a declared comparison tolerance.
+    when: The agent renders in an environment without a display server, requests an invalid camera, and
+      attempts startup without a required graphics capability.
+    then: The successful image matches the reference within tolerance, identifies its camera and scene
+      revision, and leaves simulation unchanged. The invalid camera produces a structured error;
+      missing graphics capability causes an explicit startup failure. A no-render or dummy-data
+      backend cannot satisfy the image case; a second camera pose must produce the separately
+      expected nonuniform reference image.
+    evidence: REQ-3D-012 headless image comparison, state comparison and failure diagnostics.
+  - id: ACC-3D-010
+    given: A declared asset root, an external sentinel file, filesystem indirections where supported,
+      and deliberately small node, memory and step limits.
+    when: Commands attempt traversal, absolute out-of-root access, indirect escape, an escaping asset
+      dependency and an arbitrary export path; other commands exceed each limit, including decoded
+      asset and rendering memory.
+    then: No outside file is read or written; each forbidden access or exceeded limit produces a
+      structured error. Memory accounting remains within its declared budget, temporary allocations
+      are released, scene invariants hold, and the engine remains available for inspection and
+      closure.
+    evidence: REQ-3D-013 file-boundary tests, resource-budget tests and post-failure lifecycle checks.
+      File-boundary observations concern engine-mediated access, not a general operating-system or
+      arbitrary-code sandbox guarantee.
+  - id: ACC-3D-011
+    given: A parent-child hierarchy with distinct transforms and an inspected revision.
+    when: Commands attempt self-parenting and ancestor cycles; valid reparenting operations are also
+      interleaved on the same child.
+    then: Cycle attempts return structured errors without altering reference state. Every accepted
+      transition leaves at most one parent per node, correct world transforms and a coherent
+      inspected revision.
+    evidence: Hierarchy negative/concurrency fixture with before/after reference states; REQ-3D-001,
+      REQ-3D-002 and INV-3D-001.
+  - id: ACC-3D-012
+    given: A delayed asset load with a returned operation identifier and another independently ready
+      scene.
+    when: The caller queries loading state and requests retrieval before completion, then repeats after
+      completion; a separate load fails. Another fixture requests an unsupported asset format from
+      within the allowed asset root.
+    then: Pre-completion queries return a nonterminal state while the load remains incomplete. Only
+      completed successful work becomes ready; failure is queryable with its stage and cannot be
+      bound as ready. The independent scene remains inspectable and renderable. The supported
+      open-format fixture loads successfully; the unsupported format produces a structured
+      loading-stage error, not a successful ready asset.
+    evidence: Controlled asynchronous integration fixture observing query completion before releasing
+      the load, terminal success/failure and rejected premature binding; REQ-3D-003, REQ-3D-004,
+      REQ-3D-008 and QA-3D-002.
+  - id: ACC-3D-013
+    given: A real-time frame with ten fixed steps of elapsed time at the default step and five-step cap,
+      plus concurrent scene mutation.
+    when: The scheduler processes the overloaded frame and then a frame with no additional elapsed time;
+      rendering and inspection record their revisions.
+    then: Discovery reports the default 1/60-second simulation interval and five-step per-frame cap. The
+      first frame executes five updates, reports five discarded steps of lag, and renders a complete
+      post-update revision. The second frame does not execute the discarded debt. No submitted frame
+      mixes transforms from different revisions.
+    evidence: Controlled scheduler/render boundary fixture with step counters, discarded-time
+      observation and revision records; REQ-3D-005, REQ-3D-006, POL-3D-001.
+  - id: ACC-3D-014
+    given: An active scene with one submitted render, another accepted but unsubmitted render, a delayed
+      asset load and another active scene sharing a backing asset through its own binding.
+    when: Closure races with load completion and with a new render request, followed by repeated closure
+      and attempted use of old identifiers.
+    then: An allocation published before closure is retired safely; a load still pending at closure ends
+      in a scene-closed failure without publishing readiness. The accepted but unsubmitted render
+      fails without submitting. New work after closure and stale-scene use are rejected. Pre-closure
+      submitted rendering may finish safely, repeated closure causes no duplicate retirement, and
+      the other scene remains usable.
+    evidence: Closure concurrency test with observed logical ordering, asynchronous outcomes, reference
+      validity and per-scene/shared resource ledger; REQ-3D-014, INV-3D-002 and INV-3D-003.
+  - id: ACC-3D-015
+    given: A logically closed scene whose submitted graphics work has not yet retired and a declared
+      effective memory budget.
+    when: Inspection queries closure/accounting while cleanup remains pending; another allocation would
+      exceed the budget, then retirement completes. A separate cleanup failure is injected.
+    then: Pending-retirement memory remains charged and the excessive allocation fails safely. After
+      successful retirement, scene-exclusive allocations are reclaimed or explicitly reusable
+      without live scene ownership; a cleanup failure stays visible and cannot be counted as
+      completed reclamation. Inspection stays available.
+    evidence: Delayed-retirement and cleanup-failure resource fixture with before/after allocations,
+      limit error and terminal/pending accounting; REQ-3D-013, REQ-3D-014, INV-3D-003 and
+      MET-3D-002.
+  - id: ACC-3D-016
+    given: A paused scene at revision R with independent entities and a bounded multi-edit proposal.
+    when: The agent previews it, applies it against R, retries against stale R and submits a set
+      containing an invalid final item; a concurrent writer also changes the scene. A set attempting
+      to advance simulation or start an asset load is also submitted.
+    then: Preview leaves state unchanged and identifies property-level changes. A valid apply publishes
+      one complete new revision preserving unaffected entities. Stale or invalid sets publish no
+      partial changes or lost newer edits, with correlated errors identifying the cause. Disallowed
+      set operations are rejected without advancing simulation or starting a load.
+    evidence: Before/after state and revision records for valid, malformed, cycle, stale, concurrent and
+      over-limit edit controls; REQ-3D-015 plus original state, hierarchy and limit invariants.
+  - id: ACC-3D-017
+    given: A paused quiescent seeded scene, a bounded checkpoint and a later deliberately incorrect edit.
+    when: The agent restores the checkpoint against the current revision, continues fixed stepping, then
+      exercises stale, released, incompatible-profile, changed-asset and over-budget restore cases.
+    then: A successful restore reproduces checkpoint reference state under a fresh revision and
+      subsequent steps match the seed/reference control. Failed restores leave current reference
+      state intact. Released checkpoints are unusable; memory accounting includes checkpoint and
+      preparation allocations.
+    evidence: Capture/restore reference equality, random-state continuation, revision identity,
+      asset/root/limit negative controls and allocation ledger; REQ-3D-016.
+  - id: ACC-3D-018
+    given: A paused fixture of identified opaque objects with a known occlusion relation, known
+      camera-space distances, background and two cameras.
+    when: The agent requests aligned RGB, depth and visible-entity channels from both cameras at one
+      revision, followed by stale-revision, unsupported-surface and over-budget cases.
+    then: Both valid views identify the same requested scene revision and unchanged step. Pixel/depth
+      conventions and mappings identify the expected visible objects and background; raw renderer
+      IDs are not substituted for stable nodes. Unsupported semantics are explicit and stale or
+      over-budget results cannot claim successful complete evidence.
+    evidence: Independent geometry/depth expectations and channel mappings plus two-camera image checks,
+      state comparison and memory ledger; REQ-3D-017.
+  - id: ACC-3D-019
+    given: A discovery-only agent and a bounded scene-layout task with an initially wrong placement, an
+      unaffected object and a supplied structural plus two-view visual rubric.
+    when: The agent discovers, inspects and renders the scene, checkpoints it, recovers a controlled
+      unsuccessful edit by restoring that checkpoint, then previews/applies the targeted correction
+      and renders again within the predeclared task budget.
+    then: The task ends with the declared structural and view constraints satisfied, unaffected state
+      preserved and the unsuccessful edit recovered without hidden human editing. Record every tool
+      result, revision, view, correction and intervention; budget exhaustion or missing results are
+      failures or not_run, not success.
+    evidence: Create-inspect-correct trajectory with final exported state, before/after views,
+      independent rubric outcomes and checkpoint recovery; REQ-3D-009, REQ-3D-015–017 and QA-3D-004.
+  - id: ACC-3D-020
+    given: A frozen task set and comparison profile with declared baseline configurations, trial
+      budgets, scoring rules and actual result records where available.
+    when: Delivery evidence is reviewed, including controls with a missing baseline, unexecuted task,
+      changed budget, hidden intervention, unsupported capability or a changed scoring rule.
+    then: The report preserves denominators, exclusions, raw per-trial outcomes and separate structural,
+      visual, correctness and resource measures. Invalid, missing or incomparable records cannot
+      support a superiority claim. An honest not_run report states comparative status unknown and
+      does not count as executed engine acceptance.
+    evidence: Reproducible profile/task identities, per-trial result references and report review with
+      negative controls; POL-3D-003, QA-3D-004 and MET-3D-003.
+  - id: ACC-3D-021
+    given: A fixed reference envelope and measurement controls containing fast submission with delayed
+      GPU completion, unavailable/delayed GPU counters and a frame series with an isolated long
+      stall.
+    when: The implementation workload is timed and its report is reviewed alongside known measurement
+      controls.
+    then: Throughput uses actual completed frames, all frame intervals and the full timed window.
+      Median-only success cannot hide a failed throughput or tail/maximum budget. Delayed counters
+      stay associated with their originating operations and unavailable counters remain unknown. CPU
+      and GPU overlap is not reported as summed end-to-end latency.
+    evidence: Frame/operation correlation, timing-boundary observations and independently computed
+      positive/negative report controls; REQ-3D-019, QA-3D-001 and POL-3D-004.
+  - id: ACC-3D-022
+    given: A declared finite in-flight cap, positive finite control-response/deadline budgets and a
+      workload that deliberately delays asset/render/edit preparation.
+    when: Load is offered above the cap while status, inspection and closure are requested; operations
+      also finish before or after their declared publication deadline.
+    then: Excess work returns a bounded structured busy/limit response. Control requests meet the
+      declared bound without hidden queue growth. Expired-before-commit work publishes no late scene
+      state or successful image; previously committed work remains queryably committed even when a
+      reply arrives late. Deferred physical retirement remains safe and charged.
+    evidence: Offered/admitted/rejected/expired counts, monotonic control/result timing, operation
+      states, scene revisions and memory ledger across deadline races; REQ-3D-018, QA-3D-005 and
+      existing closure/atomicity invariants.
+  - id: ACC-3D-023
+    given: A frozen sweep varying scene complexity, resolution/view/channel count and offered command
+      load, with declared capacity and memory limits.
+    when: Each supported load point and one deliberate beyond-limit point are exercised for repeated
+      fixed runs.
+    then: Per-point completed throughput, p50/p95/p99/max latency, rejection/failure counts and
+      host/device high-water memory are reported. Supported points meet their budgets; the
+      over-limit point is safely rejected or backpressured and cannot be represented as normal
+      successful capacity. Inspection/closure and output semantics remain correct. A fast reject-all
+      or expire-all run fails the supported-throughput criterion even if its acknowledgement times
+      are short.
+    evidence: Matched workload profiles, per-point samples and resource/recovery outcomes; QA-3D-005,
+      QA-3D-006, REQ-3D-018 and POL-3D-004.
+  - id: ACC-3D-024
+    given: A declared cold asset/shader/cache state, the same warmed fixture and an image request
+      requiring GPU completion plus retrievable RGB/depth/entity output.
+    when: First-use loading/rendering and warmed repeats are measured with a controlled delayed readback
+      or artifact step.
+    then: Cold and warmed results remain separate; first ready-asset and complete image-ready latency
+      include their applicable work. A fast acknowledgement or GPU finish cannot end the image-ready
+      timer before all requested data is retrievable. Profiling overhead and unsupported timing
+      capabilities are explicit.
+    evidence: Cold-state procedure, phase/correlation records, output retrieval checks and instrumented
+      versus baseline control runs; REQ-3D-019, QA-3D-005 and POL-3D-004.
+  - id: ACC-3D-025
+    given: A declared repeated create/load/edit/checkpoint/multi-view/close workload, finite
+      cache/memory ceilings and an initial quiescent allocation ledger.
+    when: The declared cycle count executes, including delayed retirement, a cleanup failure and a
+      return from overload to the supported envelope.
+    then: Every cycle accounts for checkpoint, diagnostic and pending-retirement memory. Completed
+      quiescence leaves no live scene-exclusive allocation; retained cache is bounded and separately
+      identified. Cleanup failure remains failure/incomplete. After successful recovery, the
+      supported workload again meets its predeclared budgets without silent output degradation.
+    evidence: Cycle-by-cycle allocation and operation records, high-water marks, explicit cleanup status
+      and recovery timing with unchanged output checks; QA-3D-006, REQ-3D-018 and POL-3D-004.
+  - id: ACC-3D-026
+    given: Shared material/program assets, two material instances and a frozen PBR reference scene with
+      opaque, cutout and blended surfaces.
+    when: Discover parameter types/conventions, change one instance through an expected-revision edit,
+      reject an invalid parameter and round-trip the scene.
+    then: Metallic/roughness, normal/AO/emission and opacity controls follow the declared material
+      model; the other instance is unchanged, invalid edits publish no mutation, and export/import
+      preserves material/profile reference state.
+    evidence: Typed reflection and state diffs, shared-instance control and profile-toleranced material
+      images; REQ-3D-020, REQ-3D-007/015, QA-3D-007.
+  - id: ACC-3D-027
+    given: A working shader binding and valid, malformed, interface-incompatible and out-of-root
+      replacement programs.
+    when: Prepare replacements asynchronously, inspect during preparation, activate the valid program
+      and race a stale or failed replacement with scene closure.
+    then: Valid activation publishes one complete expected revision. Failed/stale programs expose
+      correlated source/stage/binding diagnostics and cannot replace the good binding, escape the
+      asset root or activate after closure. An image explicitly requiring the failed program fails,
+      while the old working scene remains renderable before closure.
+    evidence: Build/reflection/state/closure timeline, shader-driven vertex and surface image controls
+      and invocation records; REQ-3D-021, REQ-3D-003/004/013/014/015.
+  - id: ACC-3D-028
+    given: Known linear and colour-encoded swatches, numeric data textures and emissive values above
+      display white under a frozen colour profile.
+    when: Render the declared linear diagnostic boundary and tone-mapped output, then request an
+      unavailable encoding in a negative fixture.
+    then: Colour transfer is applied once, numeric channels are not colour-decoded, HDR values survive
+      to the stated output stage and exposure/tone-map/encoding metadata match actual samples.
+      Unsupported encoding fails instead of mislabelling or silently clipping.
+    evidence: Analytic swatch/transfer controls with frozen tolerances, HDR samples and output metadata;
+      REQ-3D-022, QA-3D-007.
+  - id: ACC-3D-029
+    given: A lit PBR scene with a directional light, point light, environment input and an opaque
+      occluder/receiver pair.
+    when: Vary light and material controls, enable/disable declared shadows, and independently change
+      emissive appearance with GI disabled.
+    then: Lighting and environment response change under the documented conventions, the occluder
+      produces the expected shadow within declared coverage/tolerance, and emission alone is not
+      falsely reported as GI. Light/shadow limit violations or unsupported combinations are
+      explicit.
+    evidence: Lit/unlit/occluded positive and negative images, light/shadow metadata and limit controls;
+      REQ-3D-020/023, QA-3D-007.
+  - id: ACC-3D-030
+    given: Discovery is queried on the actual graphics profile before scene creation; a technique is
+      unsupported or lacks required hardware.
+    when: Request baseline rendering, then explicitly request the unavailable technique, then separately
+      opt into a named fallback.
+    then: The mandatory baseline renders successfully. Discovery and returned images expose
+      requested/effective profiles; the unsupported request fails and only the explicit fallback
+      fixture may use its disclosed alternative. No feature is verified solely because its family
+      name appears in discovery.
+    evidence: Capability matrix, supported baseline images, missing-hardware negative control and
+      fallback metadata; REQ-3D-024, POL-3D-005.
+  - id: ACC-3D-031
+    given: A paused reference scene has explicit shader time and two camera views; a declared temporal
+      or stochastic technique is enabled where supported.
+    when: Render after different wall-clock waits, then change camera/material, restore a checkpoint and
+      repeat the declared clean-history/priming sequence.
+    then: Simulation does not advance; explicit time/seed/profile controls produce reference images
+      within frozen tolerances. No other view or replaced scene history contaminates the clean
+      result; internal/output resolution and convergence/residency status are explicit. Optional
+      temporal variants are not_applicable only when discovery declares them unsupported, while
+      baseline paused-time/view isolation remains required.
+    evidence: Multi-frame camera-cut/disocclusion and two-view controls, time/seed/history metadata,
+      checkpoint reference comparison and separate native/reconstructed counts; REQ-3D-025,
+      REQ-3D-016/017, QA-3D-007.
+  - id: ACC-3D-032
+    given: A profile has finite shader variant/cache/work limits and frozen cold/warm material/technique
+      workloads; streamed geometry or compute is included only if advertised.
+    when: Exercise first use, repeated warmed variants, an over-limit variant population, delayed
+      optional work and closure/retirement.
+    then: Compile/preparation/readiness costs and memory are counted without hidden variant/cache
+      growth, uncontrolled queues or fake early image completion. Optional technique workloads
+      expose residency/convergence and obey deadlines/retirement. Quality settings stay frozen and
+      complete render throughput excludes synthetic presentation frames.
+    evidence: Cold/warm variant ledger, quality images, load/memory/retirement traces and
+      technique-specific negative controls; REQ-3D-021/024/025, REQ-3D-018/019, POL-3D-004/005.
+delivery:
+  required_artifacts:
+    - Reference scene
+    - Target-hardware profile
+    - Asset-lifecycle guide
+    - Conformance matrix
+    - Versioned scene schema and reference-state equality rules
+    - Machine-readable command description
+    - Declared resource limits and memory accounting profile
+    - End-to-end agent example and transcript
+    - Headless reference image and comparison tolerance
+    - Versioned execution and image profiles, reference inputs and scheduler overload fixtures
+    - Scene closure and physical-retirement accounting report
+    - Open-interchange extension declaration and versioned loader fixtures
+    - Revisioned edit/preview and checkpoint operation descriptions
+    - Aligned multi-view RGB/depth/entity fixtures and semantic conventions
+    - Frozen agent task corpus, comparator eligibility rules and predeclared comparison profile
+    - Agent correction trajectories and per-trial structural/visual/resource reports, with unknown
+      and not_run results explicit
+    - Frozen performance envelopes with concrete hardware/workloads, finite SLO budgets and
+      cache/pacing/quality definitions
+    - Per-frame/per-operation timing, throughput, tail/excursion, saturation and memory-cycle
+      reports with measurement controls
+    - Rendering profile, shader/material authoring schema and technique capability matrix
+    - Frozen rendering-quality fixtures and per-technique quality/performance evidence with
+      unsupported/not_run states
+  verification:
+    - Execute ACC-3D-001 through ACC-3D-025 against an identified immutable implementation revision
+      and the published execution profiles.
+    - Report benchmark samples and resource accounting separately from logical state, image
+      comparison and agent-journey evidence.
+    - Map each requirement, invariant, policy, integration and quality attribute to observed
+      evidence; record not_run, failed, incomplete and omitted cases explicitly. Schema validity,
+      documentary research and a candidate status do not establish implementation conformance.
+    - Apply POL-3D-003 and QA-3D-004 to comparative evidence; the evaluation design and documentary
+      capability matrix do not establish a measured SOTA result.
+    - Execute performance cases against instantiated frozen envelopes. Unknown/unconfigured budgets
+      or missing engine runs remain not_assessed/not_run, never evidence of frame pacing,
+      response-time or memory performance.
+    - Execute ACC-3D-026 through ACC-3D-032 together with all retained cases. Conditional technique
+      variants may be not_applicable only with the unmet capability condition recorded; baseline
+      rendering controls remain mandatory. Record exact
+      shader/assets/profile/fixtures/checker/engine revisions and every outcome.
+extensions:
+  engine.physics: Adds fixed-step physics compatible with the core loop.
+  engine.editor: Adds an editor that remains a client of the runtime contract.

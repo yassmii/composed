@@ -1,0 +1,39 @@
+schema_version: "0.1"
+contract_id: "video-editorial-workflow"
+contract_version: "0.3.1"
+research_status: "initial"
+links:
+  - {clause: "CAP-VEW-001", basis: "explicit_project_choice", observations: [], note: "Un projet éditorial et des sources identifiées sont un choix du contrat générique ; la recherche publique actuelle ne démontre pas encore ce parcours complet."}
+  - {clause: "REQ-VEW-001", basis: "explicit_project_choice", observations: [], note: "L'identification du paquet source, de son emplacement, de son état et de son auteur est une règle de traçabilité choisie pour cette famille."}
+  - {clause: "REQ-VEW-002", basis: "explicit_project_choice", observations: [], note: "Le refus systématique des sources non vérifiables est une garantie ajoutée pour l'application."}
+  - {clause: "CAP-VEW-002", basis: "explicit_project_choice", observations: [], note: "Le suivi gouverné des traitements est un choix produit dont la preuve comparative reste à compléter."}
+  - {clause: "REQ-VEW-003", basis: "explicit_project_choice", observations: [], note: "Un journal attribué des entrées, paramètres, résultats et états est un choix d'observabilité du produit."}
+  - {clause: "REQ-VEW-004", basis: "explicit_project_choice", observations: [], note: "La séparation stricte entre succès, échec, annulation et issue indéterminée est une règle produit."}
+  - {clause: "CAP-VEW-003", basis: "explicit_project_choice", observations: [], note: "La sélection persistante et versionnée est un choix produit ; les sources de revue média ne prouvent pas à elles seules ce parcours."}
+  - {clause: "REQ-VEW-005", basis: "explicit_project_choice", observations: [], note: "L'examen de la matière avant sélection est un comportement requis par choix produit, à documenter par d'autres sources."}
+  - {clause: "REQ-VEW-006", basis: "explicit_project_choice", observations: [], note: "La conservation des versions, de l'ordre, de l'auteur et des références de sélection est un choix produit."}
+  - {clause: "CAP-VEW-004", basis: "explicit_project_choice", observations: [], note: "Le handoff versionné et vérifiable est un choix produit ; l'existence d'exports documentés ne démontre pas sa gouvernance complète."}
+  - {clause: "REQ-VEW-007", basis: "explicit_project_choice", observations: [], note: "Figer la sélection avant export et associer un manifeste de provenance est un choix produit."}
+  - {clause: "REQ-VEW-008", basis: "explicit_project_choice", observations: [], note: "Conserver le résultat de vérification et exiger une preuve avant toute déclaration de compatibilité est un choix produit."}
+  - {clause: "CAP-VEW-005", basis: "explicit_project_choice", observations: [], note: "Des profils local, hébergé ou hybride conformes au même noyau sont un choix de portabilité du contrat."}
+  - {clause: "REQ-VEW-009", basis: "explicit_project_choice", observations: [], note: "La déclaration des capacités, dépendances, données et limites de chaque profil est un choix produit."}
+  - {clause: "REQ-VEW-010", basis: "explicit_project_choice", observations: [], note: "La preuve de conformité par profil est une exigence de livraison ajoutée."}
+  - {clause: "CAP-VEW-006", basis: "explicit_project_choice", observations: [], note: "Le contrôle des services externes est un choix produit ; la recherche comparative sur ces contrôles reste ouverte."}
+  - {clause: "REQ-VEW-011", basis: "explicit_project_choice", observations: [], note: "L'affichage préalable de la destination, des catégories de données et de la politique est un choix de gouvernance."}
+  - {clause: "REQ-VEW-012", basis: "explicit_project_choice", observations: [], note: "Rendre l'indisponibilité explicite et préserver les fonctions indépendantes est un choix de dégradation du produit."}
+  - {clause: "INV-VEW-001", basis: "explicit_project_choice", observations: [], note: "L'immuabilité des sources par les traitements et exports est un choix d'intégrité."}
+  - {clause: "INV-VEW-002", basis: "explicit_project_choice", observations: [], note: "Le rattachement unique de l'export à sa sélection et ses entrées est un choix de provenance."}
+  - {clause: "INV-VEW-003", basis: "explicit_project_choice", observations: [], note: "Cette garantie sur les états de traitement est ajoutée pour éviter une sortie éditoriale ambiguë."}
+  - {clause: "INV-VEW-004", basis: "explicit_project_choice", observations: [], note: "Le contrôle des transmissions par destination et catégorie de donnée est un choix de gouvernance."}
+  - {clause: "POL-VEW-001", basis: "explicit_project_choice", observations: [], note: "La séparation entre noyau éditorial et assistance optionnelle est un choix de cette famille de produits ; elle ne définit pas le périmètre de livraison d’un projet client."}
+  - {clause: "POL-VEW-002", basis: "explicit_project_choice", observations: [], note: "La neutralité entre profils local, hébergé et hybride est un choix du contrat."}
+  - {clause: "POL-VEW-003", basis: "explicit_project_choice", observations: [], note: "Réserver la sélection figée et l'acceptation du handoff à une action humaine attribuée est un choix produit."}
+  - {clause: "POL-VEW-004", basis: "explicit_project_choice", observations: [], note: "Désactiver les services externes par défaut et garder le noyau utilisable est un choix produit."}
+  - {clause: "QA-VEW-001", basis: "explicit_project_choice", observations: [], note: "La couverture complète de provenance est une cible mesurable ajoutée."}
+  - {clause: "QA-VEW-002", basis: "explicit_project_choice", observations: [], note: "Publier une procédure et des preuves rejouables par profil est une cible de qualité choisie."}
+  - {clause: "QA-VEW-003", basis: "explicit_project_choice", observations: [], note: "L'autonomie vis-à-vis des chemins personnels, liens non contrôlés et états non exportables est une cible de portabilité choisie."}
+  - {clause: "QA-VEW-004", basis: "explicit_project_choice", observations: [], note: "Le refus attribué de toute transmission non autorisée dans la suite de conformité est une cible de qualité choisie."}
+  - {clause: "CAP-VEW-007", basis: "supported_pattern_and_choice", observations: ["OBS-VEW-009", "OBS-VEW-010"], note: "Les commentaires contextualisés et la comparaison sont observés ; leur modèle dans cette famille de produits est un choix produit."}
+  - {clause: "REQ-VEW-013", basis: "supported_pattern_and_choice", observations: ["OBS-VEW-009"], note: "Le commentaire horodaté et l'annotation sont observés ; la référence possible à une sélection est un choix produit."}
+  - {clause: "REQ-VEW-014", basis: "supported_pattern_and_choice", observations: ["OBS-VEW-010"], note: "La comparaison et le choix de l'asset commenté sont observés ; la garantie d'absence d'ambiguïté est un choix produit."}
+  - {clause: "QA-VEW-005", basis: "supported_pattern_and_choice", observations: ["OBS-VEW-011", "OBS-VEW-012"], note: "Les formats et limites EDL sont documentés ; la déclaration systématique des limites et de recette est une cible produit."}

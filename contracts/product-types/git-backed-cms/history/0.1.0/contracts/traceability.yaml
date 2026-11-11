@@ -1,0 +1,176 @@
+schema_version: "0.1"
+contract_id: "git-backed-cms"
+contract_version: "0.1.0"
+research_status: "initial"
+links:
+  - clause: "CAP-GCMS-001"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-GCMS-001", "OBS-GCMS-022", "OBS-GCMS-030"]
+    note: "Declared, typed models are convergent; versioning them in the repository follows Decap and TinaCMS against EmDash's database model (OBS-GCMS-002)."
+  - clause: "REQ-GCMS-001"
+    basis: "supported_convergence"
+    observations: ["OBS-GCMS-001", "OBS-GCMS-005", "OBS-GCMS-022", "OBS-GCMS-026", "OBS-GCMS-030", "OBS-GCMS-032"]
+  - clause: "REQ-GCMS-002"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-GCMS-022", "OBS-GCMS-030"]
+    note: "Version-controlled models are evidenced; routing model edits through the content change flow is a contract choice."
+  - clause: "REQ-GCMS-003"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-GCMS-003", "OBS-GCMS-004"]
+    note: "EmDash evidences the risk of breaking model changes; refusing them unless migrated in the same change is a contract choice."
+  - clause: "CAP-GCMS-002"
+    basis: "supported_convergence"
+    observations: ["OBS-GCMS-008", "OBS-GCMS-024", "OBS-GCMS-033"]
+  - clause: "REQ-GCMS-004"
+    basis: "supported_pattern"
+    observations: ["OBS-GCMS-007"]
+  - clause: "REQ-GCMS-005"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-GCMS-008", "OBS-GCMS-024", "OBS-GCMS-033"]
+    note: "Isolation is evidenced in all three products, but Decap's default commits directly; mandatory isolation is a contract choice."
+  - clause: "REQ-GCMS-006"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-GCMS-024", "OBS-GCMS-033"]
+    note: "Branch-based changes are evidenced; grouping models and entries in one change is a contract choice."
+  - clause: "REQ-GCMS-007"
+    basis: "supported_pattern"
+    observations: ["OBS-GCMS-012"]
+  - clause: "CAP-GCMS-003"
+    basis: "supported_convergence"
+    observations: ["OBS-GCMS-005", "OBS-GCMS-006", "OBS-GCMS-026", "OBS-GCMS-032"]
+  - clause: "REQ-GCMS-008"
+    basis: "supported_convergence"
+    observations: ["OBS-GCMS-005", "OBS-GCMS-006", "OBS-GCMS-026", "OBS-GCMS-032"]
+  - clause: "REQ-GCMS-009"
+    basis: "supported_pattern"
+    observations: ["OBS-GCMS-006", "OBS-GCMS-031"]
+  - clause: "REQ-GCMS-010"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-GCMS-006", "OBS-GCMS-026", "OBS-GCMS-032"]
+    note: "Field-level error messages are convergent; reporting every failure is evidenced only by EmDash and adopted as a choice."
+  - clause: "REQ-GCMS-011"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-GCMS-021", "OBS-GCMS-031"]
+    note: "Out-of-band repository edits are evidenced; revalidating them at publication is a contract choice with no source precedent."
+  - clause: "CAP-GCMS-004"
+    basis: "supported_convergence"
+    observations: ["OBS-GCMS-010", "OBS-GCMS-024", "OBS-GCMS-027", "OBS-GCMS-033", "OBS-GCMS-034"]
+  - clause: "REQ-GCMS-012"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-GCMS-015", "OBS-GCMS-024", "OBS-GCMS-029", "OBS-GCMS-033"]
+    note: "Draft, review, and publish stages are evidenced; the exact state set and transition records are contract choices."
+  - clause: "REQ-GCMS-013"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-GCMS-010", "OBS-GCMS-027", "OBS-GCMS-034"]
+    note: "Preview is convergent; scoped, expiring access follows EmDash and is a contract choice for Git-backed changes."
+  - clause: "REQ-GCMS-014"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-GCMS-013"]
+    note: "EmDash rejects a stale approved revision; returning the change to in_review is a contract choice."
+  - clause: "CAP-GCMS-005"
+    basis: "supported_convergence"
+    observations: ["OBS-GCMS-008", "OBS-GCMS-024", "OBS-GCMS-033"]
+  - clause: "REQ-GCMS-015"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-GCMS-008", "OBS-GCMS-013"]
+    note: "Single-revision publication is evidenced by EmDash; atomic visibility for consumers is stated as a contract choice."
+  - clause: "REQ-GCMS-016"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-GCMS-013", "OBS-GCMS-024"]
+    note: "Concurrent-publish protection and merge-based publication are evidenced; revalidating the combined state is a contract choice."
+  - clause: "REQ-GCMS-017"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-GCMS-009"]
+    note: "Unpublish keeping a draft is evidenced; routing it through review is a contract choice."
+  - clause: "CAP-GCMS-006"
+    basis: "supported_pattern"
+    observations: ["OBS-GCMS-011", "OBS-GCMS-021", "OBS-GCMS-030"]
+  - clause: "REQ-GCMS-018"
+    basis: "supported_pattern"
+    observations: ["OBS-GCMS-011", "OBS-GCMS-021"]
+  - clause: "REQ-GCMS-019"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-GCMS-011"]
+    note: "Restore-as-new-revision is evidenced; requiring validation and review of a restore is a contract choice."
+  - clause: "REQ-GCMS-020"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-GCMS-014"]
+    note: "EmDash's restorable trash is evidenced; the contract omits its permanent deletion of revisions."
+  - clause: "CAP-GCMS-007"
+    basis: "supported_convergence"
+    observations: ["OBS-GCMS-015", "OBS-GCMS-028", "OBS-GCMS-029", "OBS-GCMS-035"]
+  - clause: "REQ-GCMS-021"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-GCMS-015", "OBS-GCMS-035"]
+    note: "Role-based permissions are convergent; the listed actions and scope levels are contract choices."
+  - clause: "REQ-GCMS-022"
+    basis: "supported_pattern"
+    observations: ["OBS-GCMS-015", "OBS-GCMS-029"]
+  - clause: "REQ-GCMS-023"
+    basis: "supported_pattern"
+    observations: ["OBS-GCMS-016"]
+  - clause: "REQ-GCMS-024"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-GCMS-021", "OBS-GCMS-028", "OBS-GCMS-035"]
+    note: "Repository write access acting as CMS permission is evidenced; restricting it to candidate revisions outside protected canonical references is a contract choice."
+  - clause: "REQ-GCMS-025"
+    basis: "explicit_project_choice"
+    observations: []
+    note: "The sources establish direct repository writes but not a portable history-protection mechanism. Rejecting or recovering from destructive reference updates is required to uphold this product type's recoverability promise."
+  - clause: "INV-GCMS-001"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-GCMS-021", "OBS-GCMS-031"]
+    note: "Repository-as-truth with a rebuildable index is evidenced; including review records follows POL-GCMS-004."
+  - clause: "INV-GCMS-002"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-GCMS-005", "OBS-GCMS-026", "OBS-GCMS-032"]
+    note: "Pre-save validation is convergent; guaranteeing it for the published revision is a contract choice."
+  - clause: "INV-GCMS-003"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-GCMS-011"]
+    note: "Restore without erasing history is evidenced; append-only history for CMS and authorised direct repository actions diverges from OBS-GCMS-014."
+  - clause: "INV-GCMS-004"
+    basis: "supported_pattern"
+    observations: ["OBS-GCMS-010", "OBS-GCMS-017"]
+  - clause: "INV-GCMS-005"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-GCMS-011"]
+    note: "Attributed restores are evidenced; attributing every revision, approval, and publication is a contract choice."
+  - clause: "INV-GCMS-006"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-GCMS-023"]
+    note: "Decap publishes from one configured branch; a single published revision per repository is a contract choice."
+  - clause: "POL-GCMS-001"
+    basis: "explicit_project_choice"
+    observations: []
+    note: "Defining choice of this product type; EmDash (OBS-GCMS-002) shows that CMS products do not generally require Git."
+  - clause: "POL-GCMS-002"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-GCMS-021", "OBS-GCMS-022", "OBS-GCMS-031"]
+    note: "File-based content editable outside the CMS is evidenced; a documented stable layout is a contract choice."
+  - clause: "POL-GCMS-003"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-GCMS-015", "OBS-GCMS-024", "OBS-GCMS-033"]
+    note: "Review workflows exist but are optional in Decap and TinaCMS; mandatory review is a contract choice."
+  - clause: "POL-GCMS-004"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-GCMS-025", "OBS-GCMS-033"]
+    note: "Decap stores workflow metadata in the repository; host neutrality is a contract choice."
+  - clause: "POL-GCMS-005"
+    basis: "explicit_project_choice"
+    observations: []
+    note: "Protecting canonical references is a defining integrity choice needed for the recoverability promise; legal erasure remains a separately authorised extension."
+  - clause: "QA-GCMS-001"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-GCMS-031"]
+    note: "Rebuilding derived state from the repository is evidenced; the 100% target is a contract choice."
+  - clause: "QA-GCMS-002"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "QA-GCMS-003"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "QA-GCMS-004"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-GCMS-021", "OBS-GCMS-022"]
+    note: "Editing content outside the CMS is evidenced; the independent-reader target is a contract choice."

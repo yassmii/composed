@@ -1,0 +1,234 @@
+schema_version: "0.1"
+contract_id: "agent-os"
+contract_version: "0.2.0"
+research_status: "initial"
+links:
+  - clause: "CAP-AOS-001"
+    basis: "supported_pattern"
+    observations: ["OBS-AOS-001", "OBS-AOS-021", "OBS-AOS-022"]
+  - clause: "REQ-AOS-001"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-021"]
+    note: "Persisted execution status is evidenced by OpenHands; one principal and a pinned definition version per process are contract choices."
+  - clause: "REQ-AOS-002"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-019", "OBS-AOS-022"]
+    note: "Pause and resume without losing state are evidenced; taking effect before the next request and never re-executing completed requests are contract choices."
+  - clause: "REQ-AOS-003"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-021"]
+    note: "Restoring state after a crash is evidenced; restoring as paused, marking started requests with unrecorded outcomes indeterminate, and marking never-started requests failed as not executed are contract choices (clarified in 0.2.0 from implementation feedback)."
+  - clause: "CAP-AOS-002"
+    basis: "supported_convergence"
+    observations: ["OBS-AOS-002", "OBS-AOS-015", "OBS-AOS-026"]
+  - clause: "REQ-AOS-004"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-001", "OBS-AOS-002"]
+    note: "AIOS routes model, memory, storage, and tool access through system calls; extending the single path to network destinations and secrets is a contract choice."
+  - clause: "REQ-AOS-005"
+    basis: "supported_convergence"
+    observations: ["OBS-AOS-007", "OBS-AOS-030"]
+  - clause: "REQ-AOS-006"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-030"]
+    note: "Tool-call timeouts are advised by MCP; recording possible partial execution is a contract choice."
+  - clause: "CAP-AOS-003"
+    basis: "supported_pattern"
+    observations: ["OBS-AOS-002", "OBS-AOS-003", "OBS-AOS-007"]
+  - clause: "REQ-AOS-007"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-002", "OBS-AOS-003"]
+    note: "Central queues and time-sliced scheduling are evidenced by AIOS; a documented upper limit on holding a model resource is a contract choice."
+  - clause: "REQ-AOS-008"
+    basis: "supported_pattern"
+    observations: ["OBS-AOS-007"]
+  - clause: "REQ-AOS-009"
+    basis: "supported_pattern"
+    observations: ["OBS-AOS-004"]
+  - clause: "CAP-AOS-004"
+    basis: "supported_convergence"
+    observations: ["OBS-AOS-008", "OBS-AOS-026", "OBS-AOS-030"]
+  - clause: "REQ-AOS-010"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-008", "OBS-AOS-030"]
+    note: "Access control is evidenced; deny-by-default for every resource kind follows POL-AOS-002, and the non-delegable read of a process's own event history is a contract choice added in 0.2.0."
+  - clause: "REQ-AOS-011"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-008", "OBS-AOS-012"]
+    note: "AIOS privilege groups and per-user isolation are evidenced; a grant naming the shared scope replaces group membership as a contract choice."
+  - clause: "REQ-AOS-012"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-008", "OBS-AOS-026", "OBS-AOS-027"]
+    note: "Checking before execution and distrusting tool metadata are evidenced; ignoring the agent's own claims is a contract choice."
+  - clause: "REQ-AOS-013"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-009"]
+    note: "AIOS requires user confirmation for privilege modification; forbidding processes to change grants at all is a contract choice."
+  - clause: "CAP-AOS-005"
+    basis: "supported_convergence"
+    observations: ["OBS-AOS-009", "OBS-AOS-017", "OBS-AOS-018", "OBS-AOS-029"]
+  - clause: "REQ-AOS-014"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-015", "OBS-AOS-016", "OBS-AOS-027", "OBS-AOS-028"]
+    note: "Risk levels and annotations are evidenced; letting self-assessment and untrusted metadata only raise risk sides with MCP against OpenHands' default analyzer (OBS-AOS-016)."
+  - clause: "REQ-AOS-015"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-009", "OBS-AOS-017", "OBS-AOS-018"]
+    note: "Pausing for confirmation is evidenced; standing grants per tool, scope, and risk class are a contract choice."
+  - clause: "REQ-AOS-016"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-018", "OBS-AOS-029", "OBS-AOS-030"]
+    note: "Showing the action, risk, and inputs is evidenced; masking secrets in the prompt is a contract choice."
+  - clause: "REQ-AOS-017"
+    basis: "supported_convergence"
+    observations: ["OBS-AOS-018", "OBS-AOS-019", "OBS-AOS-029"]
+  - clause: "REQ-AOS-018"
+    basis: "explicit_project_choice"
+    observations: []
+    note: "No source binds an approval to exact inputs; required so that an approval cannot be reused for a different action."
+  - clause: "REQ-AOS-032"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-018", "OBS-AOS-026"]
+    note: "Approval by the user is evidenced; excluding delegated approval and giving operators a deny-only right are contract choices added in 0.2.0."
+  - clause: "CAP-AOS-006"
+    basis: "supported_convergence"
+    observations: ["OBS-AOS-010", "OBS-AOS-020"]
+  - clause: "REQ-AOS-019"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-010", "OBS-AOS-020"]
+    note: "Sandboxed execution is evidenced; limiting it to granted scopes for every process is a contract choice."
+  - clause: "REQ-AOS-020"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-020"]
+    note: "OpenHands offers an unsafe host-process mode; restricting it to operators and marking affected processes is a contract choice."
+  - clause: "CAP-AOS-007"
+    basis: "supported_convergence"
+    observations: ["OBS-AOS-005", "OBS-AOS-012", "OBS-AOS-023"]
+  - clause: "REQ-AOS-021"
+    basis: "supported_pattern"
+    observations: ["OBS-AOS-012", "OBS-AOS-013"]
+  - clause: "REQ-AOS-022"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-014"]
+    note: "Write-before-read ordering is evidenced; reporting possible incompleteness instead of failing open silently diverges from AIOS."
+  - clause: "REQ-AOS-023"
+    basis: "supported_pattern"
+    observations: ["OBS-AOS-019", "OBS-AOS-023"]
+  - clause: "REQ-AOS-024"
+    basis: "supported_pattern"
+    observations: ["OBS-AOS-005"]
+  - clause: "CAP-AOS-008"
+    basis: "supported_pattern"
+    observations: ["OBS-AOS-024"]
+  - clause: "REQ-AOS-025"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-024"]
+    note: "Injection at use and output masking are evidenced; keeping values out of model input and events is a contract choice."
+  - clause: "REQ-AOS-031"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-024"]
+    note: "Output masking is evidenced; marking secret-bearing output and requiring approval before it reaches the model is a contract choice added in 0.2.0, because masking cannot recognise transformed values."
+  - clause: "CAP-AOS-009"
+    basis: "supported_convergence"
+    observations: ["OBS-AOS-015", "OBS-AOS-019", "OBS-AOS-030"]
+  - clause: "REQ-AOS-026"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-015", "OBS-AOS-019", "OBS-AOS-030"]
+    note: "An event log with security decisions is evidenced; the complete list of recorded kinds is a contract choice."
+  - clause: "REQ-AOS-027"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-021", "OBS-AOS-025"]
+    note: "Usage statistics and spend tracking are evidenced; per-principal inspection rights are a contract choice."
+  - clause: "CAP-AOS-010"
+    basis: "supported_pattern"
+    observations: ["OBS-AOS-025"]
+  - clause: "REQ-AOS-028"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-025"]
+    note: "Organisation and user budgets with 80/90/100% alerts are evidenced; per-process budgets and pausing at exhaustion are contract choices."
+  - clause: "CAP-AOS-011"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-001", "OBS-AOS-011"]
+    note: "AIOS separates agents from the kernel and runs them across machines; declared capabilities in a portable definition are a contract choice."
+  - clause: "REQ-AOS-029"
+    basis: "explicit_project_choice"
+    observations: []
+    note: "No source shows agents declaring required capabilities at installation; adopted so grants can be bounded before a process runs."
+  - clause: "REQ-AOS-030"
+    basis: "explicit_project_choice"
+    observations: []
+    note: "Pinning the definition version keeps a running process's behaviour and grants stable."
+  - clause: "INV-AOS-001"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-002", "OBS-AOS-015", "OBS-AOS-019"]
+    note: "Mediation and event recording are evidenced separately; requiring all three for every action is a contract choice."
+  - clause: "INV-AOS-002"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-008", "OBS-AOS-009"]
+    note: "Privilege groups and confirmation of privilege changes are evidenced; the no-escalation invariant is a contract choice."
+  - clause: "INV-AOS-003"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-009", "OBS-AOS-017", "OBS-AOS-026"]
+    note: "Confirmation before risky actions converges; the exact consequential set and standing grants follow POL-AOS-003."
+  - clause: "INV-AOS-004"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-012", "OBS-AOS-013"]
+    note: "Per-user isolation of memory is evidenced; extending it to storage, events, and secrets is a contract choice."
+  - clause: "INV-AOS-005"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-024"]
+    note: "Output masking is evidenced; excluding values and declared encodings from model input and events is a contract choice, narrowed in 0.2.0 to what masking can recognise and backed by REQ-AOS-031."
+  - clause: "INV-AOS-006"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-019", "OBS-AOS-023"]
+    note: "OpenHands' append-only log and condensation-as-event are evidenced; requiring it for pause, recovery, and denial is a contract choice."
+  - clause: "INV-AOS-007"
+    basis: "explicit_project_choice"
+    observations: []
+    note: "No source states at-most-once execution; required so that recovery and resume cannot repeat a confirmed or destructive action."
+  - clause: "POL-AOS-001"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-001"]
+    note: "AIOS positions its kernel above the host OS kernel; defining the product type that way is a contract choice."
+  - clause: "POL-AOS-002"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-013", "OBS-AOS-026"]
+    note: "Fail-closed memory access and explicit consent are evidenced; deny-by-default for every capability is a contract choice."
+  - clause: "POL-AOS-003"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-009", "OBS-AOS-015", "OBS-AOS-017", "OBS-AOS-026"]
+    note: "Sources diverge between confirming every tool call (MCP), high and unknown risk (OpenHands), and irreversible operations (AIOS); the default matrix combines AIOS's set with OpenHands' treatment of unknown risk."
+  - clause: "POL-AOS-004"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-001", "OBS-AOS-002"]
+    note: "AIOS abstracts models as kernel-managed resources; provider and protocol neutrality is a contract choice."
+  - clause: "POL-AOS-005"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-016", "OBS-AOS-027"]
+    note: "Diverges from OpenHands' default model-assessed risk (OBS-AOS-016) in favour of MCP's distrust of unverified metadata."
+  - clause: "POL-AOS-006"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-020"]
+    note: "OpenHands recommends container isolation and labels host-process mode unsafe; isolation on by default is a contract choice."
+  - clause: "QA-AOS-001"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-022"]
+    note: "Pause is evidenced; the 100% before-next-request target is a contract choice."
+  - clause: "QA-AOS-002"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-003"]
+    note: "Round-robin scheduling is evidenced; no source publishes a wait bound, so the bound is a contract choice."
+  - clause: "QA-AOS-003"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-019", "OBS-AOS-030"]
+    note: "Event logging is evidenced; the 100% target is a contract choice."
+  - clause: "QA-AOS-004"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-AOS-021"]
+    note: "Crash recovery is evidenced; the paused restore and zero duplicate executions are contract choices."
+  - clause: "QA-AOS-005"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "QA-AOS-006"
+    basis: "explicit_project_choice"
+    observations: []

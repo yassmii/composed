@@ -1,0 +1,671 @@
+{
+  "format_version": 1,
+  "kind": "contract-impact-report",
+  "status": "assessed",
+  "before": {
+    "id": "agentic-delivery-harness",
+    "version": "0.1.0",
+    "sha256": "369bc8e5ab8fc68c9da1bcb44cb3c3277c15dff09f8deca35f79487f3b065ff1"
+  },
+  "after": {
+    "id": "agentic-delivery-harness",
+    "version": "1.0.0",
+    "sha256": "d9cd1625bc525cbe57e2c98f342c630daca26c1aea2a28696234093bf76e7761"
+  },
+  "changes": {
+    "unchanged": [],
+    "modified": [
+      {
+        "id": "INV-ADH-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-ADH-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-ADH-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-ADH-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-ADH-005",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-ADH-006",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-ADH-007",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-ADH-008",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-ADH-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-ADH-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-ADH-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-ADH-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-ADH-005",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-ADH-006",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-ADH-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-ADH-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-ADH-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-ADH-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-ADH-005",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-005",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-006",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-007",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-008",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-009",
+        "reasons": [
+          "clause-content",
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-010",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-011",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-012",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-013",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-014",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-015",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-016",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-017",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-018",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-019",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-020",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-021",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-022",
+        "reasons": [
+          "clause-content",
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-023",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-024",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-025",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-026",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-027",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-028",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-029",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-030",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-031",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-032",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-033",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-034",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-035",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-036",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-ADH-037",
+        "reasons": [
+          "contract-context"
+        ]
+      }
+    ],
+    "added": [],
+    "removed": []
+  },
+  "context_changes": [
+    "delivery"
+  ],
+  "metadata_changes": [
+    "status",
+    "version"
+  ],
+  "acceptance_changes": {
+    "unchanged": [
+      "ACC-ADH-001",
+      "ACC-ADH-002",
+      "ACC-ADH-003",
+      "ACC-ADH-004",
+      "ACC-ADH-005",
+      "ACC-ADH-006",
+      "ACC-ADH-007",
+      "ACC-ADH-008",
+      "ACC-ADH-009",
+      "ACC-ADH-010",
+      "ACC-ADH-011",
+      "ACC-ADH-012",
+      "ACC-ADH-013",
+      "ACC-ADH-014",
+      "ACC-ADH-015",
+      "ACC-ADH-016",
+      "ACC-ADH-017",
+      "ACC-ADH-018",
+      "ACC-ADH-019",
+      "ACC-ADH-020",
+      "ACC-ADH-021",
+      "ACC-ADH-022",
+      "ACC-ADH-023",
+      "ACC-ADH-024"
+    ],
+    "modified": [],
+    "added": [
+      "ACC-ADH-025",
+      "ACC-ADH-026"
+    ],
+    "removed": []
+  },
+  "correspondences": [],
+  "impact": {
+    "clause_ids": [
+      "INV-ADH-001",
+      "INV-ADH-002",
+      "INV-ADH-003",
+      "INV-ADH-004",
+      "INV-ADH-005",
+      "INV-ADH-006",
+      "INV-ADH-007",
+      "INV-ADH-008",
+      "POL-ADH-001",
+      "POL-ADH-002",
+      "POL-ADH-003",
+      "POL-ADH-004",
+      "POL-ADH-005",
+      "POL-ADH-006",
+      "QA-ADH-001",
+      "QA-ADH-002",
+      "QA-ADH-003",
+      "QA-ADH-004",
+      "QA-ADH-005",
+      "REQ-ADH-001",
+      "REQ-ADH-002",
+      "REQ-ADH-003",
+      "REQ-ADH-004",
+      "REQ-ADH-005",
+      "REQ-ADH-006",
+      "REQ-ADH-007",
+      "REQ-ADH-008",
+      "REQ-ADH-009",
+      "REQ-ADH-010",
+      "REQ-ADH-011",
+      "REQ-ADH-012",
+      "REQ-ADH-013",
+      "REQ-ADH-014",
+      "REQ-ADH-015",
+      "REQ-ADH-016",
+      "REQ-ADH-017",
+      "REQ-ADH-018",
+      "REQ-ADH-019",
+      "REQ-ADH-020",
+      "REQ-ADH-021",
+      "REQ-ADH-022",
+      "REQ-ADH-023",
+      "REQ-ADH-024",
+      "REQ-ADH-025",
+      "REQ-ADH-026",
+      "REQ-ADH-027",
+      "REQ-ADH-028",
+      "REQ-ADH-029",
+      "REQ-ADH-030",
+      "REQ-ADH-031",
+      "REQ-ADH-032",
+      "REQ-ADH-033",
+      "REQ-ADH-034",
+      "REQ-ADH-035",
+      "REQ-ADH-036",
+      "REQ-ADH-037"
+    ],
+    "before_clause_ids": [
+      "INV-ADH-001",
+      "INV-ADH-002",
+      "INV-ADH-003",
+      "INV-ADH-004",
+      "INV-ADH-005",
+      "INV-ADH-006",
+      "INV-ADH-007",
+      "INV-ADH-008",
+      "POL-ADH-001",
+      "POL-ADH-002",
+      "POL-ADH-003",
+      "POL-ADH-004",
+      "POL-ADH-005",
+      "POL-ADH-006",
+      "QA-ADH-001",
+      "QA-ADH-002",
+      "QA-ADH-003",
+      "QA-ADH-004",
+      "QA-ADH-005",
+      "REQ-ADH-001",
+      "REQ-ADH-002",
+      "REQ-ADH-003",
+      "REQ-ADH-004",
+      "REQ-ADH-005",
+      "REQ-ADH-006",
+      "REQ-ADH-007",
+      "REQ-ADH-008",
+      "REQ-ADH-009",
+      "REQ-ADH-010",
+      "REQ-ADH-011",
+      "REQ-ADH-012",
+      "REQ-ADH-013",
+      "REQ-ADH-014",
+      "REQ-ADH-015",
+      "REQ-ADH-016",
+      "REQ-ADH-017",
+      "REQ-ADH-018",
+      "REQ-ADH-019",
+      "REQ-ADH-020",
+      "REQ-ADH-021",
+      "REQ-ADH-022",
+      "REQ-ADH-023",
+      "REQ-ADH-024",
+      "REQ-ADH-025",
+      "REQ-ADH-026",
+      "REQ-ADH-027",
+      "REQ-ADH-028",
+      "REQ-ADH-029",
+      "REQ-ADH-030",
+      "REQ-ADH-031",
+      "REQ-ADH-032",
+      "REQ-ADH-033",
+      "REQ-ADH-034",
+      "REQ-ADH-035",
+      "REQ-ADH-036",
+      "REQ-ADH-037"
+    ],
+    "after_clause_ids": [
+      "INV-ADH-001",
+      "INV-ADH-002",
+      "INV-ADH-003",
+      "INV-ADH-004",
+      "INV-ADH-005",
+      "INV-ADH-006",
+      "INV-ADH-007",
+      "INV-ADH-008",
+      "POL-ADH-001",
+      "POL-ADH-002",
+      "POL-ADH-003",
+      "POL-ADH-004",
+      "POL-ADH-005",
+      "POL-ADH-006",
+      "QA-ADH-001",
+      "QA-ADH-002",
+      "QA-ADH-003",
+      "QA-ADH-004",
+      "QA-ADH-005",
+      "REQ-ADH-001",
+      "REQ-ADH-002",
+      "REQ-ADH-003",
+      "REQ-ADH-004",
+      "REQ-ADH-005",
+      "REQ-ADH-006",
+      "REQ-ADH-007",
+      "REQ-ADH-008",
+      "REQ-ADH-009",
+      "REQ-ADH-010",
+      "REQ-ADH-011",
+      "REQ-ADH-012",
+      "REQ-ADH-013",
+      "REQ-ADH-014",
+      "REQ-ADH-015",
+      "REQ-ADH-016",
+      "REQ-ADH-017",
+      "REQ-ADH-018",
+      "REQ-ADH-019",
+      "REQ-ADH-020",
+      "REQ-ADH-021",
+      "REQ-ADH-022",
+      "REQ-ADH-023",
+      "REQ-ADH-024",
+      "REQ-ADH-025",
+      "REQ-ADH-026",
+      "REQ-ADH-027",
+      "REQ-ADH-028",
+      "REQ-ADH-029",
+      "REQ-ADH-030",
+      "REQ-ADH-031",
+      "REQ-ADH-032",
+      "REQ-ADH-033",
+      "REQ-ADH-034",
+      "REQ-ADH-035",
+      "REQ-ADH-036",
+      "REQ-ADH-037"
+    ],
+    "acceptance_ids": [
+      "ACC-ADH-001",
+      "ACC-ADH-002",
+      "ACC-ADH-003",
+      "ACC-ADH-004",
+      "ACC-ADH-005",
+      "ACC-ADH-006",
+      "ACC-ADH-007",
+      "ACC-ADH-008",
+      "ACC-ADH-009",
+      "ACC-ADH-010",
+      "ACC-ADH-011",
+      "ACC-ADH-012",
+      "ACC-ADH-013",
+      "ACC-ADH-014",
+      "ACC-ADH-015",
+      "ACC-ADH-016",
+      "ACC-ADH-017",
+      "ACC-ADH-018",
+      "ACC-ADH-019",
+      "ACC-ADH-020",
+      "ACC-ADH-021",
+      "ACC-ADH-022",
+      "ACC-ADH-023",
+      "ACC-ADH-024",
+      "ACC-ADH-025",
+      "ACC-ADH-026"
+    ],
+    "before_acceptance_ids": [
+      "ACC-ADH-001",
+      "ACC-ADH-002",
+      "ACC-ADH-003",
+      "ACC-ADH-004",
+      "ACC-ADH-005",
+      "ACC-ADH-006",
+      "ACC-ADH-007",
+      "ACC-ADH-008",
+      "ACC-ADH-009",
+      "ACC-ADH-010",
+      "ACC-ADH-011",
+      "ACC-ADH-012",
+      "ACC-ADH-013",
+      "ACC-ADH-014",
+      "ACC-ADH-015",
+      "ACC-ADH-016",
+      "ACC-ADH-017",
+      "ACC-ADH-018",
+      "ACC-ADH-019",
+      "ACC-ADH-020",
+      "ACC-ADH-021",
+      "ACC-ADH-022",
+      "ACC-ADH-023",
+      "ACC-ADH-024"
+    ],
+    "after_acceptance_ids": [
+      "ACC-ADH-001",
+      "ACC-ADH-002",
+      "ACC-ADH-003",
+      "ACC-ADH-004",
+      "ACC-ADH-005",
+      "ACC-ADH-006",
+      "ACC-ADH-007",
+      "ACC-ADH-008",
+      "ACC-ADH-009",
+      "ACC-ADH-010",
+      "ACC-ADH-011",
+      "ACC-ADH-012",
+      "ACC-ADH-013",
+      "ACC-ADH-014",
+      "ACC-ADH-015",
+      "ACC-ADH-016",
+      "ACC-ADH-017",
+      "ACC-ADH-018",
+      "ACC-ADH-019",
+      "ACC-ADH-020",
+      "ACC-ADH-021",
+      "ACC-ADH-022",
+      "ACC-ADH-023",
+      "ACC-ADH-024",
+      "ACC-ADH-025",
+      "ACC-ADH-026"
+    ],
+    "coverage": "unknown"
+  },
+  "compatibility": "not_assessed",
+  "proof_transfer": "not_performed",
+  "findings": [],
+  "limitations": [
+    "This is a structural and conservative context comparison, not natural-language semantic equivalence or a breaking-change determination.",
+    "Correspondence statuses are caller declarations; identities and approval authority are not authenticated.",
+    "No proof is transferred or rebound. Existing evidence remains pinned to its original contract and implementation bytes.",
+    "Object member order is ignored; array order is preserved. Context changes can conservatively affect more clauses than strictly necessary.",
+    "One or both contracts lack structured verifies/dependencies (format 0.1). Any detected change conservatively selects every normative clause and acceptance case; targeted coverage remains unknown."
+  ]
+}

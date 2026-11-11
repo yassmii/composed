@@ -1,0 +1,3 @@
+# Tested parser dependencies; install engines separately from their clean pinned checkouts.
+tree-sitter==0.26.0
+tree-sitter-language-pack==1.22.1

@@ -1,0 +1,65 @@
+schema_version: "0.1"
+research_status: reviewed
+candidate_products:
+  - Shopify
+  - WooCommerce
+  - Adobe Commerce
+  - Stripe (payment integration, not a storefront)
+source_selection:
+  - Use official product documentation and public first-party material.
+  - Record the product version and retrieval date for every source.
+sources:
+  - id: SRC-COM-SHOPIFY-CART
+    product: Shopify
+    version: Storefront API page displays 2026-10 latest; mutable documentation
+    title: Cart
+    url: https://shopify.dev/docs/api/storefront/latest/objects/Cart.md
+    locator: Cart definition; cost; cartCreate
+    retrieved_on: 2026-11-01
+    content_sha256: b2a980c983c080b34bfb8626105108fc531554d1863eb60e88d9f6d402109f11
+  - id: SRC-COM-WOO-ORDER
+    product: WooCommerce
+    version: Current documentation retrieved 2026-11-01; no deployed product version
+      verified
+    title: Order Statuses
+    url: https://woocommerce.com/document/managing-orders/order-statuses/
+    locator: Order statuses; Draft order status
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: df2c7a036f800f1e02f3d890446b14a302e2c5e220250ffe5b5173d855f9e7c0
+  - id: SRC-COM-ADOBE-INVENTORY
+    product: Adobe Commerce
+    version: Current documentation retrieved 2026-11-01; no deployed product version
+      verified
+    title: Order status and reservations
+    url: https://experienceleague.adobe.com/en/docs/commerce-admin/inventory/basics/order-status
+    locator: Order status and reservations
+    retrieved_on: 2026-11-01
+    content_sha256: 6fa9f40fd7ea732b586512b2d6a8288f857df7f0598f093f324afe5c2516a29d
+  - id: SRC-COM-STRIPE-EVENTS
+    product: Stripe
+    version: Current documentation retrieved 2026-11-01; no deployed product version
+      verified
+    title: Receive Stripe events
+    url: https://docs.stripe.com/webhooks.md?locale=en-US
+    locator: Event ordering; Handle duplicate events; Verify webhook signatures
+    retrieved_on: 2026-11-01
+    content_sha256: f644983058c4c278f0ec2492504929cdd8050bc39016da9c0559257119c8a4da
+  - id: SRC-COM-STRIPE-IDEMPOTENCY
+    product: Stripe
+    version: Current documentation retrieved 2026-11-01; no deployed product version
+      verified
+    title: Idempotent requests
+    url: https://docs.stripe.com/api/idempotent_requests.md?locale=en-US
+    locator: API v1 response reuse, parameter comparison and retention
+    retrieved_on: 2026-11-01
+    content_sha256: fd3d6f889a557f5535d7ac5e5e79c1898ac378b287c45e56a67880b5e5318ee3
+  - id: SRC-COM-STRIPE-REFUNDS
+    product: Stripe
+    version: Current documentation retrieved 2026-11-01; no deployed product version
+      verified
+    title: Refund and cancel payments
+    url: https://docs.stripe.com/refunds.md?locale=en-US
+    locator: Issue refunds; Handle failed refunds; Refund events
+    retrieved_on: 2026-11-01
+    content_sha256: 4315cd8c9a3c5818d6a0622bf5cc7f20417817abadae9f5ee512ce5a316bd587

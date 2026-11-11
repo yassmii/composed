@@ -1,0 +1,921 @@
+{
+  "format_version": 1,
+  "kind": "research-refresh-record",
+  "date": "2026-11-01",
+  "family": "git-backed-cms",
+  "scope": "Existing recorded sources and their dependent observations; no upstream-latest survey or product execution",
+  "status": "recorded_corpus_rechecked",
+  "author_review": "repository agent; not independent approval",
+  "baseline": {
+    "contract_sha256": "2a587a23d8c9999c138a194bd8adc4a9569f4c94acf4332ecaa98f3011a23412",
+    "traceability_sha256": "68ed635aea06c9f1d196abcfa1a4d8feed61b73e5d03a3636ef0b4a2b750caec",
+    "normative_bytes_changed": false
+  },
+  "source_archive": "history/sources-before-refresh-2026-11-01.yaml",
+  "observations_before_sha256": "6671d711106749b4d2a171f48d8cc9e9320f86024ccd51d2a16cdca5d94e2d4a",
+  "observations_after_sha256": "6671d711106749b4d2a171f48d8cc9e9320f86024ccd51d2a16cdca5d94e2d4a",
+  "new_observations": [],
+  "review": "All twenty-eight sources matched their recorded immutable pins. No drift was found at those pins. Existing comparison already separates repository-canonical storage, optional vendor review, mandatory Composed publication review and unverified identity attribution. No normative revision follows from an unchanged source snapshot.",
+  "followup": "Review newer EmDash, Decap and TinaCMS revisions; deepen authenticated author versus Git metadata, competing approved changes and legal erasure. Current pins are not claims about the latest deployed products.",
+  "behavioural_diff_from_historical_bodies": "unknown; old bodies unavailable, original metadata preserved",
+  "product_acceptance": "not_run",
+  "proof_transfer": "not_performed",
+  "sources": [
+    {
+      "id": "SRC-GCMS-DECAP-ARCH",
+      "before": {
+        "url": "https://raw.githubusercontent.com/decaporg/decap-website/b8204ac34b21798edca00ec6f0d1dca21d3a1488/content/docs/architecture.md",
+        "retrieved_on": "2026-09-14",
+        "sha256": "06d4be30b5115d2b5d9bc4e7fe54371d3bba1d94004e107ff756bab894d61a55",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/decaporg/decap-website/b8204ac34b21798edca00ec6f0d1dca21d3a1488/content/docs/architecture.md",
+        "retrieved_on": "2026-11-01",
+        "sha256": "06d4be30b5115d2b5d9bc4e7fe54371d3bba1d94004e107ff756bab894d61a55",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "06d4be30b5115d2b5d9bc4e7fe54371d3bba1d94004e107ff756bab894d61a55",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-GCMS-022",
+        "OBS-GCMS-025",
+        "OBS-GCMS-027"
+      ],
+      "affected_clauses": [
+        "CAP-GCMS-001",
+        "CAP-GCMS-004",
+        "POL-GCMS-002",
+        "POL-GCMS-004",
+        "QA-GCMS-004",
+        "REQ-GCMS-001",
+        "REQ-GCMS-002",
+        "REQ-GCMS-013"
+      ]
+    },
+    {
+      "id": "SRC-GCMS-DECAP-CONFIG",
+      "before": {
+        "url": "https://raw.githubusercontent.com/decaporg/decap-website/b8204ac34b21798edca00ec6f0d1dca21d3a1488/content/docs/configuration-options.md",
+        "retrieved_on": "2026-09-14",
+        "sha256": "a549a5e285adc8ad76e81a93a865f6ed0abf81915b9e3d54be508672260ad238",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/decaporg/decap-website/b8204ac34b21798edca00ec6f0d1dca21d3a1488/content/docs/configuration-options.md",
+        "retrieved_on": "2026-11-01",
+        "sha256": "a549a5e285adc8ad76e81a93a865f6ed0abf81915b9e3d54be508672260ad238",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "a549a5e285adc8ad76e81a93a865f6ed0abf81915b9e3d54be508672260ad238",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-GCMS-022",
+        "OBS-GCMS-023",
+        "OBS-GCMS-024"
+      ],
+      "affected_clauses": [
+        "CAP-GCMS-001",
+        "CAP-GCMS-002",
+        "CAP-GCMS-004",
+        "CAP-GCMS-005",
+        "INV-GCMS-006",
+        "POL-GCMS-002",
+        "POL-GCMS-003",
+        "QA-GCMS-004",
+        "REQ-GCMS-001",
+        "REQ-GCMS-002",
+        "REQ-GCMS-005",
+        "REQ-GCMS-006",
+        "REQ-GCMS-012",
+        "REQ-GCMS-016"
+      ]
+    },
+    {
+      "id": "SRC-GCMS-DECAP-FOLDER",
+      "before": {
+        "url": "https://raw.githubusercontent.com/decaporg/decap-website/b8204ac34b21798edca00ec6f0d1dca21d3a1488/content/docs/collection-folder.md",
+        "retrieved_on": "2026-09-14",
+        "sha256": "bd2fdad57365af33940dcc5ed7cb9be600e7e5c85508600a4a028f54671b77ed",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/decaporg/decap-website/b8204ac34b21798edca00ec6f0d1dca21d3a1488/content/docs/collection-folder.md",
+        "retrieved_on": "2026-11-01",
+        "sha256": "bd2fdad57365af33940dcc5ed7cb9be600e7e5c85508600a4a028f54671b77ed",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "bd2fdad57365af33940dcc5ed7cb9be600e7e5c85508600a4a028f54671b77ed",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-GCMS-022"
+      ],
+      "affected_clauses": [
+        "CAP-GCMS-001",
+        "POL-GCMS-002",
+        "QA-GCMS-004",
+        "REQ-GCMS-001",
+        "REQ-GCMS-002"
+      ]
+    },
+    {
+      "id": "SRC-GCMS-DECAP-GITHUB",
+      "before": {
+        "url": "https://raw.githubusercontent.com/decaporg/decap-website/b8204ac34b21798edca00ec6f0d1dca21d3a1488/content/docs/github-backend.md",
+        "retrieved_on": "2026-09-14",
+        "sha256": "c5d125b3f6480326aca14813e401165395ca4f8381c58ecbe7bf1a43169866ca",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/decaporg/decap-website/b8204ac34b21798edca00ec6f0d1dca21d3a1488/content/docs/github-backend.md",
+        "retrieved_on": "2026-11-01",
+        "sha256": "c5d125b3f6480326aca14813e401165395ca4f8381c58ecbe7bf1a43169866ca",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "c5d125b3f6480326aca14813e401165395ca4f8381c58ecbe7bf1a43169866ca",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-GCMS-028"
+      ],
+      "affected_clauses": [
+        "CAP-GCMS-007",
+        "REQ-GCMS-024"
+      ]
+    },
+    {
+      "id": "SRC-GCMS-DECAP-INTRO",
+      "before": {
+        "url": "https://raw.githubusercontent.com/decaporg/decap-website/b8204ac34b21798edca00ec6f0d1dca21d3a1488/content/docs/intro.md",
+        "retrieved_on": "2026-09-14",
+        "sha256": "ec7d7538f1155cfcd222d5f7a2c7a1c3b1a00c4f43e035f968c02a834520ac9b",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/decaporg/decap-website/b8204ac34b21798edca00ec6f0d1dca21d3a1488/content/docs/intro.md",
+        "retrieved_on": "2026-11-01",
+        "sha256": "ec7d7538f1155cfcd222d5f7a2c7a1c3b1a00c4f43e035f968c02a834520ac9b",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "ec7d7538f1155cfcd222d5f7a2c7a1c3b1a00c4f43e035f968c02a834520ac9b",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-GCMS-021",
+        "OBS-GCMS-027"
+      ],
+      "affected_clauses": [
+        "CAP-GCMS-004",
+        "CAP-GCMS-006",
+        "INV-GCMS-001",
+        "POL-GCMS-002",
+        "QA-GCMS-004",
+        "REQ-GCMS-011",
+        "REQ-GCMS-013",
+        "REQ-GCMS-018",
+        "REQ-GCMS-024"
+      ]
+    },
+    {
+      "id": "SRC-GCMS-DECAP-OPEN-AUTHORING",
+      "before": {
+        "url": "https://raw.githubusercontent.com/decaporg/decap-website/b8204ac34b21798edca00ec6f0d1dca21d3a1488/content/docs/open-authoring.md",
+        "retrieved_on": "2026-09-14",
+        "sha256": "bc62f59484180d38e32688b26e326a944641cd90a5f06bae04827bc6459cec38",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/decaporg/decap-website/b8204ac34b21798edca00ec6f0d1dca21d3a1488/content/docs/open-authoring.md",
+        "retrieved_on": "2026-11-01",
+        "sha256": "bc62f59484180d38e32688b26e326a944641cd90a5f06bae04827bc6459cec38",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "bc62f59484180d38e32688b26e326a944641cd90a5f06bae04827bc6459cec38",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-GCMS-029"
+      ],
+      "affected_clauses": [
+        "CAP-GCMS-007",
+        "REQ-GCMS-012",
+        "REQ-GCMS-022"
+      ]
+    },
+    {
+      "id": "SRC-GCMS-DECAP-WIDGETS",
+      "before": {
+        "url": "https://raw.githubusercontent.com/decaporg/decap-website/b8204ac34b21798edca00ec6f0d1dca21d3a1488/content/docs/widgets.md",
+        "retrieved_on": "2026-09-14",
+        "sha256": "3cabe45573aaf75259aa35a45d3aabc8eb7b3f008d30b0f82d27ca0a8dd986fd",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/decaporg/decap-website/b8204ac34b21798edca00ec6f0d1dca21d3a1488/content/docs/widgets.md",
+        "retrieved_on": "2026-11-01",
+        "sha256": "3cabe45573aaf75259aa35a45d3aabc8eb7b3f008d30b0f82d27ca0a8dd986fd",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "3cabe45573aaf75259aa35a45d3aabc8eb7b3f008d30b0f82d27ca0a8dd986fd",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-GCMS-026"
+      ],
+      "affected_clauses": [
+        "CAP-GCMS-003",
+        "INV-GCMS-002",
+        "REQ-GCMS-001",
+        "REQ-GCMS-008",
+        "REQ-GCMS-010"
+      ]
+    },
+    {
+      "id": "SRC-GCMS-DECAP-WORKFLOW",
+      "before": {
+        "url": "https://raw.githubusercontent.com/decaporg/decap-website/b8204ac34b21798edca00ec6f0d1dca21d3a1488/content/docs/editorial-workflows.md",
+        "retrieved_on": "2026-09-14",
+        "sha256": "6cef3737d6b81f156cf0c7252b54cd2ce8f1c1ba0b510086ac0c7acf0e942b23",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/decaporg/decap-website/b8204ac34b21798edca00ec6f0d1dca21d3a1488/content/docs/editorial-workflows.md",
+        "retrieved_on": "2026-11-01",
+        "sha256": "6cef3737d6b81f156cf0c7252b54cd2ce8f1c1ba0b510086ac0c7acf0e942b23",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "6cef3737d6b81f156cf0c7252b54cd2ce8f1c1ba0b510086ac0c7acf0e942b23",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-GCMS-024",
+        "OBS-GCMS-025"
+      ],
+      "affected_clauses": [
+        "CAP-GCMS-002",
+        "CAP-GCMS-004",
+        "CAP-GCMS-005",
+        "POL-GCMS-003",
+        "POL-GCMS-004",
+        "REQ-GCMS-005",
+        "REQ-GCMS-006",
+        "REQ-GCMS-012",
+        "REQ-GCMS-016"
+      ]
+    },
+    {
+      "id": "SRC-GCMS-EMDASH-ADMIN",
+      "before": {
+        "url": "https://raw.githubusercontent.com/emdash-cms/emdash/4ec13c34192dc0bafc2878af5b1129152e8dc990/docs/src/content/docs/concepts/admin-panel.mdx",
+        "retrieved_on": "2026-09-14",
+        "sha256": "1e50679bc69d36499ccdf5ed3edbcb90daa190218dad5fd69ff07c49e69cf149",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/emdash-cms/emdash/4ec13c34192dc0bafc2878af5b1129152e8dc990/docs/src/content/docs/concepts/admin-panel.mdx",
+        "retrieved_on": "2026-11-01",
+        "sha256": "1e50679bc69d36499ccdf5ed3edbcb90daa190218dad5fd69ff07c49e69cf149",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "1e50679bc69d36499ccdf5ed3edbcb90daa190218dad5fd69ff07c49e69cf149",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-GCMS-015",
+        "OBS-GCMS-016"
+      ],
+      "affected_clauses": [
+        "CAP-GCMS-007",
+        "POL-GCMS-003",
+        "REQ-GCMS-012",
+        "REQ-GCMS-021",
+        "REQ-GCMS-022",
+        "REQ-GCMS-023"
+      ]
+    },
+    {
+      "id": "SRC-GCMS-EMDASH-BACKUPS",
+      "before": {
+        "url": "https://raw.githubusercontent.com/emdash-cms/emdash/4ec13c34192dc0bafc2878af5b1129152e8dc990/docs/src/content/docs/guides/backups.mdx",
+        "retrieved_on": "2026-09-14",
+        "sha256": "f1a117a9f14815bfd5ac683abf5fe969cc962e6f84a5c7a18abb00779baf14e2",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/emdash-cms/emdash/4ec13c34192dc0bafc2878af5b1129152e8dc990/docs/src/content/docs/guides/backups.mdx",
+        "retrieved_on": "2026-11-01",
+        "sha256": "f1a117a9f14815bfd5ac683abf5fe969cc962e6f84a5c7a18abb00779baf14e2",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "f1a117a9f14815bfd5ac683abf5fe969cc962e6f84a5c7a18abb00779baf14e2",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-GCMS-019"
+      ],
+      "affected_clauses": []
+    },
+    {
+      "id": "SRC-GCMS-EMDASH-COLLECTIONS",
+      "before": {
+        "url": "https://raw.githubusercontent.com/emdash-cms/emdash/4ec13c34192dc0bafc2878af5b1129152e8dc990/docs/src/content/docs/concepts/collections.mdx",
+        "retrieved_on": "2026-09-14",
+        "sha256": "12da41141fe50430f72afc4e728cefce1335710160c7c002f884cfc8fe99a85b",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/emdash-cms/emdash/4ec13c34192dc0bafc2878af5b1129152e8dc990/docs/src/content/docs/concepts/collections.mdx",
+        "retrieved_on": "2026-11-01",
+        "sha256": "12da41141fe50430f72afc4e728cefce1335710160c7c002f884cfc8fe99a85b",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "12da41141fe50430f72afc4e728cefce1335710160c7c002f884cfc8fe99a85b",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-GCMS-003",
+        "OBS-GCMS-005",
+        "OBS-GCMS-018"
+      ],
+      "affected_clauses": [
+        "CAP-GCMS-003",
+        "INV-GCMS-002",
+        "REQ-GCMS-001",
+        "REQ-GCMS-003",
+        "REQ-GCMS-008"
+      ]
+    },
+    {
+      "id": "SRC-GCMS-EMDASH-CONTENT",
+      "before": {
+        "url": "https://raw.githubusercontent.com/emdash-cms/emdash/4ec13c34192dc0bafc2878af5b1129152e8dc990/docs/src/content/docs/guides/working-with-content.mdx",
+        "retrieved_on": "2026-09-14",
+        "sha256": "5e14c3caf144a2fb0108c874df26ce9760fa8c0a7775be751fe314d53a5e81da",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/emdash-cms/emdash/4ec13c34192dc0bafc2878af5b1129152e8dc990/docs/src/content/docs/guides/working-with-content.mdx",
+        "retrieved_on": "2026-11-01",
+        "sha256": "5e14c3caf144a2fb0108c874df26ce9760fa8c0a7775be751fe314d53a5e81da",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "5e14c3caf144a2fb0108c874df26ce9760fa8c0a7775be751fe314d53a5e81da",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-GCMS-007",
+        "OBS-GCMS-008",
+        "OBS-GCMS-009",
+        "OBS-GCMS-011",
+        "OBS-GCMS-012",
+        "OBS-GCMS-013",
+        "OBS-GCMS-014"
+      ],
+      "affected_clauses": [
+        "CAP-GCMS-002",
+        "CAP-GCMS-005",
+        "CAP-GCMS-006",
+        "INV-GCMS-003",
+        "INV-GCMS-005",
+        "REQ-GCMS-004",
+        "REQ-GCMS-005",
+        "REQ-GCMS-007",
+        "REQ-GCMS-014",
+        "REQ-GCMS-015",
+        "REQ-GCMS-016",
+        "REQ-GCMS-017",
+        "REQ-GCMS-018",
+        "REQ-GCMS-019",
+        "REQ-GCMS-020"
+      ]
+    },
+    {
+      "id": "SRC-GCMS-EMDASH-LICENSE",
+      "before": {
+        "url": "https://raw.githubusercontent.com/emdash-cms/emdash/4ec13c34192dc0bafc2878af5b1129152e8dc990/LICENSE",
+        "retrieved_on": "2026-09-14",
+        "sha256": "d5ab82c0225b0def1fa140af22ff2f3bed9791a527545be1b04ab4337dc88675",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/emdash-cms/emdash/4ec13c34192dc0bafc2878af5b1129152e8dc990/LICENSE",
+        "retrieved_on": "2026-11-01",
+        "sha256": "d5ab82c0225b0def1fa140af22ff2f3bed9791a527545be1b04ab4337dc88675",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "d5ab82c0225b0def1fa140af22ff2f3bed9791a527545be1b04ab4337dc88675",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [],
+      "affected_clauses": []
+    },
+    {
+      "id": "SRC-GCMS-EMDASH-MODEL",
+      "before": {
+        "url": "https://raw.githubusercontent.com/emdash-cms/emdash/4ec13c34192dc0bafc2878af5b1129152e8dc990/docs/src/content/docs/concepts/content-model.mdx",
+        "retrieved_on": "2026-09-14",
+        "sha256": "b3d6b16ff36fff0c0338613a62f97d165952b2834f2754fb7d13f62c99d674bb",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/emdash-cms/emdash/4ec13c34192dc0bafc2878af5b1129152e8dc990/docs/src/content/docs/concepts/content-model.mdx",
+        "retrieved_on": "2026-11-01",
+        "sha256": "b3d6b16ff36fff0c0338613a62f97d165952b2834f2754fb7d13f62c99d674bb",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "b3d6b16ff36fff0c0338613a62f97d165952b2834f2754fb7d13f62c99d674bb",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-GCMS-001",
+        "OBS-GCMS-003"
+      ],
+      "affected_clauses": [
+        "CAP-GCMS-001",
+        "REQ-GCMS-001",
+        "REQ-GCMS-003"
+      ]
+    },
+    {
+      "id": "SRC-GCMS-EMDASH-PREVIEW",
+      "before": {
+        "url": "https://raw.githubusercontent.com/emdash-cms/emdash/4ec13c34192dc0bafc2878af5b1129152e8dc990/docs/src/content/docs/guides/preview.mdx",
+        "retrieved_on": "2026-09-14",
+        "sha256": "cc0f03c1210fb93368e05c159123f514a8c075918a0629d88f83a0e52c3fe762",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/emdash-cms/emdash/4ec13c34192dc0bafc2878af5b1129152e8dc990/docs/src/content/docs/guides/preview.mdx",
+        "retrieved_on": "2026-11-01",
+        "sha256": "cc0f03c1210fb93368e05c159123f514a8c075918a0629d88f83a0e52c3fe762",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "cc0f03c1210fb93368e05c159123f514a8c075918a0629d88f83a0e52c3fe762",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-GCMS-010"
+      ],
+      "affected_clauses": [
+        "CAP-GCMS-004",
+        "INV-GCMS-004",
+        "REQ-GCMS-013"
+      ]
+    },
+    {
+      "id": "SRC-GCMS-EMDASH-README",
+      "before": {
+        "url": "https://raw.githubusercontent.com/emdash-cms/emdash/4ec13c34192dc0bafc2878af5b1129152e8dc990/README.md",
+        "retrieved_on": "2026-09-14",
+        "sha256": "e1d45de4c246b7764d9eee078802287cf86bae0fbcc0d8c41ecaa7808daa01ec",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/emdash-cms/emdash/4ec13c34192dc0bafc2878af5b1129152e8dc990/README.md",
+        "retrieved_on": "2026-11-01",
+        "sha256": "e1d45de4c246b7764d9eee078802287cf86bae0fbcc0d8c41ecaa7808daa01ec",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "e1d45de4c246b7764d9eee078802287cf86bae0fbcc0d8c41ecaa7808daa01ec",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-GCMS-002",
+        "OBS-GCMS-020"
+      ],
+      "affected_clauses": []
+    },
+    {
+      "id": "SRC-GCMS-EMDASH-ROLES",
+      "before": {
+        "url": "https://raw.githubusercontent.com/emdash-cms/emdash/4ec13c34192dc0bafc2878af5b1129152e8dc990/docs/src/content/docs/guides/authentication.mdx",
+        "retrieved_on": "2026-09-14",
+        "sha256": "d66fbd126b6d8724e35aa1f0a88893d1dc3acad37b626e8ed70b2889503df613",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/emdash-cms/emdash/4ec13c34192dc0bafc2878af5b1129152e8dc990/docs/src/content/docs/guides/authentication.mdx",
+        "retrieved_on": "2026-11-01",
+        "sha256": "d66fbd126b6d8724e35aa1f0a88893d1dc3acad37b626e8ed70b2889503df613",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "d66fbd126b6d8724e35aa1f0a88893d1dc3acad37b626e8ed70b2889503df613",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-GCMS-015",
+        "OBS-GCMS-017"
+      ],
+      "affected_clauses": [
+        "CAP-GCMS-007",
+        "INV-GCMS-004",
+        "POL-GCMS-003",
+        "REQ-GCMS-012",
+        "REQ-GCMS-021",
+        "REQ-GCMS-022"
+      ]
+    },
+    {
+      "id": "SRC-GCMS-EMDASH-SCHEMA",
+      "before": {
+        "url": "https://raw.githubusercontent.com/emdash-cms/emdash/4ec13c34192dc0bafc2878af5b1129152e8dc990/docs/src/content/docs/deployment/schema-evolution.mdx",
+        "retrieved_on": "2026-09-14",
+        "sha256": "18972e618b1820c810a89b86edbf5809248408aa70b1f1a1f1e57e1705bb39f5",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/emdash-cms/emdash/4ec13c34192dc0bafc2878af5b1129152e8dc990/docs/src/content/docs/deployment/schema-evolution.mdx",
+        "retrieved_on": "2026-11-01",
+        "sha256": "18972e618b1820c810a89b86edbf5809248408aa70b1f1a1f1e57e1705bb39f5",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "18972e618b1820c810a89b86edbf5809248408aa70b1f1a1f1e57e1705bb39f5",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-GCMS-002",
+        "OBS-GCMS-004",
+        "OBS-GCMS-019"
+      ],
+      "affected_clauses": [
+        "REQ-GCMS-003"
+      ]
+    },
+    {
+      "id": "SRC-GCMS-EMDASH-TEST-PERMS",
+      "before": {
+        "url": "https://raw.githubusercontent.com/emdash-cms/emdash/4ec13c34192dc0bafc2878af5b1129152e8dc990/packages/core/tests/unit/api/content-route-permissions.test.ts",
+        "retrieved_on": "2026-09-14",
+        "sha256": "c851e35c38619af1b623e4941e681db622cda2c2b1c9d7b36bbecc0ca632533d",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/emdash-cms/emdash/4ec13c34192dc0bafc2878af5b1129152e8dc990/packages/core/tests/unit/api/content-route-permissions.test.ts",
+        "retrieved_on": "2026-11-01",
+        "sha256": "c851e35c38619af1b623e4941e681db622cda2c2b1c9d7b36bbecc0ca632533d",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "c851e35c38619af1b623e4941e681db622cda2c2b1c9d7b36bbecc0ca632533d",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-GCMS-016"
+      ],
+      "affected_clauses": [
+        "REQ-GCMS-023"
+      ]
+    },
+    {
+      "id": "SRC-GCMS-EMDASH-TEST-PUBLISH",
+      "before": {
+        "url": "https://raw.githubusercontent.com/emdash-cms/emdash/4ec13c34192dc0bafc2878af5b1129152e8dc990/packages/core/tests/unit/api/publish-revision-cas.test.ts",
+        "retrieved_on": "2026-09-14",
+        "sha256": "5eac716c36aa244f5e3f5c6523e2e48b2b572f0d14457efa359d018649739eca",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/emdash-cms/emdash/4ec13c34192dc0bafc2878af5b1129152e8dc990/packages/core/tests/unit/api/publish-revision-cas.test.ts",
+        "retrieved_on": "2026-11-01",
+        "sha256": "5eac716c36aa244f5e3f5c6523e2e48b2b572f0d14457efa359d018649739eca",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "5eac716c36aa244f5e3f5c6523e2e48b2b572f0d14457efa359d018649739eca",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-GCMS-013",
+        "OBS-GCMS-016"
+      ],
+      "affected_clauses": [
+        "REQ-GCMS-014",
+        "REQ-GCMS-015",
+        "REQ-GCMS-016",
+        "REQ-GCMS-023"
+      ]
+    },
+    {
+      "id": "SRC-GCMS-EMDASH-TEST-REVISIONS",
+      "before": {
+        "url": "https://raw.githubusercontent.com/emdash-cms/emdash/4ec13c34192dc0bafc2878af5b1129152e8dc990/packages/core/tests/unit/api/revision-handlers.test.ts",
+        "retrieved_on": "2026-09-14",
+        "sha256": "be93f8bc78ecc7634757f4e32fbb067184f4965cf748fd87008f43e8eda49408",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/emdash-cms/emdash/4ec13c34192dc0bafc2878af5b1129152e8dc990/packages/core/tests/unit/api/revision-handlers.test.ts",
+        "retrieved_on": "2026-11-01",
+        "sha256": "be93f8bc78ecc7634757f4e32fbb067184f4965cf748fd87008f43e8eda49408",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "be93f8bc78ecc7634757f4e32fbb067184f4965cf748fd87008f43e8eda49408",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-GCMS-011"
+      ],
+      "affected_clauses": [
+        "CAP-GCMS-006",
+        "INV-GCMS-003",
+        "INV-GCMS-005",
+        "REQ-GCMS-018",
+        "REQ-GCMS-019"
+      ]
+    },
+    {
+      "id": "SRC-GCMS-EMDASH-TEST-VALIDATION",
+      "before": {
+        "url": "https://raw.githubusercontent.com/emdash-cms/emdash/4ec13c34192dc0bafc2878af5b1129152e8dc990/packages/core/tests/integration/mcp/validation.test.ts",
+        "retrieved_on": "2026-09-14",
+        "sha256": "ac71574a2ba7db4613cca9731e10be5924c0e5a127c6ebf348a2b345d305374d",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/emdash-cms/emdash/4ec13c34192dc0bafc2878af5b1129152e8dc990/packages/core/tests/integration/mcp/validation.test.ts",
+        "retrieved_on": "2026-11-01",
+        "sha256": "ac71574a2ba7db4613cca9731e10be5924c0e5a127c6ebf348a2b345d305374d",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "ac71574a2ba7db4613cca9731e10be5924c0e5a127c6ebf348a2b345d305374d",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-GCMS-006"
+      ],
+      "affected_clauses": [
+        "CAP-GCMS-003",
+        "REQ-GCMS-008",
+        "REQ-GCMS-009",
+        "REQ-GCMS-010"
+      ]
+    },
+    {
+      "id": "SRC-GCMS-TINA-DATALAYER",
+      "before": {
+        "url": "https://raw.githubusercontent.com/tinacms/tina.io/768d8aed0550fa5f48b1b6017c8a42bc7dc71d03/content/docs/reference/content-api/data-layer.mdx",
+        "retrieved_on": "2026-09-14",
+        "sha256": "c6247f095212eec9029dc092ef6d14f32db3ea165e9dd079e9e998f2ad2127ad",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/tinacms/tina.io/768d8aed0550fa5f48b1b6017c8a42bc7dc71d03/content/docs/reference/content-api/data-layer.mdx",
+        "retrieved_on": "2026-11-01",
+        "sha256": "c6247f095212eec9029dc092ef6d14f32db3ea165e9dd079e9e998f2ad2127ad",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "c6247f095212eec9029dc092ef6d14f32db3ea165e9dd079e9e998f2ad2127ad",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-GCMS-031"
+      ],
+      "affected_clauses": [
+        "INV-GCMS-001",
+        "POL-GCMS-002",
+        "QA-GCMS-001",
+        "REQ-GCMS-009",
+        "REQ-GCMS-011"
+      ]
+    },
+    {
+      "id": "SRC-GCMS-TINA-DRAFTS",
+      "before": {
+        "url": "https://raw.githubusercontent.com/tinacms/tina.io/768d8aed0550fa5f48b1b6017c8a42bc7dc71d03/content/docs/drafts/overview.mdx",
+        "retrieved_on": "2026-09-14",
+        "sha256": "00bfdfa2430eeaef52a9436eba486d19a7c36ac6a88e98a9d28bb109c2cc3d44",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/tinacms/tina.io/768d8aed0550fa5f48b1b6017c8a42bc7dc71d03/content/docs/drafts/overview.mdx",
+        "retrieved_on": "2026-11-01",
+        "sha256": "00bfdfa2430eeaef52a9436eba486d19a7c36ac6a88e98a9d28bb109c2cc3d44",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "00bfdfa2430eeaef52a9436eba486d19a7c36ac6a88e98a9d28bb109c2cc3d44",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-GCMS-034"
+      ],
+      "affected_clauses": [
+        "CAP-GCMS-004",
+        "REQ-GCMS-013"
+      ]
+    },
+    {
+      "id": "SRC-GCMS-TINA-FIELDS",
+      "before": {
+        "url": "https://raw.githubusercontent.com/tinacms/tina.io/768d8aed0550fa5f48b1b6017c8a42bc7dc71d03/content/docs/reference/fields.mdx",
+        "retrieved_on": "2026-09-14",
+        "sha256": "d99fb30fd06d1ab904e85ce78ee1cb3109ac2dfcfec507189b1c1aea8dd2bf6e",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/tinacms/tina.io/768d8aed0550fa5f48b1b6017c8a42bc7dc71d03/content/docs/reference/fields.mdx",
+        "retrieved_on": "2026-11-01",
+        "sha256": "d99fb30fd06d1ab904e85ce78ee1cb3109ac2dfcfec507189b1c1aea8dd2bf6e",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "d99fb30fd06d1ab904e85ce78ee1cb3109ac2dfcfec507189b1c1aea8dd2bf6e",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-GCMS-032"
+      ],
+      "affected_clauses": [
+        "CAP-GCMS-003",
+        "INV-GCMS-002",
+        "REQ-GCMS-001",
+        "REQ-GCMS-008",
+        "REQ-GCMS-010"
+      ]
+    },
+    {
+      "id": "SRC-GCMS-TINA-MODEL",
+      "before": {
+        "url": "https://raw.githubusercontent.com/tinacms/tina.io/768d8aed0550fa5f48b1b6017c8a42bc7dc71d03/content/docs/content-model-intro.mdx",
+        "retrieved_on": "2026-09-14",
+        "sha256": "4d5a68ffd02c915ed430f104e0434024d5f99e1830e3a1b324ae93b92ac724a1",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/tinacms/tina.io/768d8aed0550fa5f48b1b6017c8a42bc7dc71d03/content/docs/content-model-intro.mdx",
+        "retrieved_on": "2026-11-01",
+        "sha256": "4d5a68ffd02c915ed430f104e0434024d5f99e1830e3a1b324ae93b92ac724a1",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "4d5a68ffd02c915ed430f104e0434024d5f99e1830e3a1b324ae93b92ac724a1",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-GCMS-030"
+      ],
+      "affected_clauses": [
+        "CAP-GCMS-001",
+        "CAP-GCMS-006",
+        "REQ-GCMS-001",
+        "REQ-GCMS-002"
+      ]
+    },
+    {
+      "id": "SRC-GCMS-TINA-USERS",
+      "before": {
+        "url": "https://raw.githubusercontent.com/tinacms/tina.io/768d8aed0550fa5f48b1b6017c8a42bc7dc71d03/content/docs/tinacloud/dashboard/users.mdx",
+        "retrieved_on": "2026-09-14",
+        "sha256": "338e382f63d23dbf98207b9ac6e2d739395d6ce057d9e13cbebae561345be706",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/tinacms/tina.io/768d8aed0550fa5f48b1b6017c8a42bc7dc71d03/content/docs/tinacloud/dashboard/users.mdx",
+        "retrieved_on": "2026-11-01",
+        "sha256": "338e382f63d23dbf98207b9ac6e2d739395d6ce057d9e13cbebae561345be706",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "338e382f63d23dbf98207b9ac6e2d739395d6ce057d9e13cbebae561345be706",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-GCMS-035"
+      ],
+      "affected_clauses": [
+        "CAP-GCMS-007",
+        "REQ-GCMS-021",
+        "REQ-GCMS-024"
+      ]
+    },
+    {
+      "id": "SRC-GCMS-TINA-WORKFLOW",
+      "before": {
+        "url": "https://raw.githubusercontent.com/tinacms/tina.io/768d8aed0550fa5f48b1b6017c8a42bc7dc71d03/content/docs/tinacloud/editorial-workflow.mdx",
+        "retrieved_on": "2026-09-14",
+        "sha256": "b0a80f458a836cb7b0334a43e73b34e3679fa4e186aac11be191c99cdddf2cf8",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/tinacms/tina.io/768d8aed0550fa5f48b1b6017c8a42bc7dc71d03/content/docs/tinacloud/editorial-workflow.mdx",
+        "retrieved_on": "2026-11-01",
+        "sha256": "b0a80f458a836cb7b0334a43e73b34e3679fa4e186aac11be191c99cdddf2cf8",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "b0a80f458a836cb7b0334a43e73b34e3679fa4e186aac11be191c99cdddf2cf8",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-GCMS-033"
+      ],
+      "affected_clauses": [
+        "CAP-GCMS-002",
+        "CAP-GCMS-004",
+        "CAP-GCMS-005",
+        "POL-GCMS-003",
+        "POL-GCMS-004",
+        "REQ-GCMS-005",
+        "REQ-GCMS-006",
+        "REQ-GCMS-012"
+      ]
+    }
+  ],
+  "validation": {
+    "structural": "passed",
+    "tooling_tests": {
+      "passed": 68,
+      "failed": 0,
+      "skipped": 0
+    },
+    "final_family_source_check": "passed",
+    "catalogue_source_check": {
+      "matched": 170,
+      "unavailable": 2,
+      "hash_mismatches": 0
+    },
+    "baseline_preservation": "passed",
+    "validation_detail": "../../../docs/research-refresh-2026-11-01.md#observed-validation",
+    "product_acceptance": "not_run"
+  }
+}

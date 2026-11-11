@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "contract_id", "contract_version", "research_status", "links"],
+  "properties": {
+    "schema_version": {"const": "0.1"},
+    "contract_id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "contract_version": {"type": "string", "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"},
+    "research_status": {"enum": ["pending", "initial", "reviewed"]},
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["clause", "basis", "observations"],
+        "properties": {
+          "clause": {"type": "string", "pattern": "^[A-Z][A-Z0-9-]*[A-Z0-9]$"},
+          "basis": {"enum": ["supported_convergence", "supported_pattern", "supported_pattern_and_choice", "explicit_project_choice"]},
+          "observations": {"type": "array", "items": {"type": "string", "pattern": "^OBS-[A-Z0-9-]+$"}},
+          "note": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}

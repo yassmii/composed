@@ -1,0 +1,1076 @@
+{
+  "format_version": 1,
+  "kind": "research-refresh-record",
+  "date": "2026-11-01",
+  "family": "collaborative-workspace",
+  "scope": "Existing recorded sources and their dependent observations; no upstream-latest survey or product execution",
+  "status": "recorded_corpus_rechecked",
+  "author_review": "repository agent; not independent approval",
+  "baseline": {
+    "contract_sha256": "6878069a7e8e49dce39732719aa0169f11adba8eed98ac892504d3c0c0ad1ac8",
+    "traceability_sha256": "dcb6f7296a267a4265d4c2827e4e6ce871ab9ea8987fed914145860eb9aec0c3",
+    "normative_bytes_changed": false
+  },
+  "source_archive": "history/sources-before-refresh-2026-11-01.yaml",
+  "observations_before_sha256": "2abf89e224bc3fbc5a77d415035afae3c81a4c6d30dbd5432972760f842248bd",
+  "observations_after_sha256": "e2769acd08c2064128c2d37feb651f0111aa20ded8528c880a220be32804ef40",
+  "new_observations": [
+    "OBS-CWS-026",
+    "OBS-CWS-027",
+    "OBS-CWS-028"
+  ],
+  "review": "Re-read OBS-CWS-005/006/008/009/010/015 against current Notion/Airtable passages: access levels, page-level rules, attributed history, restore and automation run/configuration history remain supported. New notes preserve counterevidence: broadest permission wins in Notion; restoring a database does not restore nested page bodies; Airtable record revision history has no product export or history-read API. These do not establish the stronger Composed recovery, access and portability guarantees. REQ-CWS-030/031/032, INV-CWS-004/015 and POL-CWS-007 remain unchanged.",
+  "followup": "Deepen effective permission composition, database/page/attachment restore scope, portable history and retention versus erasure; run conflict/offline and recovery fixtures. Do not transfer vendor UI guarantees to the complete workspace.",
+  "behavioural_diff_from_historical_bodies": "unknown; old bodies unavailable, original metadata preserved",
+  "product_acceptance": "not_run",
+  "proof_transfer": "not_performed",
+  "sources": [
+    {
+      "id": "SRC-CWS-AFFINE-EE-LICENSE",
+      "before": {
+        "url": "https://raw.githubusercontent.com/toeverything/AFFiNE/0b69a6da21e8fd35beb85667bb8496d9b3852238/packages/backend/server/LICENSE",
+        "retrieved_on": "2026-10-14",
+        "sha256": "5a644f9defc017ffd484413598d1edf65bc78718e4011ac33a0e1fcae629e25d",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/toeverything/AFFiNE/0b69a6da21e8fd35beb85667bb8496d9b3852238/packages/backend/server/LICENSE",
+        "retrieved_on": "2026-11-01",
+        "sha256": "5a644f9defc017ffd484413598d1edf65bc78718e4011ac33a0e1fcae629e25d",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "5a644f9defc017ffd484413598d1edf65bc78718e4011ac33a0e1fcae629e25d",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CWS-017"
+      ],
+      "affected_clauses": [
+        "POL-CWS-010",
+        "REQ-CWS-061",
+        "REQ-CWS-062"
+      ]
+    },
+    {
+      "id": "SRC-CWS-AFFINE-LICENSE",
+      "before": {
+        "url": "https://raw.githubusercontent.com/toeverything/AFFiNE/0b69a6da21e8fd35beb85667bb8496d9b3852238/LICENSE",
+        "retrieved_on": "2026-10-14",
+        "sha256": "c107c8088fe42bce6def95d313cfe7b5984d3bb2c1608b67f855327da45f497b",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/toeverything/AFFiNE/0b69a6da21e8fd35beb85667bb8496d9b3852238/LICENSE",
+        "retrieved_on": "2026-11-01",
+        "sha256": "c107c8088fe42bce6def95d313cfe7b5984d3bb2c1608b67f855327da45f497b",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "c107c8088fe42bce6def95d313cfe7b5984d3bb2c1608b67f855327da45f497b",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CWS-017"
+      ],
+      "affected_clauses": [
+        "POL-CWS-010",
+        "REQ-CWS-061",
+        "REQ-CWS-062"
+      ]
+    },
+    {
+      "id": "SRC-CWS-AFFINE-README",
+      "before": {
+        "url": "https://raw.githubusercontent.com/toeverything/AFFiNE/0b69a6da21e8fd35beb85667bb8496d9b3852238/README.md",
+        "retrieved_on": "2026-10-14",
+        "sha256": "8d5be20062755f5b1ecc26bca4cf6d590efa28de7c4a64d2732bf26f66f78ae0",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/toeverything/AFFiNE/0b69a6da21e8fd35beb85667bb8496d9b3852238/README.md",
+        "retrieved_on": "2026-11-01",
+        "sha256": "8d5be20062755f5b1ecc26bca4cf6d590efa28de7c4a64d2732bf26f66f78ae0",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "8d5be20062755f5b1ecc26bca4cf6d590efa28de7c4a64d2732bf26f66f78ae0",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CWS-017"
+      ],
+      "affected_clauses": [
+        "POL-CWS-010",
+        "REQ-CWS-061",
+        "REQ-CWS-062"
+      ]
+    },
+    {
+      "id": "SRC-CWS-AIRTABLE-AUTOMATIONS",
+      "before": {
+        "url": "https://support.airtable.com/articles/3669392397-Getting-started-with-Airtable-automations",
+        "retrieved_on": "2026-10-14",
+        "sha256": "38c4ccb22b5f2ec310249bfac12b7d149c564aa87c2313c3c205449480f2b937",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://support.airtable.com/articles/3669392397-Getting-started-with-Airtable-automations",
+        "retrieved_on": "2026-11-01",
+        "sha256": "4b5e7143d6a5bdb29ed7e5cf888eba972fb171fd2d8a465a3a60384b398239a8",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "95f6c8d08309e733df970ce52a0511191cbd64e36183b27707dad5c138a4fb05",
+      "initial_result": "changed",
+      "review": "dependent_observation_passages_rechecked",
+      "repeated_retrieval_matches": true,
+      "representation_changed": true,
+      "dependent_observations": [
+        "OBS-CWS-010",
+        "OBS-CWS-015"
+      ],
+      "affected_clauses": [
+        "CAP-CWS-008",
+        "CAP-CWS-011",
+        "CAP-CWS-012",
+        "QA-CWS-003",
+        "QA-CWS-006",
+        "REQ-CWS-029",
+        "REQ-CWS-040",
+        "REQ-CWS-043",
+        "REQ-CWS-048"
+      ]
+    },
+    {
+      "id": "SRC-CWS-AIRTABLE-HISTORY",
+      "before": {
+        "url": "https://support.airtable.com/articles/3516802427-record-level-revision-history-in-airtable",
+        "retrieved_on": "2026-10-14",
+        "sha256": "e731cd2fcb3a642eaee835ed24474a135ce992ae967eb7d078dddb4d1b4f749a",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://support.airtable.com/articles/3516802427-record-level-revision-history-in-airtable",
+        "retrieved_on": "2026-11-01",
+        "sha256": "57ab9a6288ff64b73e0efd8fb70d4432f97563202dccf6311a885a21e75b7c56",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "975d6961b85d979bfa1238b9feacd5dbc16dfd590dbbd5772ebc674cca9e782a",
+      "initial_result": "changed",
+      "review": "dependent_observation_passages_rechecked",
+      "repeated_retrieval_matches": true,
+      "representation_changed": true,
+      "dependent_observations": [
+        "OBS-CWS-008",
+        "OBS-CWS-015",
+        "OBS-CWS-028"
+      ],
+      "affected_clauses": [
+        "CAP-CWS-008",
+        "CAP-CWS-012",
+        "POL-CWS-007",
+        "QA-CWS-003",
+        "REQ-CWS-012",
+        "REQ-CWS-029",
+        "REQ-CWS-030",
+        "REQ-CWS-043",
+        "REQ-CWS-048"
+      ]
+    },
+    {
+      "id": "SRC-CWS-ANY-LICENSE",
+      "before": {
+        "url": "https://raw.githubusercontent.com/anyproto/any/d9e28693cf98afc6369a4e5dcf2fb9a542c0a4dc/LICENSE",
+        "retrieved_on": "2026-10-14",
+        "sha256": "1d62669bd478dcb823d921d328a11f0ebb03127570452cf1ffe714b93e2c0706",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/anyproto/any/d9e28693cf98afc6369a4e5dcf2fb9a542c0a4dc/LICENSE",
+        "retrieved_on": "2026-11-01",
+        "sha256": "1d62669bd478dcb823d921d328a11f0ebb03127570452cf1ffe714b93e2c0706",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "1d62669bd478dcb823d921d328a11f0ebb03127570452cf1ffe714b93e2c0706",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CWS-020"
+      ],
+      "affected_clauses": [
+        "CAP-CWS-016",
+        "CAP-CWS-017",
+        "INV-CWS-011",
+        "INV-CWS-012",
+        "INV-CWS-013",
+        "POL-CWS-010",
+        "POL-CWS-012",
+        "QA-CWS-010",
+        "REQ-CWS-060",
+        "REQ-CWS-062",
+        "REQ-CWS-063",
+        "REQ-CWS-068",
+        "REQ-CWS-071"
+      ]
+    },
+    {
+      "id": "SRC-CWS-ANY-README",
+      "before": {
+        "url": "https://raw.githubusercontent.com/anyproto/any/d9e28693cf98afc6369a4e5dcf2fb9a542c0a4dc/README.md",
+        "retrieved_on": "2026-10-14",
+        "sha256": "3324f019e06b5e404b0353f350fafd940f7d6c47dc6cd26f3bfafdfbbfa903a2",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/anyproto/any/d9e28693cf98afc6369a4e5dcf2fb9a542c0a4dc/README.md",
+        "retrieved_on": "2026-11-01",
+        "sha256": "3324f019e06b5e404b0353f350fafd940f7d6c47dc6cd26f3bfafdfbbfa903a2",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "3324f019e06b5e404b0353f350fafd940f7d6c47dc6cd26f3bfafdfbbfa903a2",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CWS-020"
+      ],
+      "affected_clauses": [
+        "CAP-CWS-016",
+        "CAP-CWS-017",
+        "INV-CWS-011",
+        "INV-CWS-012",
+        "INV-CWS-013",
+        "POL-CWS-010",
+        "POL-CWS-012",
+        "QA-CWS-010",
+        "REQ-CWS-060",
+        "REQ-CWS-062",
+        "REQ-CWS-063",
+        "REQ-CWS-068",
+        "REQ-CWS-071"
+      ]
+    },
+    {
+      "id": "SRC-CWS-ANYTYPE-LICENSE",
+      "before": {
+        "url": "https://raw.githubusercontent.com/anyproto/anytype-ts/4b265d9564d70a45b030cfb64669b4508eb915ef/LICENSE.md",
+        "retrieved_on": "2026-10-14",
+        "sha256": "daad9eb95adc6262b07115ba2cf87cd4c64acaca4b45d48e0fd3b15a72a31dc1",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/anyproto/anytype-ts/4b265d9564d70a45b030cfb64669b4508eb915ef/LICENSE.md",
+        "retrieved_on": "2026-11-01",
+        "sha256": "daad9eb95adc6262b07115ba2cf87cd4c64acaca4b45d48e0fd3b15a72a31dc1",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "daad9eb95adc6262b07115ba2cf87cd4c64acaca4b45d48e0fd3b15a72a31dc1",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CWS-019"
+      ],
+      "affected_clauses": [
+        "INV-CWS-011",
+        "POL-CWS-009",
+        "POL-CWS-010",
+        "REQ-CWS-060",
+        "REQ-CWS-062",
+        "REQ-CWS-063"
+      ]
+    },
+    {
+      "id": "SRC-CWS-ANYTYPE-README",
+      "before": {
+        "url": "https://raw.githubusercontent.com/anyproto/anytype-ts/4b265d9564d70a45b030cfb64669b4508eb915ef/README.md",
+        "retrieved_on": "2026-10-14",
+        "sha256": "47d0d6e087c3334551809d8290604f3346b16703ed3f733e08b4f9dee0fa2064",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/anyproto/anytype-ts/4b265d9564d70a45b030cfb64669b4508eb915ef/README.md",
+        "retrieved_on": "2026-11-01",
+        "sha256": "47d0d6e087c3334551809d8290604f3346b16703ed3f733e08b4f9dee0fa2064",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "47d0d6e087c3334551809d8290604f3346b16703ed3f733e08b4f9dee0fa2064",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CWS-019"
+      ],
+      "affected_clauses": [
+        "INV-CWS-011",
+        "POL-CWS-009",
+        "POL-CWS-010",
+        "REQ-CWS-060",
+        "REQ-CWS-062",
+        "REQ-CWS-063"
+      ]
+    },
+    {
+      "id": "SRC-CWS-APPFLOWY-LICENSE",
+      "before": {
+        "url": "https://raw.githubusercontent.com/AppFlowy-IO/AppFlowy/5cf3a365dec0d59f64bad1ee4bb1050471a39b93/LICENSE",
+        "retrieved_on": "2026-10-14",
+        "sha256": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/AppFlowy-IO/AppFlowy/5cf3a365dec0d59f64bad1ee4bb1050471a39b93/LICENSE",
+        "retrieved_on": "2026-11-01",
+        "sha256": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CWS-016"
+      ],
+      "affected_clauses": [
+        "CAP-CWS-016",
+        "CAP-CWS-017",
+        "INV-CWS-011",
+        "INV-CWS-013",
+        "POL-CWS-009",
+        "REQ-CWS-060",
+        "REQ-CWS-061",
+        "REQ-CWS-064"
+      ]
+    },
+    {
+      "id": "SRC-CWS-APPFLOWY-README",
+      "before": {
+        "url": "https://raw.githubusercontent.com/AppFlowy-IO/AppFlowy/5cf3a365dec0d59f64bad1ee4bb1050471a39b93/README.md",
+        "retrieved_on": "2026-10-14",
+        "sha256": "f59d3e49037d392f36d7ea13d25485c5d54317f9aee7c61c4c2a47f067aa996d",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/AppFlowy-IO/AppFlowy/5cf3a365dec0d59f64bad1ee4bb1050471a39b93/README.md",
+        "retrieved_on": "2026-11-01",
+        "sha256": "f59d3e49037d392f36d7ea13d25485c5d54317f9aee7c61c4c2a47f067aa996d",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "f59d3e49037d392f36d7ea13d25485c5d54317f9aee7c61c4c2a47f067aa996d",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CWS-016"
+      ],
+      "affected_clauses": [
+        "CAP-CWS-016",
+        "CAP-CWS-017",
+        "INV-CWS-011",
+        "INV-CWS-013",
+        "POL-CWS-009",
+        "REQ-CWS-060",
+        "REQ-CWS-061",
+        "REQ-CWS-064"
+      ]
+    },
+    {
+      "id": "SRC-CWS-DECAP-ARCHITECTURE",
+      "before": {
+        "url": "https://raw.githubusercontent.com/decaporg/decap-website/b8204ac34b21798edca00ec6f0d1dca21d3a1488/content/docs/architecture.md",
+        "retrieved_on": "2026-10-14",
+        "sha256": "06d4be30b5115d2b5d9bc4e7fe54371d3bba1d94004e107ff756bab894d61a55",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/decaporg/decap-website/b8204ac34b21798edca00ec6f0d1dca21d3a1488/content/docs/architecture.md",
+        "retrieved_on": "2026-11-01",
+        "sha256": "06d4be30b5115d2b5d9bc4e7fe54371d3bba1d94004e107ff756bab894d61a55",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "06d4be30b5115d2b5d9bc4e7fe54371d3bba1d94004e107ff756bab894d61a55",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CWS-021"
+      ],
+      "affected_clauses": [
+        "CAP-CWS-018",
+        "INV-CWS-014",
+        "INV-CWS-015",
+        "POL-CWS-011",
+        "POL-CWS-012",
+        "REQ-CWS-069",
+        "REQ-CWS-070",
+        "REQ-CWS-071",
+        "REQ-CWS-074"
+      ]
+    },
+    {
+      "id": "SRC-CWS-DOCMOST-LICENSE",
+      "before": {
+        "url": "https://raw.githubusercontent.com/docmost/docmost/6950a126bd8543176aa05d9bddd161eac442c24f/LICENSE",
+        "retrieved_on": "2026-10-14",
+        "sha256": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/docmost/docmost/6950a126bd8543176aa05d9bddd161eac442c24f/LICENSE",
+        "retrieved_on": "2026-11-01",
+        "sha256": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CWS-018"
+      ],
+      "affected_clauses": [
+        "CAP-CWS-016",
+        "INV-CWS-011",
+        "POL-CWS-009",
+        "REQ-CWS-060"
+      ]
+    },
+    {
+      "id": "SRC-CWS-DOCMOST-README",
+      "before": {
+        "url": "https://raw.githubusercontent.com/docmost/docmost/6950a126bd8543176aa05d9bddd161eac442c24f/README.md",
+        "retrieved_on": "2026-10-14",
+        "sha256": "dd05f459978695449638d22d53315dfd4cde1f481b3bb48ec50a6f6523f54828",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/docmost/docmost/6950a126bd8543176aa05d9bddd161eac442c24f/README.md",
+        "retrieved_on": "2026-11-01",
+        "sha256": "dd05f459978695449638d22d53315dfd4cde1f481b3bb48ec50a6f6523f54828",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "dd05f459978695449638d22d53315dfd4cde1f481b3bb48ec50a6f6523f54828",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CWS-018"
+      ],
+      "affected_clauses": [
+        "CAP-CWS-016",
+        "INV-CWS-011",
+        "POL-CWS-009",
+        "REQ-CWS-060"
+      ]
+    },
+    {
+      "id": "SRC-CWS-NOTION-AUDIT",
+      "before": {
+        "url": "https://www.notion.com/help/audit-log",
+        "retrieved_on": "2026-10-14",
+        "sha256": "4add65e9b44ea9e3460f29687fc978664ba8302816b94c2b01f321e913e6be99",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://www.notion.com/help/audit-log",
+        "retrieved_on": "2026-11-01",
+        "sha256": "4add65e9b44ea9e3460f29687fc978664ba8302816b94c2b01f321e913e6be99",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "4add65e9b44ea9e3460f29687fc978664ba8302816b94c2b01f321e913e6be99",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CWS-013"
+      ],
+      "affected_clauses": [
+        "CAP-CWS-014",
+        "INV-CWS-004",
+        "INV-CWS-009",
+        "POL-CWS-007",
+        "QA-CWS-003",
+        "REQ-CWS-029",
+        "REQ-CWS-053",
+        "REQ-CWS-054"
+      ]
+    },
+    {
+      "id": "SRC-CWS-NOTION-AUTOMATIONS",
+      "before": {
+        "url": "https://www.notion.com/help/database-automations",
+        "retrieved_on": "2026-10-14",
+        "sha256": "1770ca90dbc8cec030859fcd8c066cba9f4d776b15f263de662db0aa492e4474",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://www.notion.com/help/database-automations",
+        "retrieved_on": "2026-11-01",
+        "sha256": "1770ca90dbc8cec030859fcd8c066cba9f4d776b15f263de662db0aa492e4474",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "1770ca90dbc8cec030859fcd8c066cba9f4d776b15f263de662db0aa492e4474",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CWS-010",
+        "OBS-CWS-011"
+      ],
+      "affected_clauses": [
+        "CAP-CWS-011",
+        "CAP-CWS-012",
+        "POL-CWS-003",
+        "QA-CWS-006",
+        "REQ-CWS-040",
+        "REQ-CWS-041",
+        "REQ-CWS-042",
+        "REQ-CWS-043",
+        "REQ-CWS-047",
+        "REQ-CWS-053"
+      ]
+    },
+    {
+      "id": "SRC-CWS-NOTION-COMMENTS",
+      "before": {
+        "url": "https://www.notion.com/help/comments-mentions-and-reminders",
+        "retrieved_on": "2026-10-14",
+        "sha256": "d54cb4cda2c545d6c4539ecc295486f38f98abb95f8a773872b8aaff3abd8e32",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://www.notion.com/help/comments-mentions-and-reminders",
+        "retrieved_on": "2026-11-01",
+        "sha256": "d54cb4cda2c545d6c4539ecc295486f38f98abb95f8a773872b8aaff3abd8e32",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "d54cb4cda2c545d6c4539ecc295486f38f98abb95f8a773872b8aaff3abd8e32",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CWS-007"
+      ],
+      "affected_clauses": [
+        "CAP-CWS-003",
+        "CAP-CWS-010",
+        "REQ-CWS-011",
+        "REQ-CWS-037",
+        "REQ-CWS-038"
+      ]
+    },
+    {
+      "id": "SRC-CWS-NOTION-DATABASE-SETTINGS",
+      "before": {
+        "url": "https://www.notion.com/help/customize-your-database",
+        "retrieved_on": "2026-10-14",
+        "sha256": "1c90b0add4b09e40a78bef6899104400567b95497abc4ae44a090e6e96af896b",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://www.notion.com/help/customize-your-database",
+        "retrieved_on": "2026-11-01",
+        "sha256": "1c90b0add4b09e40a78bef6899104400567b95497abc4ae44a090e6e96af896b",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "1c90b0add4b09e40a78bef6899104400567b95497abc4ae44a090e6e96af896b",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CWS-004"
+      ],
+      "affected_clauses": [
+        "REQ-CWS-013",
+        "REQ-CWS-016",
+        "REQ-CWS-026"
+      ]
+    },
+    {
+      "id": "SRC-CWS-NOTION-DATABASES",
+      "before": {
+        "url": "https://www.notion.com/help/what-is-a-database",
+        "retrieved_on": "2026-10-14",
+        "sha256": "81602205d57021252c2991380563f940443087ca760ee4bebd5d4272e36bf062",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://www.notion.com/help/what-is-a-database",
+        "retrieved_on": "2026-11-01",
+        "sha256": "81602205d57021252c2991380563f940443087ca760ee4bebd5d4272e36bf062",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "81602205d57021252c2991380563f940443087ca760ee4bebd5d4272e36bf062",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CWS-001",
+        "OBS-CWS-002"
+      ],
+      "affected_clauses": [
+        "CAP-CWS-002",
+        "CAP-CWS-004",
+        "CAP-CWS-005",
+        "POL-CWS-004",
+        "REQ-CWS-004",
+        "REQ-CWS-012",
+        "REQ-CWS-013",
+        "REQ-CWS-017",
+        "REQ-CWS-018",
+        "REQ-CWS-020"
+      ]
+    },
+    {
+      "id": "SRC-CWS-NOTION-EXPORT",
+      "before": {
+        "url": "https://www.notion.com/help/back-up-your-data",
+        "retrieved_on": "2026-10-14",
+        "sha256": "8c45bdfb8ae5e1094622d64639eaa8f0684a0c2a2c7e9cf794095859eb629f75",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://www.notion.com/help/back-up-your-data",
+        "retrieved_on": "2026-11-01",
+        "sha256": "8c45bdfb8ae5e1094622d64639eaa8f0684a0c2a2c7e9cf794095859eb629f75",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "8c45bdfb8ae5e1094622d64639eaa8f0684a0c2a2c7e9cf794095859eb629f75",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CWS-014"
+      ],
+      "affected_clauses": [
+        "CAP-CWS-009",
+        "CAP-CWS-014",
+        "POL-CWS-007",
+        "QA-CWS-007",
+        "REQ-CWS-036",
+        "REQ-CWS-056",
+        "REQ-CWS-064"
+      ]
+    },
+    {
+      "id": "SRC-CWS-NOTION-HISTORY",
+      "before": {
+        "url": "https://www.notion.com/help/duplicate-delete-and-restore-content",
+        "retrieved_on": "2026-10-14",
+        "sha256": "33276a01bd360be0d4caa5ceecc86943a0ed87805bd407b9d39a28d070e823fc",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://www.notion.com/help/duplicate-delete-and-restore-content",
+        "retrieved_on": "2026-11-01",
+        "sha256": "6ee5ff3a1c661c17a35b9f7ccc32118904e10f826550f682983d2cfcfce1947b",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "6ee5ff3a1c661c17a35b9f7ccc32118904e10f826550f682983d2cfcfce1947b",
+      "initial_result": "changed",
+      "review": "dependent_observation_passages_rechecked",
+      "repeated_retrieval_matches": true,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CWS-008",
+        "OBS-CWS-009",
+        "OBS-CWS-027"
+      ],
+      "affected_clauses": [
+        "CAP-CWS-008",
+        "INV-CWS-004",
+        "INV-CWS-015",
+        "POL-CWS-007",
+        "QA-CWS-004",
+        "REQ-CWS-012",
+        "REQ-CWS-030",
+        "REQ-CWS-031",
+        "REQ-CWS-032"
+      ]
+    },
+    {
+      "id": "SRC-CWS-NOTION-INTEGRATIONS",
+      "before": {
+        "url": "https://www.notion.com/help/create-integrations-with-the-notion-api",
+        "retrieved_on": "2026-10-14",
+        "sha256": "fb283a2e08b6c7a981f80d3429322c66ba65e66b5ab32f4b072042cd478a4cb0",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://www.notion.com/help/create-integrations-with-the-notion-api",
+        "retrieved_on": "2026-11-01",
+        "sha256": "fb283a2e08b6c7a981f80d3429322c66ba65e66b5ab32f4b072042cd478a4cb0",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "fb283a2e08b6c7a981f80d3429322c66ba65e66b5ab32f4b072042cd478a4cb0",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CWS-012"
+      ],
+      "affected_clauses": [
+        "CAP-CWS-012",
+        "INV-CWS-001",
+        "INV-CWS-007",
+        "INV-CWS-008",
+        "POL-CWS-003",
+        "REQ-CWS-025",
+        "REQ-CWS-042",
+        "REQ-CWS-045",
+        "REQ-CWS-046",
+        "REQ-CWS-047"
+      ]
+    },
+    {
+      "id": "SRC-CWS-NOTION-NOTIFICATIONS",
+      "before": {
+        "url": "https://www.notion.com/help/updates-and-notifications",
+        "retrieved_on": "2026-10-14",
+        "sha256": "b7ab97c7aa9ed0e3e8ef0cdb4a9b2be1cf73889f4a03aedcdfc6af5544226223",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://www.notion.com/help/updates-and-notifications",
+        "retrieved_on": "2026-11-01",
+        "sha256": "b7ab97c7aa9ed0e3e8ef0cdb4a9b2be1cf73889f4a03aedcdfc6af5544226223",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "b7ab97c7aa9ed0e3e8ef0cdb4a9b2be1cf73889f4a03aedcdfc6af5544226223",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CWS-007"
+      ],
+      "affected_clauses": [
+        "CAP-CWS-003",
+        "CAP-CWS-010",
+        "REQ-CWS-011",
+        "REQ-CWS-037",
+        "REQ-CWS-038"
+      ]
+    },
+    {
+      "id": "SRC-CWS-NOTION-PERMISSIONS",
+      "before": {
+        "url": "https://www.notion.com/help/sharing-and-permissions",
+        "retrieved_on": "2026-10-14",
+        "sha256": "e9b76ce798cb063e244e54c13580a3b6658661373c0f7281b613e66896ff9104",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://www.notion.com/help/sharing-and-permissions",
+        "retrieved_on": "2026-11-01",
+        "sha256": "21a5f30fa15539326d4d45c20245886017608ab92feb504c018c5691cb54bf80",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "21a5f30fa15539326d4d45c20245886017608ab92feb504c018c5691cb54bf80",
+      "initial_result": "changed",
+      "review": "dependent_observation_passages_rechecked",
+      "repeated_retrieval_matches": true,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CWS-005",
+        "OBS-CWS-006",
+        "OBS-CWS-026"
+      ],
+      "affected_clauses": [
+        "CAP-CWS-001",
+        "CAP-CWS-003",
+        "CAP-CWS-007",
+        "INV-CWS-001",
+        "INV-CWS-005",
+        "INV-CWS-008",
+        "POL-CWS-001",
+        "REQ-CWS-002",
+        "REQ-CWS-006",
+        "REQ-CWS-008",
+        "REQ-CWS-018",
+        "REQ-CWS-020",
+        "REQ-CWS-024",
+        "REQ-CWS-025",
+        "REQ-CWS-026",
+        "REQ-CWS-027",
+        "REQ-CWS-028",
+        "REQ-CWS-038"
+      ]
+    },
+    {
+      "id": "SRC-CWS-NOTION-PROPERTIES",
+      "before": {
+        "url": "https://www.notion.com/help/database-properties",
+        "retrieved_on": "2026-10-14",
+        "sha256": "0dbf65d26e35bca08a1eb8be6150d7239c47533a703e390ed92ae8baadb71670",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://www.notion.com/help/database-properties",
+        "retrieved_on": "2026-11-01",
+        "sha256": "0dbf65d26e35bca08a1eb8be6150d7239c47533a703e390ed92ae8baadb71670",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "0dbf65d26e35bca08a1eb8be6150d7239c47533a703e390ed92ae8baadb71670",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CWS-002",
+        "OBS-CWS-003"
+      ],
+      "affected_clauses": [
+        "CAP-CWS-004",
+        "CAP-CWS-005",
+        "REQ-CWS-013",
+        "REQ-CWS-015",
+        "REQ-CWS-017"
+      ]
+    },
+    {
+      "id": "SRC-CWS-NOTION-RELATIONS",
+      "before": {
+        "url": "https://www.notion.com/help/relations-and-rollups",
+        "retrieved_on": "2026-10-14",
+        "sha256": "a25db52e81b693719986e9bbba798b3eb3b81bc05908035c8b703df3e946ca29",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://www.notion.com/help/relations-and-rollups",
+        "retrieved_on": "2026-11-01",
+        "sha256": "a25db52e81b693719986e9bbba798b3eb3b81bc05908035c8b703df3e946ca29",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "a25db52e81b693719986e9bbba798b3eb3b81bc05908035c8b703df3e946ca29",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CWS-003"
+      ],
+      "affected_clauses": [
+        "CAP-CWS-004",
+        "REQ-CWS-015"
+      ]
+    },
+    {
+      "id": "SRC-CWS-NOTION-WEBHOOKS",
+      "before": {
+        "url": "https://www.notion.com/help/webhook-actions",
+        "retrieved_on": "2026-10-14",
+        "sha256": "ecc591b3bfc0206e0e049e810f5348c78e06304ab5df5c59af80ecd101da83c9",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://www.notion.com/help/webhook-actions",
+        "retrieved_on": "2026-11-01",
+        "sha256": "ecc591b3bfc0206e0e049e810f5348c78e06304ab5df5c59af80ecd101da83c9",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "ecc591b3bfc0206e0e049e810f5348c78e06304ab5df5c59af80ecd101da83c9",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CWS-011",
+        "OBS-CWS-012"
+      ],
+      "affected_clauses": [
+        "CAP-CWS-011",
+        "CAP-CWS-012",
+        "INV-CWS-001",
+        "INV-CWS-007",
+        "INV-CWS-008",
+        "POL-CWS-003",
+        "QA-CWS-006",
+        "REQ-CWS-025",
+        "REQ-CWS-041",
+        "REQ-CWS-042",
+        "REQ-CWS-043",
+        "REQ-CWS-045",
+        "REQ-CWS-046",
+        "REQ-CWS-047",
+        "REQ-CWS-053"
+      ]
+    },
+    {
+      "id": "SRC-CWS-OWASP-ASVS-AUTHENTICATION",
+      "before": {
+        "url": "https://raw.githubusercontent.com/OWASP/ASVS/v5.0.0/5.0/en/0x15-V6-Authentication.md",
+        "retrieved_on": "2026-10-14",
+        "sha256": "e1e0aaa15e48f7941560176d28eeb11ad3b9b4f9d323437c0e950b3a16cd2b23",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/OWASP/ASVS/v5.0.0/5.0/en/0x15-V6-Authentication.md",
+        "retrieved_on": "2026-11-01",
+        "sha256": "e1e0aaa15e48f7941560176d28eeb11ad3b9b4f9d323437c0e950b3a16cd2b23",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "e1e0aaa15e48f7941560176d28eeb11ad3b9b4f9d323437c0e950b3a16cd2b23",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CWS-023",
+        "OBS-CWS-025"
+      ],
+      "affected_clauses": [
+        "CAP-CWS-019",
+        "INV-CWS-016",
+        "INV-CWS-017",
+        "POL-CWS-013",
+        "POL-CWS-014",
+        "REQ-CWS-075",
+        "REQ-CWS-076",
+        "REQ-CWS-077",
+        "REQ-CWS-078",
+        "REQ-CWS-080",
+        "REQ-CWS-081",
+        "REQ-CWS-082",
+        "REQ-CWS-083",
+        "REQ-CWS-084"
+      ]
+    },
+    {
+      "id": "SRC-CWS-OWASP-ASVS-SESSION",
+      "before": {
+        "url": "https://raw.githubusercontent.com/OWASP/ASVS/v5.0.0/5.0/en/0x16-V7-Session-Management.md",
+        "retrieved_on": "2026-10-14",
+        "sha256": "4aec329f2642ae750fbe1abac5da7e8a7bcfec6fc331bb0a46916970f9c88236",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/OWASP/ASVS/v5.0.0/5.0/en/0x16-V7-Session-Management.md",
+        "retrieved_on": "2026-11-01",
+        "sha256": "4aec329f2642ae750fbe1abac5da7e8a7bcfec6fc331bb0a46916970f9c88236",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "4aec329f2642ae750fbe1abac5da7e8a7bcfec6fc331bb0a46916970f9c88236",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CWS-024",
+        "OBS-CWS-025"
+      ],
+      "affected_clauses": [
+        "CAP-CWS-019",
+        "INV-CWS-016",
+        "INV-CWS-017",
+        "POL-CWS-013",
+        "POL-CWS-014",
+        "REQ-CWS-078",
+        "REQ-CWS-079",
+        "REQ-CWS-080",
+        "REQ-CWS-081",
+        "REQ-CWS-082",
+        "REQ-CWS-084"
+      ]
+    },
+    {
+      "id": "SRC-CWS-TINA-DATALAYER",
+      "before": {
+        "url": "https://raw.githubusercontent.com/tinacms/tina.io/768d8aed0550fa5f48b1b6017c8a42bc7dc71d03/content/docs/reference/content-api/data-layer.mdx",
+        "retrieved_on": "2026-10-14",
+        "sha256": "c6247f095212eec9029dc092ef6d14f32db3ea165e9dd079e9e998f2ad2127ad",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/tinacms/tina.io/768d8aed0550fa5f48b1b6017c8a42bc7dc71d03/content/docs/reference/content-api/data-layer.mdx",
+        "retrieved_on": "2026-11-01",
+        "sha256": "c6247f095212eec9029dc092ef6d14f32db3ea165e9dd079e9e998f2ad2127ad",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "c6247f095212eec9029dc092ef6d14f32db3ea165e9dd079e9e998f2ad2127ad",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-CWS-022"
+      ],
+      "affected_clauses": [
+        "CAP-CWS-018",
+        "INV-CWS-014",
+        "POL-CWS-011",
+        "QA-CWS-014",
+        "REQ-CWS-069",
+        "REQ-CWS-072",
+        "REQ-CWS-074"
+      ]
+    }
+  ],
+  "validation": {
+    "structural": "passed",
+    "tooling_tests": {
+      "passed": 68,
+      "failed": 0,
+      "skipped": 0
+    },
+    "final_family_source_check": "passed",
+    "catalogue_source_check": {
+      "matched": 170,
+      "unavailable": 2,
+      "hash_mismatches": 0
+    },
+    "baseline_preservation": "passed",
+    "validation_detail": "../../../docs/research-refresh-2026-11-01.md#observed-validation",
+    "product_acceptance": "not_run"
+  }
+}

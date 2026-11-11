@@ -1,0 +1,110 @@
+schema_version: "0.1"
+observations:
+  # EmDash CMS (primary reference, database-backed)
+  - id: "OBS-GCMS-001"
+    sources: ["SRC-GCMS-EMDASH-MODEL"]
+    statement: "EmDash models content as collections (kinds of content), typed fields, and entries (saved items); the model is stored in the site database and drives the editing forms."
+  - id: "OBS-GCMS-002"
+    sources: ["SRC-GCMS-EMDASH-README", "SRC-GCMS-EMDASH-SCHEMA"]
+    statement: "EmDash defines content types in the database rather than in code; a version-controlled seed file initialises only an empty database, and a changed seed has no effect on an existing site."
+  - id: "OBS-GCMS-003"
+    sources: ["SRC-GCMS-EMDASH-MODEL", "SRC-GCMS-EMDASH-COLLECTIONS"]
+    statement: "EmDash does not rename collection or field identifiers after creation; most field type changes and changes to required or unique rules need a separate content migration, and deleting a field or collection removes its stored values."
+  - id: "OBS-GCMS-004"
+    sources: ["SRC-GCMS-EMDASH-SCHEMA"]
+    statement: "EmDash schema changes take effect on the live site immediately and independently of code deployment; its documentation advises ordering additive changes before dependent code and rehearsing destructive changes on a copy."
+  - id: "OBS-GCMS-005"
+    sources: ["SRC-GCMS-EMDASH-COLLECTIONS"]
+    statement: "EmDash fields can be required or unique and can carry type-specific validation such as length, numeric range, pattern, allowed choices, and file type; a required field prevents saving without a value."
+  - id: "OBS-GCMS-006"
+    sources: ["SRC-GCMS-EMDASH-TEST-VALIDATION"]
+    statement: "EmDash tests reject writes with missing or empty required values, wrongly typed values, values outside a choice list, or references to missing, trashed, or wrong-collection entries; an invalid update is rejected before any draft revision is created and all failing fields are reported."
+  - id: "OBS-GCMS-007"
+    sources: ["SRC-GCMS-EMDASH-CONTENT"]
+    statement: "An EmDash entry has a stable identifier that is separate from its public slug and keeps identifying the entry when the slug changes."
+  - id: "OBS-GCMS-008"
+    sources: ["SRC-GCMS-EMDASH-CONTENT"]
+    statement: "EmDash treats saving and publishing as separate actions: the first save creates a draft, and saving a published entry changes only its draft while visitors keep receiving the previous live version."
+  - id: "OBS-GCMS-009"
+    sources: ["SRC-GCMS-EMDASH-CONTENT"]
+    statement: "EmDash can publish immediately or on a schedule; unpublishing removes the live version from public queries while keeping an editable draft."
+  - id: "OBS-GCMS-010"
+    sources: ["SRC-GCMS-EMDASH-PREVIEW"]
+    statement: "EmDash exposes unpublished content through signed, time-limited preview links scoped to one entry; invalid, expired, or non-matching links do not reveal draft content."
+  - id: "OBS-GCMS-011"
+    sources: ["SRC-GCMS-EMDASH-CONTENT", "SRC-GCMS-EMDASH-TEST-REVISIONS"]
+    statement: "EmDash revision history lists saved versions of an entry and the fields changed between them; restoring a revision adds a new revision attributed to the restoring user and keeps earlier revisions."
+  - id: "OBS-GCMS-012"
+    sources: ["SRC-GCMS-EMDASH-CONTENT"]
+    statement: "EmDash autosave overwrites a single autosave revision, an explicit save adds a history point, and a failed save keeps the unsaved values on screen with an error."
+  - id: "OBS-GCMS-013"
+    sources: ["SRC-GCMS-EMDASH-CONTENT", "SRC-GCMS-EMDASH-TEST-PUBLISH"]
+    statement: "EmDash writes can state the last revision the caller saw; stale writes are rejected, only one of two concurrent publishes of the same revision succeeds, and an approved revision cannot be published after a newer draft save."
+  - id: "OBS-GCMS-014"
+    sources: ["SRC-GCMS-EMDASH-CONTENT"]
+    statement: "EmDash moves deleted entries to a restorable trash; an administrator can delete permanently, which removes the entry and its revisions irreversibly."
+  - id: "OBS-GCMS-015"
+    sources: ["SRC-GCMS-EMDASH-ROLES", "SRC-GCMS-EMDASH-ADMIN"]
+    statement: "EmDash uses five ordered, inheriting roles: one reads published content only, one creates content that needs approval to publish, one edits and publishes only its own entries, one manages all content, and only the highest changes the content model and settings."
+  - id: "OBS-GCMS-016"
+    sources: ["SRC-GCMS-EMDASH-ADMIN", "SRC-GCMS-EMDASH-TEST-PERMS", "SRC-GCMS-EMDASH-TEST-PUBLISH"]
+    statement: "EmDash states that permissions are checked for each action where it is executed, not by hiding interface items; tests refuse lower-privileged callers who override publication dates or publish, even with the current revision."
+  - id: "OBS-GCMS-017"
+    sources: ["SRC-GCMS-EMDASH-ROLES"]
+    statement: "EmDash readers without draft permission cannot see drafts, scheduled or trashed items, revisions, or preview links."
+  - id: "OBS-GCMS-018"
+    sources: ["SRC-GCMS-EMDASH-COLLECTIONS"]
+    statement: "EmDash enables drafts, revisions, preview, search, and edit locking per collection; an edit lock refuses other writers until released."
+  - id: "OBS-GCMS-019"
+    sources: ["SRC-GCMS-EMDASH-BACKUPS", "SRC-GCMS-EMDASH-SCHEMA"]
+    statement: "EmDash cannot import its own JSON export; recovery depends on raw database backups or point-in-time recovery, and a removed field's values cannot be recovered from an export."
+  - id: "OBS-GCMS-020"
+    sources: ["SRC-GCMS-EMDASH-README"]
+    statement: "EmDash is labelled a beta preview and also bundles full-text search, a media library, sandboxed plugins, content import, and an AI tool interface, on a specific hosting platform or a generic server runtime."
+  # Decap CMS (comparison, Git-backed)
+  - id: "OBS-GCMS-021"
+    sources: ["SRC-GCMS-DECAP-INTRO"]
+    statement: "Decap CMS keeps content in the site's Git repository beside the code; its editor makes commits for editors, and content can also be changed directly in Git."
+  - id: "OBS-GCMS-022"
+    sources: ["SRC-GCMS-DECAP-ARCH", "SRC-GCMS-DECAP-CONFIG", "SRC-GCMS-DECAP-FOLDER"]
+    statement: "Decap declares content types in a configuration file as collections whose entries are lists of named fields; a folder collection stores each entry as a same-format file in one repository folder."
+  - id: "OBS-GCMS-023"
+    sources: ["SRC-GCMS-DECAP-CONFIG"]
+    statement: "Wherever the Decap editor runs, it reads and commits content in the hosted repository on one configured branch; writing to a local repository is a beta option."
+  - id: "OBS-GCMS-024"
+    sources: ["SRC-GCMS-DECAP-WORKFLOW", "SRC-GCMS-DECAP-CONFIG"]
+    statement: "By default a Decap save commits straight to the publication branch; an optional workflow saves drafts to a per-entry branch with a review request, adds commits on later edits, and publishes by merging."
+  - id: "OBS-GCMS-025"
+    sources: ["SRC-GCMS-DECAP-ARCH", "SRC-GCMS-DECAP-WORKFLOW"]
+    statement: "Decap stores editorial-workflow metadata as files on a separate history line inside the repository, and some hosts additionally track entry status through review-request labels or comments."
+  - id: "OBS-GCMS-026"
+    sources: ["SRC-GCMS-DECAP-WIDGETS"]
+    statement: "Decap fields are required unless marked optional and can declare a pattern with a custom error message."
+  - id: "OBS-GCMS-027"
+    sources: ["SRC-GCMS-DECAP-INTRO", "SRC-GCMS-DECAP-ARCH"]
+    statement: "Decap shows a live preview during editing; every field type defines both an editing control and a preview presentation."
+  - id: "OBS-GCMS-028"
+    sources: ["SRC-GCMS-DECAP-GITHUB"]
+    statement: "With one of Decap's hosted-repository integrations, every CMS user must hold push access to the content repository."
+  - id: "OBS-GCMS-029"
+    sources: ["SRC-GCMS-DECAP-OPEN-AUTHORING"]
+    statement: "Decap lets users without write access edit on a branch of their own copy of the repository and submit it for review; they cannot publish, and a maintainer merges."
+  # TinaCMS (comparison, Git-backed with a derived index)
+  - id: "OBS-GCMS-030"
+    sources: ["SRC-GCMS-TINA-MODEL"]
+    statement: "TinaCMS defines its content schema as version-controlled configuration, so schema changes can be tried locally or on a branch; each collection maps to a content path and lists its fields."
+  - id: "OBS-GCMS-031"
+    sources: ["SRC-GCMS-TINA-DATALAYER"]
+    statement: "TinaCMS treats repository content files as the source of truth and a database as a rebuildable index for queries, search, and references; the index updates from repository pushes and fully rebuilds on schema change."
+  - id: "OBS-GCMS-032"
+    sources: ["SRC-GCMS-TINA-FIELDS"]
+    statement: "TinaCMS disables saving while a required field is empty and supports a client-side validation function that returns an error message, except for some complex field types."
+  - id: "OBS-GCMS-033"
+    sources: ["SRC-GCMS-TINA-WORKFLOW"]
+    statement: "TinaCMS's optional, paid-plan editorial workflow protects named branches: saving on one creates a new branch and a draft review request, and publishing means merging it through the Git host."
+  - id: "OBS-GCMS-034"
+    sources: ["SRC-GCMS-TINA-DRAFTS"]
+    statement: "TinaCMS documents two draft approaches: a per-document field that controls inclusion, or editing on branches reviewed through preview deployments."
+  - id: "OBS-GCMS-035"
+    sources: ["SRC-GCMS-TINA-USERS"]
+    statement: "TinaCMS project collaborators are editors or administrators; both can edit and save directly to the repository, and only administrators manage configuration and collaborators."

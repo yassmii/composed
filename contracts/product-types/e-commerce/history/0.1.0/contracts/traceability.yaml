@@ -1,0 +1,50 @@
+schema_version: "0.1"
+contract_id: "e-commerce"
+contract_version: "0.1.0"
+research_status: "initial"
+links:
+  - clause: "CAP-COM-001"
+    basis: "supported_pattern"
+    observations: ["OBS-COM-001", "OBS-COM-002"]
+  - clause: "REQ-COM-001"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-COM-001", "OBS-COM-002"]
+    note: "Estimated cart cost is evidenced; requiring the final amount to be explicit before payment is a contract choice."
+  - clause: "CAP-COM-002"
+    basis: "supported_pattern"
+    observations: ["OBS-COM-003", "OBS-COM-004"]
+  - clause: "REQ-COM-002"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-COM-003", "OBS-COM-004"]
+    note: "Stock reservation is evidenced; the immutable order snapshot is an explicit contract choice."
+  - clause: "REQ-COM-003"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "CAP-COM-003"
+    basis: "supported_pattern"
+    observations: ["OBS-COM-003", "OBS-COM-004"]
+  - clause: "REQ-COM-004"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-COM-003"]
+    note: "Explicit order progression is evidenced; recording both actor and timestamp is a contract choice."
+  - clause: "INV-COM-001"
+    basis: "supported_pattern"
+    observations: ["OBS-COM-003", "OBS-COM-004"]
+  - clause: "INV-COM-002"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "INV-COM-003"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "POL-COM-001"
+    basis: "supported_pattern"
+    observations: ["OBS-COM-003"]
+  - clause: "POL-COM-002"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "QA-COM-001"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "QA-COM-002"
+    basis: "explicit_project_choice"
+    observations: []

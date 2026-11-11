@@ -1,0 +1,468 @@
+schema_version: "0.1"
+id: git-backed-cms
+name: Git-backed Content Management
+version: 1.0.0
+kind: product-contract
+status: candidate
+license: CC-BY-4.0
+intent:
+  promise: Let a team model, edit, review, and publish structured content whose complete, recoverable
+    history lives in a Git repository.
+  primary_outcome: Consumers only ever read a validated, reviewed revision, and any earlier state of
+    any entry or model can be inspected and restored.
+  success_metrics:
+    - id: MET-GCMS-001
+      measure: 100% of published revisions pass validation against the content models they contain.
+    - id: MET-GCMS-002
+      measure: A fresh copy of the content repository, with no other data, reproduces every model, entry,
+        revision, review record, and the identity of the published revision.
+scope:
+  includes:
+    - Versioned content models and entries
+    - A Git repository as the canonical content source and history (POL-GCMS-001)
+    - Validation before a CMS-recorded change is accepted and before any revision becomes published
+    - Isolated changes with preview, review, and publication states
+    - Recovery through version history
+    - Permissions and ownership scopes
+  excludes:
+    - Database synchronisation or derived indexing
+    - Media asset storage
+    - Plugin marketplace
+    - Multi-site management
+    - Localisation
+    - Full-text search
+    - Collaborative real-time editing
+    - Scheduled publication
+    - Deployment vendor and rendering framework
+actors:
+  - id: ACT-GCMS-MODELER
+    name: Content modeller
+    goals:
+      - Define and evolve content models without breaking existing content
+    permissions:
+      - Propose model changes within granted scopes
+  - id: ACT-GCMS-EDITOR
+    name: Editor
+    goals:
+      - Create and revise entries
+      - Submit work for review
+    permissions:
+      - Edit entries and submit changes within granted scopes
+  - id: ACT-GCMS-PUBLISHER
+    name: Publisher
+    goals:
+      - Review, approve, and publish changes
+      - Recover earlier content
+    permissions:
+      - Preview, approve, publish, and restore within granted scopes
+  - id: ACT-GCMS-ADMIN
+    name: Content administrator
+    goals:
+      - Grant permissions
+      - Protect the canonical repository history
+    permissions:
+      - Manage permissions and protected repository access within granted scopes
+  - id: ACT-GCMS-CONSUMER
+    name: Content consumer
+    goals:
+      - Read the current published content
+    permissions:
+      - Read the published revision only
+  - id: ACT-GCMS-SYSTEM
+    name: CMS runtime
+    goals:
+      - Keep the repository valid, attributable, and recoverable
+    permissions:
+      - Record revisions
+      - Validate changes
+      - Enforce permissions
+      - Advance the published revision
+domain:
+  entities:
+    - id: ENT-GCMS-REPOSITORY
+      name: Content repository
+      description: The Git repository that holds every content model, entry, review record, and their full
+        history; it is canonical.
+      lifecycle:
+        - initialised
+        - active
+        - archived
+    - id: ENT-GCMS-MODEL
+      name: Content model
+      description: "A versioned definition of one kind of content: a stable identifier, typed fields, and
+        per-field rules."
+      lifecycle:
+        - proposed
+        - published
+        - superseded
+    - id: ENT-GCMS-ENTRY
+      name: Content entry
+      description: One item of content conforming to exactly one content model, with a stable identifier.
+      lifecycle:
+        - draft
+        - published
+        - unpublished
+        - deleted
+    - id: ENT-GCMS-CHANGE
+      name: Content change
+      description: An isolated line of revisions grouping edits to entries and models until it is
+        published or abandoned.
+      lifecycle:
+        - draft
+        - in_review
+        - approved
+        - published
+        - abandoned
+    - id: ENT-GCMS-REVISION
+      name: Revision
+      description: An immutable, attributable state of the content repository.
+      lifecycle:
+        - recorded
+  glossary:
+    - term: published revision
+      definition: The single revision whose content consumers read.
+    - term: recorded
+      definition: Written as a revision into the content repository; only valid states are recorded by the CMS.
+    - term: ownership scope
+      definition: The repository, one content model, or individual entries to which a permission applies.
+    - term: out-of-band revision
+      definition: A revision written directly to the repository without the CMS.
+    - term: protected canonical reference
+      definition: The repository reference that identifies canonical history or the published revision;
+        authorised operations cannot delete it or move it to a revision that does not descend from
+        its current value without an integrity violation.
+    - term: derived store
+      definition: Any cache, index, or rendered output computed from the repository; never authoritative.
+    - term: Git-backed
+      definition: This product type's chosen storage (POL-GCMS-001); other CMS product types may store
+        content differently.
+capabilities:
+  - id: CAP-GCMS-001
+    name: Maintain versioned content models
+    priority: must
+    actor: ACT-GCMS-MODELER
+    outcome: Content models evolve through reviewed revisions without leaving existing entries invalid.
+    requirements:
+      - id: REQ-GCMS-001
+        statement: A content model declares a stable identifier and fields, each with a stable identifier, a
+          value type, and rules for requiredness, uniqueness within the model, allowed values, and
+          length, range, or format.
+      - id: REQ-GCMS-002
+        statement: Content models are stored in the content repository and change only through a content
+          change, so every model version corresponds to a revision.
+      - id: REQ-GCMS-003
+        statement: A model change that removes a field, changes a field's type or rules, or renames an
+          identifier is refused unless every affected entry and reference conforms in the resulting
+          state, which may include migrations in the same change.
+  - id: CAP-GCMS-002
+    name: Author entries in isolated changes
+    priority: must
+    actor: ACT-GCMS-EDITOR
+    outcome: Editors can prepare content without affecting what consumers read.
+    requirements:
+      - id: REQ-GCMS-004
+        statement: Each entry belongs to exactly one content model and keeps a stable identifier when its
+          title, slug, or storage location changes.
+      - id: REQ-GCMS-005
+        statement: Creating, editing, and deleting entries happens inside a change isolated from the
+          published revision; recording a change never alters what consumers read.
+      - id: REQ-GCMS-006
+        statement: One change can group edits to several entries and models so that they are validated,
+          reviewed, and published together.
+      - id: REQ-GCMS-007
+        statement: When validation or recording fails, the editor's input is kept and the failure is shown;
+          input is never silently discarded.
+  - id: CAP-GCMS-003
+    name: Validate before accepting a change
+    priority: must
+    actor: ACT-GCMS-SYSTEM
+    outcome: No invalid content state is recorded by the CMS or published.
+    requirements:
+      - id: REQ-GCMS-008
+        statement: Before recording a revision, the CMS validates the complete resulting state of the change
+          against the content models in that state; a failing revision is not recorded.
+      - id: REQ-GCMS-009
+        statement: A reference is valid only if it resolves to an existing, non-deleted entry of the
+          declared target model in the same resulting state.
+      - id: REQ-GCMS-010
+        statement: A validation failure reports every failing rule with the entry identifier, field, and
+          rule, not only the first failure.
+      - id: REQ-GCMS-011
+        statement: Publication validates the exact revision to be published, including out-of-band
+          revisions; an invalid revision cannot be published.
+  - id: CAP-GCMS-004
+    name: Preview and review changes
+    priority: must
+    actor: ACT-GCMS-PUBLISHER
+    outcome: A reviewer sees exactly what would be published and approves one specific revision.
+    requirements:
+      - id: REQ-GCMS-012
+        statement: A change is in exactly one review state (draft, in_review, approved, published, or
+          abandoned); every transition records the actor, the time, and the change revision it
+          applies to. Approval and publication transitions bind that actor to authenticated
+          authorisation evidence in the declared deployment trust boundary. A commit author name,
+          email, role label or agent-written approval record alone cannot establish an authorised
+          approval; the binding is inspectable by an authorised auditor without exposing
+          credentials.
+      - id: REQ-GCMS-013
+        statement: An authorised actor can preview a change as consumers would receive it after publication,
+          without publishing it; preview access is scoped to that change and expires or can be
+          revoked.
+      - id: REQ-GCMS-014
+        statement: Approval applies to one revision of a change; recording a newer revision on the change
+          returns it to in_review. The approval record also identifies the model state and
+          publication base against which the revision was reviewed; a changed integrated
+          content/model revision cannot inherit the old approval merely because the merge is
+          conflict-free.
+  - id: CAP-GCMS-005
+    name: Publish approved changes
+    priority: must
+    actor: ACT-GCMS-PUBLISHER
+    outcome: Consumers move from one complete, valid published revision to the next.
+    requirements:
+      - id: REQ-GCMS-015
+        statement: Publishing makes an approved revision's content the published revision in one atomic
+          step; consumers observe either the previous or the new published revision, never a
+          mixture. Immediately before that atomic publication decision, the publisher must still be
+          authorised, the reviewed integrated revision must have valid approval, and the publication
+          base must still match the current published revision. A concurrent advance leaves the
+          candidate unpublished for combination, validation and renewed review.
+      - id: REQ-GCMS-016
+        statement: If the published revision advanced after approval, the change is combined with the
+          current published revision and validated again; a conflicting or invalid result is refused
+          and the published revision is left unchanged. A successful combination creates an
+          inspectable integrated candidate revision and returns it to review; publication requires
+          fresh approval of that exact revision even when the merge was clean. A further
+          publication-base advance repeats these checks rather than silently publishing against a
+          stale base.
+      - id: REQ-GCMS-017
+        statement: Unpublishing an entry is a change that removes it from the published revision through the
+          same validation and review flow and leaves it restorable.
+  - id: CAP-GCMS-006
+    name: Recover from version history
+    priority: must
+    actor: ACT-GCMS-PUBLISHER
+    outcome: Any earlier state of an entry, model, or published revision can be inspected and brought
+      back safely.
+    requirements:
+      - id: REQ-GCMS-018
+        statement: For any entry or model, an authorised actor can list its revisions with author, time,
+          description, and the fields changed between consecutive revisions.
+      - id: REQ-GCMS-019
+        statement: Restoring an earlier state of an entry, a model, or the whole published revision creates
+          a new change containing that state, which is validated and reviewed like any other change.
+      - id: REQ-GCMS-020
+        statement: A deleted entry remains recoverable from history through restoration.
+  - id: CAP-GCMS-007
+    name: Enforce permissions and ownership
+    priority: must
+    actor: ACT-GCMS-SYSTEM
+    outcome: Every action is allowed or refused according to explicit, scoped permissions.
+    requirements:
+      - id: REQ-GCMS-021
+        statement: Permissions are granted per actor and ownership scope for editing, submitting, approving,
+          publishing, restoring, changing models, and managing permissions.
+      - id: REQ-GCMS-022
+        statement: An actor who may edit but not publish in a scope can submit changes for review but cannot
+          approve or publish them.
+      - id: REQ-GCMS-023
+        statement: Permission checks are enforced where revisions are recorded and published, not only by
+          the editing interface; a request that bypasses the interface receives the same decision.
+      - id: REQ-GCMS-024
+        statement: Direct write access to the content repository is documented as a permission equivalent to
+          a CMS role. It may create candidate revisions, but cannot directly advance, delete, or
+          rewrite a protected canonical reference.
+      - id: REQ-GCMS-025
+        statement: The repository boundary prevents or detects an attempt to delete or non-fast-forward
+          update a protected canonical reference. Before publication, the CMS verifies that an
+          out-of-band candidate descends from the protected canonical history; an integrity
+          violation is recorded, refused or recovered, and leaves the last published revision
+          available to consumers.
+invariants:
+  - id: INV-GCMS-001
+    statement: The content repository is the only authoritative record of models, entries, review
+      records, and history; every derived store can be rebuilt from it without loss.
+    rationale: Recovery and portability must not depend on state held outside the chosen canonical history.
+  - id: INV-GCMS-002
+    statement: The published revision always passes validation against the content models it contains.
+    rationale: Consumers must never receive content that breaks its own model.
+  - id: INV-GCMS-003
+    statement: No CMS action or authorised direct repository action modifies or removes a recorded
+      revision; deletion and restoration add revisions.
+    rationale: Version history is only a recovery mechanism if ordinary CMS and repository operations
+      cannot rewrite it.
+  - id: INV-GCMS-004
+    statement: Content consumers can read only the published revision; drafts, changes under review,
+      previews, and history require an authorised actor.
+    rationale: Unreviewed content must not leak through the consumer boundary.
+  - id: INV-GCMS-005
+    statement: Every revision, approval, and publication records the authenticated actor responsible and
+      the time.
+    rationale: Review and recovery decisions require attribution.
+  - id: INV-GCMS-006
+    statement: At any time the content repository has exactly one published revision.
+    rationale: Consumers need one unambiguous current state.
+policies:
+  - id: POL-GCMS-001
+    decision: This product type chooses Git as the canonical content history; this is a defining choice
+      of the git-backed-cms product type, not a requirement for CMS products in general.
+    consequence: Every recorded state is a Git revision in the content repository, any Git hosting
+      arrangement (including a local repository) is acceptable, and derived stores are optional and
+      non-authoritative.
+  - id: POL-GCMS-002
+    decision: Models and entries are stored as human-readable text files with a documented, stable
+      repository layout.
+    consequence: Changes can be reviewed as line-level differences and edited outside the CMS, which is
+      why out-of-band revisions are revalidated at publication.
+  - id: POL-GCMS-003
+    decision: Review is mandatory before publication; by default an actor with publish permission in a
+      scope may approve their own change, and a scope may require a different approver.
+    consequence: No content reaches consumers without a recorded approval, and a stricter separation of
+      duties can be configured per scope.
+  - id: POL-GCMS-004
+    decision: Review states and approvals are recorded in the content repository in a host-neutral form.
+    consequence: The workflow survives a change of Git host, and mirroring to a host's review requests
+      is an optional extension.
+  - id: POL-GCMS-005
+    decision: Canonical history and published-revision references are protected against deletion and
+      non-fast-forward updates during ordinary operation. Legal erasure is outside this core and
+      requires a separately authorised extension.
+    consequence: A Git host, self-hosted repository, or local repository may be used only when it
+      enforces or detects and recovers from an integrity violation before consumers can lose the
+      last published revision.
+quality_attributes:
+  - id: QA-GCMS-001
+    attribute: recoverability
+    target: Rebuilding from a fresh repository copy reproduces 100% of models, entries, revisions,
+      review records, and the published revision identity in the reference repository.
+  - id: QA-GCMS-002
+    attribute: validation responsiveness
+    target: Validating a change against a reference repository of 10,000 entries reports a result within
+      10 seconds on documented reference hardware.
+  - id: QA-GCMS-003
+    attribute: auditability
+    target: 100% of published revisions have an approval record naming the approver, the approved
+      revision, and the time.
+  - id: QA-GCMS-004
+    attribute: portability
+    target: An independent reader that uses only the documented repository layout parses every model and
+      entry of the reference repository.
+integrations:
+  - id: INT-GCMS-001
+    system: Git repository host (any provider, self-hosted, or local)
+    purpose: Store and replicate the canonical content repository.
+    degradation: When the repository cannot be written, the CMS keeps the editor's input, reports the
+      failure, and never reports a change as recorded or published.
+  - id: INT-GCMS-002
+    system: Identity provider
+    purpose: Authenticate actors so permissions and attribution apply.
+    degradation: Unauthenticated requests get no edit, review, preview, or history access; consumers can
+      still read the published revision.
+acceptance:
+  - id: ACC-GCMS-001
+    given: A model with a required field and a reference field targeting another model.
+    when: An editor saves an entry that omits the required value and references a non-existent entry.
+    then: No revision is recorded, the editor's input is kept, and the report names both failures with
+      entry, field, and rule.
+    evidence: Validation integration test.
+  - id: ACC-GCMS-002
+    given: A published entry.
+    when: An editor records a change to it.
+    then: Consumers still read the published values while an authorised preview shows the changed values.
+    evidence: Draft-isolation end-to-end test.
+  - id: ACC-GCMS-003
+    given: An out-of-band revision that makes an entry invalid.
+    when: Publication of that revision is requested.
+    then: Publication is refused with a validation report and the published revision is unchanged.
+    evidence: Out-of-band commit integration test.
+  - id: ACC-GCMS-004
+    given: A change approved at one revision.
+    when: A newer revision is recorded on the change and publication is requested.
+    then: Publication is refused and the change is back in in_review.
+    evidence: Stale-approval test.
+  - id: ACC-GCMS-005
+    given: Two approved changes that are each valid but together set the same unique value.
+    when: Both are published one after the other.
+    then: The second is revalidated against the new published revision and refused; the published
+      revision stays valid.
+    evidence: Concurrent-publication test.
+  - id: ACC-GCMS-006
+    given: An entry with three recorded revisions.
+    when: A publisher restores the first revision.
+    then: A new change containing that state goes through validation and review, and all three earlier
+      revisions remain in history.
+    evidence: History-restoration test.
+  - id: ACC-GCMS-007
+    given: Entries that lack a field.
+    when: A model change makes that field required, first without and then with a migration of those
+      entries in the same change.
+    then: The first change is refused and the second is recorded.
+    evidence: Model-evolution test.
+  - id: ACC-GCMS-008
+    given: An actor who may edit and submit, but not approve or publish, in one content-model scope.
+    when: The actor submits, approves, and publishes their own change through paths that bypass the
+      editing interface.
+    then: Submission succeeds and approval and publication are refused.
+    evidence: Permission-boundary test.
+  - id: ACC-GCMS-009
+    given: An actor with no permission in a content-model scope.
+    when: The actor edits an entry in that scope through a path that bypasses the editing interface.
+    then: The edit is refused and no revision is recorded.
+    evidence: Permission-boundary test.
+  - id: ACC-GCMS-010
+    given: A repository with published content, open changes, and all derived stores deleted.
+    when: The CMS is started from a fresh copy of the repository.
+    then: Every model, entry, revision, review state, and the published revision identity are reproduced.
+    evidence: Rebuild-from-repository test meeting QA-GCMS-001.
+  - id: ACC-GCMS-011
+    given: A change with an issued preview and a consumer without draft access.
+    when: The preview expires or is revoked and the consumer requests the changed entry.
+    then: Neither the expired preview nor the consumer receives unpublished content.
+    evidence: Preview-access test.
+  - id: ACC-GCMS-012
+    given: A repository with a protected canonical reference and a currently published revision.
+    when: A direct repository user attempts to delete or non-fast-forward update that reference.
+    then: The attempt is rejected, or its integrity violation is detected and recovered before consumers
+      lose access to the last published revision; the event is recorded.
+    evidence: Repository-integrity test.
+  - id: ACC-GCMS-013
+    given: Two approved changes share publication base P and can be merged without textual or
+      model-validation conflict.
+    when: Publish one, then attempt the other with its original approval; review its integrated
+      revision, then race publication with a further base advance.
+    then: The stale approval cannot publish the clean integrated revision. Fresh approval binds the
+      actual integrated content/models/base, and a further base advance leaves it unpublished for
+      renewed integration/review. A valid unchanged-base approved control publishes atomically
+      without mixed consumer state.
+    evidence: Revision/base graph, validation and authenticated approval records, publication race and
+      consumer observations; REQ-GCMS-014/015/016.
+  - id: ACC-GCMS-014
+    given: An unauthorised contributor writes a reviewer name/email and an approval-looking record into
+      an otherwise valid candidate revision.
+    when: Attempt approval/publication through the supported repository boundary; repeat with an
+      authenticated authorised reviewer and publisher, then revoke publisher authority before the
+      decision.
+    then: Authorship strings and self-written records do not confer approval. The legitimate control can
+      publish; the revoked publisher cannot. An auditor can trace the authorised transition to its
+      trust-boundary evidence without receiving credentials.
+    evidence: Forged-metadata and revoked-publisher negative controls plus genuine approval/publication
+      control; REQ-GCMS-012/015/023, INV-GCMS-005.
+delivery:
+  required_artifacts:
+    - Repository layout specification
+    - Content-model format reference
+    - Permission matrix including repository write access
+    - Conformance matrix
+  verification:
+    - ACC-GCMS-001 to ACC-GCMS-012 tests
+    - Rebuild-from-repository test
+    - QA-GCMS-002 benchmark
+    - For this candidate, assess every retained and added acceptance case against declared
+      capability applicability and execute every applicable case against the exact contract and
+      identified implementation revision. A conditional case can be not_applicable only with its
+      unmet condition and supporting capability declaration recorded; an unconditional obligation or
+      an inconvenient failure cannot be excluded. Record fixture/configuration, observations and
+      outcomes including not_run; structural validity is not implementation conformance.
+extensions:
+  gcms.host-review: Mirrors review states to a Git hosting service's review requests; the repository
+    records under POL-GCMS-004 remain authoritative.

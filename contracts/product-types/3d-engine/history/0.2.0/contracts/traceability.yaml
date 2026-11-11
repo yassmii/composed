@@ -1,0 +1,105 @@
+schema_version: "0.1"
+contract_id: "3d-engine"
+contract_version: "0.2.0"
+research_status: "initial"
+links:
+  - clause: "CAP-3D-004"
+    basis: "explicit_project_choice"
+    observations: []
+    note: "Agent operation is an explicit project requirement, not a research-derived convergence."
+  - clause: "REQ-3D-007"
+    basis: "explicit_project_choice"
+    observations: []
+    note: "Defines declarative scenes and reference-state round-trip semantics."
+  - clause: "REQ-3D-008"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "REQ-3D-009"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "REQ-3D-010"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "REQ-3D-011"
+    basis: "explicit_project_choice"
+    observations: []
+    note: "Extends agent time control without replacing POL-3D-001 or QA-3D-003."
+  - clause: "REQ-3D-012"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "REQ-3D-013"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "ACC-3D-004"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "ACC-3D-005"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "ACC-3D-006"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "ACC-3D-007"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "ACC-3D-008"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "ACC-3D-009"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "ACC-3D-010"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "CAP-3D-001"
+    basis: "supported_convergence"
+    observations: ["OBS-3D-001", "OBS-3D-002", "OBS-3D-003"]
+  - clause: "REQ-3D-001"
+    basis: "supported_convergence"
+    observations: ["OBS-3D-002", "OBS-3D-003"]
+  - clause: "REQ-3D-002"
+    basis: "supported_convergence"
+    observations: ["OBS-3D-003"]
+  - clause: "CAP-3D-002"
+    basis: "supported_pattern"
+    observations: ["OBS-3D-004"]
+  - clause: "REQ-3D-003"
+    basis: "supported_pattern"
+    observations: ["OBS-3D-004"]
+  - clause: "REQ-3D-004"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "CAP-3D-003"
+    basis: "supported_pattern_and_choice"
+    observations: ["OBS-3D-001"]
+    note: "Per-frame updates are evidenced; fixed-step scheduling and ordering are contract choices."
+  - clause: "REQ-3D-005"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "REQ-3D-006"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "INV-3D-001"
+    basis: "supported_convergence"
+    observations: ["OBS-3D-001", "OBS-3D-002", "OBS-3D-003"]
+  - clause: "INV-3D-002"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "INV-3D-003"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "POL-3D-001"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "POL-3D-002"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "QA-3D-001"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "QA-3D-002"
+    basis: "explicit_project_choice"
+    observations: []
+  - clause: "QA-3D-003"
+    basis: "explicit_project_choice"
+    observations: []

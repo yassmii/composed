@@ -1,0 +1,120 @@
+schema_version: "0.1"
+research_status: initial
+candidate_products:
+  - Godot
+  - Unity
+  - Unreal Engine
+source_selection:
+  - Use official documentation, source repositories, or first-party technical material.
+  - Record the product version and retrieval date for every source.
+  - Review resource destruction, frame scheduling and no-display rendering across three engines;
+    preserve counterexamples and historical source records.
+sources:
+  - id: SRC-3D-GODOT-NODES
+    product: Godot Engine
+    version: stable alias; product release not pinned
+    title: Nodes and Scenes
+    url: https://docs.godotengine.org/en/stable/getting_started/step_by_step/nodes_and_scenes.html
+    locator: Nodes; Scenes
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: bc1c8786d4f8ed0e66654beb8a3faff0652a9c7f2c211014de7862f855c4ae6f
+  - id: SRC-3D-GODOT-LOADING
+    product: Godot Engine
+    version: stable alias; product release not pinned
+    title: Background loading
+    url: https://docs.godotengine.org/en/stable/tutorials/io/background_loading.html
+    locator: load_threaded_request; load_threaded_get_status; load_threaded_get
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: b67c6ad386cb827c9a3ac82c524e62f8b2efe32bed342ed8b1dd8391f84634a6
+  - id: SRC-3D-UNITY-TRANSFORM
+    product: Unity
+    version: 6000.0 documentation
+    title: Transforms
+    url: https://docs.unity3d.com/6000.0/Documentation/Manual/class-Transform.html
+    locator: Parenting; local and world transforms
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: 7d3b9c7b061dc101d6fb8cbb8f060f96537a6c4e2680f1293a3cfd7bd289255f
+  - id: SRC-3D-UNREAL-COMPONENTS
+    product: Unreal Engine
+    version: 5.8 documentation as identified by page metadata; retrieved 2026-11-01
+    title: Components
+    url: https://dev.epicgames.com/documentation/en-us/unreal-engine/components-in-unreal-engine
+    locator: Scene Components; Attachment
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: 9a8a69fd6783fd088800fe8ee6c483398e37b52b8e429ef2a8bbe202a1efde42
+  - id: SRC-3D-GODOT-NODE-LIFETIME
+    product: Godot Engine
+    version: stable alias; product release not pinned
+    title: Node
+    url: https://docs.godotengine.org/en/stable/classes/class_node.html
+    locator: queue_free; remove_child
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: 43db08989b2fab3e23002cd2bd89496f363c5659ea50e60b376bf8ff9dde7103
+  - id: SRC-3D-GODOT-PROCESSING
+    product: Godot Engine
+    version: stable alias; product release not pinned
+    title: Idle and physics processing
+    url: https://docs.godotengine.org/en/stable/tutorials/scripting/idle_and_physics_processing.html
+    locator: Idle processing; Physics processing
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: beab3eca885c6719338a632a157dadf3d60eddea3f81369079e6a22fdd86b953
+  - id: SRC-3D-GODOT-RENDERING
+    product: Godot Engine
+    version: stable alias; product release not pinned
+    title: RenderingServer
+    url: https://docs.godotengine.org/en/stable/classes/class_renderingserver.html
+    locator: "Description: Headless mode; free_rid"
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: cbfebe7aa7a4dc51aefb8e9c74747ca35bffccc2d0d3cc0e4b96cc087e0166b9
+  - id: SRC-3D-UNITY-DESTROY
+    product: Unity
+    version: 6000.0 documentation
+    title: Object.Destroy
+    url: https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Object.Destroy.html
+    locator: Description; delayed destruction
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: 56c3f207515f681298cb52ce4db4a87955737be7775a6fca4a77cf4557999507
+  - id: SRC-3D-UNITY-UNLOAD
+    product: Unity
+    version: 6000.0 documentation
+    title: SceneManager.UnloadSceneAsync
+    url: https://docs.unity3d.com/6000.0/Documentation/ScriptReference/SceneManagement.SceneManager.UnloadSceneAsync.html
+    locator: Description; asset unloading note
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: 625af39a66c7af479d391a09c1fc9a9bbd152388472433455ac2bf62b1e841ab
+  - id: SRC-3D-UNITY-TIME
+    product: Unity
+    version: 6000.0 documentation
+    title: Time.maximumDeltaTime
+    url: https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Time-maximumDeltaTime.html
+    locator: Description; maximumDeltaTime / fixedDeltaTime
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: 01e456c0a728ac4817a61f3ad0613b52e37cc1613a71073fc3329f252ee8d73d
+  - id: SRC-3D-UNREAL-LIFETIME
+    product: Unreal Engine
+    version: 5.8 documentation as identified by page metadata; retrieved 2026-11-01
+    title: Actor Lifecycle
+    url: https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-engine-actor-lifecycle
+    locator: End of Actor Lifecycle; Advanced Garbage Collection
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: d73d684f3f765111dd57b0e4d00fa66dacb512a9959f0774c502aad22d7473e9
+  - id: SRC-3D-UNREAL-TICK
+    product: Unreal Engine
+    version: 5.8 documentation as identified by page metadata; retrieved 2026-11-01
+    title: Actor Ticking
+    url: https://dev.epicgames.com/documentation/en-us/unreal-engine/actor-ticking-in-unreal-engine
+    locator: Tick Groups; Tick Group Order
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: cc7902e75362cc225a093333480ef09a15cc96096271736f4e5d283567adef0f

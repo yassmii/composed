@@ -1,0 +1,88 @@
+{
+  "format_version": 1,
+  "kind": "contract-update-proposal",
+  "date": "2026-11-01",
+  "family": "agentic-delivery-harness",
+  "title": "Observable delegation and prevention scope",
+  "status": "proposed",
+  "baseline": {
+    "version": "0.1.0",
+    "contract_sha256": "369bc8e5ab8fc68c9da1bcb44cb3c3277c15dff09f8deca35f79487f3b065ff1",
+    "traceability_sha256": "5f7e84f5b41e3bbb8f8ba48a14313cf89e10a77ef28b11fd83e4c6b6ab47fc0c"
+  },
+  "candidate": {
+    "version": "1.0.0",
+    "status": "candidate",
+    "schema_version": "0.1",
+    "contract_sha256": "d9cd1625bc525cbe57e2c98f342c630daca26c1aea2a28696234093bf76e7761"
+  },
+  "classification": "Breaking strengthened obligations/evidence; author assessment, not automatic tool compatibility",
+  "reason": "The refreshed hooks reference distinguishes after-effect observation and internal-agent events from actual delegated work. Existing capability/prevention declarations need explicit negative controls for those misleading signals.",
+  "changed_clauses": [
+    {
+      "id": "REQ-ADH-009",
+      "before": "Déclarer pour la combinaison runtime/version/mode les outils, accès, délégations et contrôles disponibles, en distinguant demandé, déclaré, vérifié et effectivement imposé.",
+      "after": "Déclarer pour la combinaison runtime/version/mode les outils, accès, délégations et contrôles disponibles, en distinguant demandé, déclaré, vérifié et effectivement imposé. Une délégation revendiquée relie une tâche explicite à son exécution enfant identifiée et à son résultat inspectable; un nom de rôle, un fichier ou un événement d’agent interne ne prouve pas à lui seul cette délégation.",
+      "planned_cases": [
+        "ACC-ADH-025"
+      ]
+    },
+    {
+      "id": "REQ-ADH-022",
+      "before": "Séparer fait observé et décision préalable; un contrôle après effet ne revendique pas la prévention. Documenter le comportement si le hook manque, échoue, est désactivé ou dépasse son délai.",
+      "after": "Séparer fait observé et décision préalable; un contrôle après effet ne revendique pas la prévention. Documenter le comportement si le hook manque, échoue, est désactivé ou dépasse son délai. La portée vérifiée énumère les voies d’entrée couvertes et non couvertes pour l’effet visé, y compris les écritures indirectes si elles existent. Un contrôle après modification ou un événement sans pouvoir de décision ne vaut pas blocage préalable; une voie non couverte interdit de revendiquer une prévention générale. Si la prévention est obligatoire, l’action dépendante reste bloquée sauf mécanisme préalable suffisant ou exception réellement autorisée.",
+      "planned_cases": [
+        "ACC-ADH-026"
+      ]
+    }
+  ],
+  "retained_cases": [
+    "ACC-ADH-001",
+    "ACC-ADH-002",
+    "ACC-ADH-003",
+    "ACC-ADH-004",
+    "ACC-ADH-005",
+    "ACC-ADH-006",
+    "ACC-ADH-007",
+    "ACC-ADH-008",
+    "ACC-ADH-009",
+    "ACC-ADH-010",
+    "ACC-ADH-011",
+    "ACC-ADH-012",
+    "ACC-ADH-013",
+    "ACC-ADH-014",
+    "ACC-ADH-015",
+    "ACC-ADH-016",
+    "ACC-ADH-017",
+    "ACC-ADH-018",
+    "ACC-ADH-019",
+    "ACC-ADH-020",
+    "ACC-ADH-021",
+    "ACC-ADH-022",
+    "ACC-ADH-023",
+    "ACC-ADH-024"
+  ],
+  "added_cases": [
+    "ACC-ADH-025",
+    "ACC-ADH-026"
+  ],
+  "product_acceptance": "not_run",
+  "proof_transfer": "not_performed",
+  "deferred": "No Build Kit implementation, retrofit baseline, runtime permission, mandatory delegation policy for every task or vendor-specific hook API is changed. Native execution and comparative cost/effectiveness trials remain deferred.",
+  "applicability": "Retain declared optional modules; justified conditional not_applicable is separate from not_run or failure, without weakening unconditional obligations.",
+  "validation": {
+    "schema_and_traceability": "passed",
+    "tooling_tests": {
+      "passed": 68,
+      "failed": 0,
+      "skipped": 0
+    },
+    "synthetic_example": "passed",
+    "native_impact": "impact.json",
+    "candidate_integrity": "passed",
+    "baseline_preservation": "passed",
+    "product_acceptance": "not_run",
+    "independent_review": "pending",
+    "stable_promotion": "not_performed"
+  }
+}

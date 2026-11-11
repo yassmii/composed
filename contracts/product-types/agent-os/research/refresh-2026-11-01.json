@@ -1,0 +1,556 @@
+{
+  "format_version": 1,
+  "kind": "research-refresh-record",
+  "date": "2026-11-01",
+  "family": "agent-os",
+  "scope": "Existing recorded sources and their dependent observations; no upstream-latest survey or product execution",
+  "status": "recorded_corpus_rechecked",
+  "author_review": "repository agent; not independent approval",
+  "baseline": {
+    "contract_sha256": "e9e90d870d4899e089e8e0a6a4925d166592e4d87cc26afff1fc455aad98b12f",
+    "traceability_sha256": "067182369a3340e85ba1bad86cc2027129622f9e403367b4c65345b50cc8e5d1",
+    "normative_bytes_changed": false
+  },
+  "source_archive": "history/sources-before-refresh-2026-11-01.yaml",
+  "observations_before_sha256": "64db9c263b6affaf046bbcc211f6e7183dc5d55f6a2ec1d602dccf000e99df3f",
+  "observations_after_sha256": "64db9c263b6affaf046bbcc211f6e7183dc5d55f6a2ec1d602dccf000e99df3f",
+  "new_observations": [],
+  "review": "The fifteen recorded immutable sources were retrieved at their existing pins and all hashes matched. No drift was found at those pins. This is not a survey of newer AIOS, OpenHands or MCP revisions, and not an implementation assessment.",
+  "followup": "Review newer upstream revisions, retention/erasure, delegated confirmation and measured scheduling fairness in the deeper pass. Existing product choices remain unchanged.",
+  "behavioural_diff_from_historical_bodies": "unknown; old bodies unavailable, original metadata preserved",
+  "product_acceptance": "not_run",
+  "proof_transfer": "not_performed",
+  "sources": [
+    {
+      "id": "SRC-AOS-AIOS-PAPER",
+      "before": {
+        "url": "https://arxiv.org/pdf/2403.16971v5",
+        "retrieved_on": "2026-10-12",
+        "sha256": "6ac427d318869e82ea5dc2f1e4b1db91a482c640d527cc3f3812eb2d3f835b12",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://arxiv.org/pdf/2403.16971v5",
+        "retrieved_on": "2026-11-01",
+        "sha256": "6ac427d318869e82ea5dc2f1e4b1db91a482c640d527cc3f3812eb2d3f835b12",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "6ac427d318869e82ea5dc2f1e4b1db91a482c640d527cc3f3812eb2d3f835b12",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-AOS-001",
+        "OBS-AOS-002",
+        "OBS-AOS-003",
+        "OBS-AOS-004",
+        "OBS-AOS-005",
+        "OBS-AOS-006",
+        "OBS-AOS-007",
+        "OBS-AOS-008",
+        "OBS-AOS-009"
+      ],
+      "affected_clauses": [
+        "CAP-AOS-001",
+        "CAP-AOS-002",
+        "CAP-AOS-003",
+        "CAP-AOS-004",
+        "CAP-AOS-005",
+        "CAP-AOS-007",
+        "CAP-AOS-011",
+        "INV-AOS-001",
+        "INV-AOS-002",
+        "INV-AOS-003",
+        "POL-AOS-001",
+        "POL-AOS-003",
+        "POL-AOS-004",
+        "QA-AOS-002",
+        "REQ-AOS-004",
+        "REQ-AOS-005",
+        "REQ-AOS-007",
+        "REQ-AOS-008",
+        "REQ-AOS-009",
+        "REQ-AOS-010",
+        "REQ-AOS-011",
+        "REQ-AOS-012",
+        "REQ-AOS-013",
+        "REQ-AOS-015",
+        "REQ-AOS-024"
+      ]
+    },
+    {
+      "id": "SRC-AOS-AIOS-README",
+      "before": {
+        "url": "https://raw.githubusercontent.com/agiresearch/AIOS/292d98f78c835499df18cdb6de6325bba1895862/README.md",
+        "retrieved_on": "2026-10-12",
+        "sha256": "b830a4338058247c5739e035e67e419793a5275d8d6c84dd3a12f52883d02c5a",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/agiresearch/AIOS/292d98f78c835499df18cdb6de6325bba1895862/README.md",
+        "retrieved_on": "2026-11-01",
+        "sha256": "b830a4338058247c5739e035e67e419793a5275d8d6c84dd3a12f52883d02c5a",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "b830a4338058247c5739e035e67e419793a5275d8d6c84dd3a12f52883d02c5a",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-AOS-001",
+        "OBS-AOS-010",
+        "OBS-AOS-011"
+      ],
+      "affected_clauses": [
+        "CAP-AOS-001",
+        "CAP-AOS-006",
+        "CAP-AOS-011",
+        "POL-AOS-001",
+        "POL-AOS-004",
+        "REQ-AOS-004",
+        "REQ-AOS-019"
+      ]
+    },
+    {
+      "id": "SRC-AOS-AIOS-SHARED-MEMORY",
+      "before": {
+        "url": "https://raw.githubusercontent.com/agiresearch/AIOS/292d98f78c835499df18cdb6de6325bba1895862/docs/SHARED_MEMORY_SYSTEM.md",
+        "retrieved_on": "2026-10-12",
+        "sha256": "fd86633fb1fa18e385a565404b1cf7d22091d3fbceeb5898a81afa271e01b577",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/agiresearch/AIOS/292d98f78c835499df18cdb6de6325bba1895862/docs/SHARED_MEMORY_SYSTEM.md",
+        "retrieved_on": "2026-11-01",
+        "sha256": "fd86633fb1fa18e385a565404b1cf7d22091d3fbceeb5898a81afa271e01b577",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "fd86633fb1fa18e385a565404b1cf7d22091d3fbceeb5898a81afa271e01b577",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-AOS-012",
+        "OBS-AOS-013",
+        "OBS-AOS-014"
+      ],
+      "affected_clauses": [
+        "CAP-AOS-007",
+        "INV-AOS-004",
+        "POL-AOS-002",
+        "REQ-AOS-011",
+        "REQ-AOS-021",
+        "REQ-AOS-022"
+      ]
+    },
+    {
+      "id": "SRC-AOS-MCP-SCHEMA",
+      "before": {
+        "url": "https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/1f520964b295d58494d944f2aea8a5ab51c79f77/schema/2026-07-28/schema.ts",
+        "retrieved_on": "2026-10-12",
+        "sha256": "742750af0bb8c716e7030c4977c992b55d1adc4407e9e66997db5846baedc2cd",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/1f520964b295d58494d944f2aea8a5ab51c79f77/schema/2026-07-28/schema.ts",
+        "retrieved_on": "2026-11-01",
+        "sha256": "742750af0bb8c716e7030c4977c992b55d1adc4407e9e66997db5846baedc2cd",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "742750af0bb8c716e7030c4977c992b55d1adc4407e9e66997db5846baedc2cd",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-AOS-027",
+        "OBS-AOS-028"
+      ],
+      "affected_clauses": [
+        "POL-AOS-005",
+        "REQ-AOS-012",
+        "REQ-AOS-014"
+      ]
+    },
+    {
+      "id": "SRC-AOS-MCP-SPEC",
+      "before": {
+        "url": "https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/1f520964b295d58494d944f2aea8a5ab51c79f77/docs/specification/2026-07-28/index.mdx",
+        "retrieved_on": "2026-10-12",
+        "sha256": "c8151ab8d7f26ab46785fd34b23f7197db1a98ca8318967faa01e401909667b5",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/1f520964b295d58494d944f2aea8a5ab51c79f77/docs/specification/2026-07-28/index.mdx",
+        "retrieved_on": "2026-11-01",
+        "sha256": "c8151ab8d7f26ab46785fd34b23f7197db1a98ca8318967faa01e401909667b5",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "c8151ab8d7f26ab46785fd34b23f7197db1a98ca8318967faa01e401909667b5",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-AOS-026",
+        "OBS-AOS-027"
+      ],
+      "affected_clauses": [
+        "CAP-AOS-002",
+        "CAP-AOS-004",
+        "INV-AOS-003",
+        "POL-AOS-002",
+        "POL-AOS-003",
+        "POL-AOS-005",
+        "REQ-AOS-012",
+        "REQ-AOS-014",
+        "REQ-AOS-032"
+      ]
+    },
+    {
+      "id": "SRC-AOS-MCP-TOOLS",
+      "before": {
+        "url": "https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/1f520964b295d58494d944f2aea8a5ab51c79f77/docs/specification/2026-07-28/server/tools.mdx",
+        "retrieved_on": "2026-10-12",
+        "sha256": "ed550806a58eb7744b858fb9f26001aa5e55dac9e2babe88317cc81d9d4c490d",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/1f520964b295d58494d944f2aea8a5ab51c79f77/docs/specification/2026-07-28/server/tools.mdx",
+        "retrieved_on": "2026-11-01",
+        "sha256": "ed550806a58eb7744b858fb9f26001aa5e55dac9e2babe88317cc81d9d4c490d",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "ed550806a58eb7744b858fb9f26001aa5e55dac9e2babe88317cc81d9d4c490d",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-AOS-029",
+        "OBS-AOS-030"
+      ],
+      "affected_clauses": [
+        "CAP-AOS-004",
+        "CAP-AOS-005",
+        "CAP-AOS-009",
+        "QA-AOS-003",
+        "REQ-AOS-005",
+        "REQ-AOS-006",
+        "REQ-AOS-010",
+        "REQ-AOS-016",
+        "REQ-AOS-017",
+        "REQ-AOS-026"
+      ]
+    },
+    {
+      "id": "SRC-AOS-OH-BUDGETS",
+      "before": {
+        "url": "https://raw.githubusercontent.com/OpenHands/docs/5dd1c5bcd84a4b5d7d35f48e9a72106b8408c875/openhands/usage/cloud/organizations/budgets.mdx",
+        "retrieved_on": "2026-10-12",
+        "sha256": "bed3185390bc4a610e92681bbd82bd063289d19d4e5bdae9be085a01c976fa36",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/OpenHands/docs/5dd1c5bcd84a4b5d7d35f48e9a72106b8408c875/openhands/usage/cloud/organizations/budgets.mdx",
+        "retrieved_on": "2026-11-01",
+        "sha256": "bed3185390bc4a610e92681bbd82bd063289d19d4e5bdae9be085a01c976fa36",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "bed3185390bc4a610e92681bbd82bd063289d19d4e5bdae9be085a01c976fa36",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-AOS-025"
+      ],
+      "affected_clauses": [
+        "CAP-AOS-010",
+        "REQ-AOS-027",
+        "REQ-AOS-028"
+      ]
+    },
+    {
+      "id": "SRC-AOS-OH-CONDENSER",
+      "before": {
+        "url": "https://raw.githubusercontent.com/OpenHands/docs/5dd1c5bcd84a4b5d7d35f48e9a72106b8408c875/sdk/arch/condenser.mdx",
+        "retrieved_on": "2026-10-12",
+        "sha256": "68794fdddaa5fc2a37dcd6d2322d4aa9b1348b6562fed40e8a4e2c479f44b870",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/OpenHands/docs/5dd1c5bcd84a4b5d7d35f48e9a72106b8408c875/sdk/arch/condenser.mdx",
+        "retrieved_on": "2026-11-01",
+        "sha256": "68794fdddaa5fc2a37dcd6d2322d4aa9b1348b6562fed40e8a4e2c479f44b870",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "68794fdddaa5fc2a37dcd6d2322d4aa9b1348b6562fed40e8a4e2c479f44b870",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-AOS-023"
+      ],
+      "affected_clauses": [
+        "CAP-AOS-007",
+        "INV-AOS-006",
+        "REQ-AOS-023"
+      ]
+    },
+    {
+      "id": "SRC-AOS-OH-CONFIRMATION",
+      "before": {
+        "url": "https://raw.githubusercontent.com/OpenHands/docs/5dd1c5bcd84a4b5d7d35f48e9a72106b8408c875/openhands/usage/confirmation-mode.mdx",
+        "retrieved_on": "2026-10-12",
+        "sha256": "4a687a7ae52b3924b7f835971980dfb6f94cac85db6997c928c55747d70937c3",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/OpenHands/docs/5dd1c5bcd84a4b5d7d35f48e9a72106b8408c875/openhands/usage/confirmation-mode.mdx",
+        "retrieved_on": "2026-11-01",
+        "sha256": "4a687a7ae52b3924b7f835971980dfb6f94cac85db6997c928c55747d70937c3",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "4a687a7ae52b3924b7f835971980dfb6f94cac85db6997c928c55747d70937c3",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-AOS-018"
+      ],
+      "affected_clauses": [
+        "CAP-AOS-005",
+        "REQ-AOS-015",
+        "REQ-AOS-016",
+        "REQ-AOS-017",
+        "REQ-AOS-032"
+      ]
+    },
+    {
+      "id": "SRC-AOS-OH-EVENTS",
+      "before": {
+        "url": "https://raw.githubusercontent.com/OpenHands/docs/5dd1c5bcd84a4b5d7d35f48e9a72106b8408c875/sdk/arch/events.mdx",
+        "retrieved_on": "2026-10-12",
+        "sha256": "147730c5dca4286a98326fecd34c4fc60e1e9c3104cd7430e95ca1f410e1236b",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/OpenHands/docs/5dd1c5bcd84a4b5d7d35f48e9a72106b8408c875/sdk/arch/events.mdx",
+        "retrieved_on": "2026-11-01",
+        "sha256": "147730c5dca4286a98326fecd34c4fc60e1e9c3104cd7430e95ca1f410e1236b",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "147730c5dca4286a98326fecd34c4fc60e1e9c3104cd7430e95ca1f410e1236b",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-AOS-019",
+        "OBS-AOS-023"
+      ],
+      "affected_clauses": [
+        "CAP-AOS-007",
+        "CAP-AOS-009",
+        "INV-AOS-001",
+        "INV-AOS-006",
+        "QA-AOS-003",
+        "REQ-AOS-002",
+        "REQ-AOS-017",
+        "REQ-AOS-023",
+        "REQ-AOS-026"
+      ]
+    },
+    {
+      "id": "SRC-AOS-OH-PAUSE",
+      "before": {
+        "url": "https://raw.githubusercontent.com/OpenHands/docs/5dd1c5bcd84a4b5d7d35f48e9a72106b8408c875/sdk/guides/convo-pause-and-resume.mdx",
+        "retrieved_on": "2026-10-12",
+        "sha256": "e3f23962abbb69822ed6259285441942cae486cdd8fb7ff73f02ce593b647c17",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/OpenHands/docs/5dd1c5bcd84a4b5d7d35f48e9a72106b8408c875/sdk/guides/convo-pause-and-resume.mdx",
+        "retrieved_on": "2026-11-01",
+        "sha256": "e3f23962abbb69822ed6259285441942cae486cdd8fb7ff73f02ce593b647c17",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "e3f23962abbb69822ed6259285441942cae486cdd8fb7ff73f02ce593b647c17",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-AOS-022"
+      ],
+      "affected_clauses": [
+        "CAP-AOS-001",
+        "QA-AOS-001",
+        "REQ-AOS-002"
+      ]
+    },
+    {
+      "id": "SRC-AOS-OH-PERSISTENCE",
+      "before": {
+        "url": "https://raw.githubusercontent.com/OpenHands/docs/5dd1c5bcd84a4b5d7d35f48e9a72106b8408c875/sdk/guides/convo-persistence.mdx",
+        "retrieved_on": "2026-10-12",
+        "sha256": "91c36538507aadb4f46cf92d2d87ec0b50fbbe009149f0130616bd3227cc4bd1",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/OpenHands/docs/5dd1c5bcd84a4b5d7d35f48e9a72106b8408c875/sdk/guides/convo-persistence.mdx",
+        "retrieved_on": "2026-11-01",
+        "sha256": "91c36538507aadb4f46cf92d2d87ec0b50fbbe009149f0130616bd3227cc4bd1",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "91c36538507aadb4f46cf92d2d87ec0b50fbbe009149f0130616bd3227cc4bd1",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-AOS-021"
+      ],
+      "affected_clauses": [
+        "CAP-AOS-001",
+        "QA-AOS-004",
+        "REQ-AOS-001",
+        "REQ-AOS-003",
+        "REQ-AOS-027"
+      ]
+    },
+    {
+      "id": "SRC-AOS-OH-SANDBOXES",
+      "before": {
+        "url": "https://raw.githubusercontent.com/OpenHands/docs/5dd1c5bcd84a4b5d7d35f48e9a72106b8408c875/openhands/usage/sandboxes/overview.mdx",
+        "retrieved_on": "2026-10-12",
+        "sha256": "85e91fa95030edfa517ec691efa0e0da4dd615201c2570e3683597cb6409b6a1",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/OpenHands/docs/5dd1c5bcd84a4b5d7d35f48e9a72106b8408c875/openhands/usage/sandboxes/overview.mdx",
+        "retrieved_on": "2026-11-01",
+        "sha256": "85e91fa95030edfa517ec691efa0e0da4dd615201c2570e3683597cb6409b6a1",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "85e91fa95030edfa517ec691efa0e0da4dd615201c2570e3683597cb6409b6a1",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-AOS-020"
+      ],
+      "affected_clauses": [
+        "CAP-AOS-006",
+        "POL-AOS-006",
+        "REQ-AOS-019",
+        "REQ-AOS-020"
+      ]
+    },
+    {
+      "id": "SRC-AOS-OH-SECRETS",
+      "before": {
+        "url": "https://raw.githubusercontent.com/OpenHands/docs/5dd1c5bcd84a4b5d7d35f48e9a72106b8408c875/sdk/guides/secrets.mdx",
+        "retrieved_on": "2026-10-12",
+        "sha256": "ccd3333df6da661e09ffcc4af9b2a0c343caa1750bd7f68886578646b0055bb6",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/OpenHands/docs/5dd1c5bcd84a4b5d7d35f48e9a72106b8408c875/sdk/guides/secrets.mdx",
+        "retrieved_on": "2026-11-01",
+        "sha256": "ccd3333df6da661e09ffcc4af9b2a0c343caa1750bd7f68886578646b0055bb6",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "ccd3333df6da661e09ffcc4af9b2a0c343caa1750bd7f68886578646b0055bb6",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-AOS-024"
+      ],
+      "affected_clauses": [
+        "CAP-AOS-008",
+        "INV-AOS-005",
+        "REQ-AOS-025",
+        "REQ-AOS-031"
+      ]
+    },
+    {
+      "id": "SRC-AOS-OH-SECURITY",
+      "before": {
+        "url": "https://raw.githubusercontent.com/OpenHands/docs/5dd1c5bcd84a4b5d7d35f48e9a72106b8408c875/sdk/arch/security.mdx",
+        "retrieved_on": "2026-10-12",
+        "sha256": "70722cc9196c058bbf6592803c534f54a34fcee247e84816a9bf4f3ff2d71cec",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://raw.githubusercontent.com/OpenHands/docs/5dd1c5bcd84a4b5d7d35f48e9a72106b8408c875/sdk/arch/security.mdx",
+        "retrieved_on": "2026-11-01",
+        "sha256": "70722cc9196c058bbf6592803c534f54a34fcee247e84816a9bf4f3ff2d71cec",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "70722cc9196c058bbf6592803c534f54a34fcee247e84816a9bf4f3ff2d71cec",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-AOS-015",
+        "OBS-AOS-016",
+        "OBS-AOS-017"
+      ],
+      "affected_clauses": [
+        "CAP-AOS-002",
+        "CAP-AOS-005",
+        "CAP-AOS-009",
+        "INV-AOS-001",
+        "INV-AOS-003",
+        "POL-AOS-003",
+        "POL-AOS-005",
+        "REQ-AOS-014",
+        "REQ-AOS-015",
+        "REQ-AOS-026"
+      ]
+    }
+  ],
+  "validation": {
+    "structural": "passed",
+    "tooling_tests": {
+      "passed": 68,
+      "failed": 0,
+      "skipped": 0
+    },
+    "final_family_source_check": "passed",
+    "catalogue_source_check": {
+      "matched": 170,
+      "unavailable": 2,
+      "hash_mismatches": 0
+    },
+    "baseline_preservation": "passed",
+    "validation_detail": "../../../docs/research-refresh-2026-11-01.md#observed-validation",
+    "product_acceptance": "not_run"
+  }
+}

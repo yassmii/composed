@@ -1,0 +1,91 @@
+schema_version: "0.1"
+contract_id: saas-booking
+contract_version: 1.0.0
+research_status: initial
+links:
+  - clause: CAP-BOOK-001
+    basis: supported_convergence
+    observations:
+      - OBS-BOOK-001
+      - OBS-BOOK-003
+      - OBS-BOOK-007
+    note: Both products expose calculated client availability; this is a narrow two-product convergence,
+      not proof of concurrency safety.
+  - clause: REQ-BOOK-001
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-BOOK-001
+      - OBS-BOOK-003
+      - OBS-BOOK-007
+      - OBS-BOOK-008
+    note: Calculated availability and zone conversion are observed; resource-zone display and remaining
+      quantities are product choices.
+  - clause: REQ-BOOK-003
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-BOOK-002
+    note: Canonical booking time and attendee time zone are evidenced; confirmation fields and payment
+      status are contract choices.
+  - clause: CAP-BOOK-002
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-BOOK-009
+    note: Availability validation is observed in Acuity; an unambiguous terminal outcome remains a
+      product choice, not inferred from webhook names.
+  - clause: REQ-BOOK-002
+    basis: explicit_project_choice
+    observations: []
+    note: Indivisible allocation and hold conversion exactly once are chosen guarantees; no reviewed
+      source proves their race behaviour.
+  - clause: CAP-BOOK-003
+    basis: explicit_project_choice
+    observations: []
+  - clause: REQ-BOOK-004
+    basis: explicit_project_choice
+    observations: []
+    note: Protecting unexpired holds as well as confirmed capacity is a stricter mandatory obligation
+      than 0.1.0.
+  - clause: INV-BOOK-001
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-BOOK-006
+      - OBS-BOOK-010
+      - OBS-BOOK-011
+    note: Cal.com documents seated capacity limits; Acuity admin creation can bypass availability. A
+      universal no-bypass capacity invariant is our explicit choice, not convergence. Cal.com also
+      documents a booking-limit bypass; booking limits are not the same as seated capacity.
+  - clause: INV-BOOK-002
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-BOOK-002
+      - OBS-BOOK-008
+    note: Canonical booking time and zone conversion do not prove immutable accepted time-zone
+      retention; retaining the accepted instant and zone is a product choice.
+  - clause: INV-BOOK-003
+    basis: explicit_project_choice
+    observations: []
+  - clause: POL-BOOK-001
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-BOOK-005
+    note: Temporary exclusion and an expiry value are observed only in Cal.com. Payment coupling, expiry
+      boundary, customer disclosure and duplicate-result handling are explicit choices.
+  - clause: POL-BOOK-002
+    basis: explicit_project_choice
+    observations: []
+  - clause: QA-BOOK-001
+    basis: explicit_project_choice
+    observations: []
+  - clause: QA-BOOK-002
+    basis: explicit_project_choice
+    observations: []
+  - clause: POL-BOOK-003
+    basis: explicit_project_choice
+    observations: []
+    note: Late payment cannot resurrect expired capacity; visible reconciliation is chosen here. No
+      refund behaviour is inferred from scheduling sources.
+  - clause: INT-BOOK-001
+    basis: explicit_project_choice
+    observations: []
+    note: Authenticated matching successful results are required; implementation-specific signing and
+      transport are not prescribed.

@@ -1,0 +1,32 @@
+{
+	"name": "composed",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"workspaces": [
+		"build-kit"
+	],
+	"scripts": {
+		"test": "npm run validate:contracts && npm run test:contracts && npm run test:build-kit",
+		"check": "npm run typecheck:build-kit && npm run validate:contracts",
+		"validate:contracts": "node contracts/scripts/validate-contracts.mjs && node contracts/scripts/review-traceability.mjs",
+		"validate:lockfile": "node scripts/validate-lockfile.mjs",
+		"verify:research": "node contracts/scripts/review-traceability.mjs --verify-content",
+		"test:build-kit": "npm run test --workspace=composed-build-kit",
+		"typecheck:build-kit": "npm run typecheck --workspace=composed-build-kit",
+		"lint:build-kit": "npm run lint --workspace=composed-build-kit",
+		"eval:build-kit": "npm run validate:agentic --workspace=composed-build-kit && npm run eval:fixture --workspace=composed-build-kit",
+		"test:contracts": "node contracts/scripts/test.mjs",
+		"contracts:coverage": "node contracts/scripts/evaluate-coverage.mjs",
+		"contracts:compare": "node contracts/scripts/compare-contracts.mjs",
+		"example:contracts": "node contracts/examples/scoped-verification/run.mjs"
+	},
+	"engines": {
+		"node": ">=20"
+	},
+	"devDependencies": {
+		"ajv": "^8.17.1",
+		"ajv-formats": "^3.0.1",
+		"yaml": "^2.6.1"
+	}
+}

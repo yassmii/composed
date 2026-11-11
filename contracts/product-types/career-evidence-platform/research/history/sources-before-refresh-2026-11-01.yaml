@@ -1,0 +1,185 @@
+schema_version: '0.1'
+research_status: initial
+candidate_products:
+- Europass
+- Teal
+- FutureFit AI / Career Copilot
+- Fuel50
+- Xref
+- Credly
+source_selection:
+- Official product documentation and standards were consulted on 2026-10-21. Commercial pages are vendor statements,
+  not independent outcome measurements; this is not a hands-on product benchmark.
+- Hashable primary sources below are downloaded page snapshots using the repository html_article_text normalization.
+  Unversioned pages can change; retrieval hashes are not immutable archives.
+- Teal import/export help and Credly Evidence were read through web retrieval but their raw endpoints returned HTTP
+  403. They are qualitative comparison references only, excluded from machine-traced sources and clause evidence.
+- Private interviews, project documents and stakeholder conversation inform the private project framing. They
+  are not copied into this reusable unit or presented as public research.
+- Standards inform semantics and interoperability without prescribing storage engines, programming languages, cloud
+  vendors or a mandatory credential transport.
+- Research papers are evidence of specific methods and datasets, not evidence that a method is universally superior
+  or that this contract meets a global SOTA benchmark.
+sources:
+- id: SRC-CEP-EUROPASS
+  product: Europass
+  version: Official FAQ snapshot 2026-10-21
+  title: Profile, library and controlled sharing
+  url: https://europass.europa.eu/en/faq?page=2
+  locator: What is My Library; My Interests; Who has access to my Europass profile
+  retrieved_on: '2026-10-21'
+  content_normalization: html_article_text
+  content_sha256: 781061af1463868391f085483192247df0dcf14b74a69b9f11adef53b936199d
+- id: SRC-CEP-FUTUREFIT
+  product: FutureFit AI
+  version: Official product snapshot 2026-10-21
+  title: Career navigation and Career Passport
+  url: https://www.futurefit.ai/solutions-use-case/career-navigation
+  locator: Career Passport; personalized roadmap
+  retrieved_on: '2026-10-21'
+  content_normalization: html_article_text
+  content_sha256: 976aa79b4ceab3e9c9002b365272673ec996971c0274b89060da9c1b7c2aab62
+- id: SRC-CEP-COPILOT
+  product: FutureFit AI Career Copilot
+  version: Private beta; official page snapshot 2026-10-21
+  title: Career Copilot
+  url: https://careercopilot.ai/
+  locator: Grounding; adaptive guidance; private-beta status
+  retrieved_on: '2026-10-21'
+  content_normalization: html_article_text
+  content_sha256: 45ad949de551dec8b4929321f1dd0f0fe94af1e9eb216717f38495f55391424b
+- id: SRC-CEP-FUEL50
+  product: Fuel50
+  version: Official product snapshot 2026-10-21
+  title: Skills ontology
+  url: https://fuel50.com/products/skills-ontology
+  locator: Human curation; proficiency levels; governance and development actions
+  retrieved_on: '2026-10-21'
+  content_normalization: html_article_text
+  content_sha256: bd529203dbf3706395d6ee26528967a758974e1e10d66706ae0c91d9595e8715
+- id: SRC-CEP-XREF
+  product: Xref
+  version: Official product snapshot 2026-10-21
+  title: Reference checking workflow
+  url: https://www.xref.com/solutions/reference-checking
+  locator: How it works; survey builder; progress updates
+  retrieved_on: '2026-10-21'
+  content_normalization: html_article_text
+  content_sha256: e4708dd9e6724bf9291658a89fe84a33e1db9f2e64beb860b13caf3643989d01
+- id: SRC-CEP-XREF-LIMITS
+  product: Xref
+  version: FAQ dated 2021-06-01; snapshot 2026-10-21
+  title: Limits of reference validity and identity assurance
+  url: https://www.xref.com/blog/general-faqs-about-reference-checking
+  locator: Validity of comments; knowing the right person responds
+  retrieved_on: '2026-10-21'
+  content_normalization: html_article_text
+  content_sha256: c97d24c8fea2dc32707fa3f8a4245550f2f610c683dde930e39804fa3cc6d811
+- id: SRC-CEP-VC
+  product: W3C Verifiable Credentials
+  version: 2.0 Recommendation 2025-05-15
+  title: Verifiable Credentials Data Model 2.0
+  url: https://www.w3.org/TR/2025/REC-vc-data-model-2.0-20250515/
+  locator: Terminology verification; trust model; privacy considerations
+  retrieved_on: '2026-10-21'
+  content_normalization: html_article_text
+  content_sha256: 5d9083fdd1627bf7939c06579a1137af20d872313505b17a92d55219b300ecf1
+- id: SRC-CEP-CLR
+  product: 1EdTech CLR
+  version: CLR 2.0 / Open Badges 3.0 overview; snapshot 2026-10-21
+  title: Comprehensive Learner Record standard overview
+  url: https://www.1edtech.org/standards/clr
+  locator: Technical overview; learner control; evidence and endorsements
+  retrieved_on: '2026-10-21'
+  content_normalization: html_article_text
+  content_sha256: 0c8df0b1a8e55b0b7e1a200b6ae41483e502cfbfe725cfe4e5d8667977e024e7
+- id: SRC-CEP-ESCO
+  product: European Commission ESCO
+  version: Dataset 1.2.1; official local-API page snapshot 2026-10-21
+  title: ESCO local API
+  url: https://esco.ec.europa.eu/en/use-esco/use-esco-services-api/esco-local-api
+  locator: Version-selectable download; independence from hosted service
+  retrieved_on: '2026-10-21'
+  content_normalization: html_article_text
+  content_sha256: bb122f25f84a4987d12563a20b5eaf10a03d2619763a5d40a1e4eff26b65ccb7
+- id: SRC-CEP-SKOS
+  product: W3C SKOS
+  version: Recommendation 2009-08-18
+  title: SKOS Reference
+  url: https://www.w3.org/TR/2009/REC-skos-reference-20090818/
+  locator: Mapping properties; exactMatch, closeMatch, broadMatch, narrowMatch, relatedMatch
+  retrieved_on: '2026-10-21'
+  content_normalization: html_article_text
+  content_sha256: 974ee7e9b3547e874e3613127365c7e01a65457e203a954dae128d227eb46fcb
+- id: SRC-CEP-PROV
+  product: W3C PROV-O
+  version: Recommendation 2013-04-30
+  title: PROV Ontology
+  url: https://www.w3.org/TR/2013/REC-prov-o-20130430/
+  locator: Derivation; attribution; revision; invalidation
+  retrieved_on: '2026-10-21'
+  content_normalization: html_article_text
+  content_sha256: 870ec6446be276cb230f04895d3ef925b5485f45e2b94c01ca198221fc314407
+- id: SRC-CEP-LINKEDIN-LOGIN
+  product: LinkedIn
+  version: Official OIDC documentation snapshot 2026-10-21
+  title: Sign in with LinkedIn using OpenID Connect
+  url: https://learn.microsoft.com/en-us/linkedin/consumer/integrations/self-serve/sign-in-with-linkedin-v2
+  locator: Identity-verification limitation; profile and email scopes
+  retrieved_on: '2026-10-21'
+  content_normalization: html_article_text
+  content_sha256: daa5fb93d5fa106555433f76e30777bc641a8ba8e948695002988e27209bd32d
+- id: SRC-CEP-LINKEDIN-NETWORK
+  product: LinkedIn
+  version: Official Connections API documentation snapshot 2026-10-21
+  title: Connections API
+  url: https://learn.microsoft.com/en-us/linkedin/shared/integrations/people/connections-api
+  locator: Approved-developer restriction; first-degree scope and privacy settings
+  retrieved_on: '2026-10-21'
+  content_normalization: html_article_text
+  content_sha256: 073f0f3efa2c513f6487d90a2f837f1f2f6140842e5fbcd9cb85273c87a83a76
+- id: SRC-CEP-CAREERBERT
+  product: CareerBERT authors
+  version: arXiv:2503.02056; submitted 2025-03-03
+  title: 'CareerBERT: matching resumes to ESCO jobs'
+  url: https://arxiv.org/abs/2503.02056
+  locator: Abstract; embedding-space resume-to-occupation matching
+  retrieved_on: '2026-10-21'
+  content_normalization: html_article_text
+  content_sha256: c3a5cc731f932426b08226fc9fe2545ac7569404c9675cdaf84be6f225edd434
+- id: SRC-CEP-SKILLSPAN
+  product: SkillSpan authors
+  version: NAACL 2022, paper 366
+  title: 'SkillSpan: hard and soft skill extraction'
+  url: https://aclanthology.org/2022.naacl-main.366/
+  locator: Abstract; expert-annotated job-posting dataset and domain-adaptation experiment
+  retrieved_on: '2026-10-21'
+  content_normalization: html_article_text
+  content_sha256: 303a50b485f3a271d89565bb840c4881e675c28c200ccf8e9a20a816bcb18aa9
+- id: SRC-CEP-WCAG
+  product: W3C WCAG
+  version: 2.2 Recommendation 2024-12-12; current page snapshot 2026-10-21
+  title: Web Content Accessibility Guidelines 2.2
+  url: https://www.w3.org/TR/WCAG22/
+  locator: Keyboard; reflow; labels; status messages; accessible authentication
+  retrieved_on: '2026-10-21'
+  content_normalization: html_article_text
+  content_sha256: 64fd73cdb7725d9511488f5de6386081329d365872547b2d5000ef771ac37bd0
+- id: SRC-CEP-CAREER-RAG-2026
+  product: Career-Aware Resume Tailoring authors
+  version: arXiv:2605.05257, submitted 2026-05-06
+  title: Career-aware multi-source RAG case study
+  url: https://arxiv.org/abs/2605.05257
+  locator: Abstract; one-candidate, nine-job-description pilot and provenance
+  retrieved_on: '2026-10-21'
+  content_normalization: html_article_text
+  content_sha256: 33fe1733aab9f9c41633899a3687f2a1ff99c8db424694834dc2e44d080e1592
+- id: SRC-CEP-ESCO-EQF
+  product: Enhancing Job Matching authors
+  version: arXiv:2512.03195, submitted 2025-12-02
+  title: Occupation, skill and qualification linking
+  url: https://arxiv.org/abs/2512.03195
+  locator: Abstract; framework linking evaluation
+  retrieved_on: '2026-10-21'
+  content_normalization: html_article_text
+  content_sha256: 001c182e35eb8094bb5ca85cffbfb7742fd311fd0153bc3c381b90bff5979054

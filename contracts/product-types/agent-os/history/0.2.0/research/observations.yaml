@@ -1,0 +1,95 @@
+schema_version: "0.1"
+observations:
+  # AIOS (primary reference)
+  - id: "OBS-AOS-001"
+    sources: ["SRC-AOS-AIOS-README", "SRC-AOS-AIOS-PAPER"]
+    statement: "AIOS separates an application layer from a kernel layer: its kernel sits as an abstraction layer above the host operating system kernel and manages the model, memory, storage, and tool resources that agents need, while agents use a separate SDK to reach the kernel."
+  - id: "OBS-AOS-002"
+    sources: ["SRC-AOS-AIOS-PAPER"]
+    statement: "AIOS decomposes each agent query into typed system calls (model inference, memory, storage, tool) that a central scheduler queues and dispatches to the modules; the modules only execute calls and hold no queues of their own."
+  - id: "OBS-AOS-003"
+    sources: ["SRC-AOS-AIOS-PAPER"]
+    statement: "AIOS offers first-in-first-out and round-robin scheduling of system calls; round robin cycles through calls in time slices for a more balanced distribution, at the cost of interrupting long model calls."
+  - id: "OBS-AOS-004"
+    sources: ["SRC-AOS-AIOS-PAPER"]
+    statement: "When the AIOS scheduler suspends a model generation, its context manager snapshots the intermediate state (decoded text for models without logit access, search state otherwise) and later resumes from the suspension point without restarting the computation."
+  - id: "OBS-AOS-005"
+    sources: ["SRC-AOS-AIOS-PAPER"]
+    statement: "AIOS keeps each agent's interaction history in a per-agent memory block and, when usage exceeds a configurable share of the block (80% by default), moves less recently used items to persistent storage while keeping them retrievable."
+  - id: "OBS-AOS-006"
+    sources: ["SRC-AOS-AIOS-PAPER"]
+    statement: "The AIOS storage manager reads and writes persistent data by agent identifier, versions files with rollback to an earlier version, locks each file for concurrent access, and supports semantic retrieval and file sharing."
+  - id: "OBS-AOS-007"
+    sources: ["SRC-AOS-AIOS-PAPER"]
+    statement: "The AIOS tool manager validates tool parameters before execution and tracks live instance counts against each tool's parallel limit; a conflicting request is passed over in favour of the next queued request that does not conflict."
+  - id: "OBS-AOS-008"
+    sources: ["SRC-AOS-AIOS-PAPER"]
+    statement: "The AIOS access manager places each agent in a privilege group and checks every cross-agent read or write against it before execution; an agent can reach another agent's resources only within a shared privilege group."
+  - id: "OBS-AOS-009"
+    sources: ["SRC-AOS-AIOS-PAPER"]
+    statement: "AIOS requires explicit user confirmation before irreversible operations, naming deletion, overwrite, and privilege modification on files or tools."
+  - id: "OBS-AOS-010"
+    sources: ["SRC-AOS-AIOS-README"]
+    statement: "For computer-use agents, AIOS replaces its tool manager with a virtual-machine controller and a tool server so that agents act on a computer inside a sandboxed environment."
+  - id: "OBS-AOS-011"
+    sources: ["SRC-AOS-AIOS-README"]
+    statement: "AIOS runs a kernel locally or remotely for thin clients; per-user persistent kernels with account registration, cross-device synchronisation, privacy mechanisms, and virtualised kernels on shared machines are listed as ongoing, not delivered."
+  - id: "OBS-AOS-012"
+    sources: ["SRC-AOS-AIOS-SHARED-MEMORY"]
+    statement: "AIOS shared memory scopes every memory to the human end user, which is the primary isolation boundary, and records the owner agent; a private memory is visible only to its owner agent, a shared memory to every agent of the same user, and nothing crosses users."
+  - id: "OBS-AOS-013"
+    sources: ["SRC-AOS-AIOS-SHARED-MEMORY"]
+    statement: "AIOS denies memory access when the user identity is missing, compares identities as exact strings, and enforces user isolation in three independent layers (separate stores, query filters, and a final filter before prompt injection)."
+  - id: "OBS-AOS-014"
+    sources: ["SRC-AOS-AIOS-SHARED-MEMORY"]
+    statement: "AIOS orders memory writes before later reads of the same user with a bounded wait (5 seconds by default); when the wait times out, the read proceeds anyway without signalling that it may be incomplete."
+  # OpenHands (comparison reference for agent execution)
+  - id: "OBS-AOS-015"
+    sources: ["SRC-AOS-OH-SECURITY"]
+    statement: "OpenHands assesses each agent action before execution as low (read-only), medium (modifies user data), high (deletion, system commands, privilege escalation), or unknown risk, and records security decisions in the event history."
+  - id: "OBS-AOS-016"
+    sources: ["SRC-AOS-OH-SECURITY"]
+    statement: "The default OpenHands risk analyzer takes the risk level from a parameter that the model itself fills in on every non-read-only tool call, without a separate analysis step; analyzers also read tool metadata hints."
+  - id: "OBS-AOS-017"
+    sources: ["SRC-AOS-OH-SECURITY"]
+    statement: "OpenHands offers three confirmation policies (always, never, and risk-based); the default risk-based policy confirms actions at or above high risk and actions of unknown risk, and the threshold cannot be set to unknown."
+  - id: "OBS-AOS-018"
+    sources: ["SRC-AOS-OH-CONFIRMATION"]
+    statement: "When confirmation is required, OpenHands pauses the agent and shows the action, a risk explanation, and approve or deny options; a denied action is cancelled, and with no analyzer configured every action requires confirmation."
+  - id: "OBS-AOS-019"
+    sources: ["SRC-AOS-OH-EVENTS"]
+    statement: "OpenHands drives agent execution from an immutable, append-only event log whose events carry an identifier, a timestamp, and a source (user, agent, or environment); a user's rejection of an action and a user pause are recorded as events, and the rejection is returned to the model."
+  - id: "OBS-AOS-020"
+    sources: ["SRC-AOS-OH-SANDBOXES"]
+    statement: "OpenHands runs agent commands in a sandbox: a container (recommended, isolated from the host), a plain host process (documented as unsafe, without isolation), or a remote environment."
+  - id: "OBS-AOS-021"
+    sources: ["SRC-AOS-OH-PERSISTENCE"]
+    statement: "OpenHands saves conversation state on every change, including the event log, execution status (idle, running, paused), tool outputs, usage statistics such as tokens and API calls, and secrets, so that a conversation can be restored after a crash."
+  - id: "OBS-AOS-022"
+    sources: ["SRC-AOS-OH-PAUSE"]
+    statement: "An OpenHands conversation can be paused from another thread and later resumed without losing state."
+  - id: "OBS-AOS-023"
+    sources: ["SRC-AOS-OH-CONDENSER", "SRC-AOS-OH-EVENTS"]
+    statement: "OpenHands keeps agent context within model limits by summarising the middle of the history when a size threshold is exceeded or the model reports a context-window error; the condensation is added as an event naming the forgotten event identifiers."
+  - id: "OBS-AOS-024"
+    sources: ["SRC-AOS-OH-SECRETS"]
+    statement: "OpenHands injects registered secrets into the agent's workspace as environment variables when a command references them, and masks secret values in command outputs."
+  - id: "OBS-AOS-025"
+    sources: ["SRC-AOS-OH-BUDGETS"]
+    statement: "OpenHands lets administrators set an organisation spending cap with alerts at 80%, 90%, and 100%, plus default and per-user budgets; at the cap, new work may be blocked until the budget is raised or renewed."
+  # Model Context Protocol (reference for the tool boundary)
+  - id: "OBS-AOS-026"
+    sources: ["SRC-AOS-MCP-SPEC"]
+    statement: "The MCP specification requires that users explicitly consent to and keep control over data access and operations, that hosts obtain consent before invoking any tool, and it states that the protocol itself cannot enforce these principles."
+  - id: "OBS-AOS-027"
+    sources: ["SRC-AOS-MCP-SPEC", "SRC-AOS-MCP-SCHEMA"]
+    statement: "MCP treats tool descriptions and behaviour annotations as untrusted unless they come from a trusted server, and says clients should never base tool-use decisions on annotations from untrusted servers."
+  - id: "OBS-AOS-028"
+    sources: ["SRC-AOS-MCP-SCHEMA"]
+    statement: "MCP tool annotations hint whether a tool is read-only, destructive, idempotent, or open-world; when absent, a tool is assumed destructive and open-world."
+  - id: "OBS-AOS-029"
+    sources: ["SRC-AOS-MCP-TOOLS"]
+    statement: "MCP says a human should always be able to deny tool invocations, and that applications should show which tools are exposed to the model, indicate when a tool is invoked, and prompt for confirmation."
+  - id: "OBS-AOS-030"
+    sources: ["SRC-AOS-MCP-TOOLS"]
+    statement: "MCP requires tool servers to validate inputs, apply access controls, rate-limit invocations, and sanitise outputs, and advises clients to show inputs before a call, validate results, apply timeouts, log tool use for audit, and return tool errors to the model."

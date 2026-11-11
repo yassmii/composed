@@ -1,0 +1,55 @@
+schema_version: "0.1"
+observations:
+  - id: OBS-COM-001
+    sources:
+      - SRC-COM-SHOPIFY-CART
+    statement: A Shopify cart represents merchandise a buyer intends to purchase and exposes lines,
+      delivery information, discounts, and estimated checkout cost.
+  - id: OBS-COM-002
+    sources:
+      - SRC-COM-SHOPIFY-CART
+    statement: Shopify documents cart costs as estimates that can change and be reflected at checkout.
+  - id: OBS-COM-003
+    sources:
+      - SRC-COM-WOO-ORDER
+    statement: WooCommerce uses explicit order statuses across payment, fulfilment, cancellation, and
+      refund; it can hold stock for unpaid checkout states and later release it.
+  - id: OBS-COM-004
+    sources:
+      - SRC-COM-ADOBE-INVENTORY
+    statement: Adobe Commerce updates inventory reservations and salable quantity as an order progresses
+      through payment, shipment, cancellation, and refund operations.
+  - id: OBS-COM-005
+    sources:
+      - SRC-COM-STRIPE-EVENTS
+    statement: Stripe event delivery can be duplicated and out of generation order; separate event
+      objects may describe the same object and event type.
+  - id: OBS-COM-006
+    sources:
+      - SRC-COM-STRIPE-EVENTS
+    statement: Stripe documents verification of signed event payloads and freshness checks against replay.
+  - id: OBS-COM-007
+    sources:
+      - SRC-COM-STRIPE-IDEMPOTENCY
+    statement: Stripe API v1 reuses an executed request result for its key, rejects changed parameters,
+      and may prune keys after at least 24 hours; this is not indefinite business-operation
+      deduplication.
+  - id: OBS-COM-008
+    sources:
+      - SRC-COM-STRIPE-REFUNDS
+    statement: Stripe permits several partial refunds but limits their aggregate to the original charge.
+  - id: OBS-COM-009
+    sources:
+      - SRC-COM-STRIPE-REFUNDS
+    statement: A Stripe refund can remain pending or fail; requesting it does not establish completed
+      reimbursement.
+  - id: OBS-COM-010
+    sources:
+      - SRC-COM-WOO-ORDER
+    statement: WooCommerce distinguishes payment waiting from received payment and supports delayed
+      confirmation; a manual Refunded status need not mean funds were returned.
+  - id: OBS-COM-011
+    sources:
+      - SRC-COM-ADOBE-INVENTORY
+    statement: Adobe distinguishes salable reservations from physical inventory and makes Return to
+      Stock an explicit refund option.

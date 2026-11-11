@@ -1,0 +1,70 @@
+{
+  "format_version": 1,
+  "kind": "canonical-contract-integration",
+  "date": "2026-11-01",
+  "family": "saas-booking",
+  "action": "Integrate existing candidate into canonical contracts at maintainer request",
+  "previous": {
+    "version": "0.1.0",
+    "status": "draft",
+    "archive": "history/0.1.0",
+    "files": [
+      {
+        "path": "contracts/contract.yaml",
+        "sha256": "c9f9e904483f2744a53124e5b9926087e333de941bc361d6f4749b74838872a3"
+      },
+      {
+        "path": "contracts/review.md",
+        "sha256": "7a8207de2a4f3147a51d46b5b73ca3efb14ec03c8619c596384116b580759845"
+      },
+      {
+        "path": "contracts/traceability.yaml",
+        "sha256": "b7771578a3c5b6f3871fd4e006e5d4105b73caf02103c6f12607a47ab50e5ae6"
+      },
+      {
+        "path": "research/sources.yaml",
+        "sha256": "2191fd9faa480a24a536b1484559b00a15f59d6004118e6aa29dbafaa36beaaa"
+      },
+      {
+        "path": "research/observations.yaml",
+        "sha256": "4a001f526088fe7739aeef2fb5e5705bf79558575c51c41de2548d515fc81bae"
+      },
+      {
+        "path": "family-README.md",
+        "sha256": "57bc3b95839711dea68b70a521520ba4819263ba201fda4c949d3a34d4c84101"
+      }
+    ],
+    "research_snapshot": "At integration time; not asserted to be the original-release research snapshot"
+  },
+  "current": {
+    "version": "1.0.0",
+    "status": "candidate",
+    "schema_version": "0.1",
+    "contract": "contracts/contract.yaml",
+    "traceability": "contracts/traceability.yaml",
+    "candidate": "candidates/1.0.0/contracts",
+    "contract_sha256": "d662f62d57ea2c664350a31d36f929c0774ee90c470472eaa7e4aafe6070ae4b",
+    "traceability_sha256": "a7c50cff24d895e708f188ed80e17cfb9156df15555e2cd31bdaa6e693e6eed7",
+    "acceptance_count": 12
+  },
+  "stable_promotion": "not_performed",
+  "independent_review": "pending",
+  "consumer_pin_migration": "not_performed",
+  "proof_transfer": "not_performed",
+  "product_acceptance": "not_run",
+  "validation": {
+    "schema_and_current_traceability": "passed",
+    "tooling_tests": {
+      "passed": 70,
+      "failed": 0,
+      "skipped": 0
+    },
+    "canonical_identity": "passed",
+    "archived_files": "passed",
+    "archived_provenance": "passed",
+    "synthetic_example": "passed",
+    "source_network_verification": "not_repeated",
+    "product_acceptance": "not_run",
+    "details": "../../../docs/candidate-integration-2026-11-01.md#observed-validation"
+  }
+}

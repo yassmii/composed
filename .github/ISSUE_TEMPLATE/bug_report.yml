@@ -1,0 +1,33 @@
+name: Bug report
+description: Report a reproducible problem with the Build Kit or contracts.
+body:
+  - type: markdown
+    attributes:
+      value: "For security vulnerabilities, follow SECURITY.md. Do not include secrets or customer data."
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      options:
+        - Build Kit
+        - Contracts
+        - Repository tooling
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version or source revision
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: OS, Node/npm and agent runtime if applicable
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction and expected/actual behaviour
+      description: Include the smallest example and sanitised diagnostics. State which command failed.
+    validations:
+      required: true

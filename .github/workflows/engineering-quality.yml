@@ -1,0 +1,61 @@
+name: Optional engineering-quality example
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quality-example:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.15.0
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - uses: actions/checkout@v4
+        with:
+          repository: unclebob/crapper
+          ref: 6fd92c4c9bcc56efb64a2f8743d5a2993bcfd42d
+          path: .quality-tools/crapper
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: unclebob/dryer
+          ref: 66ff6d21a42c04afcad89c78a80066176d1294b0
+          path: .quality-tools/dryer
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: unclebob/mutator
+          ref: a5a0cb803b66e0cdb8bf471b3b08af701d424a41
+          path: .quality-tools/mutator
+          persist-credentials: false
+      - name: Prepare external tools and parser grammars explicitly
+        shell: bash
+        run: |
+          python -m venv .quality-tools/.venv
+          .quality-tools/.venv/bin/python -m pip install tree-sitter==0.26.0 tree-sitter-language-pack==1.22.1
+          .quality-tools/.venv/bin/python -m pip install --no-deps -e .quality-tools/crapper -e .quality-tools/dryer -e .quality-tools/mutator
+          .quality-tools/.venv/bin/python -c 'import os; import tree_sitter_language_pack as pack; pack.configure(pack.PackConfig(cache_dir=os.path.join(os.environ["GITHUB_WORKSPACE"], ".quality-tools", "cache"))); pack.download(["javascript", "typescript"])'
+      - name: Run real synthetic controls
+        env:
+          XDG_CACHE_HOME: ${{ github.workspace }}/.quality-tools/cache
+        run: npm run example:quality --workspace=composed-build-kit -- --tools-root "$GITHUB_WORKSPACE/.quality-tools" --python "$GITHUB_WORKSPACE/.quality-tools/.venv/bin/python" --output "$GITHUB_WORKSPACE/quality-output"
+      - name: Retain actual observations, including partial failed runs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: engineering-quality-example
+          path: quality-output/
+          if-no-files-found: warn
+          retention-days: 14

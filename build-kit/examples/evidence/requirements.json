@@ -1,0 +1,18 @@
+{
+  "format_version": 1,
+  "kind": "illustrative-example",
+  "requirement": {
+    "id": "REQ-EX-CANCEL-001",
+    "statement": "Cancellation is allowed when hoursBeforeStart is finite and at least 24; other inputs are refused."
+  },
+  "acceptance": {
+    "id": "ACC-EX-CANCEL-001",
+    "cases": [
+      { "hours": 23, "allowed": false },
+      { "hours": 24, "allowed": true },
+      { "hours": 25, "allowed": true },
+      { "hours": -1, "allowed": false }
+    ]
+  },
+  "scope": "A deterministic example, not a promoted Composed product contract or comparative LLM benchmark."
+}

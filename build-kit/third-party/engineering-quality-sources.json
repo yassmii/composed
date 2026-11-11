@@ -1,0 +1,37 @@
+{
+  "observed_at": "2026-10-31",
+  "scope": "pinned upstream license files, not legal certification or dependency audit",
+  "sources": [
+    {
+      "repository": "https://github.com/unclebob/crapper",
+      "revision": "6fd92c4c9bcc56efb64a2f8743d5a2993bcfd42d",
+      "license": "0BSD",
+      "license_url": "https://raw.githubusercontent.com/unclebob/crapper/6fd92c4c9bcc56efb64a2f8743d5a2993bcfd42d/LICENSE",
+      "license_sha256": "bbdd284f0223e627a5ace5ba4507410de374e9d3284c7fa9b1216e2fb4797e30",
+      "usage": "external tool, no engine source vendored"
+    },
+    {
+      "repository": "https://github.com/unclebob/dryer",
+      "revision": "66ff6d21a42c04afcad89c78a80066176d1294b0",
+      "license": "0BSD",
+      "license_url": "https://raw.githubusercontent.com/unclebob/dryer/66ff6d21a42c04afcad89c78a80066176d1294b0/LICENSE",
+      "license_sha256": "bbdd284f0223e627a5ace5ba4507410de374e9d3284c7fa9b1216e2fb4797e30",
+      "usage": "external tool, no engine source vendored"
+    },
+    {
+      "repository": "https://github.com/unclebob/mutator",
+      "revision": "a5a0cb803b66e0cdb8bf471b3b08af701d424a41",
+      "license": "0BSD",
+      "license_url": "https://raw.githubusercontent.com/unclebob/mutator/a5a0cb803b66e0cdb8bf471b3b08af701d424a41/LICENSE",
+      "license_sha256": "bbdd284f0223e627a5ace5ba4507410de374e9d3284c7fa9b1216e2fb4797e30",
+      "usage": "external tool, no engine source vendored"
+    }
+  ],
+  "ub_mode": {
+    "repository": "https://github.com/unclebob/ub-mode",
+    "revision": "57a8bdd28e45ed41900ace0bafa2ff76dd9ed70f",
+    "observed_tree": ["README.md", "SKILL.md"],
+    "license": "not_declared_at_reviewed_revision",
+    "usage": "design reference only; no source or skill text copied or translated"
+  }
+}

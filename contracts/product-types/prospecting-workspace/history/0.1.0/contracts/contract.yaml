@@ -1,0 +1,631 @@
+# yaml-language-server: $schema=../../../specs/product-contract.schema.json
+schema_version: '0.1'
+id: prospecting-workspace
+name: Espace de prospection et de suivi des prospects
+version: 0.1.0
+kind: product-contract
+status: draft
+license: CC-BY-4.0
+
+intent:
+  promise: Transformer des cibles découvertes ou des demandes entrantes en dossiers qualifiés, explicables et suivis, quel que soit leur domaine.
+  primary_outcome: Chaque dossier actif possède une cible identifiable, une qualification justifiée, un responsable et une prochaine action ou une attente datée explicite.
+  success_metrics:
+    - id: MET-PR-001
+      measure: 100 % des dossiers actifs ont un responsable et une prochaine action datée ou un motif d'attente avec date de réexamen.
+    - id: MET-PR-002
+      measure: 100 % des qualifications acceptées sont rattachées à une version de critères et à leurs preuves; les inconnues restent visibles.
+    - id: MET-PR-003
+      measure: Aucun contact interdit ni effet externe dupliqué dans les scénarios de concurrence, opposition et reprise de cette version.
+    - id: MET-PR-004
+      measure: Mesurer le temps médian par dossier accepté, la précision des qualifications et le taux de réponse pertinente sur des cohortes comparables; objectifs commerciaux fixés par déploiement, sans garantie de volume de leads.
+
+scope:
+  includes:
+    - Profils de ciblage et de qualification séparés du moteur, versionnés et remplaçables.
+    - Recherche sortante par sources autorisées, saisie, import et acquisition entrante par formulaire de site.
+    - Cibles de types configurables, interlocuteurs et relations temporelles; provenance et résolution d'identité.
+    - Qualification explicable, affectation, pipeline, activités, tâches, rappels et tableaux de bord.
+    - Préparation et validation des sollicitations; contrôles par destinataire, finalité, canal et juridiction.
+    - Collaboration, isolation des espaces, droits des personnes, export, reprise et preuves de conformité.
+    - Séquences, surveillance de signaux et assistance IA lorsqu'elles sont activées, sous les mêmes invariants que les actions humaines.
+  excludes:
+    - Catalogue universel de prospects, accès garanti à une source ou extraction sans autorisation de réutilisation.
+    - Ontologie sectorielle, offre, argumentaire, barème métier ou liste de catégories imposés par le socle.
+    - Promesse de rendez-vous, de ventes ou de leads qualifiés indépendamment de l'offre, des données et du marché.
+    - CMS complet, achat publicitaire, SEO et attribution publicitaire entre appareils.
+    - Facturation, paiement, exécution des prestations et gestion opérationnelle après transfert d'un dossier conclu.
+    - Décisions d'éligibilité à l'emploi, au crédit, au logement ou à d'autres services essentiels; inférence de caractéristiques sensibles.
+    - Revente ou mutualisation des données entre clients et prospection autonome sans approbation du message final.
+
+actors:
+  - id: ACT-PR-001
+    name: Chargé de prospection
+    goals: [Trouver des cibles pertinentes, Qualifier et suivre sans oubli]
+    permissions: [Agir dans son périmètre autorisé, Préparer et approuver ses messages autorisés]
+  - id: ACT-PR-002
+    name: Responsable d'équipe
+    goals: [Distribuer le travail, Examiner la qualité et les résultats]
+    permissions: [Gérer les affectations de son périmètre, Consulter les agrégats autorisés]
+  - id: ACT-PR-003
+    name: Administrateur de l'espace
+    goals: [Configurer les profils et les intégrations, Maintenir le service]
+    permissions: [Publier les configurations autorisées, Gérer les accès sans auto-attribution de droits hors de son autorité]
+  - id: ACT-PR-004
+    name: Référent données et conformité
+    goals: [Gérer les droits et la conservation, Auditer les traitements]
+    permissions: [Appliquer les politiques validées, Traiter les demandes et incidents dans son périmètre]
+  - id: ACT-PR-005
+    name: Visiteur ou interlocuteur externe
+    goals: [Exprimer une demande, Corriger ses données ou refuser des sollicitations]
+    permissions: [Soumettre ses informations, Exercer ses droits sans accès au portefeuille interne]
+
+domain:
+  entities:
+    - id: ENT-PR-001
+      name: Espace
+      description: Frontière d'autorisation et de traitement contenant ses utilisateurs, configurations, dossiers et politiques; une installation peut ne servir qu'un espace.
+      lifecycle: [actif, suspendu, fermé]
+    - id: ENT-PR-002
+      name: Profil de ciblage
+      description: Définition indépendante du contenu recherché, des types et attributs, sources, critères, preuves, fraîcheur, argumentaire et issue attendue; identité et version immuables après publication.
+      lifecycle: [brouillon, validé, publié, retiré]
+    - id: ENT-PR-003
+      name: Entité cible ou interlocuteur
+      description: Objet identifiable de type configuré; personne, organisation, collectif, lieu, actif ou projet sont des exemples. Une personne peut être cible et interlocuteur sans double identité.
+      lifecycle: [candidate, confirmée, fusionnée, archivée, effacée]
+    - id: ENT-PR-004
+      name: Relation
+      description: Lien typé entre deux entités, avec rôle, source, dates de validité connues ou explicitement inconnues et état de vérification; plusieurs interlocuteurs et plusieurs cibles sont possibles.
+      lifecycle: [déclarée, vérifiée, expirée, révoquée]
+    - id: ENT-PR-005
+      name: Campagne
+      description: Objectif, population, profil publié, pipeline, responsable, période, canaux, limites et politique applicable; son existence ne vaut pas autorisation de contacter.
+      lifecycle: [brouillon, active, en_pause, terminée, archivée]
+    - id: ENT-PR-006
+      name: Dossier prospect
+      description: Engagement d'une cible dans une campagne avec qualification, responsable et suivi propres; plusieurs dossiers peuvent référencer la même identité sans partager leurs étapes.
+      lifecycle: [à_examiner, en_cours, en_attente, conclu, écarté, archivé]
+    - id: ENT-PR-007
+      name: Observation et preuve
+      description: Valeur ou déclaration avec entité concernée, source et localisateur, dates de collecte et de validité, mode d'obtention, droits de réutilisation connus et éventuel désaccord; liens consultables selon les droits.
+      lifecycle: [collectée, validée, contestée, périmée, retirée]
+    - id: ENT-PR-008
+      name: Évaluation
+      description: Résultat par critère, preuves, inconnues, version du profil et de la méthode, auteur, date, décision humaine et éventuelle priorité; distinct de l'état du pipeline.
+      lifecycle: [proposée, acceptée, rejetée, à_réexaminer, remplacée]
+    - id: ENT-PR-009
+      name: Activité et tâche
+      description: Interaction observée ou action planifiée avec responsable, échéance, fuseau, résultat et historique des corrections; un rappel n'est pas une étape commerciale.
+      lifecycle: [planifiée, en_cours, réalisée, annulée]
+    - id: ENT-PR-010
+      name: Sollicitation
+      description: Message final, expéditeur, destinataire, canal, finalité, approbateur, version de politique et identifiant stable d'opération; conserve les tentatives et les confirmations disponibles.
+      lifecycle: [brouillon, approuvée, en_attente, transmission_en_cours, acceptée_par_prestataire, livrée, échec, résultat_inconnu, annulée]
+    - id: ENT-PR-011
+      name: Autorisation et opposition
+      description: Preuve de base de traitement et d'information, consentement quand requis, restriction ou opposition avec portée, dates et origine; les listes repoussoirs ont une finalité et une conservation distinctes.
+      lifecycle: [à_établir, applicable, retirée, expirée, remplacée]
+    - id: ENT-PR-012
+      name: Exécution
+      description: Recherche, import, synchronisation ou enrichissement avec profil figé, sources, sélection, budget, progression, erreurs et résultats par élément.
+      lifecycle: [en_attente, en_cours, partielle, réussie, échouée, annulée]
+  glossary:
+    - term: Lead
+      definition: Signal ou demande initiale non encore acceptée comme qualification; une ligne d'annuaire ou un formulaire ne suffit pas à établir un intérêt vérifié.
+    - term: Prospect qualifié
+      definition: Dossier dont tous les critères obligatoires d'une définition publiée sont satisfaits par des preuves valides et dont l'acceptation est enregistrée par un acteur autorisé; le libellé de qualification précise son niveau.
+    - term: Dimensions indépendantes
+      definition: Adéquation à la cible, intérêt ou besoin démontré, qualité des données et possibilité de contacter sont présentés séparément; un score ne les remplace pas.
+    - term: Profil de conformité
+      definition: Politique validée séparément du contenu métier, limitée à des finalités, populations, canaux et juridictions et munie d'une date d'effet et de réexamen.
+    - term: Sollicitation commerciale
+      definition: Message de prospection destiné à promouvoir une offre ou initier une démarche commerciale; un accusé technique de réception sans promotion est un événement distinct, soumis à sa propre finalité.
+
+capabilities:
+  - id: CAP-PR-001
+    name: Configurer le contenu recherché indépendamment du socle
+    priority: must
+    actor: ACT-PR-003
+    outcome: Une campagne change de secteur ou de type de cible par configuration publiée sans modifier les règles du moteur.
+    requirements:
+      - id: REQ-PR-001
+        statement: Un profil déclare les éléments du document targeting-profile.md; les types, attributs, critères et libellés métier sont configurables sans rendre obligatoires une adresse, une ville, une société, un courriel ou un identifiant sectoriel.
+      - id: REQ-PR-002
+        statement: Avant publication, valider les types, références, règles d'identité, preuves requises, inconnues, fraîcheur et issues du profil; présenter les champs ou sources manquants qui empêchent son activation.
+      - id: REQ-PR-003
+        statement: Toute recherche et évaluation référence la version exacte du profil; publier une nouvelle version présente ses impacts et nécessite une décision explicite de réévaluation ou migration des dossiers existants, sans réécriture de leur historique.
+      - id: REQ-PR-004
+        statement: Un profil de contenu ne peut modifier les droits, supprimer une opposition ni assouplir une politique de conformité; son activation et l'activation de chaque source ou canal sont distinctes.
+  - id: CAP-PR-002
+    name: Représenter les cibles et leurs interlocuteurs
+    priority: must
+    actor: ACT-PR-001
+    outcome: L'utilisateur distingue ce qu'il prospecte de la personne ou structure qui peut répondre.
+    requirements:
+      - id: REQ-PR-005
+        statement: Identifier séparément les entités, leurs relations et leurs dossiers par campagne; un interlocuteur commun ne fusionne pas les cibles et une cible conserve ses dossiers indépendants.
+      - id: REQ-PR-006
+        statement: Enregistrer plusieurs rôles et relations datées, y compris une validité inconnue; signaler une relation expirée et réexaminer les actions qui en dépendent avant utilisation.
+      - id: REQ-PR-007
+        statement: Une cible sans interlocuteur ou coordonnée peut être recherchée et évaluée; indiquer explicitement son impossibilité actuelle de contact plutôt qu'inventer une coordonnée ou un mandat.
+  - id: CAP-PR-003
+    name: Découvrir et sélectionner les candidats
+    priority: must
+    actor: ACT-PR-001
+    outcome: Une recherche produit une sélection contrôlable avec couverture et limites connues.
+    requirements:
+      - id: REQ-PR-008
+        statement: Accepter saisie, import et au moins une source externe configurable; chaque source déclare son accès réel, licence ou conditions de réutilisation, attributs disponibles, limites et date de collecte; un accès absent est signalé.
+      - id: REQ-PR-009
+        statement: Présenter les candidats et leur provenance avant leur promotion en dossiers; la sélection humaine ou une règle de promotion préalablement approuvée est enregistrée et ne vaut ni qualification ni inscription à une séquence.
+      - id: REQ-PR-010
+        statement: Une recherche expose filtres appliqués et non supportés, progression, couverture partielle, erreurs et motif d'arrêt; une source en panne ne se traduit jamais en résultat exhaustif vide.
+      - id: REQ-PR-011
+        statement: Chaque exécution possède des limites de temps, volume, coût et fréquence; elle peut être annulée et reprise sans recréer les éléments déjà confirmés ni dépasser le budget approuvé.
+  - id: CAP-PR-004
+    name: Recevoir les demandes entrantes depuis un site
+    priority: must
+    actor: ACT-PR-005
+    outcome: Un visiteur exprime un besoin et reçoit un accusé de réception sans devenir automatiquement un prospect qualifié.
+    requirements:
+      - id: REQ-PR-012
+        statement: Un formulaire accessible, hébergé ou intégré au site, utilise les champs minimaux du profil, explique la finalité, présente l'information sur les données et sépare une demande de service d'un consentement facultatif à la prospection future.
+      - id: REQ-PR-013
+        statement: Valider la soumission, limiter les abus et placer les contenus suspects en revue; conserver origine déclarée, version du formulaire, date et preuves d'information ou de consentement sans suivi publicitaire obligatoire.
+      - id: REQ-PR-014
+        statement: Répéter une soumission identique avec le même identifiant ne crée pas de deuxième demande; une nouvelle demande légitime du même interlocuteur reste distincte, est rapprochée de l'identité existante et reçoit un responsable ou une file responsable avec échéance.
+  - id: CAP-PR-005
+    name: Résoudre les identités et préserver les preuves
+    priority: must
+    actor: ACT-PR-001
+    outcome: Les données sont rapprochées sans fusion abusive et chaque information déterminante est vérifiable.
+    requirements:
+      - id: REQ-PR-015
+        statement: Appliquer des clés d'identité par type et espace, qualifier les rapprochements certains ou possibles et soumettre les ambigus à revue; nom, adresse ou courriel partagé ne suffisent pas seuls à établir une identité universelle.
+      - id: REQ-PR-016
+        statement: Une fusion autorisée conserve sources, identifiants antérieurs, dossiers, activités et restrictions, signale les conflits et expose la décision; une séparation corrige une fusion erronée sans restaurer les données effacées.
+      - id: REQ-PR-017
+        statement: Associer toute valeur déterminante à sa provenance et à sa date; distinguer observation, déclaration non vérifiée et inférence; exposer valeurs contradictoires, absentes ou périmées et ne pas écraser silencieusement une correction humaine.
+  - id: CAP-PR-006
+    name: Qualifier et prioriser de façon explicable
+    priority: must
+    actor: ACT-PR-001
+    outcome: Un dossier est accepté pour une raison reproductible et les prochaines preuves à obtenir sont visibles.
+    requirements:
+      - id: REQ-PR-018
+        statement: Évaluer chaque critère selon satisfait, non_satisfait ou inconnu, avec preuve, date de validité et motif; un manque de donnée ou un échec de source n'est pas une preuve négative et ne satisfait jamais un critère obligatoire.
+      - id: REQ-PR-019
+        statement: Séparer au minimum adéquation, intérêt ou besoin démontré, qualité des données et possibilité de contacter; nommer distinctement cible pertinente et lead commercialement qualifié; ne pas déduire besoin, budget, pouvoir de décision ou intention d'achat d'un simple indicateur public.
+      - id: REQ-PR-020
+        statement: Présenter règle ou méthode versionnée, critères, preuves, inconnues et limites de tout score; un score heuristique n'est pas affiché comme probabilité de conversion; un critère obligatoire manquant bloque l'acceptation même si le score total est élevé.
+      - id: REQ-PR-021
+        statement: Enregistrer auteur et justification de l'acceptation, du rejet ou d'une correction; une exception humaine ne transforme pas un critère inconnu en fait vérifié et reçoit un libellé distinct; invalider l'usage courant d'une évaluation périmée et demander un réexamen.
+  - id: CAP-PR-007
+    name: Piloter le pipeline et les responsabilités
+    priority: must
+    actor: ACT-PR-002
+    outcome: Chaque dossier avance vers une issue définie sans perte de responsabilité.
+    requirements:
+      - id: REQ-PR-022
+        statement: Le pipeline publié définit étapes, transitions permises, critères de passage et issues terminales; clôture et réouverture demandent un résultat ou motif et conservent l'historique; une étape n'efface ni qualification ni restriction.
+      - id: REQ-PR-023
+        statement: Tout dossier actif a un responsable utilisateur ou une file responsable identifiée et une tâche datée ou une attente avec motif et date de réexamen; un transfert préserve activités, échéances et restrictions et confirme le nouveau responsable.
+      - id: REQ-PR-024
+        statement: Liste et vue de progression partagent filtres, droits et états; sauvegarder des segments et exécuter des actions par lot avec prévisualisation des impacts, résultat par élément et détection des modifications concurrentes sans perte silencieuse.
+  - id: CAP-PR-008
+    name: Tenir l'historique et organiser les relances
+    priority: must
+    actor: ACT-PR-001
+    outcome: L'utilisateur retrouve le contexte et sait quelle action faire à quelle date.
+    requirements:
+      - id: REQ-PR-025
+        statement: Distinguer interaction réalisée, tâche à faire, suggestion et événement de transport; présenter auteur, date de survenue et de réception, destinataires, résultat et corrections attribuées sans inventer un échange réalisé.
+      - id: REQ-PR-026
+        statement: Planifier, reporter, terminer ou annuler une tâche avec échéance et fuseau; les rappels respectent préférences, droits et pauses, signalent les retards et restent utilisables lors d'un changement d'heure.
+      - id: REQ-PR-027
+        statement: Réponse, refus, opposition et rendez-vous modifient les actions concernées; une réponse automatique ou ambiguë est distinguée d'une réponse humaine et mise en revue avant reprise d'une relance automatique.
+  - id: CAP-PR-009
+    name: Préparer et transmettre les sollicitations
+    priority: must
+    actor: ACT-PR-001
+    outcome: Un message approuvé part vers le bon interlocuteur avec un statut fidèle aux preuves disponibles.
+    requirements:
+      - id: REQ-PR-028
+        statement: Toute transmission exige une approbation humaine enregistrée portant sur le message final, son expéditeur, destinataire, canal et finalité; toute modification de ces éléments invalide l'approbation; le brouillon reste distinct d'une activité envoyée.
+      - id: REQ-PR-029
+        statement: Juste avant remise au prestataire, revérifier autorisation de l'acteur, politique courante applicable, preuve de contact autorisé, opposition, relation utilisée, validité de l'approbation et plafonds; bloquer avec motif si un contrôle manque ou échoue.
+      - id: REQ-PR-030
+        statement: Distinguer acceptation par prestataire, livraison confirmée, échec et résultat inconnu; conserver une identité stable d'opération et rapprocher les confirmations avant toute reprise ambiguë; si le prestataire ne permet pas de dédupliquer ou vérifier l'envoi, suspendre la répétition et demander une résolution documentée.
+      - id: REQ-PR-031
+        statement: Pour le courriel activé, vérifier identité de l'expéditeur et configuration d'authentification requise par les destinations; fournir une opposition simple sans connexion, traiter rebonds permanents et plaintes, exposer quotas et seuils d'arrêt sans promettre le placement en boîte de réception.
+  - id: CAP-PR-010
+    name: Exécuter des séquences bornées
+    priority: should
+    actor: ACT-PR-001
+    outcome: Les tâches et messages approuvés sont cadencés sans poursuivre une sollicitation devenue inappropriée.
+    requirements:
+      - id: REQ-PR-032
+        statement: Une séquence activée définit étapes, limites de tentatives, fenêtres horaires et fuseau, pauses et conditions d'arrêt; chaque message final conserve l'approbation requise, y compris dans un lot approuvé explicitement par destinataire.
+      - id: REQ-PR-033
+        statement: Suspendre les étapes affectées à la première réponse humaine, rendez-vous, refus, opposition, plainte, rebond permanent ou perte d'autorisation; une réponse ambiguë met en pause pour revue; l'arrêt doit être effectif avant la prochaine remise au prestataire.
+      - id: REQ-PR-034
+        statement: Avant inscription et chaque étape, détecter les sollicitations concurrentes par destinataire, canal et finalité dans l'espace; appliquer une cadence globale configurée entre campagnes et permettre l'arrêt immédiat d'une campagne ou d'un connecteur.
+  - id: CAP-PR-011
+    name: Collaborer dans un périmètre autorisé
+    priority: must
+    actor: ACT-PR-003
+    outcome: Les équipes partagent le travail sans accès implicite aux données d'autrui.
+    requirements:
+      - id: REQ-PR-035
+        statement: Appliquer le refus par défaut et les droits par espace, rôle, périmètre et opération à toute lecture ou écriture, recherche, export, agrégat, rappel, traitement différé et assistance IA; masquer aussi les informations indirectes sur des dossiers non autorisés.
+      - id: REQ-PR-036
+        statement: Révoquer les accès et délégations aux tâches différées lors du départ ou changement de rôle, réaffecter les dossiers actifs et tracer les changements sensibles; un périmètre de recherche sauvegardé ne donne aucun droit d'accès supplémentaire.
+  - id: CAP-PR-012
+    name: Appliquer les politiques de données et les droits
+    priority: must
+    actor: ACT-PR-004
+    outcome: La collecte et le contact restent autorisés et les droits survivent aux imports et reprises.
+    requirements:
+      - id: REQ-PR-037
+        statement: Avant collecte personnelle et contact, appliquer une politique validée pour finalité, population, juridiction et canal, avec sources de droit, date d'effet, responsable et réexamen; distinguer base de collecte, information, permission de solliciter et permission de traitement IA; une condition inconnue bloque l'opération qui en dépend.
+      - id: REQ-PR-038
+        statement: Enregistrer les oppositions avec leur portée réelle, les appliquer à tous les dossiers et canaux concernés de l'espace avant toute nouvelle remise au prestataire et conserver une preuve minimale séparée empêchant leur contournement par import, fusion ou restauration.
+      - id: REQ-PR-039
+        statement: Fixer et exécuter des durées par finalité et catégorie, avec événement de départ démontrable; relance sortante, lecture automatique, réimport et enrichissement ne renouvellent pas seuls la conservation; les exceptions de conservation sont motivées, limitées et exclues de l'usage commercial actif.
+      - id: REQ-PR-040
+        statement: Traiter accès, rectification, opposition et effacement avec identité vérifiée de façon proportionnée, échéance applicable, actions et résultat; propager aux données dérivées, index, caches et sous-traitants concernés, avec suivi des échecs; une restauration réapplique effacements et restrictions avant remise en service.
+      - id: REQ-PR-041
+        statement: Inventorier données transmises, sous-traitants, lieux de traitement, autorisations de réutilisation et durées; minimiser données et journaux, protéger secrets et données personnelles; ne pas qualifier un pseudonyme ou un simple hachage d'anonymisation irréversible.
+  - id: CAP-PR-013
+    name: Assister la recherche et la rédaction par IA
+    priority: should
+    actor: ACT-PR-001
+    outcome: L'assistance accélère l'analyse sans présenter une invention comme un fait ni autoriser une action.
+    requirements:
+      - id: REQ-PR-042
+        statement: Si activée, l'IA produit des propositions identifiées avec sources autorisées, méthode, modèle ou service et versions de configuration; chiffres, coordonnées, mandats et faits personnalisés doivent être étayés ou explicitement laissés inconnus; un contenu estimé ne satisfait pas un critère de preuve.
+      - id: REQ-PR-043
+        statement: Traiter pages, messages, formulaires, profils importés et sorties IA comme contenus non fiables; leurs instructions ne peuvent modifier droits, destinataires, politiques ou actions; contrôler les actions indépendamment du modèle et tester injection indirecte et exfiltration.
+      - id: REQ-PR-044
+        statement: Vérifier les catégories de données réellement envoyées et l'autorisation de traitement avant appel; borner coût, durée et volume; permettre refus ou correction et conserver un parcours manuel en cas de panne, sans stocker des raisonnements internes du modèle comme preuve métier.
+  - id: CAP-PR-014
+    name: Mesurer l'activité et les résultats sans confusion
+    priority: must
+    actor: ACT-PR-002
+    outcome: Les décisions reposent sur des indicateurs auditables et comparables.
+    requirements:
+      - id: REQ-PR-045
+        statement: Distinguer candidats, identités uniques, dossiers, demandes entrantes, qualifications acceptées, messages transmis, réponses humaines pertinentes et issues; définir dénominateur, cohorte, période, fuseau, attribution et fraîcheur de chaque mesure, avec résultat non calculable si le dénominateur est nul.
+      - id: REQ-PR-046
+        statement: Afficher relances en retard, dossiers stagnants selon seuil déclaré, temps par étape et raisons d'écartement; ne pas compter comme nouvelle conversion une fusion, un doublon d'événement ou une simple réouverture.
+      - id: REQ-PR-047
+        statement: Un rapport ou résumé automatique cite les agrégats et leur instant de calcul, signale les données manquantes et n'expose que le périmètre autorisé de son destinataire.
+  - id: CAP-PR-015
+    name: Échanger les données et récupérer après incident
+    priority: must
+    actor: ACT-PR-003
+    outcome: Les données restent portables et les opérations reprennent avec un bilan vérifiable.
+    requirements:
+      - id: REQ-PR-048
+        statement: Importer avec prévisualisation, correspondance des champs, validation et bilan créé, rapproché, rejeté ou inchangé par élément; une répétition d'opération réutilise son résultat et une clé réutilisée avec un contenu différent produit un conflit.
+      - id: REQ-PR-049
+        statement: Exporter dans un format documenté et réutilisable identités, relations, dossiers, profils et versions, preuves accessibles, évaluations, activités, échéances et restrictions selon les droits; tester le réimport sans perte des liens ni réactivation de contacts interdits.
+      - id: REQ-PR-050
+        statement: Les événements externes sont authentifiés et rapprochés par identité d'événement et d'opération; duplications, retards et désordre ne répètent pas d'effet ni ne régressent un état confirmé; exposer les conflits et les reprises épuisées.
+      - id: REQ-PR-051
+        statement: Déclarer objectifs de restauration, perte de données maximale et gestion des incidents, puis fournir un exercice de restauration et de reprise avec rapprochement des opérations incertaines et réapplication des restrictions.
+  - id: CAP-PR-016
+    name: Démontrer la qualité et évaluer les améliorations
+    priority: must
+    actor: ACT-PR-002
+    outcome: La qualité annoncée est vérifiable par profil, type de cible et méthode.
+    requirements:
+      - id: REQ-PR-052
+        statement: Déclarer capacités activées et limitations; exécuter les scénarios applicables sur une révision identifiée et fournir un corpus autorisé séparé des données de réglage, incluant ambiguïtés, inconnues, oppositions, erreurs de source et types de cibles différents.
+      - id: REQ-PR-053
+        statement: Comparer toute méthode de recherche, rapprochement, scoring ou IA à une référence simple sur les mêmes cas; rapporter précision et rappel lorsque la vérité terrain les permet, sinon couverture connue, erreurs, abstentions, coût et latence par profil; ne pas annoncer un rappel global sur un univers inconnu.
+      - id: REQ-PR-054
+        statement: Définir avant évaluation les seuils de publication et de régression avec le responsable métier; tester séparément qualification et rédaction, distinguer mesure technique et résultat commercial, et prévoir retrait ou retour à la méthode précédente.
+  - id: CAP-PR-017
+    name: Surveiller les changements et enrichir sous budget
+    priority: should
+    actor: ACT-PR-001
+    outcome: De nouvelles informations pertinentes déclenchent un réexamen sans être assimilées à une intention d'achat.
+    requirements:
+      - id: REQ-PR-055
+        statement: Une surveillance activée déclare recherche ou attributs suivis, cadence, population, budget et conditions de notification; distinguer nouveau candidat, changement observé et perte de couverture, conserver l'historique utile et ne pas recréer un dossier déjà suivi.
+      - id: REQ-PR-056
+        statement: Si plusieurs fournisseurs sont interrogés en cascade, déclarer ordre, autorisation de transfert à chacun, condition d'arrêt et qualité minimale; ne pas interroger les suivants après un résultat suffisant ou un budget épuisé; un résultat retourné reste distinct d'une donnée vérifiée.
+      - id: REQ-PR-057
+        statement: Un signal conserve source, date, entité et niveau d'observation; un signal sur un collectif ou une organisation ne prouve pas l'intention d'un individu associé, ne lève pas une restriction et propose un réexamen plutôt qu'un contact automatique.
+
+invariants:
+  - id: INV-PR-001
+    statement: Aucune règle métier sectorielle ni propriété géographique n'est indispensable au fonctionnement du socle.
+    rationale: Le contenu recherché appartient au profil, conformément à la demande utilisateur.
+  - id: INV-PR-002
+    statement: Identité, appartenance à une campagne, qualification, étape commerciale et possibilité de contacter restent des états distincts.
+    rationale: Une cible peut changer de contexte ou d'interlocuteur sans changer d'identité ni obtenir une permission implicite.
+  - id: INV-PR-003
+    statement: Une qualification courante n'est acceptée que si ses critères obligatoires ont des preuves valides et une acceptation attribuée.
+    rationale: Un score élevé ou un formulaire reçu ne démontre pas la qualification.
+  - id: INV-PR-004
+    statement: Une donnée inconnue, contradictoire, périmée ou estimée ne devient jamais silencieusement un fait vérifié.
+    rationale: La reproductibilité dépend de la distinction entre preuve et inférence.
+  - id: INV-PR-005
+    statement: Toute remise d'une sollicitation au prestataire satisfait les droits et restrictions applicables à cet instant et l'approbation de son message final.
+    rationale: Une autorisation passée ou une validation d'interface ne suffit pas après une opposition ou un changement de contenu.
+  - id: INV-PR-006
+    statement: Une opposition n'est levée ni par changement de campagne ou profil, ni par import, fusion, réévaluation ou restauration.
+    rationale: Les traitements différés et nouvelles sources doivent respecter la portée du refus.
+  - id: INV-PR-007
+    statement: Une opération répétée ne provoque pas de deuxième effet logique confirmé; un effet externe incertain ne fait pas l'objet d'une répétition aveugle.
+    rationale: Une coupure après acceptation distante peut cacher une transmission déjà effectuée.
+  - id: INV-PR-008
+    statement: Un résultat partiel ou une absence de couverture n'est jamais présenté comme une recherche exhaustive ni comme une absence certaine de cibles.
+    rationale: L'état d'une source ne définit pas l'état du marché.
+  - id: INV-PR-009
+    statement: Les accès aux données et actions sont contrôlés pour les utilisateurs, automatisations et assistants, y compris hors interface.
+    rationale: L'isolation doit couvrir les exports, calculs et tâches différées.
+  - id: INV-PR-010
+    statement: Toute correction d'un historique reste attribuable pendant sa durée de conservation; l'effacement licite retire les données personnelles sans journal parallèle permettant de les reconstituer.
+    rationale: Auditabilité et limitation de conservation doivent rester compatibles.
+  - id: INV-PR-011
+    statement: Un contenu externe, un profil de ciblage ou une sortie IA ne peut accorder de permission ni contourner un contrôle d'action.
+    rationale: Le contenu analysé n'est pas une autorité.
+  - id: INV-PR-012
+    statement: Tout dossier actif conserve responsable et action datée ou attente datée explicite, y compris lors d'un départ ou transfert.
+    rationale: L'absence de prochain geste rend le suivi inopérant.
+
+policies:
+  - id: POL-PR-001
+    decision: Le socle est indépendant des technologies et des fournisseurs; les connecteurs traduisent les sources vers le vocabulaire du profil.
+    consequence: Aucun langage, stockage, modèle IA, fournisseur de données ou canal unique n'est requis par ce contrat.
+  - id: POL-PR-002
+    decision: Les capacités must sont obligatoires; les should deviennent obligatoires lorsqu'elles sont annoncées ou activées, avec leurs scénarios et invariants; les désactivations sont déclarées.
+    consequence: IA, séquences et surveillance peuvent être absentes, mais leur présence ne réduit aucune garantie du socle.
+  - id: POL-PR-003
+    decision: Une approbation humaine porte sur chaque message final; les approbations par lot présentent tous les destinataires et contenus et n'autorisent aucune génération future non revue.
+    consequence: Les séquences planifient des sollicitations approuvées et des tâches; elles ne donnent pas d'autonomie générale d'envoi au modèle.
+  - id: POL-PR-004
+    decision: La politique de conformité est indépendante du profil de ciblage et validée pour le contexte réel; aucun intérêt légitime, délai de trois ans ou statut B2B n'est présumé universel.
+    consequence: Une cible de type organisation n'établit pas le régime d'un contact physique; le profil France illustratif ne vaut pas validation d'un traitement particulier.
+  - id: POL-PR-005
+    decision: Les scores sont des aides à la priorisation; la qualification dépend de critères publiés, de preuves et d'une acceptation attribuée.
+    consequence: Une heuristique ou une popularité publique ne devient pas une probabilité ni une intention d'achat démontrée.
+  - id: POL-PR-006
+    decision: Les profils publiés sont immuables et leurs changements sont examinés avant application aux dossiers existants.
+    consequence: Les évolutions de critères, de source et d'argumentaire ne réinterprètent pas silencieusement les résultats antérieurs.
+  - id: POL-PR-007
+    decision: Aucun pixel de suivi, rapprochement entre appareils ou enrichissement personnel non nécessaire n'est activé par défaut.
+    consequence: La collecte entrante et la mesure des réponses fonctionnent avec des preuves déclarées et des événements nécessaires.
+  - id: POL-PR-008
+    decision: La supervision humaine des actions est une règle produit de ce contrat; la classification réglementaire de l'IA dépend de l'usage effectivement déployé.
+    consequence: La présence d'un modèle ou d'un journal ne constitue pas une preuve globale de conformité à l'AI Act.
+  - id: POL-PR-009
+    decision: Les objectifs chiffrés de qualité ci-dessous sont des choix initiaux de conception à mesurer, et non des performances acquises.
+    consequence: La version reste draft tant que ses preuves d'implémentation et ses mesures métier ne sont pas produites.
+
+quality_attributes:
+  - id: QA-PR-001
+    attribute: Accessibilité
+    target: Parcours de configuration, recherche, formulaire entrant, qualification et suivi conformes WCAG 2.2 AA; alternative clavier à tout glisser-déposer, erreurs et statuts annoncés, reflow à 320 pixels CSS et zoom 200 %; audit automatique et manuel.
+  - id: QA-PR-002
+    attribute: Réactivité
+    target: Sur une charge déclarée de 100 000 dossiers par espace et 50 utilisateurs simultanés, p95 des lectures, filtres et enregistrements ordinaires inférieur ou égal à 2 s; accusé de prise en charge des traitements longs inférieur ou égal à 2 s; recherches et IA ont délai maximal et progression explicites, sans inclure une panne fournisseur dans une promesse de résultat.
+  - id: QA-PR-003
+    attribute: Intégrité et concurrence
+    target: Zéro perte silencieuse, double effet logique ou régression d'état confirmé dans les scénarios de répétition, modification concurrente et événements désordonnés; fournir les bilans par opération.
+  - id: QA-PR-004
+    attribute: Confidentialité et contrôle d'accès
+    target: Zéro lecture ou action hors périmètre dans la matrice d'autorisation applicable, couvrant recherche, agrégat, export, rappel, connecteur et contexte IA; protection du transit et du stockage documentée et vérifiée.
+  - id: QA-PR-005
+    attribute: Prise en compte des restrictions
+    target: Toute opposition confirmée est appliquée avant la remise suivante au prestataire; le traitement d'une opposition au moment d'une remise concurrente produit une chronologie vérifiable, sans prétendre rappeler un message déjà remis.
+  - id: QA-PR-006
+    attribute: Reprise et conservation
+    target: Exercices de suppression et restauration conformes aux durées, échéances, objectifs de reprise et pertes maximales déclarés avant mise en service; aucune réactivation d'un contact interdit ni réapparition active de données effacées.
+  - id: QA-PR-007
+    attribute: Évaluation des méthodes
+    target: Rapport par profil avec jeu tenu à l'écart du réglage, référence simple, effectifs, règles d'annotation, désaccords, précision, couverture ou rappel mesurable, abstentions, p50/p95 de latence et coût; aucune affirmation SOTA générale sans comparaison reproductible délimitée.
+  - id: QA-PR-008
+    attribute: Utilisabilité
+    target: Sur au moins cinq utilisateurs représentatifs du déploiement, au moins quatre réalisent sans aide sélection, examen d'une qualification et planification du prochain geste; consigner temps, erreurs et limites de ce petit échantillon, sans en déduire une amélioration commerciale.
+
+integrations:
+  - id: INT-PR-001
+    system: Sources de découverte et d'enrichissement configurées
+    purpose: Fournir des observations dans les limites documentées de chaque source.
+    degradation: Indiquer accès absent, débit limité, schéma incompatible ou résultat partiel; préserver les dossiers et ne fabriquer aucune donnée de substitution.
+  - id: INT-PR-002
+    system: Transport de messages et événements de réponse
+    purpose: Transmettre les sollicitations approuvées et rapprocher les résultats observables.
+    degradation: Conserver échec ou résultat inconnu, suspendre les reprises ambiguës et les séquences dont les réponses ne sont plus observables; préserver préparation et suivi manuels.
+  - id: INT-PR-003
+    system: Site de collecte entrante
+    purpose: Recevoir les demandes via le formulaire hébergé ou intégré et restituer un accusé fidèle.
+    degradation: Ne pas annoncer de réception réussie avant enregistrement durable; permettre une nouvelle tentative avec la même identité de soumission.
+  - id: INT-PR-004
+    system: Service IA facultatif
+    purpose: Proposer analyses et brouillons à partir de données autorisées.
+    degradation: Signaler indisponibilité, refus ou budget épuisé; maintenir qualification par règles, édition et suivi manuels.
+
+acceptance:
+  - id: ACC-PR-001
+    given: Trois profils illustratifs couvrent commerces, copropriétés et projets numériques sans adresse.
+    when: Chaque profil est configuré dans le même moteur avec des sources de test autorisées.
+    then: Recherche ou saisie, qualification et suivi fonctionnent sans modification du socle ni champ géographique ou courriel universellement obligatoire.
+    evidence: Démonstration comparative avec profils et révision identifiés; CAP-PR-001, INV-PR-001.
+  - id: ACC-PR-002
+    given: Un profil contient une règle inconnue, une référence absente ou une tentative de lever une opposition.
+    when: Un administrateur tente sa publication et son activation.
+    then: Les erreurs sont localisées et l'activation dépendante est refusée sans modifier droits ou restrictions.
+    evidence: Cas de validation de profils et état avant/après; REQ-PR-002, REQ-PR-004, INV-PR-011.
+  - id: ACC-PR-003
+    given: Une campagne utilise une version de profil et possède des qualifications acceptées.
+    when: Une nouvelle version change un critère obligatoire.
+    then: L'impact est présenté, l'ancienne évaluation reste attribuée à sa version et la réévaluation explicite produit une nouvelle évaluation sans réécrire le passé.
+    evidence: Historique de publication et migration; REQ-PR-003, POL-PR-006.
+  - id: ACC-PR-004
+    given: Deux cibles partagent un même interlocuteur et l'une a deux dossiers de campagnes différentes.
+    when: L'interlocuteur change de rôle et un dossier avance.
+    then: Les identités ne fusionnent pas, les autres dossiers ne changent pas d'étape et les actions dépendant de la relation périmée sont réexaminées.
+    evidence: Cas copropriétés-syndic et cas équivalent non immobilier; CAP-PR-002, INV-PR-002.
+  - id: ACC-PR-005
+    given: Une source est indisponible, une autre applique seulement une partie des filtres.
+    when: Une recherche est lancée puis annulée et reprise sous budget.
+    then: Couverture, filtres non appliqués et erreurs sont explicites; les éléments confirmés ne sont pas recréés; aucun résultat exhaustif n'est annoncé.
+    evidence: Bilan de recherche avec défauts injectés et compteurs de budget; CAP-PR-003, INV-PR-008.
+  - id: ACC-PR-006
+    given: Un résultat est sélectionné depuis une source autorisée.
+    when: Il est promu en dossier sans preuve de besoin ni permission de solliciter.
+    then: Le dossier reste à examiner, aucun envoi ni inscription à une séquence n'a lieu et l'absence de preuve est visible.
+    evidence: Sélection et journal d'effets; REQ-PR-009, REQ-PR-019.
+  - id: ACC-PR-007
+    given: Un visiteur soumet une demande sans cocher l'option facultative de prospection future.
+    when: La même soumission est répétée puis une nouvelle demande est déposée.
+    then: Une seule réception existe pour la première soumission, la nouvelle demande reste distincte, les deux sont affectées et aucun consentement marketing ni statut qualifié n'est inventé.
+    evidence: Parcours public et réception interne; CAP-PR-004, INV-PR-003.
+  - id: ACC-PR-008
+    given: Le formulaire reçoit un contenu malveillant ou un flot de soumissions abusives.
+    when: Le contrôle de soumission et la revue sont exécutés.
+    then: Les abus sont limités ou isolés, aucun accès au portefeuille ni effet externe n'est accordé par le contenu et les erreurs du formulaire sont accessibles.
+    evidence: Cas d'abus, injection et accessibilité; REQ-PR-013, REQ-PR-043, QA-PR-001.
+  - id: ACC-PR-009
+    given: Deux candidats ont le même nom ou courriel partagé mais des identifiants fiables distincts.
+    when: Le rapprochement et une fusion ambiguë sont proposés.
+    then: Les cibles ne fusionnent pas automatiquement; la décision autorisée conserve conflits, preuves et restrictions, et une erreur peut être corrigée sans restaurer des données effacées.
+    evidence: Corpus d'homonymes et journal de fusion-séparation; REQ-PR-015, REQ-PR-016.
+  - id: ACC-PR-010
+    given: Une source contredit une valeur corrigée par un humain et une preuve arrive à expiration.
+    when: L'enrichissement puis une qualification sont relancés.
+    then: Le conflit et la péremption sont visibles; la correction n'est pas écrasée et la qualification antérieure n'est plus présentée comme courante sans réexamen.
+    evidence: Filiation et évaluations avant/après; REQ-PR-017, REQ-PR-021, INV-PR-004.
+  - id: ACC-PR-011
+    given: Une cible possède un score élevé et des coordonnées mais un critère obligatoire de besoin ou d'adéquation est inconnu.
+    when: L'utilisateur tente d'accepter le dossier comme commercialement qualifié.
+    then: L'acceptation est refusée, les dimensions restent distinctes et une éventuelle exception humaine est étiquetée sans preuve inventée.
+    evidence: Résultats par critère et décision attribuée; CAP-PR-006, INV-PR-003.
+  - id: ACC-PR-012
+    given: Un dossier actif est transféré et deux utilisateurs modifient simultanément sa prochaine action.
+    when: Le transfert et les modifications sont enregistrés.
+    then: Un responsable et une action ou attente datée subsistent, le conflit est explicite et aucune modification n'est perdue silencieusement.
+    evidence: Scénario concurrent et état final; REQ-PR-023, REQ-PR-024, QA-PR-003.
+  - id: ACC-PR-013
+    given: Une transition de pipeline exige une preuve, puis un dossier clôturé est rouvert.
+    when: La transition est tentée sans preuve et la réouverture est motivée.
+    then: La première est refusée, la seconde conserve issue antérieure, qualification et restrictions et exige un nouveau prochain geste.
+    evidence: Historique des transitions; REQ-PR-022, INV-PR-012.
+  - id: ACC-PR-014
+    given: Une relance traverse un changement d'heure et une activité passée comporte une erreur.
+    when: La tâche est reportée et l'activité corrigée.
+    then: L'échéance reste interprétable avec son fuseau, le rappel n'est pas dupliqué et la correction est attribuée sans inventer une nouvelle interaction.
+    evidence: Cas temporels et historique; REQ-PR-025, REQ-PR-026.
+  - id: ACC-PR-015
+    given: Un message a été approuvé et son destinataire ou son contenu est modifié.
+    when: Une transmission est demandée.
+    then: Une nouvelle approbation du message final est exigée et le brouillon n'est pas compté comme envoyé.
+    evidence: Historique d'approbation et absence d'effet prestataire; REQ-PR-028, INV-PR-005.
+  - id: ACC-PR-016
+    given: Une sollicitation approuvée est en attente et une opposition ou révocation d'accès est confirmée.
+    when: La tâche différée tente sa remise au prestataire.
+    then: L'opération est bloquée avant remise et la chronologie du contrôle est vérifiable, même si le message avait été préparé avant le refus.
+    evidence: Cas de concurrence et chronologie indépendante du prestataire; REQ-PR-029, QA-PR-005.
+  - id: ACC-PR-017
+    given: Le prestataire accepte un message mais la réponse réseau ou l'enregistrement local échoue.
+    when: Une reprise est demandée et les confirmations arrivent deux fois en désordre.
+    then: L'état inconnu est rapproché sans second envoi aveugle, aucune livraison n'est inventée et l'état confirmé ne régresse pas; sans moyen de rapprochement la reprise reste suspendue.
+    evidence: Incident après effet distant, journal d'opération et preuve du nombre d'envois; REQ-PR-030, REQ-PR-050, INV-PR-007.
+  - id: ACC-PR-018
+    given: Le canal courriel est activé mais l'identité d'expéditeur ou l'authentification requise est invalide.
+    when: Un utilisateur tente un envoi puis un destinataire exerce son opposition sans compte.
+    then: L'envoi invalide est bloqué, l'opposition est enregistrable simplement, et rebonds permanents ou plaintes bloquent les prochaines tentatives concernées.
+    evidence: Configuration d'envoi, parcours d'opposition et événements de transport; REQ-PR-031.
+  - id: ACC-PR-019
+    given: Les séquences sont activées et deux campagnes sollicitent le même destinataire; une réponse humaine ou ambiguë arrive.
+    when: La prochaine étape arrive à échéance.
+    then: Cadence globale et pause s'appliquent avant remise; réponse humaine ou rendez-vous suspendent le périmètre concerné, réponse ambiguë exige revue et aucun message futur non approuvé ne part.
+    evidence: Scénarios de cadence, réponse, absence et arrêt d'urgence; CAP-PR-010, REQ-PR-027.
+  - id: ACC-PR-020
+    given: Deux espaces ou périmètres existent et un utilisateur a perdu ses droits.
+    when: Il tente lecture directe, recherche, déduplication, agrégat, export et exécution différée, avec IA si activée.
+    then: Aucun résultat ou effet hors périmètre ni indice identifiant une cible cachée n'est exposé; les dossiers actifs sont réaffectés.
+    evidence: Matrice d'autorisation sur les surfaces réellement exposées; CAP-PR-011, QA-PR-004.
+  - id: ACC-PR-021
+    given: Une politique manque pour la population, la finalité ou le canal envisagé, ou la permission de traitement IA est absente.
+    when: Un acteur tente collecte personnelle, contact ou appel IA concerné.
+    then: L'opération dépendante est bloquée; la présence de données publiques, d'un type organisation ou d'un profil de contenu ne crée pas l'autorisation manquante.
+    evidence: Matrice de politiques et preuve d'absence de transfert; REQ-PR-037, REQ-PR-044, POL-PR-004.
+  - id: ACC-PR-022
+    given: Une personne s'oppose et ses données réapparaissent dans un import, une fusion ou une nouvelle campagne.
+    when: L'identité est rapprochée et une sollicitation est préparée.
+    then: Le refus de portée correspondante s'applique sans en réutiliser la preuve minimale à des fins de ciblage.
+    evidence: Cas de réimport et inspection des finalités du repoussoir; REQ-PR-038, INV-PR-006.
+  - id: ACC-PR-023
+    given: Une échéance de conservation est calculée depuis un événement entrant admissible ou la collecte initiale.
+    when: Surviennent relance sortante, ouverture automatique, enrichissement et réimport.
+    then: Aucun de ces seuls événements ne repousse l'échéance; à son terme les données quittent l'usage actif selon la politique et toute exception est motivée et limitée.
+    evidence: Horloge contrôlée et bilan de purge; REQ-PR-039.
+  - id: ACC-PR-024
+    given: Une demande d'accès, rectification, opposition ou effacement affecte preuves, index, données dérivées et sous-traitants.
+    when: Elle est traitée puis une sauvegarde antérieure est restaurée.
+    then: Le résultat et les échecs de propagation sont suivis selon l'échéance applicable; aucun contenu effacé ou contact interdit ne revient en usage actif et l'audit ne permet pas de reconstituer les données supprimées.
+    evidence: Exercices de droits, suppression, restauration et inventaire des transferts; REQ-PR-040, REQ-PR-041, INV-PR-010.
+  - id: ACC-PR-025
+    given: L'assistance IA est activée et un document contient de fausses instructions, un chiffre non sourcé et une tentative d'exfiltration.
+    when: Une analyse puis un brouillon sont produits.
+    then: Aucune action ou transmission non autorisée n'a lieu, les faits manquants restent inconnus et aucune estimation ne satisfait une preuve obligatoire.
+    evidence: Corpus adversarial, sorties, sources et journal des actions; CAP-PR-013, INV-PR-011.
+  - id: ACC-PR-026
+    given: Le service IA est indisponible ou son budget épuisé.
+    when: L'utilisateur qualifie par règles, rédige manuellement et planifie un suivi.
+    then: Le parcours reste utilisable, la limitation est visible et aucune preuve ou approbation n'est contournée.
+    evidence: Parcours dégradé et compteurs de traitement; REQ-PR-044, INT-PR-004.
+  - id: ACC-PR-027
+    given: Deux demandes concernent la même cible, un événement est dupliqué et un dossier est rouvert.
+    when: Le manager consulte puis reçoit un rapport sur une cohorte définie.
+    then: Identités, dossiers, demandes et conversions sont comptés distinctement, sans double conversion; dénominateurs nuls, fraîcheur et limites sont visibles et le rapport respecte ses droits.
+    evidence: Rapprochement des indicateurs avec les dossiers sources; CAP-PR-014.
+  - id: ACC-PR-028
+    given: Un lot contient doublons, erreurs et restrictions, et une même clé d'opération est rejouée.
+    when: Le lot est importé, rejoué à contenu égal puis différent, exporté et réimporté dans un espace de test autorisé.
+    then: Le bilan par élément est exact, la répétition égale ne duplique pas, le contenu différent est refusé et liens, versions, échéances et restrictions survivent à l'aller-retour.
+    evidence: Prévisualisation, bilans et comparaison sémantique des exports; REQ-PR-048, REQ-PR-049.
+  - id: ACC-PR-029
+    given: Une panne et une restauration sont simulées sur la charge de référence déclarée.
+    when: L'opérateur restaure puis reprend les exécutions interrompues.
+    then: Les objectifs déclarés de reprise et perte maximale sont mesurés, restrictions réappliquées et opérations incertaines rapprochées avant reprise des contacts.
+    evidence: Exercice daté avec révision, chronologie, mesures et écarts; REQ-PR-051, QA-PR-006.
+  - id: ACC-PR-030
+    given: Les parcours essentiels sont disponibles sur la charge et les profils déclarés.
+    when: Des utilisateurs au clavier, avec lecteur d'écran et sur écran étroit effectuent recherche, qualification et suivi; les mesures de latence sont collectées.
+    then: Les seuils déclarés sont évalués, l'alternative au glisser-déposer et les retours d'erreur sont utilisables; les limites des essais utilisateurs sont rapportées.
+    evidence: Audit WCAG, traces de charge et étude des cinq utilisateurs; QA-PR-001, QA-PR-002, QA-PR-008.
+  - id: ACC-PR-031
+    given: Une nouvelle méthode est présentée comme plus performante pour obtenir des prospects qualifiés.
+    when: Elle est comparée à une référence simple sur les mêmes cas tenus à l'écart du réglage.
+    then: Qualité, erreurs, inconnues, coûts et latences sont mesurés par profil selon des seuils préalables; les résultats techniques ne sont pas présentés comme une hausse de ventes ni comme un SOTA universel.
+    evidence: Corpus autorisé, annotations, rapport reproductible et décision de publication; CAP-PR-016, QA-PR-007.
+  - id: ACC-PR-032
+    given: La surveillance et un enrichissement en cascade sont activés; un signal collectif change et un fournisseur renvoie une valeur suffisante.
+    when: La surveillance est rejouée, puis une source perd sa couverture ou le budget est épuisé.
+    then: Aucun dossier ni alerte logique n'est dupliqué, les fournisseurs suivants ne sont pas interrogés inutilement et l'indisponibilité est distinguée d'un changement réel; aucune intention individuelle ni permission de contacter n'est inventée.
+    evidence: Historique des observations, notifications, appels et budgets; CAP-PR-017, REQ-PR-019.
+
+delivery:
+  required_artifacts:
+    - Déclaration de conformité avec version du contrat, révision immuable de l'implémentation, capacités activées et limitations.
+    - Profils de ciblage, pipelines et profils de conformité publiés, avec versions et responsables; exemples de cibles, interlocuteurs et preuves.
+    - Matrice reliant chaque exigence, invariant et attribut de qualité aux scénarios et preuves applicables; scénarios non exécutés explicitement signalés.
+    - Inventaire des sources et connecteurs avec accès réel, licence, limites, coût, couverture et comportement en panne.
+    - Matrice d'autorisation, cartographie des données et sous-traitants, politiques de conservation et preuves d'exercice des droits.
+    - Corpus autorisé, annotation, référence simple, seuils fixés avant mesure et résultats par profil; résultats commerciaux séparés des résultats techniques.
+    - Guide d'exploitation, limites de charge, budgets, supervision, gestion des incidents et exercices de reprise, restauration et rapprochement des transmissions.
+    - Export documenté et rapport d'aller-retour préservant identités, versions, preuves, activités et restrictions.
+  verification:
+    - Exécuter ACC-PR-001 à ACC-PR-032 sur une révision identifiée; documenter les parties conditionnelles non applicables lorsque IA, séquences ou surveillance sont désactivées.
+    - Fournir pour chaque scénario entrées, actions, observations et verdict; aucune preuve d'implémentation n'est fournie par ce contrat draft.
+    - Vérifier séparément les défaillances fournisseurs, effets incertains, conflits d'identité, restrictions concurrentes, droits et changements de profil.
+    - Mesurer les attributs de qualité sur les conditions déclarées; une validation de schéma du présent YAML ne prouve pas la conformité d'un produit.
+extensions: {}

@@ -1,0 +1,267 @@
+schema_version: "0.1"
+id: saas-booking
+name: Booking SaaS
+version: 1.0.0
+kind: product-contract
+status: candidate
+license: CC-BY-4.0
+intent:
+  promise: Let a customer reserve an available time slot or resource without manual intervention.
+  primary_outcome: A confirmed reservation is unambiguous to the customer and immediately actionable
+    by the operator.
+  success_metrics:
+    - id: MET-BOOK-001
+      measure: At least 95 percent of started reservations reach an explicit confirmed, rejected, or
+        expired decision.
+    - id: MET-BOOK-002
+      measure: No overbooking is detected for finite-capacity slots.
+scope:
+  includes:
+    - Operator-managed resources, capacity, and availability
+    - Customer search, booking, confirmation, and cancellation
+    - Optional payment before confirmation
+  excludes:
+    - Yield management
+    - Multi-operator marketplace and commission settlement
+    - Automatic refunds and payment-dispute resolution
+actors:
+  - id: ACT-CUSTOMER
+    name: Customer
+    goals:
+      - Find reliable availability
+      - Reserve and retrieve a confirmation
+    permissions:
+      - View public availability
+      - Create and cancel permitted reservations
+  - id: ACT-OPERATOR
+    name: Operator
+    goals:
+      - Sell capacity without conflict
+      - Manage a calendar
+    permissions:
+      - Manage resources
+      - Define booking rules
+      - View owned reservations
+domain:
+  entities:
+    - id: ENT-RESOURCE
+      name: Resource
+      description: A bookable asset, service, or person defined by an operator.
+      lifecycle:
+        - draft
+        - published
+        - archived
+    - id: ENT-SLOT
+      name: Slot
+      description: A time interval for a resource with finite capacity and explicit time zone.
+      lifecycle:
+        - open
+        - held
+        - full
+        - closed
+    - id: ENT-RESERVATION
+      name: Reservation
+      description: A customer commitment for a quantity of capacity during a slot.
+      lifecycle:
+        - draft
+        - pending_payment
+        - confirmed
+        - cancelled
+        - expired
+  glossary:
+    - term: hold
+      definition: A temporary allocation of capacity with an explicit expiry instant. At or after that
+        instant it no longer consumes capacity.
+    - term: available capacity
+      definition: Total capacity less confirmed reservations and unexpired holds.
+capabilities:
+  - id: CAP-BOOK-001
+    name: View availability
+    priority: must
+    actor: ACT-CUSTOMER
+    outcome: The customer sees slots that are actually reservable for their need.
+    requirements:
+      - id: REQ-BOOK-001
+        statement: The system determines availability from the resource schedule, relevant conflicts, and
+          configured booking limits, then shows slots in the resource time zone with remaining
+          capacity where applicable.
+  - id: CAP-BOOK-002
+    name: Reserve capacity
+    priority: must
+    actor: ACT-CUSTOMER
+    outcome: The customer receives an unambiguous confirmation or rejection.
+    requirements:
+      - id: REQ-BOOK-002
+        statement: Each new allocation checks current availability and allocates capacity as one indivisible
+          decision. Converting an unexpired active hold to a confirmation uses that reservation's
+          existing allocation once, without requiring another available unit or decrementing
+          capacity again. A failed allocation leaves capacity unchanged.
+      - id: REQ-BOOK-003
+        statement: A confirmation includes an identifier, resource, time with time zone, quantity, and
+          payment status.
+  - id: CAP-BOOK-003
+    name: Manage inventory
+    priority: must
+    actor: ACT-OPERATOR
+    outcome: The operator opens or closes capacity without rewriting reservation history.
+    requirements:
+      - id: REQ-BOOK-004
+        statement: A change that reduces capacity below the sum of confirmed quantity and unexpired held
+          quantity is rejected without changing capacity or existing reservations.
+invariants:
+  - id: INV-BOOK-001
+    statement: For every slot, confirmed quantity plus unexpired held quantity never exceeds its finite
+      capacity, including operator actions and payment-result processing.
+    rationale: Displayed availability must be trustworthy.
+  - id: INV-BOOK-002
+    statement: A confirmed reservation retains its accepted instant and the time-zone identifier
+      recorded at confirmation. Changing a resource or viewer time zone changes presentation only;
+      it does not rewrite that commitment.
+    rationale: Presentation changes must not change the commitment.
+  - id: INV-BOOK-003
+    statement: Only the relevant customer or an authorised operator can cancel a reservation.
+    rationale: Reservation integrity and privacy must be protected.
+policies:
+  - id: POL-BOOK-001
+    decision: When payment is required, the operator configures a finite payment-hold duration; the
+      customer sees its expiry instant before payment.
+    consequence: At the allocation decision instant, an authenticated matching successful payment result
+      processed before expiry converts an active hold for a pending-payment reservation to confirmed
+      once. At or after expiry, a pending-payment reservation becomes expired and its hold no longer
+      consumes capacity, even if cleanup has not run. Duplicate results cannot consume or release
+      capacity again.
+  - id: POL-BOOK-002
+    decision: The cancellation policy is shown before confirmation.
+    consequence: Cancellation applies the rule published at booking time. An authorised cancellation
+      permitted by that rule releases its allocation once; a rejected or repeated cancellation
+      cannot alter capacity.
+  - id: POL-BOOK-003
+    decision: For a reservation expired under POL-BOOK-001, a successful payment result never revives
+      the reservation automatically.
+    consequence: The reservation stays expired, capacity is not consumed, and the customer and
+      authorised operator can see that payment requires reconciliation. Refund execution is outside
+      this core.
+quality_attributes:
+  - id: QA-BOOK-001
+    attribute: concurrency
+    target: One hundred concurrent requests for the last seat result in at most one confirmed reservation.
+  - id: QA-BOOK-002
+    attribute: accessibility
+    target: The booking journey is keyboard-operable and all fields have accessible labels.
+integrations:
+  - id: INT-BOOK-001
+    system: Payment provider
+    purpose: Collect a required payment and receive a signed result.
+    degradation: While a payment result is unavailable, unauthenticated, unsuccessful, or does not match
+      the reservation, no paid reservation is confirmed. Hold expiry still applies; POL-BOOK-003
+      governs a late successful result.
+acceptance:
+  - id: ACC-BOOK-001
+    given: A slot has one available unit, payment is not required, and both customer requests are
+      otherwise valid.
+    when: Two customers attempt to confirm a one-unit reservation concurrently.
+    then: Exactly one reservation is confirmed and the other receives an availability rejection.
+    evidence: Concurrent integration test with a synchronised start, both outcomes and the final
+      capacity ledger; also run the 100-request case for QA-BOOK-001.
+  - id: ACC-BOOK-002
+    given: A customer has paid for and confirmed a reservation.
+    when: They view the confirmation.
+    then: They see its identifier, resource, time with time zone, quantity, confirmed reservation status
+      and successful payment status.
+    evidence: Customer journey end-to-end test.
+  - id: ACC-BOOK-003
+    given: A resource has scheduled slots, a calendar conflict and a reached booking limit affecting
+      distinct slots.
+    when: A customer checks availability and attempts to book a slot that became unavailable after
+      display.
+    then: Conflicting and limit-blocked slots are unavailable; the stale attempt is rejected without
+      allocating capacity. Eligible slots show resource time zone and remaining capacity.
+    evidence: Availability journey with isolated schedule, conflict and limit fixtures plus a
+      stale-display negative case; REQ-BOOK-001 and REQ-BOOK-002.
+  - id: ACC-BOOK-004
+    given: A slot has capacity three, one confirmed unit and one unexpired held unit.
+    when: The operator reduces capacity to one, then to two.
+    then: The first change is rejected without modifying reservations or capacity; the second succeeds
+      with zero remaining capacity.
+    evidence: Before/after capacity and reservation records; REQ-BOOK-004 and INV-BOOK-001.
+  - id: ACC-BOOK-005
+    given: A payment-required reservation holds the last unit until instant E; cleanup has not run.
+    when: Availability is checked just before E, at E and after E without a successful payment result.
+    then: Before E the unit is unavailable; at E and after E the reservation is expired and the unit is
+      available.
+    evidence: Controlled-clock boundary test recording expiry displayed to customer, reservation state
+      and available capacity; POL-BOOK-001.
+  - id: ACC-BOOK-006
+    given: A valid unexpired payment hold consumes one unit.
+    when: An authenticated matching successful payment result is processed before expiry and is
+      delivered again.
+    then: One confirmed reservation replaces the hold with unchanged total allocated quantity; repeated
+      delivery leaves status and capacity unchanged.
+    evidence: Payment-result integration case with before/after ledger and duplicate delivery;
+      REQ-BOOK-002 and POL-BOOK-001.
+  - id: ACC-BOOK-007
+    given: An expired unpaid reservation has released its last-unit hold and another customer has booked
+      that unit.
+    when: An authenticated successful payment result for the expired reservation arrives, then is
+      delivered again.
+    then: The original reservation stays expired with visible reconciliation status for its customer and
+      authorised operator; the new booking and capacity stay unchanged.
+    evidence: Late-result and duplicate-result journey with both reservation records and visible payment
+      outcome; POL-BOOK-003 and INV-BOOK-001.
+  - id: ACC-BOOK-008
+    given: An unexpired payment hold exists.
+    when: No payment result arrives, or a result is unsuccessful, unauthenticated or for another
+      reservation.
+    then: No paid reservation is confirmed in any case; the hold expires under POL-BOOK-001.
+    evidence: Separate negative integration cases for missing, failed, forged and mismatched results
+      with state and capacity observations; INT-BOOK-001.
+  - id: ACC-BOOK-009
+    given: A confirmed reservation was accepted under cancellation policy A; the operator later
+      publishes policy B.
+    when: An unrelated customer tries to cancel it, then its owner cancels under the still-applicable
+      policy A and repeats the request.
+    then: The unrelated customer cannot cancel or change capacity; the permitted owner cancellation uses
+      A and releases quantity once; repetition releases nothing further. In separate fresh fixtures,
+      an operator authorised for the resource can cancel under A, while an out-of-scope operator is
+      denied without changing reservation or capacity. The applicable policy is shown before initial
+      confirmation.
+    evidence: Actor and policy-version matrix including authorised operator and out-of-scope operator
+      cases; INV-BOOK-003 and POL-BOOK-002.
+  - id: ACC-BOOK-010
+    given: A confirmed reservation records an accepted instant and time-zone identifier.
+    when: The resource time zone and viewer time zone change; the confirmation is retrieved again.
+    then: The original commitment remains recorded; any converted display identifies its zone and
+      corresponds to the same instant.
+    evidence: Before/after commitment comparison including daylight-saving overlap and date-boundary
+      fixtures with distinct instants; INV-BOOK-002.
+  - id: ACC-BOOK-011
+    given: A published slot is available for a valid unpaid reservation.
+    when: A customer completes the booking journey using only a keyboard and inspects accessible field
+      names.
+    then: Every booking control is reachable and operable, focus is visible, and every field has an
+      accessible label; the confirmation is retrievable.
+    evidence: Recorded keyboard journey and accessibility-tree field-name inspection; QA-BOOK-002.
+  - id: ACC-BOOK-012
+    given: The last unit is held until E and payment success processing races with expiry and another
+      customer allocation.
+    when: The three operations are interleaved on both sides of E, including a payment decision exactly
+      at E.
+    then: A successful decision before E converts the existing hold once and excludes the other
+      allocation. A decision at or after E leaves the old reservation expired with reconciliation
+      visible; at most one new allocation succeeds. Total allocated quantity never exceeds one.
+    evidence: Controlled-clock concurrent integration test with observed decision instants, all outcomes
+      and capacity ledger; REQ-BOOK-002, INV-BOOK-001, POL-BOOK-001 and POL-BOOK-003.
+delivery:
+  required_artifacts:
+    - Operator guide
+    - Published cancellation policy
+    - Conformance matrix
+  verification:
+    - Execute ACC-BOOK-001 through ACC-BOOK-012 against an identified implementation revision;
+      record fixtures, configuration, observed outcomes and missing cases.
+    - Run the 100-concurrent-request last-seat case for QA-BOOK-001 and record all outcomes plus
+      final allocation.
+    - Conformance matrix maps each requirement, invariant, policy, integration and quality attribute
+      to executed evidence; schema validity and planned cases do not establish product conformance.
+extensions:
+  booking.waitlist: Adds a waitlist without changing capacity invariants.

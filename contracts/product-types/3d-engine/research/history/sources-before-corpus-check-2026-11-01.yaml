@@ -1,0 +1,272 @@
+schema_version: "0.1"
+research_status: initial
+candidate_products:
+  - Godot
+  - Unity
+  - Unreal Engine
+  - Blender
+  - MCP for Blender (community project)
+  - MCP for Unity (community project)
+  - OpenUSD
+  - NVIDIA Omni Replicator
+  - Khronos Vulkan Samples (measurement reference only)
+source_selection:
+  - Use official documentation, source repositories, or first-party technical material.
+  - Record the product version and retrieval date for every source.
+  - Review resource destruction, frame scheduling and no-display rendering across three engines;
+    preserve counterexamples and historical source records.
+  - "Second pass: compare agent workflows and reversible edits, annotated visual feedback and
+    published evaluation methods. Community project sources are primary for their own projects, not
+    vendor endorsements or measured superiority."
+  - "Performance pass: six official documents about bottlenecks, delayed timings/readback, warmup,
+    profiling overhead and timestamp validity. API-specific mechanisms are evidence, not
+    implementation requirements."
+sources:
+  - id: SRC-3D-GODOT-NODES
+    product: Godot Engine
+    version: stable alias; product release not pinned
+    title: Nodes and Scenes
+    url: https://docs.godotengine.org/en/stable/getting_started/step_by_step/nodes_and_scenes.html
+    locator: Nodes; Scenes
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: bc1c8786d4f8ed0e66654beb8a3faff0652a9c7f2c211014de7862f855c4ae6f
+  - id: SRC-3D-GODOT-LOADING
+    product: Godot Engine
+    version: stable alias; product release not pinned
+    title: Background loading
+    url: https://docs.godotengine.org/en/stable/tutorials/io/background_loading.html
+    locator: load_threaded_request; load_threaded_get_status; load_threaded_get
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: b67c6ad386cb827c9a3ac82c524e62f8b2efe32bed342ed8b1dd8391f84634a6
+  - id: SRC-3D-UNITY-TRANSFORM
+    product: Unity
+    version: 6000.0 documentation
+    title: Transforms
+    url: https://docs.unity3d.com/6000.0/Documentation/Manual/class-Transform.html
+    locator: Parenting; local and world transforms
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: 7d3b9c7b061dc101d6fb8cbb8f060f96537a6c4e2680f1293a3cfd7bd289255f
+  - id: SRC-3D-UNREAL-COMPONENTS
+    product: Unreal Engine
+    version: 5.8 documentation as identified by page metadata; retrieved 2026-11-01
+    title: Components
+    url: https://dev.epicgames.com/documentation/en-us/unreal-engine/components-in-unreal-engine
+    locator: Scene Components; Attachment
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: 9a8a69fd6783fd088800fe8ee6c483398e37b52b8e429ef2a8bbe202a1efde42
+  - id: SRC-3D-GODOT-NODE-LIFETIME
+    product: Godot Engine
+    version: stable alias; product release not pinned
+    title: Node
+    url: https://docs.godotengine.org/en/stable/classes/class_node.html
+    locator: queue_free; remove_child
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: 43db08989b2fab3e23002cd2bd89496f363c5659ea50e60b376bf8ff9dde7103
+  - id: SRC-3D-GODOT-PROCESSING
+    product: Godot Engine
+    version: stable alias; product release not pinned
+    title: Idle and physics processing
+    url: https://docs.godotengine.org/en/stable/tutorials/scripting/idle_and_physics_processing.html
+    locator: Idle processing; Physics processing
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: beab3eca885c6719338a632a157dadf3d60eddea3f81369079e6a22fdd86b953
+  - id: SRC-3D-GODOT-RENDERING
+    product: Godot Engine
+    version: stable alias; product release not pinned
+    title: RenderingServer
+    url: https://docs.godotengine.org/en/stable/classes/class_renderingserver.html
+    locator: "Description: Headless mode; free_rid"
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: cbfebe7aa7a4dc51aefb8e9c74747ca35bffccc2d0d3cc0e4b96cc087e0166b9
+  - id: SRC-3D-UNITY-DESTROY
+    product: Unity
+    version: 6000.0 documentation
+    title: Object.Destroy
+    url: https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Object.Destroy.html
+    locator: Description; delayed destruction
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: 56c3f207515f681298cb52ce4db4a87955737be7775a6fca4a77cf4557999507
+  - id: SRC-3D-UNITY-UNLOAD
+    product: Unity
+    version: 6000.0 documentation
+    title: SceneManager.UnloadSceneAsync
+    url: https://docs.unity3d.com/6000.0/Documentation/ScriptReference/SceneManagement.SceneManager.UnloadSceneAsync.html
+    locator: Description; asset unloading note
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: 625af39a66c7af479d391a09c1fc9a9bbd152388472433455ac2bf62b1e841ab
+  - id: SRC-3D-UNITY-TIME
+    product: Unity
+    version: 6000.0 documentation
+    title: Time.maximumDeltaTime
+    url: https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Time-maximumDeltaTime.html
+    locator: Description; maximumDeltaTime / fixedDeltaTime
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: 01e456c0a728ac4817a61f3ad0613b52e37cc1613a71073fc3329f252ee8d73d
+  - id: SRC-3D-UNREAL-LIFETIME
+    product: Unreal Engine
+    version: 5.8 documentation as identified by page metadata; retrieved 2026-11-01
+    title: Actor Lifecycle
+    url: https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-engine-actor-lifecycle
+    locator: End of Actor Lifecycle; Advanced Garbage Collection
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: d73d684f3f765111dd57b0e4d00fa66dacb512a9959f0774c502aad22d7473e9
+  - id: SRC-3D-UNREAL-TICK
+    product: Unreal Engine
+    version: 5.8 documentation as identified by page metadata; retrieved 2026-11-01
+    title: Actor Ticking
+    url: https://dev.epicgames.com/documentation/en-us/unreal-engine/actor-ticking-in-unreal-engine
+    locator: Tick Groups; Tick Group Order
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: cc7902e75362cc225a093333480ef09a15cc96096271736f4e5d283567adef0f
+  - id: SRC-3D-BLENDER-MCP
+    product: ahujasid/mcp-for-blender
+    version: Git commit 992233bb258975a05eec8b5691465c50c2831e34 (2026-10-29T09:13:29Z)
+    title: MCP for Blender project README
+    url: https://raw.githubusercontent.com/ahujasid/mcp-for-blender/992233bb258975a05eec8b5691465c50c2831e34/README.md
+    locator: "Capabilities: get_scene_info, look; Limitations & Security Considerations:
+      execute_blender_code"
+    retrieved_on: 2026-11-01
+    content_sha256: f0c11f3e33c0b29c0ce4dd4cfd69524b97e0173726854d4d84c25bc9ac3ace91
+  - id: SRC-3D-UNITY-MCP
+    product: CoplayDev/unity-mcp
+    version: Git commit e2fd09c71644d1d9fa1ae134526ce913cbf97536 (2026-10-30T18:15:23Z)
+    title: MCP for Unity project README
+    url: https://raw.githubusercontent.com/CoplayDev/unity-mcp/e2fd09c71644d1d9fa1ae134526ce913cbf97536/README.md
+    locator: What it does; Quickstart requirements; Disclaimer
+    retrieved_on: 2026-11-01
+    content_sha256: 4d2670fc7665b0293c6dd17c7eca00bd5737b5ac2427931af6f81add927b9820
+  - id: SRC-3D-CODEBENCH
+    product: gaoypeng/3dcodebench
+    version: Git commit 42c7780ed3fcbd466f17f058f62e7996233777f7 (2026-06-02T05:08:03Z)
+    title: 3DCodeBench project README
+    url: https://raw.githubusercontent.com/gaoypeng/3dcodebench/42c7780ed3fcbd466f17f058f62e7996233777f7/README.md
+    locator: "Introduction: benchmark task and scoring dimensions; Evaluation modes"
+    retrieved_on: 2026-11-01
+    content_sha256: f7b5381c113688daaa007f74197cdb0d035fa63ce9e5d46c9aee8fe0c724ecbd
+  - id: SRC-3D-BLENDER-OPERATORS
+    product: Blender
+    version: Operators (bpy.ops) - Blender Python API; current alias retrieved 2026-11-01
+    title: Operators
+    url: https://docs.blender.org/api/current/bpy.ops.html
+    locator: Calling operators; context and poll; execution returns
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: fac1ab1eaf072e5b94757134f43d0fa79c7d2bcdc88fe3316a1121eaf3560d04
+  - id: SRC-3D-USD-INTRO
+    product: OpenUSD
+    version: 27.02 development documentation; live alias retrieved 2026-11-01
+    title: Introduction to USD
+    url: https://openusd.org/dev/intro.html
+    locator: Non-destructive editing; composition overrides
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: e4e8a9663dfa06de4e850486ed66a001dae93e1f8141e5ca811de55ae716e4e1
+  - id: SRC-3D-REPLICATOR-ANNOTATORS
+    product: NVIDIA Omni Replicator
+    version: 1.13.30 API documentation
+    title: "Replicator API: annotators"
+    url: https://docs.omniverse.nvidia.com/kit/docs/omni_replicator/1.13.30/source/extensions/omni.replicator.core/docs/API.html
+    locator: Default Annotators; distance_to_camera; instance_id_segmentation
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: f6cab87c8a164cc7e98be5b16372af268323c7b0a200d2cf87c90c0a16395600
+  - id: SRC-3D-BLENDERGYM
+    product: BlenderGym research benchmark
+    version: arXiv:2504.01786v1, submitted 2025-04-02
+    title: "BlenderGym: Benchmarking Foundational Model Systems for Graphics Editing"
+    url: https://arxiv.org/abs/2504.01786v1
+    locator: Abstract; benchmark scope and reconstruction evaluation
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: 22b1de33decd916560f53ee2ae8845ec0d1f3db0e54022556cae1abacc5f785c
+  - id: SRC-3D-BLENDERWORLD
+    product: BlenderWorld research benchmark
+    version: arXiv:2610.23986v1, submitted 2026-10-14
+    title: "BlenderWorld: Benchmarking Visual Agents for 3D Creation from Real-World References"
+    url: https://arxiv.org/abs/2610.23986v1
+    locator: Abstract; multi-view renders and task-specific rubrics
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: 86b7a1d32e10047bf15b5b29ae46e347ed471bcad34cb4d5bf1b54d2f0db8391
+  - id: SRC-3D-UNITY-MCP-BATCH
+    product: CoplayDev/unity-mcp
+    version: Git commit e2fd09c71644d1d9fa1ae134526ce913cbf97536
+    title: Batch execute reference
+    url: https://raw.githubusercontent.com/CoplayDev/unity-mcp/e2fd09c71644d1d9fa1ae134526ce913cbf97536/website/docs/reference/tools/core/batch_execute.md
+    locator: "Parameters: fail_fast, parallel; Stop on first failure vs continue; Limits"
+    retrieved_on: 2026-11-01
+    content_sha256: f733583413245bf626b444f41038657cb980facaeb4c1c64d309996ab147314a
+  - id: SRC-3D-UNITY-MCP-SCENE
+    product: CoplayDev/unity-mcp
+    version: Git commit e2fd09c71644d1d9fa1ae134526ce913cbf97536
+    title: Manage scene reference
+    url: https://raw.githubusercontent.com/CoplayDev/unity-mcp/e2fd09c71644d1d9fa1ae134526ce913cbf97536/website/docs/reference/tools/core/manage_scene.md
+    locator: "Description: hierarchy and manage_camera reference; get_hierarchy paging; auto_repair"
+    retrieved_on: 2026-11-01
+    content_sha256: 669e374db3e45f89bdd07297821e4cc33ac6279c20da90968d4cec0f19c92e75
+  - id: SRC-3D-GODOT-PERF
+    product: Godot Engine
+    version: stable alias, product release not pinned
+    title: General optimization tips
+    url: https://docs.godotengine.org/en/stable/tutorials/performance/general_optimization.html
+    locator: CPU/GPU bottlenecks; measuring performance
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: 770807652d35747676b2559555d9d24d402786f158c5500ab142824e92e4e58f
+  - id: SRC-3D-UNITY-FRAME-TIMING
+    product: Unity
+    version: 6000.0 documentation
+    title: Frame timing manager introduction
+    url: https://docs.unity.com/en-us/engine/6000.0/manual/analysis/graphics-performance-profiling/profile-rendering/frame-timing-manager/manager
+    locator: CPU/GPU timings; delayed results; limitations
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: 798b3a11dbc2d15e57c49a183184962c0e90fcfc515ad2efa022ea12c23eda9c
+  - id: SRC-3D-UNITY-READBACK
+    product: Unity
+    version: 6000.0 documentation
+    title: AsyncGPUReadback
+    url: https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Rendering.AsyncGPUReadback.html
+    locator: Description; latency and CPU/GPU stalls
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: 16c07c47facbf41b7e37841e89d4d3e4cf74b2a1d580ca8f3106b9b0a6103320
+  - id: SRC-3D-UNREAL-PROFILING
+    product: Unreal Engine
+    version: 5.8 documentation as identified by page metadata; retrieved 2026-11-01
+    title: Introduction to Performance Profiling and Configuration
+    url: https://dev.epicgames.com/documentation/en-us/unreal-engine/introduction-to-performance-profiling-and-configuration-in-unreal-engine
+    locator: Profiling; performance bottlenecks; profiler overhead
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: 178df2e4b4cb16c4d3007e1aa7995e9fac67287298f082b143bd04224ab7c1ba
+  - id: SRC-3D-KHRONOS-TIMESTAMPS
+    product: Khronos Vulkan Samples
+    version: Latest sample documentation; consulted 2026-11-01; no Vulkan implementation required
+    title: Timestamp queries sample
+    url: https://docs.vulkan.org/samples/latest/samples/api/timestamp_queries/README.html
+    locator: Timestamp support; timestampPeriod; query-result availability
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: adb48052465f04c56c35aee81a7ce9a956d86be47ce43e7ac9bc26a47f024c05
+  - id: SRC-3D-UNITY-SHADER-WARMUP
+    product: Unity
+    version: 6000.0 documentation
+    title: ShaderVariantCollection.WarmUp
+    url: https://docs.unity3d.com/6000.0/Documentation/ScriptReference/ShaderVariantCollection.WarmUp.html
+    locator: Description; driver and graphics-state warmup limitations
+    retrieved_on: 2026-11-01
+    content_normalization: html_article_text
+    content_sha256: 3aa91ded5b8ece335e6ede25b9b4db3b1c27fa674c049b44a5eba7e9302bdffb

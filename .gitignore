@@ -1,0 +1,10 @@
+node_modules/
+npm-debug.log*
+.DS_Store
+
+# Local-only evidence about private consumer projects; never published.
+/private/
+
+# Generated local validation archives; source tests and CI stay versioned.
+/.agents/work/**/checks/
+/.agents/work/**/reviews/independent-checks/

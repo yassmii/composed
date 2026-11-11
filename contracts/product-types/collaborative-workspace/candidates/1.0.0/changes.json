@@ -1,0 +1,86 @@
+{
+  "format_version": 1,
+  "kind": "contract-update-proposal",
+  "date": "2026-11-01",
+  "family": "collaborative-workspace",
+  "title": "Effective authority and explicit restore scope",
+  "status": "proposed",
+  "baseline": {
+    "version": "0.1.0",
+    "contract_sha256": "6878069a7e8e49dce39732719aa0169f11adba8eed98ac892504d3c0c0ad1ac8",
+    "traceability_sha256": "dcb6f7296a267a4265d4c2827e4e6ce871ab9ea8987fed914145860eb9aec0c3"
+  },
+  "candidate": {
+    "version": "1.0.0",
+    "status": "candidate",
+    "schema_version": "0.1",
+    "contract_sha256": "bd98b4851756834578de0ced74ae7e4490fba7fdd09cf87018263f19b6682303"
+  },
+  "classification": "Breaking strengthened obligations/evidence; author assessment, not automatic tool compatibility",
+  "reason": "Current Notion evidence shows overlapping grants and database restoration that excludes page bodies. A permission label or successful parent restore alone cannot establish the stronger workspace guarantee.",
+  "changed_clauses": [
+    {
+      "id": "REQ-CWS-024",
+      "before": "A grant identifies its principal, scope, access level, restrictions, issuer, time bounds, and delegation rule; access levels distinguish at least view, comment, edit content, edit structure, share, export, and administer.",
+      "after": "A grant identifies its principal, scope, access level, restrictions, issuer, time bounds, and delegation rule; access levels distinguish at least view, comment, edit content, edit structure, share, export, and administer. The effective authorisation decision accounts for all applicable direct, group, inherited and time-bounded grants under a documented composition policy and workspace restrictions. An authorised steward can inspect the contributing grant scopes and the reason for that decision without receiving protected content outside their scope. A narrow grant cannot be presented as restricting broader effective access that still exists.",
+      "planned_cases": [
+        "ACC-CWS-023"
+      ]
+    },
+    {
+      "id": "REQ-CWS-031",
+      "before": "Restoring a recoverable revision creates a new current revision attributed to the restorer and retains the state it replaced as recoverable history.",
+      "after": "Restoring a recoverable revision creates a new current revision attributed to the restorer and retains the state it replaced as recoverable history. Before confirmation, restoration identifies the exact recoverable revision and selected scope, including whether nested page bodies, structured values, comments and attachments are included or excluded. The selected resulting state is validated before it becomes current; a missing or unrecoverable selected part prevents complete-success publication and leaves the current revision unchanged. Intentionally excluded parts are disclosed and never presented as restored. Restoration cannot itself grant access beyond current policy.",
+      "planned_cases": [
+        "ACC-CWS-024"
+      ]
+    }
+  ],
+  "retained_cases": [
+    "ACC-CWS-001",
+    "ACC-CWS-002",
+    "ACC-CWS-003",
+    "ACC-CWS-004",
+    "ACC-CWS-005",
+    "ACC-CWS-006",
+    "ACC-CWS-007",
+    "ACC-CWS-008",
+    "ACC-CWS-009",
+    "ACC-CWS-010",
+    "ACC-CWS-011",
+    "ACC-CWS-012",
+    "ACC-CWS-013",
+    "ACC-CWS-014",
+    "ACC-CWS-015",
+    "ACC-CWS-016",
+    "ACC-CWS-017",
+    "ACC-CWS-018",
+    "ACC-CWS-019",
+    "ACC-CWS-020",
+    "ACC-CWS-021",
+    "ACC-CWS-022"
+  ],
+  "added_cases": [
+    "ACC-CWS-023",
+    "ACC-CWS-024"
+  ],
+  "product_acceptance": "not_run",
+  "proof_transfer": "not_performed",
+  "deferred": "Offline/convergence execution, portable history implementation, erasure extensions and full load testing remain deferred. No vendor grant-composition rule, storage engine or automatic restoration of every descendant is prescribed.",
+  "applicability": "Retain declared optional modules; justified conditional not_applicable is separate from not_run or failure, without weakening unconditional obligations.",
+  "validation": {
+    "schema_and_traceability": "passed",
+    "tooling_tests": {
+      "passed": 68,
+      "failed": 0,
+      "skipped": 0
+    },
+    "synthetic_example": "passed",
+    "native_impact": "impact.json",
+    "candidate_integrity": "passed",
+    "baseline_preservation": "passed",
+    "product_acceptance": "not_run",
+    "independent_review": "pending",
+    "stable_promotion": "not_performed"
+  }
+}

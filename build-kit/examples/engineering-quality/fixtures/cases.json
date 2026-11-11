@@ -1,0 +1,4 @@
+{
+  "ordinary": [{ "hours": 48, "expected": true }, { "hours": 12, "expected": false }],
+  "boundary": { "hours": 24, "expected": true }
+}

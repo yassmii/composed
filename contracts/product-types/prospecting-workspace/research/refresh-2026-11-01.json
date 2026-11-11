@@ -1,0 +1,725 @@
+{
+  "format_version": 1,
+  "kind": "research-refresh-record",
+  "date": "2026-11-01",
+  "family": "prospecting-workspace",
+  "scope": "Existing recorded sources and their dependent observations; no upstream-latest survey or product execution",
+  "status": "recorded_corpus_rechecked",
+  "author_review": "repository agent; not independent approval",
+  "baseline": {
+    "contract_sha256": "075469d1705456c0c79c54f2f88b7b5d3e7af5f0ee854178dd1c1339c427e9f0",
+    "traceability_sha256": "c96b3fb871cac9d424fa6a137bb09a31a26e9adea98dc87f8b17769b77e39e07",
+    "normative_bytes_changed": false
+  },
+  "source_archive": "history/sources-before-refresh-2026-11-01.yaml",
+  "observations_before_sha256": "2f486915a1203372c2f0909bd55089f3d50e3105a199f8c5eff4b0eeba5f03de",
+  "observations_after_sha256": "adcfee544fbf0dd819bc0c6d2b2b332f7bd17253026546a13c3dd1f00400416e",
+  "new_observations": [
+    "OBS-PR-030"
+  ],
+  "review": "Re-read OBS-PR-005–009/015/018/020/021/027/029 against current Pipedrive, CNIL, Stripe and RNIC passages. The recorded patterns remain supported. Stripe source URLs now select official English Markdown; API-v1 key retention is limited, not indefinite deduplication. The RNIC page is metadata evidence only; its national data file was not downloaded. CNIL references remain contextual inputs to separately validated deployment policies, not blanket legal approval. Existing REQ-PR-008/014/025/030/037–040/048/050 and INV-PR-005/006/007 remain unchanged.",
+  "followup": "Validate actual source schemas and reuse permissions, policy populations/channels/dates, provider reconciliation after key expiry, and representative qualification evidence. Pipedrive form configuration does not establish valid marketing consent for a deployment.",
+  "behavioural_diff_from_historical_bodies": "unknown; old bodies unavailable, original metadata preserved",
+  "product_acceptance": "not_run",
+  "proof_transfer": "not_performed",
+  "sources": [
+    {
+      "id": "SRC-PR-ATTIO",
+      "before": {
+        "url": "https://attio.com/help/reference/attio-101/attios-data-model/define-your-data-model-objects-lists-and-views",
+        "retrieved_on": "2026-10-23",
+        "sha256": "86aa59df19137df195778d43c13de8aacfe7749d412089c7f82aa70386466156",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://attio.com/help/reference/attio-101/attios-data-model/define-your-data-model-objects-lists-and-views",
+        "retrieved_on": "2026-11-01",
+        "sha256": "86aa59df19137df195778d43c13de8aacfe7749d412089c7f82aa70386466156",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "86aa59df19137df195778d43c13de8aacfe7749d412089c7f82aa70386466156",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-PR-001",
+        "OBS-PR-002"
+      ],
+      "affected_clauses": [
+        "CAP-PR-001",
+        "CAP-PR-002",
+        "INV-PR-002",
+        "REQ-PR-001",
+        "REQ-PR-005",
+        "REQ-PR-024",
+        "REQ-PR-049"
+      ]
+    },
+    {
+      "id": "SRC-PR-CLAY",
+      "before": {
+        "url": "https://university.clay.com/docs/building-a-data-waterfall",
+        "retrieved_on": "2026-10-23",
+        "sha256": "9103c4940ec0316c75284916ef4e77d13981a126e8930ab0750bbfe1aa77ac03",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://university.clay.com/docs/building-a-data-waterfall",
+        "retrieved_on": "2026-11-01",
+        "sha256": "9103c4940ec0316c75284916ef4e77d13981a126e8930ab0750bbfe1aa77ac03",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "9103c4940ec0316c75284916ef4e77d13981a126e8930ab0750bbfe1aa77ac03",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-PR-010"
+      ],
+      "affected_clauses": [
+        "CAP-PR-003",
+        "CAP-PR-017",
+        "REQ-PR-008",
+        "REQ-PR-011",
+        "REQ-PR-056"
+      ]
+    },
+    {
+      "id": "SRC-PR-CLAY-SIGNALS",
+      "before": {
+        "url": "https://university.clay.com/docs/custom-signals",
+        "retrieved_on": "2026-10-23",
+        "sha256": "58e8d12ebf02d2db87bbb4a5b9960320b06ba67bb98bac15992e077fec8278a1",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://university.clay.com/docs/custom-signals",
+        "retrieved_on": "2026-11-01",
+        "sha256": "58e8d12ebf02d2db87bbb4a5b9960320b06ba67bb98bac15992e077fec8278a1",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "58e8d12ebf02d2db87bbb4a5b9960320b06ba67bb98bac15992e077fec8278a1",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-PR-011"
+      ],
+      "affected_clauses": [
+        "CAP-PR-017",
+        "REQ-PR-055",
+        "REQ-PR-057"
+      ]
+    },
+    {
+      "id": "SRC-PR-CNIL-COMM",
+      "before": {
+        "url": "https://www.cnil.fr/fr/communication-electronique-quelles-regles",
+        "retrieved_on": "2026-10-23",
+        "sha256": "a53b0a741c44f9fcade793cfd84ec1be5ad0c4bd0ce398e9e3ea612f568ffd36",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://www.cnil.fr/fr/communication-electronique-quelles-regles",
+        "retrieved_on": "2026-11-01",
+        "sha256": "a53b0a741c44f9fcade793cfd84ec1be5ad0c4bd0ce398e9e3ea612f568ffd36",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "a53b0a741c44f9fcade793cfd84ec1be5ad0c4bd0ce398e9e3ea612f568ffd36",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-PR-014"
+      ],
+      "affected_clauses": [
+        "CAP-PR-009",
+        "CAP-PR-012",
+        "INV-PR-005",
+        "POL-PR-004",
+        "REQ-PR-012",
+        "REQ-PR-029",
+        "REQ-PR-037"
+      ]
+    },
+    {
+      "id": "SRC-PR-CNIL-FAQ",
+      "before": {
+        "url": "https://www.cnil.fr/fr/questions-reponses-sur-les-referentiels-relatifs-la-gestion-des-activites-commerciales-et-des",
+        "retrieved_on": "2026-10-23",
+        "sha256": "9744d17bf92deab5849aeeb028c850d6a001c51077880450422c0d65abdaa9bd",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://www.cnil.fr/fr/questions-reponses-sur-les-referentiels-relatifs-la-gestion-des-activites-commerciales-et-des",
+        "retrieved_on": "2026-11-01",
+        "sha256": "1fcc13dae1001d100076e190759dffd0bf3fa37116e44cc5c3bb11c9590718a4",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "1fcc13dae1001d100076e190759dffd0bf3fa37116e44cc5c3bb11c9590718a4",
+      "initial_result": "changed",
+      "review": "dependent_observation_passages_rechecked",
+      "repeated_retrieval_matches": true,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-PR-015",
+        "OBS-PR-018",
+        "OBS-PR-029"
+      ],
+      "affected_clauses": [
+        "CAP-PR-012",
+        "INV-PR-005",
+        "INV-PR-006",
+        "INV-PR-010",
+        "POL-PR-004",
+        "QA-PR-005",
+        "REQ-PR-029",
+        "REQ-PR-033",
+        "REQ-PR-037",
+        "REQ-PR-038",
+        "REQ-PR-039",
+        "REQ-PR-040"
+      ]
+    },
+    {
+      "id": "SRC-PR-CNIL-PHONE",
+      "before": {
+        "url": "https://www.cnil.fr/fr/demarchage-commercial",
+        "retrieved_on": "2026-10-23",
+        "sha256": "5dd3a254ecd5b6d3d6c06b9a89589dd617b385b66313147f1c8777317c50fa5f",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://www.cnil.fr/fr/demarchage-commercial",
+        "retrieved_on": "2026-11-01",
+        "sha256": "5dd3a254ecd5b6d3d6c06b9a89589dd617b385b66313147f1c8777317c50fa5f",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "5dd3a254ecd5b6d3d6c06b9a89589dd617b385b66313147f1c8777317c50fa5f",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-PR-019"
+      ],
+      "affected_clauses": [
+        "CAP-PR-012",
+        "POL-PR-004",
+        "REQ-PR-037"
+      ]
+    },
+    {
+      "id": "SRC-PR-CNIL-REF",
+      "before": {
+        "url": "https://www.cnil.fr/sites/default/files/atoms/files/referentiel_traitements-donnees-caractere-personnel_gestion-activites-commerciales.pdf",
+        "retrieved_on": "2026-10-23",
+        "sha256": "3b70f8a66ca97eacd56b903acc28691748aeafb50b9efee9402eff02d965e6e7",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://www.cnil.fr/sites/default/files/atoms/files/referentiel_traitements-donnees-caractere-personnel_gestion-activites-commerciales.pdf",
+        "retrieved_on": "2026-11-01",
+        "sha256": "3b70f8a66ca97eacd56b903acc28691748aeafb50b9efee9402eff02d965e6e7",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "3b70f8a66ca97eacd56b903acc28691748aeafb50b9efee9402eff02d965e6e7",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-PR-016"
+      ],
+      "affected_clauses": [
+        "CAP-PR-012",
+        "POL-PR-004",
+        "REQ-PR-037",
+        "REQ-PR-039"
+      ]
+    },
+    {
+      "id": "SRC-PR-CNIL-REUSE",
+      "before": {
+        "url": "https://www.cnil.fr/sites/cnil/files/2024-06/recommandations_reutilisateurs_donnees_publiees_sur_internet.pdf",
+        "retrieved_on": "2026-10-23",
+        "sha256": "f6779c45dab10cfe1b2bb8d4d54f0164efbc2090705f8952262aafa9103f7694",
+        "normalization": "exact_bytes"
+      },
+      "after": {
+        "url": "https://www.cnil.fr/sites/cnil/files/2024-06/recommandations_reutilisateurs_donnees_publiees_sur_internet.pdf",
+        "retrieved_on": "2026-11-01",
+        "sha256": "f6779c45dab10cfe1b2bb8d4d54f0164efbc2090705f8952262aafa9103f7694",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "f6779c45dab10cfe1b2bb8d4d54f0164efbc2090705f8952262aafa9103f7694",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-PR-017"
+      ],
+      "affected_clauses": [
+        "CAP-PR-003",
+        "CAP-PR-012",
+        "REQ-PR-008",
+        "REQ-PR-037",
+        "REQ-PR-040",
+        "REQ-PR-041"
+      ]
+    },
+    {
+      "id": "SRC-PR-COPRO",
+      "before": {
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/N31338",
+        "retrieved_on": "2026-10-23",
+        "sha256": "d27b139c9dc2f6a6a6239d999b975f482f0274bad4a52346315e614c021afbbb",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/N31338",
+        "retrieved_on": "2026-11-01",
+        "sha256": "d27b139c9dc2f6a6a6239d999b975f482f0274bad4a52346315e614c021afbbb",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "d27b139c9dc2f6a6a6239d999b975f482f0274bad4a52346315e614c021afbbb",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-PR-028"
+      ],
+      "affected_clauses": [
+        "CAP-PR-002",
+        "REQ-PR-005",
+        "REQ-PR-006"
+      ]
+    },
+    {
+      "id": "SRC-PR-GMAIL",
+      "before": {
+        "url": "https://support.google.com/mail/answer/81126?hl=en",
+        "retrieved_on": "2026-10-23",
+        "sha256": "c7e6eed83fb4765285ebc62cff89cf2f6dc977fa8bf1a47f8b7beff08c8c97cb",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://support.google.com/mail/answer/81126?hl=en",
+        "retrieved_on": "2026-11-01",
+        "sha256": "c7e6eed83fb4765285ebc62cff89cf2f6dc977fa8bf1a47f8b7beff08c8c97cb",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "c7e6eed83fb4765285ebc62cff89cf2f6dc977fa8bf1a47f8b7beff08c8c97cb",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-PR-026"
+      ],
+      "affected_clauses": [
+        "CAP-PR-009",
+        "REQ-PR-031"
+      ]
+    },
+    {
+      "id": "SRC-PR-HUBSPOT",
+      "before": {
+        "url": "https://knowledge.hubspot.com/sequences/unenroll-from-sequence",
+        "retrieved_on": "2026-10-23",
+        "sha256": "e66a585b8f99dcf375af7a92ac238694206380491fa7a23d6604cf3ad62fd679",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://knowledge.hubspot.com/sequences/unenroll-from-sequence",
+        "retrieved_on": "2026-11-01",
+        "sha256": "e66a585b8f99dcf375af7a92ac238694206380491fa7a23d6604cf3ad62fd679",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "e66a585b8f99dcf375af7a92ac238694206380491fa7a23d6604cf3ad62fd679",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-PR-012",
+        "OBS-PR-013"
+      ],
+      "affected_clauses": [
+        "CAP-PR-008",
+        "CAP-PR-010",
+        "REQ-PR-027",
+        "REQ-PR-032",
+        "REQ-PR-033"
+      ]
+    },
+    {
+      "id": "SRC-PR-HUBSPOT-SCORE",
+      "before": {
+        "url": "https://knowledge.hubspot.com/scoring/understand-the-lead-scoring-tool",
+        "retrieved_on": "2026-10-23",
+        "sha256": "440b41fe299c8d7a4e7827aae71b59e35268f1dd9efd63eb5ecfcd7352149c49",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://knowledge.hubspot.com/scoring/understand-the-lead-scoring-tool",
+        "retrieved_on": "2026-11-01",
+        "sha256": "440b41fe299c8d7a4e7827aae71b59e35268f1dd9efd63eb5ecfcd7352149c49",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "440b41fe299c8d7a4e7827aae71b59e35268f1dd9efd63eb5ecfcd7352149c49",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-PR-003",
+        "OBS-PR-004"
+      ],
+      "affected_clauses": [
+        "CAP-PR-006",
+        "CAP-PR-014",
+        "INV-PR-002",
+        "POL-PR-005",
+        "POL-PR-006",
+        "REQ-PR-003",
+        "REQ-PR-019",
+        "REQ-PR-020",
+        "REQ-PR-021",
+        "REQ-PR-045"
+      ]
+    },
+    {
+      "id": "SRC-PR-OWASP-AGENCY",
+      "before": {
+        "url": "https://genai.owasp.org/llmrisk/llm062025-excessive-agency/",
+        "retrieved_on": "2026-10-23",
+        "sha256": "dc88915eb4877265f0782d3c94a82dcf7406255bc8f06660ea3b3881423810ae",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://genai.owasp.org/llmrisk/llm062025-excessive-agency/",
+        "retrieved_on": "2026-11-01",
+        "sha256": "dc88915eb4877265f0782d3c94a82dcf7406255bc8f06660ea3b3881423810ae",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "dc88915eb4877265f0782d3c94a82dcf7406255bc8f06660ea3b3881423810ae",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-PR-024"
+      ],
+      "affected_clauses": [
+        "CAP-PR-011",
+        "CAP-PR-013",
+        "INV-PR-005",
+        "INV-PR-009",
+        "INV-PR-011",
+        "POL-PR-003",
+        "QA-PR-004",
+        "REQ-PR-028",
+        "REQ-PR-029",
+        "REQ-PR-032",
+        "REQ-PR-035",
+        "REQ-PR-041",
+        "REQ-PR-043",
+        "REQ-PR-044"
+      ]
+    },
+    {
+      "id": "SRC-PR-OWASP-INJECTION",
+      "before": {
+        "url": "https://genai.owasp.org/glossaries/prompt-injection/",
+        "retrieved_on": "2026-10-23",
+        "sha256": "b244cdb9e17d1d30e8f0999e0ecb430147c9c0b388b5bc2d9ec5cac450d6c924",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://genai.owasp.org/glossaries/prompt-injection/",
+        "retrieved_on": "2026-11-01",
+        "sha256": "b244cdb9e17d1d30e8f0999e0ecb430147c9c0b388b5bc2d9ec5cac450d6c924",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "b244cdb9e17d1d30e8f0999e0ecb430147c9c0b388b5bc2d9ec5cac450d6c924",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-PR-025"
+      ],
+      "affected_clauses": [
+        "CAP-PR-013",
+        "INV-PR-011",
+        "REQ-PR-013",
+        "REQ-PR-043"
+      ]
+    },
+    {
+      "id": "SRC-PR-PIPEDRIVE",
+      "before": {
+        "url": "https://support.pipedrive.com/en/article/leads-inbox",
+        "retrieved_on": "2026-10-23",
+        "sha256": "019365d5aa05a2449afc9dd0c6750d64d843c1a6258f9b87644c382625720bad",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://support.pipedrive.com/en/article/leads-inbox",
+        "retrieved_on": "2026-11-01",
+        "sha256": "8ada5d7ec1ef02d7d99ae7749f9052a3172c6780287740556184cc698c9ed096",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "8ada5d7ec1ef02d7d99ae7749f9052a3172c6780287740556184cc698c9ed096",
+      "initial_result": "changed",
+      "review": "dependent_observation_passages_rechecked",
+      "repeated_retrieval_matches": true,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-PR-005",
+        "OBS-PR-006",
+        "OBS-PR-007"
+      ],
+      "affected_clauses": [
+        "CAP-PR-007",
+        "CAP-PR-008",
+        "CAP-PR-014",
+        "INV-PR-002",
+        "REQ-PR-009",
+        "REQ-PR-014",
+        "REQ-PR-022",
+        "REQ-PR-023",
+        "REQ-PR-025",
+        "REQ-PR-026",
+        "REQ-PR-045"
+      ]
+    },
+    {
+      "id": "SRC-PR-PIPEDRIVE-FORMS",
+      "before": {
+        "url": "https://support.pipedrive.com/en/article/web-forms",
+        "retrieved_on": "2026-10-23",
+        "sha256": "d75c426442b957cedd6a4073571cb58808a304e1e4f9cdf8e4971380785fdb9c",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://support.pipedrive.com/en/article/web-forms",
+        "retrieved_on": "2026-11-01",
+        "sha256": "59756a8b16ae63ac29dff5e36cd3b9ba3a26205f78ee81a73df411b6b17334da",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "59756a8b16ae63ac29dff5e36cd3b9ba3a26205f78ee81a73df411b6b17334da",
+      "initial_result": "changed",
+      "review": "dependent_observation_passages_rechecked",
+      "repeated_retrieval_matches": true,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-PR-008",
+        "OBS-PR-009"
+      ],
+      "affected_clauses": [
+        "CAP-PR-004",
+        "REQ-PR-012",
+        "REQ-PR-013"
+      ]
+    },
+    {
+      "id": "SRC-PR-PROV",
+      "before": {
+        "url": "https://www.w3.org/TR/2013/REC-prov-o-20130430/",
+        "retrieved_on": "2026-10-23",
+        "sha256": "870ec6446be276cb230f04895d3ef925b5485f45e2b94c01ca198221fc314407",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://www.w3.org/TR/2013/REC-prov-o-20130430/",
+        "retrieved_on": "2026-11-01",
+        "sha256": "870ec6446be276cb230f04895d3ef925b5485f45e2b94c01ca198221fc314407",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "870ec6446be276cb230f04895d3ef925b5485f45e2b94c01ca198221fc314407",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-PR-022"
+      ],
+      "affected_clauses": [
+        "CAP-PR-005",
+        "CAP-PR-013",
+        "CAP-PR-015",
+        "INV-PR-004",
+        "INV-PR-010",
+        "REQ-PR-006",
+        "REQ-PR-016",
+        "REQ-PR-017",
+        "REQ-PR-021",
+        "REQ-PR-042",
+        "REQ-PR-049"
+      ]
+    },
+    {
+      "id": "SRC-PR-RNIC",
+      "before": {
+        "url": "https://www.data.gouv.fr/datasets/registre-national-dimmatriculation-des-coproprietes",
+        "retrieved_on": "2026-10-23",
+        "sha256": "910a5c6e8f26eaf89edb10c21ea321fc9877894ba499953f57c1a4b3d5fe71b4",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://www.data.gouv.fr/datasets/registre-national-dimmatriculation-des-coproprietes",
+        "retrieved_on": "2026-11-01",
+        "sha256": "428f966e15674707bf5b3ea8ddc521f374ada3a1d7f2bbf0db59c8232096cb86",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "428f966e15674707bf5b3ea8ddc521f374ada3a1d7f2bbf0db59c8232096cb86",
+      "initial_result": "changed",
+      "review": "dependent_observation_passages_rechecked",
+      "repeated_retrieval_matches": true,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-PR-027",
+        "OBS-PR-030"
+      ],
+      "affected_clauses": [
+        "REQ-PR-008"
+      ]
+    },
+    {
+      "id": "SRC-PR-STRIPE-EVENTS",
+      "before": {
+        "url": "https://docs.stripe.com/webhooks",
+        "retrieved_on": "2026-10-23",
+        "sha256": "f8b7effbca29ef9d17fd4fdfe353b89c86b1a209ce38365183250e84f4b2b17e",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://docs.stripe.com/webhooks.md?locale=en-US",
+        "retrieved_on": "2026-11-01",
+        "sha256": "f644983058c4c278f0ec2492504929cdd8050bc39016da9c0559257119c8a4da",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "d8c2b46c8788dd23c25f0fe1ddbd8978e7c2bfa50b1da04ec3d5142b12b6effa",
+      "initial_result": "changed",
+      "review": "dependent_observation_passages_rechecked",
+      "repeated_retrieval_matches": null,
+      "representation_changed": true,
+      "dependent_observations": [
+        "OBS-PR-021"
+      ],
+      "affected_clauses": [
+        "CAP-PR-009",
+        "CAP-PR-015",
+        "INV-PR-007",
+        "QA-PR-003",
+        "REQ-PR-025",
+        "REQ-PR-030",
+        "REQ-PR-050"
+      ]
+    },
+    {
+      "id": "SRC-PR-STRIPE-IDEMPOTENCY",
+      "before": {
+        "url": "https://docs.stripe.com/api/idempotent_requests",
+        "retrieved_on": "2026-10-23",
+        "sha256": "ada7bc19e2d1c97e7df885c7e3d88cad4da50a597b62125d2c8922d7d3e46804",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://docs.stripe.com/api/idempotent_requests.md?locale=en-US",
+        "retrieved_on": "2026-11-01",
+        "sha256": "fd3d6f889a557f5535d7ac5e5e79c1898ac378b287c45e56a67880b5e5318ee3",
+        "normalization": "exact_bytes"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "c5ee337091e1c47e01b5f5b26291956f5a4871724884c73786d2a1eecaba3a59",
+      "initial_result": "changed",
+      "review": "dependent_observation_passages_rechecked",
+      "repeated_retrieval_matches": null,
+      "representation_changed": true,
+      "dependent_observations": [
+        "OBS-PR-020"
+      ],
+      "affected_clauses": [
+        "CAP-PR-009",
+        "CAP-PR-015",
+        "INV-PR-007",
+        "QA-PR-003",
+        "REQ-PR-014",
+        "REQ-PR-030",
+        "REQ-PR-048"
+      ]
+    },
+    {
+      "id": "SRC-PR-WCAG",
+      "before": {
+        "url": "https://www.w3.org/TR/2024/REC-WCAG22-20241212/",
+        "retrieved_on": "2026-10-23",
+        "sha256": "64fd73cdb7725d9511488f5de6386081329d365872547b2d5000ef771ac37bd0",
+        "normalization": "html_article_text"
+      },
+      "after": {
+        "url": "https://www.w3.org/TR/2024/REC-WCAG22-20241212/",
+        "retrieved_on": "2026-11-01",
+        "sha256": "64fd73cdb7725d9511488f5de6386081329d365872547b2d5000ef771ac37bd0",
+        "normalization": "html_article_text"
+      },
+      "retrieval": "retrieved",
+      "initial_hash": "64fd73cdb7725d9511488f5de6386081329d365872547b2d5000ef771ac37bd0",
+      "initial_result": "unchanged",
+      "review": "exact_recorded_snapshot_retrieved",
+      "repeated_retrieval_matches": null,
+      "representation_changed": false,
+      "dependent_observations": [
+        "OBS-PR-023"
+      ],
+      "affected_clauses": [
+        "QA-PR-001"
+      ]
+    }
+  ],
+  "validation": {
+    "structural": "passed",
+    "tooling_tests": {
+      "passed": 68,
+      "failed": 0,
+      "skipped": 0
+    },
+    "final_family_source_check": "passed",
+    "catalogue_source_check": {
+      "matched": 170,
+      "unavailable": 2,
+      "hash_mismatches": 0
+    },
+    "baseline_preservation": "passed",
+    "validation_detail": "../../../docs/research-refresh-2026-11-01.md#observed-validation",
+    "product_acceptance": "not_run"
+  }
+}

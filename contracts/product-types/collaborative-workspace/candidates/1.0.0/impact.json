@@ -1,0 +1,1338 @@
+{
+  "format_version": 1,
+  "kind": "contract-impact-report",
+  "status": "assessed",
+  "before": {
+    "id": "collaborative-workspace",
+    "version": "0.1.0",
+    "sha256": "6878069a7e8e49dce39732719aa0169f11adba8eed98ac892504d3c0c0ad1ac8"
+  },
+  "after": {
+    "id": "collaborative-workspace",
+    "version": "1.0.0",
+    "sha256": "bd98b4851756834578de0ced74ae7e4490fba7fdd09cf87018263f19b6682303"
+  },
+  "changes": {
+    "unchanged": [],
+    "modified": [
+      {
+        "id": "INV-CWS-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-CWS-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-CWS-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-CWS-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-CWS-005",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-CWS-006",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-CWS-007",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-CWS-008",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-CWS-009",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-CWS-010",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-CWS-011",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-CWS-012",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-CWS-013",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-CWS-014",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-CWS-015",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-CWS-016",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-CWS-017",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-CWS-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-CWS-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-CWS-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-CWS-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-CWS-005",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-CWS-006",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-CWS-007",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-CWS-008",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-CWS-009",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-CWS-010",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-CWS-011",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-CWS-012",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-CWS-013",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-CWS-014",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-CWS-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-CWS-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-CWS-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-CWS-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-CWS-005",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-CWS-006",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-CWS-007",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-CWS-008",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-CWS-009",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-CWS-010",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-CWS-011",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-CWS-012",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-CWS-013",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-CWS-014",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-CWS-015",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-CWS-016",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-005",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-006",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-007",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-008",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-009",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-010",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-011",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-012",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-013",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-014",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-015",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-016",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-017",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-018",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-019",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-020",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-021",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-022",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-023",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-024",
+        "reasons": [
+          "clause-content",
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-025",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-026",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-027",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-028",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-029",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-030",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-031",
+        "reasons": [
+          "clause-content",
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-032",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-033",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-034",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-035",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-036",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-037",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-038",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-039",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-040",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-041",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-042",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-043",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-044",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-045",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-046",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-047",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-048",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-049",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-050",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-051",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-052",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-053",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-054",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-055",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-056",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-057",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-058",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-059",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-060",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-061",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-062",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-063",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-064",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-065",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-066",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-067",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-068",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-069",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-070",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-071",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-072",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-073",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-074",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-075",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-076",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-077",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-078",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-079",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-080",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-081",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-082",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-083",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CWS-084",
+        "reasons": [
+          "contract-context"
+        ]
+      }
+    ],
+    "added": [],
+    "removed": []
+  },
+  "context_changes": [
+    "delivery"
+  ],
+  "metadata_changes": [
+    "status",
+    "version"
+  ],
+  "acceptance_changes": {
+    "unchanged": [
+      "ACC-CWS-001",
+      "ACC-CWS-002",
+      "ACC-CWS-003",
+      "ACC-CWS-004",
+      "ACC-CWS-005",
+      "ACC-CWS-006",
+      "ACC-CWS-007",
+      "ACC-CWS-008",
+      "ACC-CWS-009",
+      "ACC-CWS-010",
+      "ACC-CWS-011",
+      "ACC-CWS-012",
+      "ACC-CWS-013",
+      "ACC-CWS-014",
+      "ACC-CWS-015",
+      "ACC-CWS-016",
+      "ACC-CWS-017",
+      "ACC-CWS-018",
+      "ACC-CWS-019",
+      "ACC-CWS-020",
+      "ACC-CWS-021",
+      "ACC-CWS-022"
+    ],
+    "modified": [],
+    "added": [
+      "ACC-CWS-023",
+      "ACC-CWS-024"
+    ],
+    "removed": []
+  },
+  "correspondences": [],
+  "impact": {
+    "clause_ids": [
+      "INV-CWS-001",
+      "INV-CWS-002",
+      "INV-CWS-003",
+      "INV-CWS-004",
+      "INV-CWS-005",
+      "INV-CWS-006",
+      "INV-CWS-007",
+      "INV-CWS-008",
+      "INV-CWS-009",
+      "INV-CWS-010",
+      "INV-CWS-011",
+      "INV-CWS-012",
+      "INV-CWS-013",
+      "INV-CWS-014",
+      "INV-CWS-015",
+      "INV-CWS-016",
+      "INV-CWS-017",
+      "POL-CWS-001",
+      "POL-CWS-002",
+      "POL-CWS-003",
+      "POL-CWS-004",
+      "POL-CWS-005",
+      "POL-CWS-006",
+      "POL-CWS-007",
+      "POL-CWS-008",
+      "POL-CWS-009",
+      "POL-CWS-010",
+      "POL-CWS-011",
+      "POL-CWS-012",
+      "POL-CWS-013",
+      "POL-CWS-014",
+      "QA-CWS-001",
+      "QA-CWS-002",
+      "QA-CWS-003",
+      "QA-CWS-004",
+      "QA-CWS-005",
+      "QA-CWS-006",
+      "QA-CWS-007",
+      "QA-CWS-008",
+      "QA-CWS-009",
+      "QA-CWS-010",
+      "QA-CWS-011",
+      "QA-CWS-012",
+      "QA-CWS-013",
+      "QA-CWS-014",
+      "QA-CWS-015",
+      "QA-CWS-016",
+      "REQ-CWS-001",
+      "REQ-CWS-002",
+      "REQ-CWS-003",
+      "REQ-CWS-004",
+      "REQ-CWS-005",
+      "REQ-CWS-006",
+      "REQ-CWS-007",
+      "REQ-CWS-008",
+      "REQ-CWS-009",
+      "REQ-CWS-010",
+      "REQ-CWS-011",
+      "REQ-CWS-012",
+      "REQ-CWS-013",
+      "REQ-CWS-014",
+      "REQ-CWS-015",
+      "REQ-CWS-016",
+      "REQ-CWS-017",
+      "REQ-CWS-018",
+      "REQ-CWS-019",
+      "REQ-CWS-020",
+      "REQ-CWS-021",
+      "REQ-CWS-022",
+      "REQ-CWS-023",
+      "REQ-CWS-024",
+      "REQ-CWS-025",
+      "REQ-CWS-026",
+      "REQ-CWS-027",
+      "REQ-CWS-028",
+      "REQ-CWS-029",
+      "REQ-CWS-030",
+      "REQ-CWS-031",
+      "REQ-CWS-032",
+      "REQ-CWS-033",
+      "REQ-CWS-034",
+      "REQ-CWS-035",
+      "REQ-CWS-036",
+      "REQ-CWS-037",
+      "REQ-CWS-038",
+      "REQ-CWS-039",
+      "REQ-CWS-040",
+      "REQ-CWS-041",
+      "REQ-CWS-042",
+      "REQ-CWS-043",
+      "REQ-CWS-044",
+      "REQ-CWS-045",
+      "REQ-CWS-046",
+      "REQ-CWS-047",
+      "REQ-CWS-048",
+      "REQ-CWS-049",
+      "REQ-CWS-050",
+      "REQ-CWS-051",
+      "REQ-CWS-052",
+      "REQ-CWS-053",
+      "REQ-CWS-054",
+      "REQ-CWS-055",
+      "REQ-CWS-056",
+      "REQ-CWS-057",
+      "REQ-CWS-058",
+      "REQ-CWS-059",
+      "REQ-CWS-060",
+      "REQ-CWS-061",
+      "REQ-CWS-062",
+      "REQ-CWS-063",
+      "REQ-CWS-064",
+      "REQ-CWS-065",
+      "REQ-CWS-066",
+      "REQ-CWS-067",
+      "REQ-CWS-068",
+      "REQ-CWS-069",
+      "REQ-CWS-070",
+      "REQ-CWS-071",
+      "REQ-CWS-072",
+      "REQ-CWS-073",
+      "REQ-CWS-074",
+      "REQ-CWS-075",
+      "REQ-CWS-076",
+      "REQ-CWS-077",
+      "REQ-CWS-078",
+      "REQ-CWS-079",
+      "REQ-CWS-080",
+      "REQ-CWS-081",
+      "REQ-CWS-082",
+      "REQ-CWS-083",
+      "REQ-CWS-084"
+    ],
+    "before_clause_ids": [
+      "INV-CWS-001",
+      "INV-CWS-002",
+      "INV-CWS-003",
+      "INV-CWS-004",
+      "INV-CWS-005",
+      "INV-CWS-006",
+      "INV-CWS-007",
+      "INV-CWS-008",
+      "INV-CWS-009",
+      "INV-CWS-010",
+      "INV-CWS-011",
+      "INV-CWS-012",
+      "INV-CWS-013",
+      "INV-CWS-014",
+      "INV-CWS-015",
+      "INV-CWS-016",
+      "INV-CWS-017",
+      "POL-CWS-001",
+      "POL-CWS-002",
+      "POL-CWS-003",
+      "POL-CWS-004",
+      "POL-CWS-005",
+      "POL-CWS-006",
+      "POL-CWS-007",
+      "POL-CWS-008",
+      "POL-CWS-009",
+      "POL-CWS-010",
+      "POL-CWS-011",
+      "POL-CWS-012",
+      "POL-CWS-013",
+      "POL-CWS-014",
+      "QA-CWS-001",
+      "QA-CWS-002",
+      "QA-CWS-003",
+      "QA-CWS-004",
+      "QA-CWS-005",
+      "QA-CWS-006",
+      "QA-CWS-007",
+      "QA-CWS-008",
+      "QA-CWS-009",
+      "QA-CWS-010",
+      "QA-CWS-011",
+      "QA-CWS-012",
+      "QA-CWS-013",
+      "QA-CWS-014",
+      "QA-CWS-015",
+      "QA-CWS-016",
+      "REQ-CWS-001",
+      "REQ-CWS-002",
+      "REQ-CWS-003",
+      "REQ-CWS-004",
+      "REQ-CWS-005",
+      "REQ-CWS-006",
+      "REQ-CWS-007",
+      "REQ-CWS-008",
+      "REQ-CWS-009",
+      "REQ-CWS-010",
+      "REQ-CWS-011",
+      "REQ-CWS-012",
+      "REQ-CWS-013",
+      "REQ-CWS-014",
+      "REQ-CWS-015",
+      "REQ-CWS-016",
+      "REQ-CWS-017",
+      "REQ-CWS-018",
+      "REQ-CWS-019",
+      "REQ-CWS-020",
+      "REQ-CWS-021",
+      "REQ-CWS-022",
+      "REQ-CWS-023",
+      "REQ-CWS-024",
+      "REQ-CWS-025",
+      "REQ-CWS-026",
+      "REQ-CWS-027",
+      "REQ-CWS-028",
+      "REQ-CWS-029",
+      "REQ-CWS-030",
+      "REQ-CWS-031",
+      "REQ-CWS-032",
+      "REQ-CWS-033",
+      "REQ-CWS-034",
+      "REQ-CWS-035",
+      "REQ-CWS-036",
+      "REQ-CWS-037",
+      "REQ-CWS-038",
+      "REQ-CWS-039",
+      "REQ-CWS-040",
+      "REQ-CWS-041",
+      "REQ-CWS-042",
+      "REQ-CWS-043",
+      "REQ-CWS-044",
+      "REQ-CWS-045",
+      "REQ-CWS-046",
+      "REQ-CWS-047",
+      "REQ-CWS-048",
+      "REQ-CWS-049",
+      "REQ-CWS-050",
+      "REQ-CWS-051",
+      "REQ-CWS-052",
+      "REQ-CWS-053",
+      "REQ-CWS-054",
+      "REQ-CWS-055",
+      "REQ-CWS-056",
+      "REQ-CWS-057",
+      "REQ-CWS-058",
+      "REQ-CWS-059",
+      "REQ-CWS-060",
+      "REQ-CWS-061",
+      "REQ-CWS-062",
+      "REQ-CWS-063",
+      "REQ-CWS-064",
+      "REQ-CWS-065",
+      "REQ-CWS-066",
+      "REQ-CWS-067",
+      "REQ-CWS-068",
+      "REQ-CWS-069",
+      "REQ-CWS-070",
+      "REQ-CWS-071",
+      "REQ-CWS-072",
+      "REQ-CWS-073",
+      "REQ-CWS-074",
+      "REQ-CWS-075",
+      "REQ-CWS-076",
+      "REQ-CWS-077",
+      "REQ-CWS-078",
+      "REQ-CWS-079",
+      "REQ-CWS-080",
+      "REQ-CWS-081",
+      "REQ-CWS-082",
+      "REQ-CWS-083",
+      "REQ-CWS-084"
+    ],
+    "after_clause_ids": [
+      "INV-CWS-001",
+      "INV-CWS-002",
+      "INV-CWS-003",
+      "INV-CWS-004",
+      "INV-CWS-005",
+      "INV-CWS-006",
+      "INV-CWS-007",
+      "INV-CWS-008",
+      "INV-CWS-009",
+      "INV-CWS-010",
+      "INV-CWS-011",
+      "INV-CWS-012",
+      "INV-CWS-013",
+      "INV-CWS-014",
+      "INV-CWS-015",
+      "INV-CWS-016",
+      "INV-CWS-017",
+      "POL-CWS-001",
+      "POL-CWS-002",
+      "POL-CWS-003",
+      "POL-CWS-004",
+      "POL-CWS-005",
+      "POL-CWS-006",
+      "POL-CWS-007",
+      "POL-CWS-008",
+      "POL-CWS-009",
+      "POL-CWS-010",
+      "POL-CWS-011",
+      "POL-CWS-012",
+      "POL-CWS-013",
+      "POL-CWS-014",
+      "QA-CWS-001",
+      "QA-CWS-002",
+      "QA-CWS-003",
+      "QA-CWS-004",
+      "QA-CWS-005",
+      "QA-CWS-006",
+      "QA-CWS-007",
+      "QA-CWS-008",
+      "QA-CWS-009",
+      "QA-CWS-010",
+      "QA-CWS-011",
+      "QA-CWS-012",
+      "QA-CWS-013",
+      "QA-CWS-014",
+      "QA-CWS-015",
+      "QA-CWS-016",
+      "REQ-CWS-001",
+      "REQ-CWS-002",
+      "REQ-CWS-003",
+      "REQ-CWS-004",
+      "REQ-CWS-005",
+      "REQ-CWS-006",
+      "REQ-CWS-007",
+      "REQ-CWS-008",
+      "REQ-CWS-009",
+      "REQ-CWS-010",
+      "REQ-CWS-011",
+      "REQ-CWS-012",
+      "REQ-CWS-013",
+      "REQ-CWS-014",
+      "REQ-CWS-015",
+      "REQ-CWS-016",
+      "REQ-CWS-017",
+      "REQ-CWS-018",
+      "REQ-CWS-019",
+      "REQ-CWS-020",
+      "REQ-CWS-021",
+      "REQ-CWS-022",
+      "REQ-CWS-023",
+      "REQ-CWS-024",
+      "REQ-CWS-025",
+      "REQ-CWS-026",
+      "REQ-CWS-027",
+      "REQ-CWS-028",
+      "REQ-CWS-029",
+      "REQ-CWS-030",
+      "REQ-CWS-031",
+      "REQ-CWS-032",
+      "REQ-CWS-033",
+      "REQ-CWS-034",
+      "REQ-CWS-035",
+      "REQ-CWS-036",
+      "REQ-CWS-037",
+      "REQ-CWS-038",
+      "REQ-CWS-039",
+      "REQ-CWS-040",
+      "REQ-CWS-041",
+      "REQ-CWS-042",
+      "REQ-CWS-043",
+      "REQ-CWS-044",
+      "REQ-CWS-045",
+      "REQ-CWS-046",
+      "REQ-CWS-047",
+      "REQ-CWS-048",
+      "REQ-CWS-049",
+      "REQ-CWS-050",
+      "REQ-CWS-051",
+      "REQ-CWS-052",
+      "REQ-CWS-053",
+      "REQ-CWS-054",
+      "REQ-CWS-055",
+      "REQ-CWS-056",
+      "REQ-CWS-057",
+      "REQ-CWS-058",
+      "REQ-CWS-059",
+      "REQ-CWS-060",
+      "REQ-CWS-061",
+      "REQ-CWS-062",
+      "REQ-CWS-063",
+      "REQ-CWS-064",
+      "REQ-CWS-065",
+      "REQ-CWS-066",
+      "REQ-CWS-067",
+      "REQ-CWS-068",
+      "REQ-CWS-069",
+      "REQ-CWS-070",
+      "REQ-CWS-071",
+      "REQ-CWS-072",
+      "REQ-CWS-073",
+      "REQ-CWS-074",
+      "REQ-CWS-075",
+      "REQ-CWS-076",
+      "REQ-CWS-077",
+      "REQ-CWS-078",
+      "REQ-CWS-079",
+      "REQ-CWS-080",
+      "REQ-CWS-081",
+      "REQ-CWS-082",
+      "REQ-CWS-083",
+      "REQ-CWS-084"
+    ],
+    "acceptance_ids": [
+      "ACC-CWS-001",
+      "ACC-CWS-002",
+      "ACC-CWS-003",
+      "ACC-CWS-004",
+      "ACC-CWS-005",
+      "ACC-CWS-006",
+      "ACC-CWS-007",
+      "ACC-CWS-008",
+      "ACC-CWS-009",
+      "ACC-CWS-010",
+      "ACC-CWS-011",
+      "ACC-CWS-012",
+      "ACC-CWS-013",
+      "ACC-CWS-014",
+      "ACC-CWS-015",
+      "ACC-CWS-016",
+      "ACC-CWS-017",
+      "ACC-CWS-018",
+      "ACC-CWS-019",
+      "ACC-CWS-020",
+      "ACC-CWS-021",
+      "ACC-CWS-022",
+      "ACC-CWS-023",
+      "ACC-CWS-024"
+    ],
+    "before_acceptance_ids": [
+      "ACC-CWS-001",
+      "ACC-CWS-002",
+      "ACC-CWS-003",
+      "ACC-CWS-004",
+      "ACC-CWS-005",
+      "ACC-CWS-006",
+      "ACC-CWS-007",
+      "ACC-CWS-008",
+      "ACC-CWS-009",
+      "ACC-CWS-010",
+      "ACC-CWS-011",
+      "ACC-CWS-012",
+      "ACC-CWS-013",
+      "ACC-CWS-014",
+      "ACC-CWS-015",
+      "ACC-CWS-016",
+      "ACC-CWS-017",
+      "ACC-CWS-018",
+      "ACC-CWS-019",
+      "ACC-CWS-020",
+      "ACC-CWS-021",
+      "ACC-CWS-022"
+    ],
+    "after_acceptance_ids": [
+      "ACC-CWS-001",
+      "ACC-CWS-002",
+      "ACC-CWS-003",
+      "ACC-CWS-004",
+      "ACC-CWS-005",
+      "ACC-CWS-006",
+      "ACC-CWS-007",
+      "ACC-CWS-008",
+      "ACC-CWS-009",
+      "ACC-CWS-010",
+      "ACC-CWS-011",
+      "ACC-CWS-012",
+      "ACC-CWS-013",
+      "ACC-CWS-014",
+      "ACC-CWS-015",
+      "ACC-CWS-016",
+      "ACC-CWS-017",
+      "ACC-CWS-018",
+      "ACC-CWS-019",
+      "ACC-CWS-020",
+      "ACC-CWS-021",
+      "ACC-CWS-022",
+      "ACC-CWS-023",
+      "ACC-CWS-024"
+    ],
+    "coverage": "unknown"
+  },
+  "compatibility": "not_assessed",
+  "proof_transfer": "not_performed",
+  "findings": [],
+  "limitations": [
+    "This is a structural and conservative context comparison, not natural-language semantic equivalence or a breaking-change determination.",
+    "Correspondence statuses are caller declarations; identities and approval authority are not authenticated.",
+    "No proof is transferred or rebound. Existing evidence remains pinned to its original contract and implementation bytes.",
+    "Object member order is ignored; array order is preserved. Context changes can conservatively affect more clauses than strictly necessary.",
+    "One or both contracts lack structured verifies/dependencies (format 0.1). Any detected change conservatively selects every normative clause and acceptance case; targeted coverage remains unknown."
+  ]
+}
