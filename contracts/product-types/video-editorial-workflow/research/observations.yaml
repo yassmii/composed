@@ -2,25 +2,25 @@ schema_version: "0.1"
 observations:
   - id: "OBS-VEW-009"
     sources: ["SRC-VEW-FRAME-COMMENTS"]
-    statement: "Frame.io V4 permet de rattacher un commentaire à une image précise par son timecode, de naviguer depuis ce commentaire vers l'image concernée, et d'ajouter une annotation visuelle au commentaire."
+    statement: "Frame.io V4 lets a comment be attached to a precise frame by its timecode, lets the user navigate from that comment to the frame concerned, and lets a visual annotation be added to the comment."
   - id: "OBS-VEW-010"
     sources: ["SRC-VEW-FRAME-COMPARE"]
-    statement: "Frame.io V4 permet de comparer deux assets, y compris deux versions empilées, côte à côte ; ses contrôles de lecture et de zoom peuvent être liés et un commentaire peut être laissé sur l'asset choisi pendant la comparaison."
+    statement: "Frame.io V4 lets two assets, including two stacked versions, be compared side by side; its playback and zoom controls can be linked and a comment can be left on the chosen asset during the comparison."
   # Current qualification unresolved: see VEW-REFRESH-001 in refresh-2026-11-01.json.
   # Do not treat the historical effects/speed limitation as freshly confirmed.
   - id: "OBS-VEW-011"
     sources: ["SRC-VEW-PREMIERE-EDL"]
-    statement: "Adobe Premiere décrit l'EDL comme un format de partage avec d'autres systèmes qui convient surtout aux projets simples ; pistes imbriquées, certains effets et changements de vitesse ne se traduisent pas intégralement, tandis que les noms de clip et timecodes restent importants."
+    statement: "Adobe Premiere describes EDL as a format for sharing with other systems that suits simple projects above all; nested tracks, some effects and speed changes do not translate in full, while clip names and timecodes remain important."
   - id: "OBS-VEW-012"
     sources: ["SRC-VEW-PREMIERE-FORMATS"]
-    statement: "La documentation Adobe Premiere liste EDL et XML Final Cut Pro parmi les formats que Premiere peut exporter directement."
+    statement: "The Adobe Premiere documentation lists EDL and Final Cut Pro XML among the formats Premiere can export directly."
   - id: "OBS-VEW-013"
     sources: ["SRC-VEW-NEXTCLOUD-CONFLICTS"]
-    statement: "Le client Nextcloud ne résout pas automatiquement une modification concurrente locale et distante : il conserve une copie locale en conflit, récupère la version distante et notifie l'utilisateur afin qu'il résolve la situation."
+    statement: "The Nextcloud client does not automatically resolve a concurrent local and remote modification: it keeps a local conflicted copy, fetches the remote version and notifies the user so that they resolve the situation."
   - id: "OBS-VEW-014"
     sources: ["SRC-VEW-NEXTCLOUD-SYNC"]
-    statement: "Le client Nextcloud présente des états visibles de synchronisation, pause, perte de connexion et erreur ; lorsqu'il est hors ligne, les changements ne sont pas synchronisés vers le serveur."
+    statement: "The Nextcloud client shows visible states for synchronisation, pause, lost connection and error; when it is offline, changes are not synchronised to the server."
   - id: OBS-VEW-015
     sources:
       - SRC-VEW-FRAME-COMMENTS
-    statement: Frame.io V4 documente aussi des commentaires couvrant une plage temporelle; cette capacité ne devient pas une obligation supplémentaire du noyau par cette actualisation.
+    statement: Frame.io V4 also documents comments covering a time range; this capability does not become an additional core obligation through this refresh.

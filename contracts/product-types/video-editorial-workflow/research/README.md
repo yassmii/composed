@@ -18,7 +18,7 @@ the conformance of an application.
 
 The research remains at status `initial`. The comparison and open topics
 are in `comparison.md` and the protocol in
-[RESEARCH-PLAN.md](./RESEARCH-PLAN.md). Each client's documents, observations,
+[RESEARCH-PLAN.md](./RESEARCH-PLAN.md) (French). Each client's documents, observations,
 datasets and constraints belong to the consumer project's repository,
 which combines them with a version of the shared contract.
 

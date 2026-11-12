@@ -101,6 +101,14 @@ A new mandatory constraint for an existing conformance scope is a breaking chang
 even when expressed as an added clause. Compatible additions must not silently
 increase obligations for already pinned implementations.
 
+### Language and translations
+
+New contracts are written in English, and their English text is authoritative. A contract
+first published in French and later translated keeps its French text as the reference:
+the translation is a PATCH, the French version is archived byte for byte under `history/`,
+and where the two texts appear to differ the French one decides until a further patch
+corrects the English.
+
 Extensions belong in a namespaced `extensions` object, such as `booking.waitlist` or `engine.physics`. An extension cannot silently change an existing invariant or conceal an out-of-scope feature.
 
 ## External validation profiles

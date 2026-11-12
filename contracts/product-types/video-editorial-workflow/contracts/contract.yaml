@@ -1,388 +1,388 @@
 schema_version: "0.1"
 id: video-editorial-workflow
 name: Video Editorial Workflow
-version: 1.0.0
+version: 1.0.1
 kind: product-contract
 status: candidate
 license: CC-BY-4.0
 intent:
-  promise: Permettre à une équipe éditoriale autorisée de transformer une interview source en paquet
-    de montage traçable, sans perdre le lien entre médias, choix et exports.
-  primary_outcome: Un éditeur peut préparer, examiner, sélectionner et exporter une version éditoriale
-    d'une interview dont chaque résultat est rattaché à des entrées et décisions versionnées.
+  promise: Let an authorised editorial team turn a source interview into a traceable editing package,
+    without losing the link between media, choices and exports.
+  primary_outcome: An editor can prepare, review, select and export an editorial version of an
+    interview in which every result is attached to versioned inputs and decisions.
   success_metrics:
     - id: MET-VEW-001
-      measure: 100 % des exports acceptés dans le jeu de référence indiquent le projet, la version de
-        sélection et les entrées dont ils dérivent.
+      measure: 100% of accepted exports in the reference set state the project, the selection version
+        and the inputs they derive from.
     - id: MET-VEW-002
-      measure: 100 % des scénarios d'acceptation obligatoires s'exécutent sur au moins un profil de
-        déploiement documenté.
+      measure: 100% of mandatory acceptance scenarios run on at least one documented deployment
+        profile.
 scope:
   includes:
-    - Création d'un projet éditorial à partir d'un paquet de médias autorisé et identifié
-    - Suivi des traitements et de leurs résultats, échecs et versions d'entrée
-    - Examen de matière disponible, sélection éditoriale persistante et versions récupérables
-    - Production d'un paquet d'export destiné au montage avec sa provenance
-    - Profils de déploiement local, hébergé ou hybride qui conforment aux mêmes comportements
-      obligatoires
+    - Creating an editorial project from an authorised and identified media package
+    - Tracking processing runs and their results, failures and input versions
+    - Reviewing available material, persistent editorial selection and recoverable versions
+    - Producing an export package intended for editing, with its provenance
+    - Local, hosted or hybrid deployment profiles that conform to the same mandatory
+      behaviours
   excludes:
-    - Imposer un langage, un framework, une base de données, un fournisseur cloud, un modèle IA ou
-      une application de montage
-    - Remplacer le jugement éditorial final de l'équipe ou un outil de montage professionnel
-    - Envoyer médias, transcriptions ou scripts à un service externe sans une politique explicite et
-      une autorisation applicable
-    - Fixer les règles de conservation, de résidence, de classement ou de licence propres à une
-      organisation ; chaque implémentation déclare les politiques applicables
+    - Imposing a language, framework, database, cloud provider, AI model or
+      editing application
+    - Replacing the team's final editorial judgement or a professional editing tool
+    - Sending media, transcripts or scripts to an external service without an explicit policy and
+      an applicable authorisation
+    - Setting retention, residency, classification or licensing rules specific to an
+      organisation; each implementation declares the policies that apply
 actors:
   - id: ACT-VEW-EDITOR
-    name: Éditeur
+    name: Editor
     goals:
-      - Examiner la matière
-      - Choisir les prises et préparer le montage
+      - Review the material
+      - Choose takes and prepare the edit
     permissions:
-      - Lire les projets qui lui sont attribués
-      - Créer et versionner des sélections
-      - Demander un export
+      - Read the projects assigned to them
+      - Create and version selections
+      - Request an export
   - id: ACT-VEW-OPERATOR
-    name: Opérateur de chaîne
+    name: Pipeline operator
     goals:
-      - Préparer les médias
-      - Exécuter ou suivre les traitements
-      - Diagnostiquer un échec
+      - Prepare the media
+      - Run or follow processing
+      - Diagnose a failure
     permissions:
-      - Créer des projets
-      - Déclencher les traitements autorisés
-      - Consulter les journaux et résultats de ses projets
+      - Create projects
+      - Trigger authorised processing
+      - Consult the logs and results of their projects
   - id: ACT-VEW-ADMIN
-    name: Administrateur de produit
+    name: Product administrator
     goals:
-      - Publier des profils de déploiement
-      - Appliquer les politiques d'accès et de service
+      - Publish deployment profiles
+      - Apply access and service policies
     permissions:
-      - Gérer les profils
-      - Définir les capacités externes autorisées
-      - Consulter les preuves d'exécution
+      - Manage profiles
+      - Define the authorised external capabilities
+      - Consult execution evidence
 domain:
   entities:
     - id: ENT-VEW-PROJECT
-      name: Projet éditorial
-      description: Une unité de travail isolée représentant une interview et son parcours de préparation
-        vers le montage.
+      name: Editorial project
+      description: An isolated unit of work representing an interview and its preparation path
+        towards editing.
       lifecycle:
-        - créé
-        - préparé
-        - en revue
-        - exporté
-        - archivé
+        - created
+        - prepared
+        - in review
+        - exported
+        - archived
     - id: ENT-VEW-SOURCE-PACKAGE
-      name: Paquet source
-      description: Les médias et métadonnées autorisés fournis au projet, avec leur identité et leur
-        intégrité déclarées.
+      name: Source package
+      description: The authorised media and metadata supplied to the project, with their declared
+        identity and integrity.
       lifecycle:
-        - déclaré
-        - vérifié
-        - indisponible
-        - retiré
+        - declared
+        - verified
+        - unavailable
+        - withdrawn
     - id: ENT-VEW-RUN
-      name: Exécution de traitement
-      description: Une tentative identifiable de produire une matière dérivée à partir d'entrées et
-        paramètres versionnés.
+      name: Processing run
+      description: An identifiable attempt to produce derived material from versioned inputs and
+        parameters.
       lifecycle:
-        - en attente
-        - en cours
-        - réussi
-        - échoué
-        - annulé
-        - indéterminé
+        - pending
+        - running
+        - succeeded
+        - failed
+        - cancelled
+        - indeterminate
     - id: ENT-VEW-SELECTION
-      name: Sélection éditoriale
-      description: Un choix ordonné et versionné de prises ou segments, avec son auteur, sa date et ses
-        justifications éventuelles.
+      name: Editorial selection
+      description: An ordered and versioned choice of takes or segments, with its author, its date and
+        any justifications.
       lifecycle:
-        - brouillon
-        - partagé
-        - figé
-        - remplacé
-        - archivé
+        - draft
+        - shared
+        - frozen
+        - superseded
+        - archived
     - id: ENT-VEW-NOTE
-      name: Note éditoriale
-      description: Un retour attribué concernant une sélection, une matière ou une position temporelle
-        identifiée.
+      name: Editorial note
+      description: An attributed piece of feedback about an identified selection, material or
+        time position.
       lifecycle:
-        - brouillon
-        - publiée
-        - résolue
-        - archivée
+        - draft
+        - published
+        - resolved
+        - archived
     - id: ENT-VEW-EXPORT
-      name: Paquet d'export
-      description: Un ensemble versionné de fichiers remis au montage, associé à une sélection et aux
-        entrées dont il dérive.
+      name: Export package
+      description: A versioned set of files handed to editing, associated with a selection and the
+        inputs it derives from.
       lifecycle:
-        - demandé
-        - produit
-        - vérifié
-        - remis
-        - invalidé
+        - requested
+        - produced
+        - verified
+        - delivered
+        - invalidated
     - id: ENT-VEW-PROFILE
-      name: Profil de déploiement
-      description: Une configuration reproductible qui déclare où s'exécutent les capacités, où résident
-        les données et quelles dépendances sont disponibles.
+      name: Deployment profile
+      description: A reproducible configuration that declares where capabilities run, where data
+        resides and which dependencies are available.
       lifecycle:
-        - brouillon
-        - vérifié
-        - actif
-        - retiré
+        - draft
+        - verified
+        - active
+        - withdrawn
   glossary:
-    - term: matière dérivée
-      definition: Un proxy, audio, transcript, repère, score ou autre résultat produit depuis un paquet source.
+    - term: derived material
+      definition: A proxy, audio, transcript, marker, score or other result produced from a source package.
     - term: provenance
-      definition: Le lien inspectable entre un résultat, ses entrées identifiées, les paramètres de son
-        exécution et la décision éditoriale concernée.
-    - term: profil local
-      definition: Un profil dans lequel les capacités du produit sont exécutées sur un poste ou un
-        environnement contrôlé localement.
-    - term: profil hébergé
-      definition: Un profil dans lequel au moins une capacité du produit est mise à disposition depuis un
-        environnement partagé ou distant autorisé.
+      definition: The inspectable link between a result, its identified inputs, the parameters of its
+        run and the editorial decision concerned.
+    - term: local profile
+      definition: A profile in which the product's capabilities run on a workstation or a
+        locally controlled environment.
+    - term: hosted profile
+      definition: A profile in which at least one capability of the product is made available from an
+        authorised shared or remote environment.
 capabilities:
   - id: CAP-VEW-001
-    name: Initialiser un projet traçable
+    name: Initialise a traceable project
     priority: must
     actor: ACT-VEW-OPERATOR
-    outcome: Un opérateur crée un projet dont les sources autorisées et leur état sont identifiables.
+    outcome: An operator creates a project whose authorised sources and their state are identifiable.
     requirements:
       - id: REQ-VEW-001
-        statement: La création d'un projet enregistre l'identité du paquet source, son emplacement autorisé,
-          son état de vérification et l'auteur de l'opération.
+        statement: Creating a project records the identity of the source package, its authorised location,
+          its verification state and the author of the operation.
       - id: REQ-VEW-002
-        statement: Le produit refuse de traiter un paquet source absent, retiré ou dont l'intégrité déclarée
-          ne peut pas être vérifiée.
+        statement: The product refuses to process a source package that is absent, withdrawn or whose
+          declared integrity cannot be verified.
   - id: CAP-VEW-002
-    name: Suivre les traitements
+    name: Track processing
     priority: must
     actor: ACT-VEW-OPERATOR
-    outcome: Un opérateur peut savoir quel traitement a été tenté, avec quelles entrées, et s'il est
-      exploitable.
+    outcome: An operator can know which processing was attempted, with which inputs, and whether it is
+      usable.
     requirements:
       - id: REQ-VEW-003
-        statement: Chaque exécution enregistre sa capacité demandée, ses entrées et paramètres versionnés,
-          son initiateur, ses résultats identifiés et son état terminal.
+        statement: Each run records its requested capability, its versioned inputs and parameters,
+          its initiator, its identified results and its terminal state.
       - id: REQ-VEW-004
-        statement: Un échec, une annulation ou une issue indéterminée ne peut pas être présenté comme un
-          résultat réussi ni rendu disponible comme matière validée.
+        statement: A failure, a cancellation or an indeterminate outcome cannot be presented as a
+          successful result nor made available as validated material.
   - id: CAP-VEW-003
-    name: Sélectionner la matière éditoriale
+    name: Select editorial material
     priority: must
     actor: ACT-VEW-EDITOR
-    outcome: Un éditeur compose et retrouve une sélection de matière utilisable pour le montage.
+    outcome: An editor composes and retrieves a selection of material usable for editing.
     requirements:
       - id: REQ-VEW-005
-        statement: L'éditeur peut examiner les médias et matières dérivées autorisés d'un projet avant de
-          choisir des prises ou segments.
+        statement: The editor can review the authorised media and derived material of a project before
+          choosing takes or segments.
       - id: REQ-VEW-006
-        statement: Chaque version de sélection conserve son contenu ordonné, son auteur, son instant de
-          création et les références aux matières dont elle dépend.
+        statement: Each selection version keeps its ordered content, its author, its creation
+          time and the references to the material it depends on.
   - id: CAP-VEW-004
-    name: Produire un handoff de montage
+    name: Produce an editing handoff
     priority: must
     actor: ACT-VEW-EDITOR
-    outcome: Un éditeur reçoit un paquet d'export versionné et vérifiable à partir d'une sélection figée.
+    outcome: An editor receives a versioned and verifiable export package from a frozen selection.
     requirements:
       - id: REQ-VEW-007
-        statement: Un export ne peut être produit que depuis une sélection figée et identifie la version de
-          sélection, les entrées et les fichiers qu'il contient.
+        statement: An export can only be produced from a frozen selection and identifies the selection
+          version, the inputs and the files it contains.
       - id: REQ-VEW-008
-        statement: Le produit conserve avec chaque export le résultat de sa vérification et ne déclare pas
-          la compatibilité avec un environnement de montage tant qu'une preuve de recette n'est pas
-          enregistrée. La recette identifie les octets exacts de l’export, la version de sélection
-          et des entrées, ainsi que l’application, sa version et les réglages pertinents de
-          l’environnement destinataire. Elle distingue vérification interne, recette réussie, échec
-          et recette non exécutée; une recette d’autres octets ou d’un autre environnement ne se
-          transfère pas silencieusement.
+        statement: The product keeps with each export the result of its verification and does not declare
+          compatibility with an editing environment until evidence of an acceptance check is
+          recorded. The acceptance check identifies the exact bytes of the export, the selection
+          version and input versions, and the application, its version and the relevant settings of
+          the receiving environment. It distinguishes internal verification, a passed acceptance
+          check, a failed one and one not run; an acceptance check of other bytes or of another
+          environment does not transfer silently.
   - id: CAP-VEW-005
-    name: Déployer le même produit selon un profil
+    name: Deploy the same product under a profile
     priority: should
     actor: ACT-VEW-ADMIN
-    outcome: Un administrateur peut publier un profil local, hébergé ou hybride sans changer les règles
-      métier obligatoires.
+    outcome: An administrator can publish a local, hosted or hybrid profile without changing the
+      mandatory business rules.
     requirements:
       - id: REQ-VEW-009
-        statement: Chaque profil actif déclare ses capacités disponibles, dépendances, emplacements de
-          données, limites d'exécution et procédure de vérification.
+        statement: Each active profile declares its available capabilities, dependencies, data
+          locations, execution limits and verification procedure.
       - id: REQ-VEW-010
-        statement: Un profil ne peut revendiquer la conformité que si les scénarios obligatoires applicables
-          sont exécutés et que leurs preuves sont associées à sa version.
+        statement: A profile can claim conformance only if the applicable mandatory scenarios
+          are run and their evidence is associated with its version.
   - id: CAP-VEW-006
-    name: Contrôler les services externes
+    name: Control external services
     priority: should
     actor: ACT-VEW-ADMIN
-    outcome: Les capacités dépendantes de services externes sont visibles, désactivables et gouvernées.
+    outcome: Capabilities that depend on external services are visible, can be disabled and are governed.
     requirements:
       - id: REQ-VEW-011
-        statement: Une capacité qui transmet une donnée à un service externe affiche la destination, les
-          catégories de données concernées et la politique qui l'autorise avant son activation.
+        statement: A capability that transmits data to an external service shows the destination, the
+          categories of data concerned and the policy that authorises it before it is activated.
       - id: REQ-VEW-012
-        statement: Lorsque l'autorisation, le compte ou le secret requis manque, la capacité externe reste
-          indisponible avec une raison explicite sans empêcher le parcours qui ne dépend pas d'elle.
+        statement: When the required authorisation, account or secret is missing, the external capability
+          stays unavailable with an explicit reason, without blocking the path that does not depend on it.
   - id: CAP-VEW-007
-    name: Documenter la revue éditoriale
+    name: Document the editorial review
     priority: should
     actor: ACT-VEW-EDITOR
-    outcome: Un éditeur peut conserver des retours contextualisés lorsqu'il examine ou compare la matière.
+    outcome: An editor can keep contextualised feedback while reviewing or comparing material.
     requirements:
       - id: REQ-VEW-013
-        statement: Une note éditoriale publiée indique son auteur et se rattache à une sélection, une
-          matière ou une position temporelle identifiée. La référence inclut la version de matière
-          ou de sélection concernée et le repère temporel propre au média. Si une plage est
-          proposée, ses deux bornes et leur unité sont conservées. Une position hors limites ou une
-          référence manquante est rejetée ou explicitement non résolue, jamais déplacée
-          silencieusement vers une autre image ou version.
+        statement: A published editorial note states its author and is attached to an identified
+          selection, material or time position. The reference includes the version of the material
+          or selection concerned and the time marker specific to the media. If a range is
+          offered, both of its bounds and their unit are kept. An out-of-bounds position or a
+          missing reference is rejected or explicitly unresolved, never moved
+          silently to another frame or version.
       - id: REQ-VEW-014
-        statement: Lorsqu'un éditeur compare des matières, le produit conserve l'identité de chaque matière
-          et rattache sans ambiguïté toute note à celle qu'elle concerne. Le changement de côté,
-          d’ordre, de nom ou de version affichée ne réattribue pas les notes existantes. Les repères
-          sont ceux du média visé, même si les durées, cadences ou commandes de lecture diffèrent;
-          une lecture liée ne prouve pas des coordonnées identiques.
+        statement: When an editor compares material, the product keeps the identity of each material
+          and attaches every note unambiguously to the one it concerns. Changing the side,
+          order, name or displayed version does not reassign existing notes. The markers
+          are those of the targeted media, even if durations, frame rates or playback controls differ;
+          linked playback does not prove identical coordinates.
 invariants:
   - id: INV-VEW-001
-    statement: Une matière source déclarée dans un projet n'est jamais modifiée par un traitement ou un
-      export du produit.
-    rationale: La reproductibilité et le retour aux originaux exigent de distinguer sources et dérivés.
+    statement: Source material declared in a project is never modified by a processing run or an
+      export of the product.
+    rationale: Reproducibility and the return to originals require telling sources from derivatives.
   - id: INV-VEW-002
-    statement: Chaque export remis est rattachable à une unique version de sélection et aux entrées
-      identifiées dont cette sélection dépend.
-    rationale: Le montage doit pouvoir être expliqué, rejoué et corrigé sans reconstituer manuellement
-      son origine.
+    statement: Each delivered export can be attached to a single selection version and to the
+      identified inputs that selection depends on.
+    rationale: The edit must be explainable, replayable and correctable without manually reconstructing
+      its origin.
   - id: INV-VEW-003
-    statement: Aucun résultat d'exécution non réussi n'est présenté comme validé ou proposé à l'export.
-    rationale: Une chaîne audiovisuelle ne peut pas prendre un état technique ambigu pour une sortie
-      éditoriale fiable.
+    statement: No result of a run that did not succeed is presented as validated or offered for export.
+    rationale: An audiovisual pipeline cannot take an ambiguous technical state for a reliable
+      editorial output.
   - id: INV-VEW-004
-    statement: Aucune donnée de projet ne quitte le périmètre déclaré par son profil sans une
-      autorisation explicite couvrant la destination et la catégorie de donnée.
-    rationale: Les médias et textes peuvent être soumis à des restrictions de diffusion propres à chaque
+    statement: No project data leaves the perimeter declared by its profile without an
+      explicit authorisation covering the destination and the category of data.
+    rationale: Media and texts may be subject to distribution restrictions specific to each
       organisation.
 policies:
   - id: POL-VEW-001
-    decision: Le noyau couvre la préparation, la sélection et le handoff éditorial traçables ; les
-      traitements d'assistance supplémentaires sont des capacités optionnelles.
-    consequence: Une implémentation peut intégrer des scores, des suggestions de plans d'illustration ou
-      des automatisations sans modifier les invariants du noyau.
+    decision: The core covers traceable preparation, selection and editorial handoff;
+      additional assistance processing is optional capability.
+    consequence: An implementation can integrate scores, suggestions of illustration shots or
+      automations without modifying the core invariants.
   - id: POL-VEW-002
-    decision: Le contrat est neutre entre exécution locale, hébergée et hybride.
-    consequence: Les choix de poste, conteneur, serveur, identité, stockage et fournisseur restent dans
-      l'implémentation, à condition de satisfaire les règles et preuves du contrat.
+    decision: The contract is neutral between local, hosted and hybrid execution.
+    consequence: The choices of workstation, container, server, identity, storage and provider stay in
+      the implementation, provided it satisfies the rules and evidence of the contract.
   - id: POL-VEW-003
-    decision: La sélection éditoriale et l'acceptation du handoff restent sous responsabilité humaine.
-    consequence: Une assistance automatique peut proposer de la matière, mais elle ne fige ni ne remet
-      un export sans action attribuée d'un éditeur autorisé.
+    decision: The editorial selection and the acceptance of the handoff remain a human responsibility.
+    consequence: Automatic assistance can propose material, but it neither freezes nor delivers
+      an export without an attributed action from an authorised editor.
   - id: POL-VEW-004
-    decision: Les services externes sont optionnels et désactivés par défaut.
-    consequence: Le parcours obligatoire reste utilisable sans compte auprès d'un service externe non autorisé.
+    decision: External services are optional and disabled by default.
+    consequence: The mandatory path stays usable without an account with an unauthorised external service.
 quality_attributes:
   - id: QA-VEW-001
-    attribute: traçabilité
-    target: Dans le jeu de référence, 100 % des exports réussis permettent d'identifier leur sélection,
-      leurs entrées et leur résultat de vérification.
+    attribute: traceability
+    target: In the reference set, 100% of successful exports make it possible to identify their selection,
+      their inputs and their verification result.
   - id: QA-VEW-002
-    attribute: reproductibilité
-    target: Chaque profil vérifié publie un jeu de référence, une procédure et des preuves permettant de
-      rejouer ses scénarios obligatoires.
+    attribute: reproducibility
+    target: Each verified profile publishes a reference set, a procedure and evidence that make it possible
+      to replay its mandatory scenarios.
   - id: QA-VEW-003
-    attribute: portabilité
-    target: Un profil local vérifié ne dépend d'aucun chemin personnel, lien symbolique non contrôlé ou
-      état navigateur non exportable pour le parcours obligatoire.
+    attribute: portability
+    target: A verified local profile depends on no personal path, uncontrolled symbolic link or
+      non-exportable browser state for the mandatory path.
   - id: QA-VEW-004
-    attribute: gouvernance des données
-    target: Dans la suite de conformité, 100 % des tentatives de transmission externe sans autorisation
-      explicite sont refusées et attribuées.
+    attribute: data governance
+    target: In the conformance suite, 100% of attempts at external transmission without explicit
+      authorisation are refused and attributed.
   - id: QA-VEW-005
-    attribute: compatibilité de handoff
-    target: 100 % des exports remis déclarent leur format, leurs limites connues et leur état de recette
-      pour l’environnement de montage identifié. Une compatibilité vérifiée exige une recette
-      réussie portant sur les octets et l’environnement exacts; échec, absence de recette et
-      vérification interne seule ne deviennent pas une compatibilité confirmée.
+    attribute: handoff compatibility
+    target: 100% of delivered exports declare their format, their known limits and their acceptance-check
+      state for the identified editing environment. Verified compatibility requires a passed
+      acceptance check covering the exact bytes and environment; a failure, a missing acceptance
+      check and internal verification alone do not become confirmed compatibility.
 integrations:
   - id: INT-VEW-001
-    system: Environnement de montage destinataire
-    purpose: Recevoir et recetter les fichiers de handoff issus d'une sélection figée.
-    degradation: Le produit marque l'export comme non validé pour cet environnement tant qu'aucune
-      preuve de recette n'est enregistrée.
+    system: Receiving editing environment
+    purpose: Receive and acceptance-check the handoff files produced from a frozen selection.
+    degradation: The product marks the export as not validated for this environment until
+      evidence of an acceptance check is recorded.
 acceptance:
   - id: ACC-VEW-001
-    given: Un opérateur dispose d'un paquet source autorisé du jeu de référence.
-    when: Il crée un projet et demande la vérification du paquet.
-    then: Le projet conserve l'identité, l'état et l'auteur du paquet ; un paquet absent ou altéré est
-      refusé.
-    evidence: Rapport de scénario, journal attribué et résultat de vérification du paquet.
+    given: An operator has an authorised source package from the reference set.
+    when: They create a project and request verification of the package.
+    then: The project keeps the identity, state and author of the package; an absent or altered package
+      is refused.
+    evidence: Scenario report, attributed log and verification result of the package.
   - id: ACC-VEW-002
-    given: Un projet contient des matières validées et accessibles à un éditeur.
-    when: L'éditeur crée puis fige une sélection ordonnée.
-    then: La sélection figée est récupérable avec son auteur, son horodatage, son contenu et les
-      références de matière.
-    evidence: Export de sélection versionné et test de restauration de cette version.
+    given: A project contains validated material accessible to an editor.
+    when: The editor creates and then freezes an ordered selection.
+    then: The frozen selection is recoverable with its author, its timestamp, its content and the
+      material references.
+    evidence: Versioned selection export and restoration test of that version.
   - id: ACC-VEW-003
-    given: Une sélection figée du jeu de référence est disponible.
-    when: L'éditeur demande un handoff de montage.
-    then: Le paquet produit identifie la sélection, les entrées, ses fichiers et son résultat de
-      vérification ; il n'affirme pas une recette dans l'environnement destinataire non effectuée.
-    evidence: Manifeste d'export, journal d'exécution et fiche de recette dans l'environnement
-      destinataire si celle-ci a été exécutée.
+    given: A frozen selection from the reference set is available.
+    when: The editor requests an editing handoff.
+    then: The package produced identifies the selection, the inputs, its files and its verification
+      result; it does not assert an acceptance check in the receiving environment that was not carried out.
+    evidence: Export manifest, run log and acceptance-check record in the receiving
+      environment if that check was run.
   - id: ACC-VEW-004
-    given: Une exécution de traitement échoue, est annulée ou devient indéterminée.
-    when: Un opérateur consulte le projet ou tente d'utiliser son résultat.
-    then: L'état réel, sa raison et les entrées concernées sont visibles ; aucun résultat de cette
-      exécution ne peut être choisi comme matière validée.
-    evidence: Test automatisé des états terminaux et journal d'exécution inspectable.
+    given: A processing run fails, is cancelled or becomes indeterminate.
+    when: An operator consults the project or attempts to use its result.
+    then: The actual state, its reason and the inputs concerned are visible; no result of that
+      run can be chosen as validated material.
+    evidence: Automated test of terminal states and inspectable run log.
   - id: ACC-VEW-005
-    given: Une capacité externe est désactivée par le profil ou ne possède pas d'autorisation applicable.
-    when: Un utilisateur tente de l'activer.
-    then: Le produit refuse l'opération avec sa raison, n'émet pas la donnée et maintient les capacités
-      obligatoires indépendantes disponibles.
-    evidence: Test de refus, journal attribué et contrôle d'absence de transmission.
+    given: An external capability is disabled by the profile or has no applicable authorisation.
+    when: A user attempts to activate it.
+    then: The product refuses the operation with its reason, does not emit the data and keeps the
+      independent mandatory capabilities available.
+    evidence: Refusal test, attributed log and check that nothing was transmitted.
   - id: ACC-VEW-006
-    given: Deux profils vérifiés appliquent le contrat au même jeu de référence.
-    when: Ils exécutent les scénarios obligatoires applicables.
-    then: Ils produisent les mêmes états métier et les mêmes relations de provenance, quelles que soient
-      leurs différences d'infrastructure.
-    evidence: Rapports de conformité versionnés comparant les résultats métier des deux profils.
+    given: Two verified profiles apply the contract to the same reference set.
+    when: They run the applicable mandatory scenarios.
+    then: They produce the same business states and the same provenance relations, whatever
+      their infrastructure differences.
+    evidence: Versioned conformance reports comparing the business results of the two profiles.
   - id: ACC-VEW-007
-    given: Un éditeur examine une matière seule ou en comparaison avec une autre matière identifiée.
-    when: Il publie une note éditoriale liée à un instant ou à une sélection.
-    then: La note reste attribuée et permet de retrouver sans ambiguïté la matière, la position ou la
-      sélection concernée.
-    evidence: Test d'interface ou d'API, export de note et contrôle des références de matière.
+    given: An editor reviews one material alone or in comparison with another identified material.
+    when: They publish an editorial note linked to a point in time or to a selection.
+    then: The note stays attributed and makes it possible to find unambiguously the material, position or
+      selection concerned.
+    evidence: Interface or API test, note export and check of the material references.
   - id: ACC-VEW-008
-    given: Deux versions de médias partagent le même nom affiché, avec des cadences ou durées
-      différentes; des notes et, si proposées, des plages existent.
-    when: Réordonner les côtés de comparaison, changer la version affichée, retrouver les notes et
-      proposer une borne hors média dans une fixture négative.
-    then: Chaque note garde son auteur, sa version et ses coordonnées propres. Aucune note n’est
-      réattribuée par nom, côté ou lecture liée; les plages proposées conservent bornes/unités. La
-      référence invalide est rejetée ou signalée non résolue sans déplacement silencieux.
-    evidence: Exports de notes et identités/versions de médias, parcours de comparaison et contrôle de
-      coordonnées; REQ-VEW-013/014.
+    given: Two media versions share the same displayed name, with different frame rates or
+      durations; notes and, if offered, ranges exist.
+    when: Reorder the comparison sides, change the displayed version, retrieve the notes and
+      propose an out-of-media bound in a negative fixture.
+    then: Each note keeps its author, its version and its own coordinates. No note is
+      reassigned by name, side or linked playback; the ranges offered keep bounds/units. The
+      invalid reference is rejected or flagged unresolved without silent displacement.
+    evidence: Exports of notes and media identities/versions, comparison path and coordinate
+      check; REQ-VEW-013/014.
   - id: ACC-VEW-009
-    given: Un export issu d’une sélection figée possède une recette réussie pour des octets et un
-      environnement identifiés.
-    when: Modifier les octets ou l’environnement dans des fixtures séparées; consulter aussi une recette
-      échouée et un export non encore recetté.
-    then: La réussite antérieure n’est pas appliquée aux nouvelles conditions. Échec et non-exécution
-      restent visibles, la vérification interne n’est pas une recette native, et seul le contrôle
-      positif exact peut annoncer la compatibilité vérifiée. Sources et sélection figée ne sont pas
-      modifiées.
-    evidence: Manifeste d’export, identités exactes, états de recette et contrôle positif/négatif dans
-      l’environnement déclaré; REQ-VEW-008, QA-VEW-005, INV-VEW-001/002.
+    given: An export produced from a frozen selection has a passed acceptance check for identified bytes
+      and an identified environment.
+    when: Modify the bytes or the environment in separate fixtures; also consult a failed acceptance
+      check and an export not yet acceptance-checked.
+    then: The earlier success is not applied to the new conditions. Failure and non-execution
+      stay visible, internal verification is not a native acceptance check, and only the exact
+      positive control can announce verified compatibility. Sources and frozen selection are not
+      modified.
+    evidence: Export manifest, exact identities, acceptance-check states and positive/negative control in
+      the declared environment; REQ-VEW-008, QA-VEW-005, INV-VEW-001/002.
 delivery:
   required_artifacts:
-    - Guide d'exploitation pour chaque profil de déploiement
-    - Jeu de référence versionné et manifeste de provenance
-    - Rapports versionnés des scénarios d'acceptation
-    - Fiche de recette du handoff dans l'environnement destinataire
+    - Operating guide for each deployment profile
+    - Versioned reference set and provenance manifest
+    - Versioned reports of the acceptance scenarios
+    - Acceptance-check record of the handoff in the receiving environment
   verification:
-    - Validation du schéma et de la traçabilité du contrat
-    - Exécution des scénarios d'acceptation applicables sur chaque profil publié
-    - Revue indépendante avant promotion du contrat hors draft
+    - Validation of the contract's schema and traceability
+    - Execution of the applicable acceptance scenarios on each published profile
+    - Independent review before promoting the contract out of draft
     - For this candidate, assess every retained and added acceptance case against declared
       capability applicability and execute every applicable case against the exact contract and
       identified implementation revision. A conditional case can be not_applicable only with its

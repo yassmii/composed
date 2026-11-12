@@ -1,54 +1,54 @@
-# Comparaison — Video Editorial Workflow
+# Comparison — Video Editorial Workflow
 
-## Périmètre de la preuve
+## Scope of the evidence
 
-Frame.io documente la revue média ; Premiere éclaire
-les échanges de montage ; Nextcloud apporte un exemple de gestion des états
-locaux et distants. Un seul produit par comportement ne suffit pas à établir
-une convergence de marché.
+Frame.io documents media review; Premiere sheds light on editing exchanges;
+Nextcloud provides an example of handling local and remote states. A single
+product per behaviour is not enough to establish market convergence.
 
-## Comportements observés
+## Observed behaviours
 
-- Frame.io rattache un retour à une image par timecode et permet une annotation
-  (`OBS-VEW-009`). Cela éclaire des notes attribuées et contextualisées, sans
-  imposer cette interface.
-- Frame.io distingue la comparaison de deux médias de la lecture individuelle
-  et permet de cibler le média commenté (`OBS-VEW-010`).
-- Adobe documente des limites de l'échange EDL et les informations de timecode
-  et de nom de clip (`OBS-VEW-011`). Une promesse de fidélité doit donc être
-  vérifiée dans l'environnement destinataire.
-- Adobe documente l'export EDL et XML (`OBS-VEW-012`). Cela ne prouve ni leur
-  import dans une autre application, ni la conformité d'un fichier particulier.
-- Nextcloud conserve les états en conflit et demande une résolution explicite
-  (`OBS-VEW-013`). Ce comportement éclaire une éventuelle extension de
-  synchronisation ; il n'impose pas un fonctionnement hors ligne au noyau.
-- Nextcloud rend visibles la synchronisation, la pause, la perte de connexion
-  et l'erreur (`OBS-VEW-014`). Ces états sont pertinents pour les profils qui
-  proposent effectivement une synchronisation.
+- Frame.io attaches feedback to a frame by timecode and allows an annotation
+  (`OBS-VEW-009`). This informs attributed, contextualised notes, without
+  imposing that interface.
+- Frame.io distinguishes comparing two media from individual playback and lets
+  the commented media be targeted (`OBS-VEW-010`).
+- Adobe documents limits of EDL exchange and the timecode and clip-name
+  information (`OBS-VEW-011`). A promise of fidelity must therefore be
+  verified in the receiving environment.
+- Adobe documents EDL and XML export (`OBS-VEW-012`). This proves neither their
+  import into another application nor the conformance of a particular file.
+- Nextcloud keeps conflicted states and asks for an explicit resolution
+  (`OBS-VEW-013`). This behaviour informs a possible synchronisation
+  extension; it does not impose offline operation on the core.
+- Nextcloud makes synchronisation, pause, lost connection and error visible
+  (`OBS-VEW-014`). These states are relevant for profiles that actually offer
+  synchronisation.
 
-## Choix du contrat
+## Contract choices
 
-Les notes éditoriales contextualisées sont une capacité souhaitable.
-La transparence sur le format, les limites et la recette du handoff est une
-cible de qualité. La provenance, la sélection persistante, les états de traitement et le contrôle
-des sorties autorisées sont des choix explicites du noyau ; les sources
-publiques présentes ne démontrent pas encore ces garanties complètes.
+Contextualised editorial notes are a desirable capability. Transparency about
+the format, the limits and the acceptance check of the handoff is a quality
+target. Provenance, persistent selection, processing states and control of
+authorised outputs are explicit choices of the core; the public sources
+present do not yet demonstrate these complete guarantees.
 
-La synchronisation hors ligne et ses conflits restent une piste d'extension.
-La recherche ne justifie ni une architecture particulière ni une politique de
-conservation commune à toutes les organisations.
+Offline synchronisation and its conflicts remain a possible extension. The
+research justifies neither a particular architecture nor a retention policy
+common to all organisations.
 
-## Questions ouvertes
+## Open questions
 
-- Diversifier les sources comparatives et observer les gestes dans plusieurs
-  contextes de production.
-- Compléter la recherche sur l'assistance et les autorisations de transmission.
-- Définir un jeu de conformité générique et des preuves vérifiables par scénario.
-- Laisser chaque projet préciser ses politiques, ses performances cibles et ses
-  formats de montage, puis les valider dans son environnement réel.
+- Diversify the comparative sources and observe the working gestures in several
+  production contexts.
+- Complete the research on assistance and transmission authorisations.
+- Define a generic conformance set and verifiable evidence per scenario.
+- Let each project specify its policies, its target performance and its
+  editing formats, then validate them in its real environment.
 
-Ces questions concernent la famille de produits. Les décisions d'un client ne
-conditionnent pas la stabilisation du contrat commun.
+These questions concern the product family. A client's decisions do not
+condition the stabilisation of the shared contract.
+
 
 
 ## Corpus refresh — 2026-11-01

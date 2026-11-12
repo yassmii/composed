@@ -1,0 +1,176 @@
+schema_version: "0.1"
+contract_id: video-editorial-workflow
+contract_version: 1.0.1
+research_status: initial
+links:
+  - clause: CAP-VEW-001
+    basis: explicit_project_choice
+    observations: []
+    note: An editorial project with identified sources is a choice of the generic contract; current
+      public research does not yet demonstrate this complete path.
+  - clause: REQ-VEW-001
+    basis: explicit_project_choice
+    observations: []
+    note: Identifying the source package, its location, its state and its author is a
+      traceability rule chosen for this family.
+  - clause: REQ-VEW-002
+    basis: explicit_project_choice
+    observations: []
+    note: Systematically refusing unverifiable sources is a guarantee added for the application.
+  - clause: CAP-VEW-002
+    basis: explicit_project_choice
+    observations: []
+    note: Governed tracking of processing is a product choice whose comparative evidence remains to be
+      completed.
+  - clause: REQ-VEW-003
+    basis: explicit_project_choice
+    observations: []
+    note: An attributed log of inputs, parameters, results and states is an observability choice
+      of the product.
+  - clause: REQ-VEW-004
+    basis: explicit_project_choice
+    observations: []
+    note: The strict separation between success, failure, cancellation and indeterminate outcome is a
+      product rule.
+  - clause: CAP-VEW-003
+    basis: explicit_project_choice
+    observations: []
+    note: Persistent, versioned selection is a product choice; media-review sources do not
+      prove this path on their own.
+  - clause: REQ-VEW-005
+    basis: explicit_project_choice
+    observations: []
+    note: Reviewing the material before selection is a behaviour required by product choice, to be
+      documented by other sources.
+  - clause: REQ-VEW-006
+    basis: explicit_project_choice
+    observations: []
+    note: Keeping the versions, order, author and references of a selection is a
+      product choice.
+  - clause: CAP-VEW-004
+    basis: explicit_project_choice
+    observations: []
+    note: The versioned, verifiable handoff is a product choice; the existence of documented exports does
+      not demonstrate its complete governance.
+  - clause: REQ-VEW-007
+    basis: explicit_project_choice
+    observations: []
+    note: Freezing the selection before export and attaching a provenance manifest is a product choice.
+  - clause: REQ-VEW-008
+    basis: explicit_project_choice
+    observations: []
+    note: Keeping the verification result and requiring evidence before any declaration of
+      compatibility is a product choice. The exact applicability of the acceptance check is a product
+      choice; no native Adobe import result is supplied.
+  - clause: CAP-VEW-005
+    basis: explicit_project_choice
+    observations: []
+    note: Local, hosted or hybrid profiles conforming to the same core are a portability choice of the
+      contract.
+  - clause: REQ-VEW-009
+    basis: explicit_project_choice
+    observations: []
+    note: Declaring the capabilities, dependencies, data and limits of each profile is a product
+      choice.
+  - clause: REQ-VEW-010
+    basis: explicit_project_choice
+    observations: []
+    note: Conformance evidence per profile is an added delivery requirement.
+  - clause: CAP-VEW-006
+    basis: explicit_project_choice
+    observations: []
+    note: Control of external services is a product choice; comparative research on these
+      controls remains open.
+  - clause: REQ-VEW-011
+    basis: explicit_project_choice
+    observations: []
+    note: Showing the destination, the data categories and the policy beforehand is a
+      governance choice.
+  - clause: REQ-VEW-012
+    basis: explicit_project_choice
+    observations: []
+    note: Making unavailability explicit and preserving independent functions is a degradation choice
+      of the product.
+  - clause: INV-VEW-001
+    basis: explicit_project_choice
+    observations: []
+    note: Immutability of sources under processing and exports is an integrity choice.
+  - clause: INV-VEW-002
+    basis: explicit_project_choice
+    observations: []
+    note: Attaching the export to a single selection and its inputs is a provenance choice.
+  - clause: INV-VEW-003
+    basis: explicit_project_choice
+    observations: []
+    note: This guarantee on processing states is added to avoid an ambiguous editorial
+      output.
+  - clause: INV-VEW-004
+    basis: explicit_project_choice
+    observations: []
+    note: Controlling transmissions by destination and data category is a governance
+      choice.
+  - clause: POL-VEW-001
+    basis: explicit_project_choice
+    observations: []
+    note: The separation between editorial core and optional assistance is a choice of this product
+      family; it does not define the delivery scope of a client project.
+  - clause: POL-VEW-002
+    basis: explicit_project_choice
+    observations: []
+    note: Neutrality between local, hosted and hybrid profiles is a choice of the contract.
+  - clause: POL-VEW-003
+    basis: explicit_project_choice
+    observations: []
+    note: Reserving the frozen selection and the acceptance of the handoff for an attributed human action
+      is a product choice.
+  - clause: POL-VEW-004
+    basis: explicit_project_choice
+    observations: []
+    note: Disabling external services by default and keeping the core usable is a product choice.
+  - clause: QA-VEW-001
+    basis: explicit_project_choice
+    observations: []
+    note: Complete provenance coverage is an added measurable target.
+  - clause: QA-VEW-002
+    basis: explicit_project_choice
+    observations: []
+    note: Publishing a replayable procedure and evidence per profile is a chosen quality target.
+  - clause: QA-VEW-003
+    basis: explicit_project_choice
+    observations: []
+    note: Independence from personal paths, uncontrolled links and non-exportable state is
+      a chosen portability target.
+  - clause: QA-VEW-004
+    basis: explicit_project_choice
+    observations: []
+    note: The attributed refusal of every unauthorised transmission in the conformance suite is a
+      chosen quality target.
+  - clause: CAP-VEW-007
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-VEW-009
+      - OBS-VEW-010
+    note: Contextualised comments and comparison are observed; their model in this
+      product family is a product choice.
+  - clause: REQ-VEW-013
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-VEW-009
+      - OBS-VEW-015
+    note: Timestamped comments and annotation are observed; the possible reference to a selection
+      is a product choice. Time-based notes and ranges are observed; version identity,
+      units and the refusal of silent displacement are chosen guarantees. The range stays
+      conditional on its being exposed.
+  - clause: REQ-VEW-014
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-VEW-010
+    note: Comparison and the choice of the commented asset are observed; the guarantee of absence
+      of ambiguity is a product choice. The choice of the commented asset is observed; keeping
+      references on reordering and per-media markers are chosen guarantees.
+  - clause: QA-VEW-005
+    basis: explicit_project_choice
+    observations: []
+    note: The guarantee of acceptance check and declaration is a product choice independent of a promise of
+      EDL fidelity. Native Adobe snapshots remain unavailable; OBS-VEW-011/012 are not
+      used as current evidence for this guarantee.

@@ -1,4 +1,11 @@
-# Historique du contrat
+# Contract changelog
+
+## 1.0.1 candidate — 2026-11-12
+
+- Translate the contract and its traceability from French to English. No clause,
+  identifier, priority or acceptance case is added, removed or intended to change.
+  Preserve the French 1.0.0 in history. Independent review, native editor acceptance
+  and stable promotion remain pending.
 
 ## 1.0.0 candidate — 2026-11-01
 
@@ -6,25 +13,21 @@
   into the canonical contract; nine acceptance cases. Preserve 0.3.1 in history.
   Independent review, native editor acceptance and stable promotion remain pending.
 
+## 0.3.1 — 20 October 2026
 
-## 0.3.1 — 20 octobre 2026
+- Removal of five sources and eight observations specific to one project.
+- The six public sources and their observations are kept, without renumbering the
+  remaining identifiers.
+- Traceability revised: every clause that loses its support is declared an explicit
+  product choice; no substitute public support is invented.
+- Research, comparison and review aligned on this public basis. No change to the
+  behaviour the contract requires.
 
-- Retrait de cinq sources et huit observations spécifiques à un projet.
-- Conservation des six sources publiques et de leurs observations, sans
-  renuméroter les identifiants restants.
-- Révision de la traçabilité : toute clause qui perd son appui est déclarée
-  comme choix explicite du produit ; aucun appui public de substitution
-  n'est inventé.
-- Alignement de la recherche, de la comparaison et de la revue sur cette base
-  publique. Aucun changement du comportement demandé par le contrat.
+## 0.3.0 — 20 October 2026
 
-## 0.3.0 — 20 octobre 2026
+- Product identifier generalised to `video-editorial-workflow` and clause identifiers
+  to `VEW`.
+- Actors, scenarios, conformance profile and research protocol generalised.
+- Status `draft` kept; no application conformance result claimed.
 
-- Généralisation de l'identifiant produit en `video-editorial-workflow` et des
-  identifiants de clause en `VEW`.
-- Généralisation des acteurs, des scénarios, du profil de conformité et du
-  protocole de recherche.
-- État `draft` conservé ; aucun résultat de conformité applicative revendiqué.
-
-Les projets consommateurs doivent épingler une version et adapter leurs liens
-lorsqu'un identifiant change.
+Consumer projects must pin a version and adapt their links when an identifier changes.

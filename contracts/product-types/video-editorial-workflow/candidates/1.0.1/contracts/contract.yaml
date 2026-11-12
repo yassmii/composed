@@ -1,0 +1,395 @@
+schema_version: "0.1"
+id: video-editorial-workflow
+name: Video Editorial Workflow
+version: 1.0.1
+kind: product-contract
+status: candidate
+license: CC-BY-4.0
+intent:
+  promise: Let an authorised editorial team turn a source interview into a traceable editing package,
+    without losing the link between media, choices and exports.
+  primary_outcome: An editor can prepare, review, select and export an editorial version of an
+    interview in which every result is attached to versioned inputs and decisions.
+  success_metrics:
+    - id: MET-VEW-001
+      measure: 100% of accepted exports in the reference set state the project, the selection version
+        and the inputs they derive from.
+    - id: MET-VEW-002
+      measure: 100% of mandatory acceptance scenarios run on at least one documented deployment
+        profile.
+scope:
+  includes:
+    - Creating an editorial project from an authorised and identified media package
+    - Tracking processing runs and their results, failures and input versions
+    - Reviewing available material, persistent editorial selection and recoverable versions
+    - Producing an export package intended for editing, with its provenance
+    - Local, hosted or hybrid deployment profiles that conform to the same mandatory
+      behaviours
+  excludes:
+    - Imposing a language, framework, database, cloud provider, AI model or
+      editing application
+    - Replacing the team's final editorial judgement or a professional editing tool
+    - Sending media, transcripts or scripts to an external service without an explicit policy and
+      an applicable authorisation
+    - Setting retention, residency, classification or licensing rules specific to an
+      organisation; each implementation declares the policies that apply
+actors:
+  - id: ACT-VEW-EDITOR
+    name: Editor
+    goals:
+      - Review the material
+      - Choose takes and prepare the edit
+    permissions:
+      - Read the projects assigned to them
+      - Create and version selections
+      - Request an export
+  - id: ACT-VEW-OPERATOR
+    name: Pipeline operator
+    goals:
+      - Prepare the media
+      - Run or follow processing
+      - Diagnose a failure
+    permissions:
+      - Create projects
+      - Trigger authorised processing
+      - Consult the logs and results of their projects
+  - id: ACT-VEW-ADMIN
+    name: Product administrator
+    goals:
+      - Publish deployment profiles
+      - Apply access and service policies
+    permissions:
+      - Manage profiles
+      - Define the authorised external capabilities
+      - Consult execution evidence
+domain:
+  entities:
+    - id: ENT-VEW-PROJECT
+      name: Editorial project
+      description: An isolated unit of work representing an interview and its preparation path
+        towards editing.
+      lifecycle:
+        - created
+        - prepared
+        - in review
+        - exported
+        - archived
+    - id: ENT-VEW-SOURCE-PACKAGE
+      name: Source package
+      description: The authorised media and metadata supplied to the project, with their declared
+        identity and integrity.
+      lifecycle:
+        - declared
+        - verified
+        - unavailable
+        - withdrawn
+    - id: ENT-VEW-RUN
+      name: Processing run
+      description: An identifiable attempt to produce derived material from versioned inputs and
+        parameters.
+      lifecycle:
+        - pending
+        - running
+        - succeeded
+        - failed
+        - cancelled
+        - indeterminate
+    - id: ENT-VEW-SELECTION
+      name: Editorial selection
+      description: An ordered and versioned choice of takes or segments, with its author, its date and
+        any justifications.
+      lifecycle:
+        - draft
+        - shared
+        - frozen
+        - superseded
+        - archived
+    - id: ENT-VEW-NOTE
+      name: Editorial note
+      description: An attributed piece of feedback about an identified selection, material or
+        time position.
+      lifecycle:
+        - draft
+        - published
+        - resolved
+        - archived
+    - id: ENT-VEW-EXPORT
+      name: Export package
+      description: A versioned set of files handed to editing, associated with a selection and the
+        inputs it derives from.
+      lifecycle:
+        - requested
+        - produced
+        - verified
+        - delivered
+        - invalidated
+    - id: ENT-VEW-PROFILE
+      name: Deployment profile
+      description: A reproducible configuration that declares where capabilities run, where data
+        resides and which dependencies are available.
+      lifecycle:
+        - draft
+        - verified
+        - active
+        - withdrawn
+  glossary:
+    - term: derived material
+      definition: A proxy, audio, transcript, marker, score or other result produced from a source package.
+    - term: provenance
+      definition: The inspectable link between a result, its identified inputs, the parameters of its
+        run and the editorial decision concerned.
+    - term: local profile
+      definition: A profile in which the product's capabilities run on a workstation or a
+        locally controlled environment.
+    - term: hosted profile
+      definition: A profile in which at least one capability of the product is made available from an
+        authorised shared or remote environment.
+capabilities:
+  - id: CAP-VEW-001
+    name: Initialise a traceable project
+    priority: must
+    actor: ACT-VEW-OPERATOR
+    outcome: An operator creates a project whose authorised sources and their state are identifiable.
+    requirements:
+      - id: REQ-VEW-001
+        statement: Creating a project records the identity of the source package, its authorised location,
+          its verification state and the author of the operation.
+      - id: REQ-VEW-002
+        statement: The product refuses to process a source package that is absent, withdrawn or whose
+          declared integrity cannot be verified.
+  - id: CAP-VEW-002
+    name: Track processing
+    priority: must
+    actor: ACT-VEW-OPERATOR
+    outcome: An operator can know which processing was attempted, with which inputs, and whether it is
+      usable.
+    requirements:
+      - id: REQ-VEW-003
+        statement: Each run records its requested capability, its versioned inputs and parameters,
+          its initiator, its identified results and its terminal state.
+      - id: REQ-VEW-004
+        statement: A failure, a cancellation or an indeterminate outcome cannot be presented as a
+          successful result nor made available as validated material.
+  - id: CAP-VEW-003
+    name: Select editorial material
+    priority: must
+    actor: ACT-VEW-EDITOR
+    outcome: An editor composes and retrieves a selection of material usable for editing.
+    requirements:
+      - id: REQ-VEW-005
+        statement: The editor can review the authorised media and derived material of a project before
+          choosing takes or segments.
+      - id: REQ-VEW-006
+        statement: Each selection version keeps its ordered content, its author, its creation
+          time and the references to the material it depends on.
+  - id: CAP-VEW-004
+    name: Produce an editing handoff
+    priority: must
+    actor: ACT-VEW-EDITOR
+    outcome: An editor receives a versioned and verifiable export package from a frozen selection.
+    requirements:
+      - id: REQ-VEW-007
+        statement: An export can only be produced from a frozen selection and identifies the selection
+          version, the inputs and the files it contains.
+      - id: REQ-VEW-008
+        statement: The product keeps with each export the result of its verification and does not declare
+          compatibility with an editing environment until evidence of an acceptance check is
+          recorded. The acceptance check identifies the exact bytes of the export, the selection
+          version and input versions, and the application, its version and the relevant settings of
+          the receiving environment. It distinguishes internal verification, a passed acceptance
+          check, a failed one and one not run; an acceptance check of other bytes or of another
+          environment does not transfer silently.
+  - id: CAP-VEW-005
+    name: Deploy the same product under a profile
+    priority: should
+    actor: ACT-VEW-ADMIN
+    outcome: An administrator can publish a local, hosted or hybrid profile without changing the
+      mandatory business rules.
+    requirements:
+      - id: REQ-VEW-009
+        statement: Each active profile declares its available capabilities, dependencies, data
+          locations, execution limits and verification procedure.
+      - id: REQ-VEW-010
+        statement: A profile can claim conformance only if the applicable mandatory scenarios
+          are run and their evidence is associated with its version.
+  - id: CAP-VEW-006
+    name: Control external services
+    priority: should
+    actor: ACT-VEW-ADMIN
+    outcome: Capabilities that depend on external services are visible, can be disabled and are governed.
+    requirements:
+      - id: REQ-VEW-011
+        statement: A capability that transmits data to an external service shows the destination, the
+          categories of data concerned and the policy that authorises it before it is activated.
+      - id: REQ-VEW-012
+        statement: When the required authorisation, account or secret is missing, the external capability
+          stays unavailable with an explicit reason, without blocking the path that does not depend on it.
+  - id: CAP-VEW-007
+    name: Document the editorial review
+    priority: should
+    actor: ACT-VEW-EDITOR
+    outcome: An editor can keep contextualised feedback while reviewing or comparing material.
+    requirements:
+      - id: REQ-VEW-013
+        statement: A published editorial note states its author and is attached to an identified
+          selection, material or time position. The reference includes the version of the material
+          or selection concerned and the time marker specific to the media. If a range is
+          offered, both of its bounds and their unit are kept. An out-of-bounds position or a
+          missing reference is rejected or explicitly unresolved, never moved
+          silently to another frame or version.
+      - id: REQ-VEW-014
+        statement: When an editor compares material, the product keeps the identity of each material
+          and attaches every note unambiguously to the one it concerns. Changing the side,
+          order, name or displayed version does not reassign existing notes. The markers
+          are those of the targeted media, even if durations, frame rates or playback controls differ;
+          linked playback does not prove identical coordinates.
+invariants:
+  - id: INV-VEW-001
+    statement: Source material declared in a project is never modified by a processing run or an
+      export of the product.
+    rationale: Reproducibility and the return to originals require telling sources from derivatives.
+  - id: INV-VEW-002
+    statement: Each delivered export can be attached to a single selection version and to the
+      identified inputs that selection depends on.
+    rationale: The edit must be explainable, replayable and correctable without manually reconstructing
+      its origin.
+  - id: INV-VEW-003
+    statement: No result of a run that did not succeed is presented as validated or offered for export.
+    rationale: An audiovisual pipeline cannot take an ambiguous technical state for a reliable
+      editorial output.
+  - id: INV-VEW-004
+    statement: No project data leaves the perimeter declared by its profile without an
+      explicit authorisation covering the destination and the category of data.
+    rationale: Media and texts may be subject to distribution restrictions specific to each
+      organisation.
+policies:
+  - id: POL-VEW-001
+    decision: The core covers traceable preparation, selection and editorial handoff;
+      additional assistance processing is optional capability.
+    consequence: An implementation can integrate scores, suggestions of illustration shots or
+      automations without modifying the core invariants.
+  - id: POL-VEW-002
+    decision: The contract is neutral between local, hosted and hybrid execution.
+    consequence: The choices of workstation, container, server, identity, storage and provider stay in
+      the implementation, provided it satisfies the rules and evidence of the contract.
+  - id: POL-VEW-003
+    decision: The editorial selection and the acceptance of the handoff remain a human responsibility.
+    consequence: Automatic assistance can propose material, but it neither freezes nor delivers
+      an export without an attributed action from an authorised editor.
+  - id: POL-VEW-004
+    decision: External services are optional and disabled by default.
+    consequence: The mandatory path stays usable without an account with an unauthorised external service.
+quality_attributes:
+  - id: QA-VEW-001
+    attribute: traceability
+    target: In the reference set, 100% of successful exports make it possible to identify their selection,
+      their inputs and their verification result.
+  - id: QA-VEW-002
+    attribute: reproducibility
+    target: Each verified profile publishes a reference set, a procedure and evidence that make it possible
+      to replay its mandatory scenarios.
+  - id: QA-VEW-003
+    attribute: portability
+    target: A verified local profile depends on no personal path, uncontrolled symbolic link or
+      non-exportable browser state for the mandatory path.
+  - id: QA-VEW-004
+    attribute: data governance
+    target: In the conformance suite, 100% of attempts at external transmission without explicit
+      authorisation are refused and attributed.
+  - id: QA-VEW-005
+    attribute: handoff compatibility
+    target: 100% of delivered exports declare their format, their known limits and their acceptance-check
+      state for the identified editing environment. Verified compatibility requires a passed
+      acceptance check covering the exact bytes and environment; a failure, a missing acceptance
+      check and internal verification alone do not become confirmed compatibility.
+integrations:
+  - id: INT-VEW-001
+    system: Receiving editing environment
+    purpose: Receive and acceptance-check the handoff files produced from a frozen selection.
+    degradation: The product marks the export as not validated for this environment until
+      evidence of an acceptance check is recorded.
+acceptance:
+  - id: ACC-VEW-001
+    given: An operator has an authorised source package from the reference set.
+    when: They create a project and request verification of the package.
+    then: The project keeps the identity, state and author of the package; an absent or altered package
+      is refused.
+    evidence: Scenario report, attributed log and verification result of the package.
+  - id: ACC-VEW-002
+    given: A project contains validated material accessible to an editor.
+    when: The editor creates and then freezes an ordered selection.
+    then: The frozen selection is recoverable with its author, its timestamp, its content and the
+      material references.
+    evidence: Versioned selection export and restoration test of that version.
+  - id: ACC-VEW-003
+    given: A frozen selection from the reference set is available.
+    when: The editor requests an editing handoff.
+    then: The package produced identifies the selection, the inputs, its files and its verification
+      result; it does not assert an acceptance check in the receiving environment that was not carried out.
+    evidence: Export manifest, run log and acceptance-check record in the receiving
+      environment if that check was run.
+  - id: ACC-VEW-004
+    given: A processing run fails, is cancelled or becomes indeterminate.
+    when: An operator consults the project or attempts to use its result.
+    then: The actual state, its reason and the inputs concerned are visible; no result of that
+      run can be chosen as validated material.
+    evidence: Automated test of terminal states and inspectable run log.
+  - id: ACC-VEW-005
+    given: An external capability is disabled by the profile or has no applicable authorisation.
+    when: A user attempts to activate it.
+    then: The product refuses the operation with its reason, does not emit the data and keeps the
+      independent mandatory capabilities available.
+    evidence: Refusal test, attributed log and check that nothing was transmitted.
+  - id: ACC-VEW-006
+    given: Two verified profiles apply the contract to the same reference set.
+    when: They run the applicable mandatory scenarios.
+    then: They produce the same business states and the same provenance relations, whatever
+      their infrastructure differences.
+    evidence: Versioned conformance reports comparing the business results of the two profiles.
+  - id: ACC-VEW-007
+    given: An editor reviews one material alone or in comparison with another identified material.
+    when: They publish an editorial note linked to a point in time or to a selection.
+    then: The note stays attributed and makes it possible to find unambiguously the material, position or
+      selection concerned.
+    evidence: Interface or API test, note export and check of the material references.
+  - id: ACC-VEW-008
+    given: Two media versions share the same displayed name, with different frame rates or
+      durations; notes and, if offered, ranges exist.
+    when: Reorder the comparison sides, change the displayed version, retrieve the notes and
+      propose an out-of-media bound in a negative fixture.
+    then: Each note keeps its author, its version and its own coordinates. No note is
+      reassigned by name, side or linked playback; the ranges offered keep bounds/units. The
+      invalid reference is rejected or flagged unresolved without silent displacement.
+    evidence: Exports of notes and media identities/versions, comparison path and coordinate
+      check; REQ-VEW-013/014.
+  - id: ACC-VEW-009
+    given: An export produced from a frozen selection has a passed acceptance check for identified bytes
+      and an identified environment.
+    when: Modify the bytes or the environment in separate fixtures; also consult a failed acceptance
+      check and an export not yet acceptance-checked.
+    then: The earlier success is not applied to the new conditions. Failure and non-execution
+      stay visible, internal verification is not a native acceptance check, and only the exact
+      positive control can announce verified compatibility. Sources and frozen selection are not
+      modified.
+    evidence: Export manifest, exact identities, acceptance-check states and positive/negative control in
+      the declared environment; REQ-VEW-008, QA-VEW-005, INV-VEW-001/002.
+delivery:
+  required_artifacts:
+    - Operating guide for each deployment profile
+    - Versioned reference set and provenance manifest
+    - Versioned reports of the acceptance scenarios
+    - Acceptance-check record of the handoff in the receiving environment
+  verification:
+    - Validation of the contract's schema and traceability
+    - Execution of the applicable acceptance scenarios on each published profile
+    - Independent review before promoting the contract out of draft
+    - For this candidate, assess every retained and added acceptance case against declared
+      capability applicability and execute every applicable case against the exact contract and
+      identified implementation revision. A conditional case can be not_applicable only with its
+      unmet condition and supporting capability declaration recorded; an unconditional obligation or
+      an inconvenient failure cannot be excluded. Record fixture/configuration, observations and
+      outcomes including not_run; structural validity is not implementation conformance.
+  validation_profile:
+    id: video-editorial-workflow/conformance
+    version: 0.1.0
+extensions: {}

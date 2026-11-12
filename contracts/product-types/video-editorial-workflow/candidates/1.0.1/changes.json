@@ -1,0 +1,48 @@
+{
+  "format_version": 1,
+  "kind": "contract-update-proposal",
+  "date": "2026-11-12",
+  "family": "video-editorial-workflow",
+  "title": "English translation of the contract and its traceability",
+  "status": "proposed",
+  "baseline": {
+    "version": "1.0.0",
+    "contract_sha256": "e922dca59c17f2a4ee9e8e955ef2ddd7304fce5ae701be570f3374113a42adea",
+    "traceability_sha256": "e4d8f71698afa829fe0fb645c7a28634eec7d7c5ec9c72fa826dbf0177c684e5"
+  },
+  "candidate": {
+    "version": "1.0.1",
+    "status": "candidate",
+    "schema_version": "0.1",
+    "contract_sha256": "e3488a4ffc874b50ec43817648f4edccc97d76686832398877df825c2829f0ca",
+    "traceability_sha256": "11d81b54e3cbe7feb47fd9bd29d371141fa9443649775e09b3c1bfcee128487a"
+  },
+  "classification": "Patch: wording translated from French to English with no intended behaviour change; author assessment, not a tool-verified semantic equivalence",
+  "reason": "The repository is published for an English-speaking audience. The French 1.0.0 text stays available, byte for byte, under history/1.0.0.",
+  "changed_clauses": "Every prose field of every clause is translated; identifiers, structure, priorities, clause order, observation links and traceability bases are unchanged. The French text of each clause is the archived 1.0.0 contract; the English text is this candidate.",
+  "translated_labels": "Entity lifecycle labels, actor names, glossary terms and quality-attribute names are translated. An implementation that exposes the French labels verbatim keeps its 1.0.0 pin or maps them explicitly.",
+  "retained_cases": [
+    "ACC-VEW-001",
+    "ACC-VEW-002",
+    "ACC-VEW-003",
+    "ACC-VEW-004",
+    "ACC-VEW-005",
+    "ACC-VEW-006",
+    "ACC-VEW-007",
+    "ACC-VEW-008",
+    "ACC-VEW-009"
+  ],
+  "added_cases": [],
+  "product_acceptance": "not_run",
+  "proof_transfer": "not_performed",
+  "validation": {
+    "schema_and_traceability": "passed",
+    "native_impact": "impact.json",
+    "candidate_integrity": "passed",
+    "baseline_preservation": "passed",
+    "translation_review": "author self-review only",
+    "product_acceptance": "not_run",
+    "independent_review": "pending",
+    "stable_promotion": "not_performed"
+  }
+}
