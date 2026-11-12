@@ -85,9 +85,10 @@ are deferred. Its 26 cases are planned; professional review and implementation e
 remain pending.
 
 The ten previously integrated families are **candidates** at their canonical
-`product-types/<family>/contracts/` paths: seven at 1.0.0, and three at 1.0.1
-(video editorial workflow, prospecting workspace, agentic delivery harness), which are
-English translations of their French 1.0.0 with no intended behaviour change. See the
+`product-types/<family>/contracts/` paths: six at 1.0.0, and four at 1.0.1. Three of those
+(video editorial workflow, prospecting workspace, agentic delivery harness) are English
+translations of their French 1.0.0 with no intended behaviour change. The fourth, career
+evidence platform, corrects the validation profile its 1.0.0 named. See the
 [canonical integration ledger](docs/candidate-integration-2026-11-01.md) for every
 current contract, previous archived version, exact-copy decision and migration
 boundary. The ten suites contain 207 planned acceptance scenarios.

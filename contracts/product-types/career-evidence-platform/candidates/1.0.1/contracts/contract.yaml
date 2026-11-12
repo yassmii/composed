@@ -1,0 +1,850 @@
+schema_version: "0.1"
+id: career-evidence-platform
+name: Career Evidence Platform
+version: 1.0.1
+kind: product-contract
+status: candidate
+license: CC-BY-4.0
+intent:
+  promise: Help a person understand, improve and use a documented career record while retaining
+    control over its interpretation and disclosure.
+  primary_outcome: A person can produce a useful career view, inspect why it says what it says,
+    correct it, and choose an appropriate next action without understanding the internal processing
+    model.
+  success_metrics:
+    - id: MET-CEP-001
+      measure: In the declared usability study, at least 8 of 10 first-time participants complete intake,
+        inspect one result, correct one fact and prepare a shareable view within 15 minutes of
+        active time without facilitator intervention; report processing wait separately.
+    - id: MET-CEP-002
+      measure: Every displayed skill assertion can be traced to an attributable statement, source or
+        assessment, or is explicitly marked as unsupported and excluded from evidenced outputs.
+    - id: MET-CEP-003
+      measure: Across the conformance fixtures, no private source or withdrawn sharing grant is disclosed
+        to an unauthorized recipient.
+scope:
+  includes:
+    - Person-controlled longitudinal career records and documentary or self-declared sources.
+    - Contextual skill assertions, human corrections, provenance and versioned framework mappings.
+    - Guided task completion, usable career outputs, controlled sharing and data portability.
+    - Optional career exploration, targeted third-party testimony, network assistance and credential
+      interoperability.
+    - Migration of existing records without inventing missing provenance.
+  excludes:
+    - Automatic hiring, employment eligibility or other consequential decisions about a person.
+    - A complete employer HR suite, applicant tracking system, job-search CRM or social network.
+    - Mandatory chatbot interaction, mandatory graph visualization or a fixed numbered onboarding
+      sequence.
+    - Indefinite document retention, perfect fraud detection, guaranteed employment or claims that
+      every inferred skill is certified.
+    - Unapproved social-network access, scraping, unsolicited outreach or automatic recruitment of
+      referees.
+actors:
+  - id: ACT-CEP-001
+    name: Career record owner
+    goals:
+      - Understand and use a documented career record.
+    permissions:
+      - Manage own sources, corrections, outputs and sharing grants.
+  - id: ACT-CEP-002
+    name: Invited contributor
+    goals:
+      - Provide a bounded first-hand account of an experience.
+    permissions:
+      - Access only the invitation context and their own contribution; decline without creating a
+        career profile.
+  - id: ACT-CEP-003
+    name: Authorized advisor or recipient
+    goals:
+      - Help the owner or read an intentionally shared career view.
+    permissions:
+      - Read only granted fields; propose changes without impersonating the owner.
+  - id: ACT-CEP-004
+    name: Platform operator
+    goals:
+      - Maintain reliable, controlled processing and account support.
+    permissions:
+      - Operate declared services; access personal content only under an attributed and
+        purpose-bound authorization.
+domain:
+  entities:
+    - id: ENT-CEP-001
+      name: Person
+      description: Subject of career information, independent of an account or organizational customer.
+      lifecycle:
+        - active
+        - restricted
+        - erased
+    - id: ENT-CEP-002
+      name: Career event
+      description: Experience, education, certification, project, activity or achievement with stated or
+        uncertain dates.
+      lifecycle:
+        - proposed
+        - confirmed
+        - superseded
+        - removed
+    - id: ENT-CEP-003
+      name: Source
+      description: Document, self-declaration or testimony with origin, retention policy and availability state.
+      lifecycle:
+        - received
+        - processing
+        - available
+        - unavailable
+        - erased
+    - id: ENT-CEP-004
+      name: Observation
+      description: Attributed extraction or human statement referring to source locations when available.
+      lifecycle:
+        - proposed
+        - accepted
+        - disputed
+        - superseded
+    - id: ENT-CEP-005
+      name: Skill concept
+      description: Stable internal concept independent of a person and of any external classification.
+      lifecycle:
+        - candidate
+        - active
+        - deprecated
+    - id: ENT-CEP-006
+      name: Skill assertion
+      description: Person, concept, activity, context, period, basis and supporting or challenging observations.
+      lifecycle:
+        - proposed
+        - accepted
+        - disputed
+        - superseded
+        - withdrawn
+    - id: ENT-CEP-007
+      name: Skill assessment
+      description: Attributable evaluation under a named method, scale and context.
+      lifecycle:
+        - recorded
+        - superseded
+        - withdrawn
+    - id: ENT-CEP-008
+      name: Framework mapping
+      description: Versioned typed relation between internal and external concepts with attribution and
+        review status.
+      lifecycle:
+        - candidate
+        - validated
+        - superseded
+        - rejected
+    - id: ENT-CEP-009
+      name: Guided task
+      description: Canonical task state shared across interaction modes; conversation is not its sole record.
+      lifecycle:
+        - available
+        - in_progress
+        - blocked
+        - completed
+        - cancelled
+    - id: ENT-CEP-010
+      name: Contribution request
+      description: Bounded invitation to testify about a specified experience.
+      lifecycle:
+        - draft
+        - approved
+        - sent
+        - responded
+        - declined
+        - expired
+        - cancelled
+    - id: ENT-CEP-011
+      name: Career output
+      description: Owner-reviewed narrative or structured view tied to an identified record revision.
+      lifecycle:
+        - draft
+        - approved
+        - superseded
+        - withdrawn
+    - id: ENT-CEP-012
+      name: Sharing grant
+      description: Scope, recipient policy, purpose, expiry and revocation for a career view.
+      lifecycle:
+        - draft
+        - active
+        - expired
+        - revoked
+    - id: ENT-CEP-013
+      name: Processing operation
+      description: Idempotent, attributable work with policy, budget and lineage.
+      lifecycle:
+        - queued
+        - running
+        - blocked
+        - succeeded
+        - failed
+        - cancelled
+  glossary:
+    - term: Evidence
+      definition: An attributable source supporting or challenging a particular assertion; not a universal
+        guarantee of truth.
+    - term: Skill assertion
+      definition: A contextual claim about a person’s use of a skill, distinct from the abstract skill and
+        any assessment.
+    - term: Assessment
+      definition: A result obtained using an identified method, assessor, context and time; inferred
+        confidence is not an assessment score.
+    - term: Guidance
+      definition: Explanation of a useful next action and its consequence, delivered through suitable
+        interaction modes.
+    - term: Missing evidence
+      definition: Insufficient documentation of an assertion; not proof that the person lacks the skill.
+    - term: Core conformance
+      definition: All must capabilities and cross-cutting rules; an optional capability applies when
+        enabled or claimed. Merely labelling it optional never weakens privacy or provenance.
+capabilities:
+  - id: CAP-CEP-001
+    name: Understand the purpose and next useful action
+    priority: must
+    actor: ACT-CEP-001
+    outcome: Reach a useful result without learning platform internals.
+    requirements:
+      - id: REQ-CEP-001
+        statement: Explain what a career view can and cannot establish, what information is needed next, and
+          why; allow the person to state or defer their intended use.
+      - id: REQ-CEP-002
+        statement: Provide a useful route from one source or self-declared experience; optional
+          questionnaires, invitation campaigns and completeness scores must not block an initial
+          reviewable result.
+      - id: REQ-CEP-003
+        statement: Expose current progress, one clearly recommended next action and available alternatives;
+          distinguish processing, missing information and optional enrichment.
+      - id: REQ-CEP-004
+        statement: Allow pause and resume without losing confirmed work, and allow revision of the goal
+          without recreating the account.
+  - id: CAP-CEP-002
+    name: Ingest sources under a declared processing policy
+    priority: must
+    actor: ACT-CEP-001
+    outcome: Know what was received, processed and retained.
+    requirements:
+      - id: REQ-CEP-005
+        statement: Accept the declared source formats and manual statements; report unsupported or
+          unreadable inputs individually without implying successful extraction.
+      - id: REQ-CEP-006
+        statement: Before accepting personal content, disclose processing purpose and retention and enforce
+          the required account status and authorization on the service boundary, including direct
+          and background entry points.
+      - id: REQ-CEP-007
+        statement: Associate each source with its owner, origin, receipt time, available integrity
+          information and source-location references; preserve uncertainty when these facts are
+          missing.
+      - id: REQ-CEP-008
+        statement: Detect repeated inputs and propose potentially overlapping information without conflating
+          identical bytes with identical career events or silently discarding independent evidence.
+      - id: REQ-CEP-009
+        statement: Show per-source status and a recoverable next action on failure; a failed or cancelled
+          operation must not be represented as completed.
+  - id: CAP-CEP-003
+    name: Reconcile a longitudinal career record
+    priority: must
+    actor: ACT-CEP-001
+    outcome: Correct a coherent career history while preserving its evidence.
+    requirements:
+      - id: REQ-CEP-010
+        statement: Represent overlapping experiences, activities and achievements, uncertain or partial
+          dates, and differences between an organization’s legal and familiar names.
+      - id: REQ-CEP-011
+        statement: Present conflicting source claims for review; record the owner’s correction separately
+          from the original observation and show which version is current.
+      - id: REQ-CEP-012
+        statement: Preview merge, split and removal effects on event identities, supporting sources and
+          dependent outputs; confirm the change and retain an attributable revision that can be
+          reversed where retained information permits.
+      - id: REQ-CEP-013
+        statement: Do not require the owner to make concurrent experiences sequential or invent exact dates
+          to satisfy a display layout.
+  - id: CAP-CEP-004
+    name: Inspect evidence, interpretation and uncertainty
+    priority: must
+    actor: ACT-CEP-001
+    outcome: Understand and contest the basis of a displayed claim.
+    requirements:
+      - id: REQ-CEP-014
+        statement: Distinguish self-declaration, document-derived observation, third-party testimony, model
+          inference and method-based assessment; do not promote one category into another by
+          changing a display label.
+      - id: REQ-CEP-015
+        statement: For a displayed skill assertion expose its experience or activity, relevant period,
+          supporting or conflicting sources and derivation method in understandable terms.
+      - id: REQ-CEP-016
+        statement: "Record source availability separately from historic derivation: an erased or unavailable
+          source cannot be presented as a document the recipient can currently verify; historical
+          lineage must not retain personal content that the applicable erasure policy requires
+          removing."
+      - id: REQ-CEP-017
+        statement: Accept a challenge or correction and identify affected assertions and outputs;
+          recomputation must preserve separately confirmed human input and unresolved
+          contradictions.
+      - id: REQ-CEP-018
+        statement: Do not infer measured proficiency, employment eligibility or skill absence solely from
+          document counts, confidence scores, missing records or identity authentication.
+  - id: CAP-CEP-005
+    name: Maintain interoperable skill knowledge
+    priority: must
+    actor: ACT-CEP-004
+    outcome: Use governed concepts without tying the person’s record to one taxonomy.
+    requirements:
+      - id: REQ-CEP-019
+        statement: Maintain separate identities for a skill concept, a person’s contextual assertion and an
+          assessment; versions and provenance must survive changes to their labels.
+      - id: REQ-CEP-020
+        statement: Keep an internal concept independent of external framework identifiers; retain framework
+          name, version and concept identity for each mapping.
+      - id: REQ-CEP-021
+        statement: Distinguish exact, close, broader, narrower and related mappings; keep unreviewed
+          candidate mappings, confidence and method separate from validated mappings.
+      - id: REQ-CEP-022
+        statement: A vocabulary update or changed mapping must preserve the prior interpretation and
+          identify records requiring review rather than silently rewriting their meaning.
+      - id: REQ-CEP-023
+        statement: Support the declared languages without treating translation as a new skill identity or
+          silently translating a person’s own testimony.
+  - id: CAP-CEP-006
+    name: Receive grounded guidance across interaction modes
+    priority: must
+    actor: ACT-CEP-001
+    outcome: Get help completing a task with control over resulting actions.
+    requirements:
+      - id: REQ-CEP-024
+        statement: Guidance shall use the current authorized record and task state, identify its basis,
+          disclose missing information and allow disagreement or abstention rather than inventing
+          facts.
+      - id: REQ-CEP-025
+        statement: Complete intake, correction, output preparation and access control through accessible
+          direct actions; conversational assistance may complement them but cannot be the sole path.
+      - id: REQ-CEP-026
+        statement: Keep task progress and confirmed data outside ephemeral dialogue so switching interaction
+          mode or starting a new session preserves the same state.
+      - id: REQ-CEP-027
+        statement: Preview and obtain specific human approval before guidance sends an invitation, discloses
+          information, deletes a record or commits another consequential external action.
+      - id: REQ-CEP-028
+        statement: Treat document content and retrieved text as data, not authority to change permissions,
+          contact people or publish information.
+  - id: CAP-CEP-007
+    name: Explore career directions with actionable explanations
+    priority: should
+    actor: ACT-CEP-001
+    outcome: Compare possible directions without mistaking suggestions for decisions.
+    requirements:
+      - id: REQ-CEP-029
+        statement: Let the person specify or defer interests, constraints, geography and desired change;
+          permit multiple concurrent directions rather than forcing one identity.
+      - id: REQ-CEP-030
+        statement: Explain each proposed direction using supported experience, transferable skills,
+          preferences, dated external information and material uncertainties; distinguish evidence
+          gaps from assessed skill gaps.
+      - id: REQ-CEP-031
+        statement: Allow the person to retain, reject or revise a direction with reasons, then choose a next
+          action such as researching a role, documenting an experience or discussing an option with
+          an advisor.
+      - id: REQ-CEP-032
+        statement: Disclose coverage and freshness limits; do not present occupational similarity as a live
+          vacancy, a hiring probability or a forecast of job disappearance.
+  - id: CAP-CEP-008
+    name: Prepare usable outputs and bounded sharing
+    priority: must
+    actor: ACT-CEP-001
+    outcome: Use a career narrative with appropriate supporting information.
+    requirements:
+      - id: REQ-CEP-033
+        statement: Prepare an editable narrative, career summary and optional evidence appendix from an
+          identified record revision; generated additions remain proposals until reviewed.
+      - id: REQ-CEP-034
+        statement: Let the owner select content and recipient scope and preview exactly what is disclosed;
+          raw documents and contributor contact details are excluded unless specifically authorized.
+      - id: REQ-CEP-035
+        statement: Offer a self-contained readable output and a documented structured export preserving
+          assertions, evidence references, corrections and framework versions that the owner is
+          entitled to receive.
+      - id: REQ-CEP-036
+        statement: Sharing grants shall support expiry and revocation; enforce them on subsequent access and
+          clearly explain that previously downloaded copies cannot be remotely recalled.
+      - id: REQ-CEP-037
+        statement: A share link or badge shall identify what it represents and its revision and status; it
+          must not claim an independently issued qualification or certified mastery without that
+          evidence.
+  - id: CAP-CEP-009
+    name: Control access, processing and erasure
+    priority: must
+    actor: ACT-CEP-001
+    outcome: Retain control over personal records throughout their lifecycle.
+    requirements:
+      - id: REQ-CEP-038
+        statement: Authenticate actors and authorize access and changes on every protected operation; record
+          ownership, advisor grants and operator support access separately, with revocation
+          effective before the next protected operation.
+      - id: REQ-CEP-039
+        statement: Prevent other accounts’ records, retrieval results, caches, guidance context or exports
+          from entering the actor’s authorized view.
+      - id: REQ-CEP-040
+        statement: Separate required processing authorization, optional disclosure, testimony participation
+          and marketing enrollment; declining one optional purpose must not imply agreement to
+          another.
+      - id: REQ-CEP-041
+        statement: Apply declared retention to originals, extracted content, derived representations,
+          temporary copies and provider-held artifacts; track legal or operational exceptions
+          explicitly instead of silently retaining everything.
+      - id: REQ-CEP-042
+        statement: For deletion or processing withdrawal, show scope and dependencies, stop affected queued
+          work, track completion across applicable stores and grants, and never declare completion
+          while required work remains.
+      - id: REQ-CEP-043
+        statement: Record minimum justified audit and exception data with retention limits; recovery from
+          backup must reapply outstanding erasure and revocation decisions before serving restored
+          records.
+  - id: CAP-CEP-010
+    name: Manage background work and resource limits
+    priority: must
+    actor: ACT-CEP-001
+    outcome: Understand progress and cost while retaining access to existing work.
+    requirements:
+      - id: REQ-CEP-044
+        statement: Identify long-running operations, report their status and make retries idempotent for
+          committed record changes and metered charges.
+      - id: REQ-CEP-045
+        statement: Before a metered action state the unit, estimated or maximum charge, and applicable
+          limits; separate resource balance from evidence coverage or profile quality.
+      - id: REQ-CEP-046
+        statement: Enforce declared processing limits before external work, make exhaustion and provider
+          refusal visible, and permit cancellation or a bounded retry without duplicate side
+          effects.
+      - id: REQ-CEP-047
+        statement: Retain access to authorized existing records, correction history and control of sharing
+          when generation providers or optional paid capabilities are unavailable.
+  - id: CAP-CEP-011
+    name: Collect targeted first-hand contributions
+    priority: should
+    actor: ACT-CEP-001
+    outcome: Fill a specified evidence gap without coercing contacts.
+    requirements:
+      - id: REQ-CEP-048
+        statement: Identify a specific experience or assertion needing corroboration and suggest a bounded
+          question and relevant relationship; explain why it helps and let the owner choose the
+          recipient.
+      - id: REQ-CEP-049
+        statement: Preview the invitation, questions, shared context and visibility policy; send only after
+          owner approval and maintain separate status for delivery, response and refusal.
+      - id: REQ-CEP-050
+        statement: Allow the invited person to decline or contribute without creating their own career
+          profile or accepting marketing; any later invitation to join is an independent choice.
+      - id: REQ-CEP-051
+        statement: Attribute a contribution to its declared relationship, observation period, authentication
+          method and stated limits; preview intended use and obtain the contributor’s authorization
+          before publication.
+      - id: REQ-CEP-052
+        statement: Keep testimony about an event, agreement to be contacted as a reference and independent
+          assessment distinct; permit correction, challenge and withdrawal according to the declared
+          retention policy.
+  - id: CAP-CEP-012
+    name: Suggest relevant contacts from authorized data
+    priority: could
+    actor: ACT-CEP-001
+    outcome: Find people to ask without assuming unrestricted network access.
+    requirements:
+      - id: REQ-CEP-053
+        statement: Use only authorized contact data with recorded origin and applicable permissions;
+          suggestions must state the relevant experience or potential evidence gap and never invent
+          a relationship.
+      - id: REQ-CEP-054
+        statement: Disclose unavailable integration capabilities; allow manual nomination or authorized
+          import when a network provider grants no access.
+      - id: REQ-CEP-055
+        statement: No login scope may be treated as permission to import a network, send messages or enroll
+          contacts; approve each outreach through the contribution workflow.
+  - id: CAP-CEP-013
+    name: Exchange externally issued credentials
+    priority: could
+    actor: ACT-CEP-001
+    outcome: Preserve issuer claims and verification limits across systems.
+    requirements:
+      - id: REQ-CEP-056
+        statement: For every claimed credential format, preserve issuer, subject binding, achievement,
+          evidence references and validity/status information; report invalid or unsupported
+          material without silently certifying it.
+      - id: REQ-CEP-057
+        statement: Distinguish format and signature verification from acceptance of issuer claims; an export
+          must not elevate owner-written or model-inferred assertions into issuer-certified
+          credentials.
+      - id: REQ-CEP-058
+        statement: Apply field-level sharing to credential evidence and endorsements; enabling an exchange
+          format must not make all supporting documents public.
+  - id: CAP-CEP-014
+    name: Migrate records without fabricating certainty
+    priority: must
+    actor: ACT-CEP-004
+    outcome: Reconcile a replacement system with a declared source inventory.
+    requirements:
+      - id: REQ-CEP-059
+        statement: When replacing an existing system, inventory the selected source revisions, owners,
+          sources, assertions, permissions, retention decisions and missing data before import.
+      - id: REQ-CEP-060
+        statement: Reconcile counts, identifiers, source links and ownership; label legacy claims with
+          incomplete provenance rather than synthesizing proof, exact dates or consent records.
+      - id: REQ-CEP-061
+        statement: Provide a trial migration and a resumable cutover with a declared rollback and
+          deletion-reconciliation policy; verify the owner’s usable outputs and permissions before
+          declaring migration complete.
+  - id: CAP-CEP-015
+    name: Evaluate and operate the knowledge system
+    priority: must
+    actor: ACT-CEP-004
+    outcome: Improve quality with observable versions, failures and budgets.
+    requirements:
+      - id: REQ-CEP-062
+        statement: Record the versions of model, extraction policy, prompts, mappings and source revisions
+          behind generated observations and outputs without placing document bodies or secrets in
+          routine telemetry.
+      - id: REQ-CEP-063
+        statement: Evaluate extraction, concept resolution, grounding, temporal reconciliation and career
+          relevance separately on declared held-out cases; report false claims, abstentions,
+          supported languages and population limitations. Every reported measure names its task,
+          evaluated population, sample count, numerator and denominator or scoring definition, and
+          missing observations. An undefined denominator or an unexecuted slice is unknown, never a
+          zero-error or successful result; abstentions are reported separately from supported
+          answers.
+      - id: REQ-CEP-064
+        statement: Compare proposed retrieval and reasoning methods with a baseline on the same corpus and
+          measured quality, latency and cost; deploying a newer model or graph store is not evidence
+          of improvement. Freeze the corpus/split, applicable language and occupational slices,
+          scoring rules and confirmation thresholds before comparing the candidate. Publish
+          slice-level regressions and all declared slices alongside aggregates; an aggregate gain
+          cannot override a failed mandatory quality threshold or a grounding/privacy violation.
+          Cases used to tune the method are not the untouched confirmation split.
+      - id: REQ-CEP-065
+        statement: Recover from dependency failures and restore canonical records with their grants and
+          revocations; treat search, vector or graph projections as rebuildable unless their
+          canonical authority is explicitly documented.
+invariants:
+  - id: INV-CEP-001
+    statement: An actor receives only information permitted by the current owner and applicable
+      contribution or processing policy.
+    rationale: A guidance surface or derived store must not become an alternate access path.
+  - id: INV-CEP-002
+    statement: Evidence category, authentication assurance and assessment result remain distinct in
+      storage, guidance and outputs.
+    rationale: A convincing document or signed credential does not independently prove all claims about
+      a person.
+  - id: INV-CEP-003
+    statement: A correction cannot silently rewrite its source, erase a live contradiction or be
+      overwritten by an unreviewed model regeneration.
+    rationale: Human control requires stable, attributable decisions.
+  - id: INV-CEP-004
+    statement: Removing duplicate presentation entries does not silently remove independent evidence or
+      merge different people.
+    rationale: Display simplification must preserve record meaning.
+  - id: INV-CEP-005
+    statement: No missing record or low completeness score is represented as proof of incompetence.
+    rationale: Absence of documentation is not a measured negative assessment.
+  - id: INV-CEP-006
+    statement: Guidance cannot grant itself authority, act as the owner’s approval or override service
+      authorization.
+    rationale: Helpful assistance must preserve human ownership.
+  - id: INV-CEP-007
+    statement: Previously revoked grants and erased content cannot become visible again through retries,
+      projection rebuilds or backup restoration.
+    rationale: Recovery cannot reverse privacy decisions.
+  - id: INV-CEP-008
+    statement: One approved action produces at most one committed effect and one applicable charge
+      despite delivery retries.
+    rationale: Reliable background processing must not duplicate consequences.
+  - id: INV-CEP-009
+    statement: A framework label or mapping change never silently changes a past assertion’s recorded basis.
+    rationale: Taxonomy evolution must remain explainable.
+  - id: INV-CEP-010
+    statement: A contribution or network import is never interpreted as permission to market to or
+      create a career profile for another person.
+    rationale: Evidence acquisition and user acquisition are different purposes.
+policies:
+  - id: POL-CEP-001
+    decision: The product is controlled by the career record’s subject, not implicitly by an employer or
+      recipient.
+    consequence: Advisor and organization access require explicit scoped grants.
+  - id: POL-CEP-002
+    decision: Guidance is an outcome, not a mandatory chat interface.
+    consequence: Direct accessible task completion and resumable shared state are required even if
+      conversation is offered.
+  - id: POL-CEP-003
+    decision: Use internal skill identities and typed external mappings.
+    consequence: No single occupational taxonomy or embedding index defines the person’s canonical skill record.
+  - id: POL-CEP-004
+    decision: A readable first result precedes optional enrichment.
+    consequence: Third-party invitations, all questionnaire sections or a global score cannot gate
+      initial understanding.
+  - id: POL-CEP-005
+    decision: No claim of perfect fraud detection or guaranteed career outcome.
+    consequence: Suspicious or incomplete evidence receives an explicit uncertainty or review state
+      rather than an automated judgment about the person.
+  - id: POL-CEP-006
+    decision: Optional modules activate their complete safeguards when enabled or advertised.
+    consequence: A network mapper, credential exchange or testimony feature cannot claim conformance
+      with only its happy path implemented.
+  - id: POL-CEP-007
+    decision: Keep a generic product contract separate from each deployment’s architecture and
+      jurisdictional constraints.
+    consequence: No cloud, language, database engine, model vendor or mandatory physical microservice
+      topology is selected here.
+  - id: POL-CEP-008
+    decision: A shareable career view is not automatically a long-term document vault.
+    consequence: Retention and loss of source availability must be explained independently of profile
+      persistence.
+  - id: POL-CEP-009
+    decision: Metrics and thresholds in this draft are explicit acceptance choices pending product
+      validation.
+    consequence: They are neither competitor benchmarks nor evidence of observed user success.
+quality_attributes:
+  - id: QA-CEP-001
+    attribute: usability
+    target: Meet MET-CEP-001 on a declared set of representative first-time participants; measure active
+      time, waiting, errors and required help separately, including participants without
+      recommendation letters.
+  - id: QA-CEP-002
+    attribute: accessibility
+    target: Provide WCAG 2.2 AA evidence for the declared core and enabled optional journeys, including
+      keyboard-only correction, non-graphical reading, labelled controls and asynchronous status
+      feedback.
+  - id: QA-CEP-003
+    attribute: provenance
+    target: In all conformance fixtures, every evidenced output claim resolves to retained lineage or
+      explicitly reports source unavailability; no unsupported generated date, credential or
+      achievement is published as confirmed.
+  - id: QA-CEP-004
+    attribute: privacy
+    target: All cross-account, expired-grant, revoked-advisor, withdrawn-contributor and
+      restored-erasure negative cases deny access before the next protected operation.
+  - id: QA-CEP-005
+    attribute: reliability
+    target: Injected dependency timeouts, duplicate deliveries and mid-operation interruption produce no
+      duplicated committed change or charge and no false completion in the applicable fixtures.
+  - id: QA-CEP-006
+    attribute: portability
+    target: A declared independent consumer can read the structured export and reconcile 100% of
+      exported entities, typed links, versions and permission/availability markers without the
+      original application or its model provider.
+  - id: QA-CEP-007
+    attribute: quality evaluation
+    target: Publish extraction precision/recall, linking top-k quality, unsupported-claim rate and
+      human-rated career relevance separately for the declared evaluation population; preserve an
+      untouched evaluation split and disclose uncertainty.
+  - id: QA-CEP-008
+    attribute: responsiveness
+    target: For the declared reference workload, interactive acknowledgments have p95 at or below two
+      seconds; longer work receives a durable operation identifier and progress rather than a
+      blocking silent wait.
+integrations:
+  - id: INT-CEP-001
+    system: Identity provider
+    purpose: Authenticate actors under the declared assurance policy.
+    degradation: Offer a documented alternative or explain unavailability; provider login alone never
+      certifies real-world identity or skill.
+  - id: INT-CEP-002
+    system: Document and AI processors
+    purpose: Extract, retrieve and propose interpretations within approved processing limits.
+    degradation: Keep authorized records readable; expose failure, preserve partial state and do not
+      bypass processing-region or retention policy.
+  - id: INT-CEP-003
+    system: External skills and occupation frameworks
+    purpose: Resolve versioned concepts and maintain typed mappings.
+    degradation: Keep the prior mapping version and permit an unresolved internal concept while the
+      provider is unavailable.
+  - id: INT-CEP-004
+    system: Messaging and contact data providers
+    purpose: Deliver approved invitations and retrieve only authorized contact data.
+    degradation: Distinguish queued, delivered and responded states; prevent duplicate outreach and
+      allow manual nomination.
+  - id: INT-CEP-005
+    system: Credential issuers and readers
+    purpose: Exchange only declared, supported credential profiles.
+    degradation: Preserve original issuer information and report unsupported or unverifiable credentials
+      without inventing validation.
+acceptance:
+  - id: ACC-CEP-001
+    given: A first-time owner has one CV and no references.
+    when: They start a career record and defer optional enrichment.
+    then: They can inspect an initial reviewable result, identify its limits and next action, and resume
+      it later without completing all sections.
+    evidence: Observed journey and MET-CEP-001 study; CAP-CEP-001, POL-CEP-004.
+  - id: ACC-CEP-002
+    given: An owner submits two supported inputs and one unreadable file.
+    when: Intake completes for the readable sources and fails for the other.
+    then: Per-file outcomes, retained inputs and recovery actions remain visible; no failed extraction
+      is labelled complete.
+    evidence: Failure-injection record; CAP-CEP-002.
+  - id: ACC-CEP-003
+    given: A suspended or processing-withdrawn account has a previously valid session.
+    when: It requests intake directly or through guidance and queued work.
+    then: The affected operation is refused before accepting content or starting external processing;
+      unrelated authorized read access follows the declared policy.
+    evidence: Service-boundary negative cases; REQ-CEP-006, CAP-CEP-009.
+  - id: ACC-CEP-004
+    given: Two sources describe the same event differently and a third describes concurrent work.
+    when: The owner merges the first pair then reverses the change.
+    then: Independent source links remain identifiable, conflicting dates are preserved, and concurrent
+      work is never forced into sequence.
+    evidence: Before/after record and lineage diff; CAP-CEP-003, INV-CEP-004.
+  - id: ACC-CEP-005
+    given: A contract mentions a responsibility and a model infers a skill.
+    when: The skill appears in a career output.
+    then: Its category, source and period are inspectable; it is not labelled certified mastery or a
+      measured proficiency level.
+    evidence: Claim lineage and output inspection; CAP-CEP-004, INV-CEP-002.
+  - id: ACC-CEP-006
+    given: An owner corrects an event and a source subsequently changes.
+    when: A background model regenerates dependent content.
+    then: The confirmed correction survives or receives an explicit conflict review; stale dependent
+      claims are identified without overwriting the owner.
+    evidence: Revision and recomputation trace; INV-CEP-003.
+  - id: ACC-CEP-007
+    given: An internal skill has a close mapping and another framework publishes a new version.
+    when: A new mapping is proposed.
+    then: Existing assertions keep their prior basis; a close mapping is not silently promoted to exact
+      identity or applied as a validated update.
+    evidence: Mapping/version reconciliation; CAP-CEP-005, INV-CEP-009.
+  - id: ACC-CEP-008
+    given: The same task is available through direct controls and conversation.
+    when: The owner changes modes, ends the session and resumes later.
+    then: Confirmed data and task progress are identical, with no requirement to reconstruct a
+      conversation.
+    evidence: Cross-mode journey evidence; CAP-CEP-006.
+  - id: ACC-CEP-009
+    given: A document includes instructions to disclose records and guidance suggests a consequential
+      action.
+    when: The processor or assistant consumes it.
+    then: Document instructions grant no authority; any valid consequential proposal still requires a
+      specific authorized human approval.
+    evidence: Adversarial and authorization cases; REQ-CEP-027, REQ-CEP-028, INV-CEP-006.
+  - id: ACC-CEP-010
+    given: Career exploration is enabled and evidence is incomplete.
+    when: The owner compares two directions in a declared geography.
+    then: Explanations expose evidence, preference and coverage limits; undocumented skills are not
+      declared absent and an occupation match is not shown as a current vacancy.
+    evidence: Recommendation review with human-rated cases; CAP-CEP-007.
+  - id: ACC-CEP-011
+    given: A reviewed output references private documents and third-party testimony.
+    when: The owner previews and activates a scoped sharing grant.
+    then: The recipient sees only approved material with its revision and claim categories, without raw
+      documents or contact details unless separately authorized.
+    evidence: Owner/recipient view comparison; CAP-CEP-008.
+  - id: ACC-CEP-012
+    given: A recipient previously accessed a shared view.
+    when: The owner revokes the grant and the recipient follows a cached link.
+    then: The next protected access fails; the owner has been told that downloaded copies cannot be
+      remotely recalled.
+    evidence: Revocation and cache-negative cases; REQ-CEP-036, INV-CEP-007.
+  - id: ACC-CEP-013
+    given: Two owners use the same device and background retrieval infrastructure.
+    when: They switch accounts and request guidance, profile views or exports.
+    then: No prior owner’s personal record or retrieval context is returned to the new actor.
+    evidence: Account-switch and retrieval isolation cases; CAP-CEP-009.
+  - id: ACC-CEP-014
+    given: Erasure covers originals, derived representations and outstanding jobs.
+    when: A store is unavailable, then a backup is restored.
+    then: The operation stays incomplete while required work remains; resumed work and restored service
+      reapply erasure and revocation before content is served.
+    evidence: Interrupted deletion and restore exercise; REQ-CEP-042, REQ-CEP-043.
+  - id: ACC-CEP-015
+    given: A metered operation is approved once and receives duplicate deliveries.
+    when: The processor retries and the dependency briefly fails.
+    then: At most one change and charge are committed, status remains accurate and limits are enforced
+      before renewed external work.
+    evidence: Injected retry and charging ledger; CAP-CEP-010.
+  - id: ACC-CEP-016
+    given: A testimony module suggests a person who may know an experience.
+    when: The owner approves a bounded invitation and the recipient declines.
+    then: Only approved context is sent, status reflects refusal and no career account or marketing
+      enrollment is created.
+    evidence: Invitation and recipient journey; CAP-CEP-011, INV-CEP-010.
+  - id: ACC-CEP-017
+    given: A contributor authenticates through an external member login and submits testimony.
+    when: The testimony is reviewed and shared.
+    then: Authentication method and declared relationship remain distinct from independently verified
+      identity or assessed mastery; intended use and reference-contact permission are recorded
+      separately.
+    evidence: Contribution provenance and permission inspection; REQ-CEP-051, REQ-CEP-052.
+  - id: ACC-CEP-018
+    given: Network assistance is enabled but provider access is not approved.
+    when: The owner asks for relevant contacts.
+    then: The limitation is explicit, manual nomination remains usable and no network or permission is
+      fabricated from a login token.
+    evidence: Restricted-integration case; CAP-CEP-012.
+  - id: ACC-CEP-019
+    given: Credential exchange is enabled and material has an expired status or unsupported format.
+    when: The owner imports or exports it.
+    then: The result preserves issuer context and reports limitations; it never turns an inferred
+      assertion into a verified issuer credential.
+    evidence: Credential fixtures and output inspection; CAP-CEP-013.
+  - id: ACC-CEP-020
+    given: Legacy records contain missing source files, conflicting histories and revoked grants.
+    when: An operator performs a trial import and replacement cutover.
+    then: Reconciled ownership and links are preserved, missing evidence is explicit, revoked access
+      stays denied and rollback does not resurrect erased content.
+    evidence: Migration manifest and reconciliation report; CAP-CEP-014.
+  - id: ACC-CEP-021
+    given: A proposed graph, retrieval or model change is presented as an improvement.
+    when: The operator compares it with the existing baseline.
+    then: Evaluation uses the same held-out corpus, population, quality measures and cost/latency
+      reporting; improvements and regressions are distinguished without a blanket SOTA claim.
+    evidence: Versioned evaluation report; CAP-CEP-015, QA-CEP-007.
+  - id: ACC-CEP-022
+    given: A person uses a keyboard and cannot interpret an interactive graph.
+    when: They inspect evidence, correct a record and prepare an output.
+    then: Equivalent information and actions are available with accessible labels, status feedback and a
+      non-graphical view.
+    evidence: Accessibility assessment of core journeys; QA-CEP-002.
+  - id: ACC-CEP-023
+    given: A proposed method improves the aggregate but fails a predeclared mandatory threshold in one
+      language or occupational slice.
+    when: Compare it with the same baseline on the frozen confirmation split and also attempt to include
+      tuning cases or drop the failing slice.
+    then: Every declared slice and sample count remains visible; the mandatory regression prevents a
+      successful confirmation verdict despite the aggregate gain. Tuning cases cannot be represented
+      as untouched confirmation cases.
+    evidence: Versioned split/scorer/threshold declarations, per-slice outcomes and negative controls;
+      REQ-CEP-064, QA-CEP-007.
+  - id: ACC-CEP-024
+    given: A scorer fixture has three correct extracted spans, one false positive and two missed spans;
+      separate fixtures abstain on all cases or have no executed observations.
+    when: Produce extraction precision/recall and the other declared task measures.
+    then: The known fixture yields precision 3/4 and recall 3/5 under the declared span-matching rule.
+      Empty denominators and unexecuted observations remain unknown; all-abstention coverage is
+      reported and cannot masquerade as demonstrated supported-answer quality. Linking, grounding
+      and relevance scores remain separate.
+    evidence: Planned scorer positive/negative controls, matching rule and count ledger; REQ-CEP-063,
+      QA-CEP-007.
+delivery:
+  validation_profile:
+    id: career-evidence-platform/conformance
+    version: 1.0.0
+  required_artifacts:
+    - Declared core and enabled optional capabilities, supported languages, audiences and use
+      limitations.
+    - Domain model and source-to-observation-to-assertion-to-output lineage examples.
+    - Recorded owner/contributor/recipient journeys, including interruption, correction, failure and
+      withdrawal.
+    - Versioned evaluation corpus, annotation policy, error analysis and measured usability results.
+    - Data-flow, authorization, retention, deletion, restore and migration evidence; provider and
+      processing-region inventory.
+    - Operations and recovery guide with declared workloads, processing budgets and incident
+      handling.
+  verification:
+    - Execute every applicable acceptance scenario against an identified implementation revision;
+      this draft supplies scenarios, not execution results.
+    - Evaluate extraction, linking, grounded generation and career recommendations separately on
+      representative held-out cases.
+    - Assess accessibility, account isolation and policy enforcement across direct actions, guidance
+      and background work.
+    - Compare candidate techniques with a declared baseline on the same corpus, quality measures,
+      latency and cost; document regressions and abstentions.
+    - For this candidate, assess every retained and added acceptance case against declared
+      capability applicability and execute every applicable case against the exact contract and
+      identified implementation revision. A conditional case can be not_applicable only with its
+      unmet condition and supporting capability declaration recorded; an unconditional obligation or
+      an inconvenient failure cannot be excluded. Record fixture/configuration, observations and
+      outcomes including not_run; structural validity is not implementation conformance.
+extensions: {}

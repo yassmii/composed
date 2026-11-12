@@ -1,7 +1,7 @@
 schema_version: "0.1"
 id: career-evidence-platform
 name: Career Evidence Platform
-version: 1.0.0
+version: 1.0.1
 kind: product-contract
 status: candidate
 license: CC-BY-4.0
@@ -820,7 +820,7 @@ acceptance:
 delivery:
   validation_profile:
     id: career-evidence-platform/conformance
-    version: 0.1.0
+    version: 1.0.0
   required_artifacts:
     - Declared core and enabled optional capabilities, supported languages, audiences and use
       limitations.

@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Publish `career-evidence-platform@1.0.1` as a patch: `delivery.validation_profile` now names
+  profile 1.0.0, which covers ACC-CEP-023 and ACC-CEP-024, instead of profile 0.1.0, which
+  targets contract 0.1.0. No clause or acceptance case changes. The 1.0.0 package is archived
+  byte for byte under `history/1.0.0`; author review only, no proof transferred.
+
 - Publish English translations as patches with no intended behaviour change:
   `video-editorial-workflow@1.0.1`, `prospecting-workspace@1.0.1`,
   `agentic-delivery-harness@1.0.1` and `wealth-advisory@0.1.1`. Identifiers, structure and

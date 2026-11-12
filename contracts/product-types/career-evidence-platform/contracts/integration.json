@@ -1,21 +1,29 @@
 {
   "format_version": 1,
   "kind": "canonical-contract-integration",
-  "date": "2026-11-01",
+  "date": "2026-11-12",
   "family": "career-evidence-platform",
-  "action": "Integrate existing candidate into canonical contracts at maintainer request",
+  "action": "Integrate the validation-profile reference patch into canonical contracts at maintainer request",
   "previous": {
-    "version": "0.1.0",
-    "status": "draft",
-    "archive": "history/0.1.0",
+    "version": "1.0.0",
+    "status": "candidate",
+    "archive": "history/1.0.0",
     "files": [
       {
         "path": "contracts/contract.yaml",
-        "sha256": "f9d07efefb088260bd2a125330bac892e52ee7e82abf4a62b719d860ae9c53fc"
+        "sha256": "ba53eeb54ea578dde026c92700a2214b839b1a7531e81973f7018550936fd4bb"
+      },
+      {
+        "path": "contracts/integration.json",
+        "sha256": "3d2195482db0a7414265b6feaab12168e212d4abbe2766f99f377f3846ffa2d3"
+      },
+      {
+        "path": "contracts/review.md",
+        "sha256": "d03186f3a3ead0d4be79603109de9a3e7059c82dac3e7be1fb3c3713dcc57921"
       },
       {
         "path": "contracts/traceability.yaml",
-        "sha256": "fa2e738ae67940b36c30f6034ef70996aea2d032ac5ea33b5db4ecc55bb0f9e1"
+        "sha256": "e70bcd7b28c2172efee0b2dd869f661e397ea65519c093ef869b394381c54d14"
       },
       {
         "path": "research/sources.yaml",
@@ -27,22 +35,26 @@
       },
       {
         "path": "family-README.md",
-        "sha256": "8bd4fef61b8d6a3acf69ffaef8f65799d6090ed1d1165b3a46eaa2e38259bd89"
+        "sha256": "badbd41bd9e58fb8adc89a3e803c5c755323a0cbcf82985288154544d328aba1"
       }
     ],
-    "research_snapshot": "At integration time; not asserted to be the original-release research snapshot"
+    "research_snapshot": "At integration time",
+    "earlier_archives": [
+      "history/0.1.0"
+    ]
   },
   "current": {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "candidate",
     "schema_version": "0.1",
     "contract": "contracts/contract.yaml",
     "traceability": "contracts/traceability.yaml",
-    "candidate": "candidates/1.0.0/contracts",
-    "contract_sha256": "ba53eeb54ea578dde026c92700a2214b839b1a7531e81973f7018550936fd4bb",
-    "traceability_sha256": "e70bcd7b28c2172efee0b2dd869f661e397ea65519c093ef869b394381c54d14",
+    "candidate": "candidates/1.0.1/contracts",
+    "contract_sha256": "51059aeef5b32f7e74ddd414ffac6e39e24eb5b474ea280e745dd80c95cafee4",
+    "traceability_sha256": "9b293a6485646982b62df72ae96912f6f5187921fc06c5b144b22f35777eb901",
     "acceptance_count": 24
   },
+  "change": "delivery.validation_profile.version 0.1.0 -> 1.0.0; no clause or acceptance change",
   "stable_promotion": "not_performed",
   "independent_review": "pending",
   "consumer_pin_migration": "not_performed",
@@ -50,17 +62,10 @@
   "product_acceptance": "not_run",
   "validation": {
     "schema_and_current_traceability": "passed",
-    "tooling_tests": {
-      "passed": 70,
-      "failed": 0,
-      "skipped": 0
-    },
     "canonical_identity": "passed",
     "archived_files": "passed",
     "archived_provenance": "passed",
-    "synthetic_example": "passed",
     "source_network_verification": "not_repeated",
-    "product_acceptance": "not_run",
-    "details": "../../../docs/candidate-integration-2026-11-01.md#observed-validation"
+    "product_acceptance": "not_run"
   }
 }

@@ -59,7 +59,7 @@ own habits can produce a conforming implementation without it.
 | [E-commerce storefront](contracts/product-types/e-commerce/README.md) | 1.0.0 candidate | 12 | |
 | [Git-backed content management](contracts/product-types/git-backed-cms/README.md) | 1.0.0 candidate | 14 | |
 | [Collaborative workspace](contracts/product-types/collaborative-workspace/README.md) | 1.0.0 candidate | 24 | Conformance profile available |
-| [Career evidence platform](contracts/product-types/career-evidence-platform/README.md) | 1.0.0 candidate | 24 | Conformance profile available |
+| [Career evidence platform](contracts/product-types/career-evidence-platform/README.md) | 1.0.1 candidate | 24 | Conformance profile available |
 | [Agent operating system](contracts/product-types/agent-os/README.md) | 1.0.0 candidate | 20 | Conformance profile available |
 | [Real-time 3D engine](contracts/product-types/3d-engine/README.md) | 1.0.0 candidate | 32 | |
 | [Video editorial workflow](contracts/product-types/video-editorial-workflow/README.md) | 1.0.1 candidate | 9 | Conformance profile available |
@@ -67,9 +67,10 @@ own habits can produce a conforming implementation without it.
 | [Agentic delivery harness](contracts/product-types/agentic-delivery-harness/README.md) | 1.0.1 candidate | 26 | |
 | [Wealth advisory (France)](contracts/product-types/wealth-advisory/README.md) | 0.1.1 draft | 26 | Conformance profile available |
 
-The four contracts at 1.0.1 or 0.1.1 were first written in French and translated on
-2026-11-12 with no intended behaviour change. Their French originals are archived under each
-`history/` folder and remain the reference where the two texts differ.
+The video, prospecting, delivery harness and wealth advisory contracts were first written in
+French and translated on 2026-11-12 with no intended behaviour change. Their French originals
+are archived under each `history/` folder and remain the reference where the two texts differ.
+The career evidence 1.0.1 patch only corrects the validation profile the contract names.
 
 The [contracts guide](contracts/README.md) explains the format, the research method and how to
 propose a change.

@@ -2,10 +2,10 @@
 
 [Version française](README.fr.md)
 
-Current canonical version: **1.0.0**, maturity **candidate**. The maintainer
+Current canonical version: **1.0.1**, maturity **candidate** (1.0.0 with its validation profile reference corrected; see the [patch](candidates/1.0.1/proposal.md)). The maintainer
 requested integration on 2026-11-01. Read [contracts/contract.yaml](contracts/contract.yaml),
 [traceability](contracts/traceability.yaml) and the [current review](contracts/review.md).
-The previous 0.1.0 package is preserved under [history/0.1.0/](history/0.1.0/README.md).
+The previous 1.0.0 and 0.1.0 packages are preserved under [history/1.0.0/](history/1.0.0/README.md) and [history/0.1.0/](history/0.1.0/README.md).
 Candidate authoring records below remain historical; independent review/stable
 promotion and implementation acceptance remain pending.
 
@@ -44,7 +44,7 @@ not an implementation, not test results, and not evidence that the product
 outperforms those studied. Usability and responsiveness thresholds
 are explicit proposals to validate.
 
-The external profile `career-evidence-platform/conformance@0.1.0`, carried by
+The external profile `career-evidence-platform/conformance@1.0.0`, carried by
 `composed-validation`, defines the executable cases and complementary evidence.
 Its adapter protocol stays in the validation repository; this reference imposes
 no implementation technology.

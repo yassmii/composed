@@ -2,10 +2,10 @@
 
 [English version](README.md)
 
-Current canonical version: **1.0.0**, maturity **candidate**. The maintainer
+Current canonical version: **1.0.1**, maturity **candidate** (1.0.0 with its validation profile reference corrected; see the [patch](candidates/1.0.1/proposal.md)). The maintainer
 requested integration on 2026-11-01. Read [contracts/contract.yaml](contracts/contract.yaml),
 [traceability](contracts/traceability.yaml) and the [current review](contracts/review.md).
-The previous 0.1.0 package is preserved under [history/0.1.0/](history/0.1.0/README.md).
+The previous 1.0.0 and 0.1.0 packages are preserved under [history/1.0.0/](history/1.0.0/README.md) and [history/0.1.0/](history/0.1.0/README.md).
 Candidate authoring records below remain historical; independent review/stable
 promotion and implementation acceptance remain pending.
 
@@ -42,7 +42,7 @@ constituent ni une implémentation, ni des résultats d'essais, ni une preuve de
 supériorité sur les produits étudiés. Les seuils d'utilisabilité et de réactivité
 sont des propositions explicites à valider.
 
-Le profil externe `career-evidence-platform/conformance@0.1.0`, porté par
+Le profil externe `career-evidence-platform/conformance@1.0.0`, porté par
 `composed-validation`, définit les cas exécutables et les preuves complémentaires.
 Son protocole d'adaptation reste dans le dépôt de validation ; aucune technologie
 d'implémentation n'est imposée par cette référence.

@@ -1,0 +1,985 @@
+{
+  "format_version": 1,
+  "kind": "contract-impact-report",
+  "status": "assessed",
+  "before": {
+    "id": "career-evidence-platform",
+    "version": "1.0.0",
+    "sha256": "ba53eeb54ea578dde026c92700a2214b839b1a7531e81973f7018550936fd4bb"
+  },
+  "after": {
+    "id": "career-evidence-platform",
+    "version": "1.0.1",
+    "sha256": "51059aeef5b32f7e74ddd414ffac6e39e24eb5b474ea280e745dd80c95cafee4"
+  },
+  "changes": {
+    "unchanged": [],
+    "modified": [
+      {
+        "id": "INV-CEP-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-CEP-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-CEP-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-CEP-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-CEP-005",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-CEP-006",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-CEP-007",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-CEP-008",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-CEP-009",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "INV-CEP-010",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-CEP-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-CEP-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-CEP-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-CEP-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-CEP-005",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-CEP-006",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-CEP-007",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-CEP-008",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "POL-CEP-009",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-CEP-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-CEP-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-CEP-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-CEP-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-CEP-005",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-CEP-006",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-CEP-007",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "QA-CEP-008",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-001",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-002",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-003",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-004",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-005",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-006",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-007",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-008",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-009",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-010",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-011",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-012",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-013",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-014",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-015",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-016",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-017",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-018",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-019",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-020",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-021",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-022",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-023",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-024",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-025",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-026",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-027",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-028",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-029",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-030",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-031",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-032",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-033",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-034",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-035",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-036",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-037",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-038",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-039",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-040",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-041",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-042",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-043",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-044",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-045",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-046",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-047",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-048",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-049",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-050",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-051",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-052",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-053",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-054",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-055",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-056",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-057",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-058",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-059",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-060",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-061",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-062",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-063",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-064",
+        "reasons": [
+          "contract-context"
+        ]
+      },
+      {
+        "id": "REQ-CEP-065",
+        "reasons": [
+          "contract-context"
+        ]
+      }
+    ],
+    "added": [],
+    "removed": []
+  },
+  "context_changes": [
+    "delivery"
+  ],
+  "metadata_changes": [
+    "version"
+  ],
+  "acceptance_changes": {
+    "unchanged": [
+      "ACC-CEP-001",
+      "ACC-CEP-002",
+      "ACC-CEP-003",
+      "ACC-CEP-004",
+      "ACC-CEP-005",
+      "ACC-CEP-006",
+      "ACC-CEP-007",
+      "ACC-CEP-008",
+      "ACC-CEP-009",
+      "ACC-CEP-010",
+      "ACC-CEP-011",
+      "ACC-CEP-012",
+      "ACC-CEP-013",
+      "ACC-CEP-014",
+      "ACC-CEP-015",
+      "ACC-CEP-016",
+      "ACC-CEP-017",
+      "ACC-CEP-018",
+      "ACC-CEP-019",
+      "ACC-CEP-020",
+      "ACC-CEP-021",
+      "ACC-CEP-022",
+      "ACC-CEP-023",
+      "ACC-CEP-024"
+    ],
+    "modified": [],
+    "added": [],
+    "removed": []
+  },
+  "correspondences": [],
+  "impact": {
+    "clause_ids": [
+      "INV-CEP-001",
+      "INV-CEP-002",
+      "INV-CEP-003",
+      "INV-CEP-004",
+      "INV-CEP-005",
+      "INV-CEP-006",
+      "INV-CEP-007",
+      "INV-CEP-008",
+      "INV-CEP-009",
+      "INV-CEP-010",
+      "POL-CEP-001",
+      "POL-CEP-002",
+      "POL-CEP-003",
+      "POL-CEP-004",
+      "POL-CEP-005",
+      "POL-CEP-006",
+      "POL-CEP-007",
+      "POL-CEP-008",
+      "POL-CEP-009",
+      "QA-CEP-001",
+      "QA-CEP-002",
+      "QA-CEP-003",
+      "QA-CEP-004",
+      "QA-CEP-005",
+      "QA-CEP-006",
+      "QA-CEP-007",
+      "QA-CEP-008",
+      "REQ-CEP-001",
+      "REQ-CEP-002",
+      "REQ-CEP-003",
+      "REQ-CEP-004",
+      "REQ-CEP-005",
+      "REQ-CEP-006",
+      "REQ-CEP-007",
+      "REQ-CEP-008",
+      "REQ-CEP-009",
+      "REQ-CEP-010",
+      "REQ-CEP-011",
+      "REQ-CEP-012",
+      "REQ-CEP-013",
+      "REQ-CEP-014",
+      "REQ-CEP-015",
+      "REQ-CEP-016",
+      "REQ-CEP-017",
+      "REQ-CEP-018",
+      "REQ-CEP-019",
+      "REQ-CEP-020",
+      "REQ-CEP-021",
+      "REQ-CEP-022",
+      "REQ-CEP-023",
+      "REQ-CEP-024",
+      "REQ-CEP-025",
+      "REQ-CEP-026",
+      "REQ-CEP-027",
+      "REQ-CEP-028",
+      "REQ-CEP-029",
+      "REQ-CEP-030",
+      "REQ-CEP-031",
+      "REQ-CEP-032",
+      "REQ-CEP-033",
+      "REQ-CEP-034",
+      "REQ-CEP-035",
+      "REQ-CEP-036",
+      "REQ-CEP-037",
+      "REQ-CEP-038",
+      "REQ-CEP-039",
+      "REQ-CEP-040",
+      "REQ-CEP-041",
+      "REQ-CEP-042",
+      "REQ-CEP-043",
+      "REQ-CEP-044",
+      "REQ-CEP-045",
+      "REQ-CEP-046",
+      "REQ-CEP-047",
+      "REQ-CEP-048",
+      "REQ-CEP-049",
+      "REQ-CEP-050",
+      "REQ-CEP-051",
+      "REQ-CEP-052",
+      "REQ-CEP-053",
+      "REQ-CEP-054",
+      "REQ-CEP-055",
+      "REQ-CEP-056",
+      "REQ-CEP-057",
+      "REQ-CEP-058",
+      "REQ-CEP-059",
+      "REQ-CEP-060",
+      "REQ-CEP-061",
+      "REQ-CEP-062",
+      "REQ-CEP-063",
+      "REQ-CEP-064",
+      "REQ-CEP-065"
+    ],
+    "before_clause_ids": [
+      "INV-CEP-001",
+      "INV-CEP-002",
+      "INV-CEP-003",
+      "INV-CEP-004",
+      "INV-CEP-005",
+      "INV-CEP-006",
+      "INV-CEP-007",
+      "INV-CEP-008",
+      "INV-CEP-009",
+      "INV-CEP-010",
+      "POL-CEP-001",
+      "POL-CEP-002",
+      "POL-CEP-003",
+      "POL-CEP-004",
+      "POL-CEP-005",
+      "POL-CEP-006",
+      "POL-CEP-007",
+      "POL-CEP-008",
+      "POL-CEP-009",
+      "QA-CEP-001",
+      "QA-CEP-002",
+      "QA-CEP-003",
+      "QA-CEP-004",
+      "QA-CEP-005",
+      "QA-CEP-006",
+      "QA-CEP-007",
+      "QA-CEP-008",
+      "REQ-CEP-001",
+      "REQ-CEP-002",
+      "REQ-CEP-003",
+      "REQ-CEP-004",
+      "REQ-CEP-005",
+      "REQ-CEP-006",
+      "REQ-CEP-007",
+      "REQ-CEP-008",
+      "REQ-CEP-009",
+      "REQ-CEP-010",
+      "REQ-CEP-011",
+      "REQ-CEP-012",
+      "REQ-CEP-013",
+      "REQ-CEP-014",
+      "REQ-CEP-015",
+      "REQ-CEP-016",
+      "REQ-CEP-017",
+      "REQ-CEP-018",
+      "REQ-CEP-019",
+      "REQ-CEP-020",
+      "REQ-CEP-021",
+      "REQ-CEP-022",
+      "REQ-CEP-023",
+      "REQ-CEP-024",
+      "REQ-CEP-025",
+      "REQ-CEP-026",
+      "REQ-CEP-027",
+      "REQ-CEP-028",
+      "REQ-CEP-029",
+      "REQ-CEP-030",
+      "REQ-CEP-031",
+      "REQ-CEP-032",
+      "REQ-CEP-033",
+      "REQ-CEP-034",
+      "REQ-CEP-035",
+      "REQ-CEP-036",
+      "REQ-CEP-037",
+      "REQ-CEP-038",
+      "REQ-CEP-039",
+      "REQ-CEP-040",
+      "REQ-CEP-041",
+      "REQ-CEP-042",
+      "REQ-CEP-043",
+      "REQ-CEP-044",
+      "REQ-CEP-045",
+      "REQ-CEP-046",
+      "REQ-CEP-047",
+      "REQ-CEP-048",
+      "REQ-CEP-049",
+      "REQ-CEP-050",
+      "REQ-CEP-051",
+      "REQ-CEP-052",
+      "REQ-CEP-053",
+      "REQ-CEP-054",
+      "REQ-CEP-055",
+      "REQ-CEP-056",
+      "REQ-CEP-057",
+      "REQ-CEP-058",
+      "REQ-CEP-059",
+      "REQ-CEP-060",
+      "REQ-CEP-061",
+      "REQ-CEP-062",
+      "REQ-CEP-063",
+      "REQ-CEP-064",
+      "REQ-CEP-065"
+    ],
+    "after_clause_ids": [
+      "INV-CEP-001",
+      "INV-CEP-002",
+      "INV-CEP-003",
+      "INV-CEP-004",
+      "INV-CEP-005",
+      "INV-CEP-006",
+      "INV-CEP-007",
+      "INV-CEP-008",
+      "INV-CEP-009",
+      "INV-CEP-010",
+      "POL-CEP-001",
+      "POL-CEP-002",
+      "POL-CEP-003",
+      "POL-CEP-004",
+      "POL-CEP-005",
+      "POL-CEP-006",
+      "POL-CEP-007",
+      "POL-CEP-008",
+      "POL-CEP-009",
+      "QA-CEP-001",
+      "QA-CEP-002",
+      "QA-CEP-003",
+      "QA-CEP-004",
+      "QA-CEP-005",
+      "QA-CEP-006",
+      "QA-CEP-007",
+      "QA-CEP-008",
+      "REQ-CEP-001",
+      "REQ-CEP-002",
+      "REQ-CEP-003",
+      "REQ-CEP-004",
+      "REQ-CEP-005",
+      "REQ-CEP-006",
+      "REQ-CEP-007",
+      "REQ-CEP-008",
+      "REQ-CEP-009",
+      "REQ-CEP-010",
+      "REQ-CEP-011",
+      "REQ-CEP-012",
+      "REQ-CEP-013",
+      "REQ-CEP-014",
+      "REQ-CEP-015",
+      "REQ-CEP-016",
+      "REQ-CEP-017",
+      "REQ-CEP-018",
+      "REQ-CEP-019",
+      "REQ-CEP-020",
+      "REQ-CEP-021",
+      "REQ-CEP-022",
+      "REQ-CEP-023",
+      "REQ-CEP-024",
+      "REQ-CEP-025",
+      "REQ-CEP-026",
+      "REQ-CEP-027",
+      "REQ-CEP-028",
+      "REQ-CEP-029",
+      "REQ-CEP-030",
+      "REQ-CEP-031",
+      "REQ-CEP-032",
+      "REQ-CEP-033",
+      "REQ-CEP-034",
+      "REQ-CEP-035",
+      "REQ-CEP-036",
+      "REQ-CEP-037",
+      "REQ-CEP-038",
+      "REQ-CEP-039",
+      "REQ-CEP-040",
+      "REQ-CEP-041",
+      "REQ-CEP-042",
+      "REQ-CEP-043",
+      "REQ-CEP-044",
+      "REQ-CEP-045",
+      "REQ-CEP-046",
+      "REQ-CEP-047",
+      "REQ-CEP-048",
+      "REQ-CEP-049",
+      "REQ-CEP-050",
+      "REQ-CEP-051",
+      "REQ-CEP-052",
+      "REQ-CEP-053",
+      "REQ-CEP-054",
+      "REQ-CEP-055",
+      "REQ-CEP-056",
+      "REQ-CEP-057",
+      "REQ-CEP-058",
+      "REQ-CEP-059",
+      "REQ-CEP-060",
+      "REQ-CEP-061",
+      "REQ-CEP-062",
+      "REQ-CEP-063",
+      "REQ-CEP-064",
+      "REQ-CEP-065"
+    ],
+    "acceptance_ids": [
+      "ACC-CEP-001",
+      "ACC-CEP-002",
+      "ACC-CEP-003",
+      "ACC-CEP-004",
+      "ACC-CEP-005",
+      "ACC-CEP-006",
+      "ACC-CEP-007",
+      "ACC-CEP-008",
+      "ACC-CEP-009",
+      "ACC-CEP-010",
+      "ACC-CEP-011",
+      "ACC-CEP-012",
+      "ACC-CEP-013",
+      "ACC-CEP-014",
+      "ACC-CEP-015",
+      "ACC-CEP-016",
+      "ACC-CEP-017",
+      "ACC-CEP-018",
+      "ACC-CEP-019",
+      "ACC-CEP-020",
+      "ACC-CEP-021",
+      "ACC-CEP-022",
+      "ACC-CEP-023",
+      "ACC-CEP-024"
+    ],
+    "before_acceptance_ids": [
+      "ACC-CEP-001",
+      "ACC-CEP-002",
+      "ACC-CEP-003",
+      "ACC-CEP-004",
+      "ACC-CEP-005",
+      "ACC-CEP-006",
+      "ACC-CEP-007",
+      "ACC-CEP-008",
+      "ACC-CEP-009",
+      "ACC-CEP-010",
+      "ACC-CEP-011",
+      "ACC-CEP-012",
+      "ACC-CEP-013",
+      "ACC-CEP-014",
+      "ACC-CEP-015",
+      "ACC-CEP-016",
+      "ACC-CEP-017",
+      "ACC-CEP-018",
+      "ACC-CEP-019",
+      "ACC-CEP-020",
+      "ACC-CEP-021",
+      "ACC-CEP-022",
+      "ACC-CEP-023",
+      "ACC-CEP-024"
+    ],
+    "after_acceptance_ids": [
+      "ACC-CEP-001",
+      "ACC-CEP-002",
+      "ACC-CEP-003",
+      "ACC-CEP-004",
+      "ACC-CEP-005",
+      "ACC-CEP-006",
+      "ACC-CEP-007",
+      "ACC-CEP-008",
+      "ACC-CEP-009",
+      "ACC-CEP-010",
+      "ACC-CEP-011",
+      "ACC-CEP-012",
+      "ACC-CEP-013",
+      "ACC-CEP-014",
+      "ACC-CEP-015",
+      "ACC-CEP-016",
+      "ACC-CEP-017",
+      "ACC-CEP-018",
+      "ACC-CEP-019",
+      "ACC-CEP-020",
+      "ACC-CEP-021",
+      "ACC-CEP-022",
+      "ACC-CEP-023",
+      "ACC-CEP-024"
+    ],
+    "coverage": "unknown"
+  },
+  "compatibility": "not_assessed",
+  "proof_transfer": "not_performed",
+  "findings": [],
+  "limitations": [
+    "This is a structural and conservative context comparison, not natural-language semantic equivalence or a breaking-change determination.",
+    "Correspondence statuses are caller declarations; identities and approval authority are not authenticated.",
+    "No proof is transferred or rebound. Existing evidence remains pinned to its original contract and implementation bytes.",
+    "Object member order is ignored; array order is preserved. Context changes can conservatively affect more clauses than strictly necessary.",
+    "One or both contracts lack structured verifies/dependencies (format 0.1). Any detected change conservatively selects every normative clause and acceptance case; targeted coverage remains unknown."
+  ]
+}

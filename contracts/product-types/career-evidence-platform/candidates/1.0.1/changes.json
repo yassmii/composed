@@ -1,0 +1,80 @@
+{
+  "format_version": 1,
+  "kind": "contract-update-proposal",
+  "date": "2026-11-12",
+  "family": "career-evidence-platform",
+  "title": "Point the contract at the validation profile that judges it",
+  "status": "proposed",
+  "baseline": {
+    "version": "1.0.0",
+    "contract_sha256": "ba53eeb54ea578dde026c92700a2214b839b1a7531e81973f7018550936fd4bb",
+    "traceability_sha256": "e70bcd7b28c2172efee0b2dd869f661e397ea65519c093ef869b394381c54d14"
+  },
+  "candidate": {
+    "version": "1.0.1",
+    "status": "candidate",
+    "schema_version": "0.1",
+    "contract_sha256": "51059aeef5b32f7e74ddd414ffac6e39e24eb5b474ea280e745dd80c95cafee4",
+    "traceability_sha256": "9b293a6485646982b62df72ae96912f6f5187921fc06c5b144b22f35777eb901"
+  },
+  "classification": "Patch: a delivery reference is corrected; no capability, invariant, policy, quality attribute or acceptance case changes. Author assessment.",
+  "reason": "Contract 1.0.0 added ACC-CEP-023 and ACC-CEP-024 but kept naming validation profile 0.1.0, which targets contract 0.1.0 and has no case for them. Profile 1.0.0 in composed-validation covers all 24 acceptance cases.",
+  "changed_clauses": [],
+  "changed_delivery": [
+    {
+      "field": "delivery.validation_profile.version",
+      "before": "0.1.0",
+      "after": "1.0.0"
+    }
+  ],
+  "changed_metadata": [
+    {
+      "field": "version",
+      "before": "1.0.0",
+      "after": "1.0.1"
+    },
+    {
+      "field": "traceability.contract_version",
+      "before": "1.0.0",
+      "after": "1.0.1"
+    }
+  ],
+  "retained_cases": [
+    "ACC-CEP-001",
+    "ACC-CEP-002",
+    "ACC-CEP-003",
+    "ACC-CEP-004",
+    "ACC-CEP-005",
+    "ACC-CEP-006",
+    "ACC-CEP-007",
+    "ACC-CEP-008",
+    "ACC-CEP-009",
+    "ACC-CEP-010",
+    "ACC-CEP-011",
+    "ACC-CEP-012",
+    "ACC-CEP-013",
+    "ACC-CEP-014",
+    "ACC-CEP-015",
+    "ACC-CEP-016",
+    "ACC-CEP-017",
+    "ACC-CEP-018",
+    "ACC-CEP-019",
+    "ACC-CEP-020",
+    "ACC-CEP-021",
+    "ACC-CEP-022",
+    "ACC-CEP-023",
+    "ACC-CEP-024"
+  ],
+  "added_cases": [],
+  "product_acceptance": "not_run",
+  "proof_transfer": "not_performed",
+  "validation": {
+    "schema_and_traceability": "passed",
+    "native_impact": "impact.json",
+    "candidate_integrity": "passed",
+    "baseline_preservation": "passed",
+    "product_acceptance": "not_run",
+    "independent_review": "pending",
+    "stable_promotion": "not_performed"
+  }
+}

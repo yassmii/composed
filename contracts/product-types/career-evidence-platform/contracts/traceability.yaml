@@ -1,6 +1,6 @@
 schema_version: "0.1"
 contract_id: career-evidence-platform
-contract_version: 1.0.0
+contract_version: 1.0.1
 research_status: initial
 links:
   - clause: CAP-CEP-001
