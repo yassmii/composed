@@ -1,0 +1,52 @@
+schema_version: '0.1'
+observations:
+- id: OBS-WAD-BIG-INPUT
+  sources:
+  - SRC-PA-BIG-GUIDE
+  statement: La saisie guidée de Big décrit situation personnelle/familiale, patrimoine et budget, avec un
+    récapitulatif avant création du dossier.
+- id: OBS-WAD-BIG-SCOPE
+  sources:
+  - SRC-PA-BIG
+  statement: Harvest présente Big comme un outil d’études globales ou thématiques, de simulation des préconisations
+    et de production de rapports personnalisés ; cette page n’établit pas l’exactitude de ses calculs.
+- id: OBS-WAD-RC-BALANCE
+  sources:
+  - SRC-PA-RIGHTCAPITAL
+  statement: RightCapital documente un bilan actif/passif/net, des détails par catégorie et propriétaire, une
+    date de mise à jour et un historique ; sa taxonomie reste liée au contexte américain.
+- id: OBS-WAD-MG-GOALS
+  sources:
+  - SRC-PA-MONEYGUIDE
+  statement: MoneyGuide décrit des plans fondés sur les objectifs avec gestion du risque, allocation et revenus
+    ; cette description n’établit pas l’applicabilité de ses règles au droit français.
+- id: OBS-WAD-AMF-SCOPE
+  sources:
+  - SRC-PA-AMF-CIF
+  statement: La page AMF distingue le conseil en investissement de la gestion de portefeuille et décrit le
+    recueil client, la lettre de mission et la déclaration d’adéquation propres au CIF ; le titre CGP n’est
+    pas une habilitation universelle.
+- id: OBS-WAD-AMF-DATA
+  sources:
+  - SRC-PA-AMF-CIF
+  statement: L’AMF décrit le recueil des objectifs, situation financière, connaissances, expérience, tolérance
+    au risque et capacité à subir des pertes ; l’absence des informations nécessaires impose l’abstention de
+    conseil en investissement.
+- id: OBS-WAD-CNIL-PURPOSE
+  sources:
+  - SRC-PA-CNIL
+  statement: La CNIL rappelle la finalité précise et la limitation des données à ce qui est nécessaire.
+- id: OBS-WAD-CNIL-RIGHTS
+  sources:
+  - SRC-PA-CNIL
+  statement: La CNIL distingue durée de conservation, accès limité aux personnes autorisées et droits des personnes.
+- id: OBS-WAD-AMF-EXPIRED
+  sources:
+  - SRC-PA-AMF-HISTORICAL
+  statement: La page DOC-2013-02 indique la fin d’applicabilité après le 11 octobre 2022 et l’absence d’actualisation
+    MIF 2 ; cette ancienne position ne fonde aucune obligation actuelle de ce contrat.
+- id: OBS-WAD-AMF-SUITABILITY
+  sources:
+  - SRC-PA-AMF-RG
+  statement: L’article 325-17 motive l’adéquation, y compris la durabilité ; son II prévoit un examen au moins
+    annuel si le CIF fournit une évaluation périodique, plus fréquent selon risque et instruments.

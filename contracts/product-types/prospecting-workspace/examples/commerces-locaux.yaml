@@ -2,8 +2,8 @@ profile_id: commerces-locaux
 version: 0.1.0
 status: illustrative
 activation_ready: false
-purpose: Rechercher des commerces pertinents pour un accompagnement énergétique, puis vérifier leur besoin et suivre les échanges.
-business_owner: À désigner
+purpose: Search for local businesses relevant to an energy support service, then verify their need and follow the exchanges.
+business_owner: To be designated
 target_types: [etablissement_commercial]
 related_types: [organisation, personne]
 attributes:
@@ -21,8 +21,8 @@ identity:
   never_sufficient_alone: [raison_sociale, courriel_generique, telephone_partage]
 acquisition:
   candidate_sources:
-    - {name: Annuaire ou registre autorisé, access_status: non_configure, reuse_status: a_valider}
-    - {name: Saisie ou import métier, access_status: a_configurer, reuse_status: provenance_et_permission_requises}
+    - {name: Authorised directory or register, access_status: non_configure, reuse_status: a_valider}
+    - {name: Manual entry or business import, access_status: a_configurer, reuse_status: provenance_et_permission_requises}
   filters: [communes_de_la_campagne, categories_de_la_campagne]
   inbound_form:
     fields: [identification_etablissement, besoin_exprime, moyen_reponse_choisi]
@@ -53,7 +53,7 @@ qualification:
   contactability: evaluation_separee_par_destinataire_finalite_canal_et_politique
 priority:
   method: ordre_explicite_par_niveau_accepte_puis_prochaine_echeance
-  forbidden_inference: Une note publique et un nombre d'avis ne démontrent ni besoin énergétique ni probabilité de conversion.
+  forbidden_inference: A public rating and a number of reviews demonstrate neither an energy need nor a probability of conversion.
 follow_up:
   stages: [a_examiner, a_qualifier, echange_en_cours, rendez_vous_accepte, conclu, ecarte]
   transition_gates: {rendez_vous_accepte: lead_commercialement_qualifie_accepte}
@@ -61,7 +61,7 @@ follow_up:
   responsibility: utilisateur_ou_file_responsable_identifiee
   next_action: datee_ou_attente_motivee_avec_reexamen
 contact_content:
-  offer: Accompagnement énergétique à préciser et valider pour le déploiement.
+  offer: Energy support service to be specified and validated for the deployment.
   approved_claims: []
   forbidden: [inventer_des_economies, imposer_un_chiffre_non_source, deduire_un_besoin_des_avis]
 monitoring: {enabled: false}

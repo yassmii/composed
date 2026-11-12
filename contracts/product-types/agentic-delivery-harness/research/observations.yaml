@@ -3,82 +3,82 @@ observations:
 - id: OBS-ADH-001
   sources:
   - SRC-ADH-SKILLS
-  statement: Agent Skills décrit un répertoire de skill avec métadonnées et instructions, complété éventuellement
-    par des scripts, références et assets.
+  statement: Agent Skills describes a skill directory with metadata and instructions, optionally complemented
+    by scripts, references and assets.
 - id: OBS-ADH-002
   sources:
   - SRC-ADH-POCOCK
-  statement: Matt Pocock présente ses skills comme petits, adaptables et composables plutôt qu’un processus unique
-    imposé.
+  statement: Matt Pocock presents his skills as small, adaptable and composable rather than a single imposed
+    process.
 - id: OBS-ADH-003
   sources:
   - SRC-ADH-POCOCK
-  statement: La configuration proposée par Matt Pocock recueille le choix du gestionnaire de tickets, des labels
-    et du lieu des documents; son questionnement peut produire glossaire et décisions.
+  statement: The configuration proposed by Matt Pocock collects the choice of issue tracker, labels
+    and location of documents; its questioning can produce a glossary and decisions.
 - id: OBS-ADH-004
   sources:
   - SRC-ADH-SUPERPOWERS
-  statement: Superpowers décrit une progression du questionnement à la conception approuvée, au plan puis au développement
-    délégué après accord.
+  statement: Superpowers describes a progression from questioning to approved design, to the plan and then to
+    delegated development after agreement.
 - id: OBS-ADH-005
   sources:
   - SRC-ADH-SUPERPOWERS
-  statement: Superpowers inclut des inspections et revues du travail des agents dans son processus de développement.
+  statement: Superpowers includes inspections and reviews of the agents' work in its development process.
 - id: OBS-ADH-006
   sources:
   - SRC-ADH-SPECKIT
-  statement: Spec Kit distingue plusieurs points d’entrée de processus et propose des extensions pour les gates,
-    services et événements du runtime.
+  statement: Spec Kit distinguishes several process entry points and offers extensions for the runtime's gates,
+    services and events.
 - id: OBS-ADH-007
   sources:
   - SRC-ADH-ECC-HOOK
-  statement: Le dispatcher précommande ECC propage le résultat de son contrôle et retourne un code de blocage
-    sur entrée tronquée ou erreur.
+  statement: The ECC pre-command dispatcher propagates the result of its check and returns a blocking code
+    on truncated input or error.
 - id: OBS-ADH-008
   sources:
   - SRC-ADH-ECC-QUALITY
-  statement: Le script quality-gate ECC exécute des vérifications ciblées et signale certains échecs sans les
-    convertir lui-même en sortie bloquante.
+  statement: The ECC quality-gate script runs targeted checks and reports some failures without itself
+    converting them into a blocking exit.
 - id: OBS-ADH-009
   sources:
   - SRC-ADH-ECC-EVAL
-  statement: Le harness ECC sépare mesure de coût et essais avec intention cachée, et exige des évaluateurs distinguant
-    références correctes, départ et contre-exemples.
+  statement: The ECC harness separates cost measurement from hidden-intent trials, and requires evaluators that
+    distinguish correct references, the starting point and counter-examples.
 - id: OBS-ADH-010
   sources:
   - SRC-ADH-ECC-GRADER
-  statement: Un évaluateur ECC appelle le code livré et vérifie séparément le traitement du timeout, le nouvel
-    essai sur connexion refusée et le plafond de tentatives.
+  statement: An ECC evaluator calls the delivered code and separately verifies timeout handling, the
+    retry on refused connection and the attempt ceiling.
 - id: OBS-ADH-011
   sources:
   - SRC-ADH-ECC-LEARNING
-  statement: ECC décrit des règles apprises avec provenance, confiance et portée projet, et une promotion possible
-    vers une portée globale.
+  statement: ECC describes learned rules with provenance, confidence and project scope, and a possible promotion
+    to a global scope.
 - id: OBS-ADH-012
   sources:
   - SRC-ADH-ECC-CONTRACT
-  statement: Le skill contract-first ECC coordonne consommateurs et fournisseurs autour d’un artefact d’interface
-    canonique et de validations avant intégration.
+  statement: The ECC contract-first skill coordinates consumers and providers around a canonical interface
+    artifact and validations before integration.
 - id: OBS-ADH-013
   sources:
   - SRC-ADH-CLAUDE-HOOKS
-  statement: La documentation Claude Code distingue des points avant et après outils et des événements de tâches
-    et sous-agents; leurs pouvoirs de décision diffèrent.
+  statement: The Claude Code documentation distinguishes points before and after tools and task
+    and subagent events; their decision powers differ.
 - id: OBS-ADH-014
   sources:
   - SRC-ADH-PROV
-  statement: PROV-O fournit des concepts d’entité, activité, agent, attribution, dérivation, révision et invalidation
-    pour exprimer la provenance.
+  statement: PROV-O provides concepts of entity, activity, agent, attribution, derivation, revision and invalidation
+    to express provenance.
 - id: OBS-ADH-015
   sources:
   - SRC-ADH-ECC-EVAL
-  statement: Le manifeste d’évaluation ECC empreinte les entrées et sorties; sa documentation distingue cette
-    intégrité d’une signature ou preuve d’identité de l’exécutant.
+  statement: The ECC evaluation manifest fingerprints inputs and outputs; its documentation distinguishes this
+    integrity from a signature or proof of the executor's identity.
 - id: OBS-ADH-016
   sources:
   - SRC-ADH-SKILLS
-  statement: Agent Skills décrit un chargement progressif des métadonnées, instructions puis ressources selon
-    leur nécessité.
+  statement: Agent Skills describes progressive loading of metadata, instructions and then resources as
+    they are needed.
 - id: OBS-ADH-017
   sources:
     - SRC-ADH-CLAUDE-HOOKS

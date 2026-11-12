@@ -2,8 +2,8 @@ profile_id: coproprietes-fr
 version: 0.1.0
 status: illustrative
 activation_ready: false
-purpose: Identifier des copropriétés pertinentes pour une offre à définir, établir leurs interlocuteurs puis qualifier leur besoin réel.
-business_owner: À désigner
+purpose: Identify co-owned buildings (copropriétés) relevant to an offer to be defined, establish their contact persons then qualify their actual need.
+business_owner: To be designated
 target_types: [copropriete]
 related_types: [syndicat_coproprietaires, immeuble, syndic, personne]
 attributes:
@@ -23,12 +23,12 @@ identity:
   never_sufficient_alone: [adresse, nom_du_syndic, courriel_du_syndic]
 acquisition:
   candidate_sources:
-    - name: RNIC publié par ANAH
+    - name: RNIC published by ANAH
       reference: https://www.data.gouv.fr/datasets/registre-national-dimmatriculation-des-coproprietes
       access_status: non_configure
       reuse_status: licence_et_finalite_a_verifier_pour_le_traitement
-      limitation: Identifier et décrire des cibles; aucune preuve de besoin ni garantie de contact décisionnaire.
-    - name: Sources officielles et déclarations directes des interlocuteurs
+      limitation: Identify and describe targets; no evidence of need and no guarantee of a decision-making contact.
+    - name: Official sources and direct statements from contact persons
       access_status: a_definir
       reuse_status: a_valider
   filters: [territoire_a_definir, nombre_lots_minimal_a_valider]
@@ -45,7 +45,7 @@ qualification:
       dimension: adequation
       rule: {field: copropriete.nombre_lots_habitation, operator: gte, value: 20}
       evidence: {allowed: [registre, document_valide], max_age_days: 180}
-      note: Seuil illustratif à valider selon l'offre; la distinction lots totaux et habitation doit être contrôlée lors du mapping.
+      note: Illustrative threshold to be validated according to the offer; the distinction between total lots and residential lots must be checked during mapping.
     - criterion_id: COP-BESOIN
       dimension: interet_besoin
       rule: {field: dossier.besoin_exprime, operator: exists}
@@ -66,7 +66,7 @@ qualification:
   contactability: evaluation_separee_par_destinataire_finalite_canal_et_politique
 priority:
   method: ordre_explicite_par_niveau_accepte_puis_prochaine_echeance
-  forbidden_inference: Le nombre de lots, le nom du syndic ou une caractéristique immobilière ne prouvent ni budget ni travaux votés ni intention d'achat.
+  forbidden_inference: The number of lots, the name of the managing agent (syndic) or a property characteristic prove neither a budget nor voted works nor purchase intent.
 follow_up:
   stages: [a_examiner, a_qualifier, echange_en_cours, prochaine_etape_acceptee, conclu, ecarte]
   transition_gates: {prochaine_etape_acceptee: lead_commercialement_qualifie_accepte}
@@ -74,7 +74,7 @@ follow_up:
   responsibility: utilisateur_ou_file_responsable_identifiee
   next_action: datee_ou_attente_motivee_avec_reexamen
 contact_content:
-  offer: Aucune offre fournie par la demande; à définir avant une sollicitation réelle.
+  offer: No offer supplied by the request; to be defined before an actual solicitation.
   approved_claims: []
   forbidden: [inventer_un_besoin, promettre_une_aide_financiere, inventer_un_mandat, deduire_tous_les_coproprietaires_du_registre]
 monitoring:

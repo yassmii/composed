@@ -1,25 +1,29 @@
 {
   "format_version": 1,
   "kind": "canonical-contract-integration",
-  "date": "2026-11-01",
+  "date": "2026-11-12",
   "family": "agentic-delivery-harness",
-  "action": "Integrate existing candidate into canonical contracts at maintainer request",
+  "action": "Integrate the English translation candidate into canonical contracts at maintainer request",
   "previous": {
-    "version": "0.1.0",
-    "status": "draft",
-    "archive": "history/0.1.0",
+    "version": "1.0.0",
+    "status": "candidate",
+    "archive": "history/1.0.0",
     "files": [
       {
         "path": "contracts/contract.yaml",
-        "sha256": "369bc8e5ab8fc68c9da1bcb44cb3c3277c15dff09f8deca35f79487f3b065ff1"
+        "sha256": "d9cd1625bc525cbe57e2c98f342c630daca26c1aea2a28696234093bf76e7761"
+      },
+      {
+        "path": "contracts/integration.json",
+        "sha256": "8b2d2c5d6e4f4a7d222bcce7589bf9f2407ba13bd1cbbb5b8e94501710666277"
       },
       {
         "path": "contracts/review.md",
-        "sha256": "d06ad627cea22c6d09c9b4467e3e85b32fef313d6f0308981cfa649f7e192811"
+        "sha256": "356310cef3bf66de79598059be5e4fc07192be51ce7d24ac14d6d8ff3f7eebba"
       },
       {
         "path": "contracts/traceability.yaml",
-        "sha256": "5f7e84f5b41e3bbb8f8ba48a14313cf89e10a77ef28b11fd83e4c6b6ab47fc0c"
+        "sha256": "084281ca3dc4bad3b93c8c95dcbc56b03dd7a59d0ad9e159548432be3a105f78"
       },
       {
         "path": "research/sources.yaml",
@@ -31,22 +35,26 @@
       },
       {
         "path": "family-README.md",
-        "sha256": "64a58b7605ac62d206755a2bb8be767feecb792551695dbaddc49a57506e3957"
+        "sha256": "4f4389ace817d5c8d40987165fd6e3c6a7b25587d2b09244b4ebe3ecb6b97d15"
       }
     ],
-    "research_snapshot": "At integration time; not asserted to be the original-release research snapshot"
+    "research_snapshot": "At integration time; the French research files as they stood before translation",
+    "earlier_archives": [
+      "history/0.1.0"
+    ]
   },
   "current": {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "candidate",
     "schema_version": "0.1",
     "contract": "contracts/contract.yaml",
     "traceability": "contracts/traceability.yaml",
-    "candidate": "candidates/1.0.0/contracts",
-    "contract_sha256": "d9cd1625bc525cbe57e2c98f342c630daca26c1aea2a28696234093bf76e7761",
-    "traceability_sha256": "084281ca3dc4bad3b93c8c95dcbc56b03dd7a59d0ad9e159548432be3a105f78",
+    "candidate": "candidates/1.0.1/contracts",
+    "contract_sha256": "3ec1686de5a77d37536923b45dee6c8daf0982474358ad0208f81151dbcd4d3e",
+    "traceability_sha256": "b142003e13f3cf2b09e77cfe2fae7d5878b93aa272667d29c3931d1e87631f56",
     "acceptance_count": 26
   },
+  "change": "English translation of 1.0.0; no intended behaviour change",
   "stable_promotion": "not_performed",
   "independent_review": "pending",
   "consumer_pin_migration": "not_performed",
@@ -54,17 +62,11 @@
   "product_acceptance": "not_run",
   "validation": {
     "schema_and_current_traceability": "passed",
-    "tooling_tests": {
-      "passed": 70,
-      "failed": 0,
-      "skipped": 0
-    },
     "canonical_identity": "passed",
     "archived_files": "passed",
     "archived_provenance": "passed",
-    "synthetic_example": "passed",
+    "translation_review": "author self-review only",
     "source_network_verification": "not_repeated",
-    "product_acceptance": "not_run",
-    "details": "../../../docs/candidate-integration-2026-11-01.md#observed-validation"
+    "product_acceptance": "not_run"
   }
 }

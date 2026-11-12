@@ -2,16 +2,20 @@
 
 [Version française](README.fr.md)
 
-Current canonical version: **1.0.0**, maturity **candidate**. The maintainer
-requested integration on 2026-11-01. Read [contracts/contract.yaml](contracts/contract.yaml),
+Current canonical version: **1.0.1**, maturity **candidate**. It is the English
+translation of 1.0.0, with no intended behaviour change. Read
+[contracts/contract.yaml](contracts/contract.yaml),
 [traceability](contracts/traceability.yaml) and the [current review](contracts/review.md).
-The previous 0.1.0 package is preserved under [history/0.1.0/](history/0.1.0/README.md).
-Candidate authoring records below remain historical; independent review/stable
-promotion and implementation acceptance remain pending.
+
+Earlier versions are preserved unchanged: [1.0.0](history/1.0.0/README.md) (French) and
+[0.1.0](history/0.1.0/README.md) (French). Candidate authoring records below remain
+historical; independent review, stable promotion and implementation acceptance remain
+pending; all product cases are not_run.
 
 
-Product contract **`prospecting-workspace` 1.0.0**, status **candidate**, integrated on
-1 November 2026 (first draft on 23 October 2026). It defines a tool to discover targets, receive
+Product contract **`prospecting-workspace` 1.0.1**, status **candidate**: 1.0.0 was
+integrated on 1 November 2026 (first draft on 23 October 2026) and translated into English
+as 1.0.1 on 12 November 2026. It defines a tool to discover targets, receive
 inbound requests, qualify on evidence and organise follow-up. Its business
 content is supplied by separate profiles: local businesses, co-owned buildings, projects,
 people, organisations or other configured types.
@@ -19,8 +23,6 @@ people, organisations or other configured types.
 The request "a site to prospect co-owned buildings and get qualified leads or
 prospects" is one example application. Prospecting local businesses is another
 application of this family, not its universal model.
-
-The contract, its research and the example profiles are written in French.
 
 ## Read and use
 
@@ -112,6 +114,18 @@ npm run verify:research
 - **0.1.0 — 2026-10-23**: first definition of the `prospecting-workspace` family,
   with comparative research, profile separation, prospect follow-up,
   inbound collection and failure scenarios. No change to the Build Kit.
+
+## Translation — 2026-11-12
+
+The [1.0.1 candidate](candidates/1.0.1/contracts/contract.yaml) translates the contract
+and its traceability into English. Identifiers, structure and the 34 acceptance cases
+are unchanged. See the [proposal](candidates/1.0.1/proposal.md) for the translation
+choices a reviewer should check, the [change record](candidates/1.0.1/changes.json) and
+the [author review](candidates/1.0.1/review.md). The
+[profile interface](contracts/targeting-profile.md), the research files and the prose of
+the [illustrative profiles](examples/README.md) are translated too; the profiles keep
+their French keys, identifiers and file names, and the descriptive source titles in
+[research/sources.yaml](research/sources.yaml) are unchanged.
 
 ## Proposed contract update — 2026-11-01
 

@@ -1,46 +1,46 @@
-# Comparaison et décisions de conception
+# Comparison and design decisions
 
-Recherche documentaire du 24 octobre 2026. Les révisions et empreintes sont dans
-[sources.yaml](sources.yaml), les constats dans [observations.yaml](observations.yaml).
-Il ne s'agit pas d'un benchmark d'efficacité ; les périmètres des outils diffèrent.
+Documentary research of 24 October 2026. Revisions and fingerprints are in
+[sources.yaml](sources.yaml), findings in [observations.yaml](observations.yaml).
+This is not an effectiveness benchmark; the scopes of the tools differ.
 
-| Référence | Constat limité | Conséquence proposée |
+| Reference | Limited finding | Proposed consequence |
 | --- | --- | --- |
-| [Agent Skills](https://agentskills.io/specification), OBS-ADH-001/016 | Format et chargement progressif de compétences. | Compétences composables, sans imposer ce format au produit. |
-| [Matt Pocock](https://github.com/mattpocock/skills/tree/5beb35b040e3de97e54fa9e386d7e42d15c295c2), OBS-ADH-002/003 | Petits skills, configuration et questionnement préalable. | Contrôle utilisateur et adoption proportionnée. |
-| [Superpowers](https://github.com/obra/superpowers/tree/2ce8aa15d05bd57213e6f746f953aafb7ded7a8b), OBS-ADH-004/005 | Conception, plan et développement délégué avec revue. | Le multi-agent et les gates ne suffisent pas à établir une différenciation. |
-| [Spec Kit](https://github.com/github/spec-kit/tree/67e0f7294e6e728ab60bf7b4590deb470448bc2d), OBS-ADH-006 | Processus et extensions, dont événements. | Séparer processus et intégrations sans multiplier les phases. |
-| [ECC](https://github.com/affaan-m/ECC/tree/90606c8315ee09cafc303515c5f33024db6b9882), OBS-ADH-007/008 | Précontrôle bloquant et diagnostic après édition ont des effets différents. | Qualifier et tester chaque garantie. |
-| [Évaluation ECC](https://github.com/affaan-m/ECC/tree/90606c8315ee09cafc303515c5f33024db6b9882/docker/gateguard-effectiveness), OBS-ADH-009/010/015 | Essais comportementaux, contre-exemples et empreintes. | Tester résultats et juge, publier coûts et limites. |
-| [Apprentissage ECC](https://github.com/affaan-m/ECC/blob/90606c8315ee09cafc303515c5f33024db6b9882/skills/continuous-learning-v2/SKILL.md), OBS-ADH-011 | Règles apprises avec portée projet et promotion. | Ne pas généraliser automatiquement une préférence locale. |
-| [Contract-first ECC](https://github.com/affaan-m/ECC/blob/90606c8315ee09cafc303515c5f33024db6b9882/skills/contract-first/SKILL.md), OBS-ADH-012 | Vérification d'interfaces consommateurs/fournisseurs. | Distinguer contrat produit, interface et preuve de delivery. |
-| [W3C PROV-O](https://www.w3.org/TR/2013/REC-prov-o-20130430/), OBS-ADH-014 | Attribution, dérivation et invalidation. | Provenance du graphe sans imposer RDF, OWL ou un stockage. |
+| [Agent Skills](https://agentskills.io/specification), OBS-ADH-001/016 | Format and progressive loading of skills. | Composable skills, without imposing this format on the product. |
+| [Matt Pocock](https://github.com/mattpocock/skills/tree/5beb35b040e3de97e54fa9e386d7e42d15c295c2), OBS-ADH-002/003 | Small skills, configuration and prior questioning. | User control and proportionate adoption. |
+| [Superpowers](https://github.com/obra/superpowers/tree/2ce8aa15d05bd57213e6f746f953aafb7ded7a8b), OBS-ADH-004/005 | Design, plan and delegated development with review. | Multi-agent work and gates are not enough to establish a differentiation. |
+| [Spec Kit](https://github.com/github/spec-kit/tree/67e0f7294e6e728ab60bf7b4590deb470448bc2d), OBS-ADH-006 | Processes and extensions, including events. | Separate process and integrations without multiplying phases. |
+| [ECC](https://github.com/affaan-m/ECC/tree/90606c8315ee09cafc303515c5f33024db6b9882), OBS-ADH-007/008 | A blocking pre-check and a post-edit diagnostic have different effects. | Qualify and test each guarantee. |
+| [ECC evaluation](https://github.com/affaan-m/ECC/tree/90606c8315ee09cafc303515c5f33024db6b9882/docker/gateguard-effectiveness), OBS-ADH-009/010/015 | Behavioural trials, counter-examples and fingerprints. | Test results and judge, publish costs and limits. |
+| [ECC learning](https://github.com/affaan-m/ECC/blob/90606c8315ee09cafc303515c5f33024db6b9882/skills/continuous-learning-v2/SKILL.md), OBS-ADH-011 | Learned rules with project scope and promotion. | Do not automatically generalise a local preference. |
+| [ECC contract-first](https://github.com/affaan-m/ECC/blob/90606c8315ee09cafc303515c5f33024db6b9882/skills/contract-first/SKILL.md), OBS-ADH-012 | Verification of consumer/provider interfaces. | Distinguish product contract, interface and delivery evidence. |
+| [W3C PROV-O](https://www.w3.org/TR/2013/REC-prov-o-20130430/), OBS-ADH-014 | Attribution, derivation and invalidation. | Graph provenance without imposing RDF, OWL or a storage. |
 
-## Arbitrages explicites
+## Explicit trade-offs
 
-La politique native obligatoire pour certaines tâches dans Composed 0.5.1 reste
-un choix de cette implémentation. Le contrat générique exige une délégation réelle
-lorsqu'elle est requise ou revendiquée, sans nombre ni fournisseur fixe pour toute
-tâche. Un document ne suffit pas à démontrer la conformité de la baseline.
+The native policy that is mandatory for certain tasks in Composed 0.5.1 remains
+a choice of that implementation. The generic contract requires a real delegation
+when it is required or claimed, without a fixed number or provider for every
+task. A document is not enough to demonstrate the conformance of the baseline.
 
-Les sources n'établissent pas une boucle complète recherche, graphe, évaluation
-interprojets, correction et livraison. Ce découpage est un choix explicite :
-modulaire, sous l'autorité des projets, à évaluer avant toute revendication de
-bénéfice. Un graphe matérialisé reste à concevoir ; le modèle logique ne sélectionne
-pas d'infrastructure. Seuils, portée et frontières d'autorité sont des choix de
-ce contrat, identifiés dans la traçabilité.
+The sources do not establish a complete loop of research, graph, cross-project
+evaluation, correction and delivery. This breakdown is an explicit choice:
+modular, under the authority of the projects, to be evaluated before any claim of
+benefit. A materialised graph remains to be designed; the logical model does not select
+an infrastructure. Thresholds, scope and authority boundaries are choices of
+this contract, identified in the traceability.
 
-## Questions ouvertes
+## Open questions
 
-- Quels cas indépendants isolent l'effet de la méthode de celui du modèle ?
-- Quelles garanties chaque runtime/version/mode impose-t-il réellement ?
-- Quel coût de coordination est acceptable par catégorie de travail ?
-- Quelles requêtes justifient un index partagé au-delà des fichiers ?
-- Quelles mesures expliquent un échec sans exporter les données du projet ?
-- Comment distinguer fraîcheur d'une source et valeur d'une exigence ?
+- Which independent cases isolate the effect of the method from that of the model?
+- Which guarantees does each runtime/version/mode actually enforce?
+- What coordination cost is acceptable per category of work?
+- Which queries justify a shared index beyond files?
+- Which measurements explain a failure without exporting the project's data?
+- How to distinguish the freshness of a source from the value of a requirement?
 
-Ces questions alimentent la [recherche continue](../../../docs/continuous-evolution.md),
-sans mandat implicite de collecte, d'infrastructure ou de déploiement.
+These questions feed the [continuous research](../../../docs/continuous-evolution.md),
+with no implicit mandate for collection, infrastructure or deployment.
 
 
 ## Corpus refresh — 2026-11-01

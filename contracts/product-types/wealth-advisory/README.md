@@ -2,7 +2,8 @@
 
 [Version française](README.fr.md)
 
-Contract **`wealth-advisory@0.1.0`**, format **0.2**, status **draft**.
+Contract **`wealth-advisory@0.1.1`**, format **0.2**, status **draft**. 0.1.1 is the English
+translation of 0.1.0, with no intended behaviour change.
 It covers the full journey requested: fact-finding → balance sheet → diagnosis → scenarios →
 recommendations → validation and delivery → follow-up. Primary user: a wealth
 manager practising in France. No stack is chosen.
@@ -11,7 +12,10 @@ The first version deals with natural persons and named groups. This scope
 is a design proposal, distinct from the choices already confirmed by the
 owner: France, wealth manager, advice and follow-up included.
 
-The contract and its research are written in French.
+The French 0.1.0 package is archived unchanged under [history/0.1.0](history/0.1.0/README.md).
+Where the English and French texts appear to differ, the French text is the reference. The
+[author review](contracts/review.md) lists the term choices a bilingual and legally qualified
+reviewer should check.
 
 | Document | Purpose |
 | --- | --- |

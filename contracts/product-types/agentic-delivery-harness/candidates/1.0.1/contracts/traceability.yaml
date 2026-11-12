@@ -1,0 +1,457 @@
+schema_version: "0.1"
+contract_id: agentic-delivery-harness
+contract_version: 1.0.1
+research_status: initial
+links:
+  - clause: CAP-ADH-001
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-001
+      - OBS-ADH-002
+      - OBS-ADH-006
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: REQ-ADH-001
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-001
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: REQ-ADH-002
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-002
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: REQ-ADH-003
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-002
+      - OBS-ADH-006
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: CAP-ADH-002
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-003
+      - OBS-ADH-004
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: REQ-ADH-004
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-003
+      - OBS-ADH-004
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: REQ-ADH-005
+    basis: explicit_project_choice
+    observations: []
+    note: Explicit choice of this product family; no universal convergence or current availability
+      in Composed is claimed.
+  - clause: REQ-ADH-006
+    basis: explicit_project_choice
+    observations: []
+    note: Explicit choice of this product family; no universal convergence or current availability
+      in Composed is claimed.
+  - clause: CAP-ADH-003
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-002
+      - OBS-ADH-006
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: REQ-ADH-007
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-001
+      - OBS-ADH-016
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: REQ-ADH-008
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-002
+      - OBS-ADH-006
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: CAP-ADH-004
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-007
+      - OBS-ADH-008
+      - OBS-ADH-013
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: REQ-ADH-009
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-007
+      - OBS-ADH-008
+      - OBS-ADH-013
+      - OBS-ADH-018
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract. Internal events are counter-evidence to the shortcut event
+      = delegation; the task/execution/result correlation is a chosen guarantee.
+  - clause: REQ-ADH-010
+    basis: explicit_project_choice
+    observations: []
+    note: Explicit choice of this product family; no universal convergence or current availability
+      in Composed is claimed.
+  - clause: CAP-ADH-005
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-004
+      - OBS-ADH-005
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: REQ-ADH-011
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-004
+      - OBS-ADH-005
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: REQ-ADH-012
+    basis: explicit_project_choice
+    observations: []
+    note: Explicit choice of this product family; no universal convergence or current availability
+      in Composed is claimed.
+  - clause: REQ-ADH-013
+    basis: explicit_project_choice
+    observations: []
+    note: Explicit choice of this product family; no universal convergence or current availability
+      in Composed is claimed.
+  - clause: CAP-ADH-006
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-014
+      - OBS-ADH-016
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: REQ-ADH-014
+    basis: explicit_project_choice
+    observations: []
+    note: Explicit choice of this product family; no universal convergence or current availability
+      in Composed is claimed.
+  - clause: REQ-ADH-015
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-014
+      - OBS-ADH-016
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: CAP-ADH-007
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-009
+      - OBS-ADH-010
+      - OBS-ADH-014
+      - OBS-ADH-015
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: REQ-ADH-016
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-014
+      - OBS-ADH-015
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: REQ-ADH-017
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-009
+      - OBS-ADH-010
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: REQ-ADH-018
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-015
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: CAP-ADH-008
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-005
+      - OBS-ADH-014
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: REQ-ADH-019
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-005
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: REQ-ADH-020
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-014
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: CAP-ADH-009
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-006
+      - OBS-ADH-007
+      - OBS-ADH-008
+      - OBS-ADH-013
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: REQ-ADH-021
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-006
+      - OBS-ADH-007
+      - OBS-ADH-008
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: REQ-ADH-022
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-007
+      - OBS-ADH-008
+      - OBS-ADH-013
+      - OBS-ADH-017
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract. The after-effect nature and the scope of hooks are observed;
+      the inventory of paths and the refusal of an unproven general guarantee are normative
+      choices.
+  - clause: REQ-ADH-023
+    basis: explicit_project_choice
+    observations: []
+    note: Explicit choice of this product family; no universal convergence or current availability
+      in Composed is claimed.
+  - clause: CAP-ADH-010
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-009
+      - OBS-ADH-010
+      - OBS-ADH-011
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: REQ-ADH-024
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-009
+      - OBS-ADH-011
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: REQ-ADH-025
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-009
+      - OBS-ADH-010
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: REQ-ADH-026
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-011
+      - OBS-ADH-012
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: CAP-ADH-011
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-014
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: REQ-ADH-027
+    basis: explicit_project_choice
+    observations: []
+    note: Explicit choice of this product family; no universal convergence or current availability
+      in Composed is claimed.
+  - clause: REQ-ADH-028
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-014
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: REQ-ADH-029
+    basis: explicit_project_choice
+    observations: []
+    note: Explicit choice of this product family; no universal convergence or current availability
+      in Composed is claimed.
+  - clause: CAP-ADH-012
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-009
+      - OBS-ADH-014
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: REQ-ADH-030
+    basis: explicit_project_choice
+    observations: []
+    note: Explicit choice of this product family; no universal convergence or current availability
+      in Composed is claimed.
+  - clause: REQ-ADH-031
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-009
+      - OBS-ADH-014
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: CAP-ADH-013
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-014
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: REQ-ADH-032
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-014
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: REQ-ADH-033
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-014
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: REQ-ADH-034
+    basis: explicit_project_choice
+    observations: []
+    note: Explicit choice of this product family; no universal convergence or current availability
+      in Composed is claimed.
+  - clause: CAP-ADH-014
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-005
+      - OBS-ADH-010
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: REQ-ADH-035
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-005
+      - OBS-ADH-010
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: REQ-ADH-036
+    basis: explicit_project_choice
+    observations: []
+    note: Explicit choice of this product family; no universal convergence or current availability
+      in Composed is claimed.
+  - clause: REQ-ADH-037
+    basis: explicit_project_choice
+    observations: []
+    note: Explicit choice of this product family; no universal convergence or current availability
+      in Composed is claimed.
+  - clause: INV-ADH-001
+    basis: explicit_project_choice
+    observations: []
+    note: Explicit choice of this product family; no universal convergence or current availability
+      in Composed is claimed.
+  - clause: INV-ADH-002
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-007
+      - OBS-ADH-008
+      - OBS-ADH-015
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: INV-ADH-003
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-009
+      - OBS-ADH-010
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: INV-ADH-004
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-014
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: INV-ADH-005
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-014
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: INV-ADH-006
+    basis: explicit_project_choice
+    observations: []
+    note: Explicit choice of this product family; no universal convergence or current availability
+      in Composed is claimed.
+  - clause: INV-ADH-007
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-011
+      - OBS-ADH-012
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: INV-ADH-008
+    basis: explicit_project_choice
+    observations: []
+    note: Explicit choice of this product family; no universal convergence or current availability
+      in Composed is claimed.
+  - clause: POL-ADH-001
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-002
+      - OBS-ADH-006
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: POL-ADH-002
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-004
+      - OBS-ADH-005
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: POL-ADH-003
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-007
+      - OBS-ADH-008
+      - OBS-ADH-013
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: POL-ADH-004
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-002
+      - OBS-ADH-006
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: POL-ADH-005
+    basis: explicit_project_choice
+    observations: []
+    note: Explicit choice of this product family; no universal convergence or current availability
+      in Composed is claimed.
+  - clause: POL-ADH-006
+    basis: explicit_project_choice
+    observations: []
+    note: Explicit choice of this product family; no universal convergence or current availability
+      in Composed is claimed.
+  - clause: QA-ADH-001
+    basis: explicit_project_choice
+    observations: []
+    note: Explicit choice of this product family; no universal convergence or current availability
+      in Composed is claimed.
+  - clause: QA-ADH-002
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-014
+      - OBS-ADH-015
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: QA-ADH-003
+    basis: explicit_project_choice
+    observations: []
+    note: Explicit choice of this product family; no universal convergence or current availability
+      in Composed is claimed.
+  - clause: QA-ADH-004
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ADH-009
+    note: The observed mechanism informs the clause; its mandatory scope and its exact conditions are
+      choices of this contract.
+  - clause: QA-ADH-005
+    basis: explicit_project_choice
+    observations: []
+    note: Explicit choice of this product family; no universal convergence or current availability
+      in Composed is claimed.

@@ -1,64 +1,65 @@
-# Profils de mission, de service et de modèle
+# Engagement, service and model profiles
 
-Ce document explique les paramètres évoqués par le [contrat](contract.yaml).
-Il ne définit ni schéma technique obligatoire, ni règle cachée supplémentaire.
-Les identifiants normatifs restent ceux du YAML.
+This document explains the parameters referred to by the [contract](contract.yaml).
+It defines neither a mandatory technical schema nor an additional hidden rule.
+The normative identifiers remain those of the YAML.
 
-## Mission et service
+## Engagement and service
 
-`REQ-WAD-001/002/005/017/019/024` demandent de pouvoir identifier :
+`REQ-WAD-001/002/005/017/019/024` require being able to identify:
 
-| Information | Question à résoudre dans une mise en œuvre |
+| Information | Question to resolve in an implementation |
 | --- | --- |
-| Professionnel responsable | Qui conseille, dans quels statuts et habilitations déclarés, pour quel cabinet ? |
-| Périmètre | Quelles personnes, juridictions, analyses et opérations de conseil sont incluses ? |
-| Domaine et service | Diagnostic, investissement financier, assurance, fiscalité, transmission, retraite ou immobilier ; quel service précis est rendu ? |
-| Conditions de validation | Quelles réponses et pièces sont pertinentes, quelles incohérences sont bloquantes, selon quelle règle datée ? |
-| Rémunération | Quels frais et liens d'intérêt sont présentés ; conseil indépendant ou non indépendant lorsque cette distinction s'applique ? |
-| Suivi | Quelle obligation ou convention fixe le déclencheur, le point de départ, la fréquence et les délais ; quelle version de cette règle ? |
+| Responsible professional | Who advises, under which declared statuses and professional authorisations (habilitations), for which firm? |
+| Scope | Which persons, jurisdictions, analyses and advice operations are included? |
+| Domain and service | Diagnosis, financial investment, insurance, taxation, wealth transfer (transmission), retirement or real estate; which precise service is provided? |
+| Validation conditions | Which answers and documents are relevant, which inconsistencies are blocking, according to which dated rule? |
+| Remuneration | Which fees and links of interest are presented; independent or non-independent advice where this distinction applies? |
+| Follow-up | Which obligation or agreement sets the trigger, the starting point, the frequency and the time limits; which version of this rule? |
 
-Le domaine financier et celui de l'assurance ne partagent pas une attestation
-universelle. Le contrat prévoit les deux parcours, avec les données et contrôles
-qui leur sont propres. Un profil ne peut pas supprimer une exigence du contrat,
-faire passer un champ inconnu pour renseigné ou déclarer adéquat un produit
-incompatible. Il sert à préciser la portée du conseil effectivement couvert.
+The financial domain and the insurance domain do not share a universal
+attestation. The contract provides for both journeys, with the data and controls
+that are specific to them. A profile cannot remove a requirement of the contract,
+pass off an unknown field as filled in or declare an incompatible product
+suitable. It serves to specify the reach of the advice actually covered.
 
-La périodicité minimale annuelle prévue pour une évaluation périodique CIF est
-conditionnelle à ce service. Une obligation plus fréquente applicable prime sur
-la règle du cabinet. Pour l'assurance et les autres domaines, les règles et leurs
-transitions doivent être vérifiées séparément ; aucune durée universelle n'est déduite.
+The minimum annual periodicity provided for a periodic assessment by a financial
+investment adviser (conseiller en investissements financiers, CIF) is
+conditional on that service. An applicable more frequent obligation takes precedence over
+the rule of the firm. For insurance and the other domains, the rules and their
+transitions must be verified separately; no universal duration is inferred.
 
-Le cadre de traitement des données distingue les rôles, finalités, catégories,
-personnes concernées, destinataires, conservations actives/restreintes et suppressions
-autorisées (`REQ-WAD-026` à `029`). On ne fixe pas « cinq ans pour tout » par convention.
+The data-processing framework distinguishes the roles, purposes, categories,
+persons concerned, recipients, active/restricted retentions and authorised
+deletions (`REQ-WAD-026` to `029`). "Five years for everything" is not set by convention.
 
-## Modèle de calcul
+## Calculation model
 
-`REQ-WAD-009/010/013/014/015` et `QA-WAD-001` demandent de retrouver les conventions :
+`REQ-WAD-009/010/013/014/015` and `QA-WAD-001` require the conventions to be retrievable:
 
-- devises, taux de change, dates de valeur et règle de fraîcheur ;
-- droits de détention, quotes-parts économiques et imputation distincte des dettes ;
-- traitement des enveloppes et sous-jacents pour éviter les doubles comptes ;
-- périodes, flux, règles d'arrondi et méthode de calcul ;
-- hypothèses et prise en compte ou exclusion de l'inflation, des frais et impôts ;
-- situations et périodes couvertes par les modèles spécialisés, sources et références revues.
+- currencies, exchange rates, value dates and freshness rule;
+- ownership rights, economic shares and distinct allocation of debts;
+- treatment of wrappers (enveloppes) and underlyings to avoid double counting;
+- periods, flows, rounding rules and calculation method;
+- assumptions and inclusion or exclusion of inflation, fees and taxes;
+- situations and periods covered by the specialised models, sources and reviewed references.
 
-Un modèle pédagogique composé annuel à 2 % peut éprouver la comparaison de
-scénarios ; il ne prouve pas un calcul de fiscalité d'assurance-vie, de succession
-ou de retraite. Ceux-ci ont besoin de leurs propres références et de leur revue.
-Les cas numériques du contrat sont des situations synthétiques sans données privées.
+An educational annual compound model at 2% can exercise the comparison of
+scenarios; it does not prove a calculation of the taxation of life insurance
+(assurance-vie), of inheritance or of retirement. These need their own references and their review.
+The numerical cases of the contract are synthetic situations without private data.
 
-## Capacités nécessaires à une future implémentation
+## Capabilities needed for a future implementation
 
-| Clauses | Compétences à mobiliser, fournies ou externes |
+| Clauses | Skills to mobilise, provided or external |
 | --- | --- |
-| Mission, découverte et diagnostic (`REQ-WAD-001` à `012`) | Expertise patrimoniale française ; cadrage produit ; conception du recueil. |
-| Scénarios et préconisations (`013` à `019`) | Ingénierie des calculs ; tests indépendants ; expertise fiscale, successorale ou assurance selon les modèles couverts. |
-| Validation, remise et suivi (`020` à `025`) | Conception des parcours ; gestion des versions et autorisations ; recette métier. |
-| Données et continuité (`026` à `029`) | Sécurité, protection des données, migrations et restauration contrôlée. |
+| Engagement, discovery and diagnosis (`REQ-WAD-001` to `012`) | French wealth expertise; product framing; design of the fact-find (recueil). |
+| Scenarios and recommendations (`013` to `019`) | Calculation engineering; independent tests; tax, inheritance or insurance expertise according to the models covered. |
+| Validation, delivery and follow-up (`020` to `025`) | Journey design; management of versions and authorisations; business acceptance testing (recette métier). |
+| Data and continuity (`026` to `029`) | Security, data protection, migrations and controlled restoration. |
 
-Les skills généralistes du Build Kit peuvent aider à livrer et vérifier le logiciel.
-Ils ne remplacent pas une expertise patrimoniale, réglementaire, fiscale ou successorale.
-Cette capacité métier n'est pas fournie par le kit ; elle reste à identifier avant
-validation des modèles et adoption réelle. Aucun plan technique ni choix de stack
-n'est décidé par cette table.
+The generalist skills of the Build Kit can help deliver and verify the software.
+They do not replace wealth, regulatory, tax or inheritance expertise.
+This business capability is not provided by the kit; it remains to be identified before
+validation of the models and real adoption. No technical plan or choice of stack
+is decided by this table.

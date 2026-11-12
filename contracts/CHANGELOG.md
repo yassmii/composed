@@ -2,10 +2,12 @@
 
 ## Unreleased
 
-- Publish `video-editorial-workflow@1.0.1`, the English translation of 1.0.0, as a patch
-  with no intended behaviour change. Identifiers, structure and the nine acceptance cases
-  are unchanged. The French 1.0.0 package is archived byte for byte under `history/1.0.0`;
-  the translation has author review only and no proof is transferred.
+- Publish English translations as patches with no intended behaviour change:
+  `video-editorial-workflow@1.0.1`, `prospecting-workspace@1.0.1`,
+  `agentic-delivery-harness@1.0.1` and `wealth-advisory@0.1.1`. Identifiers, structure and
+  acceptance cases are unchanged. Each French original is archived byte for byte under its
+  family's `history/` folder and stays the reference where the two texts differ. The
+  translations have author review only and no proof is transferred.
 
 - Add `wealth-advisory@0.1.0` as a format-0.2 draft for French wealth advice:
   mission, discovery, inventory, diagnosis, scenarios, recommendations, human validation,

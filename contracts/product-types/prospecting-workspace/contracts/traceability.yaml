@@ -1,6 +1,6 @@
 schema_version: "0.1"
 contract_id: prospecting-workspace
-contract_version: 1.0.0
+contract_version: 1.0.1
 research_status: initial
 links:
   - clause: CAP-PR-001
@@ -8,72 +8,71 @@ links:
     observations:
       - OBS-PR-001
       - OBS-PR-002
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause de capacité sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this capability clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-001
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-001
       - OBS-PR-002
-    note: La configurabilité observée ne prouve pas une prise en charge universelle; supprimer les
-      contraintes de secteur, d’adresse et de courriel est un choix explicite demandé par
-      l’utilisateur.
+    note: The observed configurability does not prove universal support; removing the sector, address
+      and email constraints is an explicit choice requested by the user.
   - clause: REQ-PR-002
     basis: explicit_project_choice
     observations: []
-    note: Choix explicite d’exigence pour répondre à la demande, prévenir une défaillance ou rendre la
-      conformité vérifiable; aucune convergence des produits étudiés n’est revendiquée.
+    note: Explicit requirement choice to meet the request, prevent a failure or make conformity
+      verifiable; no convergence of the products studied is claimed.
   - clause: REQ-PR-003
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-004
-    note: HubSpot documente une réévaluation rétroactive; ce contrat choisit au contraire des versions
-      conservées et une migration explicite pour l’auditabilité.
+    note: HubSpot documents retroactive re-evaluation; this contract chooses on the contrary retained
+      versions and an explicit migration for auditability.
   - clause: REQ-PR-004
     basis: explicit_project_choice
     observations: []
-    note: Choix explicite d’exigence pour répondre à la demande, prévenir une défaillance ou rendre la
-      conformité vérifiable; aucune convergence des produits étudiés n’est revendiquée.
+    note: Explicit requirement choice to meet the request, prevent a failure or make conformity
+      verifiable; no convergence of the products studied is claimed.
   - clause: CAP-PR-002
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-001
       - OBS-PR-002
       - OBS-PR-028
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause de capacité sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this capability clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-005
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-001
       - OBS-PR-002
       - OBS-PR-028
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-006
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-022
       - OBS-PR-028
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-007
     basis: explicit_project_choice
     observations: []
-    note: Choix explicite d’exigence pour répondre à la demande, prévenir une défaillance ou rendre la
-      conformité vérifiable; aucune convergence des produits étudiés n’est revendiquée.
+    note: Explicit requirement choice to meet the request, prevent a failure or make conformity
+      verifiable; no convergence of the products studied is claimed.
   - clause: CAP-PR-003
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-010
       - OBS-PR-017
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause de capacité sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this capability clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-008
     basis: supported_pattern_and_choice
     observations:
@@ -81,185 +80,185 @@ links:
       - OBS-PR-017
       - OBS-PR-027
       - OBS-PR-030
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée. La variation documentée de colonnes motive le contrôle;
-      versionner les correspondances et refuser une interprétation incompatible est un choix
-      générique, sans imposer RNIC comme source.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence. The documented variation in columns motivates the check; versioning the mappings
+      and refusing an incompatible interpretation is a generic choice, without imposing RNIC as a
+      source.
   - clause: REQ-PR-009
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-005
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-010
     basis: explicit_project_choice
     observations: []
-    note: Choix explicite d’exigence pour répondre à la demande, prévenir une défaillance ou rendre la
-      conformité vérifiable; aucune convergence des produits étudiés n’est revendiquée.
+    note: Explicit requirement choice to meet the request, prevent a failure or make conformity
+      verifiable; no convergence of the products studied is claimed.
   - clause: REQ-PR-011
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-010
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: CAP-PR-004
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-008
       - OBS-PR-009
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause de capacité sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this capability clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-012
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-008
       - OBS-PR-009
       - OBS-PR-014
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-013
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-008
       - OBS-PR-025
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-014
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-005
       - OBS-PR-020
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: CAP-PR-005
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-022
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause de capacité sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this capability clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-015
     basis: explicit_project_choice
     observations: []
-    note: Choix explicite de résolution d’identité par type. Salesforce informe qualitativement la
-      comparaison mais son contenu indépendant est inaccessible et n’est pas une preuve machine.
+    note: Explicit choice of identity resolution per type. Salesforce informs the comparison
+      qualitatively but its independent content is inaccessible and is not machine evidence.
   - clause: REQ-PR-016
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-022
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-017
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-022
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: CAP-PR-006
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-003
       - OBS-PR-004
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause de capacité sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this capability clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-018
     basis: explicit_project_choice
     observations: []
-    note: Choix explicite d’exigence pour répondre à la demande, prévenir une défaillance ou rendre la
-      conformité vérifiable; aucune convergence des produits étudiés n’est revendiquée.
+    note: Explicit requirement choice to meet the request, prevent a failure or make conformity
+      verifiable; no convergence of the products studied is claimed.
   - clause: REQ-PR-019
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-003
-    note: HubSpot étaye la séparation adéquation/engagement. Les quatre dimensions, les preuves
-      obligatoires et la distinction cible pertinente/lead qualifié sont des choix; Apollo fournit
-      un contre-exemple qualitatif aux inférences individuelles.
+    note: HubSpot supports the fit/engagement separation. The four dimensions, the mandatory evidence
+      and the relevant target/qualified lead distinction are choices; Apollo provides a qualitative
+      counter-example to individual inferences.
   - clause: REQ-PR-020
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-003
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-021
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-004
       - OBS-PR-022
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: CAP-PR-007
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-005
       - OBS-PR-007
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause de capacité sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this capability clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-022
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-005
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-023
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-007
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-024
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-001
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: CAP-PR-008
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-007
       - OBS-PR-012
       - OBS-PR-013
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause de capacité sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this capability clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-025
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-007
       - OBS-PR-021
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-026
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-007
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-027
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-012
       - OBS-PR-013
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: CAP-PR-009
     basis: supported_pattern_and_choice
     observations:
@@ -267,91 +266,91 @@ links:
       - OBS-PR-020
       - OBS-PR-021
       - OBS-PR-026
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause de capacité sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this capability clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-028
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-024
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-029
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-014
       - OBS-PR-018
       - OBS-PR-024
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-030
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-020
       - OBS-PR-021
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée. Les limites de conservation des clés sont documentées;
-      identité métier persistante, suspension au-delà et recontrôle d’autorité sont des garanties
-      choisies, pas une promesse de livraison exactement une fois chez tout prestataire.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence. The limits on key retention are documented; persistent business identity,
+      suspension beyond them and re-checking of authority are chosen guarantees, not a promise of
+      exactly-once delivery at every provider.
   - clause: REQ-PR-031
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-026
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: CAP-PR-010
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-012
       - OBS-PR-013
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause de capacité sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this capability clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-032
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-012
       - OBS-PR-024
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-033
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-012
       - OBS-PR-013
       - OBS-PR-018
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-034
     basis: explicit_project_choice
     observations: []
-    note: Choix explicite d’exigence pour répondre à la demande, prévenir une défaillance ou rendre la
-      conformité vérifiable; aucune convergence des produits étudiés n’est revendiquée.
+    note: Explicit requirement choice to meet the request, prevent a failure or make conformity
+      verifiable; no convergence of the products studied is claimed.
   - clause: CAP-PR-011
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-024
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause de capacité sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this capability clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-035
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-024
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-036
     basis: explicit_project_choice
     observations: []
-    note: Choix explicite d’exigence pour répondre à la demande, prévenir une défaillance ou rendre la
-      conformité vérifiable; aucune convergence des produits étudiés n’est revendiquée.
+    note: Explicit requirement choice to meet the request, prevent a failure or make conformity
+      verifiable; no convergence of the products studied is claimed.
   - clause: CAP-PR-012
     basis: supported_pattern_and_choice
     observations:
@@ -362,9 +361,9 @@ links:
       - OBS-PR-018
       - OBS-PR-019
       - OBS-PR-029
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause de capacité sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this capability clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-037
     basis: supported_pattern_and_choice
     observations:
@@ -373,279 +372,279 @@ links:
       - OBS-PR-017
       - OBS-PR-019
       - OBS-PR-029
-    note: Les textes cités ont des périmètres distincts; les contrôles et le blocage des inconnues sont
-      des choix produit, pas une certification juridique générale.
+    note: The texts cited have distinct scopes; the checks and the blocking of unknowns are product
+      choices, not a general legal certification.
   - clause: REQ-PR-038
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-018
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-039
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-015
       - OBS-PR-016
-    note: La durée de trois ans est un exemple recommandé dans un périmètre CNIL défini, pas une durée
-      universelle imposée au socle.
+    note: The three-year period is a recommended example within a defined CNIL scope, not a universal
+      period imposed on the core.
   - clause: REQ-PR-040
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-017
       - OBS-PR-018
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-041
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-017
       - OBS-PR-024
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: CAP-PR-013
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-022
       - OBS-PR-024
       - OBS-PR-025
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause de capacité sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this capability clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-042
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-022
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-043
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-024
       - OBS-PR-025
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-044
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-024
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: CAP-PR-014
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-003
       - OBS-PR-005
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause de capacité sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this capability clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-045
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-003
       - OBS-PR-005
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-046
     basis: explicit_project_choice
     observations: []
-    note: Choix explicite d’exigence pour répondre à la demande, prévenir une défaillance ou rendre la
-      conformité vérifiable; aucune convergence des produits étudiés n’est revendiquée.
+    note: Explicit requirement choice to meet the request, prevent a failure or make conformity
+      verifiable; no convergence of the products studied is claimed.
   - clause: REQ-PR-047
     basis: explicit_project_choice
     observations: []
-    note: Choix explicite d’exigence pour répondre à la demande, prévenir une défaillance ou rendre la
-      conformité vérifiable; aucune convergence des produits étudiés n’est revendiquée.
+    note: Explicit requirement choice to meet the request, prevent a failure or make conformity
+      verifiable; no convergence of the products studied is claimed.
   - clause: CAP-PR-015
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-020
       - OBS-PR-021
       - OBS-PR-022
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause de capacité sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this capability clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-048
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-020
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-049
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-001
       - OBS-PR-022
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-050
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-021
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-051
     basis: explicit_project_choice
     observations: []
-    note: Choix explicite d’exigence pour répondre à la demande, prévenir une défaillance ou rendre la
-      conformité vérifiable; aucune convergence des produits étudiés n’est revendiquée.
+    note: Explicit requirement choice to meet the request, prevent a failure or make conformity
+      verifiable; no convergence of the products studied is claimed.
   - clause: CAP-PR-016
     basis: explicit_project_choice
     observations: []
-    note: Choix explicite de capacité pour répondre à la demande, prévenir une défaillance ou rendre la
-      conformité vérifiable; aucune convergence des produits étudiés n’est revendiquée.
+    note: Explicit capability choice to meet the request, prevent a failure or make conformity
+      verifiable; no convergence of the products studied is claimed.
   - clause: REQ-PR-052
     basis: explicit_project_choice
     observations: []
-    note: Choix explicite d’exigence pour répondre à la demande, prévenir une défaillance ou rendre la
-      conformité vérifiable; aucune convergence des produits étudiés n’est revendiquée.
+    note: Explicit requirement choice to meet the request, prevent a failure or make conformity
+      verifiable; no convergence of the products studied is claimed.
   - clause: REQ-PR-053
     basis: explicit_project_choice
     observations: []
-    note: Choix explicite d’exigence pour répondre à la demande, prévenir une défaillance ou rendre la
-      conformité vérifiable; aucune convergence des produits étudiés n’est revendiquée.
+    note: Explicit requirement choice to meet the request, prevent a failure or make conformity
+      verifiable; no convergence of the products studied is claimed.
   - clause: REQ-PR-054
     basis: explicit_project_choice
     observations: []
-    note: Choix explicite d’exigence pour répondre à la demande, prévenir une défaillance ou rendre la
-      conformité vérifiable; aucune convergence des produits étudiés n’est revendiquée.
+    note: Explicit requirement choice to meet the request, prevent a failure or make conformity
+      verifiable; no convergence of the products studied is claimed.
   - clause: CAP-PR-017
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-010
       - OBS-PR-011
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause de capacité sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this capability clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-055
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-011
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-056
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-010
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’exigence sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this requirement clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: REQ-PR-057
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-011
-    note: Clay étaye la surveillance. La limitation des inférences par niveau d’entité est un choix;
-      Apollo est une référence qualitative non admise dans la chaîne machine.
+    note: Clay supports monitoring. Limiting inferences by entity level is a choice; Apollo is a
+      qualitative reference not admitted into the machine chain.
   - clause: INV-PR-001
     basis: explicit_project_choice
     observations: []
-    note: Choix explicite d’invariant pour répondre à la demande, prévenir une défaillance ou rendre la
-      conformité vérifiable; aucune convergence des produits étudiés n’est revendiquée.
+    note: Explicit invariant choice to meet the request, prevent a failure or make conformity
+      verifiable; no convergence of the products studied is claimed.
   - clause: INV-PR-002
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-001
       - OBS-PR-003
       - OBS-PR-005
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’invariant sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this invariant clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: INV-PR-003
     basis: explicit_project_choice
     observations: []
-    note: Choix explicite d’invariant pour répondre à la demande, prévenir une défaillance ou rendre la
-      conformité vérifiable; aucune convergence des produits étudiés n’est revendiquée.
+    note: Explicit invariant choice to meet the request, prevent a failure or make conformity
+      verifiable; no convergence of the products studied is claimed.
   - clause: INV-PR-004
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-022
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’invariant sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this invariant clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: INV-PR-005
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-014
       - OBS-PR-018
       - OBS-PR-024
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’invariant sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this invariant clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: INV-PR-006
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-018
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’invariant sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this invariant clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: INV-PR-007
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-020
       - OBS-PR-021
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’invariant sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this invariant clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: INV-PR-008
     basis: explicit_project_choice
     observations: []
-    note: Choix explicite d’invariant pour répondre à la demande, prévenir une défaillance ou rendre la
-      conformité vérifiable; aucune convergence des produits étudiés n’est revendiquée.
+    note: Explicit invariant choice to meet the request, prevent a failure or make conformity
+      verifiable; no convergence of the products studied is claimed.
   - clause: INV-PR-009
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-024
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’invariant sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this invariant clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: INV-PR-010
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-015
       - OBS-PR-022
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’invariant sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this invariant clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: INV-PR-011
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-024
       - OBS-PR-025
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause d’invariant sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this invariant clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: INV-PR-012
     basis: explicit_project_choice
     observations: []
-    note: Choix explicite d’invariant pour répondre à la demande, prévenir une défaillance ou rendre la
-      conformité vérifiable; aucune convergence des produits étudiés n’est revendiquée.
+    note: Explicit invariant choice to meet the request, prevent a failure or make conformity
+      verifiable; no convergence of the products studied is claimed.
   - clause: POL-PR-001
     basis: explicit_project_choice
     observations: []
-    note: Choix explicite de politique pour répondre à la demande, prévenir une défaillance ou rendre la
-      conformité vérifiable; aucune convergence des produits étudiés n’est revendiquée.
+    note: Explicit policy choice to meet the request, prevent a failure or make conformity verifiable;
+      no convergence of the products studied is claimed.
   - clause: POL-PR-002
     basis: explicit_project_choice
     observations: []
-    note: Choix explicite de politique pour répondre à la demande, prévenir une défaillance ou rendre la
-      conformité vérifiable; aucune convergence des produits étudiés n’est revendiquée.
+    note: Explicit policy choice to meet the request, prevent a failure or make conformity verifiable;
+      no convergence of the products studied is claimed.
   - clause: POL-PR-003
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-024
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause de politique sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this policy clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: POL-PR-004
     basis: supported_pattern_and_choice
     observations:
@@ -653,85 +652,85 @@ links:
       - OBS-PR-015
       - OBS-PR-016
       - OBS-PR-019
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause de politique sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this policy clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: POL-PR-005
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-003
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause de politique sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this policy clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: POL-PR-006
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-004
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause de politique sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this policy clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: POL-PR-007
     basis: explicit_project_choice
     observations: []
-    note: Choix explicite de politique pour répondre à la demande, prévenir une défaillance ou rendre la
-      conformité vérifiable; aucune convergence des produits étudiés n’est revendiquée.
+    note: Explicit policy choice to meet the request, prevent a failure or make conformity verifiable;
+      no convergence of the products studied is claimed.
   - clause: POL-PR-008
     basis: explicit_project_choice
     observations: []
-    note: Choix de supervision produit. Aucune source accessible et hachée de ce dossier ne suffit à
-      classifier réglementairement tous les usages; ne pas reprendre comme universelle l’attribution
-      à l’article 14 du SDD.
+    note: Product oversight choice. No accessible and hashed source in this file is enough to classify
+      all uses for regulatory purposes; do not take up as universal the attribution to Article 14
+      made by the SDD.
   - clause: POL-PR-009
     basis: explicit_project_choice
     observations: []
-    note: Choix explicite de politique pour répondre à la demande, prévenir une défaillance ou rendre la
-      conformité vérifiable; aucune convergence des produits étudiés n’est revendiquée.
+    note: Explicit policy choice to meet the request, prevent a failure or make conformity verifiable;
+      no convergence of the products studied is claimed.
   - clause: QA-PR-001
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-023
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause de qualité sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this quality clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: QA-PR-002
     basis: explicit_project_choice
     observations: []
-    note: Choix explicite de qualité pour répondre à la demande, prévenir une défaillance ou rendre la
-      conformité vérifiable; aucune convergence des produits étudiés n’est revendiquée.
+    note: Explicit quality choice to meet the request, prevent a failure or make conformity verifiable;
+      no convergence of the products studied is claimed.
   - clause: QA-PR-003
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-020
       - OBS-PR-021
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause de qualité sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this quality clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: QA-PR-004
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-024
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause de qualité sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this quality clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: QA-PR-005
     basis: supported_pattern_and_choice
     observations:
       - OBS-PR-018
-    note: Les observations étayent le motif de conception; la portée exacte, les contrôles et les
-      garanties de cette clause de qualité sont des choix explicites de cette famille, non une
-      convergence universelle démontrée.
+    note: The observations support the design pattern; the exact scope, the checks and the guarantees of
+      this quality clause are explicit choices of this family, not a demonstrated universal
+      convergence.
   - clause: QA-PR-006
     basis: explicit_project_choice
     observations: []
-    note: Choix explicite de qualité pour répondre à la demande, prévenir une défaillance ou rendre la
-      conformité vérifiable; aucune convergence des produits étudiés n’est revendiquée.
+    note: Explicit quality choice to meet the request, prevent a failure or make conformity verifiable;
+      no convergence of the products studied is claimed.
   - clause: QA-PR-007
     basis: explicit_project_choice
     observations: []
-    note: Choix explicite de qualité pour répondre à la demande, prévenir une défaillance ou rendre la
-      conformité vérifiable; aucune convergence des produits étudiés n’est revendiquée.
+    note: Explicit quality choice to meet the request, prevent a failure or make conformity verifiable;
+      no convergence of the products studied is claimed.
   - clause: QA-PR-008
     basis: explicit_project_choice
     observations: []
-    note: Choix explicite de qualité pour répondre à la demande, prévenir une défaillance ou rendre la
-      conformité vérifiable; aucune convergence des produits étudiés n’est revendiquée.
+    note: Explicit quality choice to meet the request, prevent a failure or make conformity verifiable;
+      no convergence of the products studied is claimed.

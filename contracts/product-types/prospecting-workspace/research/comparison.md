@@ -1,146 +1,148 @@
-# Recherche comparative et décisions
+# Comparative research and decisions
 
-Consultation : **23 octobre 2026**. État : **initial**. La question est de définir
-une famille d'outils de découverte, qualification et suivi, dont le contenu recherché
-peut changer sans refaire le produit. Le cas copropriétés sert à éprouver cette
-généralisation; un cadrage privé, non publié, fournit un autre parcours concret.
+Consultation: **23 October 2026**. State: **initial**. The question is to define
+a family of discovery, qualification and follow-up tools whose content sought
+can change without rebuilding the product. The co-owned buildings (copropriétés) case
+is used to test this generalisation; a private, unpublished scoping provides another
+concrete path.
 
-## Méthode et couverture
+## Method and coverage
 
-La recherche porte sur les documentations officielles de six produits, des textes
-d'autorités publiques, des standards et des guides techniques primaires. Les
-[sources hachées](sources.yaml) et [observations atomiques](observations.yaml)
-alimentent la [traçabilité des clauses](../contracts/traceability.yaml).
+The research covers the official documentation of six products, texts
+from public authorities, standards and primary technical guides. The
+[hashed sources](sources.yaml) and [atomic observations](observations.yaml)
+feed the [clause traceability](../contracts/traceability.yaml).
 
-Les constats décrivent ce que les produits documentent; ils ne prouvent pas une
-efficacité commerciale ni une conformité d'un déploiement réel. Aucun compte
-produit n'a été testé et aucun fournisseur n'a été évalué sur des prospects réels.
-Les limites d'offre et d'accès empêchent d'assimiler une capacité annoncée à une
-capacité disponible dans tous les contextes.
+The findings describe what the products document; they prove neither
+commercial effectiveness nor the compliance of an actual deployment. No product
+account was tested and no supplier was evaluated on real prospects.
+Plan and access limits prevent an announced capability from being equated with a
+capability available in all contexts.
 
-21 sources ont été récupérées indépendamment avec une empreinte SHA-256. Deux
-références supplémentaires, Salesforce et Apollo, ont été lues via navigation web
-mais refusées ou mal rendues lors de la récupération indépendante. Elles sont
-citées qualitativement ci-dessous, sans fausse empreinte ni lien de preuve machine.
-Les pages vivantes peuvent changer; une empreinte n'est pas une archive. Le fichier
-RNIC national n'a pas été téléchargé ni audité.
+21 sources were retrieved independently with a SHA-256 hash. Two
+additional references, Salesforce and Apollo, were read by web browsing
+but refused or badly rendered during independent retrieval. They are
+cited qualitatively below, with no false hash and no machine evidence link.
+Live pages can change; a hash is not an archive. The national RNIC
+file was neither downloaded nor audited.
 
-## Fonctions observées et différences
+## Observed features and differences
 
-| Produit | Observation documentaire | Limite ou divergence pertinente | Décision pour le contrat |
+| Product | Documentary observation | Relevant limit or divergence | Decision for the contract |
 | --- | --- | --- | --- |
-| [Attio — modèle de données](https://attio.com/help/reference/attio-101/attios-data-model/define-your-data-model-objects-lists-and-views) | Objets, relations, attributs et listes distinguant les données d'identité des données d'un processus. | Les types personnalisés ont leurs limites et droits; cela ne démontre pas une universalité sans configuration. | Cible, interlocuteur, relation et dossier par campagne séparés; types et attributs dans le profil. `CAP-PR-001/002`. |
-| [HubSpot — scoring](https://knowledge.hubspot.com/scoring/understand-the-lead-scoring-tool) | Adéquation et engagement séparables, décroissance et réévaluation lors d'un changement des critères. | La réévaluation rétroactive diffère du besoin de reproduire une décision historique. | Quatre dimensions distinctes, preuves obligatoires et versions conservées; migration explicite. `REQ-PR-003`, `CAP-PR-006`. |
-| [HubSpot — séquences](https://knowledge.hubspot.com/sequences/unenroll-from-sequence) | Arrêts après réponse ou rendez-vous, configurables; reconnaissance imparfaite des réponses automatiques. | Le produit permet de modifier certains déclencheurs. Une détection automatique n'est pas infaillible. | Pauses obligatoires dans les situations définies et revue des ambiguïtés; choix plus strict. `CAP-PR-008/010`. |
-| [Pipedrive — Leads Inbox](https://support.pipedrive.com/en/article/leads-inbox) | Leads avant pipeline, activités à venir et historique, conversion en affaires. | Le rattachement à une personne ou organisation est requis par Pipedrive. | Conserver un espace d'examen, mais permettre aussi projet, actif ou collectif sans société ni contact préexistant. `CAP-PR-002/007/008`. |
-| [Pipedrive — formulaires](https://support.pipedrive.com/en/article/web-forms) | Formulaires intégrables au site, champs personnalisés et entrée en leads ou affaires; consentement à configurer. | Une soumission est une déclaration, pas une qualification démontrée. | Formulaire entrant minimal, traitement des abus et distinction demande/accord promotionnel. `CAP-PR-004`. |
-| [Clay — waterfalls](https://university.clay.com/docs/building-a-data-waterfall) et [signaux](https://university.clay.com/docs/custom-signals) | Enrichissements via fournisseurs ordonnés et suivi de changements à partir d'exécutions planifiées. | Obtenir une valeur, vérifier sa fiabilité et pouvoir la réutiliser sont des questions distinctes. | Sources interchangeables; cascade et surveillance facultatives, budgets, provenance et condition d'arrêt. `CAP-PR-003/017`. |
-| [Salesforce — gestion des doublons](https://trailhead.salesforce.com/content/learn/modules/sales_admin_duplicate_management/sales_admin_duplicate_management_unit_2) | Règles de correspondance distinctes de la décision d'avertir ou bloquer. | Référence qualitative : récupération indépendante inexploitable. | Rapprochement certain/possible et revue de fusion sont des choix explicites; pas de clé universelle nom/ville. `REQ-PR-015/016`. |
-| [Apollo — Buying Intent](https://knowledge.apollo.io/hc/en-us/articles/8047704465933-Buying-Intent-Overview) | Signaux au niveau de l'entreprise; les personnes affichées ne sont pas nécessairement celles qui effectuent la recherche. | Référence qualitative : HTTP 403 en récupération indépendante. | Garder le niveau d'observation et ne pas attribuer une intention collective à un individu. `REQ-PR-019/057`, choix explicite. |
+| [Attio — data model](https://attio.com/help/reference/attio-101/attios-data-model/define-your-data-model-objects-lists-and-views) | Objects, relations, attributes and lists distinguishing identity data from the data of a process. | Custom types have their limits and rights; this does not demonstrate universality without configuration. | Target, contact person, relation and record per campaign kept separate; types and attributes in the profile. `CAP-PR-001/002`. |
+| [HubSpot — scoring](https://knowledge.hubspot.com/scoring/understand-the-lead-scoring-tool) | Fit and engagement separable, decay and re-evaluation when the criteria change. | Retroactive re-evaluation differs from the need to reproduce a historical decision. | Four distinct dimensions, mandatory evidence and retained versions; explicit migration. `REQ-PR-003`, `CAP-PR-006`. |
+| [HubSpot — sequences](https://knowledge.hubspot.com/sequences/unenroll-from-sequence) | Stops after a reply or a meeting, configurable; imperfect recognition of automatic replies. | The product allows certain triggers to be modified. Automatic detection is not infallible. | Mandatory pauses in the defined situations and review of ambiguities; a stricter choice. `CAP-PR-008/010`. |
+| [Pipedrive — Leads Inbox](https://support.pipedrive.com/en/article/leads-inbox) | Leads before the pipeline, upcoming activities and history, conversion into deals. | Attachment to a person or organisation is required by Pipedrive. | Keep a review space, but also allow a project, asset or collective without a company or pre-existing contact. `CAP-PR-002/007/008`. |
+| [Pipedrive — forms](https://support.pipedrive.com/en/article/web-forms) | Forms embeddable in the website, custom fields and entry as leads or deals; consent to be configured. | A submission is a statement, not a demonstrated qualification. | Minimal inbound form, handling of abuse and distinction between request and promotional agreement. `CAP-PR-004`. |
+| [Clay — waterfalls](https://university.clay.com/docs/building-a-data-waterfall) and [signals](https://university.clay.com/docs/custom-signals) | Enrichments through ordered providers and tracking of changes from scheduled runs. | Obtaining a value, verifying its reliability and being able to reuse it are distinct questions. | Interchangeable sources; optional cascade and monitoring, budgets, provenance and stop condition. `CAP-PR-003/017`. |
+| [Salesforce — duplicate management](https://trailhead.salesforce.com/content/learn/modules/sales_admin_duplicate_management/sales_admin_duplicate_management_unit_2) | Matching rules distinct from the decision to warn or block. | Qualitative reference: independent retrieval unusable. | Certain/possible matching and merge review are explicit choices; no universal name/city key. `REQ-PR-015/016`. |
+| [Apollo — Buying Intent](https://knowledge.apollo.io/hc/en-us/articles/8047704465933-Buying-Intent-Overview) | Signals at company level; the people displayed are not necessarily those carrying out the research. | Qualitative reference: HTTP 403 on independent retrieval. | Keep the level of observation and do not attribute a collective intent to an individual. `REQ-PR-019/057`, explicit choice. |
 
-Il existe donc des motifs communs — configuration, qualification, activités et
-progression — mais pas un produit universel dont il suffirait de copier les écrans.
-Le contrat choisit explicitement une séparation plus nette entre contenu,
-identité, preuve, suivi et droit d'agir. Aucune capacité n'est qualifiée de
-« convergence » au seul motif que plusieurs pages marketing l'emploient.
+There are therefore common patterns — configuration, qualification, activities and
+progress — but no universal product whose screens it would be enough to copy.
+The contract explicitly chooses a sharper separation between content,
+identity, evidence, follow-up and the right to act. No capability is described as
+a "convergence" merely because several marketing pages use it.
 
-## Ce que le cas copropriétés change
+## What the co-owned buildings case changes
 
-La [fiche ANAH du RNIC](https://www.data.gouv.fr/datasets/registre-national-dimmatriculation-des-coproprietes)
-est une source candidate pour identifier des copropriétés et leurs caractéristiques.
-Elle ne prouve aucun besoin pour une offre encore non définie. Aucun contact,
-projet voté ou accord commercial n'est déduit de la seule présence au registre.
+The [ANAH page for the RNIC](https://www.data.gouv.fr/datasets/registre-national-dimmatriculation-des-coproprietes)
+is a candidate source for identifying co-owned buildings (copropriétés) and their characteristics.
+It proves no need for an offer that is not yet defined. No contact,
+voted project or commercial agreement is deduced from presence in the register alone.
 
 [Service Public](https://www.service-public.gouv.fr/particuliers/vosdroits/N31338)
-distingue les fonctions du syndicat, du syndic et du conseil syndical. Le choix de
-modélisation est donc de garder des entités et rôles reliés, avec des périodes de
-validité connues ou inconnues. Un même intermédiaire peut intervenir dans plusieurs
-dossiers sans leur donner une identité commune. L'offre réelle peut viser le
-syndicat, le syndic ou un autre acteur; ce choix doit être déclaré dans le profil.
+distinguishes the functions of the co-owners' association (syndicat), the managing agent
+(syndic) and the co-owners' council (conseil syndical). The modelling choice
+is therefore to keep linked entities and roles, with validity periods
+that are known or unknown. The same intermediary can be involved in several
+records without giving them a common identity. The actual offer can target the
+association, the managing agent or another actor; this choice must be declared in the profile.
 
-Le [profil illustratif](../examples/coproprietes-fr.yaml) distingue une cible
-pertinente d'un lead commercialement qualifié. Le second demande des preuves de
-besoin, de rôle et de prochaine étape propres au dossier. Les critères proposés,
-dont le seuil de lots, sont des choix illustratifs à valider avec le demandeur.
-Ils ne présument ni rénovation énergétique, ni changement de syndic, ni service
-particulier : aucune offre n'a été donnée dans la demande reçue.
+The [illustrative profile](../examples/coproprietes-fr.yaml) distinguishes a relevant
+target from a commercially qualified lead. The latter requires evidence of
+need, of role and of next step specific to the record. The criteria proposed,
+including the threshold of lots, are illustrative choices to be validated with the requester.
+They presume neither energy renovation, nor a change of managing agent, nor a particular
+service: no offer was given in the request received.
 
-## Bonnes pratiques rendues vérifiables
+## Good practice made verifiable
 
-| Sujet | Source primaire et constat | Garantie choisie et preuve attendue |
+| Subject | Primary source and finding | Guarantee chosen and evidence expected |
 | --- | --- | --- |
-| Provenance | [W3C PROV-O](https://www.w3.org/TR/2013/REC-prov-o-20130430/) distingue attribution, dérivation et invalidation. | Une qualification expose origine, date et statut des faits utilisés; tester contradiction et péremption. `ACC-PR-010/011`. Aucun format de graphe imposé. |
-| Reprises | [Stripe — idempotence](https://docs.stripe.com/api/idempotent_requests) et [événements](https://docs.stripe.com/webhooks) documentent répétitions et désordre. | Identifier une opération, rapprocher les confirmations et suspendre un envoi incertain. `ACC-PR-017/028`. C'est un transfert de motif de fiabilité, pas une exigence de paiement ni une promesse d'« exactly once » chez tout fournisseur. |
-| IA | [OWASP — autonomie excessive](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/) et [injection indirecte](https://genai.owasp.org/glossaries/prompt-injection/) décrivent les risques des permissions et contenus non fiables. | Vérifier actions et transferts indépendamment du modèle; approbation du message final, tests d'injection et parcours manuel. `ACC-PR-015/025/026`. Échapper du texte seul n'est pas une preuve de protection. |
-| Accessibilité | [WCAG 2.2](https://www.w3.org/TR/2024/REC-WCAG22-20241212/) fournit des critères vérifiables. | Audit AA des parcours, clavier, statuts, petits écrans et alternative au déplacement par glisser-déposer. `QA-PR-001`. Une grille d'écrans cochée ne prouve pas seule la conformité. |
-| Courriel | [Google — expéditeurs](https://support.google.com/mail/answer/81126?hl=en) distingue règles générales et règles liées au volume. | Déclarer les exigences réellement applicables, l'identité de l'expéditeur, les rebonds, plaintes et limites. `REQ-PR-031`. Ne pas promettre la boîte de réception. |
+| Provenance | [W3C PROV-O](https://www.w3.org/TR/2013/REC-prov-o-20130430/) distinguishes attribution, derivation and invalidation. | A qualification exposes the origin, date and status of the facts used; test contradiction and staleness. `ACC-PR-010/011`. No graph format imposed. |
+| Retries | [Stripe — idempotency](https://docs.stripe.com/api/idempotent_requests) and [events](https://docs.stripe.com/webhooks) document repetitions and disorder. | Identify an operation, reconcile the confirmations and suspend an uncertain send. `ACC-PR-017/028`. This is a transfer of a reliability pattern, not a payment requirement nor a promise of "exactly once" at every supplier. |
+| AI | [OWASP — excessive agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/) and [indirect injection](https://genai.owasp.org/glossaries/prompt-injection/) describe the risks of permissions and untrusted content. | Verify actions and transfers independently of the model; approval of the final message, injection tests and manual path. `ACC-PR-015/025/026`. Escaping text alone is not evidence of protection. |
+| Accessibility | [WCAG 2.2](https://www.w3.org/TR/2024/REC-WCAG22-20241212/) provides verifiable criteria. | AA audit of the paths, keyboard, statuses, small screens and alternative to moving by drag and drop. `QA-PR-001`. A ticked grid of screens does not on its own prove conformity. |
+| Email | [Google — senders](https://support.google.com/mail/answer/81126?hl=en) distinguishes general rules and volume-related rules. | Declare the requirements actually applicable, the identity of the sender, bounces, complaints and limits. `REQ-PR-031`. Do not promise the inbox. |
 
-Les délais, volumes d'essai, taille d'échantillon utilisateur, règles d'approbation
-et seuils de publication du contrat sont **des choix de conception**, pas des
-valeurs universelles prouvées par ces sources. La validation doit les mesurer
-dans un environnement déclaré et rapporter les écarts.
+The time limits, trial volumes, user sample size, approval rules
+and publication thresholds of the contract are **design choices**, not
+universal values proven by these sources. Validation must measure them
+in a declared environment and report the gaps.
 
-## Données personnelles : points qui empêchent une généralisation naïve
+## Personal data: points that prevent a naive generalisation
 
-La [CNIL sur les communications électroniques](https://www.cnil.fr/fr/communication-electronique-quelles-regles)
-distingue finalité du message et conditions applicables aux particuliers ou aux
-professionnels. Le moteur doit donc connaître le contexte du destinataire et du
-canal, pas seulement la catégorie de la cible.
+The [CNIL on electronic communications](https://www.cnil.fr/fr/communication-electronique-quelles-regles)
+distinguishes the purpose of the message and the conditions applicable to individuals or to
+professionals. The engine must therefore know the context of the recipient and of the
+channel, not only the category of the target.
 
-La [FAQ CNIL de gestion commerciale](https://www.cnil.fr/fr/questions-reponses-sur-les-referentiels-relatifs-la-gestion-des-activites-commerciales-et-des)
-décrit information indirecte, opposition et liste repoussoir. Sa recommandation
-de conservation des prospects prend comme repère la collecte ou un contact
-venant du prospect. Elle n'autorise pas à prolonger la conservation par chaque
-relance sortante.
+The [CNIL commercial management FAQ](https://www.cnil.fr/fr/questions-reponses-sur-les-referentiels-relatifs-la-gestion-des-activites-commerciales-et-des)
+describes indirect notice, objection and the suppression list (liste repoussoir). Its
+recommendation on the retention of prospects takes as its reference point the collection or a
+contact coming from the prospect. It does not authorise extending retention with each
+outbound follow-up.
 
-Le [référentiel CNIL](https://www.cnil.fr/sites/default/files/atoms/files/referentiel_traitements-donnees-caractere-personnel_gestion-activites-commerciales.pdf),
-pages 2–3 et 11–12, précise son périmètre, exclut notamment certains profilages
-depuis des sources tierces et écarte la simple ouverture d'un courriel comme
-nouveau contact. Le [guide de réutilisation](https://www.cnil.fr/sites/cnil/files/2024-06/recommandations_reutilisateurs_donnees_publiees_sur_internet.pdf)
-traite séparément les obligations liées aux données publiées. La fiche
-[démarchage commercial](https://www.cnil.fr/fr/demarchage-commercial) mentionne
-une évolution du canal téléphonique au 11 août 2026 : le cadre documentaire de
-mai 2026 de ce cadrage privé ne suffit donc pas pour un lancement en octobre.
+The [CNIL reference framework (référentiel)](https://www.cnil.fr/sites/default/files/atoms/files/referentiel_traitements-donnees-caractere-personnel_gestion-activites-commerciales.pdf),
+pages 2–3 and 11–12, specifies its scope, excludes in particular certain profiling
+from third-party sources and rules out the mere opening of an email as a
+new contact. The [reuse guide](https://www.cnil.fr/sites/cnil/files/2024-06/recommandations_reutilisateurs_donnees_publiees_sur_internet.pdf)
+addresses separately the obligations linked to published data. The
+[commercial canvassing (démarchage commercial)](https://www.cnil.fr/fr/demarchage-commercial) page mentions
+a change to the telephone channel on 11 August 2026: the May 2026 documentary
+framework of this private scoping is therefore not enough for a launch in October.
 
-**Décision de contrat** : une politique de conformité validée séparément porte
-les permissions, finalités, canaux, dates et durées applicables. Le profil métier
-ne peut pas les remplacer. Aucune règle de « trois ans partout », de B2B présumé
-ou de conformité automatique de tout scoring n'est retenue. Les oppositions
-s'appliquent avant les remises suivantes et survivent aux réimports et restaurations.
+**Contract decision**: a compliance policy validated separately carries
+the applicable permissions, purposes, channels, dates and periods. The business profile
+cannot replace them. No rule of "three years everywhere", of presumed B2B
+or of automatic compliance of any scoring is retained. Objections
+apply before the following handovers and survive re-imports and restorations.
 
-## SOTA : ce qui est retenu et ce qui reste à démontrer
+## SOTA: what is retained and what remains to be demonstrated
 
-La synthèse retient des possibilités contemporaines pertinentes : données
-configurables et reliées, séparation adéquation/engagement, sources composables,
-surveillance de changements, continuité acquisition-suivi et assistance IA sous
-contrôle. Le contrat ajoute des choix de précision : versions reproductibles,
-preuves obligatoires, états inconnus, portée des signaux et rapprochement des envois.
+The synthesis retains relevant contemporary possibilities: configurable and
+linked data, fit/engagement separation, composable sources,
+monitoring of changes, acquisition-to-follow-up continuity and AI assistance under
+control. The contract adds choices of precision: reproducible versions,
+mandatory evidence, unknown states, scope of signals and reconciliation of sends.
 
-Il serait infondé d'affirmer que ce document est le meilleur système de prospection
-ou qu'une technique IA particulière est SOTA pour toutes les cibles. Pour évaluer
-une implémentation, `CAP-PR-016` demande :
+It would be unfounded to claim that this document is the best prospecting system
+or that a particular AI technique is SOTA for all targets. To evaluate
+an implementation, `CAP-PR-016` requires:
 
-1. Un profil, une offre, une population et des critères de vérité terrain définis.
-2. Un corpus autorisé non utilisé pour régler la méthode et une référence simple.
-3. Des mesures distinctes de découverte, rapprochement, qualification et rédaction.
-4. Les faux positifs, faux négatifs mesurables, inconnues, couverture, coûts et latences.
-5. Des seuils fixés avant mesure et une décision de publication ou retour arrière.
+1. A defined profile, offer, population and ground-truth criteria.
+2. An authorised corpus not used to tune the method, and a simple baseline.
+3. Distinct measurements of discovery, matching, qualification and drafting.
+4. False positives, measurable false negatives, unknowns, coverage, costs and latencies.
+5. Thresholds set before measurement and a decision to publish or roll back.
 
-Le rappel sur tout Internet n'est pas mesurable sans univers de référence. Une
-grande couverture de coordonnées ne démontre ni leur exactitude, ni la qualification,
-ni une augmentation des ventes. Aucun de ces résultats n'est annoncé comme acquis.
+Recall over the whole Internet is not measurable without a reference universe. Broad
+coverage of contact details demonstrates neither their accuracy, nor qualification,
+nor an increase in sales. None of these results is announced as achieved.
 
-## Questions à résoudre dans chaque déploiement
+## Questions to resolve in each deployment
 
-- Quelle offre et quelle issue définissent la qualification commerciale ?
-- Qui est la cible, qui peut répondre et quelle preuve de rôle est nécessaire ?
-- Quelles sources sont réellement accessibles, pertinentes et réutilisables ?
-- Quelles populations, juridictions et règles de canal s'appliquent ?
-- Quels volumes, budgets, délais de suivi et seuils de qualité sont acceptables ?
+- Which offer and which outcome define commercial qualification?
+- Who is the target, who can reply and what evidence of role is necessary?
+- Which sources are actually accessible, relevant and reusable?
+- Which populations, jurisdictions and channel rules apply?
+- Which volumes, budgets, follow-up time limits and quality thresholds are acceptable?
 
-Ces questions sont des paramètres de mise en service et d'évaluation. Elles ne
-bloquent pas la définition du socle générique et ne sont pas résolues fictivement
-dans les profils d'exemple.
+These questions are parameters of entry into service and of evaluation. They do not
+block the definition of the generic core and are not resolved fictitiously
+in the example profiles.
 
 
 ## Corpus refresh — 2026-11-01

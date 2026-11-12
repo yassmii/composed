@@ -2,15 +2,17 @@
 
 [Version française](README.fr.md)
 
-Current canonical version: **1.0.0**, maturity **candidate**. The maintainer
-requested integration on 2026-11-01. Read [contracts/contract.yaml](contracts/contract.yaml),
+Current canonical version: **1.0.1**, maturity **candidate**. It is the English
+translation of 1.0.0, with no intended behaviour change. Read
+[contracts/contract.yaml](contracts/contract.yaml),
 [traceability](contracts/traceability.yaml) and the [current review](contracts/review.md).
-The previous 0.1.0 package is preserved under [history/0.1.0/](history/0.1.0/README.md).
-Candidate authoring records below remain historical; independent review/stable
-promotion and implementation acceptance remain pending.
 
+Earlier versions are preserved unchanged: [1.0.0](history/1.0.0/README.md) (French) and
+[0.1.0](history/0.1.0/README.md) (French). Independent review, stable promotion and
+implementation acceptance remain pending; all product cases are not_run.
 
-Contract **`agentic-delivery-harness` 1.0.0**, **candidate**, integrated on 1 November 2026 (first draft on 24 October 2026).
+Contract **`agentic-delivery-harness` 1.0.1**, **candidate**, integrated on 12 November 2026
+(first draft on 24 October 2026, 1.0.0 on 1 November 2026).
 It defines a family of tools that coordinate humans, agents, decisions and
 evidence to deliver software. Composed Build Kit is the retrofit baseline,
 not the universal definition of this family.
@@ -24,8 +26,6 @@ not the universal definition of this family.
 | [Baseline](research/baseline.md) and [hashes](research/baseline.json) | Build Kit 0.5.1, revision `35e6506`, inspected files and gaps. |
 | [Verification](research/validation.md) | Checks performed and the limits of this draft. |
 | [Continuous evolution](../../docs/continuous-evolution.md) | Research, implementation feedback, proposals, versions and revalidation. |
-
-The contract and its research are written in French.
 
 ## Core and modules
 
@@ -68,15 +68,25 @@ hashes is separate; non-immutable sources can change.
 
 - 0.1.0 — 2026-10-24: first retrofit draft, baseline and comparative research;
   hooks, telemetry, knowledge and delivery modules still proposed.
+- 1.0.0 — 2026-11-01: candidate; observable delegation and prevention scope, 26 cases.
+- 1.0.1 — 2026-11-12: candidate; English translation, no intended behaviour change.
 
-## Proposed contract update — 2026-11-01
+## Translation — 2026-11-12
 
-The [1.0.0 candidate](candidates/1.0.0/contracts/contract.yaml) strengthens 2 clauses
-and retains the 0.1.0 [baseline](history/0.1.0/contracts/contract.yaml) unchanged. Acceptance
-increases from 24 to 26 cases. See the [proposal and migration](candidates/1.0.0/proposal.md),
-[exact clause changes](candidates/1.0.0/changes.json) and [author review](candidates/1.0.0/review.md).
+The [1.0.1 candidate](candidates/1.0.1/contracts/contract.yaml) translates the contract
+and its traceability into English. Identifiers, structure and the 26 acceptance cases
+are unchanged. See the [proposal](candidates/1.0.1/proposal.md) for the translation
+choices a reviewer should check, the [change record](candidates/1.0.1/changes.json) and
+the [author review](candidates/1.0.1/review.md). The research observations, comparison,
+baseline and verification notes are translated as well; the
+[French entry point](README.fr.md) is kept.
 
-Maturity is candidate, format 0.1. Independent review and stable promotion remain
-pending; all product cases are not_run. Existing consumer pins and Build Kit do
-not change. The [batch update](../../docs/contract-updates-2026-11-01.md) records
-validation and deferred deepening.
+## Contract update — 2026-11-01
+
+The [1.0.0 candidate](candidates/1.0.0/contracts/contract.yaml) strengthened 2 clauses
+over the 0.1.0 [baseline](history/0.1.0/contracts/contract.yaml). Acceptance increased
+from 24 to 26 cases. See the [proposal and migration](candidates/1.0.0/proposal.md),
+[exact clause changes](candidates/1.0.0/changes.json) and
+[author review](candidates/1.0.0/review.md). The
+[batch update](../../docs/contract-updates-2026-11-01.md) records validation and deferred
+deepening.

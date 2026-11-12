@@ -2,8 +2,8 @@ profile_id: projets-numeriques
 version: 0.1.0
 status: illustrative
 activation_ready: false
-purpose: Identifier des projets numériques ouverts à une proposition de partenariat, sans présupposer une société ni une localisation.
-business_owner: À désigner
+purpose: Identify digital projects open to a partnership proposal, without presupposing a company or a location.
+business_owner: To be designated
 target_types: [projet_numerique]
 related_types: [collectif, organisation, personne]
 attributes:
@@ -21,8 +21,8 @@ identity:
   never_sufficient_alone: [nom_du_projet, nom_du_contributeur, domaine_partage]
 acquisition:
   candidate_sources:
-    - {name: Répertoire de projets avec réutilisation autorisée, access_status: non_configure, reuse_status: a_valider}
-    - {name: Déclaration ou candidature du porteur, access_status: a_configurer, reuse_status: finalite_et_information_a_valider}
+    - {name: Project directory with authorised reuse, access_status: non_configure, reuse_status: a_valider}
+    - {name: Statement or application from the project lead, access_status: a_configurer, reuse_status: finalite_et_information_a_valider}
   filters: [thematiques_de_la_campagne, partenariat_declare_ouvert]
   inbound_form:
     fields: [identification_projet, objet_de_la_demande, moyen_reponse_choisi]
@@ -53,7 +53,7 @@ qualification:
   contactability: evaluation_separee_par_destinataire_finalite_canal_et_politique
 priority:
   method: ordre_explicite_par_niveau_accepte_puis_prochaine_echeance
-  forbidden_inference: La visibilité publique du projet et l'activité d'un contributeur ne prouvent pas son accord à une proposition précise.
+  forbidden_inference: The public visibility of the project and the activity of a contributor do not prove their agreement to a specific proposal.
 follow_up:
   stages: [a_examiner, a_qualifier, echange_en_cours, prochaine_etape_acceptee, conclu, ecarte]
   transition_gates: {prochaine_etape_acceptee: lead_commercialement_qualifie_accepte}
@@ -61,7 +61,7 @@ follow_up:
   responsibility: utilisateur_ou_file_responsable_identifiee
   next_action: datee_ou_attente_motivee_avec_reexamen
 contact_content:
-  offer: Proposition de partenariat à définir.
+  offer: Partnership proposal to be defined.
   approved_claims: []
   forbidden: [inventer_un_budget, deduire_un_mandat_du_statut_contributeur]
 monitoring: {enabled: false}

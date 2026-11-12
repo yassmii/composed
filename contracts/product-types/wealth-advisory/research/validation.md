@@ -1,34 +1,49 @@
-# Validation documentaire — 4 novembre 2026
+# Documentary validation — 4 November 2026
 
-Contrat évalué : `wealth-advisory@0.1.0`, format 0.2, statut **draft**.
-Environnement : Linux Node 24.15.0, dépendances existantes ; aucune réinstallation.
-Revue par l'auteur, sans revue indépendante revendiquée.
+Contract evaluated: `wealth-advisory@0.1.0`, format 0.2, status **draft**.
+Environment: Linux Node 24.15.0, existing dependencies; no reinstallation.
+Review by the author, with no independent review claimed.
 
-| Contrôle réellement exécuté | Résultat |
+| Check actually executed | Result |
 | --- | --- |
-| `npm run validate:contracts` | Succès pour les contrats courants, candidats, archives et templates ; traçabilité de la nouvelle famille comprise. |
-| `npm run test:contracts` | **70 tests réussis**, zéro ignoré ; inclut les identités exactes des dix familles historiques et les provenances de leurs archives. |
-| `npm run example:contracts` | Exemple synthétique réussi : référence acceptée, contre-exemple sémantique rejeté, checker modifié périmé et dépendances sélectionnées. Aucun produit patrimonial exécuté. |
-| Couverture statique | **45 clauses normatives** reliées explicitement aux **26 scénarios** ; chaque capacité et clause dispose d'un fondement ou d'un choix explicite. |
-| Sources | Les huit empreintes enregistrées correspondent aux octets récupérés pendant la rédaction. La source historique AMF reste explicitement écartée des fondements normatifs. |
+| `npm run validate:contracts` | Success for the current contracts, candidates, archives and templates; traceability of the new family included. |
+| `npm run test:contracts` | **70 tests passed**, zero skipped; includes the exact identities of the ten historical families and the provenances of their archives. |
+| `npm run example:contracts` | Synthetic example passed: reference accepted, semantic counter-example rejected, modified checker stale and dependencies selected. No wealth product executed. |
+| Static coverage | **45 normative clauses** explicitly linked to the **26 scenarios**; each capability and clause has a basis or an explicit choice. |
+| Sources | The eight recorded hashes correspond to the bytes retrieved during the drafting. The historical AMF source remains explicitly set aside from the normative bases. |
 
-L'adaptation du test `candidate-integration.test.mjs` nomme les dix familles du
-lot d'intégration du 1er novembre au lieu d'assimiler toute nouvelle famille à ce
-lot historique. Les dix contrôles restent exigés ; aucune intégration ni archive
-fictive n'est créée pour le nouveau brouillon.
+The adaptation of the `candidate-integration.test.mjs` test names the ten families of the
+integration batch of 1 November instead of treating every new family as part of that
+historical batch. The ten checks remain required; no fictitious integration or
+archive is created for the new draft.
 
-Le contrôle de provenance locale porte sur les corps consultés dans
-`/tmp/composed-patrimonial-research-jbwn_cwx/`, qui peut disparaître. Le dépôt garde
-URL, date, version connue, localisateur, empreinte et observation ; il ne redistribue
-pas les corps tiers. Pas de nouvelle vérification réseau de tout le corpus existant.
-Les versions SaaS non publiées restent non identifiées plutôt que déduites d'une date.
+The local provenance check bears on the bodies consulted in
+`/tmp/composed-patrimonial-research-jbwn_cwx/`, which may disappear. The repository keeps
+URL, date, known version, locator, hash and observation; it does not redistribute
+the third-party bodies. No new network verification of the whole existing corpus.
+Unpublished SaaS versions remain unidentified rather than inferred from a date.
 
-La recommandation ACPR consultée par navigation n'a pas pu être récupérée en brut
-(HTTP 403) ; aucune empreinte n'est fabriquée. Les limites et les questions métier
-restantes sont dans [comparison.md](comparison.md) et la [revue d'auteur](../contracts/review.md).
+The ACPR recommendation consulted by browsing could not be retrieved raw
+(HTTP 403); no hash is fabricated. The limits and the remaining business
+questions are in [comparison.md](comparison.md) and the [author review](../contracts/review.md).
 
-**Tous les cas patrimoniaux restent `not_run`.** Les exemples chiffrés indiquent
-des résultats attendus, pas des résultats observés dans une application. Ni profil
-de validation externe, ni modèle fiscal exécuté, ni conseil réel, ni observation
-client ne sont revendiqués. Les contrôles logiciels et de schéma ne remplacent pas
-la revue d'un professionnel ni la décision d'adoption du propriétaire.
+**All the wealth cases remain `not_run`.** The numerical examples indicate
+expected results, not results observed in an application. No external
+validation profile, no executed tax model, no real advice and no client
+observation is claimed. The software and schema checks do not replace
+the review by a professional or the adoption decision of the owner.
+
+## Translation to English as 0.1.1 — 12 November 2026
+
+Contract evaluated: `wealth-advisory@0.1.1`, format 0.2, status **draft**; English
+translation of 0.1.0 with no intended behaviour change. Everything above is the translated
+record of the 0.1.0 validation and is not re-run evidence. Author self-review only.
+
+| Check actually executed | Result |
+| --- | --- |
+| Structural comparison with the archived French YAML | Contract, traceability, observations and sources: identical keys, order, identifiers, links and non-prose values; only `version`/`contract_version` and prose differ. |
+| Archive | The nine files under `history/0.1.0/` match the SHA-256 values listed in its README. |
+| `npm run validate:contracts` | `wealth-advisory` contract, its archived 0.1.0 contract and its traceability reported OK. |
+| `npm run test:contracts` | 70 tests: 69 passed, 0 failed, 1 skipped. This family is not part of the integration regression. |
+
+No source was retrieved again and no hash changed. All 26 scenarios remain `not_run`.

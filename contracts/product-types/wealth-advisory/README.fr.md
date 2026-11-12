@@ -2,6 +2,8 @@
 
 [English version](README.md)
 
+> Le contrat est désormais rédigé en anglais en version 0.1.1. Le paquet français 0.1.0 est archivé à l’identique dans [history/0.1.0](history/0.1.0/README.md) et reste la référence en cas de divergence. Cette page décrit la version 0.1.0.
+
 Contrat **`wealth-advisory@0.1.0`**, format **0.2**, statut **draft**.
 Il couvre le parcours complet demandé : recueil → bilan → diagnostic → scénarios →
 préconisations → validation et remise → suivi. Utilisateur principal : gestionnaire

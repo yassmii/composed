@@ -1,29 +1,29 @@
-# Vérification — draft agentic-delivery-harness 0.1.0
+# Verification — agentic-delivery-harness 0.1.0 draft
 
-Date : 24 octobre 2026. Périmètre : rédaction, recherche et baseline documentaire.
+Date: 24 October 2026. Scope: drafting, research and documentary baseline.
 
-Les 12 corps de sources ont été récupérés et SHA-256 calculés ; les fichiers
-GitHub sont épinglés à leur révision. Les 11 fichiers de baseline ont été lus
-depuis les objets Git du commit, pas depuis les documents modifiés.
+The 12 source bodies were retrieved and their SHA-256 computed; the GitHub
+files are pinned to their revision. The 11 baseline files were read
+from the Git objects of the commit, not from the modified documents.
 
-Contrôles exécutés :
+Checks executed:
 
-- `npm run validate:contracts` : schémas et traçabilité de tous les produits,
-  incluant ce draft, réussis. 70 clauses du noyau sont tracées vers les observations
-  ou des choix explicites.
-- Les 12 sources ont été récupérées une seconde fois indépendamment : les
-  SHA-256 correspondent. Il ne s'agit pas d'une revalidation distante de tout le
-  catalogue ; la documentation mutable pourra changer après cette date.
-- Les 11 fichiers de baseline correspondent au commit et aux empreintes déclarés.
-- Références d'exigences/invariants des acceptations et 21 identifiants de contrôle
-  distincts de l'étude Runtime vérifiés.
-- Liens locaux de la documentation active, provenance des six originaux importés
-  et `git diff --check` contrôlés.
-- Catalogue du kit inchangé : validation réussie, 13 skills et 33 scénarios.
-  Ce contrôle structurel n'est pas une évaluation comportementale d'un agent.
+- `npm run validate:contracts`: schemas and traceability of all products,
+  including this draft, passed. 70 core clauses are traced to observations
+  or to explicit choices.
+- The 12 sources were retrieved a second time independently: the
+  SHA-256 values match. This is not a remote revalidation of the whole
+  catalogue; mutable documentation may change after this date.
+- The 11 baseline files match the declared commit and fingerprints.
+- Requirement/invariant references of the acceptance cases and 21 distinct control
+  identifiers of the Runtime study verified.
+- Local links of the active documentation, provenance of the six imported originals
+  and `git diff --check` checked.
+- Kit catalogue unchanged: validation passed, 13 skills and 33 scenarios.
+  This structural check is not a behavioural evaluation of an agent.
 
-Limites : aucun cas exécuté sur un agent, aucune télémétrie déployée, aucun graphe
-partagé implémenté, aucun benchmark et aucune revue indépendante de cette rédaction.
-La [relecture d'auteur](../contracts/review.md) ne constitue pas cette revue.
-Les objectifs restent des cibles. Aucun profil externe exécutable n'est annoncé
-et le Build Kit n'est pas déclaré conforme au draft.
+Limits: no case executed on an agent, no telemetry deployed, no shared graph
+implemented, no benchmark and no independent review of this draft.
+The [author review](../contracts/review.md) does not constitute that review.
+The objectives remain targets. No executable external profile is announced
+and the Build Kit is not declared conformant to the draft.

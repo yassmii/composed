@@ -2,6 +2,8 @@
 
 [English version](README.md)
 
+Le contrat est désormais publié en anglais en version **1.0.1** ; le texte français 1.0.0 est archivé à l'identique dans [history/1.0.0/](history/1.0.0/README.md) et sert de référence en cas d'écart. Le reste de cette page décrit la version 1.0.0.
+
 Current canonical version: **1.0.0**, maturity **candidate**. The maintainer
 requested integration on 2026-11-01. Read [contracts/contract.yaml](contracts/contract.yaml),
 [traceability](contracts/traceability.yaml) and the [current review](contracts/review.md).

@@ -79,13 +79,15 @@ execute a product or establish conformance. `--verify-content` retrieves every s
 ## Status
 
 The new [wealth advisory family](product-types/wealth-advisory/README.md) is a separate
-**0.1.0 draft**, using opt-in format 0.2. It covers the complete French wealth-advice
+**0.1.1 draft** (the English translation of 0.1.0), using opt-in format 0.2. It covers the complete French wealth-advice
 workflow, including recommendations and follow-up. LCB-FT monitoring and asset freezing
 are deferred. Its 26 cases are planned; professional review and implementation evidence
 remain pending.
 
-The ten previously integrated families use **1.0.0 candidate** at their canonical
-`product-types/<family>/contracts/` paths. See the
+The ten previously integrated families are **candidates** at their canonical
+`product-types/<family>/contracts/` paths: seven at 1.0.0, and three at 1.0.1
+(video editorial workflow, prospecting workspace, agentic delivery harness), which are
+English translations of their French 1.0.0 with no intended behaviour change. See the
 [canonical integration ledger](docs/candidate-integration-2026-11-01.md) for every
 current contract, previous archived version, exact-copy decision and migration
 boundary. The ten suites contain 207 planned acceptance scenarios.

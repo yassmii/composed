@@ -5,33 +5,33 @@ candidate_products:
   - HubSpot
   - Pipedrive
   - Clay
-  - Salesforce (référence qualitative)
-  - Apollo (référence qualitative)
+  - Salesforce (qualitative reference)
+  - Apollo (qualitative reference)
 source_selection:
-  - Recherche documentaire de sources primaires consultées le 2026-10-23; aucune mesure comparative pratique
-    des produits ni validation commerciale effectuée.
-  - Les documentations éditeurs établissent des comportements déclarés, pas leur efficacité ou une conformité
-    juridique pour le déploiement envisagé. Les seuils du contrat sont des choix de conception.
-  - Les contenus HTML ci-dessous ont été récupérés et normalisés avec html_article_text du vérificateur
-    commun; les PDF sont hachés sur leurs octets bruts. Les empreintes ne sont pas des archives immuables et
-    les pages non versionnées peuvent évoluer.
-  - Salesforce Trailhead et Apollo Buying Intent ont été lus via navigation web. Leur récupération
-    indépendante a respectivement retourné un contenu vide/challenge et HTTP 403; ils restent des références
-    qualitatives dans comparison.md, sans identifiant de source ni chaîne de preuve machine.
-  - Le Notion fourni et un dépôt local privé constituent un contexte privé de conception, documenté sans
-    copie de données personnelles ni secrets dans une note de cadrage non publiée. Ils ne sont pas présentés comme des sources
-    publiques vérifiables par le script commun.
-  - Les métadonnées RNIC ont été consultées; le fichier national complet, les coordonnées et les droits
-    effectifs de contact n’ont pas été vérifiés. La source n’établit pas de besoin commercial.
-  - Le référentiel CNIL est une recommandation de portée délimitée, notamment hors profilage à partir de
-    sources tierces; les règles spécifiques plus récentes, dont celles du canal téléphonique, doivent être
-    vérifiées séparément.
-  - Les formats W3C, les contrôles OWASP et les exemples Stripe inspirent des garanties de provenance,
-    accessibilité et intégrité sans imposer de technologie, de fournisseur ou d’intégration de paiement.
+  - Documentary research of primary sources consulted on 2026-10-23; no hands-on comparative measurement
+    of the products and no commercial validation carried out.
+  - Vendor documentation establishes declared behaviours, not their effectiveness or legal
+    compliance for the deployment envisaged. The thresholds of the contract are design choices.
+  - The HTML contents below were retrieved and normalised with html_article_text from the common
+    verifier; the PDFs are hashed on their raw bytes. The hashes are not immutable archives and
+    unversioned pages can change.
+  - Salesforce Trailhead and Apollo Buying Intent were read by web browsing. Their independent
+    retrieval returned respectively an empty/challenge content and HTTP 403; they remain qualitative
+    references in comparison.md, with no source identifier and no machine evidence chain.
+  - The Notion material supplied and a private local repository constitute a private design context, documented without
+    any copy of personal data or secrets in an unpublished scoping note. They are not presented as
+    public sources verifiable by the common script.
+  - The RNIC metadata was consulted; the complete national file, the contact details and the actual
+    rights to contact were not verified. The source establishes no commercial need.
+  - The CNIL reference framework (référentiel) is a recommendation of bounded scope, in particular excluding profiling from
+    third-party sources; the more recent specific rules, including those for the telephone channel, must be
+    verified separately.
+  - The W3C formats, the OWASP controls and the Stripe examples inspire guarantees of provenance,
+    accessibility and integrity without imposing a technology, a supplier or a payment integration.
 sources:
   - id: SRC-PR-ATTIO
     product: Attio
-    version: Documentation officielle consultée le 2026-11-01
+    version: Official documentation consulted on 2026-11-01
     title: Modèle de données configurable
     url: https://attio.com/help/reference/attio-101/attios-data-model/define-your-data-model-objects-lists-and-views
     locator: Objects, lists, relationships; data model examples
@@ -40,7 +40,7 @@ sources:
     content_sha256: 86aa59df19137df195778d43c13de8aacfe7749d412089c7f82aa70386466156
   - id: SRC-PR-HUBSPOT
     product: HubSpot
-    version: Documentation officielle consultée le 2026-11-01
+    version: Official documentation consulted on 2026-11-01
     title: Sortie des séquences de prospection
     url: https://knowledge.hubspot.com/sequences/unenroll-from-sequence
     locator: Automatic unenrollment; customizable triggers; out-of-office replies
@@ -49,50 +49,50 @@ sources:
     content_sha256: e66a585b8f99dcf375af7a92ac238694206380491fa7a23d6604cf3ad62fd679
   - id: SRC-PR-CNIL-COMM
     product: CNIL
-    version: Documentation officielle consultée le 2026-11-01
+    version: Official documentation consulted on 2026-11-01
     title: Communications électroniques et prospection
     url: https://www.cnil.fr/fr/communication-electronique-quelles-regles
-    locator: Publication 10 juin 2026; B2C, B2B et finalité du message
+    locator: Published 10 June 2026; B2C, B2B and purpose of the message
     retrieved_on: 2026-11-01
     content_normalization: html_article_text
     content_sha256: a53b0a741c44f9fcade793cfd84ec1be5ad0c4bd0ce398e9e3ea612f568ffd36
   - id: SRC-PR-CNIL-FAQ
     product: CNIL
-    version: Documentation officielle consultée le 2026-11-01
+    version: Official documentation consulted on 2026-11-01
     title: Gestion commerciale et droits des personnes
     url: https://www.cnil.fr/fr/questions-reponses-sur-les-referentiels-relatifs-la-gestion-des-activites-commerciales-et-des
-    locator: Publication 28 janvier 2022; information indirecte; repoussoir; conservation; exclusions du référentiel
+    locator: Published 28 January 2022; indirect notice; suppression list (liste repoussoir); retention; exclusions of the reference framework (référentiel)
     retrieved_on: 2026-11-01
     content_normalization: html_article_text
     content_sha256: 1fcc13dae1001d100076e190759dffd0bf3fa37116e44cc5c3bb11c9590718a4
   - id: SRC-PR-CNIL-REF
     product: CNIL
-    version: Documentation officielle consultée le 2026-11-01
+    version: Official documentation consulted on 2026-11-01
     title: Référentiel de gestion des activités commerciales
     url: https://www.cnil.fr/sites/default/files/atoms/files/referentiel_traitements-donnees-caractere-personnel_gestion-activites-commerciales.pdf
-    locator: Pages 2-3 (périmètre), 11-12 (conservation, opposition); recommandations non contraignantes
+    locator: Pages 2-3 (scope), 11-12 (retention, objection); non-binding recommendations
     retrieved_on: 2026-11-01
     content_sha256: 3b70f8a66ca97eacd56b903acc28691748aeafb50b9efee9402eff02d965e6e7
   - id: SRC-PR-CNIL-REUSE
     product: CNIL
-    version: Documentation officielle consultée le 2026-11-01
+    version: Official documentation consulted on 2026-11-01
     title: Réutilisation de données publiées sur Internet
     url: https://www.cnil.fr/sites/cnil/files/2024-06/recommandations_reutilisateurs_donnees_publiees_sur_internet.pdf
-    locator: Juin 2024; fiche cas usage 2, pages 43 et suivantes
+    locator: June 2024; use case sheet 2, pages 43 onwards
     retrieved_on: 2026-11-01
     content_sha256: f6779c45dab10cfe1b2bb8d4d54f0164efbc2090705f8952262aafa9103f7694
   - id: SRC-PR-CNIL-PHONE
     product: CNIL
-    version: Documentation officielle consultée le 2026-11-01
+    version: Official documentation consulted on 2026-11-01
     title: Démarchage commercial et règles par canal
     url: https://www.cnil.fr/fr/demarchage-commercial
-    locator: Prospection téléphonique; changement annoncé au 11 août 2026
+    locator: Telephone prospecting; change announced for 11 August 2026
     retrieved_on: 2026-11-01
     content_normalization: html_article_text
     content_sha256: 5dd3a254ecd5b6d3d6c06b9a89589dd617b385b66313147f1c8777317c50fa5f
   - id: SRC-PR-STRIPE-IDEMPOTENCY
     product: Stripe
-    version: Documentation officielle consultée le 2026-11-01
+    version: Official documentation consulted on 2026-11-01
     title: Requêtes idempotentes
     url: https://docs.stripe.com/api/idempotent_requests.md?locale=en-US
     locator: Idempotency keys; parameter consistency; retries
@@ -100,7 +100,7 @@ sources:
     content_sha256: fd3d6f889a557f5535d7ac5e5e79c1898ac378b287c45e56a67880b5e5318ee3
   - id: SRC-PR-STRIPE-EVENTS
     product: Stripe
-    version: Documentation officielle consultée le 2026-11-01
+    version: Official documentation consulted on 2026-11-01
     title: Événements dupliqués et désordonnés
     url: https://docs.stripe.com/webhooks.md?locale=en-US
     locator: Event ordering; Handle duplicate events; Verify webhook signatures
@@ -108,7 +108,7 @@ sources:
     content_sha256: f644983058c4c278f0ec2492504929cdd8050bc39016da9c0559257119c8a4da
   - id: SRC-PR-PROV
     product: W3C
-    version: Documentation officielle consultée le 2026-11-01
+    version: Official documentation consulted on 2026-11-01
     title: Provenance des assertions
     url: https://www.w3.org/TR/2013/REC-prov-o-20130430/
     locator: Recommendation 2013-04-30; derivation, attribution, invalidation
@@ -117,7 +117,7 @@ sources:
     content_sha256: 870ec6446be276cb230f04895d3ef925b5485f45e2b94c01ca198221fc314407
   - id: SRC-PR-WCAG
     product: W3C
-    version: Documentation officielle consultée le 2026-11-01
+    version: Official documentation consulted on 2026-11-01
     title: Accessibilité WCAG 2.2
     url: https://www.w3.org/TR/2024/REC-WCAG22-20241212/
     locator: Recommendation 2024-12-12; keyboard, dragging movements, reflow, status messages
@@ -126,7 +126,7 @@ sources:
     content_sha256: 64fd73cdb7725d9511488f5de6386081329d365872547b2d5000ef771ac37bd0
   - id: SRC-PR-OWASP-AGENCY
     product: OWASP
-    version: Documentation officielle consultée le 2026-11-01
+    version: Official documentation consulted on 2026-11-01
     title: LLM06:2025 Excessive Agency
     url: https://genai.owasp.org/llmrisk/llm062025-excessive-agency/
     locator: Excessive functionality, permissions and autonomy; prevention
@@ -135,7 +135,7 @@ sources:
     content_sha256: dc88915eb4877265f0782d3c94a82dcf7406255bc8f06660ea3b3881423810ae
   - id: SRC-PR-OWASP-INJECTION
     product: OWASP
-    version: Documentation officielle consultée le 2026-11-01
+    version: Official documentation consulted on 2026-11-01
     title: Injection de prompt directe et indirecte
     url: https://genai.owasp.org/glossaries/prompt-injection/
     locator: Direct vs indirect prompt injection; mitigations and limits
@@ -144,7 +144,7 @@ sources:
     content_sha256: b244cdb9e17d1d30e8f0999e0ecb430147c9c0b388b5bc2d9ec5cac450d6c924
   - id: SRC-PR-GMAIL
     product: Google Gmail
-    version: Documentation officielle consultée le 2026-11-01
+    version: Official documentation consulted on 2026-11-01
     title: Exigences des expéditeurs de courriel
     url: https://support.google.com/mail/answer/81126?hl=en
     locator: All senders vs bulk senders; authentication; unsubscribe; spam rate
@@ -153,25 +153,25 @@ sources:
     content_sha256: c7e6eed83fb4765285ebc62cff89cf2f6dc977fa8bf1a47f8b7beff08c8c97cb
   - id: SRC-PR-RNIC
     product: ANAH / data.gouv.fr
-    version: Documentation officielle consultée le 2026-11-01
+    version: Official documentation consulted on 2026-11-01
     title: Registre national des copropriétés
     url: https://www.data.gouv.fr/datasets/registre-national-dimmatriculation-des-coproprietes
-    locator: Description, producteur, licence; métadonnées du jeu, sans téléchargement du fichier national
+    locator: Description, producer, licence; metadata of the dataset, without downloading the national file
     retrieved_on: 2026-11-01
     content_normalization: html_article_text
     content_sha256: 428f966e15674707bf5b3ea8ddc521f374ada3a1d7f2bbf0db59c8232096cb86
   - id: SRC-PR-COPRO
     product: DILA / Service Public
-    version: Documentation officielle consultée le 2026-11-01
+    version: Official documentation consulted on 2026-11-01
     title: Acteurs de la copropriété
     url: https://www.service-public.gouv.fr/particuliers/vosdroits/N31338
-    locator: Organisation juridique; syndicat, syndic et conseil syndical
+    locator: Legal organisation; co-owners' association (syndicat), managing agent (syndic) and co-owners' council (conseil syndical)
     retrieved_on: 2026-11-01
     content_normalization: html_article_text
     content_sha256: d27b139c9dc2f6a6a6239d999b975f482f0274bad4a52346315e614c021afbbb
   - id: SRC-PR-HUBSPOT-SCORE
     product: HubSpot
-    version: Documentation officielle consultée le 2026-11-01
+    version: Official documentation consulted on 2026-11-01
     title: Adéquation et engagement dans le scoring
     url: https://knowledge.hubspot.com/scoring/understand-the-lead-scoring-tool
     locator: Types of scores; score decay; score thresholds; updating a score
@@ -180,7 +180,7 @@ sources:
     content_sha256: 440b41fe299c8d7a4e7827aae71b59e35268f1dd9efd63eb5ecfcd7352149c49
   - id: SRC-PR-PIPEDRIVE
     product: Pipedrive
-    version: Documentation officielle consultée le 2026-11-01
+    version: Official documentation consulted on 2026-11-01
     title: Leads Inbox et passage au pipeline
     url: https://support.pipedrive.com/en/article/leads-inbox
     locator: Unqualified leads; activities; history; converting leads to deals
@@ -189,7 +189,7 @@ sources:
     content_sha256: 8ada5d7ec1ef02d7d99ae7749f9052a3172c6780287740556184cc698c9ed096
   - id: SRC-PR-PIPEDRIVE-FORMS
     product: Pipedrive
-    version: Documentation officielle consultée le 2026-11-01
+    version: Official documentation consulted on 2026-11-01
     title: Collecte de demandes sur un site
     url: https://support.pipedrive.com/en/article/web-forms
     locator: Embeddable forms; input fields; submit options; consent fields
@@ -198,7 +198,7 @@ sources:
     content_sha256: 59756a8b16ae63ac29dff5e36cd3b9ba3a26205f78ee81a73df411b6b17334da
   - id: SRC-PR-CLAY
     product: Clay
-    version: Documentation officielle consultée le 2026-11-01
+    version: Official documentation consulted on 2026-11-01
     title: Waterfalls
     url: https://university.clay.com/docs/building-a-data-waterfall
     locator: Provider sequence, data type, successful provider and run conditions
@@ -207,7 +207,7 @@ sources:
     content_sha256: 9103c4940ec0316c75284916ef4e77d13981a126e8930ab0750bbfe1aa77ac03
   - id: SRC-PR-CLAY-SIGNALS
     product: Clay
-    version: Documentation officielle consultée le 2026-11-01
+    version: Official documentation consulted on 2026-11-01
     title: Custom Signals
     url: https://university.clay.com/docs/custom-signals
     locator: Scheduled enrichments; Run history; changed values

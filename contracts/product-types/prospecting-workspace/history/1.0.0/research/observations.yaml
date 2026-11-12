@@ -1,0 +1,152 @@
+schema_version: "0.1"
+observations:
+  - id: OBS-PR-001
+    sources:
+      - SRC-PR-ATTIO
+    statement: Attio distingue les attributs des entités et les listes portant les données propres à un processus;
+      les vues filtrent une représentation sans créer une nouvelle identité.
+  - id: OBS-PR-002
+    sources:
+      - SRC-PR-ATTIO
+    statement: Attio documente des objets personnalisés et des relations entre enregistrements; ces possibilités
+      dépendent de droits et de limites de produit.
+  - id: OBS-PR-003
+    sources:
+      - SRC-PR-HUBSPOT-SCORE
+    statement: HubSpot distingue scores d’adéquation, d’engagement et combinés, avec des résultats séparés
+      possibles pour chaque dimension.
+  - id: OBS-PR-004
+    sources:
+      - SRC-PR-HUBSPOT-SCORE
+    statement: HubSpot documente une décroissance temporelle de scores d’événements et la réévaluation rétroactive
+      lors de changements de critères.
+  - id: OBS-PR-005
+    sources:
+      - SRC-PR-PIPEDRIVE
+    statement: Pipedrive conserve des leads non qualifiés dans une boîte distincte du pipeline puis permet leur
+      conversion en affaires.
+  - id: OBS-PR-006
+    sources:
+      - SRC-PR-PIPEDRIVE
+    statement: Pipedrive impose de relier un lead à une personne ou organisation; cette contrainte particulière ne
+      couvre pas seule tous les types de cibles demandés ici.
+  - id: OBS-PR-007
+    sources:
+      - SRC-PR-PIPEDRIVE
+    statement: La fiche lead Pipedrive distingue activités à venir, brouillons et historique des activités réalisées.
+  - id: OBS-PR-008
+    sources:
+      - SRC-PR-PIPEDRIVE-FORMS
+    statement: Pipedrive documente des formulaires personnalisables partageables ou intégrables à un site,
+      alimentant les leads ou affaires.
+  - id: OBS-PR-009
+    sources:
+      - SRC-PR-PIPEDRIVE-FORMS
+    statement: Pipedrive indique que ses formulaires n’ont pas de champ de consentement par défaut et propose de
+      le configurer comme champ personnalisé.
+  - id: OBS-PR-010
+    sources:
+      - SRC-PR-CLAY
+    statement: Clay permet une succession configurable de fournisseurs pour enrichir un type de donnée, avec
+      conditions d’exécution et indication du fournisseur ayant retourné le résultat.
+  - id: OBS-PR-011
+    sources:
+      - SRC-PR-CLAY-SIGNALS
+    statement: Clay documente la surveillance de changements à partir d’enrichissements planifiés et d’un
+      historique d’exécution.
+  - id: OBS-PR-012
+    sources:
+      - SRC-PR-HUBSPOT
+    statement: HubSpot documente des sorties de séquence après réponse ou rendez-vous, avec déclencheurs et portée
+      configurables.
+  - id: OBS-PR-013
+    sources:
+      - SRC-PR-HUBSPOT
+    statement: HubSpot indique des limites de reconnaissance des réponses automatiques selon les messageries et
+      recommande leur examen.
+  - id: OBS-PR-014
+    sources:
+      - SRC-PR-CNIL-COMM
+    statement: La CNIL distingue finalités promotionnelle, transactionnelle et relationnelle, ainsi que les
+      conditions de prospection électronique envers particuliers et professionnels.
+  - id: OBS-PR-015
+    sources:
+      - SRC-PR-CNIL-FAQ
+    statement: La CNIL recommande pour les prospects une conservation de trois ans depuis la collecte ou le
+      dernier contact provenant du prospect; son référentiel est non contraignant et les écarts doivent être
+      justifiés.
+  - id: OBS-PR-016
+    sources:
+      - SRC-PR-CNIL-REF
+    statement: Le référentiel CNIL exclut notamment certains profilages depuis des données tierces et précise que
+      la simple ouverture d’un courriel ne constitue pas un contact du prospect pour renouveler la
+      conservation.
+  - id: OBS-PR-017
+    sources:
+      - SRC-PR-CNIL-REUSE
+    statement: La CNIL traite la réutilisation de données personnelles publiées sur Internet en distinguant
+      licéité, information, droits, sous-traitance et risques; une publication ne supprime pas ces
+      obligations.
+  - id: OBS-PR-018
+    sources:
+      - SRC-PR-CNIL-FAQ
+    statement: La CNIL décrit une liste repoussoir de données minimales réservées à la gestion de l’opposition,
+      pour éviter une nouvelle sollicitation après réimport.
+  - id: OBS-PR-019
+    sources:
+      - SRC-PR-CNIL-PHONE
+    statement: La page CNIL sur le démarchage mentionne une modification des règles de prospection téléphonique
+      des consommateurs à compter du 11 août 2026.
+  - id: OBS-PR-020
+    sources:
+      - SRC-PR-STRIPE-IDEMPOTENCY
+    statement: Stripe documente la réutilisation d’une clé pour répéter une requête sans créer un second effet,
+      avec contrôle de cohérence des paramètres et durée limitée de conservation de la clé.
+  - id: OBS-PR-021
+    sources:
+      - SRC-PR-STRIPE-EVENTS
+    statement: Stripe documente la possibilité d’événements dupliqués ou désordonnés, le rapprochement par
+      identifiants et la vérification des signatures des notifications.
+  - id: OBS-PR-022
+    sources:
+      - SRC-PR-PROV
+    statement: PROV-O distingue attribution, dérivation, révision et invalidation des informations.
+  - id: OBS-PR-023
+    sources:
+      - SRC-PR-WCAG
+    statement: WCAG 2.2 définit des critères vérifiables pour navigation clavier, alternatives aux gestes de
+      déplacement, adaptation de présentation et messages de statut.
+  - id: OBS-PR-024
+    sources:
+      - SRC-PR-OWASP-AGENCY
+    statement: OWASP identifie fonctions, permissions et autonomie excessives comme facteurs d’actions
+      dommageables dans les applications à modèles de langage.
+  - id: OBS-PR-025
+    sources:
+      - SRC-PR-OWASP-INJECTION
+    statement: OWASP décrit l’injection indirecte via des contenus récupérés et les limites des seules protections
+      de prompt; réduction des privilèges et contrôles d’action limitent ses effets.
+  - id: OBS-PR-026
+    sources:
+      - SRC-PR-GMAIL
+    statement: Google distingue exigences pour tous les expéditeurs et pour envois en volume vers les comptes
+      Gmail personnels, notamment authentification, opposition et surveillance des plaintes.
+  - id: OBS-PR-027
+    sources:
+      - SRC-PR-RNIC
+    statement: La fiche ANAH du RNIC décrit des données d’identification et de composition des copropriétés, avec
+      le nom du syndic le cas échéant, sous Licence Ouverte 2.0.
+  - id: OBS-PR-028
+    sources:
+      - SRC-PR-COPRO
+    statement: Service Public distingue syndicat des copropriétaires, syndic professionnel ou bénévole et conseil
+      syndical, avec des fonctions différentes.
+  - id: OBS-PR-029
+    sources:
+      - SRC-PR-CNIL-FAQ
+    statement: La CNIL rappelle l’information sur la source et la finalité lors d’une collecte indirecte, avec
+      délai et exceptions applicables.
+  - id: OBS-PR-030
+    sources:
+      - SRC-PR-RNIC
+    statement: La fiche RNIC annonce une mise à jour quotidienne depuis avril 2026 et de possibles variations de noms de colonnes; cette observation porte sur la fiche et non sur un audit du fichier national.

@@ -7,7 +7,8 @@ They have the status **illustrative**, with `activation_ready: false`: the offer
 territory, connectors, policy and evaluation thresholds must be validated for
 a real deployment. They are not an executable syntax that is already implemented.
 Business thresholds and durations are design examples, not research results.
-The profiles themselves are written in French.
+Their prose is in English since contract 1.0.1; keys, identifiers and file names keep
+their French form.
 
 | Profile | What it checks |
 | --- | --- |

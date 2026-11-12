@@ -1,35 +1,35 @@
-# Baseline de rétrofit — Composed Build Kit 0.5.1
+# Retrofit baseline — Composed Build Kit 0.5.1
 
-Révision : `35e65065a3097c3a98513f3fa9e4e8f0ce499e62`. Inspection des fichiers de
-cette révision, distincte des changements documentaires en cours.
-[baseline.json](baseline.json) conserve chemins, objets Git et SHA-256.
-Ce contexte local est séparé des sources publiques de recherche.
+Revision: `35e65065a3097c3a98513f3fa9e4e8f0ce499e62`. Inspection of the files of
+this revision, distinct from the documentary changes in progress.
+[baseline.json](baseline.json) keeps paths, Git objects and SHA-256.
+This local context is separate from the public research sources.
 
-| Sujet | État initial | Cible / écart |
+| Subject | Initial state | Target / gap |
 | --- | --- | --- |
-| Installation, mise à jour, doctor | CLI et contrôles structurels présents | CAP-ADH-001 : vérifier adoption/migration sans assimiler présence à conformité. |
-| Stack utilisateur | Politique et états déclarés dans le catalogue | CAP-ADH-002 : essais chronologiques réels, choix partiels et fausse approbation. |
-| Routage et proportionnalité | Catalogue et instructions de skills présents | CAP-ADH-003 : mesurer comportement et faux blocages. |
-| Capacités et délégation | Instructions d'inspection, registre et isolation | CAP-ADH-004/005 : preuves par runtime ; le kit ne fournit pas de moteur externe. |
-| Handoffs et mémoire | Artefacts et règles documentés | CAP-ADH-006 : reprise démontrée par une session fraîche. |
-| Preuves et revue | Instructions et artefacts attendus | CAP-ADH-007/008 : applicabilité à la révision et identités vérifiables. |
-| Événements et hooks | Pas de superviseur ni interception native dans cette baseline | CAP-ADH-009 : inventaire sélectif et recette avant activation. |
-| Évaluations | Runner, adaptateur de commande et fixture ; grading sur champs et expressions | CAP-ADH-010 : actions et résultats réels, contre-exemples et essais répétés. |
-| Recherche continue | Pas de boucle dédiée dans la baseline du kit | CAP-ADH-011 : questions, déclencheurs, budget et analyse d'impact. |
-| Télémétrie, graphe, correction/livraison | Pas de services correspondants livrés | CAP-ADH-012/013/014 : modules optionnels à évaluer avant infrastructure. |
+| Installation, update, doctor | CLI and structural checks present | CAP-ADH-001: verify adoption/migration without equating presence with conformance. |
+| User stack | Policy and states declared in the catalogue | CAP-ADH-002: real chronological trials, partial choices and false approval. |
+| Routing and proportionality | Catalogue and skill instructions present | CAP-ADH-003: measure behaviour and false blocks. |
+| Capabilities and delegation | Inspection instructions, registry and isolation | CAP-ADH-004/005: evidence per runtime; the kit does not provide an external engine. |
+| Handoffs and memory | Artifacts and rules documented | CAP-ADH-006: resumption demonstrated by a fresh session. |
+| Evidence and review | Instructions and expected artifacts | CAP-ADH-007/008: applicability to the revision and verifiable identities. |
+| Events and hooks | No supervisor or native interception in this baseline | CAP-ADH-009: selective inventory and acceptance check before activation. |
+| Evaluations | Runner, command adapter and fixture; grading on fields and expressions | CAP-ADH-010: real actions and results, counter-examples and repeated trials. |
+| Continuous research | No dedicated loop in the kit's baseline | CAP-ADH-011: questions, triggers, budget and impact analysis. |
+| Telemetry, graph, correction/delivery | No corresponding services delivered | CAP-ADH-012/013/014: optional modules to be evaluated before infrastructure. |
 
-Les anciens tests d'installation ou de cohérence ne sont pas des exécutions des
-24 nouveaux cas. **Conformité au nouveau contrat : non évaluée.** Aucun cas
-produit n'est déclaré réussi par cette inspection.
+The earlier installation or consistency tests are not executions of the
+24 new cases. **Conformance to the new contract: not assessed.** No product
+case is declared passed by this inspection.
 
-## Priorités proposées
+## Proposed priorities
 
-1. Décisions et preuves comportementales : ACC-ADH-002 à 006, 010 et 024.
-2. Coordination et validité des preuves : ACC-ADH-007 à 015.
-3. Recherche et amélioration : ACC-ADH-016 à 019.
-4. Modules optionnels : ACC-ADH-020 à 023, en commençant par les mesures et requêtes utiles.
+1. Decisions and behavioural evidence: ACC-ADH-002 to 006, 010 and 024.
+2. Coordination and validity of evidence: ACC-ADH-007 to 015.
+3. Research and improvement: ACC-ADH-016 to 019.
+4. Optional modules: ACC-ADH-020 to 023, starting with the useful measurements and queries.
 
-Le [plan Runtime](../../../../docs/composed-runtime/implementation-plan.md) et sa
-[matrice de contrôles](../../../../docs/composed-runtime/hooks-and-events.md)
-peuvent servir ces objectifs ; leur adoption ne les démontre pas. Les contrats
-métier des applications restent leur source de vérité.
+The [Runtime plan](../../../../docs/composed-runtime/implementation-plan.md) and its
+[control matrix](../../../../docs/composed-runtime/hooks-and-events.md)
+can serve these objectives; adopting them does not demonstrate them. The business
+contracts of the applications remain their source of truth.

@@ -1,468 +1,482 @@
 schema_version: '0.2'
 id: wealth-advisory
-name: Analyse et conseil patrimoniaux — France
-version: 0.1.0
+name: Wealth analysis and advice — France
+version: 0.1.1
 kind: product-contract
 status: draft
 license: CC-BY-4.0
 intent:
-  promise: Permettre à un gestionnaire de patrimoine de construire, expliquer et suivre un conseil fondé sur
-    la situation et les objectifs de son client.
-  primary_outcome: Un rapport daté et attribué relie informations, bilan, diagnostic, scénarios, préconisations
-    validées et suivi sans masquer les inconnues ni les limites du conseil.
+  promise: Enable a wealth manager (gestionnaire de patrimoine) to build, explain and follow up advice
+    based on the situation and objectives of their client.
+  primary_outcome: A dated and attributed report links information, balance sheet, diagnosis, scenarios,
+    validated recommendations and follow-up without hiding the unknowns or the limits of the advice.
   success_metrics:
   - id: MET-WAD-001
-    measure: Observer en usage réel si le conseiller peut retrouver les données et hypothèses justifiant chaque
-      préconisation ; population, période et cible à définir lors du pilote.
+    measure: Observe in real use whether the adviser can retrieve the data and assumptions justifying each
+      recommendation; population, period and target to be defined during the pilot.
   - id: MET-WAD-002
-    measure: Observer les corrections de bilan, incompréhensions du rapport et actions de suivi manquées ;
-      aucune amélioration comparative ni cible chiffrée n’est présumée.
+    measure: Observe balance-sheet corrections, misunderstandings of the report and missed follow-up actions;
+      no comparative improvement or numerical target is presumed.
 scope:
   includes:
-  - Mission, connaissance client pertinente et objectifs.
-  - Inventaire des actifs, passifs, droits de détention, revenus et charges.
-  - Diagnostic, scénarios comparés et modèles déclarés par domaine.
-  - Préconisations motivées, validation humaine, rapport conservable et remise attribuée.
-  - Plan d’action, réexamen du conseil, confidentialité et cycle de vie des données.
+  - Engagement, relevant client knowledge and objectives.
+  - Inventory of assets, liabilities, ownership rights, income and expenses.
+  - Diagnosis, compared scenarios and models declared per domain.
+  - Reasoned recommendations, human validation, retainable report and attributed delivery.
+  - Action plan, re-examination of the advice, confidentiality and data lifecycle.
   excludes:
-  - Dispositifs de surveillance LCB-FT, filtrage des sanctions et gel des avoirs ; prévus pour une évolution
-    ultérieure.
-  - Exécution de transactions, réception-transmission d’ordres, souscriptions et signature d’actes juridiques.
-  - Certification globale du cabinet ou du logiciel au droit français ; contrôle d’habilitation par une autorité.
-  - Couverture implicite de toute situation fiscale, successorale, internationale ou de toute personne morale.
-  - Choix d’architecture, de stack, de fournisseur de données, de transport ou d’outil de validation.
+  - Anti-money-laundering and counter-terrorist-financing (lutte contre le blanchiment de capitaux et le
+    financement du terrorisme, LCB-FT) monitoring arrangements, sanctions screening and asset freezing
+    (gel des avoirs); planned for a later evolution.
+  - Execution of transactions, reception and transmission of orders (réception-transmission d’ordres),
+    subscriptions and signature of legal acts.
+  - Overall certification of the firm or of the software under French law; checking of professional
+    authorisation (habilitation) by an authority.
+  - Implicit coverage of every tax, inheritance or international situation or of every legal person
+    (personne morale).
+  - Choice of architecture, stack, data provider, transport or validation tool.
 actors:
 - id: ACT-WAD-ADVISER
-  name: Conseiller responsable
+  name: Responsible adviser
   goals:
-  - Analyser la situation et assumer un conseil justifié dans son périmètre.
+  - Analyse the situation and take responsibility for justified advice within their scope.
   permissions:
-  - Préparer, revoir, valider et remettre le conseil des dossiers autorisés ; décider du suivi.
+  - Prepare, review, validate and deliver the advice for authorised files; decide on the follow-up.
 - id: ACT-WAD-ASSISTANT
-  name: Assistant du cabinet
+  name: Firm assistant
   goals:
-  - Préparer et actualiser les informations autorisées.
+  - Prepare and update the authorised information.
   permissions:
-  - Saisir et documenter les dossiers autorisés sans valider ni remettre un conseil en qualité de responsable.
+  - Enter and document the authorised files without validating or delivering advice in the capacity of
+    responsible adviser.
 - id: ACT-WAD-CLIENT
-  name: Client ou personne concernée
+  name: Client or person concerned
   goals:
-  - Comprendre le conseil et décider des suites à donner.
+  - Understand the advice and decide what action to take on it.
   permissions:
-  - Recevoir les informations qui lui sont destinées, exprimer ses réponses et décisions, exercer ses droits
-    selon le traitement ; aucun portail client obligatoire.
+  - Receive the information intended for them, express their answers and decisions, exercise their rights
+    according to the processing; no mandatory client portal.
 - id: ACT-WAD-ADMIN
-  name: Responsable des accès et des données
+  name: Access and data manager
   goals:
-  - Gérer les habilitations, la conservation et les opérations de continuité autorisées.
+  - Manage access rights (habilitations), retention and the authorised continuity operations.
   permissions:
-  - Administrer le périmètre attribué ; aucune lecture des données de conseil par défaut.
+  - Administer the assigned scope; no reading of advice data by default.
 domain:
   entities:
   - id: ENT-WAD-MISSION
-    name: Mission
-    description: Prestation attribuée avec périmètre, conditions de service et versions.
+    name: Engagement
+    description: Attributed service (mission) with scope, service conditions and versions.
     lifecycle:
-    - préparée
-    - convenue
-    - en cours
-    - close
+    - prepared
+    - agreed
+    - in progress
+    - closed
   - id: ENT-WAD-PERSON
-    name: Personne et groupe analysé
-    description: Identités, relations et périmètre de consolidation ; un groupe analysé ne définit pas automatiquement
-      un foyer fiscal.
+    name: Person and analysed group
+    description: Identities, relationships and consolidation scope; an analysed group does not automatically
+      define a tax household (foyer fiscal).
     lifecycle:
-    - renseigné
-    - actualisé
-    - sorti du périmètre
+    - recorded
+    - updated
+    - removed from scope
   - id: ENT-WAD-INVENTORY
-    name: Élément patrimonial ou flux
-    description: Actif, droit, dette, engagement, revenu ou charge sourcé et daté.
+    name: Wealth item or flow
+    description: Sourced and dated asset, right, debt, commitment, income or expense.
     lifecycle:
-    - déclaré
-    - documenté
-    - à confirmer
-    - remplacé
+    - declared
+    - documented
+    - to be confirmed
+    - replaced
   - id: ENT-WAD-GOAL
-    name: Objectif
-    description: Résultat recherché, porteur, priorité, horizon et contraintes.
+    name: Objective
+    description: Outcome sought, holder, priority, horizon and constraints.
     lifecycle:
-    - exprimé
-    - priorisé
-    - révisé
-    - abandonné
-    - atteint déclaré
+    - expressed
+    - prioritised
+    - revised
+    - abandoned
+    - declared achieved
   - id: ENT-WAD-SCENARIO
-    name: Scénario et calcul
-    description: Référence et stratégie sous données, modèles et hypothèses versionnés.
+    name: Scenario and calculation
+    description: Reference and strategy under versioned data, models and assumptions.
     lifecycle:
-    - brouillon
-    - calculé
-    - à recalculer
-    - conservé
+    - draft
+    - calculated
+    - to be recalculated
+    - retained
   - id: ENT-WAD-ADVICE
-    name: Conseil et rapport
-    description: Préconisations motivées et révision lisible dont l’auteur assume la validation.
+    name: Advice and report
+    description: Reasoned recommendations and readable revision whose author takes responsibility for
+      the validation.
     lifecycle:
-    - proposé
-    - à revoir
-    - validé
-    - remis
-    - remplacé
-    - retiré
+    - proposed
+    - to be reviewed
+    - validated
+    - delivered
+    - replaced
+    - withdrawn
   - id: ENT-WAD-ACTION
-    name: Action de suivi
-    description: Décision ou tâche reliée au conseil remis avec responsable et échéance.
+    name: Follow-up action
+    description: Decision or task linked to the delivered advice with a person responsible and a due date.
     lifecycle:
-    - à décider
-    - acceptée
-    - refusée
-    - en cours
-    - réalisée
-    - abandonnée
+    - to be decided
+    - accepted
+    - refused
+    - in progress
+    - completed
+    - abandoned
   - id: ENT-WAD-RECORD
-    name: Preuve et événement
-    description: Source, validation, remise ou décision attribuée et conservée selon une finalité explicite.
+    name: Evidence and event
+    description: Source, validation, delivery or decision attributed and retained according to an explicit
+      purpose.
     lifecycle:
-    - enregistré
-    - conservation active
-    - conservation restreinte
-    - supprimé
+    - recorded
+    - active retention
+    - restricted retention
+    - deleted
   glossary:
-  - term: Gestionnaire de patrimoine
-    definition: Utilisateur métier ; ce titre seul ne détermine ni statut réglementaire ni habilitation.
-  - term: Périmètre couvert
-    definition: Personnes, domaines, périodes, modèles et prestations explicitement inclus dans une mission.
-  - term: Patrimoine net
-    definition: Somme des actifs et droits retenus, moins les dettes imputées, dans une devise et un périmètre
-      annoncés.
-  - term: Adéquation
-    definition: Évaluation motivée d’une recommandation dans le domaine et le régime de service concernés ;
-      ce mot ne certifie pas toute la prestation.
-  - term: Date d’analyse
-    definition: Date de référence de la situation observée, distincte des dates de collecte, valorisation,
-      simulation et remise.
-  - term: Révision
-    definition: État identifiable d’un dossier, calcul ou conseil ; une modification ne rebaptise pas les preuves
-      de l’état précédent.
+  - term: Wealth manager (gestionnaire de patrimoine)
+    definition: Business user; this title alone determines neither regulatory status nor professional
+      authorisation (habilitation).
+  - term: Covered scope
+    definition: Persons, domains, periods, models and services explicitly included in an engagement.
+  - term: Net wealth
+    definition: Sum of the assets and rights retained, less the debts allocated, in a stated currency and
+      scope.
+  - term: Suitability (adéquation)
+    definition: Reasoned assessment of a recommendation in the domain and service regime concerned; this
+      word does not certify the whole service.
+  - term: Analysis date
+    definition: Reference date of the situation observed, distinct from the dates of collection, valuation,
+      simulation and delivery.
+  - term: Revision
+    definition: Identifiable state of a file, calculation or advice; a modification does not relabel the
+      evidence of the previous state.
 capabilities:
 - id: CAP-WAD-001
-  name: Mission et périmètre du conseil
+  name: Engagement and scope of the advice
   priority: must
   actor: ACT-WAD-ADVISER
-  outcome: Une mission attribuée décrit les analyses et conseils effectivement couverts.
+  outcome: An attributed engagement describes the analyses and advice actually covered.
   requirements:
   - id: REQ-WAD-001
-    statement: Chaque mission identifie les personnes concernées, le conseiller responsable, les objectifs
-      de prestation, les domaines couverts, les exclusions, le mode de rémunération et les éventuels conflits
-      d’intérêts déclarés. Les statuts et habilitations professionnels sont renseignés séparément du titre
-      de gestionnaire de patrimoine ; leur déclaration dans le produit ne vaut pas vérification par une autorité.
+    statement: Each engagement identifies the persons concerned, the responsible adviser, the service
+      objectives, the domains covered, the exclusions, the method of remuneration and any declared conflicts
+      of interest. Professional statuses and authorisations (habilitations) are recorded separately from
+      the title of wealth manager (gestionnaire de patrimoine); declaring them in the product does not
+      amount to verification by an authority.
   - id: REQ-WAD-002
-    statement: 'Le périmètre de conseil et ses conditions d’entrée sont versionnés par domaine : financier,
-      assurance, immobilier, fiscalité, transmission et retraite. Une recommandation hors du périmètre ou des
-      habilitations déclarées ne peut être validée ni présentée comme un conseil couvert ; un besoin hors périmètre
-      est orienté vers un professionnel identifié ou laissé explicitement non traité. Au moins un domaine de
-      conseil est effectivement couvert ; un profil vide ne satisfait pas ce contrat.'
+    statement: 'The advice scope and its entry conditions are versioned per domain: financial, insurance,
+      real estate, taxation, wealth transfer (transmission) and retirement. A recommendation outside the
+      declared scope or professional authorisations (habilitations) can be neither validated nor presented
+      as covered advice; a need outside the scope is referred to an identified professional or explicitly
+      left untreated. At least one advice domain is actually covered; an empty profile does not satisfy
+      this contract.'
 - id: CAP-WAD-002
-  name: Découverte du client et objectifs
+  name: Client discovery and objectives
   priority: must
   actor: ACT-WAD-ADVISER
-  outcome: Le conseiller dispose d’un recueil daté, cohérent et proportionné à la mission.
+  outcome: The adviser has a fact-find (recueil) that is dated, consistent and proportionate to the engagement.
   requirements:
   - id: REQ-WAD-003
-    statement: Le recueil couvre la situation personnelle, familiale, professionnelle et fiscale pertinente,
-      les personnes à charge et les liens de détention nécessaires à la mission. Chaque réponse importante
-      porte sa source, sa date de recueil, sa date d’effet si connue et son état déclaré, documenté, à confirmer
-      ou inconnu ; un justificatif n’est pas obligatoire pour toute réponse.
+    statement: The fact-find (recueil) covers the relevant personal, family, professional and tax situation,
+      the dependants and the ownership links necessary for the engagement. Each important answer carries
+      its source, its collection date, its effective date if known and its state of declared, documented,
+      to be confirmed or unknown; a supporting document is not mandatory for every answer.
   - id: REQ-WAD-004
-    statement: Chaque objectif est attribué à une personne ou à un groupe nommé et comprend une priorité, un
-      horizon, un montant ou une mesure qualitative explicite, les besoins de liquidité et les contraintes
-      déclarées. Objectifs incompatibles et arbitrages restent visibles ; aucune priorité n’est déduite silencieusement.
+    statement: Each objective is attributed to a named person or group and includes a priority, a horizon,
+      an amount or an explicit qualitative measure, the liquidity needs and the declared constraints. Incompatible
+      objectives and trade-off decisions remain visible; no priority is silently inferred.
   - id: REQ-WAD-005
-    statement: Avant la validation d’un conseil en investissement financier ou en assurance-vie/capitalisation,
-      le dossier contient les informations pertinentes de connaissance et expérience, situation financière,
-      capacité à subir des pertes, objectifs et horizons, tolérance au risque et préférences de durabilité,
-      avec leurs réponses datées et incohérences résolues. La liste des informations requises et leur fraîcheur
-      dépendent du profil de service déclaré ; refus de répondre, donnée manquante ou profil incomplet ne valent
-      jamais réponse favorable.
+    statement: Before the validation of advice on financial investment or on life insurance or capitalisation
+      contracts (assurance-vie/capitalisation), the file contains the relevant information on knowledge
+      and experience, financial situation, capacity to bear losses, objectives and horizons, risk tolerance
+      and sustainability preferences, with their dated answers and with inconsistencies resolved. The
+      list of required information and its freshness depend on the declared service profile; a refusal
+      to answer, a missing datum or an incomplete profile never amounts to a favourable answer.
 - id: CAP-WAD-003
-  name: Inventaire patrimonial
+  name: Wealth inventory
   priority: must
   actor: ACT-WAD-ADVISER
-  outcome: Les actifs et engagements sont attribués et valorisés sans double compte.
+  outcome: Assets and commitments are attributed and valued without double counting.
   requirements:
   - id: REQ-WAD-006
-    statement: Chaque actif identifie sa catégorie, ses détenteurs, le mode de détention et les droits pertinents,
-      sa valeur brute, sa devise, sa date de valorisation, sa provenance et son niveau d’incertitude. Chaque
-      dette identifie les débiteurs, le capital restant dû daté, les conditions connues de remboursement et
-      son lien éventuel à un actif. Les montants non connus et les garanties données sont distingués des valeurs
-      et dettes certaines.
+    statement: Each asset identifies its category, its holders, the form of ownership and the relevant
+      rights, its gross value, its currency, its valuation date, its provenance and its level of uncertainty.
+      Each debt identifies the debtors, the dated outstanding principal, the known repayment conditions
+      and its link, if any, to an asset. Unknown amounts and guarantees given are distinguished from certain
+      values and debts.
   - id: REQ-WAD-007
-    statement: Les agrégats affichent le périmètre des personnes et des droits, les quotes-parts de valorisation
-      retenues et les règles d’imputation des dettes explicitement renseignées. Une indivision ou une participation
-      est répartie selon ces données ; démembrement, communauté ou solidarité ne sont pas assimilés à une division
-      automatique égale. Une valorisation de droits non couverte est signalée et exclue du total chiffré concerné,
-      qui devient partiel.
+    statement: Aggregates display the scope of persons and rights, the valuation shares retained and the
+      debt allocation rules explicitly recorded. An undivided co-ownership (indivision) or a shareholding
+      is apportioned according to these data; a split of ownership into usufruct and bare ownership (démembrement),
+      a community of property between spouses (communauté) or joint and several liability (solidarité)
+      is not treated as an automatic equal division. A valuation of rights that is not covered is flagged
+      and excluded from the numerical total concerned, which becomes partial.
     depends_on:
     - INV-WAD-002
   - id: REQ-WAD-008
-    statement: Un actif n’est compté qu’une fois dans chaque agrégat. Une enveloppe et ses supports ou une
-      participation et les biens sous-jacents peuvent être détaillés ensemble, mais leurs valeurs ne sont pas
-      additionnées comme des actifs indépendants. Le bilan présente actifs retenus, passifs imputés et patrimoine
-      net égal à leur différence ; toute exclusion ou incohérence modifiant le périmètre est visible.
+    statement: An asset is counted only once in each aggregate. A wrapper (enveloppe) and its underlying
+      investment vehicles (supports), or a shareholding and the underlying property, may be detailed together,
+      but their values are not added up as independent assets. The balance sheet presents assets retained,
+      liabilities allocated and net wealth equal to their difference; any exclusion or inconsistency that
+      changes the scope is visible.
     depends_on:
     - REQ-WAD-007
     - REQ-WAD-009
   - id: REQ-WAD-009
-    statement: Un agrégat monétaire précise sa devise et sa date d’analyse. Les valeurs étrangères conservent
-      leurs montants d’origine et utilisent un taux de conversion sourcé et daté explicitement sélectionné
-      ; un taux absent ne devient pas 1. Les valeurs antérieures restent datées et une règle de fraîcheur explicite
-      signale celles à actualiser ; une valeur future n’est pas utilisée comme observation à une date passée.
+    statement: A monetary aggregate states its currency and its analysis date. Foreign values keep their
+      original amounts and use a sourced and dated conversion rate that is explicitly selected; a missing
+      rate does not become 1. Earlier values remain dated and an explicit freshness rule flags those to
+      be updated; a future value is not used as an observation at a past date.
 - id: CAP-WAD-004
-  name: Diagnostic patrimonial et budgétaire
+  name: Wealth and budget diagnosis
   priority: must
   actor: ACT-WAD-ADVISER
-  outcome: Le diagnostic expose ses calculs, limites et lien avec les objectifs.
+  outcome: The diagnosis sets out its calculations, its limits and its link with the objectives.
   requirements:
   - id: REQ-WAD-010
-    statement: Revenus, dépenses, impôts connus et remboursements de dette portent montant, périodicité, période
-      d’effet et qualification brut/net. Le budget ramène les flux à une période commune selon une convention
-      visible et distingue flux récurrents et exceptionnels. Une échéance de dette incluse dans les charges
-      n’est pas soustraite deux fois ; le solde disponible peut être négatif et n’est pas assimilé automatiquement
-      à une épargne réellement observée.
+    statement: Income, expenditure, known taxes and debt repayments carry an amount, a periodicity, an
+      effective period and a gross/net qualification. The budget brings the flows to a common period according
+      to a visible convention and distinguishes recurring flows from exceptional ones. A debt instalment
+      included in the expenses is not subtracted twice; the available balance may be negative and is not
+      automatically treated as savings actually observed.
   - id: REQ-WAD-011
-    statement: Le diagnostic restitue au minimum la composition du patrimoine, la liquidité et les indisponibilités
-      connues, l’exposition aux dettes et le budget par rapport aux objectifs. Chaque ratio indique numérateur,
-      dénominateur, période et limites ; un dénominateur nul ou une donnée indispensable absente donne non
-      calculable. Aucun classement de risque global n’est inventé à partir de la seule catégorie d’un actif.
+    statement: The diagnosis presents at least the composition of the wealth, the liquidity and the known
+      restrictions on availability (indisponibilités), the exposure to debts and the budget in relation
+      to the objectives. Each ratio states its numerator, denominator, period and limits; a zero denominator
+      or a missing indispensable datum gives not calculable. No overall risk ranking is invented from the
+      category of an asset alone.
   - id: REQ-WAD-012
-    statement: Chaque constat relie les éléments et objectifs qui le fondent, les données manquantes ou contradictoires
-      et les points nécessitant une expertise. Le conseiller peut documenter, expliquer et résoudre une incohérence
-      sans effacer la réponse ou la valeur initiale conservée dans l’historique applicable.
+    statement: Each finding links the items and objectives on which it is based, the missing or contradictory
+      data and the points requiring expertise. The adviser can document, explain and resolve an inconsistency
+      without erasing the initial answer or value retained in the applicable history.
 - id: CAP-WAD-005
-  name: Scénarios comparables et simulations
+  name: Comparable scenarios and simulations
   priority: must
   actor: ACT-WAD-ADVISER
-  outcome: Les stratégies sont comparées à une situation de référence sous hypothèses explicites.
+  outcome: Strategies are compared with a reference situation under explicit assumptions.
   requirements:
   - id: REQ-WAD-013
-    statement: Chaque simulation identifie la révision du dossier de référence, l’horizon, les opérations envisagées,
-      les hypothèses de rendement, inflation, frais et fiscalité utilisées ou leur exclusion explicite, ainsi
-      que les modèles, sources et périodes de validité. Toute stratégie chiffrée est comparée au maintien de
-      la situation de référence sur une base de calcul commune ou expose les différences empêchant cette comparaison.
+    statement: Each simulation identifies the revision of the reference file, the horizon, the operations
+      envisaged, the return, inflation, fee and tax assumptions used or their explicit exclusion, as well
+      as the models, sources and validity periods. Every quantified strategy is compared with maintaining
+      the reference situation on a common calculation basis, or sets out the differences that prevent
+      this comparison.
     depends_on:
     - INV-WAD-003
   - id: REQ-WAD-014
-    statement: Les résultats séparent flux, valeur du patrimoine et indicateurs d’objectifs ; ils exposent
-      les effets favorables et défavorables des hypothèses pertinentes, notamment rendement, liquidité et frais.
-      Une projection n’est jamais un résultat garanti ; un taux de réussite probabiliste n’est affiché que
-      si sa méthode et ses limites sont documentées.
+    statement: The results separate flows, value of the wealth and objective indicators; they set out the
+      favourable and unfavourable effects of the relevant assumptions, in particular return, liquidity
+      and fees. A projection is never a guaranteed result; a probabilistic success rate is displayed only
+      if its method and its limits are documented.
   - id: REQ-WAD-015
-    statement: Un calcul fiscal, successoral ou de retraite n’est utilisable comme résultat couvert que si
-      son domaine, sa juridiction, sa période, ses règles et limites sont identifiés et que son modèle a des
-      cas de référence revus par un professionnel compétent. Un modèle absent, périmé pour la période ou hors
-      domaine produit un résultat indisponible, sans réemploi silencieux d’une règle voisine. Une estimation
-      externe manuelle reste distincte, sourcée et soumise à revue.
+    statement: A tax, inheritance or retirement calculation is usable as a covered result only if its domain,
+      its jurisdiction, its period, its rules and its limits are identified and its model has reference
+      cases reviewed by a competent professional. A model that is absent, out of date for the period or
+      outside the domain produces an unavailable result, without silent reuse of a neighbouring rule. A
+      manual external estimate remains distinct, sourced and subject to review.
 - id: CAP-WAD-006
-  name: Préconisations motivées
+  name: Reasoned recommendations
   priority: must
   actor: ACT-WAD-ADVISER
-  outcome: Le conseiller formule et justifie un conseil adapté au dossier courant.
+  outcome: The adviser formulates and justifies advice suited to the current file.
   requirements:
   - id: REQ-WAD-016
-    statement: Chaque préconisation porte un auteur, une date, un objectif, les constats et scénarios utilisés,
-      les données du client pertinentes, les bénéfices recherchés, risques, contraintes de liquidité, frais
-      connus et inconnus, effets fiscaux couverts ou non couverts et les réserves. Le maintien de l’existant
-      ou une solution alternative est examiné ; si une seule option est pertinente, le conseiller en explique
-      la raison.
+    statement: Each recommendation carries an author, a date, an objective, the findings and scenarios
+      used, the relevant client data, the benefits sought, risks, liquidity constraints, known and unknown
+      fees, tax effects covered or not covered and the reservations. Maintaining the existing situation
+      or an alternative solution is examined; if only one option is relevant, the adviser explains the
+      reason.
   - id: REQ-WAD-017
-    statement: Pour une recommandation sur un instrument ou contrat identifié, les caractéristiques et documents
-      de référence sont datés et confrontés aux objectifs, connaissances, expérience, tolérance au risque,
-      capacité de perte et préférences pertinentes du client. Une incompatibilité non résolue ou une donnée
-      requise absente bloque la validation. Le marché cible est examiné lorsqu’il s’applique ; l’absence de
-      référentiel pertinent empêche de conclure à cette vérification.
+    statement: For a recommendation on an identified instrument or contract, the characteristics and reference
+      documents are dated and compared against the objectives, knowledge, experience, risk tolerance, capacity
+      for loss and relevant preferences of the client. An unresolved incompatibility or a missing required
+      datum blocks the validation. The target market (marché cible) is examined where it applies; the absence
+      of a relevant reference framework prevents concluding that this check has been made.
     depends_on:
     - REQ-WAD-002
     - REQ-WAD-005
   - id: REQ-WAD-018
-    statement: La motivation du choix expose les alternatives écartées et les frais et liens de rémunération
-      susceptibles d’influencer le conseil. Une rémunération ou un avantage commercial ne peut remplacer la
-      justification du choix par rapport au client. Une préférence du client pour une option incompatible est
-      consignée sans rendre automatiquement cette option adéquate.
+    statement: The reasons for the choice set out the alternatives discarded and the fees and remuneration
+      links likely to influence the advice. A remuneration or a commercial advantage cannot replace the
+      justification of the choice in relation to the client. A preference of the client for an incompatible
+      option is recorded without automatically making that option suitable.
   - id: REQ-WAD-019
-    statement: Le conseil financier formalisé explique l’adéquation à la situation et aux objectifs ; le conseil
-      en assurance explique la cohérence avec les exigences et besoins et, pour une recommandation personnalisée,
-      le choix entre options. La restitution distingue ces obligations selon le domaine au lieu d’utiliser
-      une attestation universelle de conformité.
+    statement: Formalised financial advice explains the suitability (adéquation) for the situation and
+      the objectives; insurance advice explains the consistency with the demands and needs (exigences et
+      besoins) and, for a personalised recommendation, the choice between options. The presentation distinguishes
+      these obligations according to the domain instead of using a universal attestation of conformity.
 - id: CAP-WAD-007
-  name: Validation et remise du rapport
+  name: Validation and delivery of the report
   priority: must
   actor: ACT-WAD-ADVISER
-  outcome: Le rapport remis correspond exactement à un conseil revu par son responsable.
+  outcome: The delivered report corresponds exactly to advice reviewed by the adviser responsible for it.
   requirements:
   - id: REQ-WAD-020
-    statement: Seul un conseiller humain disposant du rôle et du périmètre déclarés peut valider une révision
-      du conseil. La validation est attribuée, datée et liée aux versions du dossier, des calculs, des modèles
-      et des documents utilisés. Une modification pertinente après validation impose une nouvelle revue avant
-      remise de la révision modifiée ; la révision historique reste identifiable. La version revue est contrôlée
-      au moment de la validation et de la remise ; une décision fondée sur une version dépassée est refusée
-      même en cas de modification concurrente.
+    statement: Only a human adviser holding the declared role and scope can validate a revision of the
+      advice. The validation is attributed, dated and linked to the versions of the file, calculations,
+      models and documents used. A relevant modification after validation requires a new review before
+      delivery of the modified revision; the historical revision remains identifiable. The reviewed version
+      is checked at the time of validation and of delivery; a decision based on a superseded version is
+      refused even in the event of a concurrent modification.
     depends_on:
     - INV-WAD-006
   - id: REQ-WAD-021
-    statement: Un rapport lisible et conservable restitue la mission, la date et le périmètre d’analyse, le
-      bilan, les objectifs, les constats, les scénarios retenus, le conseil motivé, ses risques, frais, hypothèses
-      et réserves, l’auteur et les prochaines actions. Un extrait ou une exportation conserve les limites et
-      références nécessaires à son interprétation. Un brouillon porte ce statut et ne peut être remis comme
-      conseil validé.
+    statement: A readable and retainable report presents the engagement, the date and scope of analysis,
+      the balance sheet, the objectives, the findings, the scenarios retained, the reasoned advice, its
+      risks, fees, assumptions and reservations, the author and the next actions. An extract or an export
+      keeps the limits and references necessary for its interpretation. A draft carries that status and
+      cannot be delivered as validated advice.
   - id: REQ-WAD-022
-    statement: La remise est enregistrée avec le destinataire autorisé, la date, l’identité exacte de la révision
-      et le moyen de remise. Une remise non confirmée ou échouée reste distincte d’une remise constatée. Réception,
-      accord du client, refus du client et mise en œuvre sont des événements distincts ; aucun n’est déduit
-      du simple téléchargement ou de la production du rapport.
+    statement: The delivery is recorded with the authorised recipient, the date, the exact identity of
+      the revision and the means of delivery. An unconfirmed or failed delivery remains distinct from an
+      established delivery. Receipt, agreement of the client, refusal of the client and implementation
+      are distinct events; none is inferred from the mere download or production of the report.
     depends_on:
     - REQ-WAD-020
     - REQ-WAD-021
 - id: CAP-WAD-008
-  name: Suivi du conseil et réexamen
+  name: Advice follow-up and re-examination
   priority: must
   actor: ACT-WAD-ADVISER
-  outcome: Le suivi relie les actions et changements au conseil effectivement remis.
+  outcome: The follow-up links the actions and changes to the advice actually delivered.
   requirements:
   - id: REQ-WAD-023
-    statement: Un plan d’action relie chaque action à une préconisation et précise responsable, échéance, statut
-      et justificatif ou commentaire. Les états à décider, acceptée, refusée, en cours, réalisée et abandonnée
-      restent distincts ; la réalisation est déclarée avec sa provenance et ne prouve pas à elle seule la réussite
-      de l’objectif.
+    statement: An action plan links each action to a recommendation and states the person responsible,
+      due date, status and supporting document or comment. The states to be decided, accepted, refused,
+      in progress, completed and abandoned remain distinct; completion is declared with its provenance
+      and does not by itself prove that the objective has been achieved.
   - id: REQ-WAD-024
-    statement: Le service de suivi précise son étendue, ses déclencheurs, sa règle d’échéance et les obligations
-      applicables par domaine. Le système signale les échéances atteintes et les changements déclarés de situation,
-      objectifs, produits ou modèles qui nécessitent une revue. Un silence du client ou une absence de connexion
-      ne vaut ni actualisation ni confirmation de l’adéquation. Pour un service CIF d’évaluation périodique
-      de l’adéquation, la règle prévoit au moins un examen annuel et une fréquence accrue si le risque ou les
-      instruments le nécessitent ; cette périodicité ne s’applique pas automatiquement aux autres domaines.
+    statement: The follow-up service states its extent, its triggers, its due-date rule and the obligations
+      applicable per domain. The system flags due dates reached and declared changes of situation, objectives,
+      products or models that require a review. Silence from the client or an absence of connection amounts
+      neither to an update nor to a confirmation of suitability (adéquation). For a financial investment
+      adviser (conseiller en investissements financiers, CIF) service of periodic assessment of suitability,
+      the rule provides for at least an annual examination and an increased frequency if the risk or the
+      instruments require it; this periodicity does not automatically apply to the other domains.
   - id: REQ-WAD-025
-    statement: Lors d’une revue, le conseiller retrouve la dernière révision remise, les actions et les changements
-      depuis cette révision. Il consigne la nouvelle information ou le refus de la fournir, la décision de
-      maintenir, modifier, suspendre ou arrêter le conseil et la prochaine échéance. Une nouvelle préconisation
-      nécessite une nouvelle validation et remise sans réécrire l’avis initial.
+    statement: During a review, the adviser retrieves the last revision delivered, the actions and the
+      changes since that revision. They record the new information or the refusal to provide it, the decision
+      to maintain, modify, suspend or stop the advice and the next due date. A new recommendation requires
+      a new validation and delivery without rewriting the initial opinion.
     depends_on:
     - REQ-WAD-024
     - REQ-WAD-020
 - id: CAP-WAD-009
-  name: Confidentialité et maîtrise des données
+  name: Confidentiality and control of data
   priority: must
   actor: ACT-WAD-ADVISER
-  outcome: Les données et preuves de conseil restent limitées aux personnes et usages autorisés.
+  outcome: Advice data and evidence remain limited to the authorised persons and uses.
   requirements:
   - id: REQ-WAD-026
-    statement: Les autorisations sont évaluées à chaque lecture, modification et exportation selon le cabinet,
-      le dossier, le rôle et la personne concernée. Un assistant prépare les données sans valider le conseil
-      ; un administrateur technique n’obtient pas par son seul rôle un droit de lecture des dossiers. Les refus
-      ne révèlent ni les données ni l’existence d’un dossier non autorisé.
+    statement: Access authorisations are evaluated at each read, modification and export according to the
+      firm, the file, the role and the person concerned. An assistant prepares the data without validating
+      the advice; a technical administrator does not obtain, by their role alone, a right to read the files.
+      Refusals reveal neither the data nor the existence of an unauthorised file.
   - id: REQ-WAD-027
-    statement: La collecte associe les catégories de données à leur finalité et distingue les informations
-      nécessaires des informations facultatives. Un refus de collecte facultative ne bloque pas une prestation
-      qui n’en dépend pas. Aucune transmission à un tiers, y compris une assistance automatisée externe, ne
-      se produit sans destination et finalité autorisées dans le périmètre du traitement.
+    statement: Collection associates the categories of data with their purpose and distinguishes necessary
+      information from optional information. A refusal of optional collection does not block a service
+      that does not depend on it. No transmission to a third party, including external automated assistance,
+      occurs without a destination and purpose authorised within the scope of the processing.
   - id: REQ-WAD-028
-    statement: Les créations, changements, validations, remises et décisions de suivi sont attribués et datés
-      sans journaliser les secrets ni recopier les pièces ou le bilan complet dans les journaux techniques.
-      La consultation de cet historique suit les mêmes autorisations que le dossier. Les règles de conservation,
-      rectification, exportation des données personnelles et suppression sont documentées par catégorie et
-      finalité, avec motif et échéance pour toute conservation restreinte applicable.
+    statement: Creations, changes, validations, deliveries and follow-up decisions are attributed and dated
+      without logging secrets or copying the documents or the complete balance sheet into the technical
+      logs. Consultation of this history follows the same authorisations as the file. The rules for retention,
+      rectification, export of personal data and deletion are documented per category and purpose, with
+      a reason and an end date for any applicable restricted retention.
   - id: REQ-WAD-029
-    statement: Le dossier, son historique autorisé et les rapports conservés peuvent être exportés dans un
-      format documenté et intelligible. Une restauration contrôlée rétablit les versions, liens et autorisations
-      ; un échec de sauvegarde, d’export ou de restauration est signalé sans revendiquer un résultat complet.
-      Une suppression autorisée couvre les données dérivées et empêche leur réapparition à partir d’une sauvegarde
-      selon la procédure de restauration documentée.
+    statement: The file, its authorised history and the retained reports can be exported in a documented
+      and intelligible format. A controlled restoration re-establishes the versions, links and authorisations;
+      a failure of backup, export or restoration is reported without claiming a complete result. An authorised
+      deletion covers the derived data and prevents their reappearance from a backup according to the documented
+      restoration procedure.
 invariants:
 - id: INV-WAD-001
-  statement: Une donnée inconnue, refusée ou non applicable reste distincte de zéro, de non et d’une valeur
-    validée.
-  rationale: Une absence ne doit pas améliorer artificiellement le bilan ou l’adéquation.
+  statement: A datum that is unknown, refused or not applicable remains distinct from zero, from no and
+    from a validated value.
+  rationale: An absence must not artificially improve the balance sheet or the suitability.
 - id: INV-WAD-002
-  statement: Les droits et les dettes retenus dans un total sont explicitement attribués ; un même intérêt
-    économique n’y est jamais compté deux fois.
-  rationale: Préserver la cohérence entre détail, personne et groupe analysé.
+  statement: The rights and debts retained in a total are explicitly attributed; the same economic interest
+    is never counted twice in it.
+  rationale: Preserve consistency between detail, person and analysed group.
 - id: INV-WAD-003
-  statement: Tout résultat chiffré reste lié à ses données datées, sa devise, sa méthode et ses hypothèses.
-  rationale: Un chiffre sans périmètre ni provenance ne permet pas une décision explicable.
+  statement: Every numerical result remains linked to its dated data, its currency, its method and its
+    assumptions.
+  rationale: A figure without scope or provenance does not allow an explainable decision.
 - id: INV-WAD-004
-  statement: Une révision remise n’est jamais modifiée en place ; son historique reste accessible uniquement
-    pendant sa conservation autorisée. Une rectification ou suppression légitime suit une opération distincte
-    tracée.
-  rationale: Concilier la traçabilité du conseil et la maîtrise des données personnelles.
+  statement: A delivered revision is never modified in place; its history remains accessible only during
+    its authorised retention. A legitimate rectification or deletion follows a distinct, traced operation.
+  rationale: Reconcile the traceability of the advice with the control of personal data.
 - id: INV-WAD-005
-  statement: Une hypothèse, un constat, une proposition, un conseil validé, un accord client et une action
-    réalisée sont des états différents.
-  rationale: Éviter de présenter une simulation ou une suggestion comme un conseil ou une opération exécutée.
+  statement: An assumption, a finding, a proposal, validated advice, a client agreement and a completed
+    action are different states.
+  rationale: Avoid presenting a simulation or a suggestion as advice or as an executed operation.
 - id: INV-WAD-006
-  statement: Une assistance automatisée ne peut ni s’attribuer la qualité du conseiller responsable, ni valider
-    un conseil, ni déclarer l’accord d’un client.
-  rationale: La responsabilité et les décisions humaines restent attribuées.
+  statement: Automated assistance can neither attribute to itself the capacity of responsible adviser,
+    nor validate advice, nor declare the agreement of a client.
+  rationale: Responsibility and human decisions remain attributed.
 - id: INV-WAD-007
-  statement: Les limites d’accès s’appliquent aussi aux exports, recherches, historiques, sauvegardes consultables
-    et résultats dérivés.
-  rationale: Une vue auxiliaire ne doit pas contourner la confidentialité d’un dossier.
+  statement: Access limits also apply to exports, searches, histories, consultable backups and derived
+    results.
+  rationale: An auxiliary view must not circumvent the confidentiality of a file.
 - id: INV-WAD-008
-  statement: Aucun rendement simulé, diagnostic ou score logiciel n’est présenté comme garantie de résultat
-    ou certification réglementaire.
-  rationale: Distinguer un calcul, une décision de conseil et les résultats réellement obtenus.
+  statement: No simulated return, diagnosis or software score is presented as a guarantee of result or
+    a regulatory certification.
+  rationale: Distinguish a calculation, an advice decision and the results actually obtained.
 policies:
 - id: POL-WAD-001
-  decision: La première version couvre le parcours de conseil de personnes physiques et groupes nommés accompagnés
-    en France ; elle exige un périmètre explicite pour chaque domaine et chaque mission.
-  consequence: Les personnes morales peuvent être décrites comme entités de détention ; leur conseil autonome,
-    les situations transfrontalières non couvertes et les modèles non déclarés sont orientés ou marqués hors
-    périmètre.
+  decision: The first version covers the advice journey of natural persons and named groups supported in
+    France; it requires an explicit scope for each domain and each engagement.
+  consequence: Legal persons (personnes morales) can be described as holding entities; advice to them in
+    their own right, cross-border situations not covered and undeclared models are referred or marked
+    out of scope.
 - id: POL-WAD-002
-  decision: Les modules de suivi LCB-FT et de gel des avoirs sont différés, comme l’exécution d’ordres et les
-    souscriptions.
-  consequence: Le produit ne délivre aucun statut LCB-FT ou gel conforme et ne prétend pas dispenser le cabinet
-    de ses obligations ni remplacer ses dispositifs existants.
+  decision: The modules for anti-money-laundering and counter-terrorist-financing (LCB-FT) monitoring and
+    for asset freezing (gel des avoirs) are deferred, as are order execution and subscriptions.
+  consequence: The product issues no LCB-FT or asset-freezing compliant status and does not claim to release
+    the firm from its obligations or to replace its existing arrangements.
 - id: POL-WAD-003
-  decision: L’assistance automatisée est facultative et produit uniquement des propositions attribuées à cette
-    assistance.
-  consequence: Le parcours reste réalisable sans elle ; une proposition retenue fait l’objet d’une décision
-    explicite du conseiller et des mêmes contrôles que le conseil saisi manuellement.
+  decision: Automated assistance is optional and produces only proposals attributed to that assistance.
+  consequence: The journey remains achievable without it; a proposal that is retained is the subject of
+    an explicit decision by the adviser and of the same controls as advice entered manually.
 - id: POL-WAD-004
-  decision: Un dossier partiel peut produire un bilan ou diagnostic partiel explicitement marqué ; il ne permet
-    pas de valider un conseil dont une condition requise manque.
-  consequence: Les réserves non bloquantes et les conditions bloquantes sont distinguées selon le profil de
-    service ; un avertissement générique ne lève pas un blocage.
+  decision: A partial file can produce a partial balance sheet or diagnosis that is explicitly marked;
+    it does not allow validating advice for which a required condition is missing.
+  consequence: Non-blocking reservations and blocking conditions are distinguished according to the service
+    profile; a generic warning does not lift a block.
 - id: POL-WAD-005
-  decision: Les échéances de suivi sont définies par le service convenu et ses obligations applicables, pas
-    par une périodicité uniforme inventée.
-  consequence: La règle, sa source, sa version, sa date d’effet et son événement de départ sont conservés et
-    les actions en retard restent visibles jusqu’à leur traitement attribué.
+  decision: Follow-up due dates are defined by the agreed service and its applicable obligations, not by
+    an invented uniform periodicity.
+  consequence: The rule, its source, its version, its effective date and its starting event are retained
+    and overdue actions remain visible until their attributed handling.
 quality_attributes:
 - id: QA-WAD-001
-  attribute: Exactitude et reproductibilité des calculs
-  target: Pour les cas de référence, les détails et totaux se réconcilient au centime selon une convention
-    d’arrondi déclarée. Les mêmes données et versions reproduisent les mêmes résultats ; chaque conversion
-    et arrondi est explicable.
+  attribute: Accuracy and reproducibility of calculations
+  target: For the reference cases, details and totals reconcile to the cent according to a declared rounding
+    convention. The same data and versions reproduce the same results; each conversion and rounding is
+    explainable.
 - id: QA-WAD-002
-  attribute: Continuité et intégrité
-  target: Un exercice de restauration sur fixture retrouve les révisions de conseil conservées et leurs liens
-    avec les données, validations, remises et autorisations, sans réintroduire les données soumises à une suppression
-    autorisée.
+  attribute: Continuity and integrity
+  target: A restoration exercise on a fixture retrieves the retained advice revisions and their links with
+    the data, validations, deliveries and authorisations, without reintroducing data subject to an authorised
+    deletion.
 - id: QA-WAD-003
-  attribute: Compréhension du rapport
-  target: Sur les rapports de référence, un lecteur métier retrouve sans code interne date, périmètre, objectif,
-    hypothèses, risques, frais, réserves, décision humaine et prochaines actions. Les éléments attendus et
-    difficultés observées sont consignés ; cette revue ne démontre pas une adoption client.
+  attribute: Understanding of the report
+  target: On the reference reports, a business reader finds, without internal codes, the date, scope, objective,
+    assumptions, risks, fees, reservations, human decision and next actions. The expected items and the
+    difficulties observed are recorded; this review does not demonstrate client adoption.
 integrations: []
 acceptance:
 - id: ACC-WAD-001
-  given: Une mission avec un conseiller déclaré pour un domaine, un domaine exclu et un dossier de personnes
-    physiques.
-  when: Préparer puis tenter de valider un conseil dans chacun des deux domaines et un conseil autonome de
-    personne morale.
-  then: Le périmètre et les conditions de mission sont retrouvables ; seul le domaine explicitement couvert
-    est admissible, les autres demandes sont bloquées ou orientées sans statut de conformité inventé.
-  evidence: Mission relue et observations des validations admises/refusées avec leurs raisons.
+  given: An engagement with an adviser declared for one domain, an excluded domain and a file of natural
+    persons.
+  when: Prepare and then attempt to validate advice in each of the two domains and advice to a legal person
+    (personne morale) in its own right.
+  then: The scope and the engagement conditions are retrievable; only the explicitly covered domain is
+    admissible, the other requests are blocked or referred without an invented compliance status.
+  evidence: Engagement read back and observations of the validations admitted/refused with their reasons.
   verifies:
   - REQ-WAD-001
   - REQ-WAD-002
@@ -475,11 +489,11 @@ acceptance:
     - positive
     - negative
 - id: ACC-WAD-002
-  given: Une donnée familiale connue, une donnée inconnue, une réponse refusée et une pièce datée.
-  when: Enregistrer puis relire le recueil et un bilan partiel.
-  then: Les états, sources et dates sont conservés ; une inconnue ne devient ni zéro ni une réponse confirmée
-    et le bilan révèle ses limites.
-  evidence: Recueil relu et restitution partielle avec les états attendus.
+  given: A known family datum, an unknown datum, a refused answer and a dated document.
+  when: Record and then read back the fact-find (recueil) and a partial balance sheet.
+  then: The states, sources and dates are kept; an unknown becomes neither zero nor a confirmed answer
+    and the balance sheet reveals its limits.
+  evidence: Fact-find read back and partial presentation with the expected states.
   verifies:
   - REQ-WAD-003
   - INV-WAD-001
@@ -492,11 +506,11 @@ acceptance:
     - positive
     - negative
 - id: ACC-WAD-003
-  given: Deux objectifs contradictoires, de liquidité à court terme et de placement indisponible à long terme.
-  when: Renseigner leurs porteurs, montants, horizons, priorités et un arbitrage explicite.
-  then: Le conflit initial reste identifiable et seul l’arbitrage renseigné modifie la priorité ; aucune priorité
-    automatique ne remplace le choix.
-  evidence: Objectifs et historique avant/après arbitrage.
+  given: Two contradictory objectives, one of short-term liquidity and one of long-term locked-up investment.
+  when: Record their holders, amounts, horizons, priorities and an explicit trade-off decision.
+  then: The initial conflict remains identifiable and only the recorded trade-off decision changes the
+    priority; no automatic priority replaces the choice.
+  evidence: Objectives and history before/after the trade-off decision.
   verifies:
   - REQ-WAD-004
   - REQ-WAD-012
@@ -508,12 +522,12 @@ acceptance:
     - positive
     - negative
 - id: ACC-WAD-004
-  given: Un profil de service de conseil en investissement et un dossier dont la capacité de perte ou une réponse
-    de durabilité requise manque.
-  when: Tenter de valider une préconisation puis compléter les réponses et traiter les incohérences.
-  then: La première validation est refusée avec les conditions manquantes ; la seconde n’est admissible que
-    si toutes les conditions pertinentes sont satisfaites, avec réponses et versions retrouvables.
-  evidence: Résultats des deux tentatives et profil de conditions d’entrée utilisé.
+  given: An investment advice service profile and a file in which the capacity for loss or a required sustainability
+    answer is missing.
+  when: Attempt to validate a recommendation, then complete the answers and deal with the inconsistencies.
+  then: The first validation is refused with the missing conditions; the second is admissible only if all
+    the relevant conditions are satisfied, with retrievable answers and versions.
+  evidence: Results of the two attempts and the entry-conditions profile used.
   verifies:
   - REQ-WAD-005
   - REQ-WAD-017
@@ -526,13 +540,14 @@ acceptance:
     - positive
     - negative
 - id: ACC-WAD-005
-  given: Un bien de 400 000 EUR détenu à 60/40, une dette de 100 000 EUR imputée explicitement à 60/40, une
-    enveloppe de 50 000 EUR détaillée en supports totalisant 50 000 EUR.
-  when: Calculer les bilans individuel et consolidé aux mêmes dates et droits.
-  then: Le groupe présente 450 000 EUR d’actifs, 100 000 EUR de dettes et 350 000 EUR nets. Hors enveloppe
-    attribuée séparément, les parts du bien net sont 180 000 et 120 000 EUR ; les supports ne doublent pas
-    l’enveloppe.
-  evidence: Détails des propriétaires/débiteurs, calculs et réconciliation avec les valeurs attendues.
+  given: A property of 400,000 EUR held 60/40, a debt of 100,000 EUR explicitly allocated 60/40, a wrapper
+    (enveloppe) of 50,000 EUR detailed into underlying investment vehicles (supports) totalling 50,000
+    EUR.
+  when: Calculate the individual and consolidated balance sheets at the same dates and rights.
+  then: The group presents 450,000 EUR of assets, 100,000 EUR of debts and 350,000 EUR net. Excluding the
+    wrapper, which is attributed separately, the shares of the net property are 180,000 and 120,000 EUR;
+    the underlying investment vehicles do not double the wrapper.
+  evidence: Details of the owners/debtors, calculations and reconciliation with the expected values.
   verifies:
   - REQ-WAD-006
   - REQ-WAD-007
@@ -546,12 +561,12 @@ acceptance:
     - positive
     - boundary
 - id: ACC-WAD-006
-  given: Un démembrement sans modèle de valorisation des droits, une dette sans imputation et une garantie
-    non appelée.
-  when: Demander un total par personne.
-  then: Les éléments non attribuables sont signalés ; aucun partage 50/50 ni dette certaine pour la garantie
-    n’est inventé et le total concerné est marqué partiel.
-  evidence: Inventaire et bilan partiel avec exclusions motivées.
+  given: A split of ownership into usufruct and bare ownership (démembrement) without a model for valuing
+    the rights, a debt without allocation and a guarantee that has not been called.
+  when: Request a total per person.
+  then: The items that cannot be attributed are flagged; no 50/50 split and no certain debt for the guarantee
+    is invented and the total concerned is marked partial.
+  evidence: Inventory and partial balance sheet with reasoned exclusions.
   verifies:
   - REQ-WAD-006
   - REQ-WAD-007
@@ -565,12 +580,12 @@ acceptance:
     - positive
     - negative
 - id: ACC-WAD-007
-  given: Une position de 1 000 USD, un taux documenté 0,90 EUR/USD et une date d’analyse antérieure à une autre
-    valorisation disponible.
-  when: Calculer avec ce taux puis sans taux et examiner les valeurs retenues.
-  then: 900 EUR sont retenus avec le taux ; sans taux, la conversion est indisponible et le total concerné
-    partiel. La valeur future est exclue ; dates et règle de fraîcheur restent visibles.
-  evidence: Calculs de conversion, sources, dates et résultat en absence de taux.
+  given: A position of 1,000 USD, a documented rate of 0.90 EUR/USD and an analysis date earlier than another
+    available valuation.
+  when: Calculate with this rate and then without a rate, and examine the values retained.
+  then: 900 EUR are retained with the rate; without a rate, the conversion is unavailable and the total
+    concerned is partial. The future value is excluded; dates and freshness rule remain visible.
+  evidence: Conversion calculations, sources, dates and result in the absence of a rate.
   verifies:
   - REQ-WAD-009
   - INV-WAD-003
@@ -583,12 +598,12 @@ acceptance:
     - negative
     - boundary
 - id: ACC-WAD-008
-  given: 3 000 EUR nets mensuels et 12 000 EUR annuels de revenus ; 2 000 EUR mensuels de charges incluant
-    l’emprunt et 1 200 EUR annuels supplémentaires.
-  when: Annualiser et calculer le solde, puis introduire un déficit et un ratio à dénominateur nul.
-  then: Avec 12 mois par an, revenus 48 000 EUR, charges 25 200 EUR et solde 22 800 EUR ; l’emprunt n’est pas
-    déduit deux fois. Le déficit reste négatif ; le ratio nul est non calculable.
-  evidence: Détail des flux, périodicités, conventions, ratios et résultats attendus.
+  given: 3,000 EUR net monthly and 12,000 EUR annual of income; 2,000 EUR monthly of expenses including
+    the loan and 1,200 EUR annual in addition.
+  when: Annualise and calculate the balance, then introduce a deficit and a ratio with a zero denominator.
+  then: With 12 months per year, income 48,000 EUR, expenses 25,200 EUR and balance 22,800 EUR; the loan
+    is not deducted twice. The deficit remains negative; the zero-denominator ratio is not calculable.
+  evidence: Detail of the flows, periodicities, conventions, ratios and expected results.
   verifies:
   - REQ-WAD-010
   - REQ-WAD-011
@@ -602,11 +617,12 @@ acceptance:
     - positive
     - boundary
 - id: ACC-WAD-009
-  given: Un actif déclaré liquide puis assorti d’une indisponibilité documentée et une donnée contradictoire.
-  when: Produire le diagnostic et résoudre la contradiction avec justification.
-  then: Le diagnostic montre les effets sur les objectifs et la liquidité ; la réponse remplacée et la résolution
-    restent traçables, sans risque global inventé.
-  evidence: Diagnostic et historique de la résolution.
+  given: An asset declared liquid and then given a documented restriction on availability (indisponibilité),
+    and a contradictory datum.
+  when: Produce the diagnosis and resolve the contradiction with a justification.
+  then: The diagnosis shows the effects on the objectives and the liquidity; the replaced answer and the
+    resolution remain traceable, without an invented overall risk.
+  evidence: Diagnosis and history of the resolution.
   verifies:
   - REQ-WAD-011
   - REQ-WAD-012
@@ -618,12 +634,12 @@ acceptance:
     - positive
     - negative
 - id: ACC-WAD-010
-  given: Un capital de 10 000 EUR, un horizon d’un an, sans flux, frais ni fiscalité, un modèle composé annuel
-    déclaré.
-  when: Comparer maintien à 0 %, stratégie à +2 % et variante défavorable à -5 %.
-  then: Les valeurs sont respectivement 10 000, 10 200 et 9 500 EUR ; hypothèses, exclusions, modèle et dossier
-    sont identifiables. Les résultats sont présentés comme projections ; aucun taux de réussite n’est inventé.
-  evidence: Comparaison et recalcul indépendant des trois résultats.
+  given: A capital of 10,000 EUR, a horizon of one year, without flows, fees or taxation, a declared annual
+    compound model.
+  when: Compare maintaining at 0%, a strategy at +2% and an unfavourable variant at -5%.
+  then: The values are respectively 10,000, 10,200 and 9,500 EUR; assumptions, exclusions, model and file
+    are identifiable. The results are presented as projections; no success rate is invented.
+  evidence: Comparison and independent recalculation of the three results.
   verifies:
   - REQ-WAD-013
   - REQ-WAD-014
@@ -638,11 +654,11 @@ acceptance:
     - positive
     - boundary
 - id: ACC-WAD-011
-  given: Deux simulations de mêmes entrées et versions puis un changement de frais ou de version du modèle.
-  when: Recalculer et comparer les résultats et références.
-  then: Les deux premiers calculs sont identiques au centime ; le changement crée un résultat et une référence
-    distincts et expose l’effet sur la comparaison sans réécrire l’ancien calcul.
-  evidence: Entrées, conventions d’arrondi, versions et sorties comparées.
+  given: Two simulations with the same inputs and versions, then a change of fees or of model version.
+  when: Recalculate and compare the results and references.
+  then: The first two calculations are identical to the cent; the change creates a distinct result and
+    reference and sets out the effect on the comparison without rewriting the old calculation.
+  evidence: Inputs, rounding conventions, versions and outputs compared.
   verifies:
   - REQ-WAD-013
   - INV-WAD-003
@@ -655,13 +671,13 @@ acceptance:
     - positive
     - boundary
 - id: ACC-WAD-012
-  given: Un cas métier fiscal ou successoral avec modèle déclaré et référence professionnelle ; une période
-    non couverte et un domaine sans modèle.
-  when: Évaluer les trois situations et contrôler la provenance d’une estimation externe.
-  then: Le cas couvert correspond à sa référence ; les deux autres sont indisponibles comme calculs couverts.
-    L’estimation externe garde sa provenance et son état à revoir.
-  evidence: Référence revue, périmètre du modèle et observations des refus ; la revue du modèle est consignée
-    séparément.
+  given: A tax or inheritance business case with a declared model and a professional reference; a period
+    not covered and a domain without a model.
+  when: Evaluate the three situations and check the provenance of an external estimate.
+  then: The covered case matches its reference; the other two are unavailable as covered calculations.
+    The external estimate keeps its provenance and its to-be-reviewed state.
+  evidence: Reviewed reference, scope of the model and observations of the refusals; the review of the
+    model is recorded separately.
   verifies:
   - REQ-WAD-015
   - INV-WAD-008
@@ -673,12 +689,12 @@ acceptance:
     - positive
     - negative
 - id: ACC-WAD-013
-  given: Une préconisation reliée à un objectif, des scénarios, une option de maintien, des frais et une rémunération
-    déclarée.
-  when: Examiner les motifs de choix et l’effet d’une préférence pour une option incompatible.
-  then: Les bénéfices, risques, coûts inconnus et alternatives sont visibles. Le conflit commercial et la préférence
-    sont conservés, sans lever l’incompatibilité bloquante.
-  evidence: Préconisations et motifs, documents datés et verdicts de validation.
+  given: A recommendation linked to an objective, scenarios, an option of maintaining the existing situation,
+    fees and a declared remuneration.
+  when: Examine the reasons for the choice and the effect of a preference for an incompatible option.
+  then: The benefits, risks, unknown costs and alternatives are visible. The commercial conflict and the
+    preference are kept, without lifting the blocking incompatibility.
+  evidence: Recommendations and reasons, dated documents and validation verdicts.
   verifies:
   - REQ-WAD-016
   - REQ-WAD-017
@@ -692,13 +708,13 @@ acceptance:
     - positive
     - negative
 - id: ACC-WAD-014
-  given: Deux dossiers de référence, conseil financier et recommandation personnalisée en assurance, avec données
-    et documents identifiés.
-  when: Un lecteur métier examine les rapports et leurs justifications.
-  then: Il retrouve les éléments d’adéquation financière ou de cohérence et comparaison en assurance correspondant
-    au domaine, les coûts, réserves et actions ; les omissions et incompréhensions sont consignées sans prétendre
-    à une certification.
-  evidence: Grille de revue remplie, identité/contexte du lecteur et rapports examinés.
+  given: Two reference files, financial advice and personalised insurance recommendation, with identified
+    data and documents.
+  when: A business reader examines the reports and their justifications.
+  then: They find the elements of financial suitability (adéquation) or of consistency and comparison in
+    insurance corresponding to the domain, the costs, reservations and actions; omissions and misunderstandings
+    are recorded without claiming a certification.
+  evidence: Completed review grid, identity/context of the reader and reports examined.
   verifies:
   - REQ-WAD-019
   - REQ-WAD-021
@@ -710,13 +726,13 @@ acceptance:
     case_kinds:
     - positive
 - id: ACC-WAD-015
-  given: Un assistant, un conseiller habilité dans le dossier, une proposition automatisée facultative et une
-    version prête à valider.
-  when: Tenter une validation par l’assistant ou l’automatisation puis par le conseiller ; réaliser aussi le
-    parcours sans assistance.
-  then: Les deux premières validations sont refusées ; la décision humaine est attribuée et les deux parcours
-    restent possibles. La proposition retenue n’est pas rétroactivement présentée comme saisie humaine initiale.
-  evidence: Identités des actions et états de proposition/validation relus.
+  given: An assistant, an adviser authorised on the file, an optional automated proposal and a version
+    ready to validate.
+  when: Attempt a validation by the assistant or the automation and then by the adviser; also complete
+    the journey without assistance.
+  then: The first two validations are refused; the human decision is attributed and both journeys remain
+    possible. The proposal that is retained is not retroactively presented as initial human entry.
+  evidence: Identities of the actions and proposal/validation states read back.
   verifies:
   - REQ-WAD-020
   - REQ-WAD-026
@@ -731,11 +747,11 @@ acceptance:
     - positive
     - negative
 - id: ACC-WAD-016
-  given: Un conseil validé puis une modification pertinente du dossier ou du modèle, avant remise.
-  when: Tenter de remettre la révision modifiée ; refaire ensuite la revue et remettre la nouvelle version.
-  then: La première remise est refusée ; la seconde porte la nouvelle validation. L’ancienne version et ses
-    références restent identifiables pendant leur conservation autorisée.
-  evidence: Versions, refus et validation/remise avec leurs références.
+  given: Validated advice and then a relevant modification of the file or of the model, before delivery.
+  when: Attempt to deliver the modified revision; then redo the review and deliver the new version.
+  then: The first delivery is refused; the second carries the new validation. The old version and its references
+    remain identifiable during their authorised retention.
+  evidence: Versions, refusals and validation/delivery with their references.
   verifies:
   - REQ-WAD-020
   - REQ-WAD-021
@@ -749,12 +765,12 @@ acceptance:
     - positive
     - negative
 - id: ACC-WAD-017
-  given: Un rapport finalisé, un destinataire autorisé, une remise échouée puis une remise constatée et un
-    refus client.
-  when: Relire les événements et produire un extrait du rapport.
-  then: La remise échouée n’est pas un succès ; l’extrait conserve statut, périmètre et limites. La réception
-    et le refus sont distincts ; aucune opération n’est marquée réalisée.
-  evidence: Rapport/extrait et événements de remise et de décision client.
+  given: A finalised report, an authorised recipient, a failed delivery and then an established delivery,
+    and a client refusal.
+  when: Read back the events and produce an extract of the report.
+  then: The failed delivery is not a success; the extract keeps status, scope and limits. The receipt and
+    the refusal are distinct; no operation is marked completed.
+  evidence: Report/extract and events of delivery and of client decision.
   verifies:
   - REQ-WAD-021
   - REQ-WAD-022
@@ -767,11 +783,11 @@ acceptance:
     - positive
     - negative
 - id: ACC-WAD-018
-  given: Une préconisation remise et plusieurs actions acceptées, refusées et réalisées déclarées.
-  when: Attribuer responsables/échéances puis consigner les évolutions et justificatifs.
-  then: Chaque action conserve sa filiation et son statut ; ni la réalisation déclarée ni l’acceptation ne
-    valent objectif atteint ou transaction exécutée par le produit.
-  evidence: Plan d’action et historique de décisions relus.
+  given: A delivered recommendation and several actions accepted, refused and declared completed.
+  when: Assign persons responsible/due dates, then record the developments and supporting documents.
+  then: Each action keeps its lineage and its status; neither the declared completion nor the acceptance
+    amounts to an objective achieved or to a transaction executed by the product.
+  evidence: Action plan and history of decisions read back.
   verifies:
   - REQ-WAD-023
   - INV-WAD-005
@@ -785,11 +801,13 @@ acceptance:
     - positive
     - negative
 - id: ACC-WAD-019
-  given: Un service de suivi avec règle datée, échéance atteinte et changement déclaré de situation ou de produit.
-  when: Déclencher le suivi puis enregistrer absence de réponse, refus et réexamen effectif.
-  then: Échéances et événements sont signalés ; silence et refus ne confirment pas l’adéquation. Le réexamen
-    retrouve la version remise, consigne une décision et la prochaine échéance sans effacer le conseil initial.
-  evidence: Règle de suivi, alertes, réponses et décision de réexamen.
+  given: A follow-up service with a dated rule, a due date reached and a declared change of situation or
+    of product.
+  when: Trigger the follow-up, then record an absence of answer, a refusal and an actual re-examination.
+  then: Due dates and events are flagged; silence and refusal do not confirm suitability (adéquation).
+    The re-examination retrieves the delivered version, records a decision and the next due date without
+    erasing the initial advice.
+  evidence: Follow-up rule, alerts, answers and re-examination decision.
   verifies:
   - REQ-WAD-024
   - REQ-WAD-025
@@ -805,12 +823,11 @@ acceptance:
     - negative
     - boundary
 - id: ACC-WAD-020
-  given: Deux cabinets et des utilisateurs autorisés sur des dossiers distincts, dont assistant et administrateur
-    technique.
-  when: Tenter lectures, recherches, historiques, modifications et exports autorisés et interdits.
-  then: Les opérations autorisées aboutissent et les autres sont refusées sans données ni révélation d’existence
-    ; le rôle technique seul n’ouvre pas les dossiers.
-  evidence: Matrice d’accès et réponses observées pour toutes les surfaces déclarées.
+  given: Two firms and users authorised on distinct files, including an assistant and a technical administrator.
+  when: Attempt authorised and forbidden reads, searches, histories, modifications and exports.
+  then: The authorised operations succeed and the others are refused without data or disclosure of existence;
+    the technical role alone does not open the files.
+  evidence: Access matrix and responses observed for all the declared surfaces.
   verifies:
   - REQ-WAD-026
   - INV-WAD-007
@@ -822,11 +839,12 @@ acceptance:
     - positive
     - negative
 - id: ACC-WAD-021
-  given: Une collecte avec données facultatives et un traitement tiers non autorisé.
-  when: Refuser une donnée facultative non nécessaire au service et tenter sa transmission au tiers.
-  then: La prestation indépendante de cette donnée reste possible et la transmission non autorisée est refusée
-    ; catégories et finalités restent consultables.
-  evidence: Paramètres de finalité, recueil et absence de transmission constatée sur la frontière déclarée.
+  given: A collection with optional data and an unauthorised third-party processing.
+  when: Refuse an optional datum not necessary for the service and attempt its transmission to the third
+    party.
+  then: The service that is independent of this datum remains possible and the unauthorised transmission
+    is refused; categories and purposes remain consultable.
+  evidence: Purpose settings, fact-find and absence of transmission established at the declared boundary.
   verifies:
   - REQ-WAD-027
   - INV-WAD-007
@@ -838,14 +856,13 @@ acceptance:
     - positive
     - negative
 - id: ACC-WAD-022
-  given: Des opérations de dossier et des secrets/justificatifs synthétiques identifiables, avec une règle
-    de conservation.
-  when: Relire les historiques et journaux ; traiter une rectification et une demande de suppression autorisée
-    ou une conservation restreinte justifiée.
-  then: Les événements sont attribués ; les journaux techniques ne contiennent ni secrets ni copie du bilan
-    ou des pièces. La rectification est distincte ; toute conservation restreinte expose motif, accès et échéance
-    au responsable autorisé.
-  evidence: Historique, journaux contrôlés et décisions de cycle de vie.
+  given: File operations and identifiable synthetic secrets/supporting documents, with a retention rule.
+  when: Read back the histories and logs; process a rectification and an authorised deletion request or
+    a justified restricted retention.
+  then: The events are attributed; the technical logs contain neither secrets nor a copy of the balance
+    sheet or of the documents. The rectification is distinct; any restricted retention shows its reason,
+    access and end date to the authorised person in charge.
+  evidence: History, checked logs and lifecycle decisions.
   verifies:
   - REQ-WAD-028
   - INV-WAD-004
@@ -858,13 +875,13 @@ acceptance:
     - positive
     - negative
 - id: ACC-WAD-023
-  given: Un dossier avec versions, rapports, droits d’accès et une suppression autorisée postérieure à une
-    sauvegarde.
-  when: Exporter puis restaurer en environnement contrôlé ; provoquer aussi un échec et vérifier la procédure
-    après suppression.
-  then: Les éléments conservables et leurs liens sont retrouvés avec les bons droits ; l’échec est signalé.
-    La procédure ne rend pas les données supprimées de nouveau accessibles et documente le traitement des sauvegardes.
-  evidence: Export, inventaire avant/après restauration, refus d’accès et résultat de la procédure de suppression.
+  given: A file with versions, reports, access rights and an authorised deletion later than a backup.
+  when: Export and then restore in a controlled environment; also cause a failure and check the procedure
+    after deletion.
+  then: The retainable items and their links are retrieved with the right access rights; the failure is
+    reported. The procedure does not make the deleted data accessible again and documents the handling
+    of backups.
+  evidence: Export, inventory before/after restoration, access refusals and result of the deletion procedure.
   verifies:
   - REQ-WAD-029
   - INV-WAD-007
@@ -878,12 +895,12 @@ acceptance:
     - negative
     - recovery
 - id: ACC-WAD-024
-  given: Un dossier sans modules LCB-FT/gel, avec un conseil hors périmètre ou un besoin d’exécution de transaction.
-  when: Examiner les statuts affichés et tenter de conclure une transaction ou une validation réglementaire
-    globale.
-  then: Aucun module absent ne donne un feu vert de conformité et aucune transaction n’est exécutée ; les limites
-    de prestation et dispositifs externes nécessaires sont explicites.
-  evidence: Restitution des limites et observations des actions refusées.
+  given: A file without anti-money-laundering and counter-terrorist-financing (LCB-FT) or asset-freezing
+    (gel des avoirs) modules, with advice outside the scope or a need for execution of a transaction.
+  when: Examine the statuses displayed and attempt to conclude a transaction or an overall regulatory validation.
+  then: No absent module gives a compliance green light and no transaction is executed; the limits of the
+    service and the necessary external arrangements are explicit.
+  evidence: Presentation of the limits and observations of the refused actions.
   verifies:
   - INV-WAD-008
   - POL-WAD-002
@@ -895,13 +912,13 @@ acceptance:
     - positive
     - negative
 - id: ACC-WAD-025
-  given: Un conseiller prépare la validation ou la remise de la révision R ; une autre action modifie une donnée
-    pertinente et crée R+1.
-  when: Soumettre la décision sur R après le changement, y compris avec des actions concurrentes.
-  then: La décision ne valide ni ne remet R+1 avec la revue de R ; la modification et la nouvelle revue nécessaire
-    sont visibles, et R reste une révision historique identifiable.
-  evidence: Ordre des actions, identités de versions, décision refusée et nouvelle validation/remise après
-    revue.
+  given: An adviser prepares the validation or the delivery of revision R; another action modifies a relevant
+    datum and creates R+1.
+  when: Submit the decision on R after the change, including with concurrent actions.
+  then: The decision neither validates nor delivers R+1 with the review of R; the modification and the
+    new review required are visible, and R remains an identifiable historical revision.
+  evidence: Order of the actions, version identities, refused decision and new validation/delivery after
+    review.
   verifies:
   - REQ-WAD-020
   - INV-WAD-004
@@ -913,14 +930,14 @@ acceptance:
     case_kinds:
     - concurrency
 - id: ACC-WAD-026
-  given: Un profil CIF avec évaluation périodique, une dernière revue datée et un profil de risque ; un autre
-    service sans cette même obligation.
-  when: Configurer une échéance CIF supérieure à un an puis une échéance admissible ; atteindre l’échéance
-    et vérifier le second service.
-  then: La règle CIF supérieure à un an est refusée ; la règle admissible et son besoin éventuel de fréquence
-    accrue sont documentés. La revue devient due à l’échéance ; le second service conserve sa propre règle
-    justifiée.
-  evidence: Profils, source/version de règle, résultats des configurations et état des échéances.
+  given: A financial investment adviser (conseiller en investissements financiers, CIF) profile with periodic
+    assessment, a dated last review and a risk profile; another service without this same obligation.
+  when: Configure a CIF due date longer than one year and then an admissible due date; reach the due date
+    and check the second service.
+  then: The CIF rule longer than one year is refused; the admissible rule and its possible need for increased
+    frequency are documented. The review becomes due at the due date; the second service keeps its own
+    justified rule.
+  evidence: Profiles, rule source/version, results of the configurations and state of the due dates.
   verifies:
   - REQ-WAD-024
   - POL-WAD-005
@@ -934,21 +951,20 @@ acceptance:
     - boundary
 delivery:
   required_artifacts:
-  - Matrice clauses → cas et résultats réellement exécutés, avec identités des versions évaluées.
-  - Modèle de données, conventions de calcul et profils de service/domaine documentés, sans stack imposée.
-  - Jeu synthétique de référence comprenant bilan, budget, scénarios, conseil, refus et suivi.
-  - Rapports de référence lisibles, historique de validation/remise et preuve de restauration contrôlée.
-  - Registre des modèles fiscaux, successoraux et de retraite effectivement couverts, leurs sources, validités
-    et limites.
-  - Règles d’accès, finalités, conservation, exportation et suppression, avec conditions d’exploitation du
-    cabinet.
+  - Matrix of clauses → cases and results actually executed, with the identities of the versions evaluated.
+  - Data model, calculation conventions and service/domain profiles documented, without an imposed stack.
+  - Synthetic reference dataset comprising balance sheet, budget, scenarios, advice, refusals and follow-up.
+  - Readable reference reports, validation/delivery history and evidence of controlled restoration.
+  - Register of the tax, inheritance and retirement models actually covered, their sources, validity periods
+    and limits.
+  - Rules for access, purposes, retention, export and deletion, with the operating conditions of the firm.
   verification:
-  - Exécuter les cas positifs, de limite et de refus déclarés sur une révision identifiée ; conserver les résultats
-    manquants ou bloqués.
-  - Comparer les calculs aux valeurs attendues établies indépendamment du candidat et faire revoir les modèles
-    métier par une personne compétente.
-  - Revoir humainement la lisibilité, l’adéquation du périmètre et les limites réglementaires avant toute revendication
-    de préparation à l’exploitation.
-  - Ne pas présenter validation structurelle, revue d’auteur ou fixtures comme preuve d’usage, certification
-    réglementaire ou acceptation client.
+  - Execute the declared positive, boundary and refusal cases on an identified revision; keep the missing
+    or blocked results.
+  - Compare the calculations with expected values established independently of the candidate and have the
+    business models reviewed by a competent person.
+  - Review by a human the readability, the appropriateness of the scope and the regulatory limits before any
+    claim of readiness for operation.
+  - Do not present structural validation, author review or fixtures as evidence of use, regulatory certification
+    or client acceptance.
 extensions: {}

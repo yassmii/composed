@@ -2,6 +2,10 @@
 
 [English version](README.md)
 
+> Le contrat est désormais rédigé en anglais, en version **1.0.1** ; le texte français 1.0.0
+> est archivé dans [history/1.0.0/](../history/1.0.0/README.md). Les textes libres des
+> profils sont traduits ; leurs clés et identifiants restent en français.
+
 Ces trois configurations illustrent l'[interface logique](../contracts/targeting-profile.md).
 Elles sont au statut **illustrative**, avec `activation_ready: false` : offre,
 territoire, connecteurs, politique et seuils d'évaluation doivent être validés pour

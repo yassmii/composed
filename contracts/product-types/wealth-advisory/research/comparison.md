@@ -1,70 +1,72 @@
-# Recherche initiale et décisions de conception
+# Initial research and design decisions
 
-État au 4 novembre 2026. Recherche `initial`, sans essai des produits comparés.
-La demande confirmée est un parcours de conseil patrimonial complet pour un
-gestionnaire de patrimoine en France, préconisations et suivi compris. La LCB-FT
-et le gel des avoirs sont réservés à une évolution ultérieure.
+State as at 4 November 2026. Research `initial`, without trial of the compared products.
+The confirmed request is a complete wealth-advice journey for a wealth manager
+(gestionnaire de patrimoine) in France, recommendations and follow-up included.
+Anti-money-laundering and counter-terrorist financing (lutte contre le blanchiment de
+capitaux et le financement du terrorisme, LCB-FT) and asset freezing (gel des avoirs) are
+reserved for a later evolution.
 
-## Questions et périmètre de recherche
+## Research questions and scope
 
-Quelles informations relier au bilan ? Comment distinguer inventaire, scénario et
-conseil ? Quelles traces rendent une recommandation et son suivi réexaminables ?
-Sources retenues : documentation primaire de trois produits, AMF et CNIL, avec
-lecture complémentaire de la recommandation ACPR. Première passe bornée à ces
-sources et aux questions de conseil ; aucune collecte de dossier client ni achat.
-Avant promotion, compléter les sources réglementaires par domaine et obtenir une
-revue métier. Actualiser les références lors d'un changement signalé, avant une
-adoption en production ou l'ajout d'un domaine ; pas de rafraîchissement automatique
-susceptible de changer le contrat sans décision et versionnement.
+Which information should be linked to the balance sheet? How to distinguish inventory,
+scenario and advice? Which traces make a recommendation and its follow-up re-examinable?
+Sources retained: primary documentation of three products, AMF and CNIL, with
+complementary reading of the ACPR recommendation. First pass bounded to these
+sources and to the advice questions; no collection of client files and no purchase.
+Before promotion, complete the regulatory sources per domain and obtain a
+business review. Update the references when a change is reported, before
+adoption in production or the addition of a domain; no automatic refresh
+liable to change the contract without a decision and versioning.
 
-## Comparables documentés
+## Documented comparables
 
-| Produit et source primaire | Observation permise | Limite et choix du contrat |
+| Product and primary source | Observation permitted | Limit and choice of the contract |
 | --- | --- | --- |
-| [Harvest Big](https://www.harvest.fr/produit/big/) | Études patrimoniales, simulations et rapports. | Présentation d'éditeur, pas une preuve d'exactitude ni de bénéfice comparatif. |
-| [Big, saisie guidée](https://big-help.harvest.fr/changelog/23-04-2026-ouverture-de-la-saisie-guidee-pour-creer-vos-dossiers-avec-un-veritable-guide-dentretien-client/) | Parcours de recueil personnel/familial, inventaire et budget, puis récapitulatif. | Le titre affiche le 27/04/2026 et l'URL le 23/04. Ses raccourcis fiscaux et son nombre de champs ne sont pas repris comme règles universelles. |
-| [RightCapital, Balance Sheet](https://help.rightcapital.com/module-overview/client-portal/dashboard/balance-sheet) | Actifs/passifs/net, détail par propriétaire, dates et historique. | La taxonomie américaine et les règles de trusts ne sont pas transposées au droit français. |
-| [MoneyGuide, FAQ](https://www.moneyguidepro.com/ifa/home/faqs) | Plans articulés aux objectifs et au risque. | La méthode et les modèles de projection ne sont pas importés ; aucun résultat de performance vérifié. |
+| [Harvest Big](https://www.harvest.fr/produit/big/) | Wealth studies, simulations and reports. | Publisher's presentation, not evidence of accuracy or of comparative benefit. |
+| [Big, guided entry (saisie guidée)](https://big-help.harvest.fr/changelog/23-04-2026-ouverture-de-la-saisie-guidee-pour-creer-vos-dossiers-avec-un-veritable-guide-dentretien-client/) | Personal/family fact-find journey, inventory and budget, then summary. | The title displays 27/04/2026 and the URL 23/04. Its tax shortcuts and its number of fields are not taken over as universal rules. |
+| [RightCapital, Balance Sheet](https://help.rightcapital.com/module-overview/client-portal/dashboard/balance-sheet) | Assets/liabilities/net, detail by owner, dates and history. | The American taxonomy and the trust rules are not transposed to French law. |
+| [MoneyGuide, FAQ](https://www.moneyguidepro.com/ifa/home/faqs) | Plans tied to objectives and to risk. | The projection method and models are not imported; no verified performance result. |
 
-La convergence documentaire porte sur le recueil structuré, l'état patrimonial,
-les objectifs, les projections et la restitution. Les règles précises de quote-part,
-non-double-compte, inconnues, calcul et validation sont des choix explicités dans
-la traçabilité ; elles ne sont pas présentées comme des garanties observées dans
-tous ces produits. Une seule page fournisseur ne suffit pas à conclure à une pratique
-universelle ou à la meilleure expérience utilisateur.
+The documentary convergence concerns the structured fact-find, the wealth statement,
+the objectives, the projections and the report. The precise rules on ownership shares,
+no double counting, unknowns, calculation and validation are choices made explicit in
+the traceability; they are not presented as guarantees observed in
+all these products. A single vendor page is not enough to conclude that a practice is
+universal or that it is the best user experience.
 
-## Sources françaises et frontières
+## French sources and boundaries
 
-- [AMF, information sur les CIF](https://www.amf-france.org/fr/espace-epargnants/savoir-bien-investir/choisir-un-professionnel/conseillers-en-investissements-financiers) : distinguer l'activité et le recueil préalables à un conseil financier. Page pédagogique, pas inventaire juridique complet.
-- [Règlement général AMF](https://www.amf-france.org/fr/eli), version affichée au 11/09/2026, article 325-17 : motivation de l'adéquation et, pour le service d'évaluation périodique, examen au moins annuel, accru selon risque et instruments. Ce rythme ne devient pas celui de tous les conseils patrimoniaux.
-- [CNIL, principes](https://www.cnil.fr/fr/cnil-direct/question/quels-sont-les-grands-principes-des-regles-de-protection-des-donnees) : finalité, proportionnalité, conservation, confidentialité et droits. Les durées et bases applicables au cabinet doivent être qualifiées séparément.
-- [ACPR, recommandation 2024-R-03](https://acpr.banque-france.fr/system/files/2024-12/20241022_recommandation_2024-R-03_0.pdf), consultée par navigation : contexte assurance, motivation et suivi différencié. La récupération brute depuis le vérificateur local est refusée en HTTP 403 ; **aucune empreinte PDF n'est inventée**, ni observation structurée prétendument scellée. Cette limite doit être levée pour la provenance complète du domaine assurance avant promotion. Une recommandation de l'autorité n'est pas assimilée indistinctement à une obligation législative.
+- [AMF, information on financial investment advisers (conseillers en investissements financiers, CIF)](https://www.amf-france.org/fr/espace-epargnants/savoir-bien-investir/choisir-un-professionnel/conseillers-en-investissements-financiers): distinguish the activity and the fact-find (recueil) that precede financial advice. Educational page, not a complete legal inventory.
+- [AMF general regulation (règlement général de l'AMF)](https://www.amf-france.org/fr/eli), version displayed as at 11/09/2026, article 325-17: reasons for suitability (adéquation) and, for the periodic assessment service, examination at least annually, increased according to risk and instruments. This rhythm does not become that of all wealth advice.
+- [CNIL, principles](https://www.cnil.fr/fr/cnil-direct/question/quels-sont-les-grands-principes-des-regles-de-protection-des-donnees): purpose, proportionality, retention, confidentiality and rights. The durations and legal bases applicable to the firm must be qualified separately.
+- [ACPR, recommendation 2024-R-03](https://acpr.banque-france.fr/system/files/2024-12/20241022_recommandation_2024-R-03_0.pdf), consulted by browsing: insurance context, reasons and differentiated follow-up. Raw retrieval from the local verifier is refused with HTTP 403; **no PDF hash is invented**, nor any structured observation claimed to be sealed. This limit must be lifted for the complete provenance of the insurance domain before promotion. A recommendation of the authority is not treated indiscriminately as a legislative obligation.
 
-La [position AMF DOC-2013-02](https://www.amf-france.org/fr/reglementation/doctrine/doc-2013-02)
-a été retrouvée lors de la première recherche. Sa page indique la fin d'applicabilité
-après le 11 octobre 2022. Sa référence et l'observation de cette limite sont conservées
-pour éviter sa réutilisation comme texte actuel ; **aucune clause normative n'en est dérivée**.
+The [AMF position DOC-2013-02](https://www.amf-france.org/fr/reglementation/doctrine/doc-2013-02)
+was found during the first research. Its page indicates the end of applicability
+after 11 October 2022. Its reference and the observation of this limit are kept
+to avoid its reuse as a current text; **no normative clause is derived from it**.
 
-Les huit empreintes de `sources.yaml` identifient les octets effectivement récupérés
-le 4 novembre, pas des versions officielles immuables. Les corps tiers restent dans
-un répertoire temporaire hors dépôt ; aucun article ni PDF complet n'est redistribué.
-Une page dynamique peut changer d'empreinte sans changement métier. Une nouvelle
-différence demande examen, pas remplacement automatique d'une décision produit.
+The eight hashes in `sources.yaml` identify the bytes actually retrieved
+on 4 November, not immutable official versions. The third-party bodies remain in
+a temporary directory outside the repository; no complete article or PDF is redistributed.
+A dynamic page can change hash without a business change. A new
+difference calls for examination, not automatic replacement of a product decision.
 
-## Arbitrages proposés, non encore approuvés comme politiques métier
+## Trade-offs proposed, not yet approved as business policies
 
-1. Commencer par les personnes physiques et groupes nommés ; les sociétés peuvent
-   être des entités de détention sans ouvrir implicitement leur conseil autonome.
-2. Rendre les domaines couverts explicites ; une simulation générique n'autorise pas
-   à annoncer un moteur fiscal ou successoral complet.
-3. Permettre un bilan partiel, mais refuser la validation d'un conseil si une information
-   nécessaire manque ou si une incompatibilité demeure.
-4. Conserver la révision remise pendant la durée autorisée, sans écraser l'avis précédent
-   et sans faire obstacle aux rectifications ou suppressions légitimes.
-5. Exiger une décision humaine sur le conseil ; ne pas rendre l'IA nécessaire au parcours.
+1. Start with natural persons and named groups; companies can
+   be holding entities without implicitly opening advice to them in their own right.
+2. Make the covered domains explicit; a generic simulation does not authorise
+   announcing a complete tax or inheritance engine.
+3. Allow a partial balance sheet, but refuse the validation of advice if a necessary
+   piece of information is missing or if an incompatibility remains.
+4. Keep the delivered revision for the authorised duration, without overwriting the previous opinion
+   and without obstructing legitimate rectifications or deletions.
+5. Require a human decision on the advice; do not make AI necessary to the journey.
 
-Restent à qualifier : statuts du cabinet cible, modèles et situations prioritaires,
-conditions exactes de conseil indépendant/non indépendant, coûts et durées de
-conservation applicables, périmètre des données, contraintes d'exploitation et
-retours d'un gestionnaire sur les rapports. Les observations documentaires ne sont
-pas des entretiens ni une validation utilisateur.
+Remaining to be qualified: statuses of the target firm, priority models and situations,
+exact conditions of independent/non-independent advice, costs and applicable retention
+periods, scope of the data, operating constraints and
+feedback from a wealth manager on the reports. The documentary observations are
+neither interviews nor user validation.

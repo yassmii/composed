@@ -3,150 +3,150 @@ observations:
   - id: OBS-PR-001
     sources:
       - SRC-PR-ATTIO
-    statement: Attio distingue les attributs des entités et les listes portant les données propres à un processus;
-      les vues filtrent une représentation sans créer une nouvelle identité.
+    statement: Attio distinguishes the attributes of entities from the lists carrying the data specific to a process;
+      views filter a representation without creating a new identity.
   - id: OBS-PR-002
     sources:
       - SRC-PR-ATTIO
-    statement: Attio documente des objets personnalisés et des relations entre enregistrements; ces possibilités
-      dépendent de droits et de limites de produit.
+    statement: Attio documents custom objects and relations between records; these possibilities
+      depend on rights and product limits.
   - id: OBS-PR-003
     sources:
       - SRC-PR-HUBSPOT-SCORE
-    statement: HubSpot distingue scores d’adéquation, d’engagement et combinés, avec des résultats séparés
-      possibles pour chaque dimension.
+    statement: HubSpot distinguishes fit, engagement and combined scores, with separate results
+      possible for each dimension.
   - id: OBS-PR-004
     sources:
       - SRC-PR-HUBSPOT-SCORE
-    statement: HubSpot documente une décroissance temporelle de scores d’événements et la réévaluation rétroactive
-      lors de changements de critères.
+    statement: HubSpot documents a time decay of event scores and retroactive re-evaluation
+      when criteria change.
   - id: OBS-PR-005
     sources:
       - SRC-PR-PIPEDRIVE
-    statement: Pipedrive conserve des leads non qualifiés dans une boîte distincte du pipeline puis permet leur
-      conversion en affaires.
+    statement: Pipedrive keeps unqualified leads in an inbox distinct from the pipeline and then allows their
+      conversion into deals.
   - id: OBS-PR-006
     sources:
       - SRC-PR-PIPEDRIVE
-    statement: Pipedrive impose de relier un lead à une personne ou organisation; cette contrainte particulière ne
-      couvre pas seule tous les types de cibles demandés ici.
+    statement: Pipedrive requires a lead to be linked to a person or organisation; this particular constraint does not
+      on its own cover all the target types requested here.
   - id: OBS-PR-007
     sources:
       - SRC-PR-PIPEDRIVE
-    statement: La fiche lead Pipedrive distingue activités à venir, brouillons et historique des activités réalisées.
+    statement: The Pipedrive lead detail view distinguishes upcoming activities, drafts and the history of completed activities.
   - id: OBS-PR-008
     sources:
       - SRC-PR-PIPEDRIVE-FORMS
-    statement: Pipedrive documente des formulaires personnalisables partageables ou intégrables à un site,
-      alimentant les leads ou affaires.
+    statement: Pipedrive documents customisable forms that can be shared or embedded in a website,
+      feeding leads or deals.
   - id: OBS-PR-009
     sources:
       - SRC-PR-PIPEDRIVE-FORMS
-    statement: Pipedrive indique que ses formulaires n’ont pas de champ de consentement par défaut et propose de
-      le configurer comme champ personnalisé.
+    statement: Pipedrive states that its forms have no consent field by default and proposes
+      configuring it as a custom field.
   - id: OBS-PR-010
     sources:
       - SRC-PR-CLAY
-    statement: Clay permet une succession configurable de fournisseurs pour enrichir un type de donnée, avec
-      conditions d’exécution et indication du fournisseur ayant retourné le résultat.
+    statement: Clay allows a configurable succession of providers to enrich a type of data, with
+      run conditions and an indication of the provider that returned the result.
   - id: OBS-PR-011
     sources:
       - SRC-PR-CLAY-SIGNALS
-    statement: Clay documente la surveillance de changements à partir d’enrichissements planifiés et d’un
-      historique d’exécution.
+    statement: Clay documents the monitoring of changes from scheduled enrichments and a
+      run history.
   - id: OBS-PR-012
     sources:
       - SRC-PR-HUBSPOT
-    statement: HubSpot documente des sorties de séquence après réponse ou rendez-vous, avec déclencheurs et portée
-      configurables.
+    statement: HubSpot documents sequence exits after a reply or a meeting, with configurable triggers and
+      scope.
   - id: OBS-PR-013
     sources:
       - SRC-PR-HUBSPOT
-    statement: HubSpot indique des limites de reconnaissance des réponses automatiques selon les messageries et
-      recommande leur examen.
+    statement: HubSpot states limits on the recognition of automatic replies depending on the mail service and
+      recommends reviewing them.
   - id: OBS-PR-014
     sources:
       - SRC-PR-CNIL-COMM
-    statement: La CNIL distingue finalités promotionnelle, transactionnelle et relationnelle, ainsi que les
-      conditions de prospection électronique envers particuliers et professionnels.
+    statement: The CNIL distinguishes promotional, transactional and relational purposes, as well as the
+      conditions for electronic prospecting towards individuals and professionals.
   - id: OBS-PR-015
     sources:
       - SRC-PR-CNIL-FAQ
-    statement: La CNIL recommande pour les prospects une conservation de trois ans depuis la collecte ou le
-      dernier contact provenant du prospect; son référentiel est non contraignant et les écarts doivent être
-      justifiés.
+    statement: The CNIL recommends for prospects a retention of three years from collection or from the
+      last contact coming from the prospect; its reference framework (référentiel) is non-binding and deviations must be
+      justified.
   - id: OBS-PR-016
     sources:
       - SRC-PR-CNIL-REF
-    statement: Le référentiel CNIL exclut notamment certains profilages depuis des données tierces et précise que
-      la simple ouverture d’un courriel ne constitue pas un contact du prospect pour renouveler la
-      conservation.
+    statement: The CNIL reference framework (référentiel) excludes in particular certain profiling from third-party data and specifies that
+      the mere opening of an email does not constitute a contact from the prospect that renews
+      retention.
   - id: OBS-PR-017
     sources:
       - SRC-PR-CNIL-REUSE
-    statement: La CNIL traite la réutilisation de données personnelles publiées sur Internet en distinguant
-      licéité, information, droits, sous-traitance et risques; une publication ne supprime pas ces
+    statement: The CNIL addresses the reuse of personal data published on the Internet by distinguishing
+      lawfulness, notice, rights, processing by processors and risks; publication does not remove these
       obligations.
   - id: OBS-PR-018
     sources:
       - SRC-PR-CNIL-FAQ
-    statement: La CNIL décrit une liste repoussoir de données minimales réservées à la gestion de l’opposition,
-      pour éviter une nouvelle sollicitation après réimport.
+    statement: The CNIL describes a suppression list (liste repoussoir) of minimal data reserved for managing the objection,
+      to avoid a new solicitation after re-import.
   - id: OBS-PR-019
     sources:
       - SRC-PR-CNIL-PHONE
-    statement: La page CNIL sur le démarchage mentionne une modification des règles de prospection téléphonique
-      des consommateurs à compter du 11 août 2026.
+    statement: The CNIL page on canvassing (démarchage) mentions a change to the rules on telephone prospecting
+      of consumers from 11 August 2026.
   - id: OBS-PR-020
     sources:
       - SRC-PR-STRIPE-IDEMPOTENCY
-    statement: Stripe documente la réutilisation d’une clé pour répéter une requête sans créer un second effet,
-      avec contrôle de cohérence des paramètres et durée limitée de conservation de la clé.
+    statement: Stripe documents the reuse of a key to repeat a request without creating a second effect,
+      with a consistency check on the parameters and a limited retention period for the key.
   - id: OBS-PR-021
     sources:
       - SRC-PR-STRIPE-EVENTS
-    statement: Stripe documente la possibilité d’événements dupliqués ou désordonnés, le rapprochement par
-      identifiants et la vérification des signatures des notifications.
+    statement: Stripe documents the possibility of duplicated or out-of-order events, reconciliation by
+      identifiers and verification of notification signatures.
   - id: OBS-PR-022
     sources:
       - SRC-PR-PROV
-    statement: PROV-O distingue attribution, dérivation, révision et invalidation des informations.
+    statement: PROV-O distinguishes attribution, derivation, revision and invalidation of information.
   - id: OBS-PR-023
     sources:
       - SRC-PR-WCAG
-    statement: WCAG 2.2 définit des critères vérifiables pour navigation clavier, alternatives aux gestes de
-      déplacement, adaptation de présentation et messages de statut.
+    statement: WCAG 2.2 defines verifiable criteria for keyboard navigation, alternatives to dragging
+      movements, adaptation of presentation and status messages.
   - id: OBS-PR-024
     sources:
       - SRC-PR-OWASP-AGENCY
-    statement: OWASP identifie fonctions, permissions et autonomie excessives comme facteurs d’actions
-      dommageables dans les applications à modèles de langage.
+    statement: OWASP identifies excessive functionality, permissions and autonomy as factors in damaging
+      actions in applications based on language models.
   - id: OBS-PR-025
     sources:
       - SRC-PR-OWASP-INJECTION
-    statement: OWASP décrit l’injection indirecte via des contenus récupérés et les limites des seules protections
-      de prompt; réduction des privilèges et contrôles d’action limitent ses effets.
+    statement: OWASP describes indirect injection through retrieved content and the limits of prompt protections
+      alone; reduced privileges and action controls limit its effects.
   - id: OBS-PR-026
     sources:
       - SRC-PR-GMAIL
-    statement: Google distingue exigences pour tous les expéditeurs et pour envois en volume vers les comptes
-      Gmail personnels, notamment authentification, opposition et surveillance des plaintes.
+    statement: Google distinguishes requirements for all senders and for bulk sending to personal Gmail
+      accounts, in particular authentication, unsubscription and monitoring of complaints.
   - id: OBS-PR-027
     sources:
       - SRC-PR-RNIC
-    statement: La fiche ANAH du RNIC décrit des données d’identification et de composition des copropriétés, avec
-      le nom du syndic le cas échéant, sous Licence Ouverte 2.0.
+    statement: The ANAH page for the RNIC describes identification and composition data for co-owned buildings (copropriétés), with
+      the name of the managing agent (syndic) where applicable, under Licence Ouverte 2.0.
   - id: OBS-PR-028
     sources:
       - SRC-PR-COPRO
-    statement: Service Public distingue syndicat des copropriétaires, syndic professionnel ou bénévole et conseil
-      syndical, avec des fonctions différentes.
+    statement: Service Public distinguishes the co-owners' association (syndicat des copropriétaires), the professional or volunteer managing agent (syndic) and the co-owners' council (conseil
+      syndical), with different functions.
   - id: OBS-PR-029
     sources:
       - SRC-PR-CNIL-FAQ
-    statement: La CNIL rappelle l’information sur la source et la finalité lors d’une collecte indirecte, avec
-      délai et exceptions applicables.
+    statement: The CNIL recalls the notice about the source and the purpose in the case of indirect collection, with
+      the applicable time limit and exceptions.
   - id: OBS-PR-030
     sources:
       - SRC-PR-RNIC
-    statement: La fiche RNIC annonce une mise à jour quotidienne depuis avril 2026 et de possibles variations de noms de colonnes; cette observation porte sur la fiche et non sur un audit du fichier national.
+    statement: The RNIC page announces a daily update since April 2026 and possible variations in column names; this observation concerns the page and not an audit of the national file.

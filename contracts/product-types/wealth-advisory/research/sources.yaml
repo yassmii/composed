@@ -5,31 +5,32 @@ candidate_products:
 - RightCapital
 - Envestnet MoneyGuide
 source_selection:
-- Sources éditeurs pour les comportements documentés ; aucune démonstration produit exécutée.
-- Sources AMF et CNIL séparées des comparables ; ACPR consultée en complément avec récupération brute bloquée,
-  détaillée dans comparison.md.
-- Empreintes des octets effectivement récupérés ; corps conservés temporairement hors dépôt, sans republication
-  des pages tierces.
+- Publisher sources for the documented behaviours; no product demonstration executed.
+- AMF and CNIL sources kept separate from the comparables; ACPR consulted as a complement with raw retrieval
+  blocked, detailed in comparison.md.
+- Hashes of the bytes actually retrieved; bodies kept temporarily outside the repository, without republication
+  of the third-party pages.
 sources:
 - id: SRC-PA-BIG
   product: Harvest Big
-  version: Page produit non versionnée, consultée le 2026-11-04
+  version: Unversioned product page, consulted on 2026-11-04
   title: Big
   url: https://www.harvest.fr/produit/big/
-  locator: 'Notre solution : études, simulation et rapports'
+  locator: 'Our solution: studies, simulation and reports (Notre solution : études, simulation et rapports)'
   retrieved_on: '2026-11-04'
   content_sha256: 3171384f8cfddd9d934cfac8024dcdfbde4f349f3986a22fb88f22a5f0be5cec
 - id: SRC-PA-BIG-GUIDE
   product: Harvest Big
-  version: Changelog affiché 27/04/2026 ; URL datée 23/04/2026
+  version: Changelog displayed 27/04/2026; URL dated 23/04/2026
   title: Saisie guidée Big
   url: https://big-help.harvest.fr/changelog/23-04-2026-ouverture-de-la-saisie-guidee-pour-creer-vos-dossiers-avec-un-veritable-guide-dentretien-client/
-  locator: Situation personnelle/familiale ; patrimoine et budget ; récapitulatif
+  locator: Personal/family situation; wealth and budget; summary (Situation personnelle/familiale ; patrimoine
+    et budget ; récapitulatif)
   retrieved_on: '2026-11-04'
   content_sha256: 4e48c86985602d05f1ff08a37c0c22fe89289fd1cd7cf9cea15e27281c604074
 - id: SRC-PA-RIGHTCAPITAL
   product: RightCapital
-  version: Documentation SaaS non versionnée, consultée le 2026-11-04
+  version: Unversioned SaaS documentation, consulted on 2026-11-04
   title: Balance Sheet
   url: https://help.rightcapital.com/module-overview/client-portal/dashboard/balance-sheet
   locator: Current, Details, Historical
@@ -37,41 +38,42 @@ sources:
   content_sha256: 83464cbc1ae288b833b81bb2c8c67ab57eb6670c1e4bc39967f22afcdb7dbdaa
 - id: SRC-PA-MONEYGUIDE
   product: Envestnet MoneyGuide
-  version: FAQ non versionnée, consultée le 2026-11-04
+  version: Unversioned FAQ, consulted on 2026-11-04
   title: Frequently Asked Questions
   url: https://www.moneyguidepro.com/ifa/home/faqs
-  locator: Types de plans et objectifs
+  locator: Types of plans and goals
   retrieved_on: '2026-11-04'
   content_sha256: baf491c024efcf33da7ea50039d2f60cc139d5d3ed0e83c2ec0b0e6e5a3a95fa
 - id: SRC-PA-AMF-CIF
-  product: AMF — information CIF
-  version: Page affichée 19/10/2018, consultée le 2026-11-04 ; information, pas inventaire réglementaire complet
+  product: AMF — CIF information
+  version: Page displayed 19/10/2018, consulted on 2026-11-04; information, not a complete regulatory inventory
   title: Que savoir sur les CIF ?
   url: https://www.amf-france.org/fr/espace-epargnants/savoir-bien-investir/choisir-un-professionnel/conseillers-en-investissements-financiers
-  locator: Activités et obligations envers le client
+  locator: Activities and obligations towards the client (Activités et obligations envers le client)
   retrieved_on: '2026-11-04'
   content_sha256: 61206daba481fd926e3920e81923f6b4c9551f68d1ad09caaac96e9e99143d6d
 - id: SRC-PA-CNIL
   product: CNIL
-  version: FAQ non versionnée, consultée le 2026-11-04
+  version: Unversioned FAQ, consulted on 2026-11-04
   title: Principes de protection des données
   url: https://www.cnil.fr/fr/cnil-direct/question/quels-sont-les-grands-principes-des-regles-de-protection-des-donnees
-  locator: Finalité, pertinence, conservation, confidentialité, droits
+  locator: Purpose, relevance, retention, confidentiality, rights (Finalité, pertinence, conservation, confidentialité,
+    droits)
   retrieved_on: '2026-11-04'
   content_sha256: ef3bbbefcef6976c9bf3c5a5c81aab39b282b98bbcb603efc456e18592e04a83
 - id: SRC-PA-AMF-HISTORICAL
-  product: AMF — archive DOC-2013-02
-  version: Applicable du 2014-11-06 au 2022-10-11 ; source historique écartée
+  product: AMF — DOC-2013-02 archive
+  version: Applicable from 2014-11-06 to 2022-10-11; historical source set aside
   title: Recueil des informations relatives à la connaissance du client
   url: https://www.amf-france.org/fr/reglementation/doctrine/doc-2013-02
-  locator: Encart de fin d’applicabilité
+  locator: End-of-applicability notice (Encart de fin d’applicabilité)
   retrieved_on: '2026-11-04'
   content_sha256: 7921117090f1c1ac37e591e7da14766b5ab72d4aa53a04aa76564f6e90499c96
 - id: SRC-PA-AMF-RG
-  product: AMF — règlement général
-  version: Version affichée au 2026-09-11, article 325-17
+  product: AMF — general regulation (règlement général)
+  version: Version displayed as at 2026-09-11, article 325-17
   title: Déclaration d’adéquation
   url: https://www.amf-france.org/fr/eli
-  locator: Article 325-17, justification et suivi périodique
+  locator: Article 325-17, justification and periodic follow-up
   retrieved_on: '2026-11-04'
   content_sha256: 8f1f0a2e59186bfb4329bff0219070b5018804d10ca1bac8d4f3d7a1364a13f8

@@ -1,103 +1,103 @@
-# Interface logique du profil de ciblage — 0.1.0
+# Logical interface of the targeting profile — 0.1.0
 
-Cette interface de profil conserve sa version 0.1.0 et accompagne désormais le
-contrat produit 1.0.0 candidate; ces deux versions sont indépendantes.
+This profile interface keeps its version 0.1.0 and now accompanies the
+candidate product contract 1.0.1; these two versions are independent.
 
-Ce document précise `CAP-PR-001`, `CAP-PR-006` et `CAP-PR-017` du
-[contrat](contract.yaml). Les YAML d'[exemple](../examples/README.md) illustrent
-cette interface, sans imposer un format de stockage, une API, un langage de règles
-ou un fournisseur. Le profil est une configuration de contenu, jamais une autorité
-d'exécution. Les obligations normatives restent celles des clauses identifiées.
+This document details `CAP-PR-001`, `CAP-PR-006` and `CAP-PR-017` of the
+[contract](contract.yaml). The [example](../examples/README.md) YAML files illustrate
+this interface, without imposing a storage format, an API, a rule language
+or a supplier. The profile is a content configuration, never an execution
+authority. The normative obligations remain those of the identified clauses.
 
-## Ce que le profil apporte au moteur
+## What the profile brings to the engine
 
-| Élément | Contenu et validation attendus |
+| Element | Expected content and validation |
 | --- | --- |
-| Identité et publication | Identifiant, version, statut, propriétaire métier, objectif et historique; une publication est immuable. |
-| Cibles | Types recherchés, libellés, attributs typés et unités éventuelles; champs nécessaires à une recherche ou à un niveau de qualification distingués des données facultatives. |
-| Entités liées | Types d'interlocuteurs et objets contextuels; relations, rôles, cardinalités, dates ou validité inconnue; aucun interlocuteur obligatoire pour simplement conserver une cible. |
-| Identité | Identifiants fiables par type avec espace de noms de l'émetteur; normalisation déclarée; critères de rapprochement possibles et motifs de revue. |
-| Acquisition | Sources candidates, accès et conditions de réutilisation à établir, filtres, limites, correspondance des champs; saisie et import; formulaire entrant si pertinent. |
-| Qualification | Niveaux nommés, critères, opérateurs et valeurs attendues, dimension, caractère obligatoire, types de preuves admis, portée et fraîcheur. |
-| Priorisation | Règles ou méthode explicables et versionnées; ne pas mélanger score de priorité et preuve de qualification. |
-| Suivi | Pipeline, critères de passage, issues, responsabilité, délais et prochaine action attendue; une attente est datée et motivée. |
-| Contenu de contact | Offre et propositions de valeur approuvées, faits sourcés, ton, langue, modèles et interdictions; coordonnées et chiffres inconnus ne sont pas générés comme des faits. |
-| Surveillance facultative | Population, attributs ou recherche suivis, cadence, budget, différences utiles et notifications; ne pas transformer une perte de couverture en changement métier. |
-| Évaluation | Corpus autorisé, vérité terrain disponible, annotations, référence simple et seuils mesurables par niveau. |
-| Dépendances | Références vers la politique de conformité, les sources réellement habilitées et les canaux disponibles; leur absence bloque les seules opérations dépendantes. |
+| Identity and publication | Identifier, version, status, business owner, objective and history; a publication is immutable. |
+| Targets | Types sought, labels, typed attributes and any units; fields necessary for a search or for a qualification level distinguished from optional data. |
+| Linked entities | Types of contact persons and contextual objects; relations, roles, cardinalities, dates or unknown validity; no contact person is mandatory simply to keep a target. |
+| Identity | Reliable identifiers per type with the namespace of the issuer; declared normalisation; possible matching criteria and reasons for review. |
+| Acquisition | Candidate sources, access and reuse conditions to be established, filters, limits, field mapping; manual entry and import; inbound form if relevant. |
+| Qualification | Named levels, criteria, operators and expected values, dimension, mandatory character, admitted types of evidence, scope and freshness. |
+| Prioritisation | Explainable and versioned rules or method; do not mix priority score and qualification evidence. |
+| Follow-up | Pipeline, criteria for moving on, outcomes, responsibility, time limits and expected next action; a wait is dated and given a reason. |
+| Contact content | Approved offer and value propositions, sourced facts, tone, language, templates and prohibitions; unknown contact details and figures are not generated as facts. |
+| Optional monitoring | Population, attributes or search followed, cadence, budget, useful differences and notifications; do not turn a loss of coverage into a business change. |
+| Evaluation | Authorised corpus, available ground truth, annotations, simple baseline and measurable thresholds per level. |
+| Dependencies | References to the compliance policy, the sources actually authorised and the available channels; their absence blocks only the dependent operations. |
 
-Les noms propres de connecteurs, registres ou catégories sont des données du profil
-ou de ses dépendances. Leur présence dans un exemple ne les rend pas obligatoires
-pour le socle.
+The proper names of connectors, registers or categories are data of the profile
+or of its dependencies. Their presence in an example does not make them mandatory
+for the core.
 
-## Règles et inconnues
+## Rules and unknowns
 
-Chaque critère a un identifiant stable, une dimension et une règle interprétable.
-Les exemples emploient `field`, `operator` et `value`; les valeurs d'opérateurs
-illustrées sont `in`, `equals`, `gte` et `exists`. Les règles d'un déploiement
-doivent avoir une sémantique déclarée et être validables avant publication.
-Un opérateur ou une référence inconnus ne sont pas exécutés comme des instructions
-libres. Une règle plus complexe appartient à une extension versionnée déclarée,
-sans changer les invariants du contrat.
+Each criterion has a stable identifier, a dimension and an interpretable rule.
+The examples use `field`, `operator` and `value`; the operator values
+illustrated are `in`, `equals`, `gte` and `exists`. The rules of a deployment
+must have declared semantics and be validatable before publication.
+An unknown operator or reference is not executed as free
+instructions. A more complex rule belongs to a declared versioned extension,
+without changing the invariants of the contract.
 
-Une observation apporte valeur, origine, localisateur, dates, mode d'obtention et
-état de vérification. Les types d'attributs et les preuves sont contrôlés avant
-évaluation. Une valeur déclarée peut être admise par un critère explicitement
-déclaratif; elle reste étiquetée comme telle. Une preuve provenant d'un interlocuteur
-doit être reliée au dossier concerné : l'intérêt d'un syndic pour une copropriété
-ne s'étend pas automatiquement aux autres.
+An observation brings value, origin, locator, dates, means of obtaining it and
+verification state. The attribute types and the evidence are checked before
+evaluation. A declared value can be admitted by an explicitly declarative
+criterion; it stays labelled as such. Evidence coming from a contact person
+must be linked to the record concerned: the interest of a managing agent (syndic)
+in one co-owned building (copropriété) does not automatically extend to the others.
 
-Chaque critère produit `satisfait`, `non_satisfait` ou `inconnu`. Une contradiction
-non résolue, une valeur absente et une preuve périmée produisent `inconnu` pour
-l'acceptation. Le profil indique les preuves à obtenir pour lever cette inconnue.
-Une condition est `non_satisfaite` quand une preuve valide démontre son échec.
-Une collecte qui échoue ne démontre jamais cet échec.
+Each criterion produces `satisfied`, `not_satisfied` or `unknown`. An unresolved
+contradiction, a missing value and stale evidence produce `unknown` for
+acceptance. The profile indicates the evidence to obtain to lift this unknown.
+A condition is `not_satisfied` when valid evidence demonstrates its failure.
+A collection that fails never demonstrates that failure.
 
-Un niveau est admissible quand **tous** ses critères obligatoires sont satisfaits;
-son acceptation nécessite encore une décision attribuée. Les critères facultatifs
-peuvent aider à prioriser, sans compenser un obligatoire. Une exception humaine
-reste distincte de ce niveau et ne change pas les faits.
+A level is admissible when **all** its mandatory criteria are satisfied;
+its acceptance still requires an attributed decision. Optional criteria
+can help to prioritise, without compensating for a mandatory one. A human exception
+stays distinct from this level and does not change the facts.
 
-Les exemples distinguent :
+The examples distinguish:
 
-- **Cible pertinente** : les caractéristiques nécessaires à l'adéquation sont
-  démontrées; cela ne prouve aucun besoin.
-- **Lead commercialement qualifié** : des preuves propres à l'offre et au dossier
-  satisfont les critères supplémentaires choisis, par exemple besoin exprimé,
-  rôle de l'interlocuteur et prochaine étape acceptée.
-- **Contact autorisé pour une action donnée** : résultat indépendant de la
-  politique, de la finalité, du canal, du destinataire et des restrictions courantes.
+- **Relevant target**: the characteristics necessary for fit are
+  demonstrated; this proves no need.
+- **Commercially qualified lead**: evidence specific to the offer and to the record
+  satisfies the additional criteria chosen, for example expressed need,
+  role of the contact person and accepted next step.
+- **Authorised contact for a given action**: a result independent of the
+  policy, the purpose, the channel, the recipient and the current restrictions.
 
-Un dossier peut satisfaire un niveau métier tout en étant interdit de sollicitation.
-Un message ne peut partir que si cette possibilité est établie séparément au moment
-de la remise. Le profil ne peut rendre un refus facultatif ni donner un poids
-positif permettant de le contourner.
+A record can satisfy a business level while being forbidden from solicitation.
+A message can leave only if this possibility is established separately at the moment
+of handover. The profile cannot make a refusal optional or give a positive
+weight allowing it to be circumvented.
 
-## Profils, campagnes et changements
+## Profiles, campaigns and changes
 
-Une campagne référence un profil publié, un pipeline et une politique validée.
-Les observations et évaluations conservent la version utilisée. Une nouvelle version
-peut modifier critères, fraîcheur, vocabulaire ou sources; elle ne réécrit pas le
-passé. L'utilisateur voit les dossiers affectés et choisit une migration ou une
-réévaluation explicite, avec nouvelles décisions et prochaines actions.
+A campaign references a published profile, a pipeline and a validated policy.
+Observations and evaluations keep the version used. A new version
+can modify criteria, freshness, vocabulary or sources; it does not rewrite the
+past. The user sees the affected records and chooses an explicit migration or
+re-evaluation, with new decisions and next actions.
 
-Une source peut devenir indisponible ou incompatible sans que le profil soit
-« faux » : le moteur signale les limites de couverture et bloque les évaluations
-dont les preuves manquent. Une cascade de fournisseurs est un moyen facultatif
-d'obtenir un attribut, avec accès autorisé pour chaque fournisseur, condition
-d'arrêt et budget. Elle ne démontre ni l'exactitude de l'attribut ni l'autorisation
-de solliciter.
+A source can become unavailable or incompatible without the profile being
+"wrong": the engine flags the limits of coverage and blocks the evaluations
+whose evidence is missing. A cascade of suppliers is an optional means
+of obtaining an attribute, with authorised access for each supplier, a stop
+condition and a budget. It demonstrates neither the accuracy of the attribute nor the
+authorisation to solicit.
 
-## Frontière avec la conformité
+## Boundary with compliance
 
-Le profil métier référence une politique externe au contenu; il ne choisit pas
-librement une base légale pour contourner une restriction. La politique contient
-responsable de traitement, populations, finalités, juridictions, canaux, information,
-preuves de consentement lorsqu'il est requis, règles d'opposition, conservation,
-sous-traitants, dates d'effet et de réexamen.
+The business profile references a policy external to the content; it does not
+freely choose a legal basis to circumvent a restriction. The policy contains
+the data controller, populations, purposes, jurisdictions, channels, notice,
+evidence of consent when it is required, objection rules, retention,
+processors, effective dates and review dates.
 
-Pour un déploiement en France, les régimes B2B, B2C, syndic professionnel ou bénévole
-ne se déduisent pas du seul type « copropriété ». Les règles de contact doivent
-être vérifiées pour la personne et le canal réels. Une inscription en open data
-n'autorise pas automatiquement une sollicitation. Voir les sources CNIL et les
-limites dans la [recherche comparative](../research/comparison.md).
+For a deployment in France, the B2B, B2C, professional or volunteer managing agent
+(syndic professionnel ou bénévole) regimes are not deduced from the "copropriété" type
+alone. The contact rules must be verified for the actual person and channel. An entry
+in open data does not automatically authorise a solicitation. See the CNIL sources and the
+limits in the [comparative research](../research/comparison.md).

@@ -1,25 +1,33 @@
 {
   "format_version": 1,
   "kind": "canonical-contract-integration",
-  "date": "2026-11-01",
+  "date": "2026-11-12",
   "family": "prospecting-workspace",
-  "action": "Integrate existing candidate into canonical contracts at maintainer request",
+  "action": "Integrate the English translation candidate into canonical contracts at maintainer request",
   "previous": {
-    "version": "0.1.0",
-    "status": "draft",
-    "archive": "history/0.1.0",
+    "version": "1.0.0",
+    "status": "candidate",
+    "archive": "history/1.0.0",
     "files": [
       {
         "path": "contracts/contract.yaml",
-        "sha256": "075469d1705456c0c79c54f2f88b7b5d3e7af5f0ee854178dd1c1339c427e9f0"
+        "sha256": "a2754f8c6f50a8a75dc585018bcb37bc81dfc9e55aee20b7d9e1bb345d09fe6e"
+      },
+      {
+        "path": "contracts/integration.json",
+        "sha256": "ce576a297b538902b697a96f9ac069fe617a0ee0b76143c5090f4b06522c2f8f"
+      },
+      {
+        "path": "contracts/review.md",
+        "sha256": "9aa9fa6238122df4e28dfe67329dc9dd036ec80ff29a8de5447a211a38da15a7"
       },
       {
         "path": "contracts/targeting-profile.md",
-        "sha256": "8cf2174af0283b54d8529dc74c3cc9f3299fe3f41144a3f86ad76369baaf6aa2"
+        "sha256": "50a6db0358eaf982ffd6bedaab4b2c0c54dc5811f5fb1f3655a1566ed6e4a2d0"
       },
       {
         "path": "contracts/traceability.yaml",
-        "sha256": "c96b3fb871cac9d424fa6a137bb09a31a26e9adea98dc87f8b17769b77e39e07"
+        "sha256": "49f7d4086700e3befbb23e251b994c83a83b4d925b77a26dcd8e22a6a4dc1836"
       },
       {
         "path": "research/sources.yaml",
@@ -31,22 +39,26 @@
       },
       {
         "path": "family-README.md",
-        "sha256": "fced35a341b78a26f3d9921f9e7483781feeec46104c3e8b0211a993fa25cca1"
+        "sha256": "5f26ede23e387526ed42071933247b4b3e0002fd8abf6a504b8f5e7a7dd85800"
       }
     ],
-    "research_snapshot": "At integration time; not asserted to be the original-release research snapshot"
+    "research_snapshot": "At integration time; the French research files as they stood before translation",
+    "earlier_archives": [
+      "history/0.1.0"
+    ]
   },
   "current": {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "status": "candidate",
     "schema_version": "0.1",
     "contract": "contracts/contract.yaml",
     "traceability": "contracts/traceability.yaml",
-    "candidate": "candidates/1.0.0/contracts",
-    "contract_sha256": "a2754f8c6f50a8a75dc585018bcb37bc81dfc9e55aee20b7d9e1bb345d09fe6e",
-    "traceability_sha256": "49f7d4086700e3befbb23e251b994c83a83b4d925b77a26dcd8e22a6a4dc1836",
+    "candidate": "candidates/1.0.1/contracts",
+    "contract_sha256": "7d9659d16622dab87e75991e59bcdf2883c693b83b4b5a8bb518b7eba97b4513",
+    "traceability_sha256": "09522259cc128f8e5ed7e5de34de42c912bfd8b60ccd027af1a76f9e2a23090a",
     "acceptance_count": 34
   },
+  "change": "English translation of 1.0.0; no intended behaviour change",
   "stable_promotion": "not_performed",
   "independent_review": "pending",
   "consumer_pin_migration": "not_performed",
@@ -54,17 +66,11 @@
   "product_acceptance": "not_run",
   "validation": {
     "schema_and_current_traceability": "passed",
-    "tooling_tests": {
-      "passed": 70,
-      "failed": 0,
-      "skipped": 0
-    },
     "canonical_identity": "passed",
     "archived_files": "passed",
     "archived_provenance": "passed",
-    "synthetic_example": "passed",
+    "translation_review": "author self-review only",
     "source_network_verification": "not_repeated",
-    "product_acceptance": "not_run",
-    "details": "../../../docs/candidate-integration-2026-11-01.md#observed-validation"
+    "product_acceptance": "not_run"
   }
 }

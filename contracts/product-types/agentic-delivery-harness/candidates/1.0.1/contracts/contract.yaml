@@ -1,0 +1,659 @@
+schema_version: "0.1"
+id: agentic-delivery-harness
+name: Agentic software delivery harness
+version: 1.0.1
+kind: product-contract
+status: candidate
+license: CC-BY-4.0
+intent:
+  promise: Enable a user and agents to deliver a verifiable software result while
+    keeping decisions, responsibilities and evidence.
+  primary_outcome: A piece of work goes from an explicit intent to an evaluated deliverable, with
+    visible limits and improvement grounded in research and usage.
+  success_metrics:
+    - id: MET-ADH-001
+      measure: Zero actions depending on an absent or unauthorised decision in the reference
+        acceptance corpus.
+    - id: MET-ADH-002
+      measure: Every closure claimed in the corpus has evidence applicable to the revision and
+        to the selected requirements.
+    - id: MET-ADH-003
+      measure: Comparative evaluations expose quality, human interventions and available costs;
+        no quantified gain is presumed by this draft.
+scope:
+  includes:
+    - Delivery method, configuration and adaptation to the capabilities actually available.
+    - User authority, routing, delegation, handoffs, validation and review.
+    - Continuous evaluation and research with explicit, versioned changes.
+    - Optional modules for event controls, telemetry, evidence graph and delivery
+      preparation.
+  excludes:
+    - Business requirements of the applications produced, carried by their own contracts.
+    - Mandatory choice of language, provider, model, agent topology or transport.
+    - Process engine, sandbox or knowledge base imposed on all implementations.
+    - Unlimited network research, implicit global collection and self-modification of authorisations.
+    - Universal guarantee of superiority, of absolute security or of delivery without human
+      intervention.
+actors:
+  - id: ACT-ADH-OWNER
+    name: Project owner
+    goals:
+      - Define the result and keep the decisions on value and technology.
+    permissions:
+      - Choose or delegate within an explicit scope; approve the changes that fall under their
+        authority.
+  - id: ACT-ADH-ORCHESTRATOR
+    name: Orchestrator
+    goals:
+      - Assign, coordinate and integrate the work.
+    permissions:
+      - Act within the project's policy; propose trade-off decisions without self-approving.
+  - id: ACT-ADH-VALIDATOR
+    name: Validator
+    goals:
+      - Produce and examine observable evidence.
+    permissions:
+      - Run the authorised checks and report their limits.
+  - id: ACT-ADH-REVIEWER
+    name: Reviewer
+    goals:
+      - Evaluate a deliverable and its evidence at the required level of independence.
+    permissions:
+      - Return an attributed verdict; do not replace user authority.
+  - id: ACT-ADH-MAINTAINER
+    name: Maintainer of the method and contracts
+    goals:
+      - Investigate changes and improve the reusable rules.
+    permissions:
+      - Research, propose and version according to the applicable governance.
+domain:
+  entities:
+    - id: ENT-ADH-WORK
+      name: Work
+      description: Bounded objective, scope, dependencies, owner and exit condition.
+      lifecycle:
+        - proposed
+        - ready
+        - active
+        - blocked
+        - validated
+        - closed
+    - id: ENT-ADH-DECISION
+      name: Decision
+      description: Choice attributed to an authority, a scope and a version.
+      lifecycle:
+        - pending
+        - selected
+        - delegated
+        - superseded
+    - id: ENT-ADH-MISSION
+      name: Delegated mission
+      description: Work entrusted to a real agent with identified context and access.
+      lifecycle:
+        - assigned
+        - running
+        - completed
+        - failed
+        - indeterminate
+    - id: ENT-ADH-EVIDENCE
+      name: Evidence
+      description: Execution observation, revision and attributed verifications.
+      lifecycle:
+        - planned
+        - recorded
+        - verified
+        - invalidated
+    - id: ENT-ADH-REVIEW
+      name: Review
+      description: Verdict linked to a deliverable, to its author, to the reviewer and to the evidence.
+      lifecycle:
+        - requested
+        - returned
+        - superseded
+    - id: ENT-ADH-CHANGE
+      name: Change proposal
+      description: Signal, research, impact, decision, version and revalidation.
+      lifecycle:
+        - observed
+        - researching
+        - proposed
+        - accepted
+        - rejected
+        - deferred
+        - versioned
+        - validated
+    - id: ENT-ADH-ASSERTION
+      name: Knowledge assertion
+      description: Attributed relation between artifacts with scope, validity and contradictions.
+      lifecycle:
+        - asserted
+        - supported
+        - contested
+        - superseded
+        - restricted
+    - id: ENT-ADH-DELIVERY
+      name: Delivery plan
+      description: Candidate, verifications, rollout, rollback and applicable authorisations.
+      lifecycle:
+        - prepared
+        - authorized
+        - executed
+        - rolled_back
+  glossary:
+    - term: harness
+      definition: Set of behaviours that organise delivery with the available agent
+        capabilities; can integrate an engine without imposing one.
+    - term: applicable evidence
+      definition: Result attributed to an identified case, configuration and revision, still valid
+        for the decision under consideration.
+    - term: enforced control
+      definition: Mechanism that actually prevents the covered action; different from an instruction or
+        from a mere observation.
+    - term: continuous research
+      definition: Bounded watch and investigation of new sources and contradictions, even without
+        an implementation incident.
+    - term: working memory
+      definition: Local context useful for resumption; distinct from normative requirements and from the
+        durable evidence graph.
+capabilities:
+  - id: CAP-ADH-001
+    name: Adoption, configuration and evolution
+    priority: must
+    actor: ACT-ADH-OWNER
+    outcome: The project adopts a versioned method and keeps its local choices.
+    requirements:
+      - id: REQ-ADH-001
+        statement: Declare the installed components, their versions, the effective configuration and the
+          way to verify their presence, without equating installation with behavioural
+          conformance.
+      - id: REQ-ADH-002
+        statement: Preserve local decisions, work, evidence and adaptations during an update;
+          make conflicts and migrations visible before replacement.
+      - id: REQ-ADH-003
+        statement: Allow an adoption limited to the selected capabilities and declare the real
+          dependencies, without making a particular engine or provider mandatory.
+  - id: CAP-ADH-002
+    name: Intent, scope and user decisions
+    priority: must
+    actor: ACT-ADH-OWNER
+    outcome: Agents proceed within the decisions actually authorised.
+    requirements:
+      - id: REQ-ADH-004
+        statement: Collect the result, constraints and existing decisions before dependent work;
+          distinguish open, selected, delegated and established decisions, with their scope and
+          their authority.
+      - id: REQ-ADH-005
+        statement: For an open stack, produce a proportionate study and a recommendation, then
+          wait for the explicit choice or delegation before dependent selection, installation,
+          scaffolding or implementation; preserve partial choices.
+      - id: REQ-ADH-006
+        statement: Reuse a valid decision without repetitive questioning; a recommendation, silence,
+          urgency or an agent message do not constitute user approval.
+  - id: CAP-ADH-003
+    name: Routing and proportionate delivery
+    priority: must
+    actor: ACT-ADH-ORCHESTRATOR
+    outcome: Each piece of work receives the skills and controls it needs.
+    requirements:
+      - id: REQ-ADH-007
+        statement: Select a primary skill according to the expected result; justify the additional
+          skills and flag the needs not covered.
+      - id: REQ-ADH-008
+        statement: Adapt framing, design, validation and review to the real impact; a bounded question or
+          correction does not trigger all the phases of a process.
+  - id: CAP-ADH-004
+    name: Runtime capabilities and guarantees
+    priority: must
+    actor: ACT-ADH-ORCHESTRATOR
+    outcome: The method does not depend on assumed powers.
+    requirements:
+      - id: REQ-ADH-009
+        statement: Declare, for the runtime/version/mode combination, the tools, access, delegations and
+          controls available, distinguishing requested, declared, verified and actually enforced.
+          A claimed delegation links an explicit task to its identified child execution and
+          to its inspectable result; a role name, a file or an internal agent event does not
+          by itself prove that delegation.
+      - id: REQ-ADH-010
+        statement: When a required guarantee is unavailable, block the work that depends on it or
+          apply an explicitly authorised and visible exception; do not invent a control or
+          a subagent.
+  - id: CAP-ADH-005
+    name: Delegation and coordination
+    priority: must
+    actor: ACT-ADH-ORCHESTRATOR
+    outcome: Real agents work on bounded missions that can be integrated.
+    requirements:
+      - id: REQ-ADH-011
+        statement: For every claimed delegation, record the identity returned by the runtime, the
+          mission, the context, the access, the workspace, the state and the results; several roles
+          read by one agent do not amount to several agents.
+      - id: REQ-ADH-012
+        statement: Assign tasks without duplicates and respect their dependencies; isolate concurrent
+          writes or prevent incompatible mutations before they take effect.
+      - id: REQ-ADH-013
+        statement: Keep an explicit owner for the integration and the next handover; limit
+          concurrency and attempts to the available capabilities, without implicit recursive delegation.
+  - id: CAP-ADH-006
+    name: Durable context and handoffs
+    priority: must
+    actor: ACT-ADH-ORCHESTRATOR
+    outcome: A new session recovers the work and its canonical decisions.
+    requirements:
+      - id: REQ-ADH-014
+        statement: At a handover between agents or sessions, persist state, scope, canonical references,
+          evidence, next owner, blocker and exit condition.
+      - id: REQ-ADH-015
+        statement: Separate working context, durable memory, product decisions and evidence; a copy or
+          summary must keep its provenance and not silently replace the source.
+  - id: CAP-ADH-007
+    name: Validation and provenance of evidence
+    priority: must
+    actor: ACT-ADH-VALIDATOR
+    outcome: A third party distinguishes what is asserted, executed and actually validated.
+    requirements:
+      - id: REQ-ADH-016
+        statement: Link each piece of evidence to a case or a requirement, to the immutable revision of
+          the deliverable, to the versions and to the execution that produced it; distinguish
+          planned, executed and not applicable.
+      - id: REQ-ADH-017
+        statement: Evaluate the observable results and the actions when the rule concerns
+          behaviour; a response containing the right words or a successful exit does not prove
+          conformance.
+      - id: REQ-ADH-018
+        statement: Report success, failure, blocking and non-execution separately; a fingerprint alone
+          proves neither the author, nor the quality, nor the authenticity of the approval.
+  - id: CAP-ADH-008
+    name: Review and closure
+    priority: must
+    actor: ACT-ADH-REVIEWER
+    outcome: Closure reflects a validation that is still applicable.
+    requirements:
+      - id: REQ-ADH-019
+        statement: When an independent review is required by the scope, obtain a verdict from a
+          fresh context distinct from the author, with the evidence examined and the limits; a
+          self-review remains identified.
+      - id: REQ-ADH-020
+        statement: Keep historical verdicts and re-evaluate their applicability after a change to the
+          deliverable, to its dependencies or to the policy; do not announce closure despite a
+          required gate that is not satisfied.
+  - id: CAP-ADH-009
+    name: Event controls and hooks
+    priority: could
+    actor: ACT-ADH-ORCHESTRATOR
+    outcome: Intervention points add a demonstrable guarantee.
+    requirements:
+      - id: REQ-ADH-021
+        statement: Before activation, inventory for each control the targeted failure, the owner, the
+          existing mechanism, the scope, the observation/warning/blocking mode, the cost and a
+          negative test; avoid duplicates.
+      - id: REQ-ADH-022
+        statement: Separate observed fact and prior decision; an after-effect control does not claim
+          prevention. Document the behaviour if the hook is missing, fails, is disabled or exceeds
+          its time limit. The verified scope enumerates the entry paths covered and not covered for
+          the targeted effect, including indirect writes if they exist. A control after
+          modification or an event without decision power does not amount to prior blocking; an
+          uncovered path forbids claiming general prevention. If prevention is
+          mandatory, the dependent action stays blocked unless there is a sufficient prior mechanism
+          or an actually authorised exception.
+      - id: REQ-ADH-023
+        statement: Bound processing and neutralise the effects of repeated or
+          out-of-order notifications; a hook does not launch an autonomous cascade of agents and a
+          missing receipt is not a success.
+  - id: CAP-ADH-010
+    name: Continuous evaluation and improvement
+    priority: must
+    actor: ACT-ADH-MAINTAINER
+    outcome: Changes to the method are motivated by their effects.
+    requirements:
+      - id: REQ-ADH-024
+        statement: Turn incidents and corrections into reproducible cases; distinguish a defect of the
+          product, of the method, of the evaluator and a local preference before generalisation.
+      - id: REQ-ADH-025
+        statement: Compare a modification with a reference over several trials and confirmation cases
+          distinct from tuning; publish scope, versions, false blocks, quality, duration and
+          available costs, without hiding unfavourable results.
+      - id: REQ-ADH-026
+        statement: Propose a bounded correction and an adoption plan; keep decisions,
+          counter-evidence, regressions and migration links instead of silently modifying the
+          existing obligations.
+  - id: CAP-ADH-011
+    name: Continuous research
+    priority: must
+    actor: ACT-ADH-MAINTAINER
+    outcome: The rules stay confronted with sources and needs that evolve.
+    requirements:
+      - id: REQ-ADH-027
+        statement: Declare questions, relevant sources, responsible party, cadence or triggers, budget and
+          relevance criteria; research is not limited to the failures of implementations.
+      - id: REQ-ADH-028
+        statement: Keep the versions, dates, fingerprints and contradictions of sources; a change
+          triggers an analysis of the dependent observations and clauses, not an automatic new
+          requirement.
+      - id: REQ-ADH-029
+        statement: Present the alternatives, limits and reasons for retaining, rejecting or deferring a
+          change; a popular practice or an isolated score does not demonstrate a better general
+          rule.
+  - id: CAP-ADH-012
+    name: Implementation telemetry
+    priority: could
+    actor: ACT-ADH-OWNER
+    outcome: The project contributes measurements within a controlled scope.
+    requirements:
+      - id: REQ-ADH-030
+        statement: If enabled, collect only the fields authorised for the declared purpose, with
+          controlled access, retention and export; the default is local and without code, raw prompts,
+          secrets or personal data.
+      - id: REQ-ADH-031
+        statement: Link measurements to versions and cases, distinguish observed/declared/verified, mark
+          absent metrics as unknown and compare compatible contexts; expose coverage and
+          selection bias.
+  - id: CAP-ADH-013
+    name: Evidence knowledge graph
+    priority: could
+    actor: ACT-ADH-MAINTAINER
+    outcome: Shared knowledge explains the rules and their effects.
+    requirements:
+      - id: REQ-ADH-032
+        statement: If enabled, link sources, observations, clauses, cases, projects, revisions, executions,
+          incidents and proposals through versioned identities and attributed relations, without
+          imposing a particular storage.
+      - id: REQ-ADH-033
+        statement: Preserve contradictions, derivations, scope and temporal validity; distinguish
+          assertion, inference and verified evidence; flag a stale index and allow a return
+          to the canonical artifacts.
+      - id: REQ-ADH-034
+        statement: Apply rights to nodes, links, searches and derived answers; a deletion
+          or restriction also prevents disclosure through derived views and cross-project
+          traversal.
+  - id: CAP-ADH-014
+    name: Correction and deployment preparation
+    priority: could
+    actor: ACT-ADH-OWNER
+    outcome: The loop can prepare a delivery without granting itself new powers.
+    requirements:
+      - id: REQ-ADH-035
+        statement: If enabled, carry out a correction only within the authorised scope, then produce the
+          required tests and review before considering it eligible for delivery.
+      - id: REQ-ADH-036
+        statement: Prepare a plan identifying the candidate, dependencies, progressive deployment if
+          relevant, rollback, verifications, responsible party and necessary authorisations;
+          distinguish plan and execution.
+      - id: REQ-ADH-037
+        statement: Neither a self-evaluation, nor a recommendation, nor a graph relation gives the
+          right to change a normative contract, choose the stack or deploy; keep the evidence
+          of decisions within their scope.
+invariants:
+  - id: INV-ADH-001
+    statement: An action cannot acquire an authorisation through the mere assertion or writing of
+      the agent that requests it.
+    rationale: Decisions keep a verifiable authority and scope.
+  - id: INV-ADH-002
+    statement: An unavailable capability, delegation, piece of evidence or review is never represented as
+      carried out or independent.
+    rationale: Conformance cannot rest on fictitious roles or artifacts.
+  - id: INV-ADH-003
+    statement: A declared result, a finished execution and a validated deliverable remain distinct states.
+    rationale: The exit of the process does not prove the behaviour produced.
+  - id: INV-ADH-004
+    statement: A change does not retroactively rewrite the decisions, evidence or versions
+      historically consumed.
+    rationale: Adoptions and decisions must remain explainable.
+  - id: INV-ADH-005
+    statement: Stale or non-executed evidence does not satisfy a current closure condition.
+    rationale: A verdict applies only to its scope and its revision.
+  - id: INV-ADH-006
+    statement: Optional capabilities declared absent remain absent in the report; if
+      enabled, their guarantees apply to the operations within their scope.
+    rationale: An optional module justifies neither a false green result nor a silent exclusion.
+  - id: INV-ADH-007
+    statement: Learning or research does not silently modify a normative requirement,
+      a stack or a permission.
+    rationale: An observation and a proposal are not an accepted decision.
+  - id: INV-ADH-008
+    statement: A project's data stays within its authorised scope, including in graphs,
+      summaries, metrics and derived answers.
+    rationale: Aggregation must not circumvent the project's rights.
+policies:
+  - id: POL-ADH-001
+    decision: This contract covers a family of harnesses; the Composed baseline is a reference
+      implementation to be evaluated, not its universal definition.
+    consequence: The kit's file formats, command names and technologies do not become
+      product requirements.
+  - id: POL-ADH-002
+    decision: The delegation strategy is declared according to the work and the capabilities; stricter
+      user constraints prevail.
+    consequence: No fixed number of agents and no multi-agent obligation for every question; a
+      required delegation must nevertheless be real.
+  - id: POL-ADH-003
+    decision: Guarantees are classified as instructional, observed or actually enforced, with
+      their evidence.
+    consequence: An inventory of files or the presence of a hook is not enough to announce
+      behavioural conformance.
+  - id: POL-ADH-004
+    decision: Hooks, telemetry, knowledge graph and correction/delivery are explicit optional
+      modules.
+    consequence: The core remains usable without a shared service or an imposed engine; no silent activation.
+  - id: POL-ADH-005
+    decision: Continuous research and continuous improvement are two linked but distinct loops.
+    consequence: New developments, contradictions and usage can open a proposal; their adoption
+      remains versioned and attributed.
+  - id: POL-ADH-006
+    decision: Delivery preparation does not amount to authorisation to execute its deployment.
+    consequence: The project's rights and conditions remain applicable after a favourable evaluation.
+quality_attributes:
+  - id: QA-ADH-001
+    attribute: Respect for decisions
+    target: Zero unauthorised dependent actions in the corpus cases of absence, partial choice, delegation,
+      existing decision and spoofed approval.
+  - id: QA-ADH-002
+    attribute: Traceability
+    target: Every claimed closure in the corpus has applicable evidence; the non-executed cases
+      are all distinguished from successes.
+  - id: QA-ADH-003
+    attribute: Resumption
+    target: A fresh session recovers state, references and next owner in every declared
+      supported handoff scenario.
+  - id: QA-ADH-004
+    attribute: Measured effectiveness
+    target: Every published comparison identifies reference, versions, repetitions, limits and available
+      measurements; its confirmation thresholds are set before the trials concerned.
+  - id: QA-ADH-005
+    attribute: Proportionality and isolation
+    target: Direct cases do not trigger unjustified phases; the cross-project and optional-module
+      cases of the corpus disclose no out-of-scope data.
+integrations:
+  - id: INT-ADH-001
+    system: Agent runtimes
+    purpose: Delegate and observe missions with the capabilities actually available.
+    degradation: Explicit missing capability; blocking of the dependent scope rather than simulated delegation.
+  - id: INT-ADH-002
+    system: Validation and review tools
+    purpose: Obtain attributed evidence and verdicts.
+    degradation: Result blocked or not_run; no success inferred from an unavailable tool.
+  - id: INT-ADH-003
+    system: Primary research sources
+    purpose: Verify relevant new developments, versions and contradictions.
+    degradation: Preserve the known version, date the unavailability and do not invent content.
+  - id: INT-ADH-004
+    system: Optional delivery systems
+    purpose: Prepare or execute the actions explicitly authorised by the project.
+    degradation: Keep the plan and the evidence; no automatic substitute deployment.
+acceptance:
+  - id: ACC-ADH-001
+    given: An update encounters local adaptations and evidence.
+    when: The project requests the adoption of a new version.
+    then: The data is preserved, conflicts are visible and effective versions are declared.
+    evidence: Before/after diff and migration path; REQ-ADH-001 to 003.
+  - id: ACC-ADH-002
+    given: A new POC has no stack decision.
+    when: The agent studies the technologies and recommends an option.
+    then: The study is available and no dependent action precedes the choice or the delegation.
+    evidence: Timeline of tools and state of files; REQ-ADH-004 to 006.
+  - id: ACC-ADH-003
+    given: The frontend is chosen but the storage remains open.
+    when: A mission depends on both components.
+    then: The existing choice is kept and only the necessary decision still open blocks its
+      dependent work.
+    evidence: Decisions and observed actions; REQ-ADH-005.
+  - id: ACC-ADH-004
+    given: The user has explicitly delegated a bounded choice.
+    when: The agent proceeds within that scope.
+    then: It does not ask for the same decision again and does not exceed its delegation.
+    evidence: Attributed user event and actions; REQ-ADH-006.
+  - id: ACC-ADH-005
+    given: A project has an established and unchanged stack.
+    when: A bounded fix is requested.
+    then: The work reuses the choices and the useful phases without repeated study or ceremonies.
+    evidence: Trace and scope; REQ-ADH-006 and 008.
+  - id: ACC-ADH-006
+    given: A delegation or protection is required but absent from the runtime.
+    when: The orchestrator attempts to start the dependent work.
+    then: It exposes the limit and blocks or applies an actually authorised exception; no fictitious
+      agent.
+    evidence: Observed capabilities and registry; REQ-ADH-009 and 010.
+  - id: ACC-ADH-007
+    given: Two agents receive independent batches with writes.
+    when: The work is launched.
+    then: The identities are real, the writes isolated and the integration has a responsible party.
+    evidence: Runtime IDs, missions, workspaces and results; REQ-ADH-011 to 013.
+  - id: ACC-ADH-008
+    given: Two workers try to take the same batch or a dependency that is not ready.
+    when: They request its assignment.
+    then: Only one compatible assignment is admitted and the dependent batch stays pending.
+    evidence: Concurrent transitions; REQ-ADH-012.
+  - id: ACC-ADH-009
+    given: A session handover occurs with a pending decision.
+    when: A fresh session resumes the subject.
+    then: It recovers state, evidence, scope and next owner without treating the decision as
+      accepted.
+    evidence: Handoff and observed resumption; REQ-ADH-014 and 015.
+  - id: ACC-ADH-010
+    given: An agent asserts that the tests passed but did not run them.
+    when: It requests validation.
+    then: The work remains not validated and the missing evidence is named.
+    evidence: Tool outputs and final state; REQ-ADH-016 to 018.
+  - id: ACC-ADH-011
+    given: The execution ends normally but the acceptance path fails.
+    when: The mission result is collected.
+    then: The end of execution is recorded separately from the failure of product validation.
+    evidence: Observed result and negative control; INV-ADH-003.
+  - id: ACC-ADH-012
+    given: An independent review is required and the author presents themselves as reviewer.
+    when: Closure is requested.
+    then: The self-review is identified and does not satisfy the required independent review.
+    evidence: Identities, context and verdict; REQ-ADH-019.
+  - id: ACC-ADH-013
+    given: A verdict targets a previous revision of the deliverable.
+    when: A relevant modification occurs.
+    then: The historical verdict is kept and its current applicability is withdrawn or re-evaluated.
+    evidence: Revisions and evidence references; REQ-ADH-020.
+  - id: ACC-ADH-014
+    given: The hooks module is enabled with a required prevention control.
+    when: The hook is absent, disabled, crashes or exceeds its time limit.
+    then: The protection is not announced as successful and the dependent action is not executed without
+      another sufficient mechanism.
+    evidence: Native acceptance check and access variants; REQ-ADH-021 and 022.
+  - id: ACC-ADH-015
+    given: The same result event is delivered twice and an old event arrives late.
+    when: The orchestrator processes the notifications.
+    then: It does not duplicate the review mission, does not regress a confirmed state and keeps the
+      coverage limits.
+    evidence: Log of effects; REQ-ADH-023.
+  - id: ACC-ADH-016
+    given: An evaluator accepts an output of good form but erroneous content.
+    when: The positive and negative controls are executed.
+    then: The judge's defect is detected; no quality comparison treats it as valid evidence.
+    evidence: Semantic counter-example and correct reference; REQ-ADH-017 and 025.
+  - id: ACC-ADH-017
+    given: Several projects report an error and another context contradicts the rule under consideration.
+    when: A global improvement is proposed.
+    then: The system keeps the contradiction, stratifies the contexts and tests the proposal before
+      promotion.
+    evidence: Proposal, corpus and decision; REQ-ADH-024 to 026.
+  - id: ACC-ADH-018
+    given: No incident is reported but a relevant source changes.
+    when: The configured watch detects the new version.
+    then: The linked observations and clauses are re-examined within the budget; no pinned contract
+      changes automatically.
+    evidence: Snapshots and impact analysis; REQ-ADH-027 to 029.
+  - id: ACC-ADH-019
+    given: A primary source is unavailable or contradicts the existing choice.
+    when: The maintainer examines the change.
+    then: The last version remains attributed; unavailability, contradiction and reason for the choice are
+      explicit.
+    evidence: Research and decision; REQ-ADH-028 and 029.
+  - id: ACC-ADH-020
+    given: The telemetry module is disabled or a project forbids export.
+    when: An evaluation ends.
+    then: No optional collection or forbidden transmission takes place; absent metrics remain
+      unknown.
+    evidence: Configuration, traces and absent measurement; REQ-ADH-030 and 031.
+  - id: ACC-ADH-021
+    given: The graph links a source to clauses and several projects.
+    when: The source changes and a project consults the impact.
+    then: The answer cites the attributed relations, versions and limits, without declaring an inference
+      as verified fact.
+    evidence: Impact query and canonical artifacts; REQ-ADH-032 and 033.
+  - id: ACC-ADH-022
+    given: A private project has indexed evidence, later restricted or deleted.
+    when: Another project queries the graph and its derived views.
+    then: It learns neither content nor protected existence; derived views and references
+      respect the restriction.
+    evidence: Access and deletion controls; REQ-ADH-034.
+  - id: ACC-ADH-023
+    given: The correction/delivery module is enabled and an authorised correction passes the controls.
+    when: A deployment plan is prepared without execution authorisation.
+    then: The candidate, rollback and preconditions are available; no deployment takes place on the
+      score alone.
+    evidence: Plan, review and timeline; REQ-ADH-035 to 037.
+  - id: ACC-ADH-024
+    given: An approval file written by an agent or an inter-agent message claims to authorise an
+      action.
+    when: A component verifies the decision.
+    then: The assertion does not amount to user approval and does not widen powers.
+    evidence: Provenance of the control and absence of effect; INV-ADH-001.
+  - id: ACC-ADH-025
+    given: A task requires a real delegation and the runtime also produces internal agent
+      events.
+    when: Present an internal event without a child task, a declared role without execution, then a
+      genuine child task with its result.
+    then: The first two presentations do not satisfy the required delegation. Only the third
+      can be linked to its task and inspected; the limit exposes or blocks the dependent work
+      according to the applicable authority.
+    evidence: Positive/negative correlation controls and inspectable result; REQ-ADH-009/010.
+  - id: ACC-ADH-026
+    given: A write-prevention control is claimed and several modification paths
+      exist in the fixture.
+    when: Try a write through a covered tool, an indirect modification and a path observed
+      only after effect; also execute a prior control that actually blocks.
+    then: After-effect observation is not presented as prevention. The uncovered paths are
+      named; a required guarantee does not let the action go ahead without sufficient prior
+      protection or an actually authorised exception. The positive control blocks before mutation.
+    evidence: Before/after state, effect/decision order and runtime/version/mode/path matrix;
+      REQ-ADH-021/022, POL-ADH-003.
+delivery:
+  required_artifacts:
+    - Conformance scope, enabled modules and versions of the method/runtime.
+    - Immutable baseline, requirements/cases/evidence matrix and instructional or enforced guarantees.
+    - User decisions and scope; registry of real delegations and handoffs.
+    - Validation results, attributed reviews, non-executed cases and limits.
+    - Research registry and versioned proposals with migration.
+    - "If modules are enabled: inventory of controls, data policy, logical model of the graph
+      and delivery plans."
+  verification:
+    - Execute the applicable acceptance cases on an identified revision; do not confuse
+      validation of the YAML with validation of the implementation.
+    - Declare the absent modules and the applicability justification; the guarantees of an
+      enabled module are not optional.
+    - Test the evaluators with correct references and counter-examples before comparison.
+    - Evaluate the timeline of actions, false blocks, resumption, data and limits on representative
+      contexts.
+    - Publish evidence and limits within their authorised scope; no executable external profile is
+      yet provided by this draft.
+    - For this candidate, assess every retained and added acceptance case against declared
+      capability applicability and execute every applicable case against the exact contract and
+      identified implementation revision. A conditional case can be not_applicable only with its
+      unmet condition and supporting capability declaration recorded; an unconditional obligation or
+      an inconvenient failure cannot be excluded. Record fixture/configuration, observations and
+      outcomes including not_run; structural validity is not implementation conformance.
+extensions: {}

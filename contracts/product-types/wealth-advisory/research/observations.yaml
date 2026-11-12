@@ -3,50 +3,55 @@ observations:
 - id: OBS-WAD-BIG-INPUT
   sources:
   - SRC-PA-BIG-GUIDE
-  statement: La saisie guidée de Big décrit situation personnelle/familiale, patrimoine et budget, avec un
-    récapitulatif avant création du dossier.
+  statement: Big’s guided entry (saisie guidée) describes personal/family situation, wealth and budget, with
+    a summary before the file is created.
 - id: OBS-WAD-BIG-SCOPE
   sources:
   - SRC-PA-BIG
-  statement: Harvest présente Big comme un outil d’études globales ou thématiques, de simulation des préconisations
-    et de production de rapports personnalisés ; cette page n’établit pas l’exactitude de ses calculs.
+  statement: Harvest presents Big as a tool for overall or thematic studies, for simulating recommendations
+    and for producing personalised reports; this page does not establish the accuracy of its calculations.
 - id: OBS-WAD-RC-BALANCE
   sources:
   - SRC-PA-RIGHTCAPITAL
-  statement: RightCapital documente un bilan actif/passif/net, des détails par catégorie et propriétaire, une
-    date de mise à jour et un historique ; sa taxonomie reste liée au contexte américain.
+  statement: RightCapital documents an assets/liabilities/net balance sheet, details by category and owner,
+    an update date and a history; its taxonomy remains tied to the American context.
 - id: OBS-WAD-MG-GOALS
   sources:
   - SRC-PA-MONEYGUIDE
-  statement: MoneyGuide décrit des plans fondés sur les objectifs avec gestion du risque, allocation et revenus
-    ; cette description n’établit pas l’applicabilité de ses règles au droit français.
+  statement: MoneyGuide describes goal-based plans with risk management, allocation and income; this description
+    does not establish the applicability of its rules to French law.
 - id: OBS-WAD-AMF-SCOPE
   sources:
   - SRC-PA-AMF-CIF
-  statement: La page AMF distingue le conseil en investissement de la gestion de portefeuille et décrit le
-    recueil client, la lettre de mission et la déclaration d’adéquation propres au CIF ; le titre CGP n’est
-    pas une habilitation universelle.
+  statement: The AMF page distinguishes investment advice from portfolio management and describes the client
+    fact-find (recueil), the engagement letter (lettre de mission) and the suitability statement (déclaration
+    d’adéquation) specific to the financial investment adviser (conseiller en investissements financiers,
+    CIF); the title of wealth management adviser (conseiller en gestion de patrimoine, CGP) is not a universal
+    professional authorisation (habilitation).
 - id: OBS-WAD-AMF-DATA
   sources:
   - SRC-PA-AMF-CIF
-  statement: L’AMF décrit le recueil des objectifs, situation financière, connaissances, expérience, tolérance
-    au risque et capacité à subir des pertes ; l’absence des informations nécessaires impose l’abstention de
-    conseil en investissement.
+  statement: The AMF describes the collection of objectives, financial situation, knowledge, experience,
+    risk tolerance and capacity to bear losses; the absence of the necessary information requires abstaining
+    from investment advice.
 - id: OBS-WAD-CNIL-PURPOSE
   sources:
   - SRC-PA-CNIL
-  statement: La CNIL rappelle la finalité précise et la limitation des données à ce qui est nécessaire.
+  statement: The CNIL recalls the precise purpose and the limitation of data to what is necessary.
 - id: OBS-WAD-CNIL-RIGHTS
   sources:
   - SRC-PA-CNIL
-  statement: La CNIL distingue durée de conservation, accès limité aux personnes autorisées et droits des personnes.
+  statement: The CNIL distinguishes retention period, access limited to authorised persons and the rights
+    of individuals.
 - id: OBS-WAD-AMF-EXPIRED
   sources:
   - SRC-PA-AMF-HISTORICAL
-  statement: La page DOC-2013-02 indique la fin d’applicabilité après le 11 octobre 2022 et l’absence d’actualisation
-    MIF 2 ; cette ancienne position ne fonde aucune obligation actuelle de ce contrat.
+  statement: The DOC-2013-02 page indicates the end of applicability after 11 October 2022 and the absence
+    of a MiFID II (MIF 2) update; this former position grounds no current obligation of this contract.
 - id: OBS-WAD-AMF-SUITABILITY
   sources:
   - SRC-PA-AMF-RG
-  statement: L’article 325-17 motive l’adéquation, y compris la durabilité ; son II prévoit un examen au moins
-    annuel si le CIF fournit une évaluation périodique, plus fréquent selon risque et instruments.
+  statement: Article 325-17 requires reasons for suitability (adéquation), including sustainability; its
+    paragraph II provides for an examination at least annually if the financial investment adviser (conseiller
+    en investissements financiers, CIF) provides a periodic assessment, more frequent according to risk
+    and instruments.
