@@ -18,9 +18,8 @@ The initial plan of 20 October 2026 was first kept in a private project and was 
 newer hooks document nor any runtime implementation.
 
 **Status: design.** No supervisor, event subscription, hook or provider adapter is shipped from
-this folder. An early implementation lives in the separate
-[composed-runtime](https://github.com/yassmii/composed-runtime) repository; today it covers a
-synthetic vertical with a fake adapter only. Rust is the choice proposed in the historical plan
+this folder. An early implementation exists in a separate repository that is not published yet;
+today it covers a synthetic vertical with a fake adapter only. Rust is the choice proposed in the historical plan
 for the reference runtime; the protocol stays independent of that choice. This study selects no
 technology for products built with the kit.
 
