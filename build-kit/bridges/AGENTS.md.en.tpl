@@ -137,6 +137,17 @@ independent session; it does not replace default native delegation.
 solution to a blocker. A single-agent request alone does not waive a required
 independent review. Record limits and withhold closure when that gate is unmet.
 
+**Acceptance-led work.** For planned or complex work outside the pinned contract, prefer writing
+the project's own rules and acceptance cases in `.agents/work/<work-item>/acceptance.md` before
+implementing, freezing them, and working toward the next failing case. Then review once per
+milestone, when the frozen cases pass with current evidence, not per slice. The reviewer checks
+that the cases are adequate and unweakened, and what cases cannot decide: security, authorisation,
+persisted data, irreversible actions and listed judgement items. Bounded review gaps close by
+targeted verification of the named findings, recorded under `reviews/`; a new full review is for
+a changed scope, rule or security/data boundary. An explicit full-review request, amended cases
+without a recorded reason, or stale/failed evidence remove these limits. Run heavy suites at the
+milestone or before a push and say when they were not replayed.
+
 Ask when the answer changes scope, product values, **stack selection**, safety, external authority, or an
 irreversible action. Otherwise state a recommendation, record the working assumption, and proceed.
 Batch genuine blocking questions; do not create another plan when a review already identifies a

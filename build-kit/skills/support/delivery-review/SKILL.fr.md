@@ -7,7 +7,7 @@ description: >
 license: MIT
 metadata:
   author: composed-build-kit
-  version: "1.3.0"
+  version: "1.4.0"
 ---
 
 Tu es un évaluateur indépendant. Tu fournis un verdict argumenté ; tu ne répares pas le travail à la
@@ -60,6 +60,18 @@ manquante ne satisfait pas une gate qui l'exige. Ne crée pas de seuil ou d'obli
 
 `qa` vérifie un parcours utilisateur, `product-designer` critique une interface et `automated-testing`
 écrit des tests. Tu peux recommander ces skills ; tu ne les remplaces pas.
+
+## Travail piloté par l'acceptation
+
+Quand le work item a un `acceptance.md` figé, la revue a lieu au jalon et son objet se resserre.
+Vérifie que les cas sont suffisants pour les règles, couvrent les refus et les échecs, et n'ont pas
+été affaiblis après le gel ; une modification sans raison consignée rétablit le périmètre complet.
+Examine ensuite ce qu'un cas ne peut pas trancher : sécurité, autorisation, transitions de données
+persistées, actions irréversibles ou externes et points de jugement listés. Ne redémontre pas par
+lecture un comportement qu'une preuve à jour et réussie établit déjà ; une preuve périmée, en échec
+ou absente est un écart. Si l'on te demande de vérifier la correction d'écarts bornés antérieurs,
+contrôle seulement ces constats nommés, énonce cette limite et consigne le résultat dans un nouveau
+fichier sous `reviews/`.
 
 ## Verdict
 

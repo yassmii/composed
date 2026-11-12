@@ -1,5 +1,5 @@
 {
-  "version": "3.5.0",
+  "version": "3.6.0",
   "purpose": "Routing contract for the supplied Composed bootstrap, not an exclusive skill allowlist. Select one available primary skill, supplied or external; a user/project skill may replace a supplied role. Add a secondary skill only when its output is needed. Keep one deliverable owner, canonical product/business decisions and expected evidence; resolve overlaps without duplicate workflows. External skills do not waive applicable authority, invariants, validation or independent review. Execution policy remains separate.",
   "risk_levels": {
     "low": "Read-only analysis, a direct answer, or a reversible documentation change. Proceed and state the evidence used.",
@@ -11,6 +11,7 @@
     "when_required": "High-risk, non-trivial implementation, cross-agent/cross-session work, or explicitly requested durable planning/review. Eligible direct corrections may report scope and validation inline.",
     "files": [
       "brief.md",
+      "acceptance.md",
       "design.md",
       "plan.md",
       "agents.md",
@@ -105,6 +106,18 @@
       "when": "A material feature or non-trivial implementation with one coherent workstream.",
       "evidence": "Keep included/deferred scope and validation in the smallest durable artifact set. Independent review is required for non-trivial medium/high-risk implementation, material handoff, or explicit review requests; direct-correction eligibility is the only small-fix exception."
     },
+    "acceptance_led": {
+      "when": "Optional for planned or complex work outside the pinned contract whose behaviour can be stated as observable cases.",
+      "artifact": ".agents/work/<work-item>/acceptance.md",
+      "evidence": "Write and freeze project-owned rules and acceptance cases, with identifiers distinct from the pinned contract, before implementation; work toward the next failing case; record dated runs. Local cases never weaken a contract clause and are not contract conformance.",
+      "review": "A required independent review happens once per milestone when frozen cases pass with current evidence. It covers case adequacy, amendments since freezing and what cases cannot decide: security, authorisation, persisted data, irreversible actions and listed judgement items. Bounded gaps close by targeted verification of the named findings recorded under reviews/.",
+      "full_review_when": [
+        "explicit full-review request",
+        "cases amended without a recorded reason",
+        "stale, failed or missing evidence",
+        "correction changes scope, a rule or a security/data boundary"
+      ]
+    },
     "complex": {
       "when": "Complex or cross-disciplinary implementation, or multiple implementation workstreams.",
       "evidence": "Apply execution_policy: native delegation before implementation, actual access/IDs and isolation, durable handoffs and fresh independent non-author review."
@@ -146,6 +159,7 @@
       "not_when": "A direct single-step question, isolated fix, or work contained in one skill.",
       "artifacts": [
         "brief.md",
+        "acceptance.md",
         "design.md",
         "plan.md",
         "agents.md",

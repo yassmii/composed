@@ -56,6 +56,12 @@ and failure/permission behaviour, then obtain a fresh non-author review. Missing
 blocks affected implementation; only an explicit user single-agent exception changes that mode and
 does not waive an independent review already required.
 
+## Work outside the pinned contract
+
+When a planned or complex work item has behaviour that can be stated as observable cases, the
+optional [acceptance-led path](acceptance-led-delivery.md) writes and freezes those cases first and
+moves the independent review to the milestone. It does not change which work requires a review.
+
 ## Runtime checks follow the task
 
 A question needs no write probe or delegation ritual. Before required writes with unknown access,

@@ -146,6 +146,19 @@ solution implicite à un blocage. Une demande mono-agent n'annule pas à elle se
 une revue indépendante requise. Consigne les limites et n'annonce pas la clôture
 si ce gate n'est pas satisfait.
 
+**Travail piloté par l'acceptation.** Pour un travail planifié ou complexe hors du contrat épinglé,
+préfère écrire les règles propres au projet et leurs cas d'acceptation dans
+`.agents/work/<work-item>/acceptance.md` avant d'implémenter, les figer, puis avancer vers le
+prochain cas en échec. La revue a alors lieu une fois par jalon, quand les cas figés passent avec
+des preuves à jour, et non à chaque lot. Le reviewer vérifie que les cas sont suffisants et n'ont
+pas été affaiblis, puis ce qu'un cas ne peut pas trancher : sécurité, autorisation, données
+persistées, actions irréversibles et points de jugement listés. Les réserves bornées d'une revue se
+ferment par une vérification ciblée des constats nommés, consignée sous `reviews/` ; une nouvelle
+revue complète vaut pour un changement de périmètre, de règle ou de frontière de sécurité ou de
+données. Une revue complète explicitement demandée, des cas modifiés sans raison consignée ou des
+preuves périmées ou en échec lèvent ces limites. Lance les suites lourdes au jalon ou avant un
+push, et dis quand elles n'ont pas été rejouées.
+
 Pose une question si elle change le périmètre, les valeurs produit, **le choix de stack**, la sécurité,
 une autorisation externe ou une action irréversible. Sinon, formule une recommandation, consigne
 l'hypothèse et avance. Regroupe les vraies questions bloquantes ; ne crée pas un nouveau plan si une

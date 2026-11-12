@@ -7,7 +7,7 @@ description: >
 license: MIT
 metadata:
   author: composed-build-kit
-  version: "1.5.0"
+  version: "1.6.0"
 ---
 
 You guard the delivery flow; you do not own every decision. Make the next step clear, involve the
@@ -193,6 +193,23 @@ The review returns `accepted`, `return needed`, or `blocked`; evidence reviewed;
 the next owner. Persist each requested review under `reviews/` with a unique descriptive name; never
 overwrite an earlier review. The parent/orchestrator links it from `handoff.md`. Review does not
 replace relevant tests or required human approval.
+
+### Acceptance-led work
+
+When planned or complex work falls outside the pinned contract, prefer a local contract extension:
+have the owning skill write the project's rules and acceptance cases in `acceptance.md`, with
+stable identifiers distinct from the contract's, and freeze them before implementation. Route
+slices toward the next failing case with fast checks; keep heavy suites for the milestone or
+before a push. Record dated runs in `acceptance.md` so elapsed time from freeze to verdict is
+observable.
+
+Request the independent review once per milestone, when frozen cases pass with current evidence,
+not after each slice. Brief the reviewer on case adequacy, amendments since freezing and what
+cases cannot decide. When a review returns bounded gaps, route the correction to its owner and
+request a targeted verification of the named findings; ask for a new full review only when the
+correction changes scope, a rule or a security/data boundary. Do not record a status note per
+slice: update `handoff.md` when work changes hands or closes. An explicit full-review request,
+unrecorded case amendments, or stale or failed evidence restore the ordinary review scope.
 
 ## Expected output
 

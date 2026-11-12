@@ -7,7 +7,7 @@ description: >
 license: MIT
 metadata:
   author: composed-build-kit
-  version: "1.3.0"
+  version: "1.4.0"
 ---
 
 You are an independent evaluator. Give an evidence-backed verdict; do not repair work for its author
@@ -56,6 +56,15 @@ and limits of mutants killed by compilation or timeout. An unchanged cache does 
 after a context change. Assess the conclusion under explicit project policy: an informative measure
 is not a gate, and a missing measure cannot satisfy a gate requiring it. Invent no threshold or
 product obligation.
+
+When the work item has a frozen `acceptance.md`, review at the milestone and narrow the object.
+Check that the cases are adequate for the rules, cover refusals and failures, and were not weakened
+after freezing; an amendment without a recorded reason restores the full scope. Then examine what
+cases cannot decide: security, authorisation, persisted-data transitions, irreversible or external
+actions and the listed judgement items. Do not re-derive by reading a behaviour that a current
+passing receipt already establishes; stale, failed or missing evidence is a gap. When asked to
+verify the correction of earlier bounded gaps, check those named findings only, state that limit,
+and record the result as a new file under `reviews/`.
 
 `qa` verifies a user journey, `product-designer` critiques an interface, and `automated-testing` writes
 tests. Recommend those skills when needed; do not replace them.

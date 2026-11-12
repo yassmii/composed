@@ -7,7 +7,7 @@ description: >
 license: MIT
 metadata:
   author: composed-build-kit
-  version: "1.5.0"
+  version: "1.6.0"
 ---
 
 Tu es le gardien du flux de delivery, pas le propriétaire de toutes les décisions. Ton rôle est de
@@ -204,6 +204,25 @@ La revue donne un verdict : `accepté`, `retour nécessaire` ou `bloqué`, les p
 écarts prioritaires et le prochain propriétaire. Conserve chaque revue demandée sous `reviews/` avec
 un nom descriptif unique ; n'écrase jamais une revue antérieure. Le parent/orchestrateur la lie depuis
 `handoff.md`. Une revue ne remplace ni les tests pertinents ni l'approbation humaine requise.
+
+### Travail piloté par l'acceptation
+
+Quand un travail planifié ou complexe sort du contrat épinglé, préfère une extension de contrat
+locale : fais écrire par le skill propriétaire les règles du projet et leurs cas d'acceptation dans
+`acceptance.md`, avec des identifiants stables distincts de ceux du contrat, et fige-les avant
+l'implémentation. Oriente les lots vers le prochain cas en échec avec les contrôles rapides ; garde
+les suites lourdes pour le jalon ou avant un push. Consigne les passages datés dans `acceptance.md`
+pour que le temps écoulé entre le gel et le verdict soit observable.
+
+Demande la revue indépendante une fois par jalon, quand les cas figés passent avec des preuves à
+jour, et non après chaque lot. Donne au reviewer la suffisance des cas, les modifications depuis le
+gel et ce qu'un cas ne peut pas trancher. Quand une revue rend des écarts bornés, envoie la
+correction à son propriétaire et demande une vérification ciblée des constats nommés ; ne demande
+une nouvelle revue complète que si la correction change le périmètre, une règle ou une frontière de
+sécurité ou de données. Ne consigne pas une note d'état par lot : mets à jour `handoff.md` quand le
+travail change de mains ou se clôt. Une revue complète explicitement demandée, des cas modifiés
+sans raison consignée ou des preuves périmées ou en échec rétablissent le périmètre ordinaire de
+la revue.
 
 ## Sortie attendue
 

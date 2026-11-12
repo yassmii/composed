@@ -7,6 +7,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## [Unreleased]
 
 ### Added
+- Optional acceptance-led delivery for planned or complex work outside the pinned contract. A
+  project-owned `acceptance.md` holds rules and acceptance cases frozen before implementation, what
+  is left to review, and dated runs that make elapsed time from freeze to verdict observable.
+  Catalog 3.6.0 (`delivery_policy.acceptance_led`), bilingual doctrine, delivery-orchestrator 1.6.0
+  and delivery-review 1.4.0 place a required independent review once per milestone on case adequacy
+  and what cases cannot decide, and close bounded gaps by targeted verification. An explicit
+  full-review request, unrecorded case amendments or stale/failed evidence restore the full scope.
+  Reviewer independence, the direct-correction exception, native delegation and receipt formats are
+  unchanged; local cases are not contract conformance and no delivery-speed benefit is measured.
+  Motivated by a consumer project where review cycles replaced the contract's external judge once
+  work left the contract's scope (selected REQ-ADH-008, with REQ-ADH-019 and 020 preserved).
 - Optional integration of pinned Crapper, Dryer and Mutator tools, with explicit preparation,
   native reports and an executable synthetic weak/strong-test example. Measurements inform review;
   the default CI and direct correction workflow do not require external tools or metric thresholds.

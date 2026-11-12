@@ -94,6 +94,7 @@ instruction bridges. See [getting started](./docs/getting-started.md) for detail
 - [Agentic operating model](./docs/agentic-operating-model.md) — routing, risk gates, work artifacts, and evidence
 - [Runtime capabilities](./docs/runtime-capabilities.md) — portable subagent, fresh-session, and self-review contract
 - [Proportionate delivery](./docs/proportionate-delivery.md) — direct correction, feature and complex-work examples
+- [Acceptance-led delivery](./docs/acceptance-led-delivery.md) — local rules and cases for work outside the pinned contract, with review at the milestone
 - [Product delivery and learning](./docs/product-delivery.md) — decisions, acceptance and outcome review
 - [Worked product loop](./examples/product-loop/README.md) — synthetic trace with executable acceptance controls
 - [Knowledge lifecycle](./docs/knowledge-lifecycle.md) — provenance, stale context, supersession and resume

@@ -168,3 +168,9 @@ bounded briefs, attempt limits and requested/observed model evidence. Orchestrat
 matching FR/EN guidance. Profiles remain local and optional; native delegation and independent
 review gates are unchanged. Existing project preferences stay in `.agents/project-instructions.md`;
 see [configuration examples](adaptive-delivery.md). No receipt format or contract pin changes.
+
+Catalog 3.6.0 adds the optional `delivery_policy.acceptance_led` path and the `acceptance.md` work
+artifact. Orchestrator 1.6.0 and delivery-review 1.4.0 carry matching FR/EN guidance: project-owned
+rules and cases frozen before implementation, independent review once per milestone on what cases
+cannot decide, and targeted verification of bounded gaps. Review independence, the direct-correction
+exception and native delegation are unchanged. See [acceptance-led delivery](acceptance-led-delivery.md).

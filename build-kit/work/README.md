@@ -8,6 +8,10 @@ evidence is for non-trivial/risky implementations, agent/session handoffs and ex
 Create only the files the selected mode needs; one file can combine scope and validation:
 
 - `brief.md` — problem, outcome, non-goals, acceptance criteria, open questions.
+- `acceptance.md` — optional local contract extension for work outside the pinned contract: the
+  project's own rules and acceptance cases with stable IDs, written and frozen before
+  implementation, what is left to review, and a table of dated runs. When it exists, review happens
+  once per milestone on what the cases cannot decide. See the kit's acceptance-led delivery guide.
 - `design.md` — flow, hierarchy, states, and design decisions.
 - `plan.md` — implementation approach, affected surfaces, risk, and rollback where relevant.
 - `agents.md` — actual delegation record: runtime-returned ID, role/mission, verified tools and access,
