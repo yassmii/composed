@@ -50,6 +50,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   or skill tuning follows from its incomplete sessions (selected REQ-ADH-016 to 020 and 024 to 026).
 
 ### Changed
+- The installed `AGENTS.md` doctrine is a shorter core: about 10.8 KB in English and 12.4 KB in
+  French before the skills index, down from 17.7 KB and 20.1 KB. Delegation, model assignment,
+  preflight, review and stack-selection rules keep their gates in compact form and point to
+  `skills/catalog.json` and the delivery-orchestrator skill for detail, to be read before planned
+  or complex work. An English core-only installation drops from 20,132 to 13,292 characters, under
+  the smallest per-file context limit of agents that truncate long instruction files. No gate,
+  policy or catalog value changes; whether agents follow the shorter text as well is unmeasured.
 - Validation guidance starts from the task and distinguishes native checks, receipt applicability,
   scoped contract evaluation and external candidate runs. Human `evidence run` / `verify` output
   separates historical results, current applicability and review, then gives a next action;
