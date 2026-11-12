@@ -1,3 +1,10 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/composed-logo-light.svg">
+    <img src="docs/assets/composed-logo.svg" alt="Composed" width="360">
+  </picture>
+</p>
+
 # Composed
 
 **Versioned product contracts that humans and agents build against, with conformance checked
@@ -95,6 +102,12 @@ Contradictions, counter-examples and independent implementations are the most us
 Point your agent at a contract and its [consumer protocol](contracts/AGENTS.md), then describe what
 you want to build. The protocol tells it to read the research before choosing an architecture, to
 treat invariants and acceptance cases as non-negotiable, and to cite clause identifiers in its work.
+
+There is nothing to install for this. An agent can set everything up from a checkout by following
+the [how-to for agents](docs/agent-how-to.md). A request as short as this is enough:
+
+> Read https://github.com/yassmii/composed/blob/main/docs/agent-how-to.md, then build a booking
+> product from the booking contract. Ask me for the stack first.
 
 ## Use the Build Kit
 
