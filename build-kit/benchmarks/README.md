@@ -12,6 +12,14 @@ The frozen corpus contains one development task (`cart-totals`) and two confirma
 project, with one self-contained source module. Two repetitions give four sessions per task: baseline
 then kit, followed by kit then baseline. Reports never pool development into confirmation.
 
+A separate `contract-confirmation` cohort (`reservation-expiry`, `revision-approval`,
+`hold-decision`) asks a narrower question: with the same contract slice in both workspaces, does adding the kit change delivery? Both
+conditions receive `CONTRACT.md`; the baseline is that contract with the task and no kit. Run it on
+its own with `--cohort contract-confirmation`: three tasks at two repetitions are 12 sessions.
+`--repetitions 3` is accepted for a selection of at most two tasks; with an odd count, successive
+tasks start with opposite conditions so the order stays balanced across the selection.
+The six tasks together exceed the 12-session bound, so a run must name a cohort or tasks.
+
 Every session starts from the same application bytes in a new Git repository **outside** the Composed
 tree, avoiding inherited repository instructions. The kit condition runs the actual source CLI to
 install EN core/support skills and the Codex bridge. The baseline receives no project kit. Prompts,
@@ -47,8 +55,17 @@ From `build-kit/` with Node and Codex native to the same POSIX OS:
 npm run benchmark:calibrate
 node benchmarks/run.mjs --model YOUR_SELECTED_MODEL --effort high \
   --codex-home /private/path/to/runtime-home \
-  --output benchmarks/runs/pilot-001
+  --cohort contract-confirmation \
+  --output benchmarks/runs/contract-001
 ```
+
+`--cohort` selects one cohort and repeated `--task` options select tasks; given together, a task
+must satisfy both. The first pilot's selection is `--task cart-totals --task retry-operation
+--task csv-record`.
+
+In the first pilot every kit session hit the 120-second limit while baseline sessions took 97 to
+107 seconds, so that limit censored the comparison. Set `--timeout-ms` (up to 300000) from an
+unscored readiness session in each condition before a measured run, and raise `--total-ms` to match.
 
 The default is two repetitions, 120 seconds per agent session, 20 minutes for the trial phase and
 1 MiB combined agent output. Calibration/setup time is recorded separately where available. The
@@ -67,8 +84,13 @@ calibration/trials; a later relevant change blocks the next affected attempt.
 
 protocol.json records hashes, task split, schedule, runtime, requested model and limits. Each trial
 retains its event stream, stderr, grader output, initial file hashes, delivered diff/source hashes
-and outcome. `passed` requires both completed execution and all protected acceptance/regression
-groups passing. `failed` is completed execution with failing behaviour; unavailable/incomplete
+and outcome. It also keeps a bounded copy of the delivered workspace under `delivered/`, with
+`delivered-files.json` listing each file's hash and anything not copied (links, files over 256 KiB,
+or beyond 400 files / 4 MiB). Unlike the diff, this copy includes untracked files such as added
+tests, and it does not depend on the temporary workspace surviving. `passed` requires both
+completed execution and all protected acceptance/regression groups passing. Each result also
+records `session_completed` and `source_accepted` separately, and the report counts them apart: a
+source that satisfies every check in a session that timed out is not a completed delivery. `failed` is completed execution with failing behaviour; unavailable/incomplete
 execution or invalid grading is `blocked`. Deadline-skipped sessions are `not_run`. A passing process
 or success-looking final message does not substitute for code assertions.
 

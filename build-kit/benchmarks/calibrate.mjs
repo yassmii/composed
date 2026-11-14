@@ -75,10 +75,48 @@ const csvCorrect = String.raw`export function parseCsvRecord(record) {
 }
 `;
 
+const reservationCorrect = String.raw`export function confirm(booking, now) {
+  if (booking.state !== 'active') return { ...booking };
+  return { ...booking, state: now >= booking.expiresAt ? 'expired' : 'confirmed' };
+}
+`;
+
+const approvalCorrect = String.raw`export function approve(document, expectedRevision, role) {
+  if (role !== 'reviewer') return { status: 'forbidden', document: { ...document } };
+  if (expectedRevision !== document.revision) return { status: 'conflict', document: { ...document } };
+  return { status: 'ok', document: { ...document, state: 'approved' } };
+}
+`;
+
+const holdCorrect = String.raw`export function decide(hold, command, now) {
+  const refuse = (status) => ({ status, hold: { ...hold } });
+  if (command.type !== 'release' && command.actor !== 'owner') return refuse('forbidden');
+  if (hold.state !== 'held') return refuse('closed');
+  if (now >= hold.expiresAt) return { status: 'expired', hold: { ...hold, state: 'expired', revision: hold.revision + 1 } };
+  if (command.expectedRevision !== hold.revision) return refuse('conflict');
+  if (command.type === 'capture') {
+    if (command.amount < 1 || command.amount > hold.amount) return refuse('invalid');
+    return { status: 'ok', hold: { ...hold, state: 'captured', captured: command.amount, revision: hold.revision + 1 } };
+  }
+  if (command.type === 'extend') {
+    if (command.until <= hold.expiresAt || command.until > hold.expiresAt + 3600) return refuse('invalid');
+    return { status: 'ok', hold: { ...hold, expiresAt: command.until, revision: hold.revision + 1 } };
+  }
+  return { status: 'ok', hold: { ...hold, state: 'released', revision: hold.revision + 1 } };
+}
+`;
+const holdConflict =
+  "  if (command.expectedRevision !== hold.revision) return refuse('conflict');\n";
+const holdExpiry =
+  "  if (now >= hold.expiresAt) return { status: 'expired', hold: { ...hold, state: 'expired', revision: hold.revision + 1 } };\n";
+
 const references = {
   'cart-totals': cartCorrect,
   'retry-operation': retryCorrect,
   'csv-record': csvCorrect,
+  'reservation-expiry': reservationCorrect,
+  'revision-approval': approvalCorrect,
+  'hold-decision': holdCorrect,
 };
 const mutants = {
   'cart-totals': cartCorrect.replace(
@@ -90,7 +128,19 @@ const mutants = {
     'attempt === maxAttempts',
   ),
   'csv-record': csvCorrect.replace("field += '\"'; index++;", 'field += \'""\'; index++;'),
+  'reservation-expiry': reservationCorrect.replace(
+    "if (booking.state !== 'active') return { ...booking };",
+    '',
+  ),
+  'revision-approval': approvalCorrect.replace(
+    "if (role !== 'reviewer')",
+    "if (role !== 'reviewer' && expectedRevision === document.revision)",
+  ),
+  // Checks the revision before the expiry: every rule is present, two are in the wrong order.
+  'hold-decision': holdCorrect.replace(holdExpiry + holdConflict, holdConflict + holdExpiry),
 };
+for (const [id, mutant] of Object.entries(mutants))
+  if (mutant === references[id]) throw new Error(`Mutant for ${id} equals its reference.`);
 
 const args = process.argv.slice(2);
 if (args.length && (args.length !== 2 || args[0] !== '--output'))

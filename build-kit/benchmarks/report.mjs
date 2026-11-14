@@ -45,6 +45,10 @@ export function summarize(protocol, results) {
         failed: selected.filter((result) => result.outcome === 'failed').length,
         blocked: selected.filter((result) => result.outcome === 'blocked').length,
         not_run: selected.filter((result) => result.outcome === 'not_run').length,
+        // Kept apart from outcomes: a source can satisfy every check in a session that timed out.
+        session_completed: selected.filter((result) => result.observation?.completed === true)
+          .length,
+        source_accepted: selected.filter((result) => result.grade?.passed === true).length,
         acceptance: {
           passed: checks.filter((check) => check.kind === 'acceptance' && check.passed).length,
           observed: checks.filter((check) => check.kind === 'acceptance').length,
@@ -131,17 +135,19 @@ export function markdownReport(protocol, summary) {
     '',
     `Protocol: ${protocol.digest}. Requested model: ${protocol.agent.model}; effort: ${protocol.agent.effort}.`,
     '',
-    '| Cohort | Condition | Passed | Failed | Blocked | Not run | Mean agent ms |',
-    '| --- | --- | ---: | ---: | ---: | ---: | ---: |',
+    '| Cohort | Condition | Passed | Failed | Blocked | Not run | Sessions completed | Sources accepted | Mean agent ms |',
+    '| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |',
   ];
   for (const [cohort, data] of Object.entries(summary.cohorts)) {
     for (const [condition, row] of Object.entries(data.conditions)) {
       lines.push(
-        `| ${cohort} | ${condition} | ${row.passed} | ${row.failed} | ${row.blocked} | ${row.not_run} | ${row.mean_agent_ms ?? 'unknown'} |`,
+        `| ${cohort} | ${condition} | ${row.passed} | ${row.failed} | ${row.blocked} | ${row.not_run} | ${row.session_completed} | ${row.source_accepted} | ${row.mean_agent_ms ?? 'unknown'} |`,
       );
     }
   }
   lines.push(
+    '',
+    'Passed needs both a completed session and an accepted source. The two are also counted apart: an accepted source from an interrupted session is not a completed delivery.',
     '',
     'Currency cost: unknown. Root-token observations, where present, are in individual trial records.',
     '',

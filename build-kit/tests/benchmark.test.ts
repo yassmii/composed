@@ -10,7 +10,12 @@ const { tasks } = await load('corpus.mjs');
 const { checkDefinitions } = await load('graders.mjs');
 const { runProcess } = await load('process.mjs');
 const { observeCodex } = await load('codex.mjs');
-const { parseArgs, scheduleTasks, validateGrade, runBenchmark } = await load('run.mjs');
+const { parseArgs, scheduleTasks, selectTasks, snapshotDelivery, validateGrade, runBenchmark } =
+  await load('run.mjs');
+// The first pilot's cohorts; the contract-confirmation cohort is scheduled on its own.
+const pilotTasks = tasks.filter(
+  (task: { cohort: string }) => task.cohort !== 'contract-confirmation',
+);
 const { summarize } = await load('report.mjs');
 const { readResults, saveJSON } = await load('storage.mjs');
 const scratch = mkdtempSync(join(tmpdir(), 'composed-benchmark-tests-'));
@@ -19,7 +24,7 @@ afterAll(() => rmSync(scratch, { recursive: true, force: true }));
 
 describe('paired delivery benchmark', () => {
   it('balances order with fresh trial identities and keeps cohorts distinct', () => {
-    const schedule = scheduleTasks(tasks);
+    const schedule = scheduleTasks(pilotTasks);
     expect(schedule).toHaveLength(12);
     expect(new Set(schedule.map((trial: { id: string }) => trial.id)).size).toBe(12);
     expect(schedule.slice(0, 4).map((trial: { condition: string }) => trial.condition)).toEqual([
@@ -33,11 +38,67 @@ describe('paired delivery benchmark', () => {
     ).toHaveLength(8);
   });
 
+  it('selects the contract cohort alone and balances order over three repetitions', () => {
+    const selected = selectTasks({ tasks: [], cohort: 'contract-confirmation' });
+    expect(selected.map((task: { id: string }) => task.id)).toEqual([
+      'reservation-expiry',
+      'revision-approval',
+      'hold-decision',
+    ]);
+    for (const task of selected)
+      expect(task.files['CONTRACT.md']).toBe(selected[0].files['CONTRACT.md']);
+    expect(selected[0].files['CONTRACT.md']).toContain('REQ-CMP-003');
+    expect(selectTasks({ tasks: ['csv-record'], cohort: 'contract-confirmation' })).toEqual([]);
+    // The whole cohort fits the 12-session bound at two repetitions.
+    expect(scheduleTasks(selected, 2)).toHaveLength(12);
+
+    const schedule = scheduleTasks(selected.slice(0, 2), 3);
+    expect(schedule).toHaveLength(12);
+    const first = (taskId: string) =>
+      schedule
+        .filter((trial: { task_id: string }) => trial.task_id === taskId)
+        .filter((_: unknown, index: number) => index % 2 === 0)
+        .map((trial: { condition: string }) => trial.condition);
+    expect(first('reservation-expiry')).toEqual(['baseline', 'kit', 'baseline']);
+    expect(first('revision-approval')).toEqual(['kit', 'baseline', 'kit']);
+    // Two repetitions keep the first pilot's order for every task.
+    expect(
+      scheduleTasks(selected, 2)
+        .slice(4, 8)
+        .map((trial: { condition: string }) => trial.condition),
+    ).toEqual(['baseline', 'kit', 'kit', 'baseline']);
+  });
+
+  it('keeps untracked delivered files and lists what it does not copy', () => {
+    const workspace = join(scratch, 'delivered-workspace');
+    mkdirSync(join(workspace, 'test'), { recursive: true });
+    mkdirSync(join(workspace, '.git'));
+    mkdirSync(join(workspace, 'node_modules'));
+    writeFileSync(join(workspace, '.git', 'HEAD'), 'ref');
+    writeFileSync(join(workspace, 'node_modules', 'dependency.js'), 'skip');
+    writeFileSync(join(workspace, 'test', 'added.test.mjs'), 'untracked test');
+    writeFileSync(join(workspace, 'large.bin'), Buffer.alloc(262145));
+    const destination = join(scratch, 'delivered-copy');
+    const snapshot = snapshotDelivery(workspace, destination);
+    expect(Object.keys(snapshot.files)).toEqual(['test/added.test.mjs']);
+    expect(readFileSync(join(destination, 'test', 'added.test.mjs'), 'utf8')).toBe(
+      'untracked test',
+    );
+    expect(snapshot.status).toBe('partial');
+    expect(snapshot.skipped).toEqual([{ path: 'large.bin', reason: 'file_size_limit' }]);
+    expect(() => snapshotDelivery(workspace, destination)).toThrow();
+  });
+
   it('requires an explicit model/runtime home and bounds the paid trial envelope', () => {
     expect(() => parseArgs([])).toThrow('model');
     expect(() => parseArgs(['--model', 'fixture'])).toThrow('codex-home');
     const base = ['--model', 'fixture', '--codex-home', scratch];
-    expect(() => parseArgs([...base, '--repetitions', '3'])).toThrow();
+    expect(parseArgs([...base, '--repetitions', '3']).repetitions).toBe(3);
+    expect(() => parseArgs([...base, '--repetitions', '4'])).toThrow();
+    expect(() => parseArgs([...base, '--cohort', 'unknown'])).toThrow('cohort');
+    expect(parseArgs([...base, '--cohort', 'contract-confirmation']).cohort).toBe(
+      'contract-confirmation',
+    );
     expect(() => parseArgs([...base, '--timeout-ms', '0'])).toThrow();
     expect(() => parseArgs([...base, '--total-ms', '99999999'])).toThrow();
     expect(() => parseArgs([...base, '--task', 'unknown'])).toThrow();
@@ -241,11 +302,21 @@ describe('paired delivery benchmark', () => {
   });
 
   it('preserves missing and blocked scheduled trials without pooling development results', () => {
-    const schedule = scheduleTasks(tasks);
+    const schedule = scheduleTasks(pilotTasks);
     const row = schedule[0];
     const summary = summarize({ schedule, digest: 'fixture' }, [
-      { ...row, outcome: 'blocked', agent: { duration_ms: 10 } },
+      {
+        ...row,
+        outcome: 'blocked',
+        agent: { duration_ms: 10 },
+        observation: { completed: false },
+        grade: { passed: true, checks: [] },
+      },
     ]);
+    // An accepted source from an interrupted session is counted, but not as a pass.
+    expect(summary.cohorts.development.conditions.baseline.source_accepted).toBe(1);
+    expect(summary.cohorts.development.conditions.baseline.session_completed).toBe(0);
+    expect(summary.cohorts.development.conditions.baseline.passed).toBe(0);
     expect(summary.cohorts.development.conditions.baseline.blocked).toBe(1);
     expect(summary.cohorts.development.conditions.baseline.not_run).toBe(1);
     expect(summary.cohorts.confirmation.conditions.baseline.scheduled).toBe(4);
@@ -294,7 +365,7 @@ describe('paired delivery benchmark', () => {
   it('recovers early interruptions and prefers a durable attempt marker over stale planned results', async () => {
     const output = join(scratch, 'interrupted');
     mkdirSync(output);
-    const schedule = scheduleTasks(tasks);
+    const schedule = scheduleTasks(pilotTasks);
     const protocol = { digest: 'fixture', schedule, agent: { model: 'fixture', effort: 'high' } };
     saveJSON(join(output, 'protocol.json'), protocol);
     expect(readResults(output, protocol)).toEqual([]);

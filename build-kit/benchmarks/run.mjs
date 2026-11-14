@@ -6,6 +6,7 @@ import {
   mkdtempSync,
   readFileSync,
   readdirSync,
+  statSync,
   writeFileSync,
 } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -43,6 +44,7 @@ export function parseArgs(args) {
     ['--timeout-ms', 'timeoutMs'],
     ['--total-ms', 'totalMs'],
     ['--task', 'tasks'],
+    ['--cohort', 'cohort'],
   ]);
   for (let index = 0; index < args.length; index++) {
     const key = keys.get(args[index]);
@@ -62,7 +64,7 @@ export function parseArgs(args) {
   if (!['low', 'medium', 'high', 'xhigh'].includes(options.effort))
     throw new Error('Invalid reasoning effort.');
   for (const [key, min, max] of [
-    ['repetitions', 2, 2],
+    ['repetitions', 2, 3],
     ['timeoutMs', 100, 300000],
     ['totalMs', 100, 1800000],
   ]) {
@@ -72,13 +74,29 @@ export function parseArgs(args) {
   }
   if (options.tasks.some((id) => !tasks.some((task) => task.id === id)))
     throw new Error('Unknown benchmark task.');
+  if (options.cohort && !tasks.some((task) => task.cohort === options.cohort))
+    throw new Error('Unknown benchmark cohort.');
   return options;
 }
 
+export function selectTasks(options = {}) {
+  return tasks.filter(
+    (task) =>
+      (!options.tasks?.length || options.tasks.includes(task.id)) &&
+      (!options.cohort || task.cohort === options.cohort),
+  );
+}
+
+// With an even repetition count every task alternates baseline-first and kit-first equally.
+// With an odd count each task has one extra pair, so successive tasks start with opposite
+// conditions to keep the order balanced across the selection.
 export function scheduleTasks(selected, repetitions = 2) {
-  return selected.flatMap((task) =>
+  return selected.flatMap((task, taskIndex) =>
     Array.from({ length: repetitions }, (_, repeat) =>
-      (repeat % 2 ? ['kit', 'baseline'] : ['baseline', 'kit']).map((condition) => ({
+      ((repeat + (repetitions % 2 ? taskIndex : 0)) % 2
+        ? ['kit', 'baseline']
+        : ['baseline', 'kit']
+      ).map((condition) => ({
         id: `${task.id}-r${repeat + 1}-${condition}`,
         task_id: task.id,
         cohort: task.cohort,
@@ -102,6 +120,47 @@ function filesUnder(root, base = root) {
     else throw new Error(`Unsupported source entry: ${path}`);
   }
   return result;
+}
+
+const SNAPSHOT_LIMITS = { files: 400, fileBytes: 262144, totalBytes: 4194304 };
+
+// Copies the delivered workspace, including untracked files a Git diff omits, into the run
+// output. Bounded and best effort: links and oversized files are listed, never followed or copied.
+export function snapshotDelivery(root, destination) {
+  const files = {};
+  const skipped = [];
+  let totalBytes = 0;
+  const visit = (directory) => {
+    for (const entry of readdirSync(directory, { withFileTypes: true }).sort((a, b) =>
+      a.name.localeCompare(b.name),
+    )) {
+      if (entry.name === '.git' || entry.name === 'node_modules') continue;
+      const path = join(directory, entry.name);
+      const name = relative(root, path).split(sep).join('/');
+      if (entry.isDirectory()) visit(path);
+      else if (!entry.isFile()) skipped.push({ path: name, reason: 'not_a_regular_file' });
+      else {
+        const size = statSync(path).size;
+        if (Object.keys(files).length >= SNAPSHOT_LIMITS.files)
+          skipped.push({ path: name, reason: 'file_count_limit' });
+        else if (size > SNAPSHOT_LIMITS.fileBytes)
+          skipped.push({ path: name, reason: 'file_size_limit' });
+        else if (totalBytes + size > SNAPSHOT_LIMITS.totalBytes)
+          skipped.push({ path: name, reason: 'total_size_limit' });
+        else {
+          const bytes = readFileSync(path);
+          const target = join(destination, name);
+          mkdirSync(dirname(target), { recursive: true });
+          writeFileSync(target, bytes, { flag: 'wx' });
+          files[name] = hash(bytes);
+          totalBytes += bytes.length;
+        }
+      }
+    }
+  };
+  mkdirSync(destination);
+  visit(root);
+  return { status: skipped.length ? 'partial' : 'complete', files, skipped, bytes: totalBytes };
 }
 
 function sourceManifest(kitRoot) {
@@ -203,10 +262,12 @@ export async function runBenchmark(options) {
     existsSync(join(resolve(options.codexHome), 'AGENTS.md'))
   )
     throw new Error('Use an isolated authenticated runtime home without global AGENTS.md.');
-  const selected = tasks.filter((task) => !options.tasks.length || options.tasks.includes(task.id));
+  const selected = selectTasks(options);
   const schedule = scheduleTasks(selected, options.repetitions);
   if (!schedule.length || schedule.length > 12)
-    throw new Error('Pilot must schedule between 1 and 12 sessions.');
+    throw new Error(
+      'Pilot must schedule between 1 and 12 sessions; select a cohort or tasks with --cohort or --task.',
+    );
   const version = await runProcess(options.executable, ['--version'], { timeoutMs: 10000 });
   if (version.status !== 'completed' || version.exit_code !== 0)
     throw new Error('Codex executable is unavailable.');
@@ -395,7 +456,20 @@ export async function runBenchmark(options) {
           });
           result.observation = observeCodex(result.agent);
           result.agent = { ...result.agent, stdout: undefined, stderr: undefined };
+          result.session_completed = result.observation.completed;
+          result.source_accepted = null;
           result.reason = 'grading_pending_or_interrupted';
+          try {
+            const snapshot = snapshotDelivery(root, join(trialOutput, 'delivered'));
+            save(join(trialOutput, 'delivered-files.json'), snapshot);
+            result.delivery_snapshot = {
+              status: snapshot.status,
+              files: Object.keys(snapshot.files).length,
+              skipped: snapshot.skipped.length,
+            };
+          } catch (error) {
+            result.delivery_snapshot = { status: 'failed', reason: error.message };
+          }
           persist();
           const execution = await runProcess(
             process.execPath,
@@ -415,6 +489,7 @@ export async function runBenchmark(options) {
             validateGrade(task, grade)
           )
             result.grade = grade;
+          result.source_accepted = result.grade ? result.grade.passed : null;
           result.outcome =
             !result.observation.completed || !result.grade
               ? 'blocked'

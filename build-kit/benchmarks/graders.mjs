@@ -11,6 +11,17 @@ const timeout = (operation) => {
   ]).finally(() => clearTimeout(timer));
 };
 
+const heldFixture = (overrides = {}) =>
+  Object.freeze({
+    state: 'held',
+    amount: 500,
+    captured: 0,
+    expiresAt: 100,
+    revision: 3,
+    label: 'fixture',
+    ...overrides,
+  });
+
 export const checkDefinitions = {
   'cart-totals': [
     check('cart.basic-total', 'regression', ({ calculateCart }) => {
@@ -316,6 +327,183 @@ export const checkDefinitions = {
       assert.deepEqual(parseCsvRecord('"x,y"'), ['x,y']);
       assert.deepEqual(parseCsvRecord('one'), ['one']);
       assert.deepEqual(parseCsvRecord(',,,'), ['', '', '', '']);
+    }),
+  ],
+  'reservation-expiry': [
+    check('reservation.confirm-before-expiry', 'regression', ({ confirm }) => {
+      assert.deepEqual(confirm({ state: 'active', expiresAt: 10 }, 9), {
+        state: 'confirmed',
+        expiresAt: 10,
+      });
+    }),
+    check('reservation.expiry-boundary', 'acceptance', ({ confirm }) => {
+      for (const now of [9, 10, 11]) {
+        const input = Object.freeze({ state: 'active', expiresAt: 10, label: 'fixture' });
+        assert.deepEqual(confirm(input, now), {
+          ...input,
+          state: now < 10 ? 'confirmed' : 'expired',
+        });
+        assert.equal(input.state, 'active');
+      }
+    }),
+    check('reservation.terminal-states', 'acceptance', ({ confirm }) => {
+      for (const state of ['confirmed', 'cancelled', 'expired']) {
+        for (const now of [9, 10, 11]) {
+          const input = Object.freeze({ state, expiresAt: 10, label: 'fixture' });
+          assert.deepEqual(confirm(input, now), input);
+        }
+      }
+    }),
+  ],
+  'revision-approval': [
+    check('approval.current-revision-reviewer', 'regression', ({ approve }) => {
+      assert.deepEqual(approve({ revision: 2, state: 'draft' }, 2, 'reviewer'), {
+        status: 'ok',
+        document: { revision: 2, state: 'approved' },
+      });
+    }),
+    check('approval.authority-and-revision', 'acceptance', ({ approve }) => {
+      for (const role of ['editor', 'reviewer']) {
+        for (const revision of [1, 2, 3]) {
+          const input = Object.freeze({ revision: 2, state: 'draft', label: 'fixture' });
+          const status = role !== 'reviewer' ? 'forbidden' : revision !== 2 ? 'conflict' : 'ok';
+          assert.deepEqual(approve(input, revision, role), {
+            status,
+            document: { ...input, state: status === 'ok' ? 'approved' : 'draft' },
+          });
+          assert.equal(input.state, 'draft');
+        }
+      }
+    }),
+    check('approval.idempotence', 'acceptance', ({ approve }) => {
+      const input = Object.freeze({ revision: 2, state: 'approved', label: 'fixture' });
+      assert.deepEqual(approve(input, 2, 'reviewer'), { status: 'ok', document: input });
+      assert.deepEqual(approve(input, 1, 'reviewer'), { status: 'conflict', document: input });
+    }),
+  ],
+  'hold-decision': [
+    check('hold.owner-capture', 'regression', ({ decide }) => {
+      const hold = heldFixture();
+      assert.deepEqual(
+        decide(hold, { type: 'capture', actor: 'owner', expectedRevision: 3, amount: 500 }, 50),
+        { status: 'ok', hold: { ...hold, state: 'captured', captured: 500, revision: 4 } },
+      );
+    }),
+    check('hold.operator-release', 'regression', ({ decide }) => {
+      const hold = heldFixture();
+      assert.deepEqual(
+        decide(hold, { type: 'release', actor: 'operator', expectedRevision: 3 }, 50),
+        {
+          status: 'ok',
+          hold: { ...hold, state: 'released', revision: 4 },
+        },
+      );
+    }),
+    check('hold.owner-only-commands', 'acceptance', ({ decide }) => {
+      const hold = heldFixture();
+      for (const command of [
+        { type: 'capture', actor: 'operator', expectedRevision: 3, amount: 100 },
+        { type: 'extend', actor: 'operator', expectedRevision: 3, until: 200 },
+      ])
+        assert.deepEqual(decide(hold, command, 50), { status: 'forbidden', hold });
+      assert.equal(
+        decide(hold, { type: 'release', actor: 'owner', expectedRevision: 3 }, 50).status,
+        'ok',
+      );
+    }),
+    check('hold.role-before-other-rules', 'acceptance', ({ decide }) => {
+      const capture = { type: 'capture', actor: 'operator', expectedRevision: 1, amount: 9999 };
+      const released = heldFixture({ state: 'released' });
+      assert.deepEqual(decide(released, capture, 50), { status: 'forbidden', hold: released });
+      const hold = heldFixture();
+      assert.deepEqual(decide(hold, capture, 100), { status: 'forbidden', hold });
+      assert.deepEqual(decide(hold, capture, 50), { status: 'forbidden', hold });
+    }),
+    check('hold.closed-states', 'acceptance', ({ decide }) => {
+      for (const state of ['released', 'captured', 'expired']) {
+        const hold = heldFixture({ state });
+        for (const now of [50, 100, 150])
+          for (const expectedRevision of [2, 3])
+            assert.deepEqual(
+              decide(hold, { type: 'release', actor: 'owner', expectedRevision }, now),
+              {
+                status: 'closed',
+                hold,
+              },
+            );
+      }
+    }),
+    check('hold.expiry-boundary', 'acceptance', ({ decide }) => {
+      const hold = heldFixture();
+      const release = { type: 'release', actor: 'owner', expectedRevision: 3 };
+      assert.equal(decide(hold, release, 99).status, 'ok');
+      for (const now of [100, 101])
+        assert.deepEqual(decide(hold, release, now), {
+          status: 'expired',
+          hold: { ...hold, state: 'expired', revision: 4 },
+        });
+    }),
+    check('hold.expiry-before-conflict', 'acceptance', ({ decide }) => {
+      const hold = heldFixture();
+      const stale = { type: 'release', actor: 'owner', expectedRevision: 2 };
+      assert.deepEqual(decide(hold, stale, 99), { status: 'conflict', hold });
+      assert.deepEqual(decide(hold, stale, 100), {
+        status: 'expired',
+        hold: { ...hold, state: 'expired', revision: 4 },
+      });
+    }),
+    check('hold.conflict-before-invalid', 'acceptance', ({ decide }) => {
+      const hold = heldFixture();
+      assert.deepEqual(
+        decide(hold, { type: 'capture', actor: 'owner', expectedRevision: 4, amount: 0 }, 50),
+        { status: 'conflict', hold },
+      );
+    }),
+    check('hold.capture-range', 'acceptance', ({ decide }) => {
+      const hold = heldFixture();
+      const capture = (amount) =>
+        decide(hold, { type: 'capture', actor: 'owner', expectedRevision: 3, amount }, 50);
+      for (const amount of [0, -1, 501])
+        assert.deepEqual(capture(amount), { status: 'invalid', hold });
+      for (const amount of [1, 500])
+        assert.deepEqual(capture(amount), {
+          status: 'ok',
+          hold: { ...hold, state: 'captured', captured: amount, revision: 4 },
+        });
+    }),
+    check('hold.extend-range', 'acceptance', ({ decide }) => {
+      const hold = heldFixture();
+      const extend = (until) =>
+        decide(hold, { type: 'extend', actor: 'owner', expectedRevision: 3, until }, 50);
+      for (const until of [99, 100, 3701])
+        assert.deepEqual(extend(until), { status: 'invalid', hold });
+      for (const until of [101, 3700])
+        assert.deepEqual(extend(until), {
+          status: 'ok',
+          hold: { ...hold, expiresAt: until, revision: 4 },
+        });
+    }),
+    check('hold.input-preserved', 'acceptance', ({ decide }) => {
+      const hold = heldFixture();
+      const snapshot = { ...hold };
+      for (const command of [
+        { type: 'capture', actor: 'owner', expectedRevision: 3, amount: 200 },
+        { type: 'extend', actor: 'owner', expectedRevision: 3, until: 150 },
+        { type: 'release', actor: 'operator', expectedRevision: 3 },
+        { type: 'capture', actor: 'operator', expectedRevision: 3, amount: 200 },
+      ]) {
+        const result = decide(hold, Object.freeze(command), 50);
+        assert.equal(result.hold.label, 'fixture');
+        assert.deepEqual(hold, snapshot);
+      }
+      assert.deepEqual(
+        decide(hold, { type: 'release', actor: 'owner', expectedRevision: 3 }, 100).hold,
+        {
+          ...snapshot,
+          state: 'expired',
+          revision: 4,
+        },
+      );
     }),
   ],
 };

@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added
+- A `contract-confirmation` benchmark cohort of three synthetic tasks that give both conditions the
+  same contract slice, so a run compares that contract with and without the kit. Two are one-line
+  defects, where a ceiling on correctness is likely; `hold-decision` combines six ordered rules.
+  `--cohort` selects the cohort and `--repetitions 3` is allowed for up to two tasks, with order
+  balanced across tasks. Graders are calibrated against seed, reference and mutant (eighteen
+  controls with the existing tasks). No session has been run on this cohort.
+
+### Changed
+- The benchmark runner keeps a bounded copy of each delivered workspace, including untracked files,
+  and records session completion and source acceptance separately. The first pilot lost added tests
+  and could not tell an accepted source from a completed delivery. A run of all six tasks exceeds
+  the 12-session bound, so a cohort or tasks must be named.
+
 ## [0.8.0] — 2026-11-14
 
 ### Added
