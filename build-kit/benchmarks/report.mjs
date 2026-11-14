@@ -71,6 +71,15 @@ export function summarize(protocol, results) {
           (result) => result.observation?.root_usage_coverage?.complete_root_usage === false,
         ).length,
         cost_usd: null,
+        // An estimate some CLIs print, at API prices. Summed only when every dispatched attempt
+        // reported one; it is never an invoice and says nothing about a subscription.
+        cli_reported_cost_usd_if_all_dispatched_known:
+          dispatched.length > 0 &&
+          dispatched.every((result) => Number.isFinite(result.observation?.cost_usd))
+            ? Number(
+                dispatched.reduce((sum, result) => sum + result.observation.cost_usd, 0).toFixed(6),
+              )
+            : null,
       };
     }
     const paired = [];
@@ -149,7 +158,7 @@ export function markdownReport(protocol, summary) {
     '',
     'Passed needs both a completed session and an accepted source. The two are also counted apart: an accepted source from an interrupted session is not a completed delivery.',
     '',
-    'Currency cost: unknown. Root-token observations, where present, are in individual trial records.',
+    'Currency cost: unknown. Root-token observations and any estimate printed by the CLI are in individual trial records; such an estimate is not an invoice.',
     '',
     'Comparative benefit: not established.',
     '',

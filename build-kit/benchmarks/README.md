@@ -35,6 +35,41 @@ public regressions independently of agent edits to tests/package scripts. Files 
 supplied workspaces; they are not claimed inaccessible to an adversarial agent. Grading executes
 candidate code with caller permissions and a bounded child process, not an OS security sandbox.
 
+## Agent runtimes
+
+`--agent` selects the CLI the runner drives; the default is `codex`. A comparison is only ever
+between the two conditions of one run, with one agent, model and effort. Runs with different agents
+are separate experiments and must not be pooled or ranked.
+
+| `--agent` | CLI and mode | Kit bridge installed | Containment | What the adapter rests on |
+| --- | --- | --- | --- | --- |
+| `codex` | `codex exec --json` | `AGENTS.md` | CLI sandbox `workspace-write`, approvals never | Measured sessions in pilot 001 |
+| `claude-code` | `claude -p --output-format stream-json` | `CLAUDE.md` | No sandbox. Eight built-in tools; `dontAsk` denies every write or command outside an allowlist (file edits, `npm test`, `node --test`, `git status`, `git diff`) | Two unscored tool-using sessions on Claude Code 2.1.183 under Windows; no measured or POSIX session yet |
+| `gemini` | `gemini --output-format stream-json` | `GEMINI.md` | CLI sandbox (needs a container runtime or macOS Seatbelt) with auto-approval inside it | Documentation and source types only; no session observed |
+
+`--runtime-home` (formerly `--codex-home`) names an isolated, logged-in configuration directory for
+the selected CLI. It is passed as `CODEX_HOME`, `CLAUDE_CONFIG_DIR` or `GEMINI_CLI_HOME`, and must
+not contain global instructions (`AGENTS.md`, `CLAUDE.md`, `.gemini/GEMINI.md`). For Claude Code it
+must hold `.credentials.json`, unless `ANTHROPIC_API_KEY` is set; Gemini authentication is not
+checked. `--effort` applies to Codex and Claude Code; Gemini CLI has no such option and rejects it.
+
+Differences to keep in mind when reading a run:
+
+- Claude Code is not given the subagent tool, web access or scheduling, so delegation is not
+  exercised. It still runs shell commands it classifies as read-only. Denied calls are counted per
+  trial in `permission_denials`; a kit instruction that needs a denied command shows up there.
+- Claude Code prints a cost estimate at API prices, recorded per trial as `cost_usd` with its
+  source. It is not an invoice and does not describe what a subscription is charged. Codex and
+  Gemini report none.
+- Token fields are not equivalent across CLIs. Claude Code reports cache reads and cache creation
+  apart from `input_tokens`; Gemini's `cached` is a part of its `input_tokens`.
+- The Gemini adapter has never run. Do an unscored readiness session and inspect `events.jsonl`
+  before any measured run; an event stream it does not recognise is reported as not completed.
+
+Cursor, Cline, Windsurf and Aider have kit bridges but no adapter here. Windsurf has no headless
+CLI. The others need an observed session to establish how completion and usage are reported;
+an adapter that infers completion from an exit code alone is not accepted by this runner.
+
 ## Run locally
 
 Use an isolated logged-in Codex runtime home outside the repository and the OS temporary directory;
@@ -53,8 +88,8 @@ From `build-kit/` with Node and Codex native to the same POSIX OS:
 
 ```bash
 npm run benchmark:calibrate
-node benchmarks/run.mjs --model YOUR_SELECTED_MODEL --effort high \
-  --codex-home /private/path/to/runtime-home \
+node benchmarks/run.mjs --agent codex --model YOUR_SELECTED_MODEL --effort high \
+  --runtime-home /private/path/to/runtime-home \
   --cohort contract-confirmation \
   --output benchmarks/runs/contract-001
 ```

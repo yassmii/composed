@@ -14,6 +14,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   balanced across tasks. Graders are calibrated against seed, reference and mutant (eighteen
   controls with the existing tasks). No session has been run on this cohort.
 
+- The benchmark runner can drive Claude Code and Gemini CLI as well as Codex, through `--agent`
+  and a generic `--runtime-home` (`--codex-home` still works). The kit condition installs the
+  matching bridge. The Claude Code adapter was checked against two unscored tool-using sessions
+  and runs without a sandbox, under a restricted tool set and an allowlist; the Gemini adapter is
+  written from documentation and source types and has never run. Claude Code's printed cost
+  estimate is recorded per trial as an estimate, not an invoice. Runs with different agents are
+  separate experiments.
+
 ### Changed
 - The benchmark runner keeps a bounded copy of each delivered workspace, including untracked files,
   and records session completion and source acceptance separately. The first pilot lost added tests

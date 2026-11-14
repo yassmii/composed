@@ -13,7 +13,7 @@ import { tmpdir } from 'node:os';
 import { dirname, join, relative, resolve, sep } from 'node:path';
 import { performance } from 'node:perf_hooks';
 import { fileURLToPath } from 'node:url';
-import { codexCommand, observeCodex } from './codex.mjs';
+import { adapters } from './agents.mjs';
 import { tasks } from './corpus.mjs';
 import { checkDefinitions } from './graders.mjs';
 import { runProcess } from './process.mjs';
@@ -28,8 +28,7 @@ export function parseArgs(args) {
     repetitions: 2,
     timeoutMs: 120000,
     totalMs: 1200000,
-    effort: 'high',
-    executable: 'codex',
+    agent: 'codex',
     tasks: [],
   };
   const seen = new Set();
@@ -38,7 +37,10 @@ export function parseArgs(args) {
     ['--model', 'model'],
     ['--effort', 'effort'],
     ['--executable', 'executable'],
-    ['--codex-home', 'codexHome'],
+    ['--agent', 'agent'],
+    ['--runtime-home', 'runtimeHome'],
+    // Earlier name of --runtime-home, kept for the first pilot's command line.
+    ['--codex-home', 'runtimeHome'],
     ['--kit-root', 'kitRoot'],
     ['--repetitions', 'repetitions'],
     ['--timeout-ms', 'timeoutMs'],
@@ -59,10 +61,22 @@ export function parseArgs(args) {
     else options[key] = value;
   }
   if (!options.model) throw new Error('An explicit --model is required for matched trials.');
-  if (!options.codexHome)
-    throw new Error('Supply --codex-home with an isolated logged-in runtime home.');
-  if (!['low', 'medium', 'high', 'xhigh'].includes(options.effort))
-    throw new Error('Invalid reasoning effort.');
+  const adapter = adapters[options.agent];
+  if (!adapter)
+    throw new Error(`Unknown benchmark agent; choose one of ${Object.keys(adapters).join(', ')}.`);
+  if (!options.runtimeHome)
+    throw new Error(
+      'Supply --runtime-home (formerly --codex-home) with an isolated logged-in runtime home.',
+    );
+  if (!adapter.efforts) {
+    if (options.effort)
+      throw new Error(`The ${adapter.id} adapter has no reasoning-effort option.`);
+    options.effort = 'not_supported';
+  } else {
+    options.effort ??= 'high';
+    if (!adapter.efforts.includes(options.effort)) throw new Error('Invalid reasoning effort.');
+  }
+  options.executable ??= adapter.executable;
   for (const [key, min, max] of [
     ['repetitions', 2, 3],
     ['timeoutMs', 100, 300000],
@@ -256,21 +270,28 @@ export async function runBenchmark(options) {
     throw new Error(
       'Measured sessions require POSIX process-group cleanup; calibration and reporting remain portable.',
     );
-  if (
-    !options.codexHome ||
-    !existsSync(join(resolve(options.codexHome), 'auth.json')) ||
-    existsSync(join(resolve(options.codexHome), 'AGENTS.md'))
-  )
-    throw new Error('Use an isolated authenticated runtime home without global AGENTS.md.');
+  const adapter = adapters[options.agent ?? 'codex'];
+  if (!adapter) throw new Error('Unknown benchmark agent.');
+  const runtimeHome = options.runtimeHome ? resolve(options.runtimeHome) : null;
+  const homeProblem = !runtimeHome
+    ? 'no runtime home was supplied'
+    : !existsSync(runtimeHome)
+      ? 'runtime home does not exist'
+      : adapter.checkHome(runtimeHome, process.env);
+  if (homeProblem)
+    throw new Error(
+      `Use an isolated authenticated runtime home without global instructions: ${homeProblem}.`,
+    );
+  const executable = options.executable ?? adapter.executable;
   const selected = selectTasks(options);
   const schedule = scheduleTasks(selected, options.repetitions);
   if (!schedule.length || schedule.length > 12)
     throw new Error(
       'Pilot must schedule between 1 and 12 sessions; select a cohort or tasks with --cohort or --task.',
     );
-  const version = await runProcess(options.executable, ['--version'], { timeoutMs: 10000 });
+  const version = await runProcess(executable, ['--version'], { timeoutMs: 10000 });
   if (version.status !== 'completed' || version.exit_code !== 0)
-    throw new Error('Codex executable is unavailable.');
+    throw new Error(`The ${adapter.id} executable is unavailable.`);
   const kitSources = sourceManifest(kitRoot);
   const harness = Object.fromEntries(
     readdirSync(here)
@@ -281,16 +302,14 @@ export async function runBenchmark(options) {
   const protocol = {
     format_version: 1,
     agent: {
-      adapter: 'codex-exec',
-      executable: options.executable,
+      id: adapter.id,
+      executable,
       version: version.stdout.trim(),
       model: options.model,
       effort: options.effort,
-      user_config: 'ignored',
-      memories: 'disabled',
-      sandbox: 'workspace-write',
-      approvals: 'never',
-      sessions: 'fresh ephemeral',
+      adapter_evidence: adapter.evidence,
+      kit_bridge: adapter.kitAgent,
+      ...adapter.describe(),
     },
     node: process.version,
     platform: process.platform,
@@ -316,7 +335,8 @@ export async function runBenchmark(options) {
       grader_visibility: 'withheld from supplied workspaces; not adversarially inaccessible',
       model_version: 'requested identifier; resolved backend version unknown',
       root_usage: 'observed events only; delegated completeness unknown',
-      currency_cost: 'unknown',
+      currency_cost:
+        'unknown as an invoice; an estimate printed by the CLI is recorded per trial when present',
     },
   };
   protocol.digest = hash(JSON.stringify(protocol));
@@ -392,7 +412,7 @@ export async function runBenchmark(options) {
               join(kitRoot, 'bin/composed-kit.mjs'),
               'init',
               '--yes',
-              '--agents=codex',
+              `--agents=${adapter.kitAgent}`,
               '--lang=en',
               '--skills=core,support',
               '--cwd',
@@ -436,9 +456,14 @@ export async function runBenchmark(options) {
         if (remaining <= 0) {
           result.reason = 'total_deadline';
         } else {
-          const command = codexCommand({ ...options, workspace: root });
-          const environment = { ...process.env };
-          if (options.codexHome) environment.CODEX_HOME = resolve(options.codexHome);
+          const command = adapter.command({
+            executable,
+            workspace: root,
+            model: options.model,
+            effort: options.effort,
+            prompt: task.prompt,
+          });
+          const environment = { ...process.env, ...adapter.environment(runtimeHome) };
           writeFileSync(join(trialOutput, 'events.jsonl'), '', { flag: 'wx' });
           writeFileSync(join(trialOutput, 'stderr.txt'), '', { flag: 'wx' });
           writeFileSync(join(trialOutput, 'prompt.txt'), task.prompt, { flag: 'wx' });
@@ -449,12 +474,12 @@ export async function runBenchmark(options) {
           result.agent = await runProcess(command.executable, command.args, {
             cwd: root,
             env: environment,
-            input: task.prompt,
+            input: adapter.prompt === 'stdin' ? task.prompt : '',
             timeoutMs: Math.min(options.timeoutMs, remaining),
             onStdout: (chunk) => appendFileSync(join(trialOutput, 'events.jsonl'), chunk),
             onStderr: (chunk) => appendFileSync(join(trialOutput, 'stderr.txt'), chunk),
           });
-          result.observation = observeCodex(result.agent);
+          result.observation = adapter.observe(result.agent);
           result.agent = { ...result.agent, stdout: undefined, stderr: undefined };
           result.session_completed = result.observation.completed;
           result.source_accepted = null;

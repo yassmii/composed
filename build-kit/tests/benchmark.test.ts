@@ -10,6 +10,9 @@ const { tasks } = await load('corpus.mjs');
 const { checkDefinitions } = await load('graders.mjs');
 const { runProcess } = await load('process.mjs');
 const { observeCodex } = await load('codex.mjs');
+const { claudeCommand, observeClaude } = await load('claude.mjs');
+const { geminiCommand, observeGemini } = await load('gemini.mjs');
+const { adapters } = await load('agents.mjs');
 const { parseArgs, scheduleTasks, selectTasks, snapshotDelivery, validateGrade, runBenchmark } =
   await load('run.mjs');
 // The first pilot's cohorts; the contract-confirmation cohort is scheduled on its own.
@@ -173,6 +176,175 @@ describe('paired delivery benchmark', () => {
         stdout: '{"type":"turn.completed","usage":{}}',
       }).root_usage,
     ).toBeNull();
+  });
+
+  it('selects an agent adapter and applies its own effort and home rules', () => {
+    const base = ['--model', 'fixture', '--runtime-home', scratch];
+    expect(parseArgs(base)).toMatchObject({ agent: 'codex', executable: 'codex', effort: 'high' });
+    expect(parseArgs(['--model', 'fixture', '--codex-home', scratch]).runtimeHome).toBe(scratch);
+    expect(() => parseArgs([...base, '--codex-home', scratch])).toThrow('Duplicate');
+    expect(() => parseArgs([...base, '--agent', 'unknown'])).toThrow('claude-code');
+    expect(() => parseArgs([...base, '--effort', 'max'])).toThrow('effort');
+    expect(parseArgs([...base, '--agent', 'claude-code', '--effort', 'max'])).toMatchObject({
+      executable: 'claude',
+      effort: 'max',
+    });
+    expect(parseArgs([...base, '--agent', 'gemini']).effort).toBe('not_supported');
+    expect(() => parseArgs([...base, '--agent', 'gemini', '--effort', 'high'])).toThrow('effort');
+    expect(
+      parseArgs([...base, '--agent', 'gemini', '--executable', '/opt/gemini']).executable,
+    ).toBe('/opt/gemini');
+
+    const home = join(scratch, 'agent-home');
+    mkdirSync(join(home, '.gemini'), { recursive: true });
+    expect(adapters.codex.checkHome(home, {})).toContain('auth.json');
+    expect(adapters['claude-code'].checkHome(home, {})).toContain('credentials');
+    expect(adapters['claude-code'].checkHome(home, { ANTHROPIC_API_KEY: 'fixture' })).toBeNull();
+    writeFileSync(join(home, 'CLAUDE.md'), 'global instructions');
+    expect(adapters['claude-code'].checkHome(home, { ANTHROPIC_API_KEY: 'fixture' })).toContain(
+      'CLAUDE.md',
+    );
+    expect(adapters.gemini.checkHome(home, {})).toBeNull();
+    writeFileSync(join(home, '.gemini', 'GEMINI.md'), 'global instructions');
+    expect(adapters.gemini.checkHome(home, {})).toContain('GEMINI.md');
+    expect(adapters['claude-code'].environment(home)).toEqual({ CLAUDE_CONFIG_DIR: home });
+    expect(adapters.gemini.environment(home)).toEqual({ GEMINI_CLI_HOME: home });
+    for (const adapter of Object.values(adapters) as { kitAgent: string; evidence: string }[]) {
+      expect(adapter.kitAgent).toBeTruthy();
+      expect(adapter.evidence).toMatch(/^(observed|documented only)/);
+    }
+  });
+
+  it('reads a Claude Code result event without trusting the exit code alone', () => {
+    const command = claudeCommand({ model: 'fixture-model', effort: 'high' });
+    expect(command.executable).toBe('claude');
+    expect(command.args).toEqual(expect.arrayContaining(['-p', 'stream-json', 'dontAsk']));
+    expect(command.args).not.toContain('bypassPermissions');
+    expect(command.args).not.toContain('--dangerously-skip-permissions');
+
+    const lines = (events: object[]) => events.map((event) => JSON.stringify(event)).join('\n');
+    const init = { type: 'system', subtype: 'init', session_id: 'fixture-session' };
+    const tool = {
+      type: 'assistant',
+      message: { content: [{ type: 'tool_use', name: 'Bash', input: { command: 'npm test' } }] },
+    };
+    const final = {
+      type: 'result',
+      subtype: 'success',
+      is_error: false,
+      num_turns: 4,
+      result: 'Tests pass.',
+      total_cost_usd: 0.0134,
+      usage: {
+        input_tokens: 9,
+        cache_creation_input_tokens: 6213,
+        cache_read_input_tokens: 40,
+        output_tokens: 80,
+      },
+      modelUsage: { 'fixture-model-resolved': {} },
+      permission_denials: [{ tool_name: 'Bash' }],
+    };
+    const run = { status: 'completed', exit_code: 0 };
+    const observed = observeClaude({ ...run, stdout: lines([init, tool, final]) });
+    expect(observed.completed).toBe(true);
+    expect(observed.thread_id).toBe('fixture-session');
+    expect(observed.final_message).toBe('Tests pass.');
+    expect(observed.root_usage).toEqual({
+      input_tokens: 9,
+      cached_input_tokens: 40,
+      output_tokens: 80,
+      reasoning_output_tokens: null,
+    });
+    expect(observed.root_usage_extra).toEqual({ cache_creation_input_tokens: 6213 });
+    expect(observed.root_usage_coverage.complete_root_usage).toBe(true);
+    expect(observed.native_commands).toEqual([{ command: 'npm test', exit_code: null }]);
+    expect(observed.permission_denials).toBe(1);
+    expect(observed.cost_usd).toBe(0.0134);
+    expect(observed.cost_source).toContain('not an invoice');
+    expect(observed.resolved_backend_model).toBe('fixture-model-resolved');
+
+    // A clean exit without a result event, an error result, or a failed process is not complete.
+    expect(observeClaude({ ...run, stdout: lines([init, tool]) }).completed).toBe(false);
+    expect(
+      observeClaude({
+        ...run,
+        stdout: lines([init, { ...final, subtype: 'error_max_turns', is_error: true }]),
+      }).completed,
+    ).toBe(false);
+    expect(observeClaude({ ...run, exit_code: 1, stdout: lines([init, final]) }).completed).toBe(
+      false,
+    );
+    expect(observeClaude({ ...run, stdout: `${lines([init, final])}\nnot-json` }).completed).toBe(
+      false,
+    );
+    const noUsage = observeClaude({
+      ...run,
+      stdout: lines([{ ...final, usage: undefined, total_cost_usd: undefined }]),
+    });
+    expect(noUsage.root_usage).toBeNull();
+    expect(noUsage.cost_usd).toBeNull();
+    expect(noUsage.cost_source).toBe('not_reported');
+  });
+
+  it('reads a Gemini result event and keeps the prompt as one literal argument', () => {
+    const prompt = 'Fix it; $(touch unexpected) --yolo';
+    const command = geminiCommand({ model: 'fixture-model', prompt });
+    expect(command.args.at(-1)).toBe(prompt);
+    expect(command.args).toEqual(expect.arrayContaining(['stream-json', '--sandbox']));
+
+    const lines = (events: object[]) => events.map((event) => JSON.stringify(event)).join('\n');
+    const events = [
+      { type: 'init', session_id: 'fixture-session', model: 'fixture-model' },
+      { type: 'message', role: 'assistant', content: 'Looking.' },
+      {
+        type: 'tool_use',
+        tool_name: 'run_shell_command',
+        tool_id: 't1',
+        parameters: { command: 'npm test' },
+      },
+      { type: 'tool_result', tool_id: 't1', status: 'success' },
+      { type: 'message', role: 'assistant', content: 'Tests ', delta: true },
+      { type: 'message', role: 'assistant', content: 'pass.', delta: true },
+      {
+        type: 'result',
+        status: 'success',
+        stats: {
+          input_tokens: 100,
+          cached: 60,
+          output_tokens: 20,
+          models: { 'fixture-model': {} },
+        },
+      },
+    ];
+    const run = { status: 'completed', exit_code: 0 };
+    const observed = observeGemini({ ...run, stdout: lines(events) });
+    expect(observed.completed).toBe(true);
+    expect(observed.final_message).toBe('Tests pass.');
+    expect(observed.root_usage).toEqual({
+      input_tokens: 100,
+      cached_input_tokens: 60,
+      output_tokens: 20,
+      reasoning_output_tokens: null,
+    });
+    expect(observed.native_commands).toEqual([
+      { command: 'npm test', exit_code: null, status: 'success' },
+    ]);
+    expect(observed.cost_usd).toBeNull();
+    expect(observed.resolved_backend_model).toBe('fixture-model');
+
+    expect(observeGemini({ ...run, stdout: lines(events.slice(0, -1)) }).completed).toBe(false);
+    expect(
+      observeGemini({
+        ...run,
+        stdout: lines([...events.slice(0, -1), { type: 'result', status: 'error' }]),
+      }).completed,
+    ).toBe(false);
+    expect(
+      observeGemini({
+        ...run,
+        stdout: lines([{ type: 'error', severity: 'error', message: 'quota' }, ...events]),
+      }).completed,
+    ).toBe(false);
   });
 
   it('runs arguments literally without invoking a shell', async () => {
