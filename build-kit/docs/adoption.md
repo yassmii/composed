@@ -1,6 +1,6 @@
 # Safe adoption and removal
 
-Build Kit 0.7.0 prepares the complete desired-file plan before touching a project. Source templates,
+The Build Kit prepares the complete desired-file plan before touching a project. Source templates,
 skill metadata, destinations, case aliases and links are checked before a backup or installation write.
 The target must already be a Git repository. The CLI uses the existing project stack; installation
 does not choose a product stack or launch agents.

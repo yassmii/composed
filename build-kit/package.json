@@ -1,6 +1,6 @@
 {
   "name": "composed-build-kit",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Portable, agent-agnostic kit for governed multi-agent software delivery.",
   "type": "module",
   "private": true,

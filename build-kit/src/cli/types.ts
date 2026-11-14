@@ -80,4 +80,4 @@ export const AGENT_SPECS: Record<AgentId, AgentSpec> = {
   },
 };
 
-export const KIT_VERSION = '0.7.0';
+export const KIT_VERSION = '0.8.0';

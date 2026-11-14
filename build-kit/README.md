@@ -109,7 +109,8 @@ instruction bridges. See [getting started](./docs/getting-started.md) for detail
 
 ## Status
 
-**v0.7.0 source beta** — safe adoption, managed baselines and bounded removal complement
+**v0.8.0 source beta** — optional acceptance-led delivery, a shorter installed doctrine, source
+provenance, write-path preflight and knowledge checks complement safe adoption, managed baselines,
 19 skills, risk-based engineering workflows, diagnostics and repair;
 new projects and POCs require a user stack decision before implementation;
 complex implementations default to `multi-agent-required`. Run `update` to refresh

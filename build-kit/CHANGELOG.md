@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.8.0] — 2026-11-14
+
 ### Added
 - Optional acceptance-led delivery for planned or complex work outside the pinned contract. A
   project-owned `acceptance.md` holds rules and acceptance cases frozen before implementation, what
