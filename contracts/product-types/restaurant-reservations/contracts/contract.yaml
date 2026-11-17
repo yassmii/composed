@@ -1,0 +1,473 @@
+# yaml-language-server: $schema=../../../specs/product-contract-0.2.schema.json
+schema_version: '0.2'
+id: restaurant-reservations
+name: Réservation et accueil en restaurant
+version: 0.1.0
+kind: product-contract
+status: draft
+license: CC-BY-4.0
+
+intent:
+  promise: Permettre à un restaurant de recevoir ses réservations directes et de conduire son service sans vendre deux fois la même capacité.
+  primary_outcome: Transformer une disponibilité réelle en une réservation fiable, puis en un accueil suivi par l'équipe.
+  success_metrics:
+    - id: MET-SEATED
+      measure: 'Indicateur principal : couverts issus de réservations directes effectivement installés par service ouvert. Pilote de 5 restaurants pendant 4 semaines après 2 semaines de référence ; objectif exploratoire +10 % à jours de semaine comparables, sans attribution causale automatique.'
+    - id: MET-NOSHOW
+      measure: 'Réservations marquées absentes / réservations confirmées non annulées dont le service est terminé ; publier aussi la part sans statut final. Objectif pilote : baisse relative de 20 %, seulement si au moins 100 réservations dans chaque période et moins de 5 % de statuts inconnus.'
+    - id: MET-ONBOARD
+      measure: '4 restaurateurs pilotes sur 5 publient un service, ses tables et une réservation de test en moins de 45 minutes, hors import et contractualisation du prestataire de paiement.'
+    - id: MET-GUARD
+      measure: 'Contre-mesures : zéro conflit de table imputable au système ; mesurer le taux de confirmation par parcours commencé, séparé avec/sans garantie, et enquêter si baisse de plus de 5 points par rapport à la référence.'
+
+scope:
+  includes:
+    - SaaS pour restaurants indépendants en France ; plusieurs établissements isolés sur la plateforme, un établissement par espace de travail.
+    - Parcours public mobile en français et anglais, réservable sans création de compte ; espace de gestion en français sur tablette et ordinateur.
+    - Services, tables et combinaisons, réservation directe et saisie téléphonique, accueil des clients sans réservation, annulation et modification.
+    - Liste d'attente, courriels transactionnels, garantie bancaire optionnelle et traitement supervisé des absences.
+    - Fichier client limité à l'établissement, import/export, droits d'accès, journal d'activité et indicateurs de service.
+  excludes:
+    - Marketplace grand public, moteur de découverte inter-restaurants et achat de trafic.
+    - Applications natives obligatoires, assistant vocal IA, caisse, commandes, livraison et partage de l'addition.
+    - Prépaiement, acomptes, remboursements automatisés, billetterie et expériences gastronomiques.
+    - Campagnes marketing, programme de fidélité, avis publics et partage de clients entre établissements.
+    - Connexions Google Reserve, Meta, caisses et distributeurs tiers ; elles nécessitent une extension versionnée et des accords vérifiés.
+    - Facturation automatisée des abonnements SaaS et édition d'un site vitrine complet.
+    - Réservation confirmée hors connexion, surbooking volontaire et liste noire partagée.
+
+actors:
+  - id: ACT-GUEST
+    name: Client du restaurant
+    goals: [Trouver une disponibilité, Réserver et gérer sa venue]
+    permissions: [Consulter les disponibilités publiques, Gérer sa réservation avec une autorisation personnelle, Rejoindre ou quitter sa liste d'attente]
+  - id: ACT-HOST
+    name: Équipe de salle
+    goals: [Préparer le service, Accueillir et placer les clients]
+    permissions: [Lire les réservations et contacts utiles de son établissement, Créer et modifier les réservations, Gérer les tables et la liste d'attente pendant le service, Marquer les arrivées et les absences]
+  - id: ACT-MANAGER
+    name: Responsable du restaurant
+    goals: [Configurer la capacité et les règles, Maîtriser les données et les incidents]
+    permissions: [Exercer les droits de salle, Gérer les services et membres, Autoriser les prélèvements, Importer et exporter les données, Traiter les demandes relatives aux données personnelles]
+
+domain:
+  entities:
+    - id: ENT-VENUE
+      name: Établissement
+      description: Périmètre de propriété des données, des membres et des règles ; fuseau horaire explicite.
+      lifecycle: [brouillon, actif, suspendu, archivé]
+    - id: ENT-SERVICE
+      name: Service
+      description: Date locale, horaires, pas de réservation, durée par taille de groupe, délai de remise en place, quota d'arrivées et fermetures exceptionnelles.
+      lifecycle: [brouillon, ouvert, fermé, terminé]
+    - id: ENT-TABLE
+      name: Table
+      description: Table physique avec zone et capacité min/max ; seules les combinaisons explicitement autorisées sont utilisables.
+      lifecycle: [active, indisponible, archivée]
+    - id: ENT-RESERVATION
+      name: Réservation
+      description: Identifiant stable, établissement, contact, origine, groupe, intervalle, affectation, politique acceptée et historique ; transitions définies par REQ-STATE.
+      lifecycle: [en_attente_garantie, confirmée, arrivée, installée, terminée, annulée, absente, expirée]
+    - id: ENT-HOLD
+      name: Option de capacité
+      description: Allocation temporaire liée à une garantie en cours ou à une proposition de liste d'attente, avec instant d'expiration explicite.
+      lifecycle: [active, convertie, libérée, expirée]
+    - id: ENT-WAIT
+      name: Entrée de liste d'attente
+      description: Taille du groupe, plage souhaitée, contact, ordre d'inscription et éventuelle proposition exclusive.
+      lifecycle: [en_attente, proposée, convertie, retirée, expirée]
+    - id: ENT-GUARANTEE
+      name: Garantie bancaire
+      description: Référence opaque du prestataire, plafond accepté, devise EUR, statut et opérations ; ne représente pas un acompte.
+      lifecycle: [demandée, valide, refusée, expirée, libérée, prélèvement_en_cours, prélevée, échec_prélèvement]
+    - id: ENT-GUEST
+      name: Fiche client
+      description: Nom, contact et historique de visites propres à un établissement ; aucun profil global ni donnée bancaire brute.
+      lifecycle: [active, anonymisée, supprimée]
+    - id: ENT-NOTICE
+      name: Notification
+      description: Message transactionnel lié à une réservation et à une version de son état.
+      lifecycle: [à_envoyer, acceptée_prestataire, délivrée, échouée, abandonnée]
+  glossary:
+    - term: Couvert
+      definition: Une personne attendue ou accueillie ; compter les personnes séparément du nombre de réservations.
+    - term: Intervalle occupé
+      definition: Intervalle semi-ouvert [début, fin prévue + remise en place[ dans le fuseau de l'établissement ; deux intervalles contigus ne se chevauchent pas.
+    - term: Capacité vendable
+      definition: Affectations physiques compatibles, diminuées des réservations actives, options non expirées et indisponibilités, avec respect du quota d'arrivées.
+    - term: Absence
+      definition: Réservation confirmée dont le client n'est pas venu, marquée manuellement après le délai de grâce ; ne déclenche pas seule un débit.
+
+capabilities:
+  - id: CAP-CONFIG
+    name: Configurer le restaurant et ses services
+    priority: must
+    actor: ACT-MANAGER
+    outcome: Un service ne devient réservable que lorsque sa capacité et ses règles sont cohérentes.
+    requirements:
+      - id: REQ-CONFIG
+        statement: Exiger avant publication le nom, les coordonnées, le fuseau, les tables min/max, les combinaisons autorisées, les horaires, le pas de réservation, la durée par taille de groupe, la remise en place, le quota d'arrivées par créneau, le délai minimum et l'horizon de réservation. Refuser les valeurs négatives, capacités incohérentes et services sans table.
+      - id: REQ-CLOSURE
+        statement: Les fermetures datées priment sur la récurrence. Une modification de capacité ou d'horaires affectant une réservation active est refusée avec la liste des conflits ; le responsable doit réaffecter ou annuler explicitement avant de réessayer. Fermer les nouvelles ventes ne supprime aucune réservation.
+  - id: CAP-AVAIL
+    name: Afficher les disponibilités réelles
+    priority: must
+    actor: ACT-GUEST
+    outcome: Le client voit des créneaux compatibles avec son groupe.
+    requirements:
+      - id: REQ-AVAIL
+        statement: Calculer chaque disponibilité selon REQ-CONFIG et la capacité vendable. Un groupe doit tenir sur une table ou combinaison autorisée ; une somme de chaises dispersées ne suffit pas. Afficher date, heure et fuseau du restaurant ; proposer d'autres créneaux ou la liste d'attente si aucun résultat.
+        depends_on: [REQ-CONFIG, INV-CAPACITY, POL-TIME]
+  - id: CAP-BOOK
+    name: Réserver directement sans compte
+    priority: must
+    actor: ACT-GUEST
+    outcome: Le client obtient une référence et un état définitif ou une attente de garantie explicite.
+    requirements:
+      - id: REQ-BOOK
+        statement: Fournir une page publique et un module intégrable au site du restaurant, partageables par lien. Recueillir nom, courriel et nombre entier de personnes positif ; téléphone facultatif. Montrer établissement, date, heure, groupe, conditions et éventuelle garantie avant validation. Recontrôler et allouer la capacité indivisiblement ; sans garantie requise, confirmer immédiatement avec une référence et un accès personnel de gestion.
+        depends_on: [INV-CAPACITY, INV-IDEMPOTENCY, REQ-ACCESS]
+      - id: REQ-INPUT
+        statement: Refuser un courriel invalide, groupe hors limites, date passée, créneau périmé ou champs incomplets avec une erreur localisée préservant les autres saisies. Un créneau consulté ne constitue pas une option de capacité. Aucun échec ne doit afficher une confirmation.
+  - id: CAP-SERVICE
+    name: Conduire le service
+    priority: must
+    actor: ACT-HOST
+    outcome: L'équipe possède une liste de service et une vue des tables cohérentes avec les réservations directes.
+    requirements:
+      - id: REQ-MANUAL
+        statement: Créer une réservation téléphonique ou un accueil sans réservation dans le même inventaire ; contact facultatif pour un accueil immédiat. Enregistrer origine, auteur et instant. Un accueil immédiat crée une réservation installée. Toute affectation ou réaffectation contrôle tables, intervalle et quotas sans contournement silencieux.
+      - id: REQ-STATE
+        statement: 'Transitions permises : en_attente_garantie vers confirmée, annulée ou expirée ; confirmée vers arrivée, annulée ou absente ; arrivée vers installée ou annulée ; installée vers terminée. Le marquage absente exige début + 15 minutes révolues. Les états terminée, annulée, absente et expirée sont terminaux ; une correction d''erreur de statut exige le responsable, un motif et un nouveau contrôle de capacité. L''heure réelle de fin libère la table après remise en place. Un dépassement d''heure prévue est signalé à l''équipe avec les réservations suivantes affectées ; il ne les annule jamais automatiquement.'
+      - id: REQ-VIEWS
+        statement: Afficher par date/service la liste chronologique, les tables et combinaisons affectées, les couverts attendus/arrivés/installés, les retards et les garanties en attente. Une écriture issue d'une vue obsolète est refusée avec invitation à recharger et conserve les données saisies ; ne pas écraser une modification concurrente.
+  - id: CAP-CHANGE
+    name: Modifier ou annuler une réservation
+    priority: must
+    actor: ACT-GUEST
+    outcome: Une modification ne fait pas perdre la réservation initiale lorsqu'elle échoue.
+    requirements:
+      - id: REQ-CHANGE
+        statement: Avant le début, le client peut modifier date, heure et groupe si le nouveau créneau est libre et la garantie requise inchangée. Remplacer atomiquement l'affectation ; en cas d'échec conserver l'ancienne. Si garantie ou montant requis change, orienter vers le restaurant sans mutation automatique. L'équipe peut opérer le même changement sur une réservation confirmée. Historiser et notifier toute réussite.
+      - id: REQ-CANCEL
+        statement: Permettre au client et à l'équipe d'annuler tant que la réservation n'est ni installée ni terminale, y compris après la limite d'annulation gratuite. Afficher les conséquences de la politique acceptée, libérer la capacité une seule fois, conserver auteur/motif/instant et envoyer la confirmation. Une annulation tardive reste possible ; son éventuel prélèvement suit REQ-CHARGE.
+  - id: CAP-WAIT
+    name: Réattribuer une disponibilité libérée
+    priority: must
+    actor: ACT-HOST
+    outcome: L'équipe propose une place à un client compatible sans créer de double promesse.
+    requirements:
+      - id: REQ-WAIT
+        statement: Inscrire un groupe avec contact vérifiable et plage souhaitée en précisant que l'attente ne confirme rien. À libération, afficher les entrées compatibles par ordre d'inscription ; l'équipe choisit une entrée, avec motif si elle déroge à l'ordre. Créer une offre exclusive de 10 minutes consommant la capacité ; à acceptation convertir atomiquement en réservation confirmée, ou en attente de garantie avec une seule nouvelle option de 10 minutes si nécessaire. Une offre expirée ne peut plus être acceptée ; libérer la capacité, conserver l'entrée en attente jusqu'à la fin de sa plage ou son retrait. Interdire plusieurs offres simultanées pour la même entrée.
+        depends_on: [INV-CAPACITY, INV-HOLD]
+  - id: CAP-GUARANTEE
+    name: Protéger les réservations à risque
+    priority: must
+    actor: ACT-MANAGER
+    outcome: Une garantie optionnelle est explicite pour le client et ne produit pas de débit indu.
+    requirements:
+      - id: REQ-GUARANTEE
+        statement: Configurer par service et seuil de groupe une garantie EUR fixe par réservation ou par couvert, une limite d'annulation gratuite et un plafond. Montrer et conserver montant total, règle, version et acceptation avant transmission au prestataire. Réserver la capacité pendant 10 minutes ; confirmer seulement sur preuve authentifiée de garantie valide avant expiration. À refus, annulation ou expiration, libérer la capacité ; un succès tardif ne ressuscite pas la réservation et déclenche la libération de la garantie, suivie jusqu'à résolution. Après une visite terminée ou une annulation non facturable, demander la libération de la garantie inutilisée sous 24 heures et suivre tout résultat incertain jusqu'à résolution ; cette demande ne vaut pas preuve de libération bancaire effective.
+      - id: REQ-CHARGE
+        statement: Après absence ou annulation tardive selon la politique acceptée, seul le responsable peut demander un prélèvement motivé, plafonné au montant accepté et encore autorisé par une garantie valide. La somme des prélèvements réussis et en cours ne peut dépasser ce plafond. Désactiver le prélèvement sur résultat incertain tant que la réconciliation n'a pas conclu. Un événement prestataire dupliqué ou désordonné ne produit ni double débit ni régression de statut ; exposer référence, résultat et échec à l'équipe, notifier le client après débit confirmé.
+      - id: REQ-PAYFAIL
+        statement: En panne du prestataire, ne pas confirmer une réservation exigeant une garantie et ne pas remplacer la garantie par une réservation non garantie. Afficher indisponibilité temporaire, conserver une option seulement jusqu'à son échéance et réconcilier les opérations inconnues à la reprise ; les réservations sans garantie restent possibles.
+  - id: CAP-NOTIFY
+    name: Informer sans ambiguïté
+    priority: must
+    actor: ACT-GUEST
+    outcome: Les messages reflètent le dernier état connu de la réservation.
+    requirements:
+      - id: REQ-NOTIFY
+        statement: Préparer un courriel lors d'une confirmation, modification, annulation, offre d'attente et prélèvement confirmé, et un rappel 24 heures avant la venue si la réservation existe alors. Ne pas envoyer de rappel rétroactif. Avant envoi, revalider l'état et abandonner les messages obsolètes ; réessayer les échecs transitoires au plus trois fois dans les 30 minutes, sans réémettre un message déjà accepté par le prestataire. Afficher échec ou résultat inconnu à l'équipe ; une panne de messagerie ne supprime pas une réservation confirmée et ne vaut pas preuve de livraison.
+  - id: CAP-DATA
+    name: Maîtriser le fichier client et sa migration
+    priority: must
+    actor: ACT-MANAGER
+    outcome: Le restaurant peut reprendre et récupérer ses données sans mélanger ses clients avec ceux d'autrui.
+    requirements:
+      - id: REQ-CRM
+        statement: Tenir un historique par contact et établissement ; ne jamais fusionner automatiquement sur le seul nom ou entre établissements. Une fusion manuelle exige une prévisualisation des fiches et la confirmation du responsable ; conserver les réservations, références et provenances. Ne pas collecter de notes libres médicales, allergies ou scores de fiabilité dans cette version.
+      - id: REQ-IMPORT
+        statement: Importer les contacts et réservations futures par fichier tabulaire avec identifiants source. Prévisualiser correspondances, doublons, fuseau, conflits et erreurs ligne par ligne sans écrire. Après confirmation, importer seulement les lignes valides explicitement sélectionnées ; rendre un bilan par ligne. Rejouer le même identifiant source dans l'établissement ne crée aucun doublon. Les imports ne fabriquent ni garantie bancaire ni consentement marketing.
+      - id: REQ-EXPORT
+        statement: Permettre au responsable d'exporter contacts, réservations, statuts, origines et horodatages de son établissement en format tabulaire documenté, y compris lorsqu'il est suspendu. Exclure secrets, données bancaires et liens personnels d'accès. Traiter sur demande vérifiée l'export individuel, la rectification et l'effacement/anonymisation selon POL-PRIVACY, avec bilan des éléments conservés et motif.
+  - id: CAP-ACCESS
+    name: Contrôler les accès et les actions
+    priority: must
+    actor: ACT-MANAGER
+    outcome: Chaque personne n'accède qu'aux données et actions autorisées.
+    requirements:
+      - id: REQ-ACCESS
+        statement: Authentifier les membres et vérifier à chaque lecture et écriture rôle et établissement ; permettre invitation, révocation et authentification renforcée du responsable pour export et prélèvement. Les accès personnels clients sont imprévisibles, limités à une réservation ou entrée d'attente, révocables et expirent au plus tard 24 heures après la fin prévue de la visite ou de la plage d'attente. Un client ne peut pas lister d'autres dossiers. Révoquer un membre invalide ses sessions à la prochaine action.
+      - id: REQ-AUDIT
+        statement: Journaliser création, changement, annulation, correction de statut, changement de capacité, accès privilégié, export, fusion et opération de garantie avec auteur, établissement, instant, objet et résultat. L'équipe ne peut modifier le journal ; masquer secrets et données bancaires. Le responsable peut consulter les événements de son établissement.
+  - id: CAP-REPORT
+    name: Mesurer les services
+    priority: must
+    actor: ACT-MANAGER
+    outcome: Le restaurateur distingue activité réelle, annulations et données manquantes.
+    requirements:
+      - id: REQ-REPORT
+        statement: Afficher par période locale réservations et couverts par origine, installés, annulés, absents et sans statut final ; calculer MET-NOSHOW avec son dénominateur visible et distinguer volume de réservations et couverts. Une réservation arrivée ou confirmée n'est pas comptée installée. Afficher zéro et « non calculable » pour un dénominateur nul ; permettre le rapprochement avec l'export.
+
+invariants:
+  - id: INV-CAPACITY
+    statement: Aucune allocation active ne partage une table physique sur des intervalles occupés qui se chevauchent ; tables unitaires et combinaisons utilisent le même inventaire. Les quotas d'arrivées incluent réservations actives et options non expirées. Une action manuelle ou un import ne contourne pas ces règles.
+    rationale: Prévenir les doubles ventes, même entre canaux et sous concurrence.
+  - id: INV-IDEMPOTENCY
+    statement: Une intention de création, annulation, conversion ou prélèvement rejouée avec la même identité et le même contenu conserve un résultat unique ; un contenu différent sous la même identité est rejeté explicitement.
+    rationale: Une reprise réseau ne doit pas multiplier les réservations ni les débits.
+  - id: INV-HOLD
+    statement: À l'instant d'expiration ou après, une option ne consomme plus la capacité et ne peut être convertie, même si le nettoyage différé n'a pas encore eu lieu.
+    rationale: Ne pas bloquer les places sur une dépendance technique.
+  - id: INV-ISOLATION
+    statement: Aucune donnée privée, aucun export, résultat de recherche ou événement d'un établissement n'est visible à un autre établissement sans autorisation explicite, absente de cette version.
+    rationale: Préserver le cloisonnement des restaurants.
+  - id: INV-PAYMENT
+    statement: Aucune confirmation exigeant une garantie ne précède sa validation ; aucune donnée de carte brute ou cryptogramme n'est stocké ou journalisé par l'application ; un débit exige politique acceptée et autorisation du responsable.
+    rationale: Séparer engagement, garantie et encaissement.
+  - id: INV-POLICY
+    statement: Le montant et la politique applicables à une réservation sont ceux qu'elle a acceptés ; une modification générale ultérieure ne les remplace jamais rétroactivement.
+    rationale: Maintenir la promesse faite au client.
+
+policies:
+  - id: POL-DIRECT
+    decision: Le MVP privilégie la réservation directe sans compte ni commission par couvert ; abonnement restaurant envisagé, montant commercial hors contrat.
+    consequence: Aucun péage ni création de compte obligatoire dans le parcours client ; les éventuels frais de garantie sont explicités avant engagement et ne sont pas présentés comme une commission de réservation.
+  - id: POL-TIME
+    decision: Toutes les règles de service et limites sont interprétées dans le fuseau nommé de l'établissement, avec conservation de l'instant et du décalage correspondant.
+    consequence: Une heure locale inexistante est refusée ; une heure répétée lors du changement d'heure exige un choix explicite du décalage. La fin d'un service après minuit conserve son rattachement à la date locale de début du service.
+  - id: POL-PRIVACY
+    decision: 'Choix produit initial à faire revoir avant production : contacts et historique identifiants conservés 24 mois après la dernière visite ou interaction opérationnelle, puis anonymisés ; journaux 12 mois. Données de réservation active ou litige documenté : conservation limitée au motif, accès restreint et réexamen mensuel. Durées comptables propres au prestataire hors de ce stockage.'
+    consequence: Exécuter les purges chaque jour et les demandes vérifiées sous 30 jours, avec justification des exceptions. Une restauration réapplique les suppressions avant remise en service. Les statistiques agrégées ne permettent pas de réidentifier un client.
+  - id: POL-MARKETING
+    decision: La première version n'envoie aucune campagne marketing et ne demande pas de consentement marketing pour réserver ; les messages transactionnels ne contiennent pas de publicité.
+    consequence: Aucun import de contacts ni réservation ne vaut opt-in marketing ; toute extension de prospection définira séparément finalité, consentement et désinscription.
+  - id: POL-OFFLINE
+    decision: Aucune mutation ni confirmation locale ne vaut réservation en absence de connexion ; l'équipe peut exporter une feuille de service datée pendant que le service est disponible.
+    consequence: En cas de déconnexion, signaler clairement l'indisponibilité et l'ancienneté d'une vue conservée, bloquer les mutations ; à reconnexion recharger l'état avant toute action. La feuille de service n'est pas une source de disponibilité à jour.
+  - id: POL-SUSPEND
+    decision: Suspendre un établissement bloque les nouvelles réservations et offres d'attente publiques, sans effacer les engagements existants.
+    consequence: Permettre aux membres autorisés de traiter les réservations déjà prises et d'exporter ; maintenir l'annulation client. Informer le client que les nouvelles réservations en ligne sont indisponibles.
+
+quality_attributes:
+  - id: QA-PERF
+    attribute: Réactivité
+    target: Sur un jeu de 100 établissements, 30 tables chacun et 100000 réservations historiques, sous 100 utilisateurs simultanés pendant 15 minutes, disponibilité p95 <= 2 s et mutations hors prestataires p95 <= 3 s ; moins de 1 % d'erreurs techniques, zéro violation INV-CAPACITY. Mesures de bout en bout avec réseau simulé à 100 ms de latence et 10 Mbit/s.
+  - id: QA-ACCESS
+    attribute: Accessibilité et compréhension
+    target: Parcours rechercher/réserver/modifier/annuler réalisables au clavier et avec un lecteur d'écran, focus visible, champs et erreurs annoncés ; à 200 % de zoom et largeur 360 px aucune action indispensable n'est masquée. Sur 5 nouveaux utilisateurs, au moins 4 réservent sans aide en moins de 2 minutes hors saisie bancaire ; conditions et garantie sont restituées correctement.
+  - id: QA-RECOVERY
+    attribute: Reprise d'activité
+    target: Dans un exercice de perte du service principal, restaurer en 60 minutes maximum un état datant de 15 minutes maximum ; identifier la fenêtre perdue, réconcilier garanties et engagements incertains et réappliquer les suppressions avant réouverture des ventes. Conserver une liste d'anomalies sans fabriquer de confirmations.
+  - id: QA-SECURITY
+    attribute: Protection des accès publics
+    target: Après 10 créations de réservations ou offres par contact et établissement en 10 minutes, refuser les suivantes pendant 10 minutes sans affecter les engagements existants ; après 10 tentatives invalides d'accès personnel dans une session en 10 minutes, la bloquer 10 minutes. Vérifier également l'imprévisibilité des accès et l'absence de secrets dans exports, journaux et messages d'erreur par revue de sécurité avant pilote.
+
+integrations:
+  - id: INT-PAY
+    system: Prestataire de garantie et de prélèvement bancaire
+    purpose: Fournir une référence de garantie opaque et des résultats d'opérations authentifiables, sans fournisseur imposé.
+    degradation: Appliquer REQ-PAYFAIL et REQ-CHARGE ; aucune équivalence implicite entre garantie, acompte et débit.
+  - id: INT-MAIL
+    system: Service de courriels transactionnels
+    purpose: Acheminer les confirmations, modifications, annulations, rappels et propositions.
+    degradation: Appliquer REQ-NOTIFY ; l'état de réservation reste consultable sans livraison du message.
+
+acceptance:
+  - id: ACC-CONFIG
+    given: Un restaurant brouillon, deux tables de 2 places, une combinaison autorisée de 4 et un service de 19 à 23 heures.
+    when: Le responsable publie des paramètres valides puis tente capacités négatives, combinaison inconnue et suppression d'une table réservée.
+    then: La configuration valide est publiée ; les entrées invalides et la suppression conflictuelle sont refusées avec motif, sans modifier les engagements.
+    evidence: Captures des configurations et résultats, réservation préservée, liste des conflits.
+    verifies: [REQ-CONFIG, REQ-CLOSURE]
+    verification: {methods: [automated], boundary: public-interface, case_kinds: [positive, malformed, negative]}
+  - id: ACC-AVAIL
+    given: Deux tables de 2 places non combinables, une réservation 19h-20h30 et 15 minutes de remise en place, un quota de 4 arrivées par créneau.
+    when: Rechercher pour 4 personnes, pour 2 à 20h44 puis 20h45, et sur un créneau au quota atteint ou fermé exceptionnellement.
+    then: Aucun groupe de 4 n'est proposé sur les deux tables séparées ; la table occupée redevient utilisable à 20h45 seulement ; quotas, horizon et fermetures sont respectés, sans dévoiler les clients.
+    evidence: Disponibilités obtenues et paramètres du jeu de référence, incluant délai minimum et horizon aux bornes.
+    verifies: [REQ-AVAIL, INV-CAPACITY]
+    verification: {methods: [automated], boundary: public-interface, case_kinds: [positive, negative, boundary]}
+  - id: ACC-RACE
+    given: Une seule combinaison de deux tables reste libre pour 4 personnes.
+    when: Lancer simultanément une réservation de 4, une saisie de salle de 2, un import et une offre d'attente concurrents sur ces tables ; rejouer la création gagnante.
+    then: Une seule allocation incompatible réussit ; les autres reçoivent un conflit ; le rejeu ne consomme pas davantage de capacité et un rejeu au contenu différent est refusé.
+    evidence: Résultats horodatés de toutes les tentatives et inventaire final depuis les interfaces publiques autorisées.
+    verifies: [REQ-BOOK, REQ-MANUAL, INV-CAPACITY, INV-IDEMPOTENCY]
+    verification: {methods: [automated], boundary: public-interface, case_kinds: [concurrency, negative]}
+  - id: ACC-BOOK
+    given: Un créneau libre sans garantie et le module public intégré à un site de test.
+    when: Réserver sans compte en français puis en anglais, et soumettre séparément courriel invalide, groupe nul et créneau devenu indisponible.
+    then: Le parcours valide affiche conditions, référence et accès personnel ; chaque erreur préserve la saisie utile sans confirmation ni allocation.
+    evidence: Parcours des deux langues, erreurs localisées, référence et état de réservation.
+    verifies: [REQ-BOOK, REQ-INPUT, POL-DIRECT, POL-MARKETING]
+    verification: {methods: [automated], boundary: public-interface, case_kinds: [positive, malformed, negative]}
+  - id: ACC-SERVICE
+    given: Une réservation téléphonique confirmée et une table disponible pour un client de passage.
+    when: L'équipe crée l'accueil immédiat, fait arriver et installe le client réservé, termine le repas et tente une transition interdite ; le responsable corrige ensuite une erreur avec motif.
+    then: Origines et auteurs sont visibles ; transitions autorisées et correction contrôlée sont historisées ; transition interdite ou correction causant un conflit refusée ; fin réelle et remise en place gouvernent la libération.
+    evidence: Liste, vue des tables, historique et état de capacité avant/après ; cas de dépassement d'heure avec alerte sur réservation suivante.
+    verifies: [REQ-MANUAL, REQ-STATE, REQ-VIEWS, REQ-AUDIT]
+    verification: {methods: [automated], boundary: public-interface, case_kinds: [positive, negative, boundary]}
+  - id: ACC-EDIT
+    given: Deux membres consultent la même réservation confirmée.
+    when: Le premier change l'affectation ; le second enregistre depuis l'ancienne version.
+    then: Le second reçoit un conflit explicite et peut récupérer sa saisie ; aucune mise à jour du premier n'est perdue.
+    evidence: Deux sessions et versions visibles avant/après, messages de conflit.
+    verifies: [REQ-VIEWS]
+    verification: {methods: [automated], boundary: public-interface, case_kinds: [concurrency]}
+  - id: ACC-CHANGE
+    given: Une réservation confirmée, un autre créneau libre et un créneau complet.
+    when: Modifier vers le créneau complet, vers un créneau changeant la garantie, puis vers le créneau libre à garantie inchangée ; annuler deux fois.
+    then: Les deux premiers essais préservent l'original ; le troisième le remplace atomiquement ; annuler libère une seule fois, conserve l'historique et produit un événement de notification unique.
+    evidence: Réservation et capacité avant/après chaque essai, notifications et historique.
+    verifies: [REQ-CHANGE, REQ-CANCEL, INV-IDEMPOTENCY]
+    verification: {methods: [automated], boundary: public-interface, case_kinds: [positive, negative]}
+  - id: ACC-WAIT
+    given: Trois entrées d'attente dont deux compatibles et une table libérée.
+    when: Proposer à la première entrée compatible, accepter avant expiration ; répéter avec garantie requise puis offre expirée et retrait volontaire.
+    then: Une seule offre active réserve la place ; acceptation convertit sans double allocation ; garantie requise démarre une seule option nouvelle ; expiration libère sans confirmer et retrait empêche toute proposition suivante. Une dérogation à l'ordre exige un motif.
+    evidence: Ordre affiché, options, historique des offres et réservation obtenue ou absence de réservation.
+    verifies: [REQ-WAIT, INV-HOLD, INV-CAPACITY]
+    verification: {methods: [automated], boundary: public-interface, case_kinds: [positive, negative, boundary]}
+  - id: ACC-HOLD
+    given: Une garantie demandée à t0 avec expiration t0+10 minutes.
+    when: Recevoir un succès avant échéance, puis sur des cas distincts un refus, un succès exactement à échéance et un succès tardif après réallocation de la table ; terminer une visite garantie et annuler gratuitement une autre.
+    then: Seul le premier confirme ; les autres libèrent la place ou la laissent au nouveau titulaire ; succès tardifs sont suivis en libération de garantie sans ressusciter la réservation. Les garanties inutilisées après visite ou annulation gratuite font l'objet d'une demande de libération sous 24 heures ; un résultat incertain reste explicitement en suivi.
+    evidence: Instants précis, états prestataire et réservation, disponibilité à la borne, traitement de libération.
+    verifies: [REQ-GUARANTEE, INV-HOLD, INV-PAYMENT]
+    verification: {methods: [automated], boundary: integration, case_kinds: [positive, negative, boundary, recovery]}
+  - id: ACC-CHARGE
+    given: Une garantie de 80 EUR acceptée, puis une nouvelle politique générale à 100 EUR ; réservation annulée tardivement ou marquée absente après 15 minutes.
+    when: Un agent de salle tente de débiter ; le responsable demande 80 EUR puis rejoue, reçoit des événements dupliqués/désordonnés et tente 1 EUR supplémentaire ; tester aussi annulation gratuite et garantie expirée.
+    then: Seule la demande autorisée sur garantie valide et motif éligible peut aboutir ; total <= 80 EUR ; aucun doublon, débit gratuit ou débit sur garantie expirée ; l'ancienne politique reste applicable.
+    evidence: Acceptation d'origine, refus d'autorisation, journal d'opérations et résultats du prestataire de test.
+    verifies: [REQ-CHARGE, REQ-CANCEL, REQ-STATE, INV-PAYMENT, INV-POLICY, INV-IDEMPOTENCY]
+    verification: {methods: [automated], boundary: integration, case_kinds: [positive, negative, boundary, concurrency]}
+  - id: ACC-PAYFAIL
+    given: Une opération de garantie ou prélèvement dont la réponse est perdue, puis une panne du prestataire.
+    when: Réessayer, attendre l'échéance, puis rétablir le prestataire et réconcilier.
+    then: Pas de confirmation non garantie ni double débit ; prélèvement inconnu bloque une nouvelle tentative ; options expirées sont libérées ; engagements sans garantie restent possibles ; anomalies et libérations sont suivies.
+    evidence: Chronologie de panne/reprise, état de chaque opération et inventaire de capacité.
+    verifies: [REQ-PAYFAIL, REQ-CHARGE, INV-IDEMPOTENCY, INV-PAYMENT]
+    verification: {methods: [automated], boundary: integration, case_kinds: [recovery, negative]}
+  - id: ACC-NOTIFY
+    given: Confirmations, modifications, annulations, offre d'attente et prélèvement éligibles à notification ; prestataire de messagerie indisponible.
+    when: Reprendre les envois, annuler avant un rappel, réserver moins de 24 heures avant et recevoir une acceptation prestataire sans preuve de livraison.
+    then: Chaque type de message reflète l'état valide ; trois tentatives au plus dans 30 minutes ; aucun rappel obsolète ou rétroactif, ni renvoi d'un message accepté ; statut inconnu distinct de livré et réservation confirmée conservée.
+    evidence: Messages de test, calendrier de tentatives et états visibles des notifications.
+    verifies: [REQ-NOTIFY, POL-MARKETING]
+    verification: {methods: [automated], boundary: integration, case_kinds: [positive, negative, recovery]}
+  - id: ACC-CRM
+    given: Deux homonymes et deux contacts reconnus comme un même client par le responsable, dans un établissement ; un homonyme dans un autre.
+    when: Consulter puis fusionner les deux contacts après prévisualisation et confirmation.
+    then: Aucun rapprochement automatique sur nom ni inter-établissements ; historique et références sont conservés, opération auditée ; champs médicaux et score de fiabilité absents.
+    evidence: Fiches avant/après et événement de fusion sans données de l'autre établissement.
+    verifies: [REQ-CRM, INV-ISOLATION, REQ-AUDIT]
+    verification: {methods: [automated], boundary: public-interface, case_kinds: [positive, negative]}
+  - id: ACC-IMPORT
+    given: Un fichier avec contact valide, réservation future valide, ligne mal formée, conflit de table et identifiant déjà importé.
+    when: Prévisualiser, sélectionner les lignes valides, confirmer puis rejouer le même fichier.
+    then: Aucun changement avant confirmation ; seules les lignes sélectionnées valides sont importées, bilan individuel explicite ; aucun doublon, garantie ou consentement inventé.
+    evidence: Fichier synthétique, prévisualisation, bilan, inventaire et export après chaque passage.
+    verifies: [REQ-IMPORT, INV-CAPACITY, POL-MARKETING]
+    verification: {methods: [automated], boundary: public-interface, case_kinds: [positive, malformed, negative]}
+  - id: ACC-ACCESS
+    given: Deux établissements avec responsables et équipes, deux réservations client et un membre révoqué.
+    when: Tester pour chaque rôle lecture, recherche, modification, export, débit et journal ; présenter lien d'autrui deviné, lien révoqué et lien expiré.
+    then: Chaque action hors rôle ou périmètre est refusée sans fuite d'existence ou de contenu ; révocation effective à la prochaine action ; le client autorisé accède uniquement à son dossier ; export et prélèvement exigent authentification renforcée.
+    evidence: Matrice acteurs/actions/périmètres, résultats positifs et refus, journaux expurgés.
+    verifies: [REQ-ACCESS, INV-ISOLATION, REQ-EXPORT, REQ-AUDIT]
+    verification: {methods: [automated], boundary: public-interface, case_kinds: [positive, negative, boundary]}
+  - id: ACC-PRIVACY
+    given: Contacts et journaux de part et d'autre des durées de conservation, réservation active et litige documenté, demande individuelle vérifiée.
+    when: Exporter, rectifier et effacer le dossier ; déclencher la purge quotidienne et le réexamen mensuel, puis restaurer une sauvegarde antérieure.
+    then: Export documenté sans secrets ; éléments effaçables supprimés/anonymisés sous 30 jours ; exceptions motivées et restreintes ; journaux expirés purgés ; restauration ne réintroduit pas les données supprimées.
+    evidence: Données synthétiques avant/après, bilan de demande, exceptions, purge et restauration avec rapprochement.
+    verifies: [REQ-EXPORT, POL-PRIVACY, INV-ISOLATION]
+    verification: {methods: [automated], boundary: public-interface, case_kinds: [positive, boundary, recovery]}
+  - id: ACC-TIME
+    given: Un établissement Europe/Paris, service passant minuit et dates de passage à l'heure d'été et d'hiver.
+    when: Rechercher et réserver une heure inexistante, une heure répétée puis un créneau après minuit.
+    then: Heure inexistante refusée, heure répétée désambiguïsée par décalage, instants et service de rattachement cohérents entre client, salle et export.
+    evidence: Jeux de dates et décalages, résultats des deux occurrences et exports.
+    verifies: [POL-TIME, REQ-AVAIL]
+    verification: {methods: [automated], boundary: public-interface, case_kinds: [positive, boundary, negative]}
+  - id: ACC-OFFLINE
+    given: Une feuille de service exportée et une vue ouverte avant perte de connexion.
+    when: Couper le réseau, tenter une création et rétablir la connexion après une modification distante.
+    then: Vue datée et panne visibles, aucune confirmation locale ; état distant rechargé avant action ; feuille exportée datée sans prétendre refléter le temps réel.
+    evidence: Captures et chronologie réseau/résultats, feuille datée expurgée.
+    verifies: [POL-OFFLINE]
+    verification: {methods: [manual], boundary: public-interface, case_kinds: [recovery, negative]}
+  - id: ACC-SUSPEND
+    given: Établissement suspendu avec réservation confirmée et entrée d'attente.
+    when: Tenter nouvelle réservation et offre ; annuler la réservation existante, traiter le service et exporter en responsable.
+    then: Nouvelles ventes et offres refusées ; engagements existants gérables et export autorisé ; aucun effacement implicite.
+    evidence: Résultats client et membres pendant la suspension.
+    verifies: [POL-SUSPEND, REQ-EXPORT]
+    verification: {methods: [automated], boundary: public-interface, case_kinds: [positive, negative]}
+  - id: ACC-REPORT
+    given: Jeu de 10 réservations non annulées d'un service terminé dont 2 absentes, 7 installées puis terminées et 1 sans statut final, plus 3 annulées ; tailles de groupe différentes.
+    when: Consulter indicateurs, filtrer par origine, exporter puis sélectionner une période vide.
+    then: Taux d'absence 20 %, statuts inconnus 10 %, avertissement sur données incomplètes ; couverts calculés selon groupes ; annulées hors dénominateur ; période vide sans division par zéro ; totaux rapprochables.
+    evidence: Jeu synthétique, calcul indépendant, export et valeurs affichées.
+    verifies: [REQ-REPORT]
+    verification: {methods: [automated], boundary: public-interface, case_kinds: [positive, boundary]}
+  - id: ACC-PERF
+    given: Jeu et conditions de charge définis dans QA-PERF.
+    when: Exécuter 15 minutes de recherches et mutations concurrentes sur plusieurs établissements.
+    then: Seuils de latence et erreurs respectés ; aucun conflit de capacité ni fuite inter-établissements.
+    evidence: Configuration, données synthétiques, latences brutes, percentiles, erreurs et inventaire final.
+    verifies: [QA-PERF, INV-CAPACITY, INV-ISOLATION]
+    verification: {methods: [automated], boundary: public-interface, case_kinds: [concurrency]}
+  - id: ACC-USABILITY
+    given: Cinq nouveaux utilisateurs et évaluateur disposant d'un clavier et d'un lecteur d'écran.
+    when: Exécuter les parcours de QA-ACCESS, les erreurs de saisie, les deux langues et les changements de taille/zoom.
+    then: Critères de réalisation, temps, compréhension, annonces et visibilité satisfaits ; chaque défaut est consigné.
+    evidence: Protocole, temps anonymisés, observations clavier/lecteur d'écran et captures aux dimensions prévues ; revue humaine distincte de l'auteur.
+    verifies: [QA-ACCESS]
+    verification: {methods: [manual], boundary: human-review, case_kinds: [positive, negative]}
+  - id: ACC-RECOVERY
+    given: Sauvegarde horodatée, opérations récentes, une suppression de contact et un paiement incertain.
+    when: Perdre le service principal et exécuter la procédure de restauration et rapprochement.
+    then: RPO <= 15 minutes et RTO <= 60 minutes ; ventes fermées jusqu'au traitement des suppressions et engagements incertains ; anomalies visibles sans confirmation inventée.
+    evidence: Chronométrage de l'exercice, sauvegarde utilisée, rapprochement prestataire, liste d'anomalies et état restauré.
+    verifies: [QA-RECOVERY, POL-PRIVACY, INV-PAYMENT]
+    verification: {methods: [manual], boundary: integration, case_kinds: [recovery]}
+  - id: ACC-ABUSE
+    given: Un contact avec 10 créations en 10 minutes et une session avec 10 tentatives invalides d'accès personnel.
+    when: Effectuer la onzième action, vérifier les engagements existants puis attendre la fin du blocage.
+    then: Les actions excédentaires sont bloquées pendant 10 minutes, les engagements restent intacts et les actions redeviennent possibles après la limite.
+    evidence: Horodatages, refus et contrôles aux bornes.
+    verifies: [QA-SECURITY]
+    verification: {methods: [automated], boundary: public-interface, case_kinds: [negative, boundary]}
+  - id: ACC-SECURITY
+    given: Une version candidate avec parcours de garantie, accès client, exports et journaux.
+    when: Un évaluateur de sécurité examine imprévisibilité et portée des autorisations, traitement des cartes et absence de secrets dans les sorties.
+    then: Aucun secret ni carte brute exposé ou stocké ; mécanisme d'accès non devinable et suffisamment limité ; constats bloquants corrigés avant pilote.
+    evidence: Rapport de revue avec périmètre, version, méthodes et résultats expurgés ; identité auteur/relecteur distincte.
+    verifies: [QA-SECURITY, INV-PAYMENT, REQ-ACCESS, REQ-AUDIT]
+    verification: {methods: [manual], boundary: human-review, case_kinds: [negative]}
+
+delivery:
+  required_artifacts:
+    - Plan d'implémentation reliant chaque exigence aux compétences et travaux nécessaires, avec compétences manquantes déclarées.
+    - Plan de validation référençant cette version et son empreinte exacte, avec cas concrets pour chaque dimension des acceptations.
+    - Preuves d'exécution liées à la révision de l'application ; jeux synthétiques, rapports automatisés et revues humaines.
+    - Guide d'installation, configuration du restaurant, exploitation, sauvegarde/restauration et traitement des opérations incertaines.
+    - Dictionnaire des données et exports, matrice des droits, politique de conservation et notice client ; revue confidentialité et conditions de garantie avant production.
+    - Bilan du pilote et décision humaine explicite de mise en production, distincts de la validation structurelle du contrat.
+  verification:
+    - Exécuter toutes les acceptations et toutes leurs dimensions sur une implémentation réelle ; une couverture statique ou un cas non exécuté ne vaut pas réussite.
+    - Tester les intégrations en environnement de test du fournisseur choisi ; compléter par une vérification de configuration avant activation réelle des garanties.
+    - Toute déviation de périmètre ou de comportement exige une proposition versionnée ; ne pas ignorer une exigence pour faire passer la validation.
+
+extensions:
+  assumptions:
+    - Cible France et restaurants indépendants proposée par l'auteur ; à valider avec le commanditaire.
+    - Offre de réservation directe B2B avec parcours client public ; aucune marketplace dans le MVP.
+    - Seuils de qualité, durées et métriques sont des choix initiaux, non des performances concurrentes observées.
+  evidence_status: Tous les scénarios produit sont planifiés et non exécutés ; aucune conformité applicative ou validation humaine n'est revendiquée.

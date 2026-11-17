@@ -1,0 +1,66 @@
+schema_version: "0.1"
+research_status: initial
+candidate_products:
+  - Zenchef
+  - TheFork Manager
+  - SevenRooms
+  - OpenTable
+source_selection:
+  - Sources officielles éditeurs pour les fonctionnalités ; CNIL séparée comme contexte de confidentialité.
+    Aucune démonstration produit ni enquête utilisateur effectuée.
+  - "Pages SaaS sans version publiée : date de consultation et SHA-256 des octets réellement récupérés ;
+    copies temporaires hors dépôt, sans republication des pages tierces."
+  - Comparaison de périmètres et modèles commerciaux, sans inférer l’absence d’une fonction non documentée.
+    Tarifs affichés non assimilés à des devis.
+  - Les pages Zenchef sur le compte à rebours et OpenTable Plans ont été consultées via recherche web mais
+    leur récupération directe a échoué ; elles restent complémentaires, sans empreinte inventée ni dépendance
+    normative. Voir comparison.md.
+sources:
+  - id: SRC-ZEN-PLANS
+    product: Zenchef
+    version: Page SaaS non versionnée, consultée le 2026-11-17
+    title: Formules
+    url: https://www.zenchef.com/fr/formules
+    locator: Reserve, Manage, Grow
+    retrieved_on: 2026-11-17
+    content_sha256: 338d3ce8eaf8c61273ec76e356183bf2e53feb8be93479d642fd72af8459005f
+  - id: SRC-FORK-PLANS
+    product: TheFork Manager
+    version: Page SaaS non versionnée, consultée le 2026-11-17
+    title: Logiciel restauration prix
+    url: https://www.theforkmanager.com/fr/logiciel-restauration-prix
+    locator: "Tarification : origine des réservations"
+    retrieved_on: 2026-11-17
+    content_sha256: 6d874b9005c2e21b22bee3442580cc304ef06162f9d8eac51bd368a650dd739a
+  - id: SRC-FORK-BOOK
+    product: TheFork Manager
+    version: Page SaaS non versionnée, consultée le 2026-11-17
+    title: Application gestion réservation restaurant
+    url: https://www.theforkmanager.com/fr/application-gestion-reservation-restaurant
+    locator: Module de réservation et gestion
+    retrieved_on: 2026-11-17
+    content_sha256: 048e4ea449f61e11ae631ce8d76c45e2520a4a33f13babf87e5dd85221ea39a0
+  - id: SRC-SEVEN-BOOK
+    product: SevenRooms
+    version: Page SaaS non versionnée, consultée le 2026-11-17
+    title: Reservations & Waitlist
+    url: https://sevenrooms.com/platform/reservations-waitlist/
+    locator: Direct bookings, waitlist, CRM
+    retrieved_on: 2026-11-17
+    content_sha256: 96b7155ef35361ac3520e7fe3949ba7a27aceb08f8dff3139d530446cdb732d7
+  - id: SRC-OPEN-CAP
+    product: OpenTable
+    version: Page SaaS non versionnée, consultée le 2026-11-17
+    title: Customize your availability
+    url: https://www.opentable.com/restaurant-solutions/products/features/availability-controls/
+    locator: Cover pacing, large party controls
+    retrieved_on: 2026-11-17
+    content_sha256: d04dd574da3a9ed6782d706b80d42ad4b3b211088a2f009f500e509f159848b4
+  - id: SRC-CNIL-MAIL
+    product: CNIL
+    version: Page publique non versionnée, consultée le 2026-11-17
+    title: Prospection commerciale par courrier électronique
+    url: https://www.cnil.fr/fr/la-prospection-commerciale-par-courrier-electronique-sms-mms-et-automate-dappel
+    locator: Consentement préalable et exceptions
+    retrieved_on: 2026-11-17
+    content_sha256: 933ded5c0a9f76e0f6f3de39df5d4d04c9c9246464b6eac1d2b8fb28ceabb491

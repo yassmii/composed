@@ -1,0 +1,64 @@
+schema_version: "0.1"
+observations:
+  - id: OBS-ZEN-DIRECT
+    sources:
+      - SRC-ZEN-PLANS
+    statement: Zenchef annonce zéro commission par couvert et un widget de réservation directe.
+  - id: OBS-ZEN-OPS
+    sources:
+      - SRC-ZEN-PLANS
+    statement: La formule Manage de Zenchef présente gestion des tables et liste d’attente.
+  - id: OBS-ZEN-CRM
+    sources:
+      - SRC-ZEN-PLANS
+    statement: La formule Grow de Zenchef présente des fonctions de gestion clients et multi-établissements.
+  - id: OBS-ZEN-PRICE
+    sources:
+      - SRC-ZEN-PLANS
+    statement: La page consultée affiche Reserve 129 EUR/mois, Manage 169 EUR/mois et Grow 249 EUR/mois ;
+      fréquence de facturation, promotion et conditions doivent être vérifiées commercialement.
+  - id: OBS-FORK-CHANNEL
+    sources:
+      - SRC-FORK-PLANS
+    statement: TheFork distingue une commission sur les clients apportés par son réseau et des réservations
+      incluses depuis le site et les réseaux sociaux du restaurant.
+  - id: OBS-FORK-GUARANTEE
+    sources:
+      - SRC-FORK-PLANS
+    statement: TheFork présente empreinte bancaire et prépaiement dans certaines formules ; ce sont deux fonctions
+      distinctes.
+  - id: OBS-FORK-DIRECT
+    sources:
+      - SRC-FORK-BOOK
+    statement: TheFork Manager propose un module de réservation personnalisable et sans commission pour les canaux
+      directs.
+  - id: OBS-FORK-OPS
+    sources:
+      - SRC-FORK-BOOK
+    statement: TheFork Manager présente la centralisation des réservations et la gestion des tables.
+  - id: OBS-SEVEN-DIRECT
+    sources:
+      - SRC-SEVEN-BOOK
+    statement: SevenRooms présente des réservations directes depuis les canaux propres sans frais par couvert.
+  - id: OBS-SEVEN-WAIT
+    sources:
+      - SRC-SEVEN-BOOK
+    statement: SevenRooms réunit réservations et gestion de liste d’attente dans sa proposition produit.
+  - id: OBS-SEVEN-CRM
+    sources:
+      - SRC-SEVEN-BOOK
+    statement: SevenRooms décrit la collecte de préférences issues de la réservation dans son CRM.
+  - id: OBS-OPEN-PACING
+    sources:
+      - SRC-OPEN-CAP
+    statement: OpenTable propose un contrôle du rythme des arrivées en couverts pour gérer le flux en salle.
+  - id: OBS-OPEN-PARTY
+    sources:
+      - SRC-OPEN-CAP
+    statement: OpenTable décrit des règles spécifiques aux grands groupes et des règles de réservation selon les
+      moments du service.
+  - id: OBS-CNIL-CONSENT
+    sources:
+      - SRC-CNIL-MAIL
+    statement: La CNIL distingue le principe du consentement préalable à la prospection électronique et des
+      exceptions encadrées ; une simple création de compte ne suffit pas à invoquer l’exception client.

@@ -1,0 +1,268 @@
+schema_version: "0.1"
+contract_id: restaurant-reservations
+contract_version: 0.1.0
+research_status: initial
+links:
+  - clause: CAP-CONFIG
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-OPEN-PACING
+      - OBS-OPEN-PARTY
+    note: Règles de service observées ; publication, champs et validation sont des choix de projet. Les détails de
+      cette clause ne sont pas présentés comme un comportement concurrent vérifié.
+  - clause: REQ-CONFIG
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-OPEN-PACING
+      - OBS-OPEN-PARTY
+    note: Règles de service observées ; publication, champs et validation sont des choix de projet. Les détails de
+      cette clause ne sont pas présentés comme un comportement concurrent vérifié.
+  - clause: REQ-CLOSURE
+    basis: explicit_project_choice
+    observations: []
+    note: Règles de service observées ; publication, champs et validation sont des choix de projet. Les détails de
+      cette clause ne sont pas présentés comme un comportement concurrent vérifié.
+  - clause: CAP-AVAIL
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-OPEN-PACING
+      - OBS-OPEN-PARTY
+    note: Contrôles de capacité observés ; algorithme physique et gestion des bornes spécifiés par le projet. Les
+      détails de cette clause ne sont pas présentés comme un comportement concurrent vérifié.
+  - clause: REQ-AVAIL
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-OPEN-PACING
+      - OBS-OPEN-PARTY
+    note: Contrôles de capacité observés ; algorithme physique et gestion des bornes spécifiés par le projet. Les
+      détails de cette clause ne sont pas présentés comme un comportement concurrent vérifié.
+  - clause: CAP-BOOK
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ZEN-DIRECT
+      - OBS-FORK-DIRECT
+      - OBS-SEVEN-DIRECT
+    note: Convergence sur les canaux directs ; absence de compte, atomicité et données minimales sont nos choix.
+      Les détails de cette clause ne sont pas présentés comme un comportement concurrent vérifié.
+  - clause: REQ-BOOK
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ZEN-DIRECT
+      - OBS-FORK-DIRECT
+    note: Convergence sur les canaux directs ; absence de compte, atomicité et données minimales sont nos choix.
+      Les détails de cette clause ne sont pas présentés comme un comportement concurrent vérifié.
+  - clause: REQ-INPUT
+    basis: explicit_project_choice
+    observations: []
+    note: Convergence sur les canaux directs ; absence de compte, atomicité et données minimales sont nos choix.
+      Les détails de cette clause ne sont pas présentés comme un comportement concurrent vérifié.
+  - clause: CAP-SERVICE
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ZEN-OPS
+      - OBS-FORK-OPS
+    note: Gestion des tables observée ; statuts, corrections et contrôle concurrent sont nos choix. Les détails de
+      cette clause ne sont pas présentés comme un comportement concurrent vérifié.
+  - clause: REQ-MANUAL
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-FORK-OPS
+    note: Gestion des tables observée ; statuts, corrections et contrôle concurrent sont nos choix. Les détails de
+      cette clause ne sont pas présentés comme un comportement concurrent vérifié.
+  - clause: REQ-STATE
+    basis: explicit_project_choice
+    observations: []
+    note: Gestion des tables observée ; statuts, corrections et contrôle concurrent sont nos choix. Les détails de
+      cette clause ne sont pas présentés comme un comportement concurrent vérifié.
+  - clause: REQ-VIEWS
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ZEN-OPS
+      - OBS-FORK-OPS
+    note: Gestion des tables observée ; statuts, corrections et contrôle concurrent sont nos choix. Les détails de
+      cette clause ne sont pas présentés comme un comportement concurrent vérifié.
+  - clause: CAP-CHANGE
+    basis: explicit_project_choice
+    observations: []
+    note: "Choix de projet : modification atomique conservant l’engagement en cas d’échec et annulation explicite.
+      Les détails de cette clause ne sont pas présentés comme un comportement concurrent vérifié."
+  - clause: REQ-CHANGE
+    basis: explicit_project_choice
+    observations: []
+    note: "Choix de projet : modification atomique conservant l’engagement en cas d’échec et annulation explicite.
+      Les détails de cette clause ne sont pas présentés comme un comportement concurrent vérifié."
+  - clause: REQ-CANCEL
+    basis: explicit_project_choice
+    observations: []
+    note: "Choix de projet : modification atomique conservant l’engagement en cas d’échec et annulation explicite.
+      Les détails de cette clause ne sont pas présentés comme un comportement concurrent vérifié."
+  - clause: CAP-WAIT
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ZEN-OPS
+      - OBS-SEVEN-WAIT
+    note: Fonction attestée ; ordre, sélection supervisée et expiration de 10 minutes sont des choix de projet.
+      Les détails de cette clause ne sont pas présentés comme un comportement concurrent vérifié.
+  - clause: REQ-WAIT
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ZEN-OPS
+      - OBS-SEVEN-WAIT
+    note: Fonction attestée ; ordre, sélection supervisée et expiration de 10 minutes sont des choix de projet.
+      Les détails de cette clause ne sont pas présentés comme un comportement concurrent vérifié.
+  - clause: CAP-GUARANTEE
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-FORK-GUARANTEE
+    note: Garantie bancaire attestée ; plafond, absence de débit automatique et réconciliation sont des choix de
+      projet. Les détails de cette clause ne sont pas présentés comme un comportement concurrent vérifié.
+  - clause: REQ-GUARANTEE
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-FORK-GUARANTEE
+    note: Garantie bancaire attestée ; plafond, absence de débit automatique et réconciliation sont des choix de
+      projet. Les détails de cette clause ne sont pas présentés comme un comportement concurrent vérifié.
+  - clause: REQ-CHARGE
+    basis: explicit_project_choice
+    observations: []
+    note: Garantie bancaire attestée ; plafond, absence de débit automatique et réconciliation sont des choix de
+      projet. Les détails de cette clause ne sont pas présentés comme un comportement concurrent vérifié.
+  - clause: REQ-PAYFAIL
+    basis: explicit_project_choice
+    observations: []
+    note: Garantie bancaire attestée ; plafond, absence de débit automatique et réconciliation sont des choix de
+      projet. Les détails de cette clause ne sont pas présentés comme un comportement concurrent vérifié.
+  - clause: CAP-NOTIFY
+    basis: explicit_project_choice
+    observations: []
+    note: "Choix de projet : courriel transactionnel, rappel et gestion des échecs sans confusion entre
+      confirmation et livraison. Les détails de cette clause ne sont pas présentés comme un comportement
+      concurrent vérifié."
+  - clause: REQ-NOTIFY
+    basis: explicit_project_choice
+    observations: []
+    note: "Choix de projet : courriel transactionnel, rappel et gestion des échecs sans confusion entre
+      confirmation et livraison. Les détails de cette clause ne sont pas présentés comme un comportement
+      concurrent vérifié."
+  - clause: CAP-DATA
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ZEN-CRM
+      - OBS-SEVEN-CRM
+    note: Fichier client attesté ; périmètre mono-établissement, restriction des données, import/export et
+      conservation sont nos choix. Les détails de cette clause ne sont pas présentés comme un comportement
+      concurrent vérifié.
+  - clause: REQ-CRM
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ZEN-CRM
+      - OBS-SEVEN-CRM
+    note: Fichier client attesté ; périmètre mono-établissement, restriction des données, import/export et
+      conservation sont nos choix. Les détails de cette clause ne sont pas présentés comme un comportement
+      concurrent vérifié.
+  - clause: REQ-IMPORT
+    basis: explicit_project_choice
+    observations: []
+    note: Fichier client attesté ; périmètre mono-établissement, restriction des données, import/export et
+      conservation sont nos choix. Les détails de cette clause ne sont pas présentés comme un comportement
+      concurrent vérifié.
+  - clause: REQ-EXPORT
+    basis: explicit_project_choice
+    observations: []
+    note: Fichier client attesté ; périmètre mono-établissement, restriction des données, import/export et
+      conservation sont nos choix. Les détails de cette clause ne sont pas présentés comme un comportement
+      concurrent vérifié.
+  - clause: CAP-ACCESS
+    basis: explicit_project_choice
+    observations: []
+    note: "Choix de projet : droits minimaux, accès client borné, isolation et audit. Les détails de cette clause
+      ne sont pas présentés comme un comportement concurrent vérifié."
+  - clause: REQ-ACCESS
+    basis: explicit_project_choice
+    observations: []
+    note: "Choix de projet : droits minimaux, accès client borné, isolation et audit. Les détails de cette clause
+      ne sont pas présentés comme un comportement concurrent vérifié."
+  - clause: REQ-AUDIT
+    basis: explicit_project_choice
+    observations: []
+    note: "Choix de projet : droits minimaux, accès client borné, isolation et audit. Les détails de cette clause
+      ne sont pas présentés comme un comportement concurrent vérifié."
+  - clause: CAP-REPORT
+    basis: explicit_project_choice
+    observations: []
+    note: "Choix de projet : indicateurs vérifiables sur états observés, sans promesse commerciale de gain. Les
+      détails de cette clause ne sont pas présentés comme un comportement concurrent vérifié."
+  - clause: REQ-REPORT
+    basis: explicit_project_choice
+    observations: []
+    note: "Choix de projet : indicateurs vérifiables sur états observés, sans promesse commerciale de gain. Les
+      détails de cette clause ne sont pas présentés comme un comportement concurrent vérifié."
+  - clause: INV-CAPACITY
+    basis: explicit_project_choice
+    observations: []
+    note: Règle ou seuil proposé par le projet, non déduit d’un benchmark et à valider avant adoption.
+  - clause: INV-IDEMPOTENCY
+    basis: explicit_project_choice
+    observations: []
+    note: Règle ou seuil proposé par le projet, non déduit d’un benchmark et à valider avant adoption.
+  - clause: INV-HOLD
+    basis: explicit_project_choice
+    observations: []
+    note: Règle ou seuil proposé par le projet, non déduit d’un benchmark et à valider avant adoption.
+  - clause: INV-ISOLATION
+    basis: explicit_project_choice
+    observations: []
+    note: Règle ou seuil proposé par le projet, non déduit d’un benchmark et à valider avant adoption.
+  - clause: INV-PAYMENT
+    basis: explicit_project_choice
+    observations: []
+    note: Règle ou seuil proposé par le projet, non déduit d’un benchmark et à valider avant adoption.
+  - clause: INV-POLICY
+    basis: explicit_project_choice
+    observations: []
+    note: Règle ou seuil proposé par le projet, non déduit d’un benchmark et à valider avant adoption.
+  - clause: POL-DIRECT
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-ZEN-DIRECT
+      - OBS-FORK-CHANNEL
+      - OBS-SEVEN-DIRECT
+    note: Positionnement choisi parmi des modèles existants ; ne constitue pas une différenciation exclusive.
+  - clause: POL-TIME
+    basis: explicit_project_choice
+    observations: []
+    note: Règle ou seuil proposé par le projet, non déduit d’un benchmark et à valider avant adoption.
+  - clause: POL-PRIVACY
+    basis: explicit_project_choice
+    observations: []
+    note: Règle ou seuil proposé par le projet, non déduit d’un benchmark et à valider avant adoption.
+  - clause: POL-MARKETING
+    basis: supported_pattern_and_choice
+    observations:
+      - OBS-CNIL-CONSENT
+    note: Contexte CNIL ; exclusion complète des campagnes choisie pour ce MVP, sans prétendre résumer toutes les
+      exceptions légales.
+  - clause: POL-OFFLINE
+    basis: explicit_project_choice
+    observations: []
+    note: Règle ou seuil proposé par le projet, non déduit d’un benchmark et à valider avant adoption.
+  - clause: POL-SUSPEND
+    basis: explicit_project_choice
+    observations: []
+    note: Règle ou seuil proposé par le projet, non déduit d’un benchmark et à valider avant adoption.
+  - clause: QA-PERF
+    basis: explicit_project_choice
+    observations: []
+    note: Règle ou seuil proposé par le projet, non déduit d’un benchmark et à valider avant adoption.
+  - clause: QA-ACCESS
+    basis: explicit_project_choice
+    observations: []
+    note: Règle ou seuil proposé par le projet, non déduit d’un benchmark et à valider avant adoption.
+  - clause: QA-RECOVERY
+    basis: explicit_project_choice
+    observations: []
+    note: Règle ou seuil proposé par le projet, non déduit d’un benchmark et à valider avant adoption.
+  - clause: QA-SECURITY
+    basis: explicit_project_choice
+    observations: []
+    note: Règle ou seuil proposé par le projet, non déduit d’un benchmark et à valider avant adoption.
