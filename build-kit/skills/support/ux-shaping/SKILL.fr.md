@@ -1,57 +1,86 @@
 ---
 name: ux-shaping
 description: >
-  Conçoit ou révise parcours utilisateur, états utiles et handoff d'implémentation depuis les objectifs
-  produit actés. Utilise product-designer pour critiquer un design existant ; utilise cadrage si des
-  règles produit matérielles manquent avant de figer le parcours.
+  Crée ou révise parcours, direction visuelle, composition, états et handoff depuis les objectifs
+  produit actés. Utilise product-designer pour une critique seule ; cadrage pour les règles produit matérielles manquantes.
 license: MIT
 metadata:
   author: composed-build-kit
-  version: "1.1.0"
+  version: "2.0.0"
 ---
 
-Conçois un chemin utilisable vers le résultat visé, avec états et interactions suffisants pour
-l'implémenter et l'évaluer. Préserve décisions produit, besoins d'accessibilité et design system existant.
+Conçois une expérience utilisable et reconnaissable, ancrée dans ce produit et son public. Transmets
+l'intention créative jusqu'au comportement observable. Préserve vérité produit, accessibilité et stack actée.
 
-## Partir du but utilisateur et de la surface réelle
+## Partir du but et de l'identité existante
 
-Lis objectif canonique, règles, acceptation et décisions ouvertes. Inspecte interface, prototype ou
-code pertinent s'ils existent ; distingue frictions observées et hypothèses. Un nouveau parcours
-n'a pas d'interface à auditer : explicite les preuves absentes et conçois une proposition. Charge
-product-designer si une critique distincte est nécessaire, pas comme phase automatique.
+Lis objectif canonique, règles, acceptation et décisions ouvertes. Inspecte surface réelle, composants,
+tokens, contenu et assets disponibles. Sépare observations et hypothèses ; l'absence de design.md
+n'efface pas une identité déjà visible dans le produit. Clarifie les manques produit matériels avant
+de figer le comportement. Réutilise les décisions actées et ne pose que les questions qui changent le travail.
 
-Clarifie les manques produit matériels avec leur propriétaire avant de figer le comportement.
-Réutilise stack et composants actés ; une maquette n'autorise ni framework, outil ou intégration externe ajoutés.
+Identifie le but de cette surface : accomplir une tâche, comprendre, décider ou explorer une œuvre.
+Il détermine densité, expression et interaction. La page marketing et l'administration d'un même
+produit demandent des compositions différentes, pas des marques concurrentes.
 
-## Concevoir parcours et états
+Adapte le périmètre : une retouche hérite du système ; un nouvel écran le prolonge ; une refonte
+autorisée peut remplacer la couche visuelle demandée en préservant faits produit, fonctions et
+contraintes de marque imposées. Mettre à jour les skills n'autorise jamais la refonte d'un projet consommateur.
 
-Rends action principale, progression et reprise compréhensibles. Inclus les états qui affectent ce
-parcours : premier usage/vide, chargement, succès, erreur, permission, annulation ou faible volume
-selon le besoin. Préserve contexte et saisie lors d'erreurs récupérables si les règles le permettent.
+## Explorer quand la direction est ouverte
 
-Décris clavier/focus, libellés utiles, retour et contraintes responsive nécessaires à l'interaction.
-Utilise le design system courant ; ne déclare pas utilisabilité/accessibilité depuis une seule
-inspection visuelle. Distingue formulation proposée et texte testé avec des utilisateurs.
+Pour une nouvelle identité ou une composition matériellement ouverte, lis
+[visual-exploration](references/visual-exploration.md). Dérive des alternatives depuis le contenu,
+le public et les références visuelles du sujet, puis compare des organisations et expériences réellement
+différentes. Changer seulement couleurs ou polices ne constitue pas une autre direction. Une retouche
+limitée ou une direction actée ne demande pas un nouvel atelier d'exploration.
 
-Choisis seulement le médium nécessaire au handoff : texte/ASCII, Mermaid, composants HTML existants
-ou outil de design fourni. N'impose pas maquette pixel-perfect ou dépendance d'outil à chaque tâche.
+Recommande une direction, son lien au brief et son compromis. Utilise esquisses, fragments rendus ou
+planches comparables si cela aide le choix ; n'impose ni Figma, ni génération d'images, ni outil précis.
+Respecte préférences explicites et autorisations existantes. Si le choix est délégué, décide et indique
+tes hypothèses ; sinon, résous la direction matérielle ouverte avant l'implémentation qui en dépend.
+Charge product-designer seulement si une critique distincte est utile.
 
-## Transmettre le comportement observable
+## Concevoir composition, parcours et états
 
-Relie états/actions aux critères produit avec IDs/ancres existants. Indique ce qui change et pourquoi,
-entrées/sorties, interactions, composants réutilisés, erreurs/reprise et questions ouvertes avec
-propriétaires. Garde les règles produit canoniques sans recopier une spécification concurrente.
+Traduis la direction en ordre du contenu, grille, rôles typographiques et chromatiques, traitement des
+images, densité et interaction. Pour créer ou affiner le visuel, lis
+[design-craft](references/design-craft.md) sur les dimensions concernées. Utilise contenu produit réel
+et assets disponibles ; identifie textes proposés et données illustratives. N'invente ni témoignages,
+chiffres, prix ou capacités pour rendre une composition convaincante. Consigne les assets manquants et leur rôle.
 
-Garde des preuves de design durables concises pour une livraison non triviale, ou des notes dans la
-réponse pour un changement direct borné. Respecte les gates de revue/délégation ; une maquette ou
-relecture d'auteur n'est pas un verdict indépendant. Un document de design ne vaut pas approbation de l'interface.
+Rends action, progression et reprise compréhensibles. Inclus les états utiles au parcours : vide,
+chargement, succès, erreur, permission, annulation ou faible volume. Préserve contexte et saisie lors
+d'erreurs récupérables si les règles le permettent. Spécifie clavier/focus, libellés, feedback et
+comportement responsive ; une capture seule ne prouve ni accessibilité ni utilisabilité.
 
-## Évaluer le résultat après livraison
+Choisis seulement le médium utile au handoff : texte/ASCII, Mermaid, composants HTML existants ou outil
+de design disponible. Une maquette n'autorise ni framework, ni dépendance, ni intégration externe ajoutés.
 
-Nomme ce qui se vérifie dans le parcours implémenté et ce qui demande de vrais utilisateurs : réussite,
-confusion, reprise ou exclusion involontaire selon le besoin. Préserve hypothèse et contre-signal
-produit. Les tests établissent les interactions choisies ; utilisabilité et valeur restent inconnues
-sans observation dans le contexte visé.
+## Transmettre décisions et comportement observable
 
-Consigne source/contexte/limites des observations et route l'apprentissage matériel au propriétaire
-produit. Révise le design dans le périmètre autorisé, en conservant raison et preuves liées.
+Relie états/actions aux IDs ou ancres d'acceptation existants. Pour un travail non trivial, garde un
+design.md concis dans le chantier existant : périmètre, sources et contraintes héritées ; direction
+retenue et raison ; alternatives écartées pertinentes ; décisions visuelles concrètes ; états,
+responsive et composants réutilisés ; assets et questions ouvertes avec responsables ; vérifications
+prévues. Référence la marque canonique sans créer une spécification concurrente. Des notes dans la
+réponse suffisent pour une modification bornée.
+
+Préserve la composition distinctive pendant l'implémentation ; ne reviens pas à une grille de cartes
+générique après avoir retenu une autre structure. Ajuste l'ambition aux assets, au temps et aux
+performances. Respecte les gates de revue/délégation : un document ou une relecture d'auteur ne valent
+ni approbation du design ni verdict indépendant. N'ajoute pas de gate quand le choix concerné est déjà autorisé.
+
+## Inspecter le résultat et conserver l'apprentissage
+
+Si un résultat exécutable et des outils autorisés sont disponibles, inspecte les rendus desktop et
+étroits puis exerce l'interaction modifiée. Compare à la direction retenue : contenu réel,
+débordements, hiérarchie, focus et mouvement réduit selon le besoin. Corrige les écarts observés dans
+le périmètre puis revérifie les cas affectés ; évite les boucles de finition sans fin. Sans outil de
+rendu, indique ce qui n'est pas vérifié et un contrôle rejouable, sans déduire un succès visuel du code.
+
+Consigne source, viewport/état et limites des preuves. Distingue revue visuelle d'auteur, contrôles
+automatisés et revue indépendante. Les tests établissent certains comportements ; utilisabilité et
+valeur produit demandent une observation dans le contexte visé. Préserve hypothèse et contre-signal
+produit ; confie les apprentissages matériels à leur responsable. Garde décisions et raisons pour les
+réutiliser sans transformer les choix stylistiques passés en interdictions permanentes.

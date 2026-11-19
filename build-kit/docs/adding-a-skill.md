@@ -69,6 +69,26 @@ Every distributed skill must also have one entry in `skills/catalog.json`. Keep 
 specific: `when`, `not_when`, `phase`, `risk`, and only the work artifacts it genuinely needs. The
 catalog is what lets an installed agent choose one primary skill rather than loading every methodology.
 
+### Optional bilingual references
+
+For substantial conditional guidance, declare `"references": ["visual-review.md"]` in the catalog
+entry and provide `references/visual-review.fr.md` and `.en.md` beside the source entrypoints. Names
+are flat lowercase kebab-case Markdown filenames; duplicates and paths are rejected. Both entrypoints
+link to the **installed** relative name, e.g. `(references/visual-review.md)`, and explain when to read
+it. This link resolves after installation; use the language-suffixed file in the source tree. Do not
+load all references automatically. Both translations must carry equivalent guidance.
+
+Init/update select the language and manage each declared reference, including selected Cline mirrors,
+with the usual preflight, baseline and backup rules. Keep-local retains existing references; language
+changes may need reconciliation. Doctor/repair and uninstall cover managed references. Undeclared
+resources, executable helpers and binary assets are not copied by this mechanism. Resource renames
+or removals need an explicit lifecycle migration; do not silently leave an old managed copy behind.
+The initial design references have stable names.
+
+Run the catalog validator and package check as well as installation tests when adding references.
+They verify declared links and both language sources; provenance already covers the skills tree.
+See the [design upgrade guide](design-skills.md) for consumer compatibility and older CLI limits.
+
 Choose risk proportionately:
 
 - `low`: analysis, direct answers, or reversible documentation work

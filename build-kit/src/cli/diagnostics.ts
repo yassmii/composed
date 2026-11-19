@@ -12,6 +12,7 @@ import {
 import { collectInstallationSource } from './provenance.ts';
 import { renderTemplate } from './render-bridge.ts';
 import { readCatalogSkills } from './skill-catalog.ts';
+import { readSkillReferences } from './skill-references.ts';
 import { parseSkillFrontmatter, renderSkillsIndex } from './skills-index.ts';
 import {
   AGENT_SPECS,
@@ -337,6 +338,28 @@ export function inspectProject(options: DiagnosticOptions): {
         }
         skills.push({ ...metadata, level: item.level, path });
         checkFile(path, 'error', content);
+        for (const reference of readSkillReferences(kitRoot, item, installed.lang)) {
+          const referencePath = `skills/${item.level}/${item.name}/${reference.path}`;
+          checkFile(referencePath, 'error', reference.content);
+          if (agents.includes('cline') && installed.agents.includes('cline')) {
+            const shared = safeProjectPath(cwd, referencePath);
+            const sharedContent = existsSync(shared)
+              ? readFileSync(shared, 'utf8')
+              : reference.content;
+            const mirror = `.cline/skills/${item.name}/${reference.path}`;
+            checkFile(mirror, 'error', sharedContent, 'cline');
+            const mirrorPath = safeProjectPath(cwd, mirror);
+            if (existsSync(mirrorPath) && readFileSync(mirrorPath, 'utf8') !== sharedContent)
+              add(
+                'cline.mirror-drift',
+                'warning',
+                mirror,
+                'Cline reference differs from the shared reference. Review local customizations; no existing file will be overwritten.',
+                'review',
+                'cline',
+              );
+          }
+        }
         if (agents.includes('cline') && installed.agents.includes('cline')) {
           const mirror = `.cline/skills/${item.name}/SKILL.md`;
           const shared = join(cwd, path);

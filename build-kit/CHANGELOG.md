@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added
+- Design skills 2.0.0 (FR/EN), catalog 3.7.0 and three conditional bilingual references: contextual
+  critique, distinct visual directions, concrete craft decisions and rendered verification with
+  explicit evidence limits. Existing identifiers and accepted consumer designs are preserved.
+- Catalog-declared Markdown references now follow managed init/update, Cline mirrors, conflict
+  preservation, backups, doctor/repair and uninstall. Added previous-template upgrade tests and a
+  consumer migration guide; older CLI binaries do not understand the new managed reference paths.
+  No external design engine/assets or new dependencies are installed. No visual benchmark gain is claimed.
+
 ## [0.8.0] — 2026-11-14
 
 ### Added

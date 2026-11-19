@@ -1,8 +1,8 @@
 # Third-party references and license scope
 
 Composed Build Kit's original implementation and instructions are distributed under [MIT](LICENSE).
-This notice records references and optional external tools introduced by the engineering-quality
-integration. It does not replace upstream licenses or assign Composed's license to external work.
+This notice records design references and optional external tools. It does not replace upstream
+licenses or assign Composed's license to external work.
 The earlier ECC design references remain documented in [skill provenance](docs/skill-catalog.md).
 
 ## Optional engineering-quality tools
@@ -31,6 +31,20 @@ was examined as a design reference. Its reviewed Git tree contains `README.md` a
 without a declared license file. No ub-mode source or skill text is copied or translated into the
 kit. The Composed instructions are independently written around general engineering practices,
 Composed's own delivery policies and the documented interfaces of the separately licensed tools.
+
+## Visual design methodology references
+
+The design skills 2.0.0 use independently written Composed instructions, informed by these inspected
+repositories. No upstream skill text, source code, runtime, font, photo or other asset is bundled or
+translated. The shared concepts are contextual exploration, targeted review and checking actual renders.
+
+| Project | Reviewed revision | Declared license | Reference paths |
+| --- | --- | --- | --- |
+| [Impeccable](https://github.com/pbakaus/impeccable/tree/b49177d32788f2dc585c42831d845dacf1ebed2c) | `b49177d32788f2dc585c42831d845dacf1ebed2c` | Apache-2.0 | `skill/SKILL.src.md`, `skill/reference/new-work-world.md`, `skill/reference/bolder.md`, `scripts/build.js` |
+| [Taste Skill](https://github.com/Leonxlnx/taste-skill/tree/f6b76575f949707b4e3c37cd86cb44b0b98643e8) | `f6b76575f949707b4e3c37cd86cb44b0b98643e8` | MIT | `skills/taste-skill/SKILL.md`, `scripts/start.mjs` and `scripts/gate.mjs` within that skill |
+
+Upstream asset licenses can differ from the repository license. Any future copying requires a separate
+file-level license and notice review. See [design decisions and migration](docs/design-skills.md).
 
 ## Maintaining these records
 

@@ -36,8 +36,12 @@ export function managedNamespace(path: string): boolean {
     path === LEGACY_TRACKING_PATH ||
     path === 'skills/catalog.json' ||
     Object.values(AGENT_SPECS).some((agent) => agent.output === path) ||
-    /^skills\/(core|support|extras)\/[a-z0-9]+(?:-[a-z0-9]+)*\/SKILL\.md$/.test(path) ||
-    /^\.cline\/skills\/[a-z0-9]+(?:-[a-z0-9]+)*\/SKILL\.md$/.test(path)
+    /^skills\/(core|support|extras)\/[a-z0-9]+(?:-[a-z0-9]+)*\/(?:SKILL\.md|references\/[a-z0-9]+(?:-[a-z0-9]+)*\.md)$/.test(
+      path,
+    ) ||
+    /^\.cline\/skills\/[a-z0-9]+(?:-[a-z0-9]+)*\/(?:SKILL\.md|references\/[a-z0-9]+(?:-[a-z0-9]+)*\.md)$/.test(
+      path,
+    )
   );
 }
 

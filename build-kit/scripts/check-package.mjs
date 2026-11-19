@@ -56,8 +56,13 @@ export function inspectPackedFiles(pkg, catalog, kitVersion, packed) {
     'examples/product-loop/README.md',
   ];
   for (const skill of catalog.skills)
-    for (const lang of ['fr', 'en'])
+    for (const lang of ['fr', 'en']) {
       required.push(`skills/${skill.level}/${skill.name}/SKILL.${lang}.md`);
+      for (const name of skill.references ?? [])
+        required.push(
+          `skills/${skill.level}/${skill.name}/references/${name.replace(/\.md$/, `.${lang}.md`)}`,
+        );
+    }
   for (const bridge of [
     'AGENTS.md',
     'CLAUDE.md',

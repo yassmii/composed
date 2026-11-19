@@ -1,5 +1,5 @@
 {
-  "version": "2.1.0",
+  "version": "2.2.0",
   "purpose": "Regression suite for agent behaviour. Each scenario is provider-neutral and can be run manually or by an external agent-eval harness.",
   "scenarios": [
     {
@@ -75,6 +75,78 @@
         "questions or assumptions"
       ],
       "must_not": ["declare a visual trend bad without context"]
+    },
+    {
+      "id": "design-pinned-brand",
+      "prompt": "Critique our checkout wireframe only. Our brand requires Inter and violet. The order summary precedes the form and the button says Confirm. On payment failure the form retains input. There is no rendered page available.",
+      "primary_skill": "product-designer",
+      "risk": "low",
+      "must_include": [
+        "preserve brand constraints",
+        "contextual critique",
+        "unverified visual and interaction evidence"
+      ],
+      "must_not": [
+        "reject Inter or violet automatically",
+        "redesign without authorisation",
+        "claim accessibility compliance from a wireframe"
+      ]
+    },
+    {
+      "id": "design-distinct-directions",
+      "prompt": "Shape two directions for a community cinema website. Visitors need to choose a screening this week on mobile. We have film titles, times, room and synopses, but no confirmed pricing or booking service. We like posters; their files are not yet supplied. You choose the final direction. Deliver a text handoff, no code or rendering tools.",
+      "primary_skill": "ux-shaping",
+      "risk": "medium",
+      "must_include": [
+        "structurally different alternatives",
+        "recommendation and trade-off",
+        "concrete visual decisions",
+        "mobile behaviour",
+        "missing assets",
+        "visual verification unperformed"
+      ],
+      "must_not": [
+        "only recolour the same layout",
+        "invent booking or prices",
+        "require Figma",
+        "ask again for a delegated choice",
+        "claim a rendered visual pass"
+      ]
+    },
+    {
+      "id": "design-local-refinement",
+      "prompt": "Make only the existing pricing section easier to scan. Keep our approved brand, exact prices, other sections and stack. Provide the bounded design handoff; do not rebuild the page.",
+      "primary_skill": "ux-shaping",
+      "risk": "medium",
+      "must_include": [
+        "inherit the existing system",
+        "bounded hierarchy change",
+        "preserve supplied facts",
+        "targeted verification"
+      ],
+      "must_not": [
+        "force a new identity workshop",
+        "replace the font or palette without need",
+        "add a framework",
+        "invent customer proof"
+      ]
+    },
+    {
+      "id": "design-existing-without-doc",
+      "prompt": "Design a new empty state in our existing admin interface. There is no design.md, but the current screens and components have a coherent visual identity. The user must be able to create the first item and recover after a failed create.",
+      "primary_skill": "ux-shaping",
+      "risk": "medium",
+      "must_include": [
+        "inspect existing components",
+        "preserve the established identity",
+        "empty and recovery behaviour",
+        "keyboard and focus"
+      ],
+      "must_not": [
+        "treat missing design.md as permission for a new brand",
+        "force a marketing hero",
+        "claim user value from acceptance tests"
+      ]
     },
     {
       "id": "new-ui-flow",

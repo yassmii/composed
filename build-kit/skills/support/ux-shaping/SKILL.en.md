@@ -1,57 +1,85 @@
 ---
 name: ux-shaping
 description: >
-  Shape a new or revised user flow, meaningful states and implementation handoff from agreed product
-  goals. Use product-designer for critique of an existing design; use cadrage for missing material
-  product rules before committing to a flow.
+  Create or revise a user flow, visual direction, composition, states and implementation handoff
+  from agreed product goals. Use product-designer for critique only; use cadrage for missing material product rules.
 license: MIT
 metadata:
   author: composed-build-kit
-  version: "1.1.0"
+  version: "2.0.0"
 ---
 
-Design a usable path to the intended outcome, with enough state and interaction detail to implement
-and assess it. Preserve product decisions, accessibility needs and the existing design system.
+Design a usable, recognisable experience grounded in this product and its audience. Carry creative
+intent through to observable behaviour. Preserve canonical product truth, accessibility and agreed stack.
 
-## Start with the user goal and actual surface
+## Start with the goal and existing identity
 
-Read the canonical goal, rules, acceptance and unresolved decisions. Inspect an existing interface,
-prototype or relevant code when present; identify observed friction separately from assumptions.
-For a new flow there is no existing interface to audit: state the missing evidence and shape a
-proposal. Load product-designer only if a distinct critique is needed, not as an automatic phase.
+Read the canonical goal, rules, acceptance and unresolved decisions. Inspect the actual surface,
+components, tokens, content and assets when present. Separate observation from assumption; missing
+design.md does not erase an identity already visible in the product. Clarify material product gaps
+before locking behaviour. Reuse established decisions and ask only questions that change the work.
 
-Clarify material product gaps with their owner before locking behaviour. Reuse the agreed stack and
-components; a wireframe does not authorise adding a framework, design tool or external integration.
+Identify the job of this surface: completing a task, understanding information, making a decision or
+exploring a work. Let it determine density, expression and interaction. A marketing page and an admin
+screen for the same product need different compositions, not competing brands.
 
-## Shape the flow and states
+Match scope: a local refinement inherits the system; a new screen extends it; an authorised redesign
+can replace the requested visual layer while preserving product facts, functions and pinned brand
+constraints. Updating the skills never authorises redesigning a consuming project.
 
-Make the primary action, progression and recovery understandable. Include states that affect this
-journey: first use/empty, loading, success, error, permission, cancellation or low-volume cases as
-relevant. Preserve context and user input through recoverable errors where the rules permit it.
+## Explore when the direction is open
 
-Describe keyboard/focus behaviour, meaningful labels, feedback and responsive constraints needed by
-the affected interaction. Use the current design system; avoid asserting usability or accessibility
-from visual inspection alone. Distinguish proposed copy from user-tested wording.
+For a new identity or materially open composition, read
+[visual-exploration](references/visual-exploration.md). Derive alternatives from the subject's content,
+audience and visual references, then compare genuinely different arrangements and experiences.
+Changing only colours or fonts is not a different direction. A small refinement or settled direction
+does not need another exploration workshop.
 
-Choose only the medium the handoff needs: text/ASCII, Mermaid, existing HTML components or a supplied
-native design tool. Do not manufacture a pixel-perfect mockup or new tool dependency for every task.
+Recommend a direction, explain its relationship to the brief and name its trade-off. Use comparable
+sketches, rendered fragments or boards when they help the choice; never require Figma, image generation
+or a specific tool. Honour explicit preferences and existing authorisation. If the user delegated the
+choice, choose and state assumptions; otherwise resolve a material open direction before dependent
+implementation. Load product-designer only when a distinct critique is useful.
 
-## Hand off observable behaviour
+## Shape composition, flow and states
 
-Link states/actions to product criteria using existing IDs or anchors. State what changes and why,
-inputs/outputs, interaction details, reuse of components, error/recovery handling, and unresolved
-questions with owners. Keep product rules canonical rather than duplicating a competing spec.
+Resolve the direction into content order, grid, type roles, colour roles, image treatment, density
+and interaction. For visual creation or refinement, read
+[design-craft](references/design-craft.md) for the affected dimensions. Use real product content and
+available assets; identify proposed copy and illustrative data. Never invent customer proof, metrics,
+prices or capabilities to make a composition convincing. Record missing assets and their intended job.
 
-Use compact durable design evidence for non-trivial delivery, or inline notes for a bounded direct
-change. Follow required review/delegation gates; a wireframe or author reread is not an independent
-verdict. A new interface is not approved merely because its design document exists.
+Make action, progression and recovery understandable. Include states this journey needs: empty,
+loading, success, error, permissions, cancellation or low-volume cases. Preserve context and input
+through recoverable errors where rules allow. Specify keyboard/focus, labels, feedback and responsive
+behaviour; a screenshot alone cannot establish accessibility or usability.
 
-## Assess the outcome after delivery
+Choose only the medium needed for the handoff: text/ASCII, Mermaid, existing HTML components or an
+available design tool. A mockup does not authorise a framework, new dependency or external integration.
 
-Name what should be checked in the implemented flow and what needs real user evidence: task success,
-confusion, recovery or unintended exclusion as relevant. Preserve the product hypothesis and
-counter-signal. Acceptance tests establish selected interaction behaviour; actual usability and value
-remain unverified until observed in the intended context.
+## Hand off decisions and observable behaviour
 
-Record observation source/context/limits and route material learning to the product decision owner.
-Revise the design only within the authorised scope, retaining the reason and linked evidence.
+Link states/actions to existing acceptance IDs or anchors. For non-trivial work, keep a compact
+design.md in the existing work item: scope, sources and inherited constraints; chosen direction and
+why; relevant rejected alternatives; concrete visual decisions; states, responsive behaviour and
+reused components; assets and open questions with owners; intended checks. Reference the canonical
+brand system instead of copying it into a competing spec. Inline notes suffice for a bounded change.
+
+Preserve the distinctive composition in implementation; do not fall back to a generic card grid after
+approving a different structure. Match ambition to assets, delivery time and performance. Follow
+required review/delegation gates: a document or author reread is neither design approval nor an
+independent verdict. Do not create a new gate when the relevant choice is already authorised.
+
+## Inspect the result and retain learning
+
+When a runnable result and permitted tools are available, inspect rendered desktop and narrow layouts
+and exercise the changed interaction. Compare to the chosen direction, including actual content,
+overflow, hierarchy, focus and reduced motion where applicable. Fix observed gaps within scope and
+recheck affected cases; avoid endless polish loops. Without a renderer, give an explicit unverified
+status and a replayable check, not a visual pass inferred from code.
+
+Record source, viewport/state and limits of evidence. Distinguish author visual review, automated
+checks and independent review. Tests establish selected behaviour; actual usability and product value
+need observation in the intended context. Preserve the product hypothesis and counter-signal; route
+material learning to its owner. Keep accepted decisions and reasons for reuse without treating past
+style choices as permanent prohibitions on new work.

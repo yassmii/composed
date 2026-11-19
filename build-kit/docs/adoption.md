@@ -36,7 +36,8 @@ they are ordinary untracked files until you exclude them. Add `.agents/backups/`
 
 `.agents/.composed-kit-manifest.json` records paths and SHA-256 hashes of the last generated managed
 files. It covers bridges, shared skills, catalog, selected Cline mirrors and installation records.
-Memory, work evidence, arbitrary resources and user-home mirrors are outside removal ownership.
+Declared bilingual skill references and selected Cline reference mirrors are also managed.
+Memory, work evidence, undeclared resources and user-home mirrors are outside removal ownership.
 This is local lifecycle metadata, not an authenticated approval, security boundary or sandbox.
 
 An ordinary update replaces missing or unchanged managed files. A locally changed or unrecognised

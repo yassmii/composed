@@ -81,6 +81,8 @@ describe('agentic skill catalog', () => {
         'data-migrations',
         'release-engineering',
         'market-research',
+        'product-designer',
+        'ux-shaping',
       ].includes(skill.name),
     )) {
       const structures = ['fr', 'en'].map((lang) =>

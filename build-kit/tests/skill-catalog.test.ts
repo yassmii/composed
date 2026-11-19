@@ -1,8 +1,8 @@
-import { mkdtempSync, readFileSync, rmSync } from 'node:fs';
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { writeFilteredCatalog } from '../src/cli/skill-catalog.ts';
+import { readCatalogSkills, writeFilteredCatalog } from '../src/cli/skill-catalog.ts';
 
 const ROOT = resolve(__dirname, '..');
 let tmp: string;
@@ -16,6 +16,26 @@ afterEach(() => {
 });
 
 describe('writeFilteredCatalog', () => {
+  it.each(
+    [
+      ['../outside.md'],
+      ['nested/file.md'],
+      ['C:\\outside.md'],
+      ['review.md', 'review.md'],
+      ['review.js'],
+      [null],
+      null,
+      'review.md',
+    ].map((references) => ({ references })),
+  )('rejects invalid reference declarations: %j', ({ references }) => {
+    const source = join(tmp, 'invalid.json');
+    writeFileSync(
+      source,
+      JSON.stringify({ skills: [{ name: 'example', level: 'core', references }] }),
+    );
+    expect(() => readCatalogSkills(source, ['core'])).toThrow(/Invalid reference/);
+  });
+
   it('keeps only contracts for installed levels', () => {
     const output = join(tmp, 'catalog.json');
     writeFilteredCatalog(join(ROOT, 'skills/catalog.json'), output, ['core', 'extras']);

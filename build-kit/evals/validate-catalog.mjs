@@ -138,6 +138,17 @@ for (const skill of catalog.skills ?? []) {
   }
   if (names.has(skill.name)) errors.push(`duplicate skill: ${skill.name}`);
   names.add(skill.name);
+  const references = skill.references === undefined ? [] : skill.references;
+  if (
+    !Array.isArray(references) ||
+    references.some(
+      (name) => typeof name !== 'string' || !/^[a-z0-9]+(?:-[a-z0-9]+)*\.md$/.test(name),
+    ) ||
+    new Set(references).size !== references.length
+  ) {
+    errors.push(`invalid references for ${skill.name}`);
+    continue;
+  }
   for (const lang of ['fr', 'en']) {
     const path = join(root, 'skills', skill.level, skill.name, `SKILL.${lang}.md`);
     if (!existsSync(path)) {
@@ -148,6 +159,23 @@ for (const skill of catalog.skills ?? []) {
     const frontmatter = /^---\n([\s\S]*?)\n---/.exec(content)?.[1];
     if (!frontmatter || !frontmatter.split('\n').includes(`name: ${skill.name}`)) {
       errors.push(`frontmatter name does not match catalog: ${path}`);
+    }
+    for (const reference of references) {
+      const source = join(
+        root,
+        'skills',
+        skill.level,
+        skill.name,
+        'references',
+        reference.replace(/\.md$/, `.${lang}.md`),
+      );
+      if (!existsSync(source)) errors.push(`missing ${source}`);
+      if (!content.includes(`(references/${reference})`))
+        errors.push(`unreachable reference ${reference} in ${path}`);
+    }
+    for (const match of content.matchAll(/\]\(references\/([^)#]+)(?:#[^)]*)?\)/g)) {
+      if (!references.includes(match[1]))
+        errors.push(`undeclared reference ${match[1]} in ${path}`);
     }
   }
 }

@@ -93,6 +93,7 @@ Passing checks establish selected behaviour; user benefit needs separate observa
 | See the three paths with actual source files and a runnable check | [Worked starting paths](../examples/starting-paths/README.md) |
 | Check a change, reuse evidence or validate against a contract | [Validation by task](validation.md) |
 | Update, switch language, preserve local instructions or remove the kit | [Safe adoption and lifecycle](adoption.md) |
+| Upgrade the design skills and their bilingual references | [Design skills and migration](design-skills.md) |
 | Diagnose an installation or preview a repair | [Diagnostics](diagnostics.md) |
 | Recover decisions and work across sessions | [Knowledge and resume](knowledge-lifecycle.md#resume-an-active-work-item) |
 | Understand delivery evidence and product learning | [Product delivery](product-delivery.md) |

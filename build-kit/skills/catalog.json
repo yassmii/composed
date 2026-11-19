@@ -1,5 +1,5 @@
 {
-  "version": "3.6.0",
+  "version": "3.7.0",
   "purpose": "Routing contract for the supplied Composed bootstrap, not an exclusive skill allowlist. Select one available primary skill, supplied or external; a user/project skill may replace a supplied role. Add a secondary skill only when its output is needed. Keep one deliverable owner, canonical product/business decisions and expected evidence; resolve overlaps without duplicate workflows. External skills do not waive applicable authority, invariants, validation or independent review. Execution policy remains separate.",
   "risk_levels": {
     "low": "Read-only analysis, a direct answer, or a reversible documentation change. Proceed and state the evidence used.",
@@ -173,11 +173,12 @@
       "level": "core",
       "phase": "design-review",
       "risk": "low",
-      "when": "Critiquing an existing interface, hierarchy, visual direction, or interaction quality.",
+      "when": "Critiquing an existing interface or comparing supplied visual directions against the brief, distinctiveness and interaction quality.",
       "not_when": "Producing a new flow or handoff; use ux-shaping.",
       "artifacts": [
         "design.md"
-      ]
+      ],
+      "references": ["visual-review.md"]
     },
     {
       "name": "software-engineering",
@@ -243,11 +244,12 @@
       "level": "support",
       "phase": "design",
       "risk": "medium",
-      "when": "Designing or redesigning a flow, screen structure, states, and implementation handoff.",
+      "when": "Creating or revising a flow, visual direction, screen composition, states and implementation handoff from agreed product goals.",
       "not_when": "Critiquing a supplied design only.",
       "artifacts": [
         "design.md"
-      ]
+      ],
+      "references": ["visual-exploration.md", "design-craft.md"]
     },
     {
       "name": "technical-documentation",

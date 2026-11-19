@@ -46,8 +46,13 @@ const required = [
     'weak.test.mjs',
   ].map((name) => `examples/engineering-quality/fixtures/${name}`),
   'examples/product-loop/README.md',
-  ...catalog.skills.flatMap((s: { level: string; name: string }) =>
-    ['fr', 'en'].map((lang) => `skills/${s.level}/${s.name}/SKILL.${lang}.md`),
+  ...catalog.skills.flatMap((s: { level: string; name: string; references?: string[] }) =>
+    ['fr', 'en'].flatMap((lang) => [
+      `skills/${s.level}/${s.name}/SKILL.${lang}.md`,
+      ...(s.references ?? []).map(
+        (name) => `skills/${s.level}/${s.name}/references/${name.replace(/\.md$/, `.${lang}.md`)}`,
+      ),
+    ]),
   ),
   ...[
     'AGENTS.md',
@@ -73,6 +78,7 @@ describe('distribution content contract', () => {
   it.each([
     'src/cli/knowledge.ts',
     'skills/core/qa/SKILL.fr.md',
+    'skills/core/product-designer/references/visual-review.fr.md',
     'memory/_README.md',
     'THIRD_PARTY_NOTICES.md',
     'third-party/engineering-quality-sources.json',

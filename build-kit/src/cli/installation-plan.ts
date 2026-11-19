@@ -8,6 +8,7 @@ import {
 } from './managed-files.ts';
 import { renderTemplate } from './render-bridge.ts';
 import { readCatalogSkills } from './skill-catalog.ts';
+import { readSkillReferences } from './skill-references.ts';
 import { parseSkillFrontmatter, renderSkillsIndex } from './skills-index.ts';
 import {
   AGENT_SPECS,
@@ -52,6 +53,18 @@ export function installationPlan(options: {
       throw new Error(`Skill identifier differs from catalog: ${path}`);
     skills.push({ ...metadata, level: item.level, path: local });
     files.push({ path, content, retain: retained });
+    for (const reference of readSkillReferences(kitRoot, item, lang)) {
+      const referencePath = `skills/${item.level}/${item.name}/${reference.path}`;
+      const referenceLocal = safeProjectPath(cwd, referencePath);
+      const referenceRetained = keepLocal && existsSync(referenceLocal);
+      files.push({ path: referencePath, content: reference.content, retain: referenceRetained });
+      if (agents.includes('cline'))
+        files.push({
+          path: `.cline/skills/${item.name}/${reference.path}`,
+          content: referenceRetained ? readFileSync(referenceLocal, 'utf8') : reference.content,
+          retain: keepLocal,
+        });
+    }
     if (agents.includes('cline'))
       files.push({
         path: `.cline/skills/${item.name}/SKILL.md`,
