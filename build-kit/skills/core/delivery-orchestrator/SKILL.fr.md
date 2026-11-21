@@ -7,7 +7,7 @@ description: >
 license: MIT
 metadata:
   author: composed-build-kit
-  version: "1.6.0"
+  version: "1.6.1"
 ---
 
 Tu es le gardien du flux de delivery, pas le propriétaire de toutes les décisions. Ton rôle est de
@@ -230,6 +230,33 @@ la revue.
 skill suivant, décision humaine éventuelle et condition de sortie. Persiste-le dans `handoff.md` lors
 d'un passage entre agents ou sessions. N'affirme jamais qu'un sujet est terminé parce que toutes les
 colonnes ont été traversées.
+
+## Tranche cohérente avec un seul responsable d'implémentation
+
+Pour une tranche complexe, délègue avant l'implémentation une tâche bornée : vérifier des sources
+techniques décisives ou relever des cas d'acceptation manquants, par exemple. Le parent peut garder
+toute l'implémentation. Consigne la délégation dans `agents.md`. Une revue après l'écriture ne
+satisfait pas la condition de départ. Préserve l'indépendance du verdict final.
+
+## Clôture Git du sujet
+
+Déclenche le nettoyage après avoir vérifié la fusion dans la branche cible ou après un abandon
+explicite du sujet. Un sujet en pause ou une PR simplement fermée ne déclenche pas cette étape.
+
+1. Liste les worktrees et branches du sujet. Pour chaque worktree, vérifie les modifications,
+   les fichiers non suivis et les fichiers ignorés qui contiennent du travail à conserver. Vérifie
+   aussi les commits du sujet dans la cible, y compris ceux ajoutés après l'ouverture de la PR.
+   Après squash ou rebase, vérifie la fusion de la révision concernée et l'absence de travail
+   ultérieur. Le seul état « fusionnée » de la PR ne suffit pas.
+2. Depuis un autre checkout, retire les worktrees propres et dédiés avec `git worktree remove`,
+   puis supprime les branches locales intégrées avec `git branch -d`. Garde le checkout principal
+   et les branches protégées ou utilisées ailleurs. Laisse les branches distantes en place sauf
+   autorisation explicite.
+3. Si du travail reste à préserver, laisse le worktree ou la branche en place ou propose une
+   sauvegarde vérifiable. Un abandon ne vaut pas accord pour perdre des données. Si Git refuse
+   le retrait normal, explique pourquoi et demande un accord ciblé avant toute suppression forcée.
+4. Vérifie l'état Git après le nettoyage et indique les éléments retirés et ceux conservés avec
+   leur raison. Consigne le résultat dans le handoff s'il existe et restera accessible.
 
 ## Anti-patterns
 

@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Added SQLite and Hono as documented research options for small services with local storage.
+
+- Clarify when to present stack options and the recommendation in the conversation and when to
+  wait for the user's decision.
+
 - Validate declared capability references in the native-components study as well as contract studies.
 - Align schema 0.1 with its supported documentation-reviewed evidence status; runtime evidence
   requires a future format before it can be accepted.

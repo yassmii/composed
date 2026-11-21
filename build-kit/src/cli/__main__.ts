@@ -12,13 +12,28 @@ import { runUpdate } from './update.ts';
 const command = process.argv[2] ?? 'init';
 const args = process.argv.slice(3);
 
-if (['help', '--help', '-h'].includes(command)) {
+if (
+  ['help', '--help', '-h'].includes(command) ||
+  (args.includes('--help') && !args.includes('--'))
+) {
   console.log(
     'Usage: composed-kit <init|update|doctor|source|preflight|knowledge|repair|uninstall|evidence|verify> [options]',
   );
   console.log(
     'Init/update: --agents --lang --skills --cwd --kit-root --dry-run --json --yes --keep-local --force --claude-memory=none|link',
   );
+  console.log(
+    '  --agents <list>  Comma-separated: claude-code,codex,cursor,gemini,windsurf,aider,cline',
+  );
+  console.log('  --skills <list>  Comma-separated: core,support,extras');
+  console.log('  --lang <fr|en>   Instruction language');
+  console.log('  --cwd <path>     Target project Git repository; run git init for a new project');
+  console.log('  --kit-root <path>  Build Kit source directory containing skills/ and bridges/');
+  console.log('  --dry-run        Preview changes; --json emits a machine-readable result');
+  console.log(
+    '  --keep-local or --force  Preserve changed managed files or replace them with backup',
+  );
+  console.log('  --claude-memory <none|link>  Optional Claude memory mirror (default: none)');
   console.log('Uninstall previews by default; --apply removes unchanged managed files.');
   console.log(
     'Evidence: evidence run --subject <path> --requirement <id> --acceptance <id> --output <path> -- <executable> [args]',

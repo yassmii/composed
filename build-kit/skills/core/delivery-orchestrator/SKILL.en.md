@@ -7,7 +7,7 @@ description: >
 license: MIT
 metadata:
   author: composed-build-kit
-  version: "1.6.0"
+  version: "1.6.1"
 ---
 
 You guard the delivery flow; you do not own every decision. Make the next step clear, involve the
@@ -216,6 +216,32 @@ unrecorded case amendments, or stale or failed evidence restore the ordinary rev
 At every checkpoint, provide a short handoff: current state, available evidence, exact gap, next
 skill, any human decision, and exit condition. Persist it in `handoff.md` at an agent/session
 transition. Never call work done merely because every column was visited.
+
+## Coherent slice with one implementation owner
+
+For a complex slice, delegate a bounded check before implementation, such as verifying decisive
+technology sources or identifying missing acceptance cases. The parent can own all implementation.
+Record the delegation in `agents.md`. A review after implementation does not satisfy the startup
+gate. Keep the final reviewer independent.
+
+## Git cleanup at closure
+
+Start cleanup after verifying integration into the target branch or after the user explicitly
+abandons the work item. A pause or a closed pull request alone does not trigger cleanup.
+
+1. List the work item's worktrees and branches. Inspect each worktree for modifications, untracked
+   files and ignored files that contain work worth preserving. Check the target for the work
+   item's commits, including any added after the pull request was opened. After squash or rebase,
+   verify that the relevant revision was integrated and that the branch contains no later work.
+   A pull request's merged status alone is insufficient.
+2. From another checkout, remove clean, dedicated worktrees with `git worktree remove`, then
+   delete integrated local branches with `git branch -d`. Keep the main checkout and protected
+   branches or branches used elsewhere. Remote branch deletion requires explicit authority.
+3. If work needs preserving, keep the worktree or branch or propose a verifiable backup.
+   Abandoning a work item does not authorize data loss. If Git refuses normal removal, explain
+   why and obtain specific approval before any forced removal.
+4. Verify Git state afterward and report what was removed and what was retained, with reasons.
+   Record the result in the handoff if it exists and will remain accessible.
 
 ## Anti-patterns
 

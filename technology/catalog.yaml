@@ -30,6 +30,54 @@ entries:
       costs: [Include type migration and build maintenance effort; no measured delivery savings are claimed.]
       compatibility: [Check framework compiler ranges and decorator configuration before selecting NestJS.]
       unknowns: [Exact compiler and framework combination has not been installed or tested.]
+  - id: sqlite
+    name: SQLite
+    category: database
+    version_scope: Upstream documentation; verify the exact chosen release and integration.
+    review_owner: composed-maintainers
+    review_status: documentation-reviewed
+    reviewed_on: '2026-11-21'
+    review_due: '2026-12-21'
+    license: {"status":"unverified","declared":"Public domain upstream","source":"https://sqlite.org/copyright.html","note":"Verify selected packages and transitive terms for the deployment."}
+    sources:
+      - {"id":"sqlite-transactions","url":"https://sqlite.org/lang_transaction.html","scope":"Writer serialization"}
+      - {"id":"sqlite-indexes","url":"https://sqlite.org/partialindex.html","scope":"Partial uniqueness"}
+      - {"id":"sqlite-wal","url":"https://sqlite.org/wal.html","scope":"WAL storage boundaries"}
+    capabilities:
+      - {"id":"write-transaction","kind":"native","statement":"BEGIN IMMEDIATE acquires a write transaction before reads; competing writers may receive SQLITE_BUSY.","sources":["sqlite-transactions"]}
+      - {"id":"partial-uniqueness","kind":"native","statement":"A partial unique index enforces uniqueness for rows matching its predicate.","sources":["sqlite-indexes"]}
+      - {"id":"wal-storage","kind":"native","statement":"WAL permits concurrent readers and a writer on one host and does not work over a network filesystem.","sources":["sqlite-wal"]}
+    assessment:
+      advantages: ["Embedded persistence avoids a separate database server."]
+      limitations: ["One concurrent writer per database."]
+      fit: ["A service on one host with persistent local storage."]
+      avoid: ["A WAL database shared over a network filesystem."]
+      operations: ["Test lock handling, consistent backups and restore."]
+      costs: ["Budget storage and backup operations."]
+      compatibility: ["Pin the driver and its bundled engine and verify their capabilities."]
+      unknowns: ["Workload capacity and recovery require project evidence."]
+  - id: hono
+    name: Hono
+    category: framework
+    version_scope: Upstream documentation; verify the exact chosen release and integration.
+    review_owner: composed-maintainers
+    review_status: documentation-reviewed
+    reviewed_on: '2026-11-21'
+    review_due: '2026-12-21'
+    license: {"status":"unverified","declared":"MIT","source":"https://raw.githubusercontent.com/honojs/hono/main/LICENSE","note":"Verify selected packages and transitive terms for the deployment."}
+    sources:
+      - {"id":"hono-node","url":"https://hono.dev/docs/getting-started/nodejs","scope":"HTTP routing with the Node adapter"}
+    capabilities:
+      - {"id":"node-http","kind":"extension","statement":"The Node adapter serves Hono HTTP handlers and offers static-file serving.","sources":["hono-node"]}
+    assessment:
+      advantages: ["An API and static UI can run in one process."]
+      limitations: ["Domain rules, identity and storage require explicit implementation choices."]
+      fit: ["A small HTTP service with few routes."]
+      avoid: ["Replacing an established framework that supplies needed admin features."]
+      operations: ["Define process shutdown and the static file boundary."]
+      costs: ["Budget maintenance for the middleware assembled by the project."]
+      compatibility: ["Pin and verify the runtime, framework and adapter together."]
+      unknowns: ["Project throughput and exact version compatibility require project evidence."]
   - id: python
     name: Python
     category: language

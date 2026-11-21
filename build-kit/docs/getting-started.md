@@ -45,7 +45,23 @@ At a handoff or a decision point, the useful response says what is done, what wa
 what remains open and who takes the next action, with source links. The examples show this response;
 a small correction can simply report its change and check.
 
+### First vertical slice, solo developer
+
+1. Install `core` and the bridge for your agent. Start with `AGENTS.md` and the skill it routes
+   you to. Include `support` for a new visual direction with `ux-shaping`.
+2. Agree on one user journey. Use a short note for scope, acceptance and evidence. If using a
+   contract, pin it and use the [slice matrix](../../contracts/templates/scoped-acceptance.md).
+   Record the stack decision separately after discussing the options.
+3. For a complex slice, keep one implementation owner and delegate a useful check before coding,
+   such as verifying decisive sources or finding missing acceptance cases. Record it in
+   `agents.md` and arrange the required independent review separately. If native delegation is
+   unavailable, the user can explicitly authorize single-agent implementation.
+4. Build and test the journey. Use the [visual inspection recipe](visual-inspection.md) when
+   applicable. Record observed results and gaps. Use a handoff when work changes hands or sessions.
+
 ## Install
+
+Run `git init` in a new target directory before using `init` or `init --dry-run`.
 
 You need Node 20+ and npm from the same OS, a target Git repository, and your chosen coding agent.
 Node runs the kit; your project keeps its own stack. The standalone npm package is not published.

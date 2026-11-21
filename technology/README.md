@@ -21,6 +21,8 @@ synthetic assumptions; they are not approved stacks for real projects.
 | nestjs | Backend framework | Is a modular TypeScript backend worth its integration surface? |
 | react | UI library | Does the interaction model justify a client application? |
 | postgresql | Database | Which transactions and retries enforce the invariants? |
+| sqlite | Embedded database | Can local durable storage and a single concurrent writer meet the workload? |
+| hono | HTTP framework | Is a small HTTP layer enough given the project's identity and operator needs? |
 | yjs | Collaboration library | How will convergent updates meet authorization and durability rules? |
 | git | Versioned storage tool | How will canonical commits and projections remain consistent? |
 | csharp | Language | Does a typed .NET domain model fit the team and integrations? |
@@ -39,10 +41,10 @@ Coverage is deliberately limited to two initial product families. Missing techno
 rejected technologies**. Expand research when constraints suggest Go, Java, PHP, other UI
 frameworks, databases or services. No benchmark, exact dependency combination, deployment price or
 complete license audit was executed for this preview. Documentation-backed facts and architectural
-judgments are kept separate. Sources were inspected on 2026-11-18; mutable unversioned documentation
+judgments are kept separate. Consult each entry's review date; mutable unversioned documentation
 does not establish compatibility for every release.
 
-The 20 entries are not interchangeable options: languages, runtimes, frameworks and execution
+The entries are not interchangeable options: languages, runtimes, frameworks and execution
 formats occupy different layers. ASM coverage currently uses NASM/x86 as its documented example;
 ARM and RISC-V need separate research. WASM can be a compilation target for a component, not a
 replacement name for its source language or host. Read the [native/component comparison](studies/native-components.md)

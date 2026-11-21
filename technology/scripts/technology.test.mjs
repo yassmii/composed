@@ -5,7 +5,7 @@ import { observe, candidateBaseline } from './watch.mjs';
 
 test('initial catalog and studies resolve against the real contract bytes', () => {
   const catalog = loadCatalog();
-  assert.deepEqual(validateCatalog(catalog, '2026-11-18'), { errors: [], warnings: [] });
+  assert.deepEqual(validateCatalog(catalog).errors, []);
   assert.deepEqual(validateStudies(catalog), []);
   assert.deepEqual(validateWatchSources(catalog), []);
   assert.deepEqual(validateLocalLinks(), []);
@@ -30,9 +30,13 @@ test('component study references cannot silently outlive catalog capabilities', 
 });
 
 test('future review dates fail and overdue research is explicitly stale', () => {
-  assert.ok(validateCatalog(loadCatalog(), '2026-11-17').errors.some((e) => e.includes('future')));
-  assert.equal(validateCatalog(loadCatalog(), '2026-12-18').warnings.length, loadCatalog().entries.length);
   const catalog = loadCatalog();
+  catalog.entries = [catalog.entries[0]];
+  catalog.entries[0].reviewed_on = '2026-11-18';
+  catalog.entries[0].review_due = '2026-12-18';
+  assert.ok(validateCatalog(catalog, '2026-11-17').errors.some((e) => e.includes('future')));
+  assert.equal(validateCatalog(catalog, '2026-12-17').warnings.length, 0);
+  assert.equal(validateCatalog(catalog, '2026-12-18').warnings.length, 1);
   catalog.entries[0].review_due = '2026-11-17';
   assert.ok(validateCatalog(catalog, '2026-11-18').errors.some((e) => e.includes('must follow')));
 });

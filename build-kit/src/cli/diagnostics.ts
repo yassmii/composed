@@ -553,7 +553,7 @@ export function inspectProject(options: DiagnosticOptions): {
 
   if (installed?.agents.includes('claude-code') && agents.includes('claude-code')) {
     const mirror = planClaudeMemory({ projectRoot: cwd });
-    if (mirror.status !== 'linked') {
+    if (!['linked', 'missing', 'copy'].includes(mirror.status)) {
       add(
         `claude.memory-${mirror.status}`,
         'warning',

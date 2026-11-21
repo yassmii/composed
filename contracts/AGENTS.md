@@ -13,6 +13,10 @@ When an implementation repository references a Composed Contract:
 
 The contract defines the product. This file only defines how agents should implement it.
 
+Declare the included and deferred clauses of a delivery slice and retain the invariants and
+policies applicable to the delivered behavior. Use the [slice matrix](templates/scoped-acceptance.md)
+and see the [scoped verification example](examples/scoped-verification/README.md) for format 0.2.
+
 For format 0.2, use the explicit `acceptance.verifies` links and proof dimensions described in
 [structured verification](docs/verification.md). Preserve 0.1 pins unless migration is requested.
 Separate a structurally valid plan, supplied case observations and a current scoped assessment;

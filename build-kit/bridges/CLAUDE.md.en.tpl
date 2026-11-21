@@ -19,10 +19,6 @@ Simple rule:
 - **Repo skills (`skills/...`)** → `Read SKILL.md`
 - **Globally-installed skills (`superpowers:*`, other plugins)** → `Skill` tool
 
-### Installed skills
-
-{{SKILLS_INDEX}}
-
 ## Preferred Claude Code tools
 
 - **`Read`** on `skills/<level>/<name>/SKILL.md` to activate a kit skill.

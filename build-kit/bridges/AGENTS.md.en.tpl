@@ -34,8 +34,8 @@ see your agent's entry file (`CLAUDE.md`, `GEMINI.md`, etc.); without a native s
 {{SKILLS_INDEX}}
 
 Select **one primary skill**, supplied or external, and add a secondary skill only when its output is
-needed. `product-manager` comes before `cadrage` for "what / why / priority"; `product-designer`
-before `ux-shaping` for critique or visual direction; `delivery-orchestrator` coordinates
+needed. Use `product-manager` for "what / why / priority", `ux-shaping` to create a direction
+and `product-designer` to critique an interface or compare supplied directions. `delivery-orchestrator` coordinates
 multi-disciplinary work. An available user/project skill may replace a supplied role: keep one
 deliverable owner and skip duplicate workshops, plans and reviews. External skills do not waive
 authorisation, invariants, validation, independent review or the execution policy.
@@ -105,11 +105,12 @@ blocking questions; do not create another plan when a review already names a bou
 Before choosing technology-dependent architecture, scaffolding, installing dependencies or
 implementing, establish the user's stack decision (`stack_selection_policy` in the catalog):
 
-- **New project or POC without a choice**: ask for useful preferences and constraints, study
-  credible options with trade-offs and current sources, recommend, then wait for the user's choice.
-  Independent reading and framing may continue meanwhile.
+- **New project, POC or stack change with a choice to make**: ask about missing constraints that
+  could change the recommendation. Present credible options, trade-offs and your recommendation
+  in the conversation before dependent work. Wait for the user's choice or explicit delegation.
+  If they already delegated the decision, present the proposal and proceed.
 - **Partial choice**: keep chosen components and ask only for the missing decisions needed next.
-- **User-selected or explicitly delegated**: follow it without asking again; surface an
+- **Already selected by the user**: follow it without asking again; surface an
   incompatible constraint instead of substituting another technology.
 - **Existing project**: reuse its stack; adding or replacing a component still needs a choice.
 
@@ -135,6 +136,10 @@ Except for direct corrections, use the smallest useful subset of `.agents/work/<
 named files under `reviews/` (see `.agents/work/README.md`). Declare included and deferred scope
 before implementing. Update `handoff.md` when work changes hands or closes, not after every slice.
 Persist each requested review as a new file; never overwrite an earlier one.
+
+After a verified merge or explicit abandonment, finish with Git cleanup using
+`delivery-orchestrator`. Remove clean, dedicated worktrees, then integrated local branches.
+Check for files and commits that need preserving before removal. Report retained items.
 
 ## 5. Errors and regressions
 

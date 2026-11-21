@@ -49,6 +49,20 @@ explicit row locking with correctly maintained capacity is another requiring its
 Deduplicate requests and put durable external-effect intents in the same transaction. Network
 payment calls must not be replayed blindly by a database retry.
 
+## Variant for a solo developer with one persistent host
+
+If the journey is limited to availability, booking and cancellation, compare a single application
+using Node, Hono (`hono/node-http`) and SQLite with the PostgreSQL options above. Verify
+the exact driver, adapter and runtime releases. The host needs persistent local storage, and
+the team needs a tested backup and restore path.
+
+For `INV-BOOK-001` and `ACC-BOOK-001`, read availability and allocate inside a common write
+transaction (`sqlite/write-transaction`). A partial unique index (`sqlite/partial-uniqueness`)
+can defend capacity **one**. For multi-unit capacity, test the ledger and transaction rule
+directly. Exercise independent connections and contention; HTTP calls on one synchronous process
+can pass even if the database boundary is wrong. WAL requires the same host (`sqlite/wal-storage`).
+Revisit the choice if the deployment needs multiple hosts or measured write contention is high.
+
 ## Before implementation
 
 - Pin supported Python/Django/driver/PostgreSQL versions and verify distribution licenses. The

@@ -37,7 +37,8 @@ natif de skill, lis `skills/<level>/<name>/SKILL.md` quand son trigger matche, p
 
 Choisis **un skill principal**, fourni ou externe, et n'ajoute un skill secondaire que si son
 résultat est nécessaire. `product-manager` passe avant `cadrage` pour « quoi / pourquoi /
-priorité » ; `product-designer` avant `ux-shaping` pour une critique ou une direction visuelle ;
+priorité ». Utilise `ux-shaping` pour créer une direction et `product-designer` pour critiquer une
+interface ou comparer des directions fournies.
 `delivery-orchestrator` coordonne le travail multi-disciplinaire. Un skill utilisateur ou projet
 disponible peut remplacer un rôle fourni : garde un seul propriétaire du livrable et évite les
 ateliers, plans et revues en double. Les skills externes ne lèvent ni l'autorisation, ni les
@@ -113,12 +114,14 @@ Avant de choisir une architecture dépendante de technologies, de créer le sque
 des dépendances ou d'implémenter, établis la décision de stack de l'utilisateur
 (`stack_selection_policy` du catalogue) :
 
-- **Nouveau projet ou POC sans choix** : demande les préférences et contraintes utiles, étudie des
-  options crédibles avec leurs compromis et des sources à jour, recommande, puis attends le choix
-  de l'utilisateur. La lecture et le cadrage indépendants peuvent continuer pendant ce temps.
+- **Nouveau projet, POC ou changement de stack avec un choix à faire** : demande les contraintes
+  manquantes qui pourraient faire changer la recommandation. Présente dans la conversation les
+  options crédibles, leurs compromis et ta recommandation avant tout travail qui en dépend.
+  Attends le choix ou la délégation explicite. Si le choix est déjà délégué, présente la proposition
+  puis avance.
 - **Choix partiel** : garde les composants choisis et ne demande que les décisions manquantes
   nécessaires à la suite.
-- **Stack choisie ou explicitement déléguée** : suis-la sans reposer la question ; signale une
+- **Stack déjà choisie par l'utilisateur** : suis-la sans reposer la question ; signale une
   contrainte incompatible au lieu de substituer une autre technologie.
 - **Projet existant** : réutilise sa stack ; ajouter ou remplacer un composant demande un choix.
 
@@ -147,6 +150,10 @@ Hors correctifs directs, utilise le plus petit sous-ensemble utile de
 `.agents/work/README.md`). Déclare le périmètre inclus et reporté avant d'implémenter. Mets à jour
 `handoff.md` quand le travail change de mains ou se clôt, pas après chaque lot. Persiste chaque
 revue demandée dans un nouveau fichier ; n'écrase jamais une revue antérieure.
+
+Après fusion vérifiée ou abandon explicite d'un sujet, termine par le nettoyage Git selon
+`delivery-orchestrator` : retire les worktrees dédiés propres, puis les branches locales intégrées.
+Vérifie les fichiers et commits à conserver avant le retrait. Signale les éléments conservés.
 
 ## 5. Erreurs et régressions
 

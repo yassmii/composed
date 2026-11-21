@@ -19,5 +19,8 @@ Candidate traceability consumes this family's shared research; the native
 validator checks both baseline and candidate on every contract validation run.
 
 Do not change a consumer pin until it explicitly adopts the reviewed version.
+
+The [first-slice follow-up](first-slice-follow-up.md) proposes explicit cancellation and booking
+limit requirements and a scope for the first external validation profile.
 The numeric candidate version reserves a breaking proposal; it does not declare
 release readiness. Independent review remains required before promotion.

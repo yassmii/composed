@@ -1,7 +1,6 @@
-# {{PROJECT_NAME}} — Claude Code Layer
+# {{PROJECT_NAME}} — Instructions Claude Code
 
-> **Read `AGENTS.md` first** for the universal doctrine.
-> This file adds Claude Code specifics on top.
+> **Lis d'abord `AGENTS.md`** pour les règles communes et la liste des skills installés.
 
 ## Invocation des skills
 
@@ -19,10 +18,6 @@ réellement exposés par la session et utilise leurs noms enregistrés.
 Règle simple :
 - **Skills du repo (`skills/...`)** → `Read SKILL.md`
 - **Skills globaux installés (`superpowers:*`, autres plugins)** → `Skill` tool
-
-### Skills installés
-
-{{SKILLS_INDEX}}
 
 ## Outils Claude Code à privilégier
 

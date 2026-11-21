@@ -12,7 +12,11 @@
       "typescript/input-validation",
       "ef-core/transactions",
       "rust/ownership",
-      "axum/routing"
+      "axum/routing",
+      "hono/node-http",
+      "sqlite/write-transaction",
+      "sqlite/partial-uniqueness",
+      "sqlite/wal-storage"
     ]
   },
   {

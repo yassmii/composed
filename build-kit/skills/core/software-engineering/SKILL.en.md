@@ -7,7 +7,7 @@ description: >
 license: MIT
 metadata:
   author: composed-build-kit
-  version: "2.2.1"
+  version: "2.2.2"
 ---
 
 > **Use this skill** for implementation and engineering decisions within an agreed product scope.
@@ -35,10 +35,12 @@ license, operational cost and alternatives. Report unavailable research channels
 ## Choose a stack only within authority
 
 For a new project, POC or stack change, follow stack_selection_policy in skills/catalog.json. If a
-choice is open, gather user constraints, study credible options with current primary sources, costs
-and trade-offs, recommend, then wait for the user's choice or explicit delegation before selection,
-scaffolding, dependency installation or dependent implementation. Preserve partial choices and the
-scope of delegation. Reuse an established unchanged stack without asking again. Urgency, templates,
+choice remains, ask about missing constraints that could change the recommendation. Study credible
+options using current primary sources. In the conversation, present the options, their main costs and
+trade-offs, and your recommendation. Do this before selection, scaffolding, dependency installation
+or dependent implementation. Wait for the user's choice or explicit delegation. If already delegated,
+present the proposal and proceed. Preserve partial choices and the scope of delegation.
+Reuse an established unchanged stack without asking again. Urgency, templates,
 kit manifests and --yes are not stack decisions. Link the canonical decision from the work plan.
 
 ## Design the smallest coherent change

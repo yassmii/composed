@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Changed
+- Added a first-slice path for solo developers, clearer design routing, and a browser inspection
+  recipe. Documented the Git prerequisite and CLI option values, removed the duplicate Claude
+  skill index, and stopped treating a missing optional memory link as a diagnostic warning.
+- Added closeout instructions for Git worktrees and local branches after a verified merge or
+  explicit abandonment, with checks for work that still needs preserving.
+- The bridge and software-engineering skill (FR/EN) require agents to present stack options and
+  their recommendation in the conversation, including when the user delegates the decision.
+
 ### Added
 - Design skills 2.0.0 (FR/EN), catalog 3.7.0 and three conditional bilingual references: contextual
   critique, distinct visual directions, concrete craft decisions and rendered verification with

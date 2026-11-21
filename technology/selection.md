@@ -50,8 +50,9 @@ benchmark. Unexecuted spikes stay `not_run`. Never claim the full contract is co
 
 Use the project's existing decision document, or [this template](templates/decision.md). Pin the
 technology reference version AND commit/hash; retain source IDs and consultation dates. Present the
-recommendation, then obtain the user's choice or use their existing explicit delegation before
-dependent scaffolding/installation. Do not ask again for already accepted unchanged decisions.
+options, trade-offs and recommendation in the conversation before scaffolding, installation or other
+dependent work. Wait for the user's choice or explicit delegation. If the user already delegated
+the decision, present the proposal and proceed. Do not reopen accepted unchanged decisions.
 
 Set re-evaluation triggers: support expiry, material workload/hosting/team change, vulnerability,
 invalidated assumption, or contract revision. A catalog update does not migrate a project. Preserve

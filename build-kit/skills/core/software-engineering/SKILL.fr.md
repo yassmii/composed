@@ -7,7 +7,7 @@ description: >
 license: MIT
 metadata:
   author: composed-build-kit
-  version: "2.2.1"
+  version: "2.2.2"
 ---
 
 > **Utilise ce skill** pour l'implémentation et les décisions techniques dans le périmètre produit convenu.
@@ -38,10 +38,12 @@ de recherche indisponibles.
 ## Choisir une stack dans l'autorité accordée
 
 Pour un nouveau projet, un POC ou un changement de stack, applique stack_selection_policy dans
-skills/catalog.json. Si le choix est ouvert, recueille les contraintes utilisateur, étudie les options
-crédibles avec sources primaires actuelles, coûts et compromis, recommande puis attends le choix ou
-la délégation explicite avant sélection, squelette, installation et implémentation dépendante.
-Préserve les choix partiels et la portée d'une délégation. Réutilise une stack établie inchangée sans
+skills/catalog.json. S'il reste un choix à faire, demande les contraintes manquantes qui pourraient
+faire changer la recommandation. Étudie les options crédibles avec des sources primaires à jour.
+Présente dans la conversation les options, leurs principaux coûts et compromis, et ta recommandation
+avant de choisir, de créer le squelette, d'installer ou d'implémenter. Attends le choix ou la
+délégation explicite. Si le choix est déjà délégué, présente la proposition puis avance.
+Préserve les choix partiels et la portée de la délégation. Réutilise une stack établie inchangée sans
 redemander. Urgence, templates, manifests du kit et --yes ne constituent pas un choix de stack.
 Lie la décision canonique depuis le plan de travail.
 

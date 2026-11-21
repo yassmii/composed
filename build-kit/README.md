@@ -21,11 +21,13 @@ git clone https://github.com/yassmii/composed.git
 cd composed
 npm ci
 cd /path/to/your-project
+git init  # only for a new project without a Git repository
 node /path/to/composed/build-kit/bin/composed-kit.mjs init
 ```
 
 A wizard asks for instruction language, the agent tools you use, and skill levels. It installs their
 instruction bridges. See [getting started](./docs/getting-started.md) for details.
+Both installation and its dry run require a target Git repository.
 
 ## What it gives you
 

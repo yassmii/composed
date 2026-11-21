@@ -33,6 +33,9 @@ Formatting checks are structural evidence only. They do not prove that untracked
 cross-document requirements agree, or that a human has approved a product decision. State those
 checks separately.
 
+After a verified merge or explicit abandonment, run the Git cleanup in the delivery orchestrator.
+Confirm which dedicated worktrees and local branches can be removed and report anything retained.
+
 ## Runtime-aware review and delegation
 
 The harness is deliberately portable: it describes the evidence and the responsibility boundary, not

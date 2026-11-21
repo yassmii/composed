@@ -36,13 +36,14 @@ You need no installation for this.
 5. Reuse the person's existing stack choice or explicit delegation. For open choices, gather the
    consequential constraints and use the [technology selection protocol](../technology/selection.md)
    to compare credible stacks against clause IDs. Check source freshness, compatibility and gaps;
-   record the reference version/commit with the recommendation. Obtain the person's choice before
-   dependent work unless selection is already explicitly delegated. A contract never implies a
+   record the reference version/commit with the recommendation. Present the options, trade-offs and
+   recommendation in the conversation before dependent work. Proceed once the person has chosen or
+   explicitly delegated the choice. A contract never implies a
    language, framework or database, and neither does silence or "keep it simple".
 6. Turn each acceptance case into a check that can fail. Work toward the next failing case.
-7. Report one verdict per acceptance case: `pass`, `fail`, `blocked` or `not_run`. A case you did
-   not execute is `not_run`, never `pass`. Do not write that the product conforms to the
-   contract: your own tests are not an external verdict.
+7. Use the [slice matrix](../contracts/templates/scoped-acceptance.md) to report one verdict per
+   case, including observed results and missing steps for partially executed cases. Distinguish
+   project test results from an external conformance verdict.
 
 ## 2. Install the Build Kit in a project
 
@@ -56,7 +57,8 @@ git clone https://github.com/yassmii/composed.git
 cd composed && npm ci
 ```
 
-Preview first. This writes nothing and prints the planned files and any conflict as JSON:
+Initialize the target with `git init` if it does not already have a Git repository.
+Then preview the planned files and any conflict as JSON:
 
 ```bash
 node /path/to/composed/build-kit/bin/composed-kit.mjs init --yes --dry-run --json \
@@ -70,6 +72,8 @@ Then install with the same command without `--dry-run --json`. Choose the values
 | `--lang` | `en` or `fr` |
 | `--agents` | One or more of `claude-code`, `codex`, `cursor`, `gemini`, `cline`, `windsurf`, `aider`, comma-separated. Pick the agent the person actually uses. |
 | `--skills` | `core`, optionally with `support` and `extras`, comma-separated. Start with `core`. |
+| `--kit-root` | Build Kit source directory containing `skills/` and `bridges/`. Defaults to the invoking kit. |
+| `--claude-memory` | `none` (default) or `link` for an optional Claude Code memory mirror. |
 
 If you are an agent that is not in that list and you read `AGENTS.md` at the project root, use
 `--agents=codex`: it writes `AGENTS.md` and nothing agent-specific. The skills are then plain
