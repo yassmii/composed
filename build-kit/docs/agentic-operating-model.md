@@ -57,6 +57,11 @@ governance without turning the harness into an endless questionnaire.
 
 ## User-owned technology decisions
 
+For contract-based studies, the optional [technology reference](../../technology/README.md) supplies
+scoped capability evidence, comparison examples and freshness rules. Follow its selection protocol
+and pin the reference in the project's decision. Missing coverage requires research, not automatic
+rejection. It remains separate from contract requirements and is not copied by kit installation.
+
 For a new project, POC, or stack change, first inspect existing decisions and ask for relevant user
 preferences and constraints. When the choice is open, produce a proportionate technology study:
 credible alternatives, compatibility, trade-offs, costs and operations, risks, current primary sources

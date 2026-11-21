@@ -7,6 +7,8 @@ decisions and keep reviews respectful, specific and grounded in evidence.
 ## Choose the component
 
 - `build-kit/`: delivery instructions, skills, bridges, CLI, tests and examples; MIT licensed.
+- `technology/`: advisory research, selection studies and monitoring; MIT licensed. Run
+  `npm run validate:technology` and `npm run test:technology`; follow its maintenance protocol.
 - `contracts/`: product requirements and research provenance; read its AGENTS.md and license before
   editing. A skill implementation is not a new product requirement.
 

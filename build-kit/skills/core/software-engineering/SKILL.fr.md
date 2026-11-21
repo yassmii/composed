@@ -7,7 +7,7 @@ description: >
 license: MIT
 metadata:
   author: composed-build-kit
-  version: "2.2.0"
+  version: "2.2.1"
 ---
 
 > **Utilise ce skill** pour l'implémentation et les décisions techniques dans le périmètre produit convenu.
@@ -46,6 +46,15 @@ redemander. Urgence, templates, manifests du kit et --yes ne constituent pas un 
 Lie la décision canonique depuis le plan de travail.
 
 ## Concevoir le plus petit changement cohérent
+
+Pour une étude technique issue d'un contrat, consulte le
+[référentiel technique](https://github.com/yassmii/composed/tree/main/technology) optionnel de Composed
+depuis un checkout ou une révision figée. Suis son protocole de sélection, relie les capacités/sources
+décisives aux identifiants de clauses et conserve version/commit du référentiel et dates de consultation
+dans la décision du projet. Revérifie les faits périmés ou décisifs susceptibles de changer ; une
+couverture absente demande une recherche, pas un rejet de la technologie. Le catalogue est consultatif,
+non embarqué avec ce skill, et ne donne aucune autorité de choix de stack. S'il est inaccessible,
+recherche directement les sources primaires et signale cette absence.
 
 - Trace le parcours réel des appels et les consommateurs ; distingue observations et hypothèses.
 - Sépare règles métier, persistance, transport et présentation par les frontières utiles existantes.

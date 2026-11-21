@@ -12,6 +12,7 @@ setup yourself with the commands below.
 - `contracts/` holds product contracts: what a type of product must do, its rules, and the
   acceptance cases that prove it. They name no technology.
 - `build-kit/` holds an optional delivery method: instructions and skills copied into a project.
+- `technology/` holds optional, versioned technology research and a contract-driven selection protocol.
 - A separate repository, [composed-validation](https://github.com/yassmii/composed-validation),
   holds the suites that judge an implementation from outside.
 
@@ -32,8 +33,12 @@ You need no installation for this.
 4. Apply the [consumer protocol](../contracts/AGENTS.md). In short: invariants, policies and
    acceptance cases are not negotiable; cite a `REQ-`, `INV-`, `POL-`, `QA-` or `ACC-` identifier
    in each piece of work; do not add behaviour the contract does not state.
-5. Ask the person for the stack. A contract never implies a language, framework or database, and
-   neither does silence or "keep it simple".
+5. Reuse the person's existing stack choice or explicit delegation. For open choices, gather the
+   consequential constraints and use the [technology selection protocol](../technology/selection.md)
+   to compare credible stacks against clause IDs. Check source freshness, compatibility and gaps;
+   record the reference version/commit with the recommendation. Obtain the person's choice before
+   dependent work unless selection is already explicitly delegated. A contract never implies a
+   language, framework or database, and neither does silence or "keep it simple".
 6. Turn each acceptance case into a check that can fail. Work toward the next failing case.
 7. Report one verdict per acceptance case: `pass`, `fail`, `blocked` or `not_run`. A case you did
    not execute is `not_run`, never `pass`. Do not write that the product conforms to the

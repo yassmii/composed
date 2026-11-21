@@ -7,7 +7,7 @@ description: >
 license: MIT
 metadata:
   author: composed-build-kit
-  version: "2.2.0"
+  version: "2.2.1"
 ---
 
 > **Use this skill** for implementation and engineering decisions within an agreed product scope.
@@ -42,6 +42,14 @@ scope of delegation. Reuse an established unchanged stack without asking again. 
 kit manifests and --yes are not stack decisions. Link the canonical decision from the work plan.
 
 ## Design the smallest coherent change
+
+For a contract-based technology study, consult Composed's optional
+[technology reference](https://github.com/yassmii/composed/tree/main/technology) from a pinned checkout
+or revision. Follow its selection protocol, map decisive capabilities/sources to clause IDs, and
+record reference version/commit and source check dates in the project decision. Recheck stale or
+decisive mutable facts; missing coverage is a research gap, not rejection of a technology. The
+catalog is advisory, not bundled with this skill, and does not grant stack-selection authority.
+If unavailable, research primary sources directly and report the missing reference.
 
 - Trace the actual call path and consumers; distinguish observed behaviour from assumptions.
 - Keep domain rules, persistence, transport and presentation behind useful existing boundaries.

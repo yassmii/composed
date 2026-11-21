@@ -1,0 +1,844 @@
+schema_version: '0.1'
+version: 0.2.0
+entries:
+  - id: typescript
+    name: TypeScript
+    category: language
+    version_scope: Handbook semantics; exact compiler release must be pinned by the project.
+    review_owner: composed-maintainers
+    review_status: documentation-reviewed
+    reviewed_on: '2026-11-18'
+    review_due: '2026-12-18'
+    license: {status: unverified, declared: Apache-2.0, source: 'https://raw.githubusercontent.com/microsoft/TypeScript/main/LICENSE.txt', note: Upstream license reviewed; exact compiler and transitive tooling audit pending.}
+    sources:
+      - {id: ts-handbook, url: 'https://www.typescriptlang.org/docs/handbook/2/basic-types.html', scope: Static checking and type erasure}
+    capabilities:
+      - id: static-types
+        kind: native
+        statement: Checks types before execution; type annotations are erased from emitted JavaScript.
+        sources: [ts-handbook]
+      - id: input-validation
+        kind: application
+        statement: External JSON and network inputs require runtime validation; static types do not supply it.
+        sources: [ts-handbook]
+    assessment:
+      advantages: [Shared browser/server type vocabulary can reduce interface drift for a TypeScript team.]
+      limitations: [Generated types can still disagree with runtime data or independently deployed services.]
+      fit: [Teams maintaining rich browser interactions and a JavaScript backend.]
+      avoid: [Adding a compiler solely to replace an already effective language without a product reason.]
+      operations: [Pin compiler and configuration; run type checking separately if the build only transpiles.]
+      costs: [Include type migration and build maintenance effort; no measured delivery savings are claimed.]
+      compatibility: [Check framework compiler ranges and decorator configuration before selecting NestJS.]
+      unknowns: [Exact compiler and framework combination has not been installed or tested.]
+  - id: python
+    name: Python
+    category: language
+    version_scope: Python 3 asyncio documentation; choose a supported interpreter compatible with the framework.
+    review_owner: composed-maintainers
+    review_status: documentation-reviewed
+    reviewed_on: '2026-11-18'
+    review_due: '2026-12-18'
+    license: {status: unverified, declared: PSF license agreement and bundled notices, source: 'https://docs.python.org/3/license.html', note: Upstream terms reviewed; exact interpreter distribution and package audit pending.}
+    sources:
+      - {id: py-asyncio, url: 'https://docs.python.org/3/library/asyncio.html', scope: Concurrent I/O APIs}
+    capabilities:
+      - id: async-io
+        kind: native
+        statement: asyncio provides coroutine scheduling and network I/O primitives for I/O-bound work.
+        sources: [py-asyncio]
+    assessment:
+      advantages: [A Python-skilled backend team can reuse its operational and domain knowledge.]
+      limitations: [Async primitives do not make blocking application code non-blocking.]
+      fit: [Server-rendered transactional applications with an established Python team.]
+      avoid: [Choosing it for presumed CPU throughput without representative measurements.]
+      operations: [Choose and monitor the application server; separate long-running jobs and request lifetimes.]
+      costs: [Account for another language/toolchain if a rich browser client is needed.]
+      compatibility: [Read the selected Django release's Python support matrix; do not assume newest is compatible.]
+      unknowns: [CPU workload behavior and deployment memory have not been measured.]
+  - id: nodejs
+    name: Node.js
+    category: runtime
+    version_scope: Release policy and event-loop model; select a currently supported LTS line and exact patch.
+    review_owner: composed-maintainers
+    review_status: documentation-reviewed
+    reviewed_on: '2026-11-18'
+    review_due: '2026-12-18'
+    license: {status: unverified, declared: MIT with bundled third-party licenses, source: 'https://raw.githubusercontent.com/nodejs/node/main/LICENSE', note: Upstream terms reviewed; exact distribution audit pending.}
+    sources:
+      - {id: node-lifecycle, url: 'https://nodejs.org/en/about/previous-releases', scope: Release and LTS policy}
+      - {id: node-loop, url: 'https://nodejs.org/en/learn/asynchronous-work/dont-block-the-event-loop', scope: Event-loop blocking and worker-pool risks}
+    capabilities:
+      - id: io-loop
+        kind: native
+        statement: Event-loop and worker-pool execution supports concurrent I/O; blocking callbacks can delay other clients.
+        sources: [node-loop]
+      - id: support-policy
+        kind: native
+        statement: The project distinguishes Current and LTS releases and recommends supported LTS for production.
+        sources: [node-lifecycle]
+    assessment:
+      advantages: [One runtime ecosystem for the TypeScript API and collaboration relay can simplify team ownership.]
+      limitations: [CPU-heavy processing needs explicit scheduling or isolation; async syntax alone is insufficient.]
+      fit: [I/O-oriented APIs and live connections when dependencies support the selected LTS.]
+      avoid: [Unbounded CPU work on the request event loop.]
+      operations: [Monitor event-loop delay and memory; bound payloads and job queues; plan patch upgrades.]
+      costs: [Budget workers or separate processes for costly transforms and indexing.]
+      compatibility: [NestJS major and native database/crypto modules must support the chosen Node release and platform.]
+      unknowns: [Connection density and worker requirements need a project load test.]
+  - id: django
+    name: Django
+    category: framework
+    version_scope: Django 5.2 documentation as a bounded study baseline; not a claim that it is the newest release.
+    review_owner: composed-maintainers
+    review_status: documentation-reviewed
+    reviewed_on: '2026-11-18'
+    review_due: '2026-12-18'
+    license: {status: unverified, declared: BSD-3-Clause, source: 'https://github.com/django/django/blob/stable/5.2.x/LICENSE', note: Upstream license reviewed; selected distribution and optional package audit pending.}
+    sources:
+      - {id: django-transactions, url: 'https://docs.djangoproject.com/en/5.2/topics/db/transactions/', scope: atomic blocks and autocommit}
+      - {id: django-python, url: 'https://docs.djangoproject.com/en/5.2/faq/install/', scope: Python and database compatibility}
+      - {id: django-support, url: 'https://www.djangoproject.com/download/', scope: Supported release lines and lifecycle}
+    capabilities:
+      - id: atomic-blocks
+        kind: native
+        statement: atomic controls transaction boundaries; autocommit is the default outside transactions.
+        sources: [django-transactions]
+      - id: concurrency-policy
+        kind: application
+        statement: A booking transaction still needs deliberate database isolation or locking and retry behavior.
+        sources: [django-transactions]
+    assessment:
+      advantages: [A server-rendered Python application can keep booking UI and transaction orchestration in one deployable.]
+      limitations: [Per-request transactions do not by themselves solve races or make external payment effects atomic.]
+      fit: [A Python team building an operator/customer transactional workflow.]
+      avoid: [Treating ORM transactions as proof of capacity correctness.]
+      operations: [Keep transactions short; perform external effects through a durable handoff and idempotent worker.]
+      costs: [Include database operations and background workers; compare UI integration effort for rich collaboration.]
+      compatibility: [Pin Python and PostgreSQL driver versions from the selected Django documentation; confirm current support dates.]
+      unknowns: [No selected Python/driver/database combination has been executed; live collaboration requires additional research.]
+  - id: nestjs
+    name: NestJS
+    category: framework
+    version_scope: NestJS gateway and migration documentation; v11 migration guidance is a study boundary, not a latest-version claim.
+    review_owner: composed-maintainers
+    review_status: documentation-reviewed
+    reviewed_on: '2026-11-18'
+    review_due: '2026-12-18'
+    license: {status: unverified, declared: MIT, source: 'https://raw.githubusercontent.com/nestjs/nest/master/LICENSE', note: Upstream license reviewed; selected adapters/ORM and pinned revision audit pending.}
+    sources:
+      - {id: nest-gateways, url: 'https://docs.nestjs.com/websockets/gateways', scope: Gateways and transport adapters}
+      - {id: nest-migration, url: 'https://docs.nestjs.com/migration-guide', scope: Major migration and runtime requirements}
+    capabilities:
+      - id: gateways
+        kind: extension
+        statement: Gateways integrate WebSocket transports through adapter packages; the transport does not implement document convergence.
+        sources: [nest-gateways]
+    assessment:
+      advantages: [A TypeScript team can organize API and live transport responsibilities in the same framework.]
+      limitations: [Database access and transport adapters add independent compatibility and maintenance choices.]
+      fit: [An API-heavy product with a TypeScript team and explicitly selected persistence and validation libraries.]
+      avoid: [Choosing it on the assumption that WebSocket support supplies offline collaboration or durable jobs.]
+      operations: [Plan connection draining and authentication renewal; monitor adapter errors and reconnect storms.]
+      costs: [Include integration and testing effort for ORM/driver plus background processing and live transport.]
+      compatibility: [Check the migration guide's Node requirement and adapter major versions; pin compiler/decorator settings.]
+      unknowns: [The complete adapter/ORM/runtime matrix remains untested.]
+  - id: react
+    name: React
+    category: library
+    version_scope: React application creation guidance; rendering framework and build tool are separate open decisions.
+    review_owner: composed-maintainers
+    review_status: documentation-reviewed
+    reviewed_on: '2026-11-18'
+    review_due: '2026-12-18'
+    license: {status: unverified, declared: MIT, source: 'https://raw.githubusercontent.com/facebook/react/main/LICENSE', note: Upstream license reviewed; selected framework/build-tool dependency audit pending.}
+    sources:
+      - {id: react-app, url: 'https://react.dev/learn/creating-a-react-app', scope: Framework versus custom application setup}
+    capabilities:
+      - id: app-assembly
+        kind: extension
+        statement: Official guidance recommends a framework for new applications; a custom setup remains possible for constraints it does not serve.
+        sources: [react-app]
+    assessment:
+      advantages: [A component UI is a candidate for rich workspace interactions and editor integration.]
+      limitations: [Routing/rendering strategy and offline persistence still require explicit choices.]
+      fit: [Interactive workspaces whose UX needs justify a browser application.]
+      avoid: [Adding a separate client solely for a simple server-rendered booking flow.]
+      operations: [Test bundle size and accessible interactions; manage client/server release compatibility.]
+      costs: [Account for a separate frontend pipeline and editor integration rather than assuming a free UI layer.]
+      compatibility: [Check editor bindings and rendering framework React ranges; no specific framework is selected here.]
+      unknowns: [No editor binding or SSR combination is tested by this reference.]
+  - id: postgresql
+    name: PostgreSQL
+    category: database
+    version_scope: PostgreSQL 18 transaction isolation documentation; exact server and driver patches remain project decisions.
+    review_owner: composed-maintainers
+    review_status: documentation-reviewed
+    reviewed_on: '2026-11-18'
+    review_due: '2026-12-18'
+    license: {status: unverified, declared: PostgreSQL, source: 'https://www.postgresql.org/about/licence/', note: Upstream license reviewed; server distribution and extension audit pending.}
+    sources:
+      - {id: pg-isolation, url: 'https://www.postgresql.org/docs/18/transaction-iso.html', scope: Isolation levels and serialization retries}
+    capabilities:
+      - id: serializable
+        kind: native
+        statement: Serializable isolation prevents serialization anomalies for committed transactions; applications must handle serialization failures and retry whole transactions.
+        sources: [pg-isolation]
+      - id: default-isolation
+        kind: native
+        statement: Read Committed is the default and does not exclude all serialization anomalies.
+        sources: [pg-isolation]
+    assessment:
+      advantages: [Transactional invariants can be enforced near authoritative booking data.]
+      limitations: [Isolation does not authenticate payment callbacks or make network side effects transactional.]
+      fit: [Booking capacity ledgers; rebuildable workspace projections where Git remains canonical.]
+      avoid: [Using a SQL content store as a second canonical authority in the collaborative-workspace contract.]
+      operations: [Plan backups and restore drills; size connection pools; observe lock contention and retries.]
+      costs: [Budget storage growth, backups, maintenance and recovery objectives; no hosting price is assumed.]
+      compatibility: [Test selected ORM/driver transaction semantics against the exact server release.]
+      unknowns: [Throughput under last-seat contention and backup recovery times remain unmeasured.]
+  - id: yjs
+    name: Yjs
+    category: library
+    version_scope: Upstream README for shared types and providers; exact package/provider/editor revisions must be selected together.
+    review_owner: composed-maintainers
+    review_status: documentation-reviewed
+    reviewed_on: '2026-11-18'
+    review_due: '2026-12-18'
+    license: {status: unverified, declared: MIT, source: 'https://raw.githubusercontent.com/yjs/yjs/main/LICENSE', note: Upstream core license reviewed; provider/editor binding audit pending.}
+    sources:
+      - {id: yjs-readme, url: 'https://github.com/yjs/yjs', scope: Shared types and provider ecosystem}
+    capabilities:
+      - id: shared-types
+        kind: native
+        statement: Shared data types support convergent collaborative updates independently of a particular network transport.
+        sources: [yjs-readme]
+      - id: persistence-transport
+        kind: extension
+        statement: Network and persistence providers are separate integration choices.
+        sources: [yjs-readme]
+    assessment:
+      advantages: [A candidate for rich collaborative editing without implementing a convergence algorithm from scratch.]
+      limitations: [Convergence alone does not prove valid business state, authorization, attribution or Git durability.]
+      fit: [Concurrent editor work with a defined validation and canonical materialization boundary.]
+      avoid: [Treating relay acknowledgments as canonical accepted commits or merging updates before authorization.]
+      operations: [Bound document/update sizes; plan compaction, reconnect handling and revocation enforcement.]
+      costs: [Budget provider operations and custom Git materialization/recovery engineering.]
+      compatibility: [Verify editor bindings and provider versions together; test replay across upgrades.]
+      unknowns: [Durable semantic mapping to Git and encrypted-sync behavior require project experiments.]
+  - id: git
+    name: Git
+    category: storage-tool
+    version_scope: git-update-ref documentation; exact binary and repository operating model must be pinned.
+    review_owner: composed-maintainers
+    review_status: documentation-reviewed
+    reviewed_on: '2026-11-18'
+    review_due: '2026-12-18'
+    license: {status: unverified, declared: GPL-2.0 with file-specific exceptions as stated upstream, source: 'https://raw.githubusercontent.com/git/git/master/COPYING', note: Upstream terms reviewed; distribution or linking obligations for the exact integration remain to be assessed.}
+    sources:
+      - {id: git-update-ref, url: 'https://git-scm.com/docs/git-update-ref', scope: Conditional reference updates and transactions}
+    capabilities:
+      - id: conditional-ref
+        kind: native
+        statement: update-ref can require an expected old object ID before updating a reference and supports transactional reference updates.
+        sources: [git-update-ref]
+    assessment:
+      advantages: [Conditional reference updates provide a primitive for detecting concurrent canonical-head changes.]
+      limitations: [Git reference transactions do not atomically commit a separate SQL projection or relay acknowledgment.]
+      fit: [Canonical portable workspace history with an application-controlled writer and rebuildable projections.]
+      avoid: [Exposing a whole repository to users who are authorized for only some contained resources.]
+      operations: [Define writer coordination, backup verification, attachment retention and recovery/rebuild procedures.]
+      costs: [Measure repository growth and materialization latency; attachments need a separate retention design.]
+      compatibility: [Verify command behavior on the supported OS and exact Git version; adapters are unselected.]
+      unknowns: [Crash boundaries across Git and projections have not been tested.]
+  - id: csharp
+    name: C#
+    category: language
+    version_scope: C# language overview; pin SDK, language version and target
+      framework together.
+    review_owner: composed-maintainers
+    review_status: documentation-reviewed
+    reviewed_on: 2026-11-18
+    review_due: 2026-12-18
+    license:
+      status: unverified
+      declared: MIT for Roslyn compiler; not a license on the language
+      source: https://raw.githubusercontent.com/dotnet/roslyn/main/License.txt
+      note: Listed upstream terms inspected; exact distribution, runtime and
+        dependency obligations remain project-specific and unaudited.
+    sources:
+      - id: csharp-overview
+        url: https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/overview
+        scope: C# provides static typing, generics and asynchronous programming
+          constructs.
+    capabilities:
+      - id: typed-language
+        kind: native
+        statement: C# provides static typing, generics and asynchronous programming
+          constructs.
+        sources:
+          - csharp-overview
+    assessment:
+      advantages:
+        - A C# team can model domain rules in a shared backend type system.
+      limitations:
+        - Static types do not validate external inputs or prove domain
+          invariants.
+      fit:
+        - Domain-heavy services and existing .NET applications.
+      avoid:
+        - Selecting a new language without team capacity to maintain it.
+      operations:
+        - Pin SDK and language settings; monitor runtime allocations and
+          exceptions.
+      costs:
+        - Include SDK upgrades, developer training and integration testing.
+      compatibility:
+        - Align compiler features with target framework; check generated clients
+          and serializers.
+      unknowns:
+        - No compiler/package combination or workload has been tested.
+  - id: dotnet
+    name: .NET
+    category: runtime
+    version_scope: Modern .NET support policy; .NET Framework is a distinct product.
+      Select a supported release and patch.
+    review_owner: composed-maintainers
+    review_status: documentation-reviewed
+    reviewed_on: 2026-11-18
+    review_due: 2026-12-18
+    license:
+      status: unverified
+      declared: MIT with third-party notices
+      source: https://raw.githubusercontent.com/dotnet/runtime/main/LICENSE.TXT
+      note: Listed upstream terms inspected; exact distribution, runtime and
+        dependency obligations remain project-specific and unaudited.
+    sources:
+      - id: dotnet-support
+        url: https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core
+        scope: The support policy covers runtime, SDK, ASP.NET Core and EF Core with
+          release-specific support periods.
+      - id: dotnet-aot
+        url: https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot/
+        scope: Native AOT compiles at publish time for a specific target; reflection and
+          dynamic-code dependencies require compatibility checks.
+    capabilities:
+      - id: lifecycle
+        kind: native
+        statement: The support policy covers runtime, SDK, ASP.NET Core and EF Core with
+          release-specific support periods.
+        sources:
+          - dotnet-support
+      - id: native-aot
+        kind: native
+        statement: Native AOT compiles at publish time for a specific target; reflection
+          and dynamic-code dependencies require compatibility checks.
+        sources:
+          - dotnet-aot
+    assessment:
+      advantages:
+        - A coordinated platform is useful for teams already operating .NET.
+      limitations:
+        - Support depends on the release and servicing level; native AOT adds
+          compatibility constraints.
+      fit:
+        - Long-lived APIs, workers and cross-platform services.
+      avoid:
+        - Assuming Windows or Azure is required, or assuming every package
+          supports AOT.
+      operations:
+        - Choose framework-dependent versus self-contained deployment; patch
+          shipped runtimes and observe GC behavior.
+      costs:
+        - Compare idle memory, startup, steady-state CPU and operator effort on
+          representative workloads.
+      compatibility:
+        - Pin SDK/runtime/OS/architecture; validate trimming, reflection and
+          native dependencies before AOT.
+      unknowns:
+        - No AOT compatibility or throughput benchmark has been executed.
+  - id: aspnet-core
+    name: ASP.NET Core
+    category: framework
+    version_scope: ASP.NET Core 10 documentation baseline; select a supported
+      runtime and exact patch.
+    review_owner: composed-maintainers
+    review_status: documentation-reviewed
+    reviewed_on: 2026-11-18
+    review_due: 2026-12-18
+    license:
+      status: unverified
+      declared: MIT
+      source: https://raw.githubusercontent.com/dotnet/aspnetcore/main/LICENSE.txt
+      note: Listed upstream terms inspected; exact distribution, runtime and
+        dependency obligations remain project-specific and unaudited.
+    sources:
+      - id: aspnet-overview
+        url: https://learn.microsoft.com/en-us/aspnet/core/overview?view=aspnetcore-10.0
+        scope: Provides an HTTP middleware pipeline, dependency injection, configuration
+          and web API facilities.
+      - id: aspnet-signalr
+        url: https://learn.microsoft.com/en-us/aspnet/core/signalr/introduction?view=aspnetcore-10.0
+        scope: SignalR provides connection management and server-to-client messaging
+          with multiple transports; collaboration semantics are application
+          work.
+    capabilities:
+      - id: http-pipeline
+        kind: native
+        statement: Provides an HTTP middleware pipeline, dependency injection,
+          configuration and web API facilities.
+        sources:
+          - aspnet-overview
+      - id: signalr
+        kind: extension
+        statement: SignalR provides connection management and server-to-client messaging
+          with multiple transports; collaboration semantics are application
+          work.
+        sources:
+          - aspnet-signalr
+    assessment:
+      advantages:
+        - An integrated HTTP application model suits a C# team.
+      limitations:
+        - SignalR transport does not supply CRDT convergence, offline durability
+          or canonical Git commits.
+      fit:
+        - Transactional web services, server-rendered applications and
+          self-hosted real-time endpoints.
+      avoid:
+        - Treating built-in authentication or live transport as proof of
+          authorization correctness.
+      operations:
+        - Plan request limits, connection draining, session revalidation and
+          persistent key management.
+      costs:
+        - Account for workers, database operations and live-connection scale-out
+          when needed.
+      compatibility:
+        - Align runtime and package majors; verify client protocols, reverse
+          proxy and database provider support.
+      unknowns:
+        - No SignalR/Yjs binding or multi-instance revocation protocol has been
+          tested.
+  - id: ef-core
+    name: Entity Framework Core
+    category: library
+    version_scope: EF Core transaction documentation; relational provider
+      capabilities are version-specific.
+    review_owner: composed-maintainers
+    review_status: documentation-reviewed
+    reviewed_on: 2026-11-18
+    review_due: 2026-12-18
+    license:
+      status: unverified
+      declared: MIT
+      source: https://raw.githubusercontent.com/dotnet/efcore/main/LICENSE.txt
+      note: Listed upstream terms inspected; exact distribution, runtime and
+        dependency obligations remain project-specific and unaudited.
+    sources:
+      - id: ef-transactions
+        url: https://learn.microsoft.com/en-us/ef/core/saving/transactions
+        scope: With a transaction-capable provider, one SaveChanges call is
+          transactional; explicit transactions can group multiple operations.
+    capabilities:
+      - id: transactions
+        kind: native
+        statement: With a transaction-capable provider, one SaveChanges call is
+          transactional; explicit transactions can group multiple operations.
+        sources:
+          - ef-transactions
+    assessment:
+      advantages:
+        - A .NET team can coordinate persistence and domain changes with
+          explicit transaction scopes.
+      limitations:
+        - A SaveChanges transaction does not by itself prevent last-seat races;
+          execution strategies and manual transactions need deliberate
+          coordination.
+      fit:
+        - Relational .NET applications with a supported provider.
+      avoid:
+        - Assuming all providers implement identical transaction or migration
+          semantics.
+      operations:
+        - Keep transactions short; inspect SQL, retries and connection pools;
+          stage schema migrations.
+      costs:
+        - Budget query tuning and provider upgrades rather than treating the ORM
+          as a database replacement.
+      compatibility:
+        - For PostgreSQL select a compatible Npgsql EF provider; check
+          provider/EF/runtime versions together.
+      unknowns:
+        - No selected provider, migration or concurrency strategy has been
+          executed.
+  - id: rust
+    name: Rust
+    category: language
+    version_scope: Ownership documentation; pin rustc toolchain, edition and
+      dependency minimum supported Rust versions.
+    review_owner: composed-maintainers
+    review_status: documentation-reviewed
+    reviewed_on: 2026-11-18
+    review_due: 2026-12-18
+    license:
+      status: unverified
+      declared: Apache-2.0 OR MIT with third-party exceptions
+      source: https://raw.githubusercontent.com/rust-lang/rust/master/COPYRIGHT
+      note: Listed upstream terms inspected; exact distribution, runtime and
+        dependency obligations remain project-specific and unaudited.
+    sources:
+      - id: rust-ownership
+        url: https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html
+        scope: The compiler checks ownership rules for memory management without a
+          tracing garbage collector.
+    capabilities:
+      - id: ownership
+        kind: native
+        statement: The compiler checks ownership rules for memory management without a
+          tracing garbage collector.
+        sources:
+          - rust-ownership
+    assessment:
+      advantages:
+        - A candidate for native services needing explicit memory ownership and
+          resource control.
+      limitations:
+        - Ownership does not prove business correctness, deadlock freedom or the
+          soundness of unsafe and FFI boundaries.
+      fit:
+        - Native services, parsers and measured CPU or memory constraints with a
+          Rust-capable team.
+      avoid:
+        - Choosing Rust solely from assumed speed while ignoring delivery cost
+          and ecosystem fit.
+      operations:
+        - Pin toolchains; track crate advisories and native dependencies;
+          inspect panic and cancellation behavior.
+      costs:
+        - Include compile times, training, async design and operational
+          instrumentation.
+      compatibility:
+        - Check MSRV, edition, target triples, TLS/database crates and FFI
+          ownership conventions.
+      unknowns:
+        - No performance advantage over other stacks is established here.
+  - id: tokio
+    name: Tokio
+    category: runtime
+    version_scope: Tokio asynchronous runtime tutorial; distinct from the Rust
+      language and compiler.
+    review_owner: composed-maintainers
+    review_status: documentation-reviewed
+    reviewed_on: 2026-11-18
+    review_due: 2026-12-18
+    license:
+      status: unverified
+      declared: MIT
+      source: https://raw.githubusercontent.com/tokio-rs/tokio/master/LICENSE
+      note: Listed upstream terms inspected; exact distribution, runtime and
+        dependency obligations remain project-specific and unaudited.
+    sources:
+      - id: tokio-tutorial
+        url: https://tokio.rs/tokio/tutorial
+        scope: Provides asynchronous task execution and networking primitives, including
+          a multithreaded runtime.
+    capabilities:
+      - id: async-runtime
+        kind: native
+        statement: Provides asynchronous task execution and networking primitives,
+          including a multithreaded runtime.
+        sources:
+          - tokio-tutorial
+    assessment:
+      advantages:
+        - A common execution foundation for Rust network services.
+      limitations:
+        - Blocking or unbounded CPU work must not monopolize async executor
+          threads.
+      fit:
+        - Concurrent I/O services with an explicitly designed task lifecycle.
+      avoid:
+        - Using async task spawning as a durable job queue or an unlimited CPU
+          scheduler.
+      operations:
+        - Bound concurrency and queues; define cancellation, timeouts, shutdown
+          and blocking-work isolation.
+      costs:
+        - Include runtime tuning and debugging of task ownership and
+          cancellation.
+      compatibility:
+        - Check crate feature flags and runtime expectations of database, HTTP
+          and TLS clients.
+      unknowns:
+        - No scheduler saturation or cancellation-recovery experiment has been
+          run.
+  - id: axum
+    name: Axum
+    category: framework
+    version_scope: Axum crate documentation, 0.8 family observed; pin actual crate
+      version and MSRV.
+    review_owner: composed-maintainers
+    review_status: documentation-reviewed
+    reviewed_on: 2026-11-18
+    review_due: 2026-12-18
+    license:
+      status: unverified
+      declared: MIT
+      source: https://raw.githubusercontent.com/tokio-rs/axum/main/axum/Cargo.toml
+      note: Listed upstream terms inspected; exact distribution, runtime and
+        dependency obligations remain project-specific and unaudited.
+    sources:
+      - id: axum-docs
+        url: https://docs.rs/axum/latest/axum/
+        scope: Provides routing, typed request extractors and responses, integrating
+          with Tokio and Tower middleware.
+    capabilities:
+      - id: routing
+        kind: native
+        statement: Provides routing, typed request extractors and responses, integrating
+          with Tokio and Tower middleware.
+        sources:
+          - axum-docs
+    assessment:
+      advantages:
+        - A modular HTTP layer for a Rust service.
+      limitations:
+        - Persistence, user management, durable jobs and domain authorization
+          remain separate choices.
+      fit:
+        - Rust APIs and specialized services with a team comfortable with async
+          Rust.
+      avoid:
+        - Expecting an integrated administrative application from the HTTP
+          framework alone.
+      operations:
+        - Set body limits, timeout and tracing middleware; validate extractor
+          rejection and shutdown behavior.
+      costs:
+        - Budget integration of database clients, identity and frontend instead
+          of assuming feature parity with a full-stack framework.
+      compatibility:
+        - Pin Axum, Tokio, Tower and HTTP crate versions and feature flags;
+          select database/TLS libraries.
+      unknowns:
+        - No complete Axum/database/UI stack has been installed or load-tested.
+  - id: c
+    name: C
+    category: language
+    version_scope: C17/C23 dialects; GCC documentation is one compiler
+      implementation, not universal platform support.
+    review_owner: composed-maintainers
+    review_status: documentation-reviewed
+    reviewed_on: 2026-11-18
+    review_due: 2026-12-18
+    license:
+      status: unverified
+      declared: Language has no application license; GCC toolchain uses GPL terms with
+        separate runtime exceptions
+      source: https://raw.githubusercontent.com/gcc-mirror/gcc/master/COPYING3
+      note: Listed upstream terms inspected; exact distribution, runtime and
+        dependency obligations remain project-specific and unaudited.
+    sources:
+      - id: c-standards
+        url: https://gcc.gnu.org/onlinedocs/gcc/Standards.html
+        scope: GCC documents selectable ISO C dialects and implementation extensions;
+          select the intended standard explicitly.
+    capabilities:
+      - id: dialect-selection
+        kind: native
+        statement: GCC documents selectable ISO C dialects and implementation
+          extensions; select the intended standard explicitly.
+        sources:
+          - c-standards
+    assessment:
+      advantages:
+        - A candidate for existing native libraries, firmware and narrow
+          interoperable components.
+      limitations:
+        - Memory ownership, bounds and undefined behavior require disciplined
+          engineering and verification.
+      fit:
+        - Hardware integration, constrained targets and reuse of established C
+          libraries.
+      avoid:
+        - Replacing a conventional business backend without a measured or
+          existing native requirement.
+      operations:
+        - Use warnings, sanitizers where supported, fuzzing and target-specific
+          crash diagnostics; define allocation ownership at FFI boundaries.
+      costs:
+        - Budget memory-safety review, build portability and third-party library
+          maintenance.
+      compatibility:
+        - Pin compiler, C dialect, libc, target ABI and linker; distinguish
+          hosted from freestanding environments.
+      unknowns:
+        - No target hardware, ABI integration or sanitizer campaign has been
+          tested.
+  - id: cpp
+    name: C++
+    category: language
+    version_scope: C++20/C++23 as study baselines; inspect compiler and
+      standard-library feature support separately.
+    review_owner: composed-maintainers
+    review_status: documentation-reviewed
+    reviewed_on: 2026-11-18
+    review_due: 2026-12-18
+    license:
+      status: unverified
+      declared: Language has no application license; GNU libstdc++ uses GPLv3 with GCC
+        Runtime Library Exception
+      source: https://gcc.gnu.org/onlinedocs/libstdc++/manual/license.html
+      note: Listed upstream terms inspected; exact distribution, runtime and
+        dependency obligations remain project-specific and unaudited.
+    sources:
+      - id: cpp-support
+        url: https://gcc.gnu.org/projects/cxx-status.html
+        scope: GCC publishes per-feature C++ dialect support; language support and
+          standard-library support are separate checks.
+    capabilities:
+      - id: feature-matrix
+        kind: native
+        statement: GCC publishes per-feature C++ dialect support; language support and
+          standard-library support are separate checks.
+        sources:
+          - cpp-support
+    assessment:
+      advantages:
+        - A candidate for existing engines, native SDKs and resource-intensive
+          modules.
+      limitations:
+        - Resource-management abstractions do not eliminate undefined behavior,
+          lifetime errors or ABI incompatibility.
+      fit:
+        - 3D/media engines and large existing C++ codebases with appropriate
+          expertise.
+      avoid:
+        - Assuming a native rewrite will improve end-to-end performance without
+          profiling.
+      operations:
+        - Define ownership and exception boundaries; run sanitizers and fuzzing;
+          preserve symbolized crash reports.
+      costs:
+        - Include build times, compiler/platform matrices and dependency
+          packaging.
+      compatibility:
+        - Pin compiler, STL, ABI, build flags and native SDK versions; test
+          binary boundaries and allocator ownership.
+      unknowns:
+        - No engine benchmark or cross-platform binary compatibility test has
+          been run.
+  - id: asm
+    name: Assembly (ASM)
+    category: language
+    version_scope: Family of ISA-specific languages; initial documented example is
+      NASM for x86/x86-64, not ARM or RISC-V coverage.
+    review_owner: composed-maintainers
+    review_status: documentation-reviewed
+    reviewed_on: 2026-11-18
+    review_due: 2026-12-18
+    license:
+      status: unverified
+      declared: No single assembly-language license; NASM example is BSD-2-Clause
+      source: https://www.nasm.us/doc/nasm01.html
+      note: Listed upstream terms inspected; exact distribution, runtime and
+        dependency obligations remain project-specific and unaudited.
+    sources:
+      - id: nasm-intro
+        url: https://www.nasm.us/doc/nasm01.html
+        scope: NASM assembles x86/x86-64 and supports several object formats; its
+          portability does not make the emitted instructions ISA-independent.
+    capabilities:
+      - id: isa-specific
+        kind: native
+        statement: NASM assembles x86/x86-64 and supports several object formats; its
+          portability does not make the emitted instructions ISA-independent.
+        sources:
+          - nasm-intro
+    assessment:
+      advantages:
+        - Can express hardware-specific instructions or tightly bounded routines
+          when higher-level tooling is insufficient.
+      limitations:
+        - ISA, calling convention and operating-system details constrain
+          portability and reviewability.
+      fit:
+        - Boot code, hardware interfaces and profiling-justified hot paths owned
+          by specialists.
+      avoid:
+        - Building whole booking/workspace applications in assembly or assuming
+          handwritten assembly beats optimized compiler output.
+      operations:
+        - Specify register preservation, stack alignment, unwind metadata and
+          CPU feature dispatch; retain portable fallback where needed.
+      costs:
+        - Budget per-architecture implementations and specialist maintenance.
+      compatibility:
+        - Pin ISA extensions, assembler syntax, object format, ABI and execution
+          privilege level.
+      unknowns:
+        - No handwritten routine, CPU benchmark or ARM/RISC-V toolchain has been
+          evaluated.
+  - id: wasm
+    name: WebAssembly (WASM)
+    category: execution-format
+    version_scope: Portable execution format; separate core feature set,
+      browser/standalone engine and WASI interface version.
+    review_owner: composed-maintainers
+    review_status: documentation-reviewed
+    reviewed_on: 2026-11-18
+    review_due: 2026-12-18
+    license:
+      status: unverified
+      declared: Format is not an application license; specification repository has
+        directory-specific W3C/Apache and other terms
+      source: https://raw.githubusercontent.com/WebAssembly/spec/main/LICENSE
+      note: Listed upstream terms inspected; exact distribution, runtime and
+        dependency obligations remain project-specific and unaudited.
+    sources:
+      - id: wasm-portability
+        url: https://webassembly.org/docs/portability/
+        scope: WebAssembly defines a binary format intended for execution across host
+          operating systems and instruction architectures.
+      - id: wasi-interfaces
+        url: https://wasi.dev/
+        scope: WASI specifies host interfaces for WebAssembly; applications must select
+          compatible interface and host implementations.
+    capabilities:
+      - id: portable-modules
+        kind: native
+        statement: WebAssembly defines a binary format intended for execution across
+          host operating systems and instruction architectures.
+        sources:
+          - wasm-portability
+      - id: host-interfaces
+        kind: extension
+        statement: WASI specifies host interfaces for WebAssembly; applications must
+          select compatible interface and host implementations.
+        sources:
+          - wasi-interfaces
+    assessment:
+      advantages:
+        - A candidate for sharing a bounded computation module across supported
+          browser and server hosts.
+      limitations:
+        - Host APIs, supported proposals and interface versions constrain
+          portability; crossing host boundaries has a cost.
+      fit:
+        - Browser computation and capability-limited plugins with measured reuse
+          or isolation needs.
+      avoid:
+        - Treating WASM as a source language, a database, or a guarantee that
+          arbitrary native programs run unchanged.
+      operations:
+        - Limit execution time and memory, restrict imports, version interfaces
+          and monitor the hosting engine.
+      costs:
+        - Include compilation, serialization/copy costs, debugging and host
+          integration.
+      compatibility:
+        - Pin source compiler, target, engine features and WASI version; browser
+          bindings and standalone WASI are not interchangeable.
+      unknowns:
+        - No engine, guest language, capability policy or performance comparison
+          is selected or tested.

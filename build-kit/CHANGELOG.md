@@ -14,6 +14,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   preservation, backups, doctor/repair and uninstall. Added previous-template upgrade tests and a
   consumer migration guide; older CLI binaries do not understand the new managed reference paths.
   No external design engine/assets or new dependencies are installed. No visual benchmark gain is claimed.
+- Software-engineering study guidance (FR/EN) now points to the optional, independently versioned
+  technology reference. Recommendations cite contract clauses and scoped source evidence, preserve
+  user-owned stack decisions and report stale/missing research. The catalog is not bundled into
+  installed projects. No product contract clauses change.
 
 ## [0.8.0] — 2026-11-14
 

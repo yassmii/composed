@@ -1,5 +1,6 @@
 node_modules/
 npm-debug.log*
+technology/reports/
 .DS_Store
 
 # Local-only evidence about private consumer projects; never published.

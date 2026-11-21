@@ -1,0 +1,417 @@
+{
+  "typescript-releases": {
+    "url": "https://github.com/microsoft/TypeScript/releases.atom",
+    "sha256": "2198f03e4dce23edb430912091418ee64492727592dab5970d7f717043f11880",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "typescript-security": {
+    "url": "https://github.com/microsoft/TypeScript/security/advisories",
+    "sha256": "df9f21c456fb4240db37aa4f42fa4ce9323ecf36efe67a48c41067e9c9499e94",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "python-releases": {
+    "url": "https://www.python.org/downloads/",
+    "sha256": "dd929530d2d9163e29b5b46efcc2480b9593840260130f72add679ec74021145",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "node-support": {
+    "url": "https://nodejs.org/en/about/previous-releases",
+    "sha256": "3d9e187ddb39709d1e04b41436bd58cee94c7bc2347d08755e0cae9f4fb16829",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "node-security": {
+    "url": "https://nodejs.org/en/blog/vulnerability",
+    "sha256": "fa24ba060ae8183a9bacdf3ac15077281cebf6921cb1154a52a5d9d70b60daf3",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "django-support": {
+    "url": "https://www.djangoproject.com/download/",
+    "sha256": "dcff344a27d9e082260bbb028c7b3b16e56f877efa4448d3a07d926ff81d58ad",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "django-security": {
+    "url": "https://www.djangoproject.com/weblog/",
+    "sha256": "97cbdefa1a4da171857e006ed560970df795d94c725a6941f90e7df153233d4f",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "nestjs-releases": {
+    "url": "https://github.com/nestjs/nest/releases.atom",
+    "sha256": "54af8fe76230ea27004f5650184fb19ee85d7d9d6dc28c76ccd52a32f6bb3aa7",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "nestjs-security": {
+    "url": "https://github.com/nestjs/nest/security/advisories",
+    "sha256": "89ed348417fc358619aabf1d3230eb29cd17a2f92de54c7ab8ae2fbbbcabfbca",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "react-releases": {
+    "url": "https://github.com/facebook/react/releases.atom",
+    "sha256": "2e72072eaa0b2dd5bc86319f7a1066495c5773ac4e4962b60ecb2910ec6d3522",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "react-security": {
+    "url": "https://github.com/facebook/react/security/advisories",
+    "sha256": "366f0e3a88a98a05e148a0e56ba6d6e5d34baae1ec9599e0d9b5c5fb772997c5",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "postgresql-support": {
+    "url": "https://www.postgresql.org/support/versioning/",
+    "sha256": "1ed157b7bb15a7176dbf70b80b21a51652c0ed1a8e1c1c15098867904ef55242",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "postgresql-security": {
+    "url": "https://www.postgresql.org/support/security/",
+    "sha256": "1f60fa85c14f0fe97149a04693657e615be914900e681120e671d98816f24021",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "yjs-releases": {
+    "url": "https://github.com/yjs/yjs/releases.atom",
+    "sha256": "bc75a140b1485ddced207e29526744f57ff95b6aa6c4b9215f9de00788a6f46d",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "yjs-security": {
+    "url": "https://github.com/yjs/yjs/security/advisories",
+    "sha256": "74d7151870a82f4a3fafe2f043f1eb75123bf5e1bc08ac8e58b8fc49261d4b0a",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "git-releases": {
+    "url": "https://github.com/git/git/tags.atom",
+    "sha256": "6c75efdb577f0948b79eb9a3667011408d3480d3d00fa4c78c7b8e1fb33f75a5",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "git-security": {
+    "url": "https://github.com/git/git/security/advisories",
+    "sha256": "691c2cede06a8342ad011de7121f7a90da4ca38b44c7a891b13eae9f1564017e",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "doc-ts-handbook": {
+    "url": "https://www.typescriptlang.org/docs/handbook/2/basic-types.html",
+    "sha256": "bb82891d64ecae6973c469485f015baf661c78354ea4dc0381b6a204300c7458",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "license-typescript": {
+    "url": "https://raw.githubusercontent.com/microsoft/TypeScript/main/LICENSE.txt",
+    "sha256": "a5e9f9b1575301c7a7a03508fdaa2e05a918cc17fd21c6e898096a96d6a34f61",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "doc-py-asyncio": {
+    "url": "https://docs.python.org/3/library/asyncio.html",
+    "sha256": "5b362e748ea1f72976860850c16fecb13d88b880e0e8313bfa6832dc497c1bb9",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "license-python": {
+    "url": "https://docs.python.org/3/license.html",
+    "sha256": "400230245cb0089d53cbe6be6e985de0cf94b09ce447892246bb7084ec655990",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "doc-node-lifecycle": {
+    "url": "https://nodejs.org/en/about/previous-releases",
+    "sha256": "3d9e187ddb39709d1e04b41436bd58cee94c7bc2347d08755e0cae9f4fb16829",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "doc-node-loop": {
+    "url": "https://nodejs.org/en/learn/asynchronous-work/dont-block-the-event-loop",
+    "sha256": "acbd1782f58942d39cb97c49e13b11e815399dd8779377134a4211e661d4bad5",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "license-nodejs": {
+    "url": "https://raw.githubusercontent.com/nodejs/node/main/LICENSE",
+    "sha256": "3ebb7123f4d2b9b916338e11748380972d4339d66f54cb3258270f99bb62faf5",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "doc-django-transactions": {
+    "url": "https://docs.djangoproject.com/en/5.2/topics/db/transactions/",
+    "sha256": "efa544b6c228c59c46a2b4a863ae49cd3529444d60b6d1915816197a366f59bd",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "doc-django-python": {
+    "url": "https://docs.djangoproject.com/en/5.2/faq/install/",
+    "sha256": "95b21765b1430df94b8d0535ee2a1e7a630e45ac84b32a096408576aab5b3733",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "doc-django-support": {
+    "url": "https://www.djangoproject.com/download/",
+    "sha256": "dcff344a27d9e082260bbb028c7b3b16e56f877efa4448d3a07d926ff81d58ad",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "license-django": {
+    "url": "https://github.com/django/django/blob/stable/5.2.x/LICENSE",
+    "sha256": "22703d1844a812ce1ea2e23a9d71c03057ce58600b4cad0572fc6266fbee3f22",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "doc-nest-gateways": {
+    "url": "https://docs.nestjs.com/websockets/gateways",
+    "sha256": "368bfe7e781dabb4c6d9426ca00e88dfcba9cdb1fedbcc1c800a119c95d46425",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "doc-nest-migration": {
+    "url": "https://docs.nestjs.com/migration-guide",
+    "sha256": "4b6032f922f6a21b75b04fb8dd554d485f6f6ab7d8836c0a564f62e9d3027cde",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "license-nestjs": {
+    "url": "https://raw.githubusercontent.com/nestjs/nest/master/LICENSE",
+    "sha256": "56967de93525b12a30717e4446ccef3bbe32fafdbe2350f143c1cc6971b19ed3",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "doc-react-app": {
+    "url": "https://react.dev/learn/creating-a-react-app",
+    "sha256": "31122ec54c95dc2a115d76df05cb837217109bc7d97b05807b76b277d3a009a8",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "license-react": {
+    "url": "https://raw.githubusercontent.com/facebook/react/main/LICENSE",
+    "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "doc-pg-isolation": {
+    "url": "https://www.postgresql.org/docs/18/transaction-iso.html",
+    "sha256": "6d16a4c01153d04906e76fc8772826056450bead204696ee81708b4102a06fc4",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "license-postgresql": {
+    "url": "https://www.postgresql.org/about/licence/",
+    "sha256": "5fd1e1277cbed45a8d0961f79ee4bdde886777637048ccfb5588220992eab51f",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "doc-yjs-readme": {
+    "url": "https://github.com/yjs/yjs",
+    "sha256": "6120e29aad083a3f6d267dcbe21a84853d81ff54ed8986e70cadf01a0590972c",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "license-yjs": {
+    "url": "https://raw.githubusercontent.com/yjs/yjs/main/LICENSE",
+    "sha256": "341baa53605ed85d6f95782322854cca56c655ebc7fd4712649b8e7afc6020ff",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "doc-git-update-ref": {
+    "url": "https://git-scm.com/docs/git-update-ref",
+    "sha256": "787f09f359ae34823619599cca617a75acdc5e0c5ebc2e10472e450719439ecb",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "license-git": {
+    "url": "https://raw.githubusercontent.com/git/git/master/COPYING",
+    "sha256": "5b2198d1645f767585e8a88ac0499b04472164c0d2da22e75ecf97ef443ab32e",
+    "observed_on": "2026-11-18T10:24:10.090Z"
+  },
+  "csharp-releases": {
+    "url": "https://github.com/dotnet/roslyn/releases.atom",
+    "sha256": "fa409c5ac214440d737a1b3729f83b105ecf0e1c8d18b75400bff9ce45758421",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "csharp-security": {
+    "url": "https://github.com/dotnet/roslyn/security/advisories",
+    "sha256": "076fa49bbc4016c752948d02315eda73e79144e759c039ed8b45a939031361af",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "dotnet-releases": {
+    "url": "https://github.com/dotnet/runtime/releases.atom",
+    "sha256": "6cecdc95a963fb3e9d8e97badf37ea7611b2ee3cde92b5285584535f08acd081",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "dotnet-security": {
+    "url": "https://github.com/dotnet/runtime/security/advisories",
+    "sha256": "7d227ba56dccca529ffedc2d25bc650bf2f5641a53a45bc0777891e163aa9d34",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "aspnet-core-releases": {
+    "url": "https://github.com/dotnet/aspnetcore/releases.atom",
+    "sha256": "76f9b8f02d4f0ea8e589303e445fcf3cc6f315662efdc03b01aa0cfae4f24af7",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "aspnet-core-security": {
+    "url": "https://github.com/dotnet/aspnetcore/security/advisories",
+    "sha256": "fcfd6605b7bd0053719ddae1a5a67326a1819d455f5ead1116c6f3938721a154",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "ef-core-releases": {
+    "url": "https://github.com/dotnet/efcore/releases.atom",
+    "sha256": "a1fb01e873f39812467a5635cb10c2e6a3246dc4558ae18d76e14787c9aacfd8",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "ef-core-security": {
+    "url": "https://github.com/dotnet/efcore/security/advisories",
+    "sha256": "7a4b18c997fdb68df48d633cbd5412e97a2617ffd9bda74c99b03c65b4b8f44a",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "rust-releases": {
+    "url": "https://github.com/rust-lang/rust/releases.atom",
+    "sha256": "ad3442ee8ffb568005140cac1e88231dfa981f8cd235a28b16f6e0734f0025d6",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "rust-security": {
+    "url": "https://github.com/rust-lang/rust/security/advisories",
+    "sha256": "95db97b277f2a17548b8529df894f8ad8c7a63744968b60326e24818f580105a",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "tokio-releases": {
+    "url": "https://github.com/tokio-rs/tokio/releases.atom",
+    "sha256": "941cb5e15c91c6e7823d65c3dd8601323c06c641cda71b8bf8bb8a4e041ebb17",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "tokio-security": {
+    "url": "https://github.com/tokio-rs/tokio/security/advisories",
+    "sha256": "528e3a25b88f9d2d15706fdaf3775619175f549f98d999e9bed9d1532c363322",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "axum-releases": {
+    "url": "https://github.com/tokio-rs/axum/releases.atom",
+    "sha256": "521a39f42a3805f7d0fd9dab1897acc06c297f514bd47203e8c2f9cde7421902",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "axum-security": {
+    "url": "https://github.com/tokio-rs/axum/security/advisories",
+    "sha256": "00b7dadd20b6bef067bd41a65272f50cd6251617a5cb98a1f8c3e3549ea992a9",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "c-lifecycle": {
+    "url": "https://gcc.gnu.org/releases.html",
+    "sha256": "b0abef584052b55698ffb7e796a6be852d86162c50671b4125a496fd603aab25",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "cpp-lifecycle": {
+    "url": "https://gcc.gnu.org/projects/cxx-status.html",
+    "sha256": "887d50a2e7740f08959bb727b4fa81dee01bebee45d4a8dec9eb622656b6fd78",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "asm-lifecycle": {
+    "url": "https://www.nasm.us/doc/nasmac.html",
+    "sha256": "c2fe3aaeb1f8e0371f1e60a654261dec3e4f8254f98647604e11115834352f62",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "wasm-lifecycle": {
+    "url": "https://wasi.dev/",
+    "sha256": "e811ab1a9ce57ee4dcef1a6007f82bf4f3ad2c7b5b97b88529145e267afefe24",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "dotnet-lifecycle": {
+    "url": "https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core",
+    "sha256": "69aca90b77bc523ad604062c5dce2d7ace720fbc25c02677f520edb8bc655989",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "doc-csharp-overview": {
+    "url": "https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/overview",
+    "sha256": "0a3ce8e72042e5a86ad8732188c9a044a096bf3309f85d0b0f08616de52218b9",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "license-csharp": {
+    "url": "https://raw.githubusercontent.com/dotnet/roslyn/main/License.txt",
+    "sha256": "ae48df11a335dc1a615f4f938b69cba73bcf4485c4f97af49b38efb0f216353b",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "doc-dotnet-support": {
+    "url": "https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core",
+    "sha256": "69aca90b77bc523ad604062c5dce2d7ace720fbc25c02677f520edb8bc655989",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "doc-dotnet-aot": {
+    "url": "https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot/",
+    "sha256": "71f5bd6cc50239296ec6a25913abb9e9a0d67e39dbc4213ef44167eef64aa08a",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "license-dotnet": {
+    "url": "https://raw.githubusercontent.com/dotnet/runtime/main/LICENSE.TXT",
+    "sha256": "cfc21f5e8bd655ae997eec916138b707b1d290b83272c02a95c9f821b8c87310",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "doc-aspnet-overview": {
+    "url": "https://learn.microsoft.com/en-us/aspnet/core/overview?view=aspnetcore-10.0",
+    "sha256": "ae3d6ae5c6b51768b988bc5bf48c90335a8d699bdf58fa89ad0ba2cfdc7e1796",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "doc-aspnet-signalr": {
+    "url": "https://learn.microsoft.com/en-us/aspnet/core/signalr/introduction?view=aspnetcore-10.0",
+    "sha256": "1cce6861162e7f5702f3bd3292010301ea6f91d63bf1895f111d629ca430c301",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "license-aspnet-core": {
+    "url": "https://raw.githubusercontent.com/dotnet/aspnetcore/main/LICENSE.txt",
+    "sha256": "cfc21f5e8bd655ae997eec916138b707b1d290b83272c02a95c9f821b8c87310",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "doc-ef-transactions": {
+    "url": "https://learn.microsoft.com/en-us/ef/core/saving/transactions",
+    "sha256": "dc15234024d03943b68a12dde6db6c3d8764ebe3e58fff65869e97508a9b69cb",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "license-ef-core": {
+    "url": "https://raw.githubusercontent.com/dotnet/efcore/main/LICENSE.txt",
+    "sha256": "ae48df11a335dc1a615f4f938b69cba73bcf4485c4f97af49b38efb0f216353b",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "doc-rust-ownership": {
+    "url": "https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html",
+    "sha256": "828e1e8b8ca851cf2a5206f227c57441aee669265360a38fce659bcb4b68041a",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "license-rust": {
+    "url": "https://raw.githubusercontent.com/rust-lang/rust/master/COPYRIGHT",
+    "sha256": "172020dbfd5b53a226dfde77616190a48dcff519b0bc0e6deb91a8450782c4af",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "doc-tokio-tutorial": {
+    "url": "https://tokio.rs/tokio/tutorial",
+    "sha256": "fc1485ff673ebd1e92ef0d782270238231c36899ccebf6079bff94b0400e1147",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "license-tokio": {
+    "url": "https://raw.githubusercontent.com/tokio-rs/tokio/master/LICENSE",
+    "sha256": "253cd04c6714889df2d32f3f64d669179a1c95c76ac43c40882c52eb06bc3552",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "doc-axum-docs": {
+    "url": "https://docs.rs/axum/latest/axum/",
+    "sha256": "286eeeb71850252813c6a88665f56d8de5980633f088527787e23539022fbc11",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "license-axum": {
+    "url": "https://raw.githubusercontent.com/tokio-rs/axum/main/axum/Cargo.toml",
+    "sha256": "7b653f34222b75257eb35b7edafb14308547fe79ac568527346c4b22cd2b83c2",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "doc-c-standards": {
+    "url": "https://gcc.gnu.org/onlinedocs/gcc/Standards.html",
+    "sha256": "c6db2d849d821f2ac9b1f893e4b69d1505c4918c781317aa2e1456c05dc3cbfc",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "license-c": {
+    "url": "https://raw.githubusercontent.com/gcc-mirror/gcc/master/COPYING3",
+    "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "doc-cpp-support": {
+    "url": "https://gcc.gnu.org/projects/cxx-status.html",
+    "sha256": "887d50a2e7740f08959bb727b4fa81dee01bebee45d4a8dec9eb622656b6fd78",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "license-cpp": {
+    "url": "https://gcc.gnu.org/onlinedocs/libstdc++/manual/license.html",
+    "sha256": "6ef2606fad7fce5ba388fef9d8d137178d0135f3d2c538b664229b58eae5ce06",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "doc-nasm-intro": {
+    "url": "https://www.nasm.us/doc/nasm01.html",
+    "sha256": "e12f0faf492b981e5ec3276ae5be297e35a848c48d23a9adea0dfcc6bacb9b02",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "license-asm": {
+    "url": "https://www.nasm.us/doc/nasm01.html",
+    "sha256": "e12f0faf492b981e5ec3276ae5be297e35a848c48d23a9adea0dfcc6bacb9b02",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "doc-wasm-portability": {
+    "url": "https://webassembly.org/docs/portability/",
+    "sha256": "3cd774a70212f2bee9925fbd243ab319b3c892c6e4aa928132bd922e35da92c3",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "doc-wasi-interfaces": {
+    "url": "https://wasi.dev/",
+    "sha256": "e811ab1a9ce57ee4dcef1a6007f82bf4f3ad2c7b5b97b88529145e267afefe24",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  },
+  "license-wasm": {
+    "url": "https://raw.githubusercontent.com/WebAssembly/spec/main/LICENSE",
+    "sha256": "c06a930f71554662be662d09287c7588b2d9e1aff7a84da503d10ea09a7117c3",
+    "observed_on": "2026-11-18T11:26:30.474Z"
+  }
+}

@@ -47,12 +47,13 @@ It names no language, framework or database. A Rust service and a TypeScript ser
 conform to it. Commits, tests and reviews cite the identifiers they serve, and a capability missing
 from the contract goes through a versioned proposal instead of being invented along the way.
 
-## The three parts
+## The parts
 
 | Part | What it is | Where |
 | --- | --- | --- |
 | **Contracts** | Product definitions with their research: sources, observations, and the trace from each clause back to them. | [`contracts/`](contracts/) |
 | **Build Kit** | An optional method for building against a contract with agents: skills, handoffs, checks and evidence. Works with Claude Code, Codex, Cursor, Gemini CLI, Cline, Windsurf and Aider. | [`build-kit/`](build-kit/) |
+| **Technology reference** | Advisory, sourced technology comparisons to inform a project-owned stack decision. Independently versioned; not a contract requirement. | [`technology/`](technology/) |
 | **Validation** | Conformance profiles and suites that judge an implementation through its public interfaces, with a verdict per case: pass, fail, blocked or not run. | [composed-validation](https://github.com/yassmii/composed-validation) |
 
 The contract and its conformance suite are the standard. The Build Kit is support: a team with its
@@ -143,8 +144,9 @@ See the [quick start](build-kit/docs/getting-started.md), the
 
 - `npm run validate:contracts` validates contracts and research traceability.
 - `npm run test:build-kit` runs the Build Kit tests; `npm run check` runs the shared checks.
+- `npm run validate:technology` checks the technology catalog and studies; `npm run watch:technology` generates source-change review proposals.
 
-The two components keep their own versions and release notes. To check a change in a project that
+The components keep their own versions and release notes. To check a change in a project that
 uses the kit, start with [validation by task](build-kit/docs/validation.md). See the
 [contribution guide](CONTRIBUTING.md) and the [security policy](SECURITY.md).
 

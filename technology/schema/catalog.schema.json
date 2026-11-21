@@ -1,0 +1,247 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "version",
+    "entries"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/entry"
+      }
+    }
+  },
+  "definitions": {
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "texts": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/definitions/text"
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "url",
+        "scope"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "scope": {
+          "$ref": "#/definitions/text"
+        }
+      }
+    },
+    "capability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "statement",
+        "sources"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "kind": {
+          "enum": [
+            "native",
+            "extension",
+            "application"
+          ]
+        },
+        "statement": {
+          "$ref": "#/definitions/text"
+        },
+        "sources": {
+          "$ref": "#/definitions/texts"
+        }
+      }
+    },
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "category",
+        "version_scope",
+        "review_owner",
+        "review_status",
+        "reviewed_on",
+        "review_due",
+        "license",
+        "sources",
+        "capabilities",
+        "assessment"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "name": {
+          "$ref": "#/definitions/text"
+        },
+        "category": {
+          "enum": [
+            "language",
+            "runtime",
+            "framework",
+            "library",
+            "database",
+            "storage-tool",
+            "service",
+            "execution-format"
+          ]
+        },
+        "version_scope": {
+          "$ref": "#/definitions/text"
+        },
+        "review_owner": {
+          "$ref": "#/definitions/text"
+        },
+        "review_status": {
+          "enum": [
+            "documentation-reviewed"
+          ]
+        },
+        "reviewed_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "review_due": {
+          "type": "string",
+          "format": "date"
+        },
+        "license": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "note",
+            "declared",
+            "source"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "unverified",
+                "verified"
+              ]
+            },
+            "declared": {
+              "$ref": "#/definitions/text"
+            },
+            "note": {
+              "$ref": "#/definitions/text"
+            },
+            "source": {
+              "type": "string",
+              "format": "uri",
+              "pattern": "^https://"
+            }
+          },
+          "if": {
+            "properties": {
+              "status": {
+                "const": "verified"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "source"
+            ]
+          }
+        },
+        "sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/source"
+          }
+        },
+        "capabilities": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/capability"
+          }
+        },
+        "assessment": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "advantages",
+            "limitations",
+            "fit",
+            "avoid",
+            "operations",
+            "costs",
+            "compatibility",
+            "unknowns"
+          ],
+          "properties": {
+            "advantages": {
+              "$ref": "#/definitions/texts"
+            },
+            "limitations": {
+              "$ref": "#/definitions/texts"
+            },
+            "fit": {
+              "$ref": "#/definitions/texts"
+            },
+            "avoid": {
+              "$ref": "#/definitions/texts"
+            },
+            "operations": {
+              "$ref": "#/definitions/texts"
+            },
+            "costs": {
+              "$ref": "#/definitions/texts"
+            },
+            "compatibility": {
+              "$ref": "#/definitions/texts"
+            },
+            "unknowns": {
+              "$ref": "#/definitions/texts"
+            }
+          }
+        }
+      }
+    }
+  }
+}

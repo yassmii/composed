@@ -1,0 +1,218 @@
+[
+  {
+    "id": "typescript-releases",
+    "entry": "typescript",
+    "kind": "release",
+    "url": "https://github.com/microsoft/TypeScript/releases.atom"
+  },
+  {
+    "id": "typescript-security",
+    "entry": "typescript",
+    "kind": "security",
+    "url": "https://github.com/microsoft/TypeScript/security/advisories"
+  },
+  {
+    "id": "python-releases",
+    "entry": "python",
+    "kind": "release-support-security",
+    "url": "https://www.python.org/downloads/"
+  },
+  {
+    "id": "node-support",
+    "entry": "nodejs",
+    "kind": "support",
+    "url": "https://nodejs.org/en/about/previous-releases"
+  },
+  {
+    "id": "node-security",
+    "entry": "nodejs",
+    "kind": "security",
+    "url": "https://nodejs.org/en/blog/vulnerability"
+  },
+  {
+    "id": "django-support",
+    "entry": "django",
+    "kind": "release-support",
+    "url": "https://www.djangoproject.com/download/"
+  },
+  {
+    "id": "django-security",
+    "entry": "django",
+    "kind": "security",
+    "url": "https://www.djangoproject.com/weblog/"
+  },
+  {
+    "id": "nestjs-releases",
+    "entry": "nestjs",
+    "kind": "release",
+    "url": "https://github.com/nestjs/nest/releases.atom"
+  },
+  {
+    "id": "nestjs-security",
+    "entry": "nestjs",
+    "kind": "security",
+    "url": "https://github.com/nestjs/nest/security/advisories"
+  },
+  {
+    "id": "react-releases",
+    "entry": "react",
+    "kind": "release",
+    "url": "https://github.com/facebook/react/releases.atom"
+  },
+  {
+    "id": "react-security",
+    "entry": "react",
+    "kind": "security",
+    "url": "https://github.com/facebook/react/security/advisories"
+  },
+  {
+    "id": "postgresql-support",
+    "entry": "postgresql",
+    "kind": "support",
+    "url": "https://www.postgresql.org/support/versioning/"
+  },
+  {
+    "id": "postgresql-security",
+    "entry": "postgresql",
+    "kind": "security",
+    "url": "https://www.postgresql.org/support/security/"
+  },
+  {
+    "id": "yjs-releases",
+    "entry": "yjs",
+    "kind": "release",
+    "url": "https://github.com/yjs/yjs/releases.atom"
+  },
+  {
+    "id": "yjs-security",
+    "entry": "yjs",
+    "kind": "security",
+    "url": "https://github.com/yjs/yjs/security/advisories"
+  },
+  {
+    "id": "git-releases",
+    "entry": "git",
+    "kind": "release",
+    "url": "https://github.com/git/git/tags.atom"
+  },
+  {
+    "id": "git-security",
+    "entry": "git",
+    "kind": "security",
+    "url": "https://github.com/git/git/security/advisories"
+  },
+  {
+    "id": "csharp-releases",
+    "entry": "csharp",
+    "kind": "release",
+    "url": "https://github.com/dotnet/roslyn/releases.atom"
+  },
+  {
+    "id": "csharp-security",
+    "entry": "csharp",
+    "kind": "security",
+    "url": "https://github.com/dotnet/roslyn/security/advisories"
+  },
+  {
+    "id": "dotnet-releases",
+    "entry": "dotnet",
+    "kind": "release",
+    "url": "https://github.com/dotnet/runtime/releases.atom"
+  },
+  {
+    "id": "dotnet-security",
+    "entry": "dotnet",
+    "kind": "security",
+    "url": "https://github.com/dotnet/runtime/security/advisories"
+  },
+  {
+    "id": "aspnet-core-releases",
+    "entry": "aspnet-core",
+    "kind": "release",
+    "url": "https://github.com/dotnet/aspnetcore/releases.atom"
+  },
+  {
+    "id": "aspnet-core-security",
+    "entry": "aspnet-core",
+    "kind": "security",
+    "url": "https://github.com/dotnet/aspnetcore/security/advisories"
+  },
+  {
+    "id": "ef-core-releases",
+    "entry": "ef-core",
+    "kind": "release",
+    "url": "https://github.com/dotnet/efcore/releases.atom"
+  },
+  {
+    "id": "ef-core-security",
+    "entry": "ef-core",
+    "kind": "security",
+    "url": "https://github.com/dotnet/efcore/security/advisories"
+  },
+  {
+    "id": "rust-releases",
+    "entry": "rust",
+    "kind": "release",
+    "url": "https://github.com/rust-lang/rust/releases.atom"
+  },
+  {
+    "id": "rust-security",
+    "entry": "rust",
+    "kind": "security",
+    "url": "https://github.com/rust-lang/rust/security/advisories"
+  },
+  {
+    "id": "tokio-releases",
+    "entry": "tokio",
+    "kind": "release",
+    "url": "https://github.com/tokio-rs/tokio/releases.atom"
+  },
+  {
+    "id": "tokio-security",
+    "entry": "tokio",
+    "kind": "security",
+    "url": "https://github.com/tokio-rs/tokio/security/advisories"
+  },
+  {
+    "id": "axum-releases",
+    "entry": "axum",
+    "kind": "release",
+    "url": "https://github.com/tokio-rs/axum/releases.atom"
+  },
+  {
+    "id": "axum-security",
+    "entry": "axum",
+    "kind": "security",
+    "url": "https://github.com/tokio-rs/axum/security/advisories"
+  },
+  {
+    "id": "c-lifecycle",
+    "entry": "c",
+    "kind": "release",
+    "url": "https://gcc.gnu.org/releases.html"
+  },
+  {
+    "id": "cpp-lifecycle",
+    "entry": "cpp",
+    "kind": "compatibility",
+    "url": "https://gcc.gnu.org/projects/cxx-status.html"
+  },
+  {
+    "id": "asm-lifecycle",
+    "entry": "asm",
+    "kind": "release",
+    "url": "https://www.nasm.us/doc/nasmac.html"
+  },
+  {
+    "id": "wasm-lifecycle",
+    "entry": "wasm",
+    "kind": "interfaces",
+    "url": "https://wasi.dev/"
+  },
+  {
+    "id": "dotnet-lifecycle",
+    "entry": "dotnet",
+    "kind": "support",
+    "url": "https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core"
+  }
+]

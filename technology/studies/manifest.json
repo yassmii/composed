@@ -1,0 +1,47 @@
+[
+  {
+    "id": "saas-booking",
+    "version": "1.0.0",
+    "contract": "../contracts/product-types/saas-booking/contracts/contract.yaml",
+    "sha256": "d662f62d57ea2c664350a31d36f929c0774ee90c470472eaa7e4aafe6070ae4b",
+    "document": "studies/booking.md",
+    "technology_references": [
+      "postgresql/serializable",
+      "django/atomic-blocks",
+      "postgresql/default-isolation",
+      "typescript/input-validation",
+      "ef-core/transactions",
+      "rust/ownership",
+      "axum/routing"
+    ]
+  },
+  {
+    "id": "collaborative-workspace",
+    "version": "1.0.0",
+    "contract": "../contracts/product-types/collaborative-workspace/contracts/contract.yaml",
+    "sha256": "bd98b4851756834578de0ced74ae7e4490fba7fdd09cf87018263f19b6682303",
+    "document": "studies/collaborative-workspace.md",
+    "technology_references": [
+      "yjs/shared-types",
+      "yjs/persistence-transport",
+      "git/conditional-ref",
+      "nestjs/gateways",
+      "aspnet-core/signalr",
+      "tokio/async-runtime",
+      "axum/routing"
+    ]
+  },
+  {
+    "id": "native-components",
+    "kind": "component",
+    "document": "studies/native-components.md",
+    "technology_references": [
+      "c/dialect-selection",
+      "cpp/feature-matrix",
+      "rust/ownership",
+      "asm/isa-specific",
+      "wasm/portable-modules",
+      "wasm/host-interfaces"
+    ]
+  }
+]

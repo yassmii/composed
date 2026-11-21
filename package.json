@@ -7,8 +7,11 @@
 		"build-kit"
 	],
 	"scripts": {
-		"test": "npm run validate:contracts && npm run test:contracts && npm run test:build-kit",
-		"check": "npm run typecheck:build-kit && npm run validate:contracts",
+		"test": "npm run validate:contracts && npm run test:contracts && npm run test:build-kit && npm run test:technology",
+		"check": "npm run typecheck:build-kit && npm run validate:contracts && npm run validate:technology",
+		"validate:technology": "node technology/scripts/validate.mjs",
+		"test:technology": "node --test technology/scripts/technology.test.mjs",
+		"watch:technology": "node technology/scripts/watch.mjs",
 		"validate:contracts": "node contracts/scripts/validate-contracts.mjs && node contracts/scripts/review-traceability.mjs",
 		"validate:lockfile": "node scripts/validate-lockfile.mjs",
 		"verify:research": "node contracts/scripts/review-traceability.mjs --verify-content",
